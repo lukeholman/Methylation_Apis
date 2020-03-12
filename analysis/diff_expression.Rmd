@@ -157,7 +157,8 @@ nmds_output <- data.frame(Caste = sample_ids$caste,
 nmds_output %>%
   mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
   gather(NMDS, Score, starts_with("X")) %>%
-  mutate(NMDS = gsub("X", "NMDS ", NMDS)) %>%
+  mutate(NMDS = gsub("X", "NMDS ", NMDS),
+         Replicate = paste("Replicate", Replicate)) %>%
   group_by(NMDS, Caste, Time, Replicate) %>%
   summarise(Score = mean(Score)) %>%
   ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
@@ -165,7 +166,7 @@ nmds_output %>%
   geom_point() + 
   scale_colour_brewer(palette = "Set2", name = "Caste fate") + 
   facet_grid(NMDS~Replicate) + 
-  xlab("Time since the larva was grafted (hours)")
+  xlab("Time since the larva was grafted (hours)") 
 ```
 
 **Figure**: Results of non-metric multidimensional scaling analysis, after removing the batch effects using `limma::removeBatchEffect`.
