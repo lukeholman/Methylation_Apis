@@ -84,13 +84,14 @@ genes_kept <- rownames(voom_gene_data@.Data[[1]])
 expression_data <- expression_data[rownames(expression_data) %in% genes_kept, ]
 n_genes_after_filtering <- unique(c(nrow(voom_gene_data), nrow(expression_data)))
 
-tibble(` ` = c("Number of transcripts prior to filtering:", "Number remaining after filtering out transcripts where max(CPM) < 1:"),
+tibble(` ` = c("Number of transcripts prior to filtering:", 
+               "Number remaining after filtering out transcripts where max(CPM) < 1:"),
        n = c(n_genes_before_filtering, n_genes_after_filtering)) %>% pander()
 ```
 
 ### Plot the transcriptomes using NMDS, before removing batch effects {.tabset}
 
-#### Plotting NMDS 1 by caste and time point
+#### Univariate plot by caste and time point
 ```{r nmds1}
 set.seed(12345)
 nmds_output <- dist(t(expression_data)) %>% nmds(maxdim = 2)
@@ -117,7 +118,7 @@ nmds_output %>%
 **Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to two dimensions (here termed NMDS 1 and 2; $r^2 =$ `r nmds_r2`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles, that the transcriptome changes over time, and that the caste difference becomes larger with time since grafting. 
 
 
-#### Plotting NMDS 1 vs NMDS 2
+#### Bivariate plot by caste and time point
 ```{r}
 nmds_output %>%
   mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
@@ -143,7 +144,7 @@ expression_no_batch_effect <- removeBatchEffect(expression_data, batch = sample_
 
 ### Plot the NMDS scores again, after removing batch effect {.tabset}
 
-#### Plotting NMDS 1 by caste and time point
+#### Univariate plot by caste and time point
 ```{r nmds2}
 set.seed(12345)
 nmds_output <- dist(t(expression_no_batch_effect)) %>% nmds(maxdim = 2)
@@ -171,7 +172,7 @@ nmds_output %>%
 
 **Figure**: Results of non-metric multidimensional scaling analysis, after removing the batch effects using `limma::removeBatchEffect`.
 
-#### Plotting NMDS 1 vs NMDS 2
+#### Bivariate plot by caste and time point
 ```{r}
 nmds_output %>%
   mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
