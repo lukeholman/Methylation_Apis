@@ -504,10 +504,10 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree3c628cf5a1ba5a8cb0408ce250af7c5c5f688317targetblank3c628cfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/3c628cf5a1ba5a8cb0408ce250af7c5c5f688317" target="_blank">3c628cf</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreeb2b7536c0476aef52105668cc12b741f6403c7d2targetblankb2b7536a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/b2b7536c0476aef52105668cc12b741f6403c7d2" target="_blank">b2b7536</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree3c628cf5a1ba5a8cb0408ce250af7c5c5f688317targetblank3c628cfa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreeb2b7536c0476aef52105668cc12b741f6403c7d2targetblankb2b7536a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -557,6 +557,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b2b7536c0476aef52105668cc12b741f6403c7d2/analysis/diff_expression.Rmd" target="_blank">b2b7536</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-03-12
+</td>
+<td>
+Republish
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/6ec97a9c5d148313c3dfe88cb18772b42a3ab6c8/analysis/diff_expression.Rmd" target="_blank">6ec97a9</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-03-12
+</td>
+<td>
+tweak
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/2c7c80faa0ed07731290fb60ff08aad1c4ed37ca/docs/diff_expression.html" target="_blank">2c7c80f</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-03-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -665,7 +716,8 @@ genes_kept &lt;- rownames(voom_gene_data@.Data[[1]])
 expression_data &lt;- expression_data[rownames(expression_data) %in% genes_kept, ]
 n_genes_after_filtering &lt;- unique(c(nrow(voom_gene_data), nrow(expression_data)))
 
-tibble(` ` = c(&quot;Number of transcripts prior to filtering:&quot;, &quot;Number remaining after filtering out transcripts where max(CPM) &lt; 1:&quot;),
+tibble(` ` = c(&quot;Number of transcripts prior to filtering:&quot;, 
+               &quot;Number remaining after filtering out transcripts where max(CPM) &lt; 1:&quot;),
        n = c(n_genes_before_filtering, n_genes_after_filtering)) %&gt;% pander()</code></pre>
 <table style="width:57%;">
 <colgroup>
@@ -692,8 +744,8 @@ tibble(` ` = c(&quot;Number of transcripts prior to filtering:&quot;, &quot;Numb
 </div>
 <div id="plot-the-transcriptomes-using-nmds-before-removing-batch-effects" class="section level3 tabset">
 <h3>Plot the transcriptomes using NMDS, before removing batch effects</h3>
-<div id="plotting-nmds-1-by-caste-and-time-point" class="section level4">
-<h4>Plotting NMDS 1 by caste and time point</h4>
+<div id="univariate-plot-by-caste-and-time-point" class="section level4">
+<h4>Univariate plot by caste and time point</h4>
 <pre class="r"><code>set.seed(12345)
 nmds_output &lt;- dist(t(expression_data)) %&gt;% nmds(maxdim = 2)
 nmds_r2 &lt;- tail(nmds_output$r2, 1)
@@ -754,8 +806,8 @@ lukeholman
 </div>
 <p><strong>Figure</strong>: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to two dimensions (here termed NMDS 1 and 2; <span class="math inline">\(r^2 =\)</span> 0.9771948). The plot suggests that queen- and worker-destined larvae have different gene expression profiles, that the transcriptome changes over time, and that the caste difference becomes larger with time since grafting.</p>
 </div>
-<div id="plotting-nmds-1-vs-nmds-2" class="section level4">
-<h4>Plotting NMDS 1 vs NMDS 2</h4>
+<div id="bivariate-plot-by-caste-and-time-point" class="section level4">
+<h4>Bivariate plot by caste and time point</h4>
 <pre class="r"><code>nmds_output %&gt;%
   mutate_at(vars(starts_with(&quot;X&quot;)), ~ as.numeric(scale(.x))) %&gt;%
   gather(NMDS, Score, starts_with(&quot;X&quot;)) %&gt;%
@@ -816,8 +868,8 @@ lukeholman
 </div>
 <div id="plot-the-nmds-scores-again-after-removing-batch-effect" class="section level3 tabset">
 <h3>Plot the NMDS scores again, after removing batch effect</h3>
-<div id="plotting-nmds-1-by-caste-and-time-point-1" class="section level4">
-<h4>Plotting NMDS 1 by caste and time point</h4>
+<div id="univariate-plot-by-caste-and-time-point-1" class="section level4">
+<h4>Univariate plot by caste and time point</h4>
 <pre class="r"><code>set.seed(12345)
 nmds_output &lt;- dist(t(expression_no_batch_effect)) %&gt;% nmds(maxdim = 2)
 nmds_r2 &lt;- tail(nmds_output$r2, 1)
@@ -830,7 +882,8 @@ nmds_output &lt;- data.frame(Caste = sample_ids$caste,
 nmds_output %&gt;%
   mutate_at(vars(starts_with(&quot;X&quot;)), ~ as.numeric(scale(.x))) %&gt;%
   gather(NMDS, Score, starts_with(&quot;X&quot;)) %&gt;%
-  mutate(NMDS = gsub(&quot;X&quot;, &quot;NMDS &quot;, NMDS)) %&gt;%
+  mutate(NMDS = gsub(&quot;X&quot;, &quot;NMDS &quot;, NMDS),
+         Replicate = paste(&quot;Replicate&quot;, Replicate)) %&gt;%
   group_by(NMDS, Caste, Time, Replicate) %&gt;%
   summarise(Score = mean(Score)) %&gt;%
   ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
@@ -838,7 +891,7 @@ nmds_output %&gt;%
   geom_point() + 
   scale_colour_brewer(palette = &quot;Set2&quot;, name = &quot;Caste fate&quot;) + 
   facet_grid(NMDS~Replicate) + 
-  xlab(&quot;Time since the larva was grafted (hours)&quot;)</code></pre>
+  xlab(&quot;Time since the larva was grafted (hours)&quot;) </code></pre>
 <p><img src="figure/diff_expression.Rmd/nmds2-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-nmds2-1">
@@ -864,6 +917,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/2c7c80faa0ed07731290fb60ff08aad1c4ed37ca/docs/figure/diff_expression.Rmd/nmds2-1.png" target="_blank">2c7c80f</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-03-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/f2f98053a6ec128241de30a46cf1a3fd6a952dc9/docs/figure/diff_expression.Rmd/nmds2-1.png" target="_blank">f2f9805</a>
 </td>
 <td>
@@ -879,8 +943,8 @@ lukeholman
 </div>
 <p><strong>Figure</strong>: Results of non-metric multidimensional scaling analysis, after removing the batch effects using <code>limma::removeBatchEffect</code>.</p>
 </div>
-<div id="plotting-nmds-1-vs-nmds-2-1" class="section level4">
-<h4>Plotting NMDS 1 vs NMDS 2</h4>
+<div id="bivariate-plot-by-caste-and-time-point-1" class="section level4">
+<h4>Bivariate plot by caste and time point</h4>
 <pre class="r"><code>nmds_output %&gt;%
   mutate_at(vars(starts_with(&quot;X&quot;)), ~ as.numeric(scale(.x))) %&gt;%
   gather(NMDS, Score, starts_with(&quot;X&quot;)) %&gt;%
