@@ -158,13 +158,13 @@ nmds_output %>%
   mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
   gather(NMDS, Score, starts_with("X")) %>%
   mutate(NMDS = gsub("X", "NMDS ", NMDS)) %>%
-  group_by(NMDS, Caste, Time) %>%
+  group_by(NMDS, Caste, Time, Replicate) %>%
   summarise(Score = mean(Score)) %>%
   ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
   geom_line() +
   geom_point() + 
   scale_colour_brewer(palette = "Set2", name = "Caste fate") + 
-  facet_wrap(~NMDS) + 
+  facet_grid(NMDS~Replicate) + 
   xlab("Time since the larva was grafted (hours)")
 ```
 
