@@ -396,7 +396,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -405,7 +405,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -417,7 +417,7 @@ div.tocify {
 <strong>Last updated:</strong> 2020-05-12
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -433,12 +433,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown is untracked by Git. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -505,16 +505,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree885b3f714c363d67543abfdd239edaf68a83f6c9targetblank885b3f7a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/885b3f714c363d67543abfdd239edaf68a83f6c9" target="_blank">885b3f7</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree464c275bed92bf224c12d45bd3147c5debf7d570targetblank464c275a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/464c275bed92bf224c12d45bd3147c5debf7d570" target="_blank">464c275</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree885b3f714c363d67543abfdd239edaf68a83f6c9targetblank885b3f7a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree464c275bed92bf224c12d45bd3147c5debf7d570targetblank464c275a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/885b3f714c363d67543abfdd239edaf68a83f6c9" target="_blank">885b3f7</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/464c275bed92bf224c12d45bd3147c5debf7d570" target="_blank">464c275</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -525,18 +525,6 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    Expression/
     Ignored:    data/
-
-Untracked files:
-    Untracked:  analysis/caste_table.Rmd
-    Untracked:  analysis/queen_time_table.Rmd
-    Untracked:  code/parse_warner_data.R
-    Untracked:  figures/
-
-Unstaged changes:
-    Modified:   analysis/diff_expression.Rmd
-    Modified:   code/create_merged_data.R
-    Modified:   code/download_annotations.R
-    Deleted:    code/make_cor_plot.R
 
 </code></pre>
 <p>
@@ -549,9 +537,69 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
+
 <p>
-There are no past versions. Publish this analysis with <code>wflow_publish()</code> to start tracking its development.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/caste_table.Rmd</code>) and HTML (<code>docs/caste_table.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/464c275bed92bf224c12d45bd3147c5debf7d570/analysis/caste_table.Rmd" target="_blank">464c275</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-05-12
+</td>
+<td>
+massive commit
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/464c275bed92bf224c12d45bd3147c5debf7d570/docs/caste_table.html" target="_blank">464c275</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-05-12
+</td>
+<td>
+massive commit
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <hr>
 </div>
 </div>
@@ -14909,7 +14957,7 @@ cysteine-rich hydrophobic domain-containing protein 2
 Abscam
 </td>
 <td style="text-align:left;">
-Dscam family member AbsCAM
+Dscam family member AbsCAM0
 </td>
 <td style="text-align:right;">
 0.886
@@ -16417,7 +16465,7 @@ urea transporter 2
 LOC552459
 </td>
 <td style="text-align:left;">
-glycine-rich cell wall structural protein
+glycine-rich cell wall structural protein3
 </td>
 <td style="text-align:right;">
 1.241
@@ -16446,7 +16494,7 @@ glycine-rich cell wall structural protein
 LOC552459
 </td>
 <td style="text-align:left;">
-glycine-rich cell wall structural protein
+glycine-rich cell wall structural protein3
 </td>
 <td style="text-align:right;">
 1.848
@@ -18911,7 +18959,7 @@ LOC411106
 LOC411822
 </td>
 <td style="text-align:left;">
-aldehyde dehydrogenase family 3 member B1
+aldehyde dehydrogenase family 3 member B13
 </td>
 <td style="text-align:right;">
 -0.253
@@ -21028,7 +21076,7 @@ la protein homolog
 LOC100577827
 </td>
 <td style="text-align:left;">
-uncharacterized LOC100577827
+uncharacterized LOC1005778271
 </td>
 <td style="text-align:right;">
 1.806
@@ -21057,7 +21105,7 @@ uncharacterized LOC100577827
 LOC100577827
 </td>
 <td style="text-align:left;">
-uncharacterized LOC100577827
+uncharacterized LOC1005778271
 </td>
 <td style="text-align:right;">
 1.294
@@ -21086,7 +21134,7 @@ uncharacterized LOC100577827
 LOC100577827
 </td>
 <td style="text-align:left;">
-uncharacterized LOC100577827
+uncharacterized LOC1005778271
 </td>
 <td style="text-align:right;">
 1.592
@@ -27698,7 +27746,7 @@ box A-binding factor
 LOC411114
 </td>
 <td style="text-align:left;">
-synaptosomal-associated protein 25
+synaptosomal-associated protein 250
 </td>
 <td style="text-align:right;">
 0.514
@@ -27727,7 +27775,7 @@ synaptosomal-associated protein 25
 LOC411114
 </td>
 <td style="text-align:left;">
-synaptosomal-associated protein 25
+synaptosomal-associated protein 250
 </td>
 <td style="text-align:right;">
 0.734
@@ -28945,7 +28993,7 @@ protein G12
 LOC551973
 </td>
 <td style="text-align:left;">
-cleavage and polyadenylation specificity factor subunit CG7185
+cleavage and polyadenylation specificity factor subunit CG71851
 </td>
 <td style="text-align:right;">
 -0.342
@@ -28974,7 +29022,7 @@ cleavage and polyadenylation specificity factor subunit CG7185
 LOC551973
 </td>
 <td style="text-align:left;">
-cleavage and polyadenylation specificity factor subunit CG7185
+cleavage and polyadenylation specificity factor subunit CG71851
 </td>
 <td style="text-align:right;">
 -0.438
@@ -30163,7 +30211,7 @@ ribonuclease H2 subunit C
 Foxp
 </td>
 <td style="text-align:left;">
-FoxP protein
+FoxP protein8
 </td>
 <td style="text-align:right;">
 0.924
@@ -30192,7 +30240,7 @@ FoxP protein
 Foxp
 </td>
 <td style="text-align:left;">
-FoxP protein
+FoxP protein8
 </td>
 <td style="text-align:right;">
 0.651
@@ -30221,7 +30269,7 @@ FoxP protein
 Foxp
 </td>
 <td style="text-align:left;">
-FoxP protein
+FoxP protein8
 </td>
 <td style="text-align:right;">
 0.936
@@ -43387,7 +43435,7 @@ alanine aminotransferase 1
 LOC409856
 </td>
 <td style="text-align:left;">
-guanine nucleotide-releasing factor 2
+guanine nucleotide-releasing factor 21
 </td>
 <td style="text-align:right;">
 -0.820
@@ -50260,7 +50308,7 @@ protoheme IX farnesyltransferase, mitochondrial
 LOC725970
 </td>
 <td style="text-align:left;">
-protein still life, isoform SIF type 1
+protein still life, isoform SIF type 16
 </td>
 <td style="text-align:right;">
 0.678
@@ -50289,7 +50337,7 @@ protein still life, isoform SIF type 1
 LOC725970
 </td>
 <td style="text-align:left;">
-protein still life, isoform SIF type 1
+protein still life, isoform SIF type 16
 </td>
 <td style="text-align:right;">
 0.481
@@ -52986,7 +53034,7 @@ Hermansky-Pudlak syndrome 1 protein homolog
 LOC408775
 </td>
 <td style="text-align:left;">
-heterogeneous nuclear ribonucleoprotein R
+heterogeneous nuclear ribonucleoprotein R0
 </td>
 <td style="text-align:right;">
 -0.669
@@ -55538,7 +55586,7 @@ uncharacterized LOC412607
 LOC410498
 </td>
 <td style="text-align:left;">
-potassium voltage-gated channel subfamily H member 6
+potassium voltage-gated channel subfamily H member 62
 </td>
 <td style="text-align:right;">
 0.587
@@ -55567,7 +55615,7 @@ potassium voltage-gated channel subfamily H member 6
 LOC410498
 </td>
 <td style="text-align:left;">
-potassium voltage-gated channel subfamily H member 6
+potassium voltage-gated channel subfamily H member 62
 </td>
 <td style="text-align:right;">
 0.586
@@ -55596,7 +55644,7 @@ potassium voltage-gated channel subfamily H member 6
 LOC410498
 </td>
 <td style="text-align:left;">
-potassium voltage-gated channel subfamily H member 6
+potassium voltage-gated channel subfamily H member 62
 </td>
 <td style="text-align:right;">
 0.428
@@ -58554,7 +58602,7 @@ chloride channel protein 2
 LOC410001
 </td>
 <td style="text-align:left;">
-regulating synaptic membrane exocytosis protein 2
+regulating synaptic membrane exocytosis protein 24
 </td>
 <td style="text-align:right;">
 0.723
@@ -58670,7 +58718,7 @@ uncharacterized LOC724160
 LOC410353
 </td>
 <td style="text-align:left;">
-CUGBP Elav-like family member 4
+CUGBP Elav-like family member 41
 </td>
 <td style="text-align:right;">
 1.169
@@ -59511,7 +59559,7 @@ uncharacterized LOC100577766
 LOC408770
 </td>
 <td style="text-align:left;">
-protein turtle
+protein turtle5
 </td>
 <td style="text-align:right;">
 0.734
@@ -65311,7 +65359,7 @@ metaxin-2
 LOC551673
 </td>
 <td style="text-align:left;">
-serine/threonine-protein kinase tousled-like 2
+serine/threonine-protein kinase tousled-like 25
 </td>
 <td style="text-align:right;">
 0.264
@@ -66268,7 +66316,7 @@ high affinity cAMP-specific and IBMX-insensitive 3’,5’-cyclic phosphodiester
 Camkii
 </td>
 <td style="text-align:left;">
-calcium/calmodulin-dependent protein kinase II
+calcium/calmodulin-dependent protein kinase II2
 </td>
 <td style="text-align:right;">
 0.566
@@ -70154,7 +70202,7 @@ protein SET
 LOC411288
 </td>
 <td style="text-align:left;">
-cAMP-specific 3’,5’-cyclic phosphodiesterase
+cAMP-specific 3’,5’-cyclic phosphodiesterase0
 </td>
 <td style="text-align:right;">
 0.673
@@ -71604,7 +71652,7 @@ claspin-like
 LOC409422
 </td>
 <td style="text-align:left;">
-uncharacterized LOC409422
+uncharacterized LOC4094225
 </td>
 <td style="text-align:right;">
 -0.686
@@ -76824,7 +76872,7 @@ trehalase
 LOC409865
 </td>
 <td style="text-align:left;">
-protein retinal degeneration B
+protein retinal degeneration B3
 </td>
 <td style="text-align:right;">
 -0.484
@@ -78158,7 +78206,7 @@ exportin-5
 LOC724991
 </td>
 <td style="text-align:left;">
-phosphatidylinositol 4-phosphate 5-kinase type-1 alpha
+phosphatidylinositol 4-phosphate 5-kinase type-1 alpha0
 </td>
 <td style="text-align:right;">
 0.355
@@ -78187,7 +78235,7 @@ phosphatidylinositol 4-phosphate 5-kinase type-1 alpha
 LOC414021
 </td>
 <td style="text-align:left;">
-uncharacterized LOC414021
+uncharacterized LOC4140211
 </td>
 <td style="text-align:right;">
 0.710
@@ -79637,7 +79685,7 @@ ER membrane protein complex subunit 8/9 homolog
 LOC725570
 </td>
 <td style="text-align:left;">
-tumor necrosis factor alpha-induced protein 8-like protein
+tumor necrosis factor alpha-induced protein 8-like protein0
 </td>
 <td style="text-align:right;">
 0.474
@@ -84451,7 +84499,7 @@ DDB1- and CUL4-associated factor 8
 LOC409024
 </td>
 <td style="text-align:left;">
-tropomodulin
+tropomodulin8
 </td>
 <td style="text-align:right;">
 0.362
@@ -87235,7 +87283,7 @@ mitochondrial ribosome-associated GTPase 2
 LOC413909
 </td>
 <td style="text-align:left;">
-tyrosine–tRNA ligase, cytoplasmic
+tyrosine–tRNA ligase, cytoplasmic2
 </td>
 <td style="text-align:right;">
 -0.236
@@ -88424,7 +88472,7 @@ DNA repair and recombination protein RAD54B
 Mir1175
 </td>
 <td style="text-align:left;">
-microRNA mir-1175
+microRNA 1175
 </td>
 <td style="text-align:right;">
 -0.826
@@ -90019,7 +90067,7 @@ uncharacterized LOC100577629
 Brd7
 </td>
 <td style="text-align:left;">
-bromodomain containing 7
+bromodomain containing 7, transcript variant 2
 </td>
 <td style="text-align:right;">
 0.291
@@ -104287,7 +104335,7 @@ TGF-beta-activated kinase 1 and MAP3K7-binding protein 3
 MARCH6
 </td>
 <td style="text-align:left;">
-membrane-associated ring finger (C3HC4) 6
+NA
 </td>
 <td style="text-align:right;">
 -0.549
@@ -104809,7 +104857,7 @@ ataxin-2-like protein
 Fabp_1
 </td>
 <td style="text-align:left;">
-NA
+fatty acid binding protein
 </td>
 <td style="text-align:right;">
 0.250
@@ -105969,7 +106017,7 @@ calnexin
 LOC551123
 </td>
 <td style="text-align:left;">
-RNA-binding protein Musashi homolog Rbp6
+RNA-binding protein Musashi homolog Rbp68
 </td>
 <td style="text-align:right;">
 0.874
@@ -110435,7 +110483,7 @@ activating signal cointegrator 1 complex subunit 1
 Mir9865
 </td>
 <td style="text-align:left;">
-microRNA mir-9865
+microRNA 9865
 </td>
 <td style="text-align:right;">
 0.365
@@ -110493,7 +110541,7 @@ uncharacterized LOC102656618
 STT3B
 </td>
 <td style="text-align:left;">
-STT3, subunit of the oligosaccharyltransferase complex, homolog B
+STT3, subunit of the oligosaccharyltransferase complex, homolog B, transcript variant 1
 </td>
 <td style="text-align:right;">
 -0.315
@@ -111034,7 +111082,7 @@ attached base packages:
 other attached packages:
  [1] kableExtra_1.1.0 forcats_0.5.0    stringr_1.4.0    dplyr_0.8.5     
  [5] purrr_0.3.4      readr_1.3.1      tidyr_1.0.3      tibble_3.0.1    
- [9] ggplot2_3.3.0    tidyverse_1.3.0 
+ [9] ggplot2_3.3.0    tidyverse_1.3.0  workflowr_1.6.2 
 
 loaded via a namespace (and not attached):
  [1] tidyselect_1.0.0     xfun_0.13            haven_2.2.0         
@@ -111044,15 +111092,15 @@ loaded via a namespace (and not attached):
 [13] pillar_1.4.4         withr_2.2.0          glue_1.4.0          
 [16] DBI_1.1.0            dbplyr_1.4.3         modelr_0.1.7        
 [19] readxl_1.3.1         lifecycle_0.2.0      munsell_0.5.0       
-[22] gtable_0.3.0         workflowr_1.6.2      cellranger_1.1.0    
-[25] rvest_0.3.5          evaluate_0.14        knitr_1.28          
-[28] httpuv_1.5.2         fansi_0.4.1          highr_0.8           
-[31] broom_0.5.6          Rcpp_1.0.4.6         promises_1.1.0      
-[34] backports_1.1.6      scales_1.1.1         webshot_0.5.2       
-[37] jsonlite_1.6.1       fs_1.4.1             hms_0.5.3           
-[40] digest_0.6.25        stringi_1.4.6        grid_3.6.3          
-[43] rprojroot_1.3-2      cli_2.0.2            tools_3.6.3         
-[46] magrittr_1.5         crayon_1.3.4         pkgconfig_2.0.3     
+[22] gtable_0.3.0         cellranger_1.1.0     rvest_0.3.5         
+[25] evaluate_0.14        knitr_1.28           httpuv_1.5.2        
+[28] fansi_0.4.1          highr_0.8            broom_0.5.6         
+[31] Rcpp_1.0.4.6         promises_1.1.0       backports_1.1.6     
+[34] scales_1.1.1         webshot_0.5.2        jsonlite_1.6.1      
+[37] fs_1.4.1             hms_0.5.3            digest_0.6.25       
+[40] stringi_1.4.6        grid_3.6.3           rprojroot_1.3-2     
+[43] cli_2.0.2            tools_3.6.3          magrittr_1.5        
+[46] crayon_1.3.4         whisker_0.4          pkgconfig_2.0.3     
 [49] ellipsis_0.3.0       xml2_1.3.2           reprex_0.3.0        
 [52] lubridate_1.7.8      rstudioapi_0.11      assertthat_0.2.1    
 [55] rmarkdown_2.1.3      httr_1.4.1           R6_2.4.1            
