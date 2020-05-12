@@ -1,0 +1,40 @@
+---
+title: "List of genes showing significant temporal variation in queen-destined larvae"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide 
+---
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+n <- read_csv("data/time_results.csv") %>%
+  filter(adj.P.Val < 0.05 & Caste == "Queen" & Time == "0 vs 8") %>%
+  nrow()
+
+n2 <- read_csv("data/time_results.csv") %>%
+  filter(adj.P.Val < 0.05 & Caste == "Queen" & Time != "0 vs 8") %>%
+  nrow()
+```
+
+
+For brevity, we only show the genes that were statistically significant when comparing the time zero larvae to the 8h-old larvae reared in queen cells (n = `r n`) in this table. There were a further `r n2` statistically significant tests when considering other time points. The complete data are available in `data/time_results.csv`.
+
+```{r message=FALSE, warning=FALSE, results='asis'}
+library(tidyverse)
+library(kableExtra)
+
+x <- read_csv("data/time_results.csv") %>%
+  filter(adj.P.Val < 0.05 & Caste == "Queen" & Time == "0 vs 8") 
+
+gene_order <- x %>% arrange(P.Value) %>% 
+  pull(`Gene symbol`) %>% unique() 
+
+x %>%
+  mutate(`Gene symbol` = factor(`Gene symbol`, gene_order)) %>%
+  arrange(`Gene symbol`, Time) %>%
+  as.data.frame() %>%
+  kable(digits = 3) %>%
+  kable_styling()
+```
+

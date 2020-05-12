@@ -4,10 +4,26 @@ library(GO.db)
 
 hub <- AnnotationHub()
 # query(hub, c("mellifera","sqlite")) # Get the number for mellifera
-# Useful database of Apis orthologs xx <- hub[["AH10452"]]
-zz <- hub[["AH62534"]] # Apis mellifera
-DB_connection <- dbconn(zz)
-# DBI::dbListTables(DB_connection)
+
+# incomplete code attempting to get table of Droso orthologies
+# xx <- hub[["AH10452"]]
+# DB_connection <- dbconn(xx)
+# ortho_proteins <- tbl(DB_connection, "Drosophila_melanogaster") %>%
+#   collect() 
+# library(UniProt.ws)
+# up <- UniProt.ws(taxId=7460)
+# egs = keys(up, "ORTHODB")
+# ortho_proteins%>%pull() %in%
+# Amel_proteins <- ortho_proteins %>% filter(species == "A.mellifera") %>% pull(inp_id)
+# select(up, keys=c("Q9VH97"), columns=c("ORTHODB", "UNIPROTKB"), keytype = "ORTHODB")
+# Run to get the uniprot names needed, then paste them here to get the matching Entrez IDs:
+# https://www.uniprot.org/uploadlists/
+# tbl(DB_connection, "Drosophila_melanogaster") %>% pull(inp_id) %>% write_lines(path = "~/Downloads/orthos.tsv")
+
+
+# Get gene annotations for Apis mellifera
+zz <- hub[["AH76825"]] 
+DB_connection <- dbconn(zz) # DBI::dbListTables(DB_connection)
 
 # mapping gene names to gene symbols to Entrez IDs. Also chromosome locations
 gene_names <- tbl(DB_connection, "gene_info") %>% 
@@ -58,3 +74,25 @@ invisible(lapply(c("bee_GO", "bee_kegg", "gene_names", "go_meanings", "kegg_mean
        function(x){
          write_csv(get(x), path = paste("data/database_tables/", x, ".csv", sep = ""))
        }))
+
+
+# For CLaire
+# library(GO.db)
+# claire_GO <- read.delim("~/Downloads/Missing_meanings.txt", header=F, stringsAsFactors = FALSE)
+# #Get the meanings for each GO term ID from the GO.db database
+# go_meanings <- suppressMessages(
+#   AnnotationDbi::select(GO.db, 
+#                         claire_GO$V1, c("GOID", "ONTOLOGY", "TERM")))
+# names(go_meanings) <- c("GO", "ontology", "term")
+# go_meanings <- distinct(go_meanings)
+# write.table(go_meanings, "~/Downloads/Missing_meanings_fixed.txt", row.names = FALSE)
+
+
+read_csv("data/caste_results.csv") %>% 
+  left_join(tbl(db, "gene_names") %>% 
+              dplyr::select(gene_symbol, gene_name, entrez_id, beebase) %>% 
+              collect(n=Inf), 
+            by = c("Gene symbol" = "gene_symbol")) %>% 
+  filter(is.na(entrez_id)) %>%
+  select(`Gene symbol`, `Gene name`) %>% distinct() %>% pull(`Gene symbol`) %>%
+  write_lines("mystery_beebase.txt")

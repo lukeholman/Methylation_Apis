@@ -1,0 +1,25 @@
+---
+title: "List of genes with significant caste-specific expression"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide 
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(kableExtra)
+
+x <- read_csv("data/caste_results.csv") %>%
+  filter(adj.P.Val < 0.05) 
+
+gene_order <- x %>% arrange(P.Value) %>% 
+  pull(`Gene symbol`) %>% unique() 
+
+x %>%
+  mutate(`Gene symbol` = factor(`Gene symbol`, gene_order)) %>%
+  arrange(`Gene symbol`, Time) %>%
+  as.data.frame() %>%
+  kable(digits = 3) %>%
+  kable_styling()
+```
+
