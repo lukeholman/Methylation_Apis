@@ -220,7 +220,7 @@ nmds_output %>%
 
 Darker colours indicate pairs of samples that have more different transcriptomes. The samples are clustered (using hierarchical clustering), and the cluster tree has been cut into 5 maximally-distinct units (by `stats::cutree()`) to make it easier to spot groups of samples that cluster together. 
 
-```{r euclid, fig.height=10}
+```{r euclid, fig.height=8.5}
 sampleDistMatrix <- (as.matrix(dist(t(expression_no_batch_effect))))
 colors1 <- colorRampPalette( (brewer.pal(9, "YlOrBr")) )(255)
 colors2 <- colorRampPalette( c(rev(brewer.pal(9, "Blues")),
@@ -420,9 +420,9 @@ write_csv(time_results, path = "data/time_results.csv")
 ```
 
 
+## Significantly differentially expressed gene lists
 
-
-## List of genes with significant caste-specific expression
+### Caste-specific genes
 
 You can also view this table on a full web page [here](caste_table.html).
 
@@ -463,7 +463,7 @@ get_intersections(caste_results, "Time") %>% melt() %>%
   datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
 ```
 
-## List of genes showing significant temporal variation in queen-destined larvae
+### Temporally-variable genes in queen-destined larvae
 
 You can also view this table on a full web page [here](queen_time_table.html).
 
@@ -492,7 +492,7 @@ time_results %>%
   datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
 ```
 
-## List of genes showing significant temporal variation in worker-destined larvae
+### Temporally-variable genes in worker-destined larvae
 
 You can also view this table on a full web page [here](worker_time_table.html).
 
@@ -528,7 +528,7 @@ time_results %>%
 
 The plot shows the number of significantly differentially expressed genes for each comparison, and the number of these that intersect for each pair of comparisons (similar to a Venn diagram, expect it can handle more categories).
 
-```{r upset, fig.height=8}
+```{r upset, fig.height=7}
 caste_results %>% 
   mutate(Caste = "Queen vs worker", Time = as.character(Time)) %>% 
   select(Caste, Time, `Gene symbol`, `Gene name`, adj.P.Val) %>%
@@ -541,6 +541,8 @@ caste_results %>%
 ```
 
 ### Correlations in log fold differences in expression
+
+The figure plots each possible pairwise comparison for within and between castes, e.g. the Queen 6 vs 8 variable gives the log fold difference in gene expression that was estimated between the 6h and 8h queen samples that was estimated by `voom`. Note that many of the genes that increased in expression at times 0-6h in queens, and also genes in which queens have higher expression than workers, actually decrease in expression between 6h and 8h in queens (one can also see this in the eigengenes figure below). 
 
 ```{r cor_lfc, warning=FALSE, fig.height=10, fig.width=12}
 corr_mat <- (
@@ -564,13 +566,10 @@ pheatmap(corr_mat, col = colors2,
 
 ## Enriched pathways among the caste-biased genes {.tabset}
 
-Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points.
+Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
-FIX HERE: SOME GENES ARE NOT NAMED IN ANNOTATION FILE
-
-
-#### GO: Biological process
-```{r enrich1, warning = FALSE, fig.height=10}
+### GO: Biological process
+```{r enrich1, warning = FALSE, fig.height=10.1, fig.width = 5.3}
 # Function to run GSEA implemented in the fgsea package
 # df needs to have columns called Gene and logFC
 GO_and_KEGG_gsea <- function(df, min.size = 5, keep.all = FALSE){
@@ -588,11 +587,11 @@ GO_and_KEGG_gsea <- function(df, min.size = 5, keep.all = FALSE){
   GO.enrichment <- function(geneList, ontol){
     
     pathways <- tbl(db, "bee_GO") %>% 
-      left_join(tbl(db, "go_meanings"), by = c("GO")) %>% # NEW LINE ADDED 12 MAY 2020
+      left_join(tbl(db, "go_meanings"), by = c("GO")) %>% 
       distinct() %>%
       collect(n=Inf) %>%
       filter(SYMBOL %in% gene_universe, 
-             ontology == ontol) %>%        # used to be ONTOLOGY
+             ontology == ontol) %>%       
       select(-ontology) 
     pathways <- with(pathways, split(SYMBOL, GO))
     
@@ -682,54 +681,50 @@ all_GO <- all_GO %>%
          sig = ifelse(pval < 0.05, "*", ""),
          sig = replace(sig, padj < 0.05, "**"))
 
+make_pathway_figure <- function(df, ylab){
+  df %>%
+    mutate(Time = as.character(Time)) %>%
+    ggplot(aes(Time, term, fill = NES)) + 
+    scale_fill_gradient2(low = brewer.pal(9, "Blues")[7], high = brewer.pal(9, "Reds")[7]) + 
+    geom_tile(colour = "black", stroke = 0.4)  + 
+    geom_text(aes(label = sig)) +
+    theme_bw() + ylab(ylab) + xlab("Hours post-grafting") +
+    scale_x_discrete(expand = c(0,0)) + 
+    scale_y_discrete(expand = c(0,0)) 
+}
+
 BP_fig <- all_GO %>%
   filter(Test_type == "GO: Biological process") %>%
-  mutate(Time = as.character(Time)) %>%
-  ggplot(aes(Time, term, fill = NES)) + 
-  scale_fill_gradient2(low = "steelblue", high = "tomato") +
-  geom_tile()  + 
-  geom_text(aes(label = sig)) 
+  make_pathway_figure("GO: Biological process")
 
 MF_fig <- all_GO %>%
   filter(Test_type == "GO: Molecular function") %>%
-  mutate(Time = as.character(Time)) %>%
-  ggplot(aes(Time, term, fill = NES)) + 
-  scale_fill_gradient2(low = "steelblue", high = "tomato") +
-  geom_tile()  + 
-  geom_text(aes(label = sig)) 
+  make_pathway_figure("GO: Molecular function")
 
 CC_fig <- all_GO %>%
   filter(Test_type == "GO: Cellular component") %>%
-  mutate(Time = as.character(Time)) %>%
-  ggplot(aes(Time, term, fill = NES)) + 
-  scale_fill_gradient2(low = "steelblue", high = "tomato") +
-  geom_tile()  + 
-  geom_text(aes(label = sig)) 
+  make_pathway_figure("GO: Cellular component")
 
 kegg_fig <- all_GO %>%
   filter(Test_type == "KEGG") %>%
-  mutate(Time = as.character(Time)) %>%
-  ggplot(aes(Time, term, fill = NES)) + 
-  scale_fill_gradient2(low = "steelblue", high = "tomato") +
-  geom_tile() + 
-  geom_text(aes(label = sig)) 
+  make_pathway_figure("KEGG")
 
 BP_fig
 ```
 
 
-#### GO: Molecular function
-```{r enrich2, fig.height=10}
+### GO: Molecular function
+```{r enrich2, fig.height=10, fig.width = 5.3}
 MF_fig
 ```
 
-#### GO: Cellular component
-```{r enrich3}
+### GO: Cellular component
+```{r enrich3, fig.width = 5.3}
 CC_fig
 ```
 
-#### KEGG
-```{r enrich4, fig.height=14}
+### KEGG
+```{r enrich4, fig.height=14, fig.width = 5.3}
 kegg_fig
 ```
 
@@ -822,7 +817,7 @@ write_csv(connectivity, path = "data/gene_connectivity.csv")
 
 ### Count the number of genes per module
 ```{r echo=FALSE}
-num_modules <- length(unique(network$colours))
+num_modules <- length(unique(network$colors))
 ```
 
 The algorithm in WGCNA has grouped the `r length(network$colors)` transcripts into `r num_modules` modules of variable size. Note that Module 0 contains all the transcripts that were not assigned to a module (indicating that their expression did not covary detectably with other genes).
@@ -1092,7 +1087,8 @@ preds %>%
   pack_rows("Module 15", 61, 64)  %>%
   pack_rows("Module 16", 65, 68)  %>%
   pack_rows("Module 17", 69, 72)  %>%
-  pack_rows("Module 18", 73, 76) 
+  pack_rows("Module 18", 73, 76) %>%
+  scroll_box(height = "300px")
 ```
 
 
@@ -1123,48 +1119,244 @@ preds %>%
 ### Identify GO and KEGG terms enriched in each module
 
 ```{r GO.and.KEGG.hypergeometric, results = 'hide', warning=FALSE, message=FALSE}
-genes_in_module <- function(module.number){
-  rownames(expression_data)[network$colors == paste("Module", module.number)] 
+# genes_in_module <- function(module_number){
+#   rownames(expression_data)[network$colors == paste("Module", module_number)] 
+# }
+# 
+# 
+# GO.and.KEGG.hypergeometric <- function(
+#   gene_set, gene_universe, apis.db, min.size = 5, keep.all = FALSE){
+#   
+#   p <- 0.05; if(keep.all) p <- 1
+#   neatness <- function(x) format(round(x, 4), nsmall = 4) # for rounding
+#   
+#   GO.enrichment <- function(gene_set, gene_universe, ontol){
+#     
+#     result <- clusterProfiler::enrichGO(
+#       gene_set, apis.db, ont = ontol, 
+#       pvalueCutoff = p, universe = gene_universe, 
+#       qvalueCutoff = 1, minGSSize = min.size, maxGSSize = 500) 
+#     
+#     if(is.null(result)) return(NULL)
+#     if(nrow(result@result) == 0) return(NULL)
+#     result <- gofilter(result, level = 4) # Filter to high-level GO only
+#     if(is.null(result)) return(NULL)
+#     if(nrow(result@result) == 0) return(NULL)
+#     
+#     result <- result@result 
+#     is_enriched <- sapply(
+#       result$GeneRatio, 
+#       function(x) eval(parse(text=x))) > sapply(result$BgRatio, function(x) eval(parse(text=x)))
+#     result <- result[is_enriched, ] %>% mutate(p.adjust = p.adjust(pvalue, method = "BH"))
+#     
+#     Test_type <- "GO: Biological process"
+#     if(ontol == "MF") Test_type <- "GO: Molecular function"
+#     if(ontol == "CC") Test_type <- "GO: Cellular component"
+#     
+#     data.frame(Test_type = Test_type, result, stringsAsFactors = FALSE)
+#   }
+#   
+#   kegg.enrichment <- function(gene_set, gene_universe){
+#     
+#     result <-  enrichKEGG(
+#       gene_set, organism = "ame", keyType = "kegg", pvalueCutoff = p,
+#       gene_universe, minGSSize = min.size, maxGSSize = 500,
+#       qvalueCutoff = 1, use_internal_data = FALSE, pAdjustMethod = "BH")
+#     
+#     if(is.null(result)) return(NULL)
+#     
+#     result <- result@result
+#     is_enriched <- sapply(result$GeneRatio, 
+#                           function(x) eval(parse(text=x))) > 
+#       sapply(result$BgRatio, 
+#              function(x) eval(parse(text=x)))
+#     result <- result[is_enriched, ] %>% mutate(p.adjust = p.adjust(pvalue, method = "BH"))
+#     if(nrow(result %>% filter(pvalue < p)) == 0) return(NULL)
+#     data.frame(Test_type = "KEGG", result, stringsAsFactors = FALSE)
+#   }
+#   
+#   output <- rbind(kegg.enrichment(gene_set, gene_universe), 
+#         GO.enrichment(gene_set, gene_universe, "BP"),
+#         GO.enrichment(gene_set, gene_universe, "MF"),
+#         GO.enrichment(gene_set, gene_universe, "CC")) 
+#   if(is.null(output)) return(NULL)
+#   
+#   output %>%
+#     mutate(ID = str_replace_all(ID, "ame", "KEGG:"),
+#            geneID = str_replace_all(geneID, "/", " "))
+# }
+# 
+# make_module_GO_table <- function(eigengenes){
+#   
+#   n_modules <- eigengenes$Module %>% unique() %>% length()
+#   
+#   add_name_col <- function(df){
+#     df$gene_names <- map_chr(
+#       df$geneID, 
+#       ~ paste0(converter$gene_name[match(.x, converter$entrez_id)], 
+#                collapse = "; "))
+#     df %>% mutate(geneID = map_chr(geneID, function(x) paste0(x, collapse = " ")))
+#   }
+#   
+#   converter <- tbl(db, "gene_names") %>% collect(n=Inf) %>%
+#     filter(gene_symbol %in% rownames(expression_data))
+#   
+#   hub <- AnnotationHub::AnnotationHub()
+#   select <- dplyr::select # wish this worked :(
+#   rename <- dplyr::rename
+#   filter <- dplyr::filter
+#   apis.db <- hub[["AH76825"]]
+#   gene_universe_modules <- converter$entrez_id[
+#     converter$gene_symbol %in% rownames(expression_data)] %>% as.character() 
+#   
+#   results <- lapply(1:n_modules, function(i) { 
+#     
+#     print(paste("Doing", i, "/", n_modules, "modules"))
+#     
+#     # Entrez IDs of the genes in the focal module
+#     gene_set <- converter$entrez_id[converter$gene_symbol %in% genes_in_module(i)] %>% as.character()
+#   
+#     df <- GO.and.KEGG.hypergeometric(gene_set, gene_universe_modules, apis.db) 
+#     if(is.null(df)) return(NULL)
+#     if(nrow(df) == 0) return(NULL)
+#     
+#     # # enrichment ratio: proportion genes in sample / proportion in gene universe
+#     prop_genes_in_sample <- map_dbl(1:nrow(df), function(i) eval(parse(text = df$GeneRatio[i])))
+#     prop_genes_in_universe <- map_dbl(1:nrow(df), function(i) eval(parse(text = df$BgRatio[i])))
+#     
+#     df %>% 
+#       mutate(Module = paste("Module", i),
+#              enrichment = prop_genes_in_sample / prop_genes_in_universe) %>%
+#       arrange(pvalue)}) %>% 
+#     do.call("rbind", .) %>%
+#     mutate(Description = factor(Description, unique(Description))) %>%
+#     filter(pvalue <= 0.05) # Only keep GO terms where the UN-adjusted p is significant
+# 
+#   results %>% 
+#     select(Module, Test_type, ID, Description, GeneRatio, BgRatio,
+#            enrichment, pvalue, p.adjust, qvalue, Count, geneID) %>% 
+#     as_tibble() %>%
+#     mutate(Module = factor(Module, paste("Module", 0:(n_modules-1))),
+#            geneID = strsplit(results$geneID, split = " ")) %>%
+#     add_name_col() %>%
+#     mutate(sig = ifelse(p.adjust <= 0.05, "yes", "no"),       # note: ADJUSTED p
+#            sig = relevel(factor(sig), ref = "yes"))
+# }
+
+# Code up a hypergeometric test
+manual_GO_enrich <- function(
+  GO_ID,
+  number_genes_in_set_with_focal_GO,
+  number_genes_in_universe_with_focal_GO,
+  number_genes_in_set,
+  number_genes_in_universe){
+  
+  p <- phyper(
+    q = number_genes_in_set_with_focal_GO - 1, 
+    m = number_genes_in_universe_with_focal_GO, 
+    n = number_genes_in_universe - number_genes_in_universe_with_focal_GO, 
+    k = number_genes_in_set, 
+    
+    lower.tail = FALSE, log.p = FALSE)
+  
+  prop_in_set  <- number_genes_in_set_with_focal_GO / number_genes_in_set
+  prop_in_univ <- number_genes_in_universe_with_focal_GO / number_genes_in_universe
+  
+  # Log odds ratio: odds that the focal GO is in the set / odds it's in the universe
+  enrichment_LOR <- (prop_in_set / (1 - prop_in_set)) /
+    (prop_in_univ / (1 - prop_in_univ))
+  
+  tibble(
+    ID = GO_ID,
+    GeneRatio = paste(number_genes_in_set_with_focal_GO, number_genes_in_set, sep="/"), 
+    BgRatio = paste(number_genes_in_universe_with_focal_GO, number_genes_in_universe, sep="/"),
+    enrichment_LOR,
+    pvalue = p
+  )
 }
 
 
-GO.and.KEGG.hypergeometric <- function(
-  gene_set, gene_universe, apis.db, min.size = 5, keep.all = FALSE){
+
+
+genes_in_module <- function(module_number){
+  rownames(expression_data)[network$colors == paste("Module", module_number)] 
+}
+
+
+GO_and_KEGG_hypergeometric <- function(
+  gene_set, gene_universe, 
+  gene_set_entrez, gene_universe_entrez,
+  apis.db, min_size, keep_all){
   
-  p <- 0.05; if(keep.all) p <- 1
+  p <- 0.05; if(keep_all) p <- 1
   neatness <- function(x) format(round(x, 4), nsmall = 4) # for rounding
   
-  GO.enrichment <- function(gene_set, gene_universe, ontol){
+  # Define internal GO enrichment function (custom; gives same results as clusterProfiler)
+  # However, it works without an Org.db, which we needed due to there being no publicly-available 
+  # GO annotations for many of our genes (we supplemented using BLAST2GO)
+  GO_enrichment <- function(gene_set,
+                            gene_universe,
+                            min_size,
+                            keep_all){
     
-    result <- enrichGO(
-      gene_set, apis.db, ont = ontol, 
-      pvalueCutoff = p, universe = gene_universe, 
-      qvalueCutoff = 1, minGSSize = min.size, maxGSSize = 500) 
+    # get GO annotations for genes in the focal set/module
+    gene_set <- tbl(db, "bee_GO") %>%
+      left_join(tbl(db, "gene_names"), by = c("SYMBOL" = "gene")) %>%
+      dplyr::rename(gene = SYMBOL) %>%
+      dplyr::select(gene, GO, gene_name) %>%
+      filter(gene %in% gene_set) %>%
+      collect(n=Inf) %>%
+      distinct() # should already be, add this to double check
     
-    if(is.null(result)) return(NULL)
-    if(nrow(result@result) == 0) return(NULL)
-    result <- gofilter(result, level = 4) # Filter to high-level GO only
-    if(is.null(result)) return(NULL)
-    if(nrow(result@result) == 0) return(NULL)
+    #  do the same for the gene universe
+    gene_universe <- tbl(db, "bee_GO") %>%
+      left_join(tbl(db, "gene_names"), by = c("SYMBOL" = "gene")) %>%
+      dplyr::rename(gene = SYMBOL) %>%
+      dplyr::select(gene, GO, gene_name) %>%
+      filter(gene %in% gene_universe) %>%
+      collect(n=Inf) %>%
+      distinct() # should already be, add this to double check
     
-    result <- result@result 
-    is_enriched <- sapply(
-      result$GeneRatio, 
-      function(x) eval(parse(text=x))) > sapply(result$BgRatio, function(x) eval(parse(text=x)))
-    result <- result[is_enriched, ] %>% mutate(p.adjust = p.adjust(pvalue, method = "BH"))
+    unique_GOs <- unique(gene_set$GO)
+    n_unique_GOs_in_set <- length(unique_GOs)
+    module_size <- nrow(gene_set)
+    universe_size <- nrow(gene_universe)
     
-    Test_type <- "GO: Biological process"
-    if(ontol == "MF") Test_type <- "GO: Molecular function"
-    if(ontol == "CC") Test_type <- "GO: Cellular component"
+    output <- map_df(1:n_unique_GOs_in_set, function(i){
+      focal_GO <- unique_GOs[i]
+      
+      x1 <- gene_set %>% filter(GO == focal_GO) %>% nrow()
+      if(x1 < min_size) return(NULL)
+      x2 <- gene_universe %>% filter(GO == focal_GO) %>% nrow()
+      
+      manual_GO_enrich(
+        GO_ID = focal_GO,
+        number_genes_in_set_with_focal_GO = x1,
+        number_genes_in_universe_with_focal_GO = x2,
+        number_genes_in_set = module_size,
+        number_genes_in_universe = universe_size
+      )
+    }) 
     
-    data.frame(Test_type = Test_type, result, stringsAsFactors = FALSE)
+    if(!keep_all) output <- output %>% filter(pvalue < 0.05)
+    if(nrow(output)==0) return(NULL)
+    
+    output %>%
+      left_join(tbl(db, "go_meanings") %>% collect(),
+                by = c("ID" = "GO")) %>%
+      dplyr::rename(Ontology = ontology,
+             Meaning = term) %>%
+      dplyr::select(Ontology, ID, Meaning, everything()) %>%
+      distinct()
   }
   
-  kegg.enrichment <- function(gene_set, gene_universe){
+  # Define internal KEGG enrichment function (uses clusterProfiler)
+  kegg_enrichment <- function(gene_set_entrez, 
+                              gene_universe_entrez, min_size, keep_all){
     
     result <-  enrichKEGG(
-      gene_set, organism = "ame", keyType = "kegg", pvalueCutoff = p,
-      gene_universe, minGSSize = min.size, maxGSSize = 500,
+      gene_set_entrez, organism = "ame", keyType = "kegg", pvalueCutoff = p,
+      gene_universe_entrez, minGSSize = min_size, maxGSSize = 500,
       qvalueCutoff = 1, use_internal_data = FALSE, pAdjustMethod = "BH")
     
     if(is.null(result)) return(NULL)
@@ -1175,22 +1367,32 @@ GO.and.KEGG.hypergeometric <- function(
       sapply(result$BgRatio, 
              function(x) eval(parse(text=x)))
     result <- result[is_enriched, ] %>% mutate(p.adjust = p.adjust(pvalue, method = "BH"))
+    
     if(nrow(result %>% filter(pvalue < p)) == 0) return(NULL)
-    data.frame(Test_type = "KEGG", result, stringsAsFactors = FALSE)
+    if(!keep_all) result <- result %>% filter(pvalue < 0.05)
+    
+    data.frame(Ontology = "KEGG", result, stringsAsFactors = FALSE)
   }
   
-  output <- rbind(kegg.enrichment(gene_set, gene_universe), 
-        GO.enrichment(gene_set, gene_universe, "BP"),
-        GO.enrichment(gene_set, gene_universe, "MF"),
-        GO.enrichment(gene_set, gene_universe, "CC")) 
-  if(is.null(output)) return(NULL)
+  kegg_result <- kegg_enrichment(gene_set_entrez, gene_universe_entrez, min_size, keep_all) 
   
-  output %>%
-    mutate(ID = str_replace_all(ID, "ame", "KEGG:"),
-           geneID = str_replace_all(geneID, "/", " "))
+  if(!is.null(kegg_result)){
+    kegg_result <- kegg_result %>%
+      dplyr::rename(Meaning = Description) %>%
+      mutate(
+        prop_in_set  = sapply(lapply(strsplit(GeneRatio, split = "/"), as.numeric), 
+                              function(x) (x[1]) / x[2]),
+        prop_in_univ = sapply(lapply(strsplit(BgRatio, split = "/"), as.numeric), 
+                              function(x) x[1] / x[2]),
+        enrichment_LOR = (prop_in_set / (1 - prop_in_set)) / (prop_in_univ / (1 - prop_in_univ))) %>%
+      dplyr::select(Ontology, ID, Meaning, GeneRatio, BgRatio, enrichment_LOR, pvalue) 
+  }
+  
+  kegg_result %>%
+    bind_rows(GO_enrichment(gene_set, gene_universe, min_size, keep_all))
 }
 
-make_module_GO_table <- function(eigengenes){
+make_module_GO_table <- function(eigengenes, min_size = 5, keep_all = FALSE){
   
   n_modules <- eigengenes$Module %>% unique() %>% length()
   
@@ -1210,63 +1412,71 @@ make_module_GO_table <- function(eigengenes){
   rename <- dplyr::rename
   filter <- dplyr::filter
   apis.db <- hub[["AH76825"]]
-  gene_universe_modules <- converter$entrez_id[
-    converter$gene_symbol %in% rownames(expression_data)] %>% as.character() 
   
-  results <- lapply(1:n_modules, function(i) { 
+  gene_universe <- rownames(expression_data)
+  
+  gene_universe_entrez <- converter$entrez_id[
+    converter$gene_symbol %in% gene_universe] %>% 
+    as.character() # just to be sure Entrez numbers are treated as strings
+  
+  map_df(1:n_modules, function(i) { 
     
     print(paste("Doing", i, "/", n_modules, "modules"))
     
     # Entrez IDs of the genes in the focal module
-    gene_set <- converter$entrez_id[converter$gene_symbol %in% genes_in_module(i)] %>% as.character()
-  
-    df <- GO.and.KEGG.hypergeometric(gene_set, gene_universe_modules, apis.db) 
-    if(is.null(df)) return(NULL)
-    if(nrow(df) == 0) return(NULL)
+    gene_set <- genes_in_module(i)
+    gene_set_entrez <- converter$entrez_id[
+      converter$gene_symbol %in% gene_set] %>% as.character()
     
-    # # enrichment ratio: proportion genes in sample / proportion in gene universe
-    prop_genes_in_sample <- map_dbl(1:nrow(df), function(i) eval(parse(text = df$GeneRatio[i])))
-    prop_genes_in_universe <- map_dbl(1:nrow(df), function(i) eval(parse(text = df$BgRatio[i])))
-    
-    df %>% 
-      mutate(Module = paste("Module", i),
-             enrichment = prop_genes_in_sample / prop_genes_in_universe) %>%
-      arrange(pvalue)}) %>% 
-    do.call("rbind", .) %>%
-    mutate(Description = factor(Description, unique(Description))) %>%
-    filter(pvalue <= 0.05) # Only keep GO terms where the UN-adjusted p is significant
-
-  results %>% 
-    select(Module, Test_type, ID, Description, GeneRatio, BgRatio,
-           enrichment, pvalue, p.adjust, qvalue, Count, geneID) %>% 
-    as_tibble() %>%
-    mutate(Module = factor(Module, paste("Module", 0:(n_modules-1))),
-           geneID = strsplit(results$geneID, split = " ")) %>%
-    add_name_col() %>%
-    mutate(sig = ifelse(p.adjust <= 0.05, "yes", "no"),       # note: ADJUSTED p
-           sig = relevel(factor(sig), ref = "yes"))
+    GO_and_KEGG_hypergeometric(
+      gene_set = gene_set, 
+      gene_universe = gene_universe, 
+      gene_set_entrez = gene_set_entrez, 
+      gene_universe_entrez = gene_universe_entrez,
+      apis.db = apis.db,
+      min_size = min_size,
+      keep_all = keep_all) %>% 
+      as_tibble() %>% 
+      mutate(Module = paste("Module", i)) %>%
+      dplyr::select(Module, everything())
+  }) %>% mutate( # manually fix couple of missing ones
+    Ontology = replace(Ontology, ID == "GO:0001104", "MF"),
+    Meaning = replace(Meaning, ID == "GO:0001104", "transcription coregulator activity"),
+    Ontology = replace(Ontology, ID == "GO:0005578", "CC"),
+    Meaning = replace(Meaning, ID == "GO:0005578", "extracellular matrix"),
+    Ontology = replace(Ontology, ID == "GO:0022891", "MF"),
+    Meaning = replace(Meaning, ID == "GO:0022891", "transmembrane transporter activity")) %>%
+    distinct() %>%
+    mutate(Ontology = str_replace_all(Ontology, "BP", "GO:BP"),
+           Ontology = str_replace_all(Ontology, "MF", "GO:MF"),
+           Ontology = str_replace_all(Ontology, "CC", "GO:CC"),
+           Ontology = factor(Ontology, c("GO:BP", "GO:MF", "GO:CC", "KEGG")))
 }
 
 module_enrichment_plot <- function(df, is.KEGG = FALSE){
   label <- "Name of GO term"
   if(is.KEGG) label <- "Name of KEGG term"
-  df %>% arrange(Module, log2(enrichment)) %>% 
-    mutate(Description = factor(Description, unique(Description)),
-           Test_type = factor(Test_type, c("GO: Biological process", "GO: Molecular function", "GO: Cellular component", "KEGG"))) %>%
-    ggplot(aes(Description, log2(enrichment))) + 
-    geom_bar(aes(fill = sig), stat = "identity", colour = "grey10") + 
+  df %>% 
+    arrange(Module, enrichment_LOR) %>% 
+    mutate(Meaning = factor(Meaning, unique(Meaning)),
+           Ontology = factor(
+             Ontology, c("GO: Biological process", 
+                          "GO: Molecular function", 
+                          "GO: Cellular component", "KEGG"))) %>%
+    ggplot(aes(Meaning, enrichment_LOR)) + 
+    geom_bar(stat = "identity", colour = "grey10", fill = "#0CE3AC") + # aes(fill = sig), 
     facet_wrap(~Module) + 
     scale_fill_brewer(palette = "Accent", direction = -1) + 
     scale_x_discrete(labels = function(x) str_wrap(x, width = 60)) +
     theme_bw() +
-    theme(legend.position = "none", strip.background = element_blank(), strip.text = element_text(size = 10)) + 
-    ylab("Log2 fold enrichment") + xlab(label) + 
+    theme(legend.position = "none", 
+          strip.background = element_blank(), 
+          strip.text = element_text(size = 10)) + 
+    ylab("Enrichment (log odds ratio)") + xlab(label) + 
     coord_flip() 
 }  
 
-module_GO_table <- make_module_GO_table(eigengenes) %>%
-  arrange(Module, Test_type, -qvalue) %>%
-  dplyr::select(-Count)
+module_GO_table <- make_module_GO_table(eigengenes) 
 ```
 
 ### Tables of the module enrichment results {.tabset}
@@ -1279,33 +1489,24 @@ Note that no GO terms were significantly enriched for Module 0. Click the tabs t
 make_module_GO_table <- function(module){
   
   focal <- module_GO_table %>%
-    dplyr::select(-sig, -qvalue) %>%
-    arrange(Module, Test_type, pvalue) %>%
+    arrange(Module, Ontology, pvalue) %>%
     filter(Module == paste("Module", module) & pvalue < 0.05)  %>%
     mutate(`Gene & Background ratios` = paste(GeneRatio, BgRatio),
-           ID = paste(Description, " (", ID, ")", sep = "")) %>%
-    dplyr::rename(Enrichment = enrichment) %>%
-    dplyr::select(-GeneRatio, -BgRatio, -Description) %>%
-    dplyr::select(Test_type, ID, `Gene & Background ratios`, everything())
+           ID = paste(Meaning, " (", ID, ")", sep = "")) %>%
+    dplyr::rename(Enrichment = enrichment_LOR) %>%
+    dplyr::select(-GeneRatio, -BgRatio, -Meaning) %>%
+    dplyr::select(Ontology, ID, `Gene & Background ratios`, everything())
   
-  bp_rows <- which(focal$Test_type == "GO: Biological process")
-  mf_rows <- which(focal$Test_type == "GO: Molecular function")
-  cc_rows <- which(focal$Test_type == "GO: Cellular component")
-  kg_rows <- which(focal$Test_type == "KEGG")
+  bp_rows <- which(focal$Ontology == "GO: Biological process")
+  mf_rows <- which(focal$Ontology == "GO: Molecular function")
+  cc_rows <- which(focal$Ontology == "GO: Cellular component")
+  kg_rows <- which(focal$Ontology == "KEGG")
   
   focal %>%
     dplyr::select(-Module) %>%
     mutate_if(is.numeric, ~ round(.x, 3)) %>%
     datatable(options = list(pageLength = 5), #fillContainer = TRUE,
               rownames = FALSE)
-  
-  # focal %>%
-  #   kable(digits = 3) %>%
-  #   kable_styling() %>%
-  #   row_spec(bp_rows, bold = T, color = "black", background = scales::alpha("red", 0.1)) %>%
-  #   row_spec(mf_rows, bold = T, color = "black", background = scales::alpha("blue", 0.1)) %>%
-  #   row_spec(cc_rows, bold = T, color = "black", background = scales::alpha("green", 0.1)) %>%
-  #   row_spec(kg_rows, bold = T, color = "black", background = scales::alpha("purple", 0.1)) 
 }
 make_module_GO_table(0) 
 ```
@@ -1414,7 +1615,7 @@ Showing a few of the most caste-biased modules, based on inspection of the eigen
 ```{r module_enrich1, fig.height = 8, fig.width=9, message=FALSE, warning=FALSE, results='hide'}
 mods <- c("Module 6", "Module 7", "Module 12", "Module 15", "Module 17")
 module_KEGG <- module_GO_table %>% 
-  filter(Test_type == "KEGG", Module %in% mods) %>% 
+  filter(Ontology == "KEGG", Module %in% mods) %>% 
   module_enrichment_plot(is.KEGG = TRUE)
 #ggsave(module_KEGG, file = "figures/Figure 4 - module KEGG.pdf", height = 7, width = 8)
 module_KEGG
@@ -1422,10 +1623,10 @@ module_KEGG
 <br></br>
 **Figure 4**: Results of KEGG pathway enrichment analysis for the genes in each of the three significantly pheromone-sensitive transcriptional modules. The gene universe was defined as all genes for which we found an ortholog in all four species (i.e. the set that was used to discover these co-expressed modules). All KEGG terms shown in green were significantly enriched (p < 0.05), and those shown in purple remained significant after correction for multiple testing. Fold enrichment was calculated as the proportion of genes associated with the focal KEGG term in the module, divided by the equivalent proportion in the gene universe.
 
-#### GO BP
+#### GO Biological process
 ```{r module_enrich2, fig.height = 8, fig.width=9, message=FALSE, warning=FALSE, results='hide'}
 fig_S6 <- module_GO_table %>% 
-  filter(Test_type == "GO: Biological process", Module %in% mods) %>% 
+  filter(Ontology == "GO:BP", Module %in% mods) %>% 
   module_enrichment_plot()  
 # saveRDS(fig_S6, file = "supplement/fig_S6.rds")
 fig_S6
@@ -1433,10 +1634,10 @@ fig_S6
 <br></br>
 **Figure SX**: Comparable figure to Figure 4, showing the results of GO: Biological process enrichment analysis instead of KEGG pathways. 
 
-#### GO MF
+#### GO Molecular function
 ```{r module_enrich3, fig.height = 8, fig.width=9, message=FALSE, warning=FALSE, results='hide'}
 fig_S7 <- module_GO_table %>% 
-  filter(Test_type == "GO: Molecular function", Module %in% mods) %>% 
+  filter(Ontology == "GO:MF", Module %in% mods) %>% 
   module_enrichment_plot()  
 # saveRDS(fig_S7, file = "supplement/fig_S7.rds")
 fig_S7
@@ -1444,10 +1645,10 @@ fig_S7
 <br></br>
 **Figure SX**: Comparable figure to Figure 4, showing the results of GO: Molecular function enrichment analysis instead of KEGG pathways. 
 
-#### GO CC
+#### GO Cellular component
 ```{r module_enrich4, fig.height = 8, fig.width=9, message=FALSE, warning=FALSE, results='hide'}
 fig_S8 <- module_GO_table %>% 
-  filter(Test_type == "GO: Cellular component", Module %in% mods) %>% 
+  filter(Ontology == "GO:CC", Module %in% mods) %>% 
   module_enrichment_plot()  
 # saveRDS(fig_S8, file = "supplement/fig_S8.rds")
 fig_S8
@@ -1517,7 +1718,7 @@ make_a_plot <- function(yvar){
   ylab <- str_remove_all(yvar, "Warner_")
   
   p + stat_bin_hex() + 
-  #  stat_smooth(method = "loess", colour = "tomato", formula = "y ~ x") + 
+    stat_smooth(method = "loess", colour = "tomato", formula = "y ~ x") + 
     scale_fill_viridis_c(option = "D") +
     coord_cartesian(ylim = ylim) + 
     ylab(ylab) + xlab(NULL) + 
@@ -1532,12 +1733,6 @@ plots <- plots[!sapply(plots, is.null)]
 
 do.call(grid.arrange, c(plots, list(bottom = "Caste bias in 8h-old larvae (positive = queen-biased)")))
 rm(plots)
-
-# merged_data %>%
-#   dplyr::select(-entrez_id) %>%
-#   mutate_all(~ as.numeric(scale((.x)))) %>%
-# #  dplyr::select(`Upregulation in queen-destined 8h larvae`, starts_with("Warner")) %>%
-#   cor(use = 'pairwise.complete.obs', method = "spearman") %>% round(2)
 ```
 
 

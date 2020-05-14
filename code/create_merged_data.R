@@ -4,7 +4,7 @@
 source("code/parse_warner_data.R")
 
 gene_names <- tbl(db, "gene_names") %>% collect() 
-x <- read_tsv("data/HaV3.1_gene_names.txt")
+#x <- read_tsv("data/HaV3.1_gene_names.txt")
 
 # beebase_converter <- read_csv("data/database_tables_new/beebase1_to_beebase2.csv") 
 
@@ -17,15 +17,16 @@ present_study_data <- read_csv("data/caste_results.csv") %>%
               collect(n=Inf), 
             by = c("Gene symbol" = "gene_symbol")) %>% 
   dplyr::select(beebase, logFC, AveExpr, `Gene symbol`, entrez_id, gene, gene_name) %>%
-  dplyr::rename(`Upregulation in queen-destined 8h larvae` = logFC) 
+  dplyr::rename(`Upregulation in queen-destined 8h larvae` = logFC) %>%
+  mutate(entrez_id = replace(entrez_id, is.na(entrez_id), gsub("LOC", "", `Gene symbol`[is.na(entrez_id)])))
 
 # codon adaptation index measurements provided by Brendan Hunt
-# merged_data <- read.delim("data/apis_gene_comparisons/Amel_AllData_012709.txt", 
-#                           header=T, stringsAsFactors = FALSE) %>% 
-#   # dplyr::select(ID, CAI) %>% # get gene ID and codon 
+# merged_data <- read.delim("data/apis_gene_comparisons/Amel_AllData_012709.txt",
+#                           header=T, stringsAsFactors = FALSE) %>%
+#   # dplyr::select(ID, CAI) %>% # get gene ID and codon
 #   # left_join(beebase_converter, by = c("ID" = "beebase1")) %>%
-#   # dplyr::rename(beebase = beebase2) %>%                              
-#   # left_join(gene_names, by = "beebase") %>% 
+#   # dplyr::rename(beebase = beebase2) %>%
+#   # left_join(gene_names, by = "beebase") %>%
 #   dplyr::select(ID, CAI)
 
 # Merge present study with CAI data, then
@@ -35,6 +36,10 @@ present_study_data <- read_csv("data/caste_results.csv") %>%
 # Also add data on caste-specific gene expression from Warner et al 2018 Nature Comms
 # And finally the pheromone sensitivity data for Apis from Holman et al. 2019 Nature Comms
 merged_data <- present_study_data %>%
+  
+  # left_join(read.delim("data/apis_gene_comparisons/Amel_AllData_012709.txt",
+  #                      header = TRUE, stringsAsFactors = FALSE) %>%
+  #             dplyr::select(ID, CAI), by = c("beebase" = "ID"))
 
   full_join(read_csv("data/apis_gene_comparisons/apis_gene_methyl_CG_OE.csv") %>% 
               dplyr::select(-NCBI_TranscriptID, -GC_OE) %>% distinct(gene, .keep_all = T),
@@ -99,7 +104,7 @@ m.rename <- function(merged, col, new) {
 
 
 merged_data <- merged_data %>%
-  m.rename("CAI", "Codon usage bias\n(CAI)") %>%
+#  m.rename("CAI", "Codon usage bias\n(CAI)") %>%
   m.rename("CG_OE", "DNA methylation frequency\n(CpG depletion)") %>%
   m.rename("Gene_body_methylation", "DNA methylation frequency\n(BiS-seq)") %>%
   m.rename("gamma", "Positive selection\n(Gamma)") %>%
@@ -114,7 +119,6 @@ merged_data <- merged_data %>%
   m.rename("nectar_pollen", "Upregulation in nectar-foraging workers")
 
 merged_data <- merged_data %>%
-  # dplyr::select(-`Beebase ID`, -`Gene name`, -beebase, -NCBI_GeneID, -entrez_id) %>%
   dplyr::rename(gene = `Gene symbol`) %>%
   dplyr::select(gene, beebase, NCBI_GeneID, entrez_id, `Gene name`, everything())
 
