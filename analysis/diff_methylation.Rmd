@@ -1876,7 +1876,7 @@ if(!file.exists("output/meth_eigengenes.rds")){
 
 ### Count the number of genes per module
 ```{r echo=FALSE}
-num_modules <- length(unique(meth_network$colors))
+num_modules <- length(unique(meth_network$colors)) - 1
 ```
 
 The algorithm in WGCNA has grouped the `r length(meth_network$colors)` transcripts into `r num_modules` modules of variable size. Note that Module 0 contains all the transcripts that were not assigned to a module (indicating that their expression did not covary detectably with other genes).
@@ -1886,7 +1886,7 @@ meth_network$colors %>% table() %>% pander()
 
 
 ### Plot correlations between module eigengenes
-Note that some modules show correlated expression with other modules, forming 'meta-modules'. Moreover, we can see that certain modules appear to distinguish queens at later times (e.g. 6h and 8h) from workers, or early-stage queens.
+Note that some modules show correlated expression with other modules, forming 'meta-modules'. Moreover, we can see that certain modules appear to distinguish worker-destined larvae at later times (e.g. 6h and 8h) from queen-destined larvae, or early-stage workers.
 
 ```{r fig.height=9, fig.width=4.5}
 brms_data <- meth_eigengenes %>%
@@ -2463,7 +2463,7 @@ present_module_GO_table() %>%
 
 Very few pairs of modules from the co-expression network and the co-methylation network overlapped significantly, suggesting either that suites of co-methylated genes are not necessarily co-expressed, or that uncertainty in the estimation of both networks makes such a relationship difficult to detect. The exception was Module 1 in the co-methylation network, which overlapped significantly with Modules 0 and 18 in the co-expression network (using hypergeometric tests with p-values corrected for multiple testing).
 
-```{r model_overlap_test}
+```{r model_overlap_test, message=FALSE, warning=FALSE}
 # Load the RSEM expression_data for each sample-gene combination
 expression_data_common_genes <- as.matrix(read.table("data/Expression_data/Genes_2020_version.txt", row.names = 1, header = T))
 n_genes_before_filtering <- nrow(expression_data_common_genes)
@@ -2505,7 +2505,7 @@ results <- overlapTableUsingKME(expression_data_common_genes, meth_data_common_g
                    cutoffMethod = "assigned")
 p_vals <- as.matrix(results$PvaluesHypergeo) 
 
-matrix(ifelse(p_vals %>% p.adjust() < 0.05, "*", ""), 
+matrix(ifelse(p_vals %>% p.adjust() < 0.05, "\\*", ""), 
                 ncol = ncol(p_vals), dimnames = list(rownames(p_vals), colnames(p_vals))) %>%
   as.data.frame() %>%
   rename_all(~ str_replace_all(.x, "MM2_", "Methylation ")) %>%
