@@ -3,8 +3,7 @@ library(tidyverse)
 library(RSQLite)
 
 # files <- list.files("data/database_tables", full.names = T)
-files <- list.files("data/database_tables_new", full.names = T)
-files <- files[files != "data/database_tables_new/uniprot_entrez.txt"]
+files <- list.files("data/database_tables", full.names = T)
 
 location_of_database <- "data"
 db_filepath <- file.path(location_of_database, "apis_db.sqlite3")
