@@ -116,14 +116,14 @@ tibble(` ` = c("Number of transcripts prior to filtering:",
        n = c(n_genes_before_filtering, n_genes_after_filtering)) %>% pander()
 ```
 
-### Plot the transcriptomes using NMDS, before removing batch effects {.tabset}
+### Plot the transcriptomes using NMDS {.tabset}
 
-#### Univariate plot by caste and time point
+#### Before removing the batch effects
 ```{r nmds1}
 nmds_output <- dist(t(expression_data)) %>% nmds(maxdim = 2)
 nmds_r2 <- tail(nmds_output$r2, 1)
 nmds_output <- data.frame(Caste = sample_ids$caste,
-                          Time = as.numeric(sample_ids$time_point),
+                          Time = as.numeric(as.character(sample_ids$time_point)),
                           Replicate = sample_ids$replicate,
                           label = paste(sample_ids$caste, sample_ids$time_point),
                           nmds_output$conf[[length(nmds_output$conf)]])
@@ -146,21 +146,15 @@ nmds_output %>%
 
 
 
-### Remove batch effects using `limma::removeBatchEffect`
-```{r}
+#### After removing the batch effects
+```{r nmds2}
 expression_no_batch_effect <- limma::removeBatchEffect(expression_data, 
                                                 batch = sample_ids$replicate)
-```
-
-### Plot the NMDS scores again, after removing batch effect {.tabset}
-
-#### Univariate plot by caste and time point
-```{r nmds2}
 set.seed(12345)
 nmds_output <- dist(t(expression_no_batch_effect)) %>% nmds(maxdim = 2)
 nmds_r2 <- tail(nmds_output$r2, 1)
 nmds_output <- data.frame(Caste = sample_ids$caste,
-                          Time = as.numeric(sample_ids$time_point),
+                          Time = as.numeric(as.character(sample_ids$time_point)),
                           Replicate = sample_ids$replicate,
                           label = paste(sample_ids$caste, sample_ids$time_point),
                           nmds_output$conf[[length(nmds_output$conf)]])
@@ -415,7 +409,7 @@ plot_corr_hist(c("Vg", "Dnmt1a", "Dnmt3", "Dsx", "LOC413289", "tra2", "Mrjp1", "
 
 ### Caste-specific genes
 
-You can also view this table on a full web page [here](caste_table.html).
+You can also view this table on a full web page [here](caste_table.html), or press the buttons to export the table to PDF, .csv, or Excel formats.
 
 ```{r intersections}
 get_intersections <- function(results_df, split_by){
@@ -463,7 +457,7 @@ get_intersections(caste_results, "Time") %>% melt() %>%
 
 ### Temporally-variable genes in queen-destined larvae
 
-You can also view this table on a full web page [here](queen_time_table.html).
+You can also view this table on a full web page [here](queen_time_table.html), or press the buttons to export the table to PDF, .csv, or Excel formats.
 
 ```{r temporal_Q}
 time_results %>% 
@@ -496,7 +490,7 @@ time_results %>%
 
 ### Temporally-variable genes in worker-destined larvae
 
-You can also view this table on a full web page [here](worker_time_table.html).
+You can also view this table on a full web page [here](worker_time_table.html), or press the buttons to export the table to PDF, .csv, or Excel formats.
 
 ```{r temporal_W}
 time_results %>% 
@@ -742,7 +736,7 @@ Red means relatively higher expression of the focal pathway/process in queens, b
 BP_fig_Amel
 ```
 
-####GO: Molecular function
+#### GO: Molecular function
 ```{r enrichMF, fig.height=10, fig.width = 5.3}
 MF_fig_Amel
 ```
@@ -766,7 +760,7 @@ Red means relatively higher expression of the focal pathway/process in queens, b
 BP_fig_Dmel
 ```
 
-####GO: Molecular function
+#### GO: Molecular function
 ```{r enrichMFmel, fig.height=25, fig.width = 5.3}
 MF_fig_Dmel
 ```
@@ -786,7 +780,7 @@ kegg_fig_Dmel
 
 ### Build the network using `WGCNA::blockwiseModules()`
 
-```{r make_network, results='hide', warning=FALSE}
+```{r make_network, results='hide', warning=FALSE, message=FALSE}
 if(!file.exists("output/expression_eigengenes.csv")){
   build_network <- function(expression_data){
     
@@ -1121,7 +1115,7 @@ if(!file.exists("output/brms_eigengene_model_expression.rds")){
 
 Plot the model-estimated means for the module expression levels ('eigengenes').
 
-```{r eigen_plot, fig.width=10, fig.height=10, fig.showtext=TRUE}
+```{r eigen_plot, fig.width=10, fig.height=10, fig.showtext=TRUE, warning=F, message=F}
 module_levels <- paste("Module", 0:(length(mod_levels) - 1))
 
 # Data for the raw data point in figure
@@ -1218,7 +1212,7 @@ eigen_plot <- preds %>%
   ylab("Relative expression of genes in this module\n(eigengene, posterior estimates)") +
   xlab("Hours post-grafting into queen or worker cell") + 
   
-  coord_cartesian(ylim = c(-5, 5)) +
+  coord_cartesian(ylim = c(-3.6, 3.6)) +
   theme_bw() + 
   theme(legend.position = "top",
         text = element_text(family = nice_font),
@@ -1251,7 +1245,7 @@ preds %>%
   group_by(Time, Module, draw) %>%
   summarise(Caste_difference = eigengene[1] - eigengene[2]) %>% # Q - W
   group_by(Module, Time) %>%
-  summarise(stats = list(my_summary(Caste_difference))) %>%
+  summarise(stats = list(my_summary(Caste_difference)), .groups = "drop") %>%
   ungroup() %>% unnest(stats) %>% dplyr::rename(Caste_difference = Estimate) %>%
   dplyr::select(-Module) %>%
   kable(digits = 3) %>%
@@ -1553,7 +1547,7 @@ module_GO_table_dmel <- make_module_GO_table(expr_eigengenes, GO_list = "dros_or
 
 ### Tables of the module enrichment results {.tabset}
 
-Note that no GO terms were significantly enriched for Module 0. Click the tabs to see the results for Modules 1-`r num_modules-1`.
+Click the buttons to view or export these results.
 
 #### Using _A. mellifera_ annotations
 
@@ -1577,10 +1571,12 @@ present_module_GO_table <- function(module_GO_tbl){
   
   focal %>%
    # dplyr::select(-Module) %>%
-     dplyr::select(Module, everything()) %>%
+    dplyr::select(Module, everything()) %>%
     mutate_if(is.numeric, ~ round(.x, 3)) %>%
-    datatable(options = list(pageLength = 5), 
-              rownames = FALSE)
+    datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
+              extensions = 'Buttons', options = list(
+                dom = 'Bfrtip', pageLength = 10,
+                buttons = c('copy', 'csv', 'excel', 'pdf')))
 }
 present_module_GO_table(module_GO_table_amel) 
 ```
@@ -1767,7 +1763,7 @@ module_overlaps <- read_csv("output/caste_results.csv") %>%
             by = c(`Gene symbol` = "gene")) %>%
   mutate(dsx_module = replace(dsx_module, is.na(dsx_module), "no")) %>%
   group_by(module, dsx_module) %>%
-  summarise(n=n()) %>%
+  summarise(n=n(), .groups = "drop") %>%
   arrange(module, dsx_module) 
 
 shared_gene_universe_meth <- intersect(
@@ -1783,7 +1779,7 @@ module_overlaps_meth <- readRDS(file = "output/gene_meth_module_memberships.rds"
             by = "gene") %>%
   mutate(dsx_module = replace(dsx_module, is.na(dsx_module), "no")) %>%
   group_by(module, dsx_module) %>%
-  summarise(n=n()) %>%
+  summarise(n=n(), .groups = "drop") %>%
   arrange(module, dsx_module) 
 
 
@@ -1841,7 +1837,7 @@ e %>% full_join(caste_results %>% filter(Time==8), by = c("Genes" = "Gene symbol
   filter(adj.P.Val < 0.05) %>%
   filter(qvalue < 0.05) %>%
   group_by(Genes) %>%
-  summarise(n=n())
+  summarise(n=n(), .groups = "drop")
 
 x %>% 
   filter(qvalue < 0.05) %>%
@@ -1875,7 +1871,7 @@ meth_data <- map(c(2,4,6,8), function(i) {
 with(meth_data, paste(seqnames, start)) %>% unique %>% length()
 
 meth_data %>%
-  group_by(Time) %>% summarise(n())
+  group_by(Time) %>% summarise(n(), .groups = "drop")
 
 meth_data %>%
   arrange(-abs(queen-worker))
