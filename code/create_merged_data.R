@@ -9,16 +9,39 @@ gene_names <- tbl(db, "gene_names") %>% collect()
 # beebase_converter <- read_csv("data/database_tables_new/beebase1_to_beebase2.csv") 
 
 
-# Get the present study's limma::voom results, and associate with their beebase IDs for matching the older studies
-present_study_data <- read_csv("data/caste_results.csv") %>% 
+# Get the present study's expresison limma::voom results, and associate with their beebase IDs for matching the older studies
+present_study_data <- read_csv("output/caste_results.csv") %>% 
   dplyr::filter(Time == 8) %>%              # USES THE 8-HOUR CASTE DIFFERENCE AND EXPRESSION LEVEL RESULTS
   left_join(tbl(db, "gene_names") %>% 
-              dplyr::select(gene_symbol, gene_name, gene, entrez_id, beebase) %>% 
+              dplyr::select(gene_symbol, gene_name, entrez_id, beebase2) %>% 
               collect(n=Inf), 
             by = c("Gene symbol" = "gene_symbol")) %>% 
-  dplyr::select(beebase, logFC, AveExpr, `Gene symbol`, entrez_id, gene, gene_name) %>%
+  dplyr::select(beebase2, logFC, AveExpr, `Gene symbol`, entrez_id, gene_name) %>%
   dplyr::rename(`Upregulation in queen-destined 8h larvae` = logFC) %>%
-  mutate(entrez_id = replace(entrez_id, is.na(entrez_id), gsub("LOC", "", `Gene symbol`[is.na(entrez_id)])))
+  mutate(entrez_id = replace(entrez_id, is.na(entrez_id), gsub("LOC", "", `Gene symbol`[is.na(entrez_id)]))) %>%
+  dplyr::rename(beebase = beebase2)
+
+# Merge with the present study's caste difference in methylation data 
+# (estimated by Fisher exact test in BWASP, then averaged over sites within each gene)
+present_study_data <- present_study_data %>%
+  left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+              filter(comparison == "queen8.vs.worker8") %>%      # USES THE 8-HOUR CASTE DIFFERENCE RESULTS
+              group_by(Genes) %>%
+              summarise(caste_diff_methylation = median(meth.diff), .groups = "drop"),
+            by = c("Gene symbol" = "Genes"))
+
+# Merge with the present study's median % methylation of sites within each gene (from BWASP)
+present_study_data <- present_study_data %>%
+  left_join(read_tsv("data/Methylation_data/input_data_for_meth_network.txt") %>%
+              gather(sample, percent_meth, -Genes) %>%
+              filter(str_detect(sample, "8")) %>%  # USES THE 8-HOUR CASTE DIFFERENCE RESULTS
+              group_by(Genes) %>%
+              summarise(percent_meth = median(percent_meth, na.rm = T), .groups = "drop") %>%
+              filter(!is.na(percent_meth)),
+            by = c("Gene symbol" = "Genes"))
+
+
+
 
 # codon adaptation index measurements provided by Brendan Hunt
 # merged_data <- read.delim("data/apis_gene_comparisons/Amel_AllData_012709.txt",
@@ -41,13 +64,13 @@ merged_data <- present_study_data %>%
   #                      header = TRUE, stringsAsFactors = FALSE) %>%
   #             dplyr::select(ID, CAI), by = c("beebase" = "ID"))
 
-  full_join(read_csv("data/apis_gene_comparisons/apis_gene_methyl_CG_OE.csv") %>% 
-              dplyr::select(-NCBI_TranscriptID, -GC_OE) %>% distinct(gene, .keep_all = T),
-            by = c("beebase" = "gene")) %>%
+  # full_join(read_csv("data/apis_gene_comparisons/apis_gene_methyl_CG_OE.csv") %>% 
+  #             dplyr::select(-NCBI_TranscriptID, -GC_OE) %>% distinct(gene, .keep_all = T),
+  #           by = c("beebase" = "gene")) %>%
   
   full_join(read_delim("data/apis_gene_comparisons/harpur_etal_gamma.txt", delim = "\t"),
             by = c("beebase" = "Gene")) %>%
-  full_join(read_csv("data/gene_connectivity.csv") %>% dplyr::select(Gene, kTotal),
+  full_join(read_csv("output/gene_connectivity.csv") %>% dplyr::select(Gene, kTotal),
             by = c("Gene symbol" = "Gene")) %>%
   full_join(read_csv("data/apis_gene_comparisons/Warner2018_apis_caste_logFC.csv") %>%
               rename_all(~ paste("Warner", .x, sep = "_")),
@@ -57,9 +80,9 @@ merged_data <- present_study_data %>%
 
 # Calculate log2 CpG O/E ratio - change the sign, so that high values mean high methylation
 # NB the expression level (AveExpr column) is already log2 transformed, see ?topTable
-merged_data <- merged_data %>% 
-  mutate(CG_OE = -log2(CG_OE),
-         CG_OE = replace(CG_OE, is.infinite(CG_OE), NA))       
+# merged_data <- merged_data %>% 
+#   mutate(CG_OE = -log2(CG_OE),
+#          CG_OE = replace(CG_OE, is.infinite(CG_OE), NA))       
 
 
 # Add the data from Wojciechowski et al. 2018 Genome Biology
@@ -72,9 +95,7 @@ merged_data <- merged_data %>%
   left_join(read_csv("data/apis_gene_comparisons/wojciechowski_histone_data/H3K27ac.csv") %>% 
               mutate(H3K27ac_caste = caste_difference) %>% dplyr::select(gene, H3K27ac_caste), by =  c("beebase" = "gene")) %>%
   left_join(read_csv("data/apis_gene_comparisons/wojciechowski_histone_data/H3K36me3.csv") %>% 
-              mutate(H3K36me3_caste = caste_difference) %>% dplyr::select(gene, H3K36me3_caste), by =  c("beebase" = "gene")) %>%
-  dplyr::rename(`Gene name` = gene_name,
-         `Beebase ID` = gene)
+              mutate(H3K36me3_caste = caste_difference) %>% dplyr::select(gene, H3K36me3_caste), by =  c("beebase" = "gene"))
 
 
 # Add data from Ma et al. 2019 BMC Genomics
@@ -105,8 +126,8 @@ m.rename <- function(merged, col, new) {
 
 merged_data <- merged_data %>%
 #  m.rename("CAI", "Codon usage bias\n(CAI)") %>%
-  m.rename("CG_OE", "DNA methylation frequency\n(CpG depletion)") %>%
-  m.rename("Gene_body_methylation", "DNA methylation frequency\n(BiS-seq)") %>%
+  m.rename("percent_meth", "DNA methylation frequency") %>%
+  m.rename("caste_diff_methylation", "Caste difference in DNA methylation") %>%
   m.rename("gamma", "Positive selection\n(Gamma)") %>%
   m.rename("AveExpr", "Log2 mean expression level") %>%
   m.rename("kTotal", "Connectivity in the\ntranscriptome") %>%
@@ -120,7 +141,8 @@ merged_data <- merged_data %>%
 
 merged_data <- merged_data %>%
   dplyr::rename(gene = `Gene symbol`) %>%
-  dplyr::select(gene, beebase, NCBI_GeneID, entrez_id, `Gene name`, everything())
+  dplyr::select(gene, beebase, entrez_id, gene_name, everything()) %>%
+  arrange(gene)
 
 # Remove this variable - too many missing values
 # merged_data <- merged_data %>%

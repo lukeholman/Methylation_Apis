@@ -451,7 +451,14 @@ get_intersections(caste_results, "Time") %>% melt() %>%
     by = "Gene symbol") %>%
   arrange(-abs(`logFC at 2h` + `logFC at 4h` + `logFC at 6h` + `logFC at 8h`)) %>%
   mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
-  datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
+  # datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
+  datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
+            extensions = 'Buttons', options = list(
+              dom = 'Bfrtip', pageLength = 10,
+              buttons = c('copy', 'csv', 'excel', 'pdf')))
+            
+            
+            
 ```
 
 ### Temporally-variable genes in queen-destined larvae
@@ -480,7 +487,11 @@ time_results %>%
       rename_at(vars(-`Gene symbol`), ~ paste("logFC: ", .x, "h", sep = "")),
     by = "Gene symbol") %>%
   mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
-  datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
+  # datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
+  datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
+            extensions = 'Buttons', options = list(
+              dom = 'Bfrtip', pageLength = 10,
+              buttons = c('copy', 'csv', 'excel', 'pdf')))
 ```
 
 ### Temporally-variable genes in worker-destined larvae
@@ -509,8 +520,11 @@ time_results %>%
       rename_at(vars(-`Gene symbol`), ~ paste("logFC: ", .x, "h", sep = "")),
     by = "Gene symbol") %>%
   mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
-  datatable(options = list(pageLength = 10), 
-            rownames = FALSE, filter = 'top', fillContainer = TRUE)
+  # datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
+  datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
+            extensions = 'Buttons', options = list(
+              dom = 'Bfrtip', pageLength = 10,
+              buttons = c('copy', 'csv', 'excel', 'pdf')))
 ```
 
 
