@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Apis methylation and gene expression project"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,7 +8,10 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+Statistical analysis for a forthcoming research paper.
 
 ### Differential expression analysis
 Click [here](diff_expression.html) 
+
+### Differential methylation analysis
+Click [here](diff_methylation.html) 
