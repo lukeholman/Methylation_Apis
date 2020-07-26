@@ -69,14 +69,6 @@ n_genes_before_filtering <- nrow(expression_data)
 gsg <- goodSamplesGenes(t(expression_data), verbose = 3) # exclude 217 genes due to too many missing samples or zero variance
 expression_data <- expression_data[gsg$goodGenes, gsg$goodSamples]
 
-# tibble(isoform_id = c("NM_001111255.1", "NM_001134935.1", "NM_001134936.1", "NR_024131.1" ,"XM_006560013.2"), 
-#        description = c("Male", "F2", "B", "RNA", "X1"))
-# NM_001111255.1 = male form Dsx
-# NR_024131.1 = DSX transcript variant F1
-# NM_001134935.1 = DSX transcript variant F2
-# NM_001134936.1 = transcript variant B
-
-
 
 # Extract key information from the sample names
 sample_ids <- data.frame(
@@ -116,9 +108,11 @@ tibble(` ` = c("Number of transcripts prior to filtering:",
        n = c(n_genes_before_filtering, n_genes_after_filtering)) %>% pander()
 ```
 
-### Plot the transcriptomes using NMDS {.tabset}
+## Exploratory plots of the transcriptome data
 
-#### Before removing the batch effects
+### Reduce and plot the transcriptomes using NMDS
+
+<!-- #### Before removing the batch effects -->
 ```{r nmds1}
 nmds_output <- dist(t(expression_data)) %>% nmds(maxdim = 2)
 nmds_r2 <- tail(nmds_output$r2, 1)
@@ -146,83 +140,75 @@ nmds_output %>%
 
 
 
-#### After removing the batch effects
-```{r nmds2}
-expression_no_batch_effect <- limma::removeBatchEffect(expression_data, 
-                                                batch = sample_ids$replicate)
-set.seed(12345)
-nmds_output <- dist(t(expression_no_batch_effect)) %>% nmds(maxdim = 2)
-nmds_r2 <- tail(nmds_output$r2, 1)
-nmds_output <- data.frame(Caste = sample_ids$caste,
-                          Time = as.numeric(as.character(sample_ids$time_point)),
-                          Replicate = sample_ids$replicate,
-                          label = paste(sample_ids$caste, sample_ids$time_point),
-                          nmds_output$conf[[length(nmds_output$conf)]])
+<!-- #### After removing the batch effects -->
+<!-- ```{r nmds2} -->
+<!-- expression_no_batch_effect <- limma::removeBatchEffect(expression_data,  -->
+<!--                                                 batch = sample_ids$replicate) -->
+<!-- set.seed(12345) -->
+<!-- nmds_output <- dist(t(expression_no_batch_effect)) %>% nmds(maxdim = 2) -->
+<!-- nmds_r2 <- tail(nmds_output$r2, 1) -->
+<!-- nmds_output <- data.frame(Caste = sample_ids$caste, -->
+<!--                           Time = as.numeric(as.character(sample_ids$time_point)), -->
+<!--                           Replicate = sample_ids$replicate, -->
+<!--                           label = paste(sample_ids$caste, sample_ids$time_point), -->
+<!--                           nmds_output$conf[[length(nmds_output$conf)]]) -->
 
-nmds_output %>%
-  mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
-  gather(NMDS, Score, starts_with("X")) %>%
-  mutate(NMDS = gsub("X", "NMDS ", NMDS),
-         Replicate = paste("Replicate", Replicate)) %>%
-  ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
-  geom_line() +
-  geom_point() + 
-  scale_colour_manual(values = c(queen_colour, "black", worker_colour), 
-                      name = "Cell type") + 
-  facet_grid(NMDS~Replicate) + 
-  xlab("Time since the larva was grafted (hours)")
-```
+<!-- nmds_output %>% -->
+<!--   mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>% -->
+<!--   gather(NMDS, Score, starts_with("X")) %>% -->
+<!--   mutate(NMDS = gsub("X", "NMDS ", NMDS), -->
+<!--          Replicate = paste("Replicate", Replicate)) %>% -->
+<!--   ggplot(aes(Time, Score, colour = Caste, group = Caste)) +  -->
+<!--   geom_line() + -->
+<!--   geom_point() +  -->
+<!--   scale_colour_manual(values = c(queen_colour, "black", worker_colour),  -->
+<!--                       name = "Cell type") +  -->
+<!--   facet_grid(NMDS~Replicate) +  -->
+<!--   xlab("Time since the larva was grafted (hours)") -->
+<!-- ``` -->
 
-**Figure**: Results of non-metric multidimensional scaling analysis, after removing the batch effects using `limma::removeBatchEffect`.
+<!-- **Figure**: Results of non-metric multidimensional scaling analysis, after removing the batch effects using `limma::removeBatchEffect`. -->
 
 
-## Exploratory plots of the transcriptome data
 
-### Euclidean distance matrix of all samples
+### Heatmap showing similarities between samples and genes
 
-Darker colours indicate pairs of samples that have more different transcriptomes. The samples are clustered (using hierarchical clustering), and the cluster tree has been cut into 5 maximally-distinct units (by `stats::cutree()`) to make it easier to spot groups of samples that cluster together. 
+Here, the expression level of gene $j$ in transcriptome $i$ has been converted to a proportion of the total, then mean-centered and scaled. Thus, red indicates that the gene $j$ makes up an above-average fraciton of transcriptome $i$, and blue indicates a below-average fraction.
 
-```{r euclid, fig.height=8.5}
-sampleDistMatrix <- (as.matrix(dist(t(expression_no_batch_effect))))
-colors1 <- colorRampPalette( (brewer.pal(9, "YlOrBr")) )(255)
-colors2 <- colorRampPalette( c(rev(brewer.pal(9, "Blues")),
-                               "white", brewer.pal(9, "Reds")) )(255)
+Samples don't cluster perfectly (e.g. there is one 2h Worker sample clustering with some 6h and 8h Queen samples), perhaps because of batch effects (note the clustering by replicate). However, there is evident differentiation by caste and time for parts of the transcriptome. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. 
+
+```{r bigheatmap, fig.height=12}
+scaled_expression_data <- expression_data
+
+# Convert the gene expression values to a fraction of total for each sample
+for(i in 1:ncol(scaled_expression_data)) {
+  scaled_expression_data[,i] <- 100 * scaled_expression_data[,i] / sum(scaled_expression_data[,i])
+}
+
+# Scale to have mean 0, variance 1
+for(i in 1:nrow(scaled_expression_data)) {
+  scaled_expression_data[i, ] <- as.numeric(scale(scaled_expression_data[i,]))
+}
 
 name_converter <- sample_ids %>%
   mutate(new_name = paste(caste, " ", time_point, "h rep", replicate, sep = ""),
          new_name = str_replace_all(new_name, " 0h", "")) %>%
   dplyr::select(sample_name, new_name)
 
-rownames(sampleDistMatrix) <- name_converter$new_name[match(rownames(sampleDistMatrix), name_converter$sample_name)]
-colnames(sampleDistMatrix) <- name_converter$new_name[match(colnames(sampleDistMatrix), name_converter$sample_name)]
-
-sampleDistMatrix %>%
-  pheatmap(col = colors1, legend = FALSE,
-           cutree_rows = 5, cutree_cols = 5)
-```
-
-
-### Heatmap clustering samples and transcripts
-
-Samples don't cluster perfectly (e.g. there is one 2h Worker sample clustering with some 6h and 8h Queen samples), though overall there is evident differentiation by caste and time. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. The colour shows gene expression level from RSEM, scaled to have a mean of zero and unit variance across all samples.
-
-```{r bigheatmap, fig.height=12}
-scaled_no_batch_effect <- expression_no_batch_effect
-for(i in 1:nrow(expression_no_batch_effect)) {
-  scaled_no_batch_effect[i,] <- as.numeric(scale(expression_no_batch_effect[i, ]))
-}
-rownames(scaled_no_batch_effect) <- NULL
-colnames(scaled_no_batch_effect) <- name_converter$new_name[match(colnames(scaled_no_batch_effect), name_converter$sample_name)]
+rownames(scaled_expression_data) <- NULL
+colnames(scaled_expression_data) <- name_converter$new_name[match(colnames(scaled_expression_data), name_converter$sample_name)]
 
 paletteLength <- 50
 myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[7], "white", brewer.pal(9, "Reds")[7]))(paletteLength)
-myBreaks <- c(seq(min(scaled_no_batch_effect, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
-              seq(max(scaled_no_batch_effect, na.rm=T)/paletteLength, max(scaled_no_batch_effect, na.rm=T), length.out=floor(paletteLength/2)))
+myBreaks <- c(seq(min(scaled_expression_data, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(max(scaled_expression_data, na.rm=T)/paletteLength, max(scaled_expression_data, na.rm=T), length.out=floor(paletteLength/2)))
 
-scaled_no_batch_effect %>%
-  pheatmap(color = myColor, breaks = myBreaks, 
-           cutree_cols = 5, 
-           labels_row = NULL)
+t(scaled_expression_data) %>%
+  pheatmap(col = myColor, breaks = myBreaks,
+           clustering_distance_rows = "euclidean",
+           clustering_distance_cols = "euclidean",
+           cutree_cols = 18, cutree_rows = 5, 
+           show_colnames = FALSE)
 ```
 
 
@@ -565,6 +551,9 @@ corr_mat <- (
     select(`Gene symbol`, Comparison, logFC) %>% distinct() %>%
     spread(Comparison, logFC) %>% select(-`Gene symbol`)) %>%
   cor()
+
+colors2 <- colorRampPalette( c(rev(brewer.pal(9, "Blues")),
+                               "white", brewer.pal(9, "Reds")) )(255)
 
 pheatmap(corr_mat, col = colors2, 
          cutree_cols = 4, 
@@ -1224,8 +1213,9 @@ eigen_plot
 
 ### Calculate effect sizes for the module eigengenes
 
-**Table SX:** The table shows a summary of the posterior estimate of the difference in mean module eigengenes between queen- and worker-destined larvae at each of the four time points. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-`r num_modules` vector of eigengenes for the `r num_modules` modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure XXX), and fit "Replicate" as a random intercept. The eigengenes were mean-centred and scaled to unit variance, so the units in the 'Caste difference' column can be interpreted as the standardised effect size (Cohen's $d$). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed $p$-value).
+**Table SX:** The table shows a summary of the posterior estimate of the difference in mean module eigengenes between queen- and worker-destined larvae at each of the four time points. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-`r num_modules` vector of eigengenes for the `r num_modules` modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure XXX), and fit "Replicate" as a random intercept. The eigengenes were mean-centred and scaled to unit variance, so the units in the 'Caste difference' column can be interpreted as the standardised effect size (Cohen's $d$, where positive values mean higher expression of the module in queens relative to workers). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed $p$-value).
 
+#### Full stats table
 ```{r}
 my_summary <- function(x) {
 
@@ -1240,13 +1230,18 @@ my_summary <- function(x) {
       mutate(PP = as.character(round(PP, 4)))
 }
 
-preds %>%
+eigengene_stats_table_expr <- preds %>%
   filter(Time %in% c(2,4,6,8)) %>%
   group_by(Time, Module, draw) %>%
-  summarise(Caste_difference = eigengene[1] - eigengene[2]) %>% # Q - W
+  summarise(Caste_difference = eigengene[1] - eigengene[2], .groups = "drop") %>% # Q - W
   group_by(Module, Time) %>%
   summarise(stats = list(my_summary(Caste_difference)), .groups = "drop") %>%
-  ungroup() %>% unnest(stats) %>% dplyr::rename(Caste_difference = Estimate) %>%
+  ungroup() %>% unnest(stats) 
+
+write_csv(eigengene_stats_table_expr, "output/eigengene_stats_table_expr.csv")
+
+eigengene_stats_table_expr %>% 
+  dplyr::rename(`Caste difference (positive: Q > W)` = Estimate) %>%
   dplyr::select(-Module) %>%
   kable(digits = 3) %>%
   kable_styling(full_width = FALSE) %>%
@@ -1272,6 +1267,20 @@ preds %>%
   scroll_box(height = "300px")
 ```
 
+#### Summary of significant caste biases
+
+There are 4 worker-biased modules and 9 queen-biased, leaving 6 that did not show a significant caste bias.
+```{r warning=F, message=F}
+read_csv("output/eigengene_stats_table_expr.csv") %>% 
+  split(.$Module) %>% map(~ sign(.x %>% filter(!is.na(X8) & X8 != "~" & Time != 2) %>% pull(Estimate))) %>% 
+  map_chr(~ {
+    if(length(.x) == 0) return("Unbiased")
+    ifelse(unique(.x) == 1, "Queen-biased", "Worker-biased")
+    }) %>% 
+  enframe("Module", "Direction") %>% 
+  mutate(Module = factor(Module, paste("Module", 0:18))) %>%
+  arrange(Direction, Module) 
+```
 
 
 ### Identify GO and KEGG terms enriched in each module
@@ -1643,11 +1652,11 @@ present_module_GO_table(module_GO_table_dmel)
 
 ## Compare our results to past work
 
-```{r results='hide', message=FALSE, warning=FALSE}
+```{r create_merged_data, results='hide', message=FALSE, warning=FALSE}
 source("code/create_merged_data.R")
  
 merged_data <- merged_data %>% 
-  dplyr::select(-beebase, -gene_name, -beebase, -entrez_id) %>%
+  dplyr::select(-beebase, -gene_name, -entrez_id) %>%
   dplyr::select(gene, everything())
 ```
 
@@ -1662,11 +1671,13 @@ corrs <- merged_data %>%
 
 paletteLength <- 50
 myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[6], "white", brewer.pal(9, "Reds")[7]))(paletteLength)
-myBreaks <- c(seq(min(corrs, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
+myBreaks <- c(seq(min(corrs, na.rm=T), 0, length.out = ceiling(paletteLength/2) + 1), 
               seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out=floor(paletteLength/2)))
 
 pheatmap(corrs, color = myColor, breaks = myBreaks,
-         cutree_rows = 5, cutree_cols = 5)
+         clustering_distance_rows = "correlation",
+         clustering_distance_cols = "correlation",
+         cutree_rows = 6, cutree_cols = 6, show_colnames = F)
 ```
 
 
@@ -1678,8 +1689,7 @@ Scatterplots showing some of these same relationships explicitly:
 make_a_plot <- function(yvar, xvar){
   
   merged_data <- merged_data %>%
-    dplyr::select(-gene) %>%
-    mutate_all( ~ as.numeric(scale((.x))))
+    dplyr::select(-gene) # %>%    mutate_all( ~ as.numeric(scale((.x))))
   
   names(merged_data)[names(merged_data) == yvar] <- "y"
   names(merged_data)[names(merged_data) == xvar] <- "x"
@@ -1713,17 +1723,17 @@ make_a_plot <- function(yvar, xvar){
 }
 variables <- names(sapply(merged_data, is.numeric)[sapply(merged_data, is.numeric)])
 
-plots_expression <- variables[variables != "Upregulation in queen-destined 8h larvae"] %>%
-  sort() %>% lapply(make_a_plot, xvar = "Upregulation in queen-destined 8h larvae") 
+plots_expression <- variables[variables != "Caste difference in expression in 8h larvae (positive: W > Q)"] %>%
+  sort() %>% lapply(make_a_plot, xvar = "Caste difference in expression in 8h larvae (positive: W > Q)") 
 plots_expression <- plots_expression[!sapply(plots_expression, is.null)]
 
-plots_meth <- variables[variables != "Caste difference in DNA methylation"] %>%
-  sort() %>% lapply(make_a_plot, xvar = "Caste difference in DNA methylation") 
+plots_meth <- variables[variables != "Caste difference in % methylation in 8h larvae (positive: W > Q)"] %>%
+  sort() %>% lapply(make_a_plot, xvar = "Caste difference in % methylation in 8h larvae (positive: W > Q)") 
 plots_meth <- plots_meth[!sapply(plots_meth, is.null)]
 
-do.call(grid.arrange, c(plots_expression, list(bottom = "Caste bias in expression in 8h larvae (positive = queen-biased)")))
+do.call(grid.arrange, c(plots_expression, list(bottom = "Caste difference in expression in 8h larvae (positive: W > Q)")))
 
-do.call(grid.arrange, c(plots_meth, list(bottom = "Caste bias in DNA methylation in 8h larvae (positive = queen-biased)")))
+do.call(grid.arrange, c(plots_meth, list(bottom = "Caste difference in % methylation in 8h larvae (positive: W > Q)")))
 
 rm(plots_expression)
 rm(plots_meth)
