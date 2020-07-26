@@ -177,7 +177,7 @@ Here, the expression level of gene $j$ in transcriptome $i$ has been converted t
 
 Samples don't cluster perfectly (e.g. there is one 2h Worker sample clustering with some 6h and 8h Queen samples), perhaps because of batch effects (note the clustering by replicate). However, there is evident differentiation by caste and time for parts of the transcriptome. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. 
 
-```{r bigheatmap, fig.height=12}
+```{r bigheatmap, fig.height=9}
 scaled_expression_data <- expression_data
 
 # Convert the gene expression values to a fraction of total for each sample
@@ -745,7 +745,7 @@ kegg_fig_Amel
 Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
 #### GO: Biological process
-```{r enrichBPmel, fig.height=25, fig.width = 5.3}
+```{r enrichBPmel, fig.height=35, fig.width = 5.3}
 BP_fig_Dmel
 ```
 
@@ -760,7 +760,7 @@ CC_fig_Dmel
 ```
 
 #### KEGG
-```{r enrichKEGGmel, fig.height=14, fig.width = 5.3}
+```{r enrichKEGGmel, fig.height=11, fig.width = 5.3}
 kegg_fig_Dmel
 ```
 
@@ -1279,7 +1279,8 @@ read_csv("output/eigengene_stats_table_expr.csv") %>%
     }) %>% 
   enframe("Module", "Direction") %>% 
   mutate(Module = factor(Module, paste("Module", 0:18))) %>%
-  arrange(Direction, Module) 
+  arrange(Direction, Module) %>%
+  kable() %>% kable_styling(full_width = FALSE)
 ```
 
 
@@ -1648,306 +1649,5 @@ present_module_GO_table(module_GO_table_dmel)
 <!-- ``` -->
 <!-- <br></br> -->
 <!-- **Figure SX**: Comparable figure to Figure 4, showing the results of GO: Cellular component enrichment analysis instead of KEGG pathways. Module 9 is missing because no GO:CC terms were significantly enriched. -->
-
-
-## Compare our results to past work
-
-```{r create_merged_data, results='hide', message=FALSE, warning=FALSE}
-source("code/create_merged_data.R")
- 
-merged_data <- merged_data %>% 
-  dplyr::select(-beebase, -gene_name, -entrez_id) %>%
-  dplyr::select(gene, everything())
-```
-
-
-Correlations across _Apis_ genes in all sorts of variables from various studies:
-
-```{r big_cor_plot, fig.height = 12, fig.width = 12, warning=FALSE}
-corrs <- merged_data %>%
-  rename_all(~ str_replace_all(.x, "\n", " ")) %>%
-  dplyr::select(-gene) %>%
-  cor(use = "pairwise.complete.obs")
-
-paletteLength <- 50
-myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[6], "white", brewer.pal(9, "Reds")[7]))(paletteLength)
-myBreaks <- c(seq(min(corrs, na.rm=T), 0, length.out = ceiling(paletteLength/2) + 1), 
-              seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out=floor(paletteLength/2)))
-
-pheatmap(corrs, color = myColor, breaks = myBreaks,
-         clustering_distance_rows = "correlation",
-         clustering_distance_cols = "correlation",
-         cutree_rows = 6, cutree_cols = 6, show_colnames = F)
-```
-
-
-Scatterplots showing some of these same relationships explicitly:
-
-(NB I need to find out what positive logFC means for the Wojciechowski histone data)
-
-```{r scatterplots, fig.height = 16, fig.width = 16}
-make_a_plot <- function(yvar, xvar){
-  
-  merged_data <- merged_data %>%
-    dplyr::select(-gene) # %>%    mutate_all( ~ as.numeric(scale((.x))))
-  
-  names(merged_data)[names(merged_data) == yvar] <- "y"
-  names(merged_data)[names(merged_data) == xvar] <- "x"
-  
-  merged_data <- merged_data %>% 
-    dplyr::select(x, y)
-  merged_data <- merged_data[complete.cases(merged_data), ]
-  merged_data <- merged_data[is.finite(merged_data$y), ]
-  if(nrow(merged_data) == 0) return(NULL) 
-  
-  ylim <- range(merged_data$y)
-  ylim[1] <- ylim[1] - (ylim[1]*0.05)
-  ylim[2] <- ylim[2] + (ylim[2]*0.05)
-  
-  p <- ggplot(merged_data, aes(x, y)) + 
-    geom_vline(xintercept = 0, linetype = 2, colour = "black") 
-  
-  if(min(merged_data$y) < 0 ) {
-    p <- p + geom_hline(yintercept = 0, linetype = 2, colour = "black")
-  }
-  
-  ylab <- str_remove_all(yvar, "Warner_")
-  
-  p + stat_bin_hex() + 
-    stat_smooth(method = "loess", colour = "tomato", formula = "y ~ x") + 
-    scale_fill_viridis_c(option = "D") +
-    coord_cartesian(ylim = ylim) + 
-    ylab(ylab) + xlab(NULL) + 
-    theme_bw(10) + 
-    theme(legend.position = "none") 
-}
-variables <- names(sapply(merged_data, is.numeric)[sapply(merged_data, is.numeric)])
-
-plots_expression <- variables[variables != "Caste difference in expression in 8h larvae (positive: W > Q)"] %>%
-  sort() %>% lapply(make_a_plot, xvar = "Caste difference in expression in 8h larvae (positive: W > Q)") 
-plots_expression <- plots_expression[!sapply(plots_expression, is.null)]
-
-plots_meth <- variables[variables != "Caste difference in % methylation in 8h larvae (positive: W > Q)"] %>%
-  sort() %>% lapply(make_a_plot, xvar = "Caste difference in % methylation in 8h larvae (positive: W > Q)") 
-plots_meth <- plots_meth[!sapply(plots_meth, is.null)]
-
-do.call(grid.arrange, c(plots_expression, list(bottom = "Caste difference in expression in 8h larvae (positive: W > Q)")))
-
-do.call(grid.arrange, c(plots_meth, list(bottom = "Caste difference in % methylation in 8h larvae (positive: W > Q)")))
-
-rm(plots_expression)
-rm(plots_meth)
-```
-
-<!-- Test idea about the doublesex module in Velasque et al. -->
-```{r eval=FALSE}
-# Define a function to test whether the overlap of two sets of differentially expressed genes, 
-# drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
-# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
-overlap_hypergeometric_test <- function(n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
-  p.higher <- 1 - phyper(n_overlaps - 1, n_gene_set1, overall_n_genes - n_gene_set1, n_in_set2)
- # percent_of_maximum_overlaps <- 100 * n.overlaps / min(c(num.sig1, num.sig2))
-  
-  exp_n_overlaps <- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
-
-  data.frame(Test = "Overlap is higher than expected:",
-                       obs_n_overlaps = n_overlaps,
-                       exp_n_overlaps = round(exp_n_overlaps,1),
-                       enrichment_ratio = round(n_overlaps / exp_n_overlaps, 2),
-                       p = round(p.higher,4)
-                       )
-}
-
-velasque_gene_universe <- read_csv("https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_tpm.csv") %>%
-  pull (gene_id)
-
-# 9386 genes in common between our two studies
-shared_gene_universe <- intersect(rownames(expression_data), velasque_gene_universe)
-
-# Find overlaps with our expression modules, and the dsx-containing module in velasque et al
-module_overlaps <- read_csv("output/caste_results.csv") %>%
-  filter(`Gene symbol` %in% shared_gene_universe) %>%
-  filter(Time == 8) %>%   # Just od time 8h for now
-  left_join(read_csv("data/apis_gene_comparisons/velasque_doublesex.csv") %>% 
-              mutate(dsx_module = "yes") %>% dplyr::select(gene, dsx_module), 
-            by = c(`Gene symbol` = "gene")) %>%
-  mutate(dsx_module = replace(dsx_module, is.na(dsx_module), "no")) %>%
-  group_by(module, dsx_module) %>%
-  summarise(n=n(), .groups = "drop") %>%
-  arrange(module, dsx_module) 
-
-shared_gene_universe_meth <- intersect(
-  readRDS(file = "output/gene_meth_module_memberships.rds")$gene, 
-  velasque_gene_universe)
-  
-
-# Find overlaps with our METHYLATION modules, and the dsx-containing module in velasque et al
-module_overlaps_meth <- readRDS(file = "output/gene_meth_module_memberships.rds") %>%
-  filter(gene %in% shared_gene_universe_meth) %>%
-  left_join(read_csv("data/apis_gene_comparisons/velasque_doublesex.csv") %>% 
-              mutate(dsx_module = "yes") %>% dplyr::select(gene, dsx_module), 
-            by = "gene") %>%
-  mutate(dsx_module = replace(dsx_module, is.na(dsx_module), "no")) %>%
-  group_by(module, dsx_module) %>%
-  summarise(n=n(), .groups = "drop") %>%
-  arrange(module, dsx_module) 
-
-
-n_genes_in_dsx_module <- sum(with(module_overlaps, n[dsx_module == "yes"]))
-  
-module_overlaps %>%
-  split(.$module) %>%
-  map_df(function(x){
-    
-    present_study_module_size <- sum(x$n)
-    n_overlaps <- with(x, n[dsx_module == "yes"])
-    
-    data.frame(Module = x$module[1],
-    overlap_hypergeometric_test(n_overlaps, 
-                                n_genes_in_dsx_module, 
-                                present_study_module_size, 
-                                length(shared_gene_universe)))
-    
-  }) %>% arrange(-enrichment_ratio) %>% 
-  mutate(p_adjust = p.adjust(p, method = "BH")) %>%
-  filter(p_adjust < 0.05)
-
-# for methylation:
-module_overlaps_meth %>%
-  split(.$module) %>%
-  keep(~ nrow(.x) > 1) %>%
-  map_df(function(x){
-    
-    present_study_module_size <- sum(x$n)
-    n_overlaps <- with(x, n[dsx_module == "yes"])
-    
-    data.frame(Module = x$module[1],
-    overlap_hypergeometric_test(n_overlaps, 
-                                n_genes_in_dsx_module, 
-                                present_study_module_size, 
-                                length(shared_gene_universe)))
-    
-  }) %>% arrange(-enrichment_ratio) %>% 
-  mutate(p_adjust = p.adjust(p, method = "BH")) %>%
-  filter(p_adjust < 0.05)
-
-
-
-# Comparison with doublesex module in velasque et al. https://www.biorxiv.org/content/10.1101/314492v1.full
-read_csv("output/caste_results.csv") %>%
-  filter(adj.P.Val <= 0.05) %>%
-  right_join(read_csv("data/apis_gene_comparisons/velasque_doublesex.csv"), b
-             y = c(`Gene symbol` = "gene")) %>%
-  filter(!is.na(kWithin) & !is.na(logFC.x)) %>%
-  filter(Time == 8) %>% print(n=Inf)
-
-
-x <- read_tsv("~/Downloads/Methldiff_t0q8.txt")
-e %>% full_join(caste_results %>% filter(Time==8), by = c("Genes" = "Gene symbol")) %>% 
-  filter(adj.P.Val < 0.05) %>%
-  filter(qvalue < 0.05) %>%
-  group_by(Genes) %>%
-  summarise(n=n(), .groups = "drop")
-
-x %>% 
-  filter(qvalue < 0.05) %>%
-  full_join(caste_results %>% 
-                  filter(Time==8 & adj.P.Val <= 0.05), # 8h sig genes
-                by = c("Genes" = "Gene symbol"))  %>%
-  mutate(type = case_when(
-    !is.na(meth.diff) & !is.na(logFC) ~ "both",
-    !is.na(meth.diff) & is.na(logFC) ~ "meth only",
-    is.na(meth.diff) & !is.na(logFC)  ~ "expr only"
-  )) %>% pull(type) %>% table()
-
-
-caste_results %>% filter(Time==8) %>% pull(`Gene symbol`) %>% unique %>% length()
-x %>% pull(Genes) %>% unique %>% length()
-
-overlap_hypergeometric_test(415, 415+2014, 415+1195, nrow(expression_data))
-
-# Load all the QvsW at each time point tests
-meth_data <- map(c(2,4,6,8), function(i) {
-  glue::glue("/Users/lholman/Downloads/Methylation/Caste\ specific\ results/Routput-q{i}w{i}/DMSG/dmg-Am_HE_queen{i}.vs.worker{i}_details.txt") %>%
-    read_tsv() %>%
-    mutate(Time = i) %>% 
-    dplyr::rename_at(vars(starts_with("queen")), ~ "queen" ) %>% 
-    dplyr::rename_at(vars(starts_with("worker")), ~ "worker")
-}) %>% 
-  bind_rows() %>%
-  select(Time, everything()) %>%
-  select(-width, -strand, -coverage1, -coverage2) # width is always 1, strand is always +. Coverage is just Cs + Ts
-
-with(meth_data, paste(seqnames, start)) %>% unique %>% length()
-
-meth_data %>%
-  group_by(Time) %>% summarise(n(), .groups = "drop")
-
-meth_data %>%
-  arrange(-abs(queen-worker))
-
-meth_data %>%
-  mutate(
-    cluster = kmeans(10^10*as.numeric(as.factor(meth_data$seqnames)) + meth_data$start, 224)$cluster 
-  ) %>%
-  ggplot(aes(start, queen-worker, fill = queen-worker, group=1, size = is.dm)) + 
-  geom_hline(yintercept = 0) + 
-  geom_point(pch = 21) +
- # geom_point(aes(y=worker), colour = "red") +
-  facet_wrap(~ cluster, scales = "free_x") + 
-  scale_fill_gradient2() + 
-  theme(strip.background = element_blank(),
-        strip.text = element_blank())
-
-
-xx <- read_tsv("/Users/lholman/Downloads/Methylation/Caste\ specific\ results/Routput-q8w8/DMSG/dmg-Am_HE_queen8.vs.worker8_details.txt")
-
-dmr <- xx %>% filter(is.dm) %>% as.data.frame()
-
-dmr %>% pull(gene_Name) -> dm_genes
-  select(gene_start, gene_end) %>%
-  mutate(site = 1:n()) %>%
-  gather(metric, position, -site) %>%
-  ggplot(aes(position, y=1, group = site)) +
-    geom_line()
-  
-# meth counts for genes:
-files <- list.files("/Users/lholman/Downloads/Methylation", pattern = "ogl-Am_HE", recursive = T, full.names = T) 
-files <- files[!grepl("vs", files)]
-files <- files[!grepl("OGLall", files)]
-meth_genes <- map_df(files, ~ read_tsv(.x) %>% 
-         mutate(caste = "t0",
-                caste = replace(caste, str_detect(.x, "queen"), "queen"),
-                caste = replace(caste, str_detect(.x, "worker"), "worker"),
-                time = as.numeric(str_remove_all(unlist(str_extract_all(.x, "[:digit:][.]txt")), "[.]txt")),
-                file = .x)) %>%
-  mutate(gene_ID = str_remove_all(gene_ID, "gene[-]")) %>%
-  distinct(gene_ID, caste, time, .keep_all = TRUE) %>%
-  dplyr::arrange(gene_ID, caste, time)
-
-
-meth_test_one_gene <- function(gene){
-  focal_data <- meth_genes %>% 
-    filter(gene_ID == gene & caste != "t0") %>% 
-    mutate(percent_meth = `%perSite`)
-
-  response <- cbind(focal_data$percent_meth,
-                    100 - focal_data$percent_meth) %>% round()
-  focal_data
-}
-
-meth_test_one_gene("Snf")
-```
-
-
-
-<!-- From Wojciechowski et al. 2018 Genome Biology https://genome.cshlp.org/content/early/2018/08/20/gr.236497.118.full.pdf+html -->
-<!-- We find that genes differentially enriched with H3K4me3 -->
-<!-- (rho = 0.28; P-value = 2.7 × 10−17) and H3K36me3 (rho = 0.15; P-value = -->
-<!-- 4.6 × 10−5 -->
-<!-- ) show significant correlation with transcriptional differences, suggesting that caste-specific H3K4me3 and H3K36me3 -->
-<!-- patterns associate with caste-specific transcriptional profiles (Fig. -->
-<!-- 2D). In contrast, genes differentially enriched with H3K27ac -->
-<!-- show a nonsignificant correlation with caste-specific transcriptional differences (rho = 0.04; P-value = 0.074). -->
 
 
