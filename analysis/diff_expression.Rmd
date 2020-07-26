@@ -173,7 +173,7 @@ nmds_output %>%
 
 ### Heatmap showing similarities between samples and genes
 
-Here, the expression level of gene $j$ in transcriptome $i$ has been converted to a proportion of the total, then mean-centered and scaled. Thus, red indicates that the gene $j$ makes up an above-average fraciton of transcriptome $i$, and blue indicates a below-average fraction.
+Here, the expression level of gene $j$ in transcriptome $i$ has been converted to a proportion of the total, then mean-centered and scaled. Thus, red indicates that the gene $j$ makes up an above-average fraction of transcriptome $i$, and blue indicates a below-average fraction.
 
 Samples don't cluster perfectly (e.g. there is one 2h Worker sample clustering with some 6h and 8h Queen samples), perhaps because of batch effects (note the clustering by replicate). However, there is evident differentiation by caste and time for parts of the transcriptome. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. 
 
@@ -1555,7 +1555,7 @@ module_GO_table_dmel <- make_module_GO_table(expr_eigengenes, GO_list = "dros_or
 ```
 
 
-### Tables of the module enrichment results {.tabset}
+### Tables of the module enrichment results
 
 Click the buttons to view or export these results.
 
