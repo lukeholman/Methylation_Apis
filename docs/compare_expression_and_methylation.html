@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Comparisons of the expression and DNA methylation data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Methylation_Apis</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Comparisons of the expression and DNA methylation data</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-07-26
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20190712code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20190712)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20190712code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20190712)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree441676ad1920a8c6c73e39b2e0fbc12f870befd1targetblank441676aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/441676ad1920a8c6c73e39b2e0fbc12f870befd1" target="_blank">441676a</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree441676ad1920a8c6c73e39b2e0fbc12f870befd1targetblank441676aa" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/441676ad1920a8c6c73e39b2e0fbc12f870befd1" target="_blank">441676a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rapp.history
+    Ignored:    .Rproj.user/
+    Ignored:    Expression/
+    Ignored:    data/
+    Ignored:    figures/.DS_Store
+    Ignored:    output/
+
+Untracked files:
+    Untracked:  figures/meth_nmds_plot.rds
+
+Unstaged changes:
+    Modified:   analysis/diff_expression.Rmd
+    Modified:   analysis/diff_methylation.Rmd
+    Modified:   code/create_merged_data.R
+    Modified:   code/get_warner_and_holman_data.R
+    Modified:   figures/eigengenes_expression_network.pdf
+    Modified:   figures/eigengenes_meth_network_fig.pdf
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/compare_expression_and_methylation.Rmd</code>) and HTML (<code>docs/compare_expression_and_methylation.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/441676ad1920a8c6c73e39b2e0fbc12f870befd1/analysis/compare_expression_and_methylation.Rmd" target="_blank">441676a</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-26
+</td>
+<td>
+wflow_publish(“analysis/compare_expression_and_methylation.Rmd”)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<pre class="r"><code>library(tidyverse)
+library(kableExtra)
+library(RColorBrewer)
+library(pheatmap)
+
+# Load annotations
+annotations &lt;- readRDS(&quot;data/Methylation_data/meth_site_annotations.rds&quot;)
+
+# Load BWASP results
+bwasp_sig_genes &lt;- readRDS(&quot;output/bwasp_sig_genes.rds&quot;)
+
+# Load Bayesian GAM methylation results
+model_results &lt;- list.files(&quot;output/meth_sites_brms&quot;, 
+                            pattern = &quot;meth_brms_&quot;, full.names = TRUE) %&gt;%
+  map(~ tryCatch(readRDS(.x), error = function(e) NULL))
+sites &lt;- map_chr(model_results, ~ .x$site)
+
+caste_difference &lt;- map(model_results, ~ .x$caste_difference)
+caste_difference &lt;- map_df(1:length(caste_difference), 
+                           ~ mutate(caste_difference[[.x]], site = sites[.x]))
+
+time_difference &lt;- map(model_results, ~ .x$time_difference) 
+time_difference &lt;- map_df(1:length(time_difference), 
+                           ~ mutate(time_difference[[.x]], site = sites[.x])) %&gt;%
+  filter(!is.nan(Estimate))
+
+# Criterion for significance: B-H adjusted p &lt; 0.05
+sig_sites_caste &lt;- caste_difference %&gt;%
+  group_by(site) %&gt;%
+  summarise(sig = ifelse(any(p.adjust(p, method = &quot;BH&quot;) &lt; 0.05), TRUE, FALSE), 
+            .groups = &quot;drop&quot;) %&gt;%
+  filter(sig) %&gt;% pull(site)
+
+sig_sites_time &lt;- time_difference %&gt;%
+  group_by(site, Caste) %&gt;%
+  summarise(sig = ifelse(any(p.adjust(p, method = &quot;BH&quot;) &lt; 0.05), TRUE, FALSE), 
+            .groups = &quot;drop&quot;) %&gt;%
+  filter(sig) %&gt;% 
+  spread(Caste, sig)
+
+sig_sites_time_queen &lt;- sig_sites_time %&gt;% filter(q) %&gt;% pull(site)
+sig_sites_time_worker &lt;- sig_sites_time %&gt;% filter(w) %&gt;% pull(site)
+
+gene_meth_results_table &lt;- tibble(site = sites) %&gt;%
+  left_join(annotations, by = &quot;site&quot;) %&gt;%
+  dplyr::select(gene_name, gene, site) %&gt;%
+  mutate(sig_caste = ifelse(site %in% sig_sites_caste, &quot;\\*&quot;, &quot; &quot;),
+         sig_time_queen = ifelse(site %in% sig_sites_time_queen, &quot;\\*&quot;, &quot; &quot;),
+         sig_time_worker = ifelse(site %in% sig_sites_time_worker, &quot;\\*&quot;, &quot; &quot;),
+         site_old = site,
+         site = map_chr(strsplit(site, split = &quot;~&quot;), 
+                        ~ paste0(c(.x[1], .x[2]), collapse = &quot;, pos:&quot;))) %&gt;%
+  arrange(desc(sig_caste), desc(sig_time_queen), desc(sig_time_worker), gene_name) 
+
+
+
+
+# Define a function to test whether the overlap of two sets of differentially expressed genes, 
+# drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
+# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
+overlap_hypergeometric_test &lt;- function(
+  n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
+  
+  # Expected number of overlaps under the null the two gene lists are independent
+  exp_n_overlaps &lt;- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
+
+  if(n_overlaps &gt; exp_n_overlaps){ # p getting that number or larger...
+    p &lt;- 1 - phyper(n_overlaps - 1, n_gene_set1, 
+                    overall_n_genes - n_gene_set1, n_in_set2)
+    
+  }
+  
+  if(n_overlaps &lt; exp_n_overlaps){ # p getting that number or smaller...
+    p &lt;- phyper(n_overlaps - 1, n_gene_set1, 
+                overall_n_genes - n_gene_set1, n_in_set2)
+  }
+  
+  tibble(
+    `Observed n overlaps` = n_overlaps,
+    `Expected n overlaps` = NA,
+    `Enrichment ratio` = round(n_overlaps / exp_n_overlaps, 2),
+    `One-tailed p` = round(p, 4)) %&gt;% # p-value that the overlap is *higher* than expected under the null
+    mutate(`Expected n overlaps` = round(exp_n_overlaps, 1))
+}
+
+
+# define plot colours
+queen_colour &lt;- &quot;#d13b40&quot;
+worker_colour &lt;- RColorBrewer::brewer.pal(7, &quot;Blues&quot;)[4]</code></pre>
+<div id="comparing-significant-gene-lists-from-expression-and-methylation-analyses" class="section level2 tabset">
+<h2>Comparing significant gene lists from expression and methylation analyses</h2>
+<p>Here, we give tables showing genes that showed a statistically significant caste difference for both expression and methylation.</p>
+<p>We also use a hypergeometric test to test how many genes were significant (and how many were tested in total) in both the differential expression and differential methylation assays, and test whether the number of overlaps is greater or lower than expected under the null model that the two gene lists are independent (using a hypergeometric test via the <code>phyper</code> function).</p>
+<p>Using the BWASP results, the overlap of gene lists was not significant. However for the Bayesian GAM, the overlap was <em>lower</em> than expected under the null (<span class="math inline">\(p &lt; 0.0001\)</span>), indicating that the genes that show differential methylation are less likely than average to show differential expression (and <em>vice versa</em>).</p>
+<p>Notably, <em>Complementary sex determiner</em> is significant in all three analyses (expression, and both versions of the methylation analyses). <em>maternal protein tudor</em> shows differential expression, and significant differential methylation (in the Bayesian GAM).</p>
+<div id="using-the-bwasp-methylation-results" class="section level3">
+<h3>Using the BWASP methylation results</h3>
+<pre class="r"><code>genes_tested_meth &lt;- colnames(readRDS(&quot;data/Methylation_data/input_data_for_meth_network_CLEANED.rds&quot;))
+genes_tested_expr &lt;- read_csv(&quot;output/caste_results.csv&quot;)$`Gene symbol` %&gt;% unique()
+universe &lt;- intersect(genes_tested_expr, genes_tested_meth)
+sig_diff_expr &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;% 
+  filter(adj.P.Val &lt; 0.05 &amp; `Gene symbol` %in% universe) %&gt;% pull(`Gene symbol`) %&gt;% unique()
+sig_diff_meth &lt;- bwasp_sig_genes$bwasp_caste_sig_genes$`Gene name` %&gt;% as.character() %&gt;% unique()
+
+inters &lt;- intersect(sig_diff_expr, annotations$gene[match(sig_diff_meth, annotations$gene_name)])
+n_overlaps &lt;- length(inters)
+
+bwasp_table &lt;- annotations %&gt;%
+  filter(gene %in% inters) %&gt;% 
+  dplyr::select(gene_name) %&gt;% distinct() %&gt;%
+  dplyr::rename(`Genes showing both differential expression and methylation (BWASP pipeline)` = gene_name) 
+
+bwasp_hypergeometric &lt;- overlap_hypergeometric_test(
+  n_overlaps, 
+  length(sig_diff_expr),
+  length(sig_diff_meth),
+  length(universe))
+
+
+bwasp_table %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE) </code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Genes showing both differential expression and methylation (BWASP pipeline)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+complementary sex determiner
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+regulator of nonsense transcripts 2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+serine palmitoyltransferase 2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+transforming growth factor beta regulator 1
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>bwasp_hypergeometric %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Observed n overlaps
+</th>
+<th style="text-align:right;">
+Expected n overlaps
+</th>
+<th style="text-align:right;">
+Enrichment ratio
+</th>
+<th style="text-align:right;">
+One-tailed p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+0.69
+</td>
+<td style="text-align:right;">
+0.123
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="using-the-bayesian-gam-methylation-results" class="section level3">
+<h3>Using the Bayesian GAM methylation results</h3>
+<pre class="r"><code>genes_tested_meth &lt;- map_chr(model_results, ~ .x$genes$gene[1]) %&gt;% unique()
+universe &lt;- intersect(genes_tested_expr, genes_tested_meth)
+sig_diff_meth &lt;- gene_meth_results_table %&gt;% 
+  filter(sig_caste == &quot;\\*&quot; &amp; gene %in% universe) %&gt;% pull(gene)  %&gt;% unique()
+inters &lt;- intersect(sig_diff_expr, sig_diff_meth)
+n_overlaps &lt;- length(inters)
+
+bayes_table &lt;- annotations %&gt;%
+  filter(gene %in% inters) %&gt;% 
+  dplyr::select(gene_name) %&gt;% distinct() %&gt;%
+  dplyr::rename(`Genes showing both differential expression and methylation (Bayesian GAM)` = gene_name) 
+
+bayes_hypergeometric &lt;- overlap_hypergeometric_test(
+  n_overlaps, 
+  length(sig_diff_expr),
+  length(sig_diff_meth),
+  length(universe))
+
+bayes_table %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE) %&gt;%
+  scroll_box(height = &quot;300px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Genes showing both differential expression and methylation (Bayesian GAM)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+maternal protein tudor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+complementary sex determiner
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+uncharacterized LOC113218557
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+protein PF14_0175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+probable deoxyhypusine synthase
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cytosolic Fe-S cluster assembly factor NUBP1 homolog
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+polycomb protein suz12-B
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CCAAT/enhancer-binding protein zeta
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TBC domain-containing protein kinase-like protein
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+kinesin 2B
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WD repeat-containing protein 19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+zinc transporter foi
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DNA fragmentation factor subunit alpha
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+exocyst complex component 3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+E3 ubiquitin-protein ligase synoviolin A
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+activated Cdc42 kinase-like
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ribosome biogenesis protein BMS1 homolog
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+protein arginine N-methyltransferase 9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+multifunctional protein ADE2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+uncharacterized LOC412432
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MATH and LRR domain-containing protein PFE0570w
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<pre class="r"><code>bayes_hypergeometric %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+Observed n overlaps
+</th>
+<th style="text-align:right;">
+Expected n overlaps
+</th>
+<th style="text-align:right;">
+Enrichment ratio
+</th>
+<th style="text-align:right;">
+One-tailed p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+130.1
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="caste-differences-in-gene-expression-correlate-with-differences-in-methylation" class="section level2 tabset">
+<h2>Caste differences in gene expression correlate with differences in methylation</h2>
+<div id="plot-the-relationship" class="section level3">
+<h3>Plot the relationship</h3>
+<p>This binned scatterplot illustrates that genes showing queen-biased methylation tended to show worker-biased expression, and <em>vice versa</em>. The relationship appears weak and noisy, though we note that both the x and y axes are measured with considerable error, which would obscure the underlying correlation. The relationship appears to grow stronger at later time points, and the correlation is significantly negative for the 4h, 6h, and 8h (but not 2h) time points.</p>
+<pre class="r"><code>if(!file.exists(&quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)){
+  
+  meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
+    select(Time, `Gene symbol`, logFC) %&gt;%
+    left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+                filter(grepl(&quot;queen&quot;, comparison) &amp; grepl(&quot;worker&quot;, comparison)) %&gt;%
+                mutate(time = str_extract(comparison, &quot;[2468]&quot;)) %&gt;%
+                group_by(Genes, time) %&gt;%
+                summarise(mean_meth_diff = mean(meth.diff)) %&gt;% 
+                mutate(time = as.numeric(time)), 
+              by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
+    filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
+  
+  meth_geneExpr_relationship_data_timeQ &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
+    filter(Caste == &quot;Queen&quot;) %&gt;%
+    select(Time, `Gene symbol`, logFC) %&gt;%
+    left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+                filter(grepl(&quot;queen&quot;, comparison) &amp; !grepl(&quot;worker&quot;, comparison)) %&gt;%
+                mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
+                         map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
+                group_by(Genes, time) %&gt;%
+                summarise(mean_meth_diff = mean(meth.diff)), 
+              by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
+    filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
+  
+  meth_geneExpr_relationship_data_timeW &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
+    filter(Caste == &quot;Worker&quot;) %&gt;%
+    select(Time, `Gene symbol`, logFC) %&gt;%
+    left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+                filter(!grepl(&quot;queen&quot;, comparison) &amp; grepl(&quot;worker&quot;, comparison)) %&gt;%
+                mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
+                         map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
+                group_by(Genes, time) %&gt;%
+                summarise(mean_meth_diff = mean(meth.diff)), 
+              by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
+    filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
+  
+  write_csv(meth_geneExpr_relationship_data_caste, &quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
+  write_csv(meth_geneExpr_relationship_data_timeQ, &quot;output/meth_geneExpr_relationship_data_timeQ.csv&quot;)
+  write_csv(meth_geneExpr_relationship_data_timeW, &quot;output/meth_geneExpr_relationship_data_timeW.csv&quot;)
+  
+} else {
+  meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
+  meth_geneExpr_relationship_data_timeQ &lt;- read_csv(&quot;output/meth_geneExpr_relationship_data_timeQ.csv&quot;)
+  meth_geneExpr_relationship_data_timeW &lt;- read_csv(&quot;output/meth_geneExpr_relationship_data_timeW.csv&quot;)
+}
+
+hex_plot &lt;- function(dat){
+  
+  ggplot(dat, aes(-1 * mean_meth_diff, logFC)) + 
+    geom_hline(yintercept = 0, linetype = 2) + 
+    geom_vline(xintercept = 0, linetype = 2) + 
+    geom_hex(bins = 50) + 
+    stat_smooth(method = &quot;lm&quot;,  size = .7, colour = &quot;red&quot;) + 
+    xlab(&quot;Caste difference in mean % methylation\n(higher values mean more methylation in queens)&quot;) + 
+    ylab(&quot;Caste difference in gene expression\n(Log FC; higher values mean more expression in queens)&quot;) + 
+    facet_wrap(~ paste(Time, &quot;h post-grafting&quot;, sep = &quot;&quot;)) + 
+    scale_fill_viridis_c(option = &quot;A&quot;, direction = 1)
+}
+meth_geneExpr_relationship_data_caste %&gt;% hex_plot()</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># meth_geneExpr_relationship_data_timeQ %&gt;% hex_plot()
+# meth_geneExpr_relationship_data_timeW %&gt;% hex_plot()</code></pre>
+</div>
+<div id="run-spearmans-rank-correlations" class="section level3">
+<h3>Run Spearman’s rank correlations</h3>
+<p>There is a significant, negative relationship between the caste bias in methylation and the caste bias in gene expression, at times 4h, 6h, and 8h (but not time 2h) post-grafting. The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM.</p>
+<pre class="r"><code>run_corr &lt;- function(time, dat){
+  xx &lt;- cor.test(
+    filter(dat, Time == time)$mean_meth_diff * -1,
+    filter(dat, Time == time)$logFC, 
+    method = &quot;spearman&quot;)
+  tibble(time = time, rho = xx$estimate, p = xx$p.value)
+}
+map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_caste)) %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+time
+</th>
+<th style="text-align:right;">
+rho
+</th>
+<th style="text-align:right;">
+p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-0.0160333
+</td>
+<td style="text-align:right;">
+0.1141882
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-0.0923266
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+-0.1677885
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+-0.2483767
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+</tbody>
+</table>
+<!-- #### Correlations between temporally-variable methylation and temporally-variable expression within castes -->
+<!-- Here, we see that there are significant correlations between the change in methylation levels and the change in expression levels between some pairs of time points. However, some of these correlations are negative (which suggests that genes for which the % methylated sites declined showed increasing expression levels), and some are positive (indicating that genes that gained methylation increased in expression). Specifically, the correlation was positive when comparing 2h and 8h samples (for both castes), and was negative when comparing 4h and 6h samples (significantly so in workers but not queens). The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM.  -->
+<!-- ```{r warning=FALSE} -->
+<!-- run_corr <- function(time, dat){ -->
+<!--   xx <- cor.test( -->
+<!--     filter(dat, Time == time)$mean_meth_diff * -1, -->
+<!--     filter(dat, Time == time)$logFC,  -->
+<!--     method = "spearman") -->
+<!--   tibble(time = time, rho = xx$estimate, p = xx$p.value) -->
+<!-- } -->
+<!-- map_df(unique(meth_geneExpr_relationship_data_timeQ$Time),  -->
+<!--        ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_timeQ)) %>% -->
+<!--   mutate(Caste = "Queens") %>% -->
+<!--   bind_rows( -->
+<!--     map_df(unique(meth_geneExpr_relationship_data_timeW$Time),  -->
+<!--            ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_timeW)) %>% -->
+<!--       mutate(Caste = "Workers")  -->
+<!--   ) %>% -->
+<!--   kable() %>% kable_styling(full_width = FALSE) -->
+<!-- ``` -->
+</div>
+</div>
+<div id="correlations-between-expression-and-methylation-modules" class="section level2">
+<h2>Correlations between expression and methylation modules</h2>
+<div id="plot-of-the-correlation-matrix" class="section level3">
+<h3>Plot of the correlation matrix</h3>
+<p><strong>Figure XX</strong>: Clustered correlation matrix showing relationships between pairs of modules from the network analyses of co-expression and co-methylation. The colour shows the sign and magnitude of the Pearson correlations between the module eigengenes from the expression and methylation networks. A positive correlation between expression module <span class="math inline">\(i\)</span> and methylation module <span class="math inline">\(j\)</span> indicates that samples which had comparatively high expression of the genes in <span class="math inline">\(i\)</span> tended to have comparatively high rates of methylation in <span class="math inline">\(j\)</span>. The negative relationship between expression and methylation (where workers have higher methylation, and queens higher expression, across large numbers of genes) is apparent.</p>
+<pre class="r"><code>mod_data &lt;- left_join(
+  readRDS(&quot;output/meth_eigengenes.rds&quot;) %&gt;% 
+    dplyr::rename(Replicate = Rep) %&gt;% 
+    select(Sample, Module, Eigengene) %&gt;%
+    spread(Module, Eigengene) %&gt;%
+    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Methylation m&quot;)),
+  read_csv(&quot;output/expression_eigengenes.csv&quot;) %&gt;% 
+    dplyr::select(Sample, Module, Eigengene) %&gt;%
+    mutate(Sample = str_remove_all(Sample, &quot;RNAseq_tg_&quot;),
+           Sample = str_remove_all(Sample, &quot;_rep_&quot;)) %&gt;%
+    spread(Module, Eigengene) %&gt;%
+    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Expression m&quot;)), 
+  by = c(&quot;Sample&quot;)) %&gt;% dplyr::select(-Sample) %&gt;%
+  mutate_all(~ as.numeric(scale(.x)))# scale all the eigengenes
+
+cor_mods &lt;- cor(mod_data) 
+
+ordering &lt;- hclust(dist(cor_mods)) 
+ordering &lt;- ordering$labels[ordering$order]
+
+tidy_annotation_row &lt;- 
+  bind_rows(
+  read_csv(&quot;output/eigengene_stats_table_expr.csv&quot;) %&gt;% 
+  split(.$Module) %&gt;% map(~ sign(.x %&gt;% filter(!is.na(X8) &amp; X8 != &quot;~&quot; &amp; Time != 2) %&gt;% pull(Estimate))) %&gt;% 
+  map_chr(~ {
+    if(length(.x) == 0) return(&quot;Unbiased&quot;)
+    ifelse(unique(.x) == 1, &quot;Queen-biased&quot;, &quot;Worker-biased&quot;)
+    }) %&gt;% 
+  enframe(&quot;Module&quot;, &quot;Direction&quot;) %&gt;%
+  mutate(Module = str_replace_all(Module, &quot;Module &quot;, &quot;Expression m&quot;)) ,
+  read_csv(&quot;output/eigengene_stats_table_meth.csv&quot;) %&gt;% 
+  split(.$Module) %&gt;% map(~ sign(.x %&gt;% filter(!is.na(X8) &amp; X8 != &quot;~&quot; &amp; Time != 2) %&gt;% pull(Estimate))) %&gt;% 
+  map_chr(~ {
+    if(length(.x) == 0) return(&quot;Unbiased&quot;)
+    ifelse(unique(.x) == 1, &quot;Queen-biased&quot;, &quot;Worker-biased&quot;)
+    }) %&gt;% 
+  enframe(&quot;Module&quot;, &quot;Direction&quot;) %&gt;%
+  mutate(Module = str_replace_all(Module, &quot;Module &quot;, &quot;Methylation m&quot;)) ) %&gt;%
+  mutate(Module = factor(Module, levels = ordering)) %&gt;%
+  arrange(Module) %&gt;% as.data.frame() 
+
+annotation_row &lt;- tidy_annotation_row
+rownames(annotation_row) &lt;- annotation_row$Module
+annotation_row &lt;- annotation_row %&gt;% 
+  select(Direction) %&gt;% dplyr::rename(` ` = Direction)
+
+
+paletteLength &lt;- 50
+myColor &lt;- colorRampPalette(c(brewer.pal(9, &quot;Purples&quot;)[7], &quot;white&quot;, brewer.pal(9, &quot;Oranges&quot;)[7]))(paletteLength)
+myBreaks &lt;- c(seq(min(cor_mods, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(max(cor_mods, na.rm=T)/paletteLength, max(cor_mods, na.rm=T), length.out=floor(paletteLength/2)))
+
+annotation_colors &lt;- 
+  list(` ` = c(`Queen-biased` = queen_colour, Unbiased = &quot;white&quot;, `Worker-biased` = worker_colour))
+
+cor_mods %&gt;%
+  pheatmap(col = myColor, breaks = myBreaks,
+           annotation_row = annotation_row, annotation_col = annotation_row, annotation_colors = annotation_colors,
+           cutree_rows = 6, cutree_cols = 6,
+           border_color = &quot;grey30&quot;, number_color = &quot;red&quot;,
+           show_colnames = FALSE)</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="table-of-significant-correlations-between-expression-and-methylation-module-eigengenes" class="section level3">
+<h3>Table of significant correlations between expression and methylation module eigengenes</h3>
+<pre class="r"><code>corr.test_results &lt;- psych::corr.test(mod_data, adjust = &quot;BH&quot;)
+
+sig_corr &lt;- reshape2::melt(corr.test_results$p) %&gt;% 
+  dplyr::rename(p = value) %&gt;% filter(p &lt; 0.05) %&gt;% 
+  filter((str_detect(Var1, &quot;Expres&quot;) &amp; str_detect(Var2, &quot;Meth&quot;)) | 
+           (str_detect(Var2, &quot;Expres&quot;) &amp; str_detect(Var1, &quot;Meth&quot;))) %&gt;% 
+  as.data.frame()
+
+
+sig_corr &lt;- reshape2::melt(corr.test_results$r) %&gt;% 
+  filter(paste(Var1, Var2) %in% paste(sig_corr$Var1, sig_corr$Var2)) %&gt;% 
+  dplyr::rename(`r` = value) %&gt;%
+  left_join(sig_corr, by = c(&quot;Var1&quot;, &quot;Var2&quot;)) %&gt;%
+  dplyr::rename(`Expression module` = Var1,
+                `Methylation module` = Var2) %&gt;% 
+  arrange(p) %&gt;%
+  mutate(swap = str_detect(`Expression module`, &quot;Meth&quot;),
+         temp1 = `Expression module`,
+         temp1 = replace(temp1, swap, `Methylation module`[swap]),
+         temp2 = `Methylation module`,
+         temp2 = replace(temp2, swap, `Expression module`[swap]),
+         `Expression module` = temp1,
+         `Methylation module` = temp2,
+         r = format(round(r, 2), nsmall = 2),
+         p = format(round(p, 4), nsmall = 4)) %&gt;%
+  dplyr::rename(`Adjusted p` = p) %&gt;%
+  dplyr::select(-swap, -temp1, -temp2) %&gt;% 
+  left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Expression&quot;)),
+            by = c(&quot;Expression module&quot; = &quot;Module&quot;)) %&gt;% rename(expr_direction = Direction) %&gt;% 
+  left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Methylation&quot;)),
+            by = c(&quot;Methylation module&quot; = &quot;Module&quot;)) %&gt;% rename(meth_direction = Direction) %&gt;%
+  mutate(`Expression module` = str_remove_all(`Expression module`, &quot;Expression &quot;),
+         `Methylation module` = str_remove_all(`Methylation module`, &quot;Methylation &quot;),
+         `Expression module` = paste(`Expression module`, expr_direction, sep = &quot;: &quot;),
+         `Methylation module` = paste(`Methylation module`, meth_direction, sep = &quot;: &quot;)) %&gt;%
+  dplyr::select(-ends_with(&quot;direction&quot;))</code></pre>
+<p>Results of Spearman’s correlations testing the null hypothesis that the true correlation between each pair of expression eigengenes and methylation eigengenes is zero. The table shows the 30 pairs of expression and methylation modules whose eigengenes were significantly correlated across samples. All of the correlations are negative, and all of them involve module pairs for which the constituent genes show higher methylation in worker-destined larvae and higher expression in queen-destined larvae. This suggests that groups of genes become hyper-methylated in workers, at the same time as groups of genes are being transcriptionally down-regulated in workers. Or, conversely, that groups of genes become hypo-methylated in queens, at the same time as groups of genes are being transcriptionally up-regulated in queens. The p-values are adjusted for multiple testing using the Benjamini-Hochberg method. Note that the correlation coefficients are quite high, indicating that differences in methylation and expression covary strongly across samples.</p>
+<pre class="r"><code>sig_corr %&gt;%
+  kable() %&gt;%
+  kable_styling(full_width = FALSE)  %&gt;%
+  scroll_box(height = &quot;500px&quot;)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; ">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Expression module
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Methylation module
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+r
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Adjusted p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.54
+</td>
+<td style="text-align:left;">
+0.0040
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m6: Queen-biased
+</td>
+<td style="text-align:left;">
+m2: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.51
+</td>
+<td style="text-align:left;">
+0.0064
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m15: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.50
+</td>
+<td style="text-align:left;">
+0.0080
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m7: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.50
+</td>
+<td style="text-align:left;">
+0.0084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m15: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.48
+</td>
+<td style="text-align:left;">
+0.0119
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.48
+</td>
+<td style="text-align:left;">
+0.0120
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m4: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.47
+</td>
+<td style="text-align:left;">
+0.0124
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m4: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.47
+</td>
+<td style="text-align:left;">
+0.0134
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m6: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.47
+</td>
+<td style="text-align:left;">
+0.0139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m14: Unbiased
+</td>
+<td style="text-align:left;">
+m5: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.45
+</td>
+<td style="text-align:left;">
+0.0174
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.54
+</td>
+<td style="text-align:left;">
+0.0204
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m2: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.44
+</td>
+<td style="text-align:left;">
+0.0210
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m6: Queen-biased
+</td>
+<td style="text-align:left;">
+m2: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.51
+</td>
+<td style="text-align:left;">
+0.0288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m0: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.42
+</td>
+<td style="text-align:left;">
+0.0289
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m4: Queen-biased
+</td>
+<td style="text-align:left;">
+m2: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.42
+</td>
+<td style="text-align:left;">
+0.0294
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m7: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.42
+</td>
+<td style="text-align:left;">
+0.0309
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m5: Queen-biased
+</td>
+<td style="text-align:left;">
+m2: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.41
+</td>
+<td style="text-align:left;">
+0.0316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m5: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.41
+</td>
+<td style="text-align:left;">
+0.0327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m15: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.50
+</td>
+<td style="text-align:left;">
+0.0339
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m7: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.50
+</td>
+<td style="text-align:left;">
+0.0350
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m0: Unbiased
+</td>
+<td style="text-align:left;">
+m5: Worker-biased
+</td>
+<td style="text-align:left;">
+0.41
+</td>
+<td style="text-align:left;">
+0.0356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m15: Queen-biased
+</td>
+<td style="text-align:left;">
+m5: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.41
+</td>
+<td style="text-align:left;">
+0.0357
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m0: Unbiased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+0.41
+</td>
+<td style="text-align:left;">
+0.0358
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m6: Queen-biased
+</td>
+<td style="text-align:left;">
+m4: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.41
+</td>
+<td style="text-align:left;">
+0.0359
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m11: Unbiased
+</td>
+<td style="text-align:left;">
+m2: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.39
+</td>
+<td style="text-align:left;">
+0.0460
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m12: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.48
+</td>
+<td style="text-align:left;">
+0.0474
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m15: Queen-biased
+</td>
+<td style="text-align:left;">
+m1: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.48
+</td>
+<td style="text-align:left;">
+0.0474
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m4: Queen-biased
+</td>
+<td style="text-align:left;">
+m5: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.38
+</td>
+<td style="text-align:left;">
+0.0477
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m15: Queen-biased
+</td>
+<td style="text-align:left;">
+m0: Worker-biased
+</td>
+<td style="text-align:left;">
+-0.38
+</td>
+<td style="text-align:left;">
+0.0478
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m4: Queen-biased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+-0.47
+</td>
+<td style="text-align:left;">
+0.0485
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.0.0 (2020-04-24)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Catalina 10.15.4
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+ [1] pheatmap_1.0.12    RColorBrewer_1.1-2 kableExtra_1.1.0   forcats_0.5.0     
+ [5] stringr_1.4.0      dplyr_1.0.0        purrr_0.3.4        readr_1.3.1       
+ [9] tidyr_1.1.0        tibble_3.0.1       ggplot2_3.3.1      tidyverse_1.3.0   
+[13] workflowr_1.6.2   
+
+loaded via a namespace (and not attached):
+ [1] httr_1.4.1        jsonlite_1.7.0    viridisLite_0.3.0 splines_4.0.0    
+ [5] tmvnsim_1.0-2     modelr_0.1.8      assertthat_0.2.1  highr_0.8        
+ [9] blob_1.2.1        cellranger_1.1.0  yaml_2.2.1        pillar_1.4.4     
+[13] backports_1.1.7   lattice_0.20-41   glue_1.4.1        digest_0.6.25    
+[17] promises_1.1.0    rvest_0.3.5       colorspace_1.4-1  plyr_1.8.6       
+[21] htmltools_0.5.0   httpuv_1.5.3.1    Matrix_1.2-18     psych_1.9.12.31  
+[25] pkgconfig_2.0.3   broom_0.5.6       haven_2.3.1       scales_1.1.1     
+[29] webshot_0.5.2     whisker_0.4       later_1.0.0       git2r_0.27.1     
+[33] mgcv_1.8-31       generics_0.0.2    farver_2.0.3      ellipsis_0.3.1   
+[37] withr_2.2.0       hexbin_1.28.1     cli_2.0.2         mnormt_2.0.0     
+[41] magrittr_1.5      crayon_1.3.4      readxl_1.3.1      evaluate_0.14    
+[45] fs_1.4.1          fansi_0.4.1       nlme_3.1-148      xml2_1.3.2       
+[49] tools_4.0.0       hms_0.5.3         lifecycle_0.2.0   munsell_0.5.0    
+[53] reprex_0.3.0      compiler_4.0.0    rlang_0.4.6       grid_4.0.0       
+[57] rstudioapi_0.11   labeling_0.3      rmarkdown_2.3     gtable_0.3.0     
+[61] DBI_1.1.0         reshape2_1.4.4    R6_2.4.1          lubridate_1.7.8  
+[65] knitr_1.29        rprojroot_1.3-2   stringi_1.4.6     parallel_4.0.0   
+[69] Rcpp_1.0.4.6      vctrs_0.3.0       dbplyr_1.4.4      tidyselect_1.1.0 
+[73] xfun_0.15        </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
