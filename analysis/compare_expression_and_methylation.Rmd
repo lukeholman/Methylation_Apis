@@ -1,0 +1,406 @@
+---
+title: "Comparisons of the expression and DNA methylation data"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide 
+---
+
+```{r pkgs, results='hide', message=FALSE, warning=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(RColorBrewer)
+library(pheatmap)
+
+# Load annotations
+annotations <- readRDS("data/Methylation_data/meth_site_annotations.rds")
+
+# Load BWASP results
+bwasp_sig_genes <- readRDS("output/bwasp_sig_genes.rds")
+
+# Load Bayesian GAM methylation results
+model_results <- list.files("output/meth_sites_brms", 
+                            pattern = "meth_brms_", full.names = TRUE) %>%
+  map(~ tryCatch(readRDS(.x), error = function(e) NULL))
+sites <- map_chr(model_results, ~ .x$site)
+
+caste_difference <- map(model_results, ~ .x$caste_difference)
+caste_difference <- map_df(1:length(caste_difference), 
+                           ~ mutate(caste_difference[[.x]], site = sites[.x]))
+
+time_difference <- map(model_results, ~ .x$time_difference) 
+time_difference <- map_df(1:length(time_difference), 
+                           ~ mutate(time_difference[[.x]], site = sites[.x])) %>%
+  filter(!is.nan(Estimate))
+
+# Criterion for significance: B-H adjusted p < 0.05
+sig_sites_caste <- caste_difference %>%
+  group_by(site) %>%
+  summarise(sig = ifelse(any(p.adjust(p, method = "BH") < 0.05), TRUE, FALSE), 
+            .groups = "drop") %>%
+  filter(sig) %>% pull(site)
+
+sig_sites_time <- time_difference %>%
+  group_by(site, Caste) %>%
+  summarise(sig = ifelse(any(p.adjust(p, method = "BH") < 0.05), TRUE, FALSE), 
+            .groups = "drop") %>%
+  filter(sig) %>% 
+  spread(Caste, sig)
+
+sig_sites_time_queen <- sig_sites_time %>% filter(q) %>% pull(site)
+sig_sites_time_worker <- sig_sites_time %>% filter(w) %>% pull(site)
+
+gene_meth_results_table <- tibble(site = sites) %>%
+  left_join(annotations, by = "site") %>%
+  dplyr::select(gene_name, gene, site) %>%
+  mutate(sig_caste = ifelse(site %in% sig_sites_caste, "\\*", " "),
+         sig_time_queen = ifelse(site %in% sig_sites_time_queen, "\\*", " "),
+         sig_time_worker = ifelse(site %in% sig_sites_time_worker, "\\*", " "),
+         site_old = site,
+         site = map_chr(strsplit(site, split = "~"), 
+                        ~ paste0(c(.x[1], .x[2]), collapse = ", pos:"))) %>%
+  arrange(desc(sig_caste), desc(sig_time_queen), desc(sig_time_worker), gene_name) 
+
+
+
+
+# Define a function to test whether the overlap of two sets of differentially expressed genes, 
+# drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
+# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
+overlap_hypergeometric_test <- function(
+  n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
+  
+  # Expected number of overlaps under the null the two gene lists are independent
+  exp_n_overlaps <- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
+
+  if(n_overlaps > exp_n_overlaps){ # p getting that number or larger...
+    p <- 1 - phyper(n_overlaps - 1, n_gene_set1, 
+                    overall_n_genes - n_gene_set1, n_in_set2)
+    
+  }
+  
+  if(n_overlaps < exp_n_overlaps){ # p getting that number or smaller...
+    p <- phyper(n_overlaps - 1, n_gene_set1, 
+                overall_n_genes - n_gene_set1, n_in_set2)
+  }
+  
+  tibble(
+    `Observed n overlaps` = n_overlaps,
+    `Expected n overlaps` = NA,
+    `Enrichment ratio` = round(n_overlaps / exp_n_overlaps, 2),
+    `One-tailed p` = round(p, 4)) %>% # p-value that the overlap is *higher* than expected under the null
+    mutate(`Expected n overlaps` = round(exp_n_overlaps, 1))
+}
+
+
+# define plot colours
+queen_colour <- "#d13b40"
+worker_colour <- RColorBrewer::brewer.pal(7, "Blues")[4]
+```
+
+
+## Comparing significant gene lists from expression and methylation analyses {.tabset}
+
+Here, we give tables showing genes that showed a statistically significant caste difference for both expression and methylation. 
+
+We also use a hypergeometric test to test how many genes were significant (and how many were tested in total) in both the differential expression and differential methylation assays, and test whether the number of overlaps is greater or lower than expected under the null model that the two gene lists are independent (using a hypergeometric test via the `phyper` function). 
+
+Using the BWASP results, the overlap of gene lists was not significant. However for the Bayesian GAM, the overlap was _lower_ than expected under the null ($p < 0.0001$), indicating that the genes that show differential methylation are less likely than average to show differential expression (and _vice versa_).
+
+Notably, _Complementary sex determiner_ is significant in all three analyses (expression, and both versions of the methylation analyses). _maternal protein tudor_ shows differential expression, and significant differential methylation (in the Bayesian GAM).
+
+### Using the BWASP methylation results
+
+```{r warning=FALSE, message=FALSE}
+genes_tested_meth <- colnames(readRDS("data/Methylation_data/input_data_for_meth_network_CLEANED.rds"))
+genes_tested_expr <- read_csv("output/caste_results.csv")$`Gene symbol` %>% unique()
+universe <- intersect(genes_tested_expr, genes_tested_meth)
+sig_diff_expr <- read_csv("output/caste_results.csv") %>% 
+  filter(adj.P.Val < 0.05 & `Gene symbol` %in% universe) %>% pull(`Gene symbol`) %>% unique()
+sig_diff_meth <- bwasp_sig_genes$bwasp_caste_sig_genes$`Gene name` %>% as.character() %>% unique()
+
+inters <- intersect(sig_diff_expr, annotations$gene[match(sig_diff_meth, annotations$gene_name)])
+n_overlaps <- length(inters)
+
+bwasp_table <- annotations %>%
+  filter(gene %in% inters) %>% 
+  dplyr::select(gene_name) %>% distinct() %>%
+  dplyr::rename(`Genes showing both differential expression and methylation (BWASP pipeline)` = gene_name) 
+
+bwasp_hypergeometric <- overlap_hypergeometric_test(
+  n_overlaps, 
+  length(sig_diff_expr),
+  length(sig_diff_meth),
+  length(universe))
+
+
+bwasp_table %>%
+  kable() %>% kable_styling(full_width = FALSE) 
+
+bwasp_hypergeometric %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+
+
+### Using the Bayesian GAM methylation results
+```{r message=FALSE, warning=FALSE}
+genes_tested_meth <- map_chr(model_results, ~ .x$genes$gene[1]) %>% unique()
+universe <- intersect(genes_tested_expr, genes_tested_meth)
+sig_diff_meth <- gene_meth_results_table %>% 
+  filter(sig_caste == "\\*" & gene %in% universe) %>% pull(gene)  %>% unique()
+inters <- intersect(sig_diff_expr, sig_diff_meth)
+n_overlaps <- length(inters)
+
+bayes_table <- annotations %>%
+  filter(gene %in% inters) %>% 
+  dplyr::select(gene_name) %>% distinct() %>%
+  dplyr::rename(`Genes showing both differential expression and methylation (Bayesian GAM)` = gene_name) 
+
+bayes_hypergeometric <- overlap_hypergeometric_test(
+  n_overlaps, 
+  length(sig_diff_expr),
+  length(sig_diff_meth),
+  length(universe))
+
+bayes_table %>%
+  kable() %>% kable_styling(full_width = FALSE) %>%
+  scroll_box(height = "300px")
+
+bayes_hypergeometric %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+
+
+## Caste differences in gene expression correlate with differences in methylation {.tabset}
+
+### Plot the relationship
+This binned scatterplot illustrates that genes showing queen-biased methylation tended to show worker-biased expression, and _vice versa_. The relationship appears weak and noisy, though we note that both the x and y axes are measured with considerable error, which would obscure the underlying correlation. The relationship appears to grow stronger at later time points, and the correlation is significantly negative for the 4h, 6h, and 8h (but not 2h) time points.
+
+```{r geneExpr, message=FALSE}
+if(!file.exists("output/meth_geneExpr_relationship_data_caste.csv")){
+  
+  meth_geneExpr_relationship_data_caste <- read_csv("output/caste_results.csv") %>%
+    select(Time, `Gene symbol`, logFC) %>%
+    left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+                filter(grepl("queen", comparison) & grepl("worker", comparison)) %>%
+                mutate(time = str_extract(comparison, "[2468]")) %>%
+                group_by(Genes, time) %>%
+                summarise(mean_meth_diff = mean(meth.diff)) %>% 
+                mutate(time = as.numeric(time)), 
+              by = c(`Gene symbol` = "Genes", "Time" = "time")) %>%
+    filter(!is.na(mean_meth_diff) & !is.na(logFC))
+  
+  meth_geneExpr_relationship_data_timeQ <- read_csv("output/time_results.csv") %>%
+    filter(Caste == "Queen") %>%
+    select(Time, `Gene symbol`, logFC) %>%
+    left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+                filter(grepl("queen", comparison) & !grepl("worker", comparison)) %>%
+                mutate(time = str_extract_all(comparison, "[2468]") %>%
+                         map_chr(~ paste0(.x, collapse = " vs "))) %>%
+                group_by(Genes, time) %>%
+                summarise(mean_meth_diff = mean(meth.diff)), 
+              by = c(`Gene symbol` = "Genes", "Time" = "time")) %>%
+    filter(!is.na(mean_meth_diff) & !is.na(logFC))
+  
+  meth_geneExpr_relationship_data_timeW <- read_csv("output/time_results.csv") %>%
+    filter(Caste == "Worker") %>%
+    select(Time, `Gene symbol`, logFC) %>%
+    left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+                filter(!grepl("queen", comparison) & grepl("worker", comparison)) %>%
+                mutate(time = str_extract_all(comparison, "[2468]") %>%
+                         map_chr(~ paste0(.x, collapse = " vs "))) %>%
+                group_by(Genes, time) %>%
+                summarise(mean_meth_diff = mean(meth.diff)), 
+              by = c(`Gene symbol` = "Genes", "Time" = "time")) %>%
+    filter(!is.na(mean_meth_diff) & !is.na(logFC))
+  
+  write_csv(meth_geneExpr_relationship_data_caste, "output/meth_geneExpr_relationship_data_caste.csv")
+  write_csv(meth_geneExpr_relationship_data_timeQ, "output/meth_geneExpr_relationship_data_timeQ.csv")
+  write_csv(meth_geneExpr_relationship_data_timeW, "output/meth_geneExpr_relationship_data_timeW.csv")
+  
+} else {
+  meth_geneExpr_relationship_data_caste <- read_csv("output/meth_geneExpr_relationship_data_caste.csv")
+  meth_geneExpr_relationship_data_timeQ <- read_csv("output/meth_geneExpr_relationship_data_timeQ.csv")
+  meth_geneExpr_relationship_data_timeW <- read_csv("output/meth_geneExpr_relationship_data_timeW.csv")
+}
+
+hex_plot <- function(dat){
+  
+  ggplot(dat, aes(-1 * mean_meth_diff, logFC)) + 
+    geom_hline(yintercept = 0, linetype = 2) + 
+    geom_vline(xintercept = 0, linetype = 2) + 
+    geom_hex(bins = 50) + 
+    stat_smooth(method = "lm",  size = .7, colour = "red") + 
+    xlab("Caste difference in mean % methylation\n(higher values mean more methylation in queens)") + 
+    ylab("Caste difference in gene expression\n(Log FC; higher values mean more expression in queens)") + 
+    facet_wrap(~ paste(Time, "h post-grafting", sep = "")) + 
+    scale_fill_viridis_c(option = "A", direction = 1)
+}
+meth_geneExpr_relationship_data_caste %>% hex_plot()
+# meth_geneExpr_relationship_data_timeQ %>% hex_plot()
+# meth_geneExpr_relationship_data_timeW %>% hex_plot()
+```
+
+### Run Spearman's rank correlations
+
+There is a significant, negative relationship between the caste bias in methylation and the caste bias in gene expression, at times 4h, 6h, and 8h (but not time 2h) post-grafting. The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM. 
+
+```{r warning=FALSE}
+run_corr <- function(time, dat){
+  xx <- cor.test(
+    filter(dat, Time == time)$mean_meth_diff * -1,
+    filter(dat, Time == time)$logFC, 
+    method = "spearman")
+  tibble(time = time, rho = xx$estimate, p = xx$p.value)
+}
+map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_caste)) %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
+
+<!-- #### Correlations between temporally-variable methylation and temporally-variable expression within castes -->
+<!-- Here, we see that there are significant correlations between the change in methylation levels and the change in expression levels between some pairs of time points. However, some of these correlations are negative (which suggests that genes for which the % methylated sites declined showed increasing expression levels), and some are positive (indicating that genes that gained methylation increased in expression). Specifically, the correlation was positive when comparing 2h and 8h samples (for both castes), and was negative when comparing 4h and 6h samples (significantly so in workers but not queens). The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM.  -->
+
+<!-- ```{r warning=FALSE} -->
+<!-- run_corr <- function(time, dat){ -->
+<!--   xx <- cor.test( -->
+<!--     filter(dat, Time == time)$mean_meth_diff * -1, -->
+<!--     filter(dat, Time == time)$logFC,  -->
+<!--     method = "spearman") -->
+<!--   tibble(time = time, rho = xx$estimate, p = xx$p.value) -->
+<!-- } -->
+
+<!-- map_df(unique(meth_geneExpr_relationship_data_timeQ$Time),  -->
+<!--        ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_timeQ)) %>% -->
+<!--   mutate(Caste = "Queens") %>% -->
+<!--   bind_rows( -->
+<!--     map_df(unique(meth_geneExpr_relationship_data_timeW$Time),  -->
+<!--            ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_timeW)) %>% -->
+<!--       mutate(Caste = "Workers")  -->
+<!--   ) %>% -->
+<!--   kable() %>% kable_styling(full_width = FALSE) -->
+<!-- ``` -->
+
+
+
+
+
+
+## Correlations between expression and methylation modules
+
+### Plot of the correlation matrix
+
+**Figure XX**: Clustered correlation matrix showing relationships between pairs of modules from the network analyses of co-expression and co-methylation. The colour shows the sign and magnitude of the Pearson correlations between the module eigengenes from the expression and methylation networks. A positive correlation between expression module $i$ and methylation module $j$ indicates that samples which had comparatively high expression of the genes in $i$ tended to have comparatively high rates of methylation in $j$. The negative relationship between expression and methylation (where workers have higher methylation, and queens higher expression, across large numbers of genes) is apparent. 
+
+```{r warning=F, message=F}
+mod_data <- left_join(
+  readRDS("output/meth_eigengenes.rds") %>% 
+    dplyr::rename(Replicate = Rep) %>% 
+    select(Sample, Module, Eigengene) %>%
+    spread(Module, Eigengene) %>%
+    rename_all(~ str_replace_all(.x, "Module ", "Methylation m")),
+  read_csv("output/expression_eigengenes.csv") %>% 
+    dplyr::select(Sample, Module, Eigengene) %>%
+    mutate(Sample = str_remove_all(Sample, "RNAseq_tg_"),
+           Sample = str_remove_all(Sample, "_rep_")) %>%
+    spread(Module, Eigengene) %>%
+    rename_all(~ str_replace_all(.x, "Module ", "Expression m")), 
+  by = c("Sample")) %>% dplyr::select(-Sample) %>%
+  mutate_all(~ as.numeric(scale(.x)))# scale all the eigengenes
+
+cor_mods <- cor(mod_data) 
+
+ordering <- hclust(dist(cor_mods)) 
+ordering <- ordering$labels[ordering$order]
+
+tidy_annotation_row <- 
+  bind_rows(
+  read_csv("output/eigengene_stats_table_expr.csv") %>% 
+  split(.$Module) %>% map(~ sign(.x %>% filter(!is.na(X8) & X8 != "~" & Time != 2) %>% pull(Estimate))) %>% 
+  map_chr(~ {
+    if(length(.x) == 0) return("Unbiased")
+    ifelse(unique(.x) == 1, "Queen-biased", "Worker-biased")
+    }) %>% 
+  enframe("Module", "Direction") %>%
+  mutate(Module = str_replace_all(Module, "Module ", "Expression m")) ,
+  read_csv("output/eigengene_stats_table_meth.csv") %>% 
+  split(.$Module) %>% map(~ sign(.x %>% filter(!is.na(X8) & X8 != "~" & Time != 2) %>% pull(Estimate))) %>% 
+  map_chr(~ {
+    if(length(.x) == 0) return("Unbiased")
+    ifelse(unique(.x) == 1, "Queen-biased", "Worker-biased")
+    }) %>% 
+  enframe("Module", "Direction") %>%
+  mutate(Module = str_replace_all(Module, "Module ", "Methylation m")) ) %>%
+  mutate(Module = factor(Module, levels = ordering)) %>%
+  arrange(Module) %>% as.data.frame() 
+
+annotation_row <- tidy_annotation_row
+rownames(annotation_row) <- annotation_row$Module
+annotation_row <- annotation_row %>% 
+  select(Direction) %>% dplyr::rename(` ` = Direction)
+
+
+paletteLength <- 50
+myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
+myBreaks <- c(seq(min(cor_mods, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
+              seq(max(cor_mods, na.rm=T)/paletteLength, max(cor_mods, na.rm=T), length.out=floor(paletteLength/2)))
+
+annotation_colors <- 
+  list(` ` = c(`Queen-biased` = queen_colour, Unbiased = "white", `Worker-biased` = worker_colour))
+
+cor_mods %>%
+  pheatmap(col = myColor, breaks = myBreaks,
+           annotation_row = annotation_row, annotation_col = annotation_row, annotation_colors = annotation_colors,
+           cutree_rows = 6, cutree_cols = 6,
+           border_color = "grey30", number_color = "red",
+           show_colnames = FALSE)
+```
+
+### Table of significant correlations between expression and methylation module eigengenes
+
+```{r}
+corr.test_results <- psych::corr.test(mod_data, adjust = "BH")
+
+sig_corr <- reshape2::melt(corr.test_results$p) %>% 
+  dplyr::rename(p = value) %>% filter(p < 0.05) %>% 
+  filter((str_detect(Var1, "Expres") & str_detect(Var2, "Meth")) | 
+           (str_detect(Var2, "Expres") & str_detect(Var1, "Meth"))) %>% 
+  as.data.frame()
+
+
+sig_corr <- reshape2::melt(corr.test_results$r) %>% 
+  filter(paste(Var1, Var2) %in% paste(sig_corr$Var1, sig_corr$Var2)) %>% 
+  dplyr::rename(`r` = value) %>%
+  left_join(sig_corr, by = c("Var1", "Var2")) %>%
+  dplyr::rename(`Expression module` = Var1,
+                `Methylation module` = Var2) %>% 
+  arrange(p) %>%
+  mutate(swap = str_detect(`Expression module`, "Meth"),
+         temp1 = `Expression module`,
+         temp1 = replace(temp1, swap, `Methylation module`[swap]),
+         temp2 = `Methylation module`,
+         temp2 = replace(temp2, swap, `Expression module`[swap]),
+         `Expression module` = temp1,
+         `Methylation module` = temp2,
+         r = format(round(r, 2), nsmall = 2),
+         p = format(round(p, 4), nsmall = 4)) %>%
+  dplyr::rename(`Adjusted p` = p) %>%
+  dplyr::select(-swap, -temp1, -temp2) %>% 
+  left_join(tidy_annotation_row %>% filter(str_detect(Module, "Expression")),
+            by = c("Expression module" = "Module")) %>% rename(expr_direction = Direction) %>% 
+  left_join(tidy_annotation_row %>% filter(str_detect(Module, "Methylation")),
+            by = c("Methylation module" = "Module")) %>% rename(meth_direction = Direction) %>%
+  mutate(`Expression module` = str_remove_all(`Expression module`, "Expression "),
+         `Methylation module` = str_remove_all(`Methylation module`, "Methylation "),
+         `Expression module` = paste(`Expression module`, expr_direction, sep = ": "),
+         `Methylation module` = paste(`Methylation module`, meth_direction, sep = ": ")) %>%
+  dplyr::select(-ends_with("direction"))
+```
+
+Results of Spearman's correlations testing the null hypothesis that the true correlation between each pair of expression eigengenes and methylation eigengenes is zero. The table shows the `r nrow(sig_corr)` pairs of expression and methylation modules whose eigengenes were significantly correlated across samples. All of the correlations are negative, and all of them involve module pairs for which the constituent genes show higher methylation in worker-destined larvae and higher expression in queen-destined larvae. This suggests that groups of genes become hyper-methylated in workers, at the same time as groups of genes are being transcriptionally down-regulated in workers. Or, conversely, that groups of genes become hypo-methylated in queens, at the same time as groups of genes are being transcriptionally up-regulated in queens. The p-values are adjusted for multiple testing using the Benjamini-Hochberg method. Note that the correlation coefficients are quite high, indicating that differences in methylation and expression covary strongly across samples.
+
+```{r}
+sig_corr %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)  %>%
+  scroll_box(height = "500px")
+```
+
