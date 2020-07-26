@@ -15,3 +15,6 @@ Click [here](diff_expression.html)
 
 ### Differential methylation analysis
 Click [here](diff_methylation.html) 
+
+### Comparing the expression and methylation analysis
+Click [here](compare_expression_and_methylation.html) 
