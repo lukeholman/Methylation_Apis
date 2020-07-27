@@ -396,7 +396,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -405,7 +405,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -414,10 +414,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-07-26
+<strong>Last updated:</strong> 2020-07-27
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -433,12 +433,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -505,16 +505,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree441676ad1920a8c6c73e39b2e0fbc12f870befd1targetblank441676aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/441676ad1920a8c6c73e39b2e0fbc12f870befd1" target="_blank">441676a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree291f41bff2bbad07c40de18b9288ec899aeb55actargetblank291f41ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/291f41bff2bbad07c40de18b9288ec899aeb55ac" target="_blank">291f41b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree441676ad1920a8c6c73e39b2e0fbc12f870befd1targetblank441676aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree291f41bff2bbad07c40de18b9288ec899aeb55actargetblank291f41ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/441676ad1920a8c6c73e39b2e0fbc12f870befd1" target="_blank">441676a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/291f41bff2bbad07c40de18b9288ec899aeb55ac" target="_blank">291f41b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -525,6 +525,7 @@ Ignored files:
     Ignored:    .Rapp.history
     Ignored:    .Rproj.user/
     Ignored:    Expression/
+    Ignored:    analysis/figure/
     Ignored:    data/
     Ignored:    figures/.DS_Store
     Ignored:    output/
@@ -533,10 +534,8 @@ Untracked files:
     Untracked:  figures/meth_nmds_plot.rds
 
 Unstaged changes:
-    Modified:   analysis/diff_expression.Rmd
+    Modified:   analysis/compare_expression_and_methylation.Rmd
     Modified:   analysis/diff_methylation.Rmd
-    Modified:   code/create_merged_data.R
-    Modified:   code/get_warner_and_holman_data.R
     Modified:   figures/eigengenes_expression_network.pdf
     Modified:   figures/eigengenes_meth_network_fig.pdf
 
@@ -579,6 +578,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/184f525c0b4e7aa658bebed7f178ed7f1bc74761/docs/compare_expression_and_methylation.html" target="_blank">184f525</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -605,9 +621,14 @@ wflow_publish(“analysis/compare_expression_and_methylation.Rmd”)
 library(kableExtra)
 library(RColorBrewer)
 library(pheatmap)
+library(dbplyr)
+library(DBI)
+library(RSQLite)
+library(gridExtra)
 
-# Load annotations
+# Load annotations and database
 annotations &lt;- readRDS(&quot;data/Methylation_data/meth_site_annotations.rds&quot;)
+db &lt;- dbConnect(SQLite(), &quot;data/apis_db.sqlite3&quot;) # DBI::dbListTables(db)
 
 # Load BWASP results
 bwasp_sig_genes &lt;- readRDS(&quot;output/bwasp_sig_genes.rds&quot;)
@@ -1035,6 +1056,43 @@ hex_plot &lt;- function(dat){
 }
 meth_geneExpr_relationship_data_caste %&gt;% hex_plot()</code></pre>
 <p><img src="figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-geneExpr-1">
+Past versions of geneExpr-1.png
+</button>
+</p>
+<div id="fig-geneExpr-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/184f525c0b4e7aa658bebed7f178ed7f1bc74761/docs/figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" target="_blank">184f525</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-26
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code># meth_geneExpr_relationship_data_timeQ %&gt;% hex_plot()
 # meth_geneExpr_relationship_data_timeW %&gt;% hex_plot()</code></pre>
 </div>
@@ -1200,6 +1258,43 @@ cor_mods %&gt;%
            border_color = &quot;grey30&quot;, number_color = &quot;red&quot;,
            show_colnames = FALSE)</code></pre>
 <p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/184f525c0b4e7aa658bebed7f178ed7f1bc74761/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">184f525</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-26
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-of-significant-correlations-between-expression-and-methylation-module-eigengenes" class="section level3">
 <h3>Table of significant correlations between expression and methylation module eigengenes</h3>
@@ -1686,6 +1781,290 @@ m3: Unbiased
 </tbody>
 </table>
 </div>
+</div>
+</div>
+<div id="compare-our-expresison-and-methylation-results-to-past-work" class="section level2">
+<h2>Compare our expresison and methylation results to past work</h2>
+<pre class="r"><code>source(&quot;code/create_merged_data.R&quot;)
+ 
+merged_data &lt;- merged_data %&gt;% 
+  dplyr::select(-beebase, -gene_name, -entrez_id) %&gt;%
+  dplyr::select(gene, everything())</code></pre>
+<p>Correlations across <em>Apis</em> genes in all sorts of variables from various studies:</p>
+<pre class="r"><code>corrs &lt;- merged_data %&gt;%
+  rename_all(~ str_replace_all(.x, &quot;\n&quot;, &quot; &quot;)) %&gt;%
+  dplyr::select(-gene) %&gt;%
+  cor(use = &quot;pairwise.complete.obs&quot;, method = &quot;spearman&quot;)
+
+paletteLength &lt;- 50
+myColor &lt;- colorRampPalette(c(brewer.pal(9, &quot;Blues&quot;)[6], &quot;white&quot;, brewer.pal(9, &quot;Reds&quot;)[7]))(paletteLength)
+myBreaks &lt;- c(seq(min(corrs, na.rm=T), 0, length.out = ceiling(paletteLength/2) + 1), 
+              seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out=floor(paletteLength/2)))
+
+pheatmap(corrs, color = myColor, breaks = myBreaks,
+         clustering_distance_rows = &quot;correlation&quot;,
+         clustering_distance_cols = &quot;correlation&quot;,
+         border_color = &quot;grey20&quot;,
+         cutree_rows = 6, cutree_cols = 6, show_colnames = F)</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>Scatterplots showing some of these same relationships explicitly:</p>
+<p>(NB I need to find out what positive logFC means for the Wojciechowski histone data)</p>
+<pre class="r"><code>make_a_plot &lt;- function(yvar, xvar){
+  
+  merged_data &lt;- merged_data %&gt;%
+    dplyr::select(-gene) # %&gt;%    mutate_all( ~ as.numeric(scale((.x))))
+  
+  names(merged_data)[names(merged_data) == yvar] &lt;- &quot;y&quot;
+  names(merged_data)[names(merged_data) == xvar] &lt;- &quot;x&quot;
+  
+  merged_data &lt;- merged_data %&gt;% 
+    dplyr::select(x, y)
+  merged_data &lt;- merged_data[complete.cases(merged_data), ]
+  merged_data &lt;- merged_data[is.finite(merged_data$y), ]
+  if(nrow(merged_data) == 0) return(NULL) 
+  
+  ylim &lt;- range(merged_data$y)
+  ylim[1] &lt;- ylim[1] - (ylim[1]*0.05)
+  ylim[2] &lt;- ylim[2] + (ylim[2]*0.05)
+  
+  p &lt;- ggplot(merged_data, aes(x, y)) + 
+    geom_vline(xintercept = 0, linetype = 2, colour = &quot;black&quot;) 
+  
+  if(min(merged_data$y) &lt; 0 ) {
+    p &lt;- p + geom_hline(yintercept = 0, linetype = 2, colour = &quot;black&quot;)
+  }
+  
+  ylab &lt;- str_remove_all(yvar, &quot;Warner_&quot;)
+  
+  p + stat_bin_hex() + 
+    stat_smooth(method = &quot;loess&quot;, colour = &quot;tomato&quot;, formula = &quot;y ~ x&quot;) + 
+    scale_fill_viridis_c(option = &quot;D&quot;) +
+    coord_cartesian(ylim = ylim) + 
+    ylab(ylab) + xlab(NULL) + 
+    theme_bw(10) + 
+    theme(legend.position = &quot;none&quot;) 
+}
+variables &lt;- names(sapply(merged_data, is.numeric)[sapply(merged_data, is.numeric)])
+
+plots_expression &lt;- variables[variables != &quot;Caste difference in expression in 8h larvae (positive: W &gt; Q)&quot;] %&gt;%
+  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in expression in 8h larvae (positive: W &gt; Q)&quot;) 
+plots_expression &lt;- plots_expression[!sapply(plots_expression, is.null)]
+
+plots_meth &lt;- variables[variables != &quot;Caste difference in % methylation in 8h larvae (positive: W &gt; Q)&quot;] %&gt;%
+  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in % methylation in 8h larvae (positive: W &gt; Q)&quot;) 
+plots_meth &lt;- plots_meth[!sapply(plots_meth, is.null)]
+
+do.call(grid.arrange, c(plots_expression, list(bottom = &quot;Caste difference in expression in 8h larvae (positive: W &gt; Q)&quot;)))</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/scatterplots-1.png" width="1536" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>do.call(grid.arrange, c(plots_meth, list(bottom = &quot;Caste difference in % methylation in 8h larvae (positive: W &gt; Q)&quot;)))</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/scatterplots-2.png" width="1536" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>rm(plots_expression)
+rm(plots_meth)</code></pre>
+<!-- Test idea about the doublesex module in Velasque et al. -->
+<pre class="r"><code># Define a function to test whether the overlap of two sets of differentially expressed genes, 
+# drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
+# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
+overlap_hypergeometric_test &lt;- function(n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
+  p.higher &lt;- 1 - phyper(n_overlaps - 1, n_gene_set1, overall_n_genes - n_gene_set1, n_in_set2)
+ # percent_of_maximum_overlaps &lt;- 100 * n.overlaps / min(c(num.sig1, num.sig2))
+  
+  exp_n_overlaps &lt;- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
+
+  data.frame(Test = &quot;Overlap is higher than expected:&quot;,
+                       obs_n_overlaps = n_overlaps,
+                       exp_n_overlaps = round(exp_n_overlaps,1),
+                       enrichment_ratio = round(n_overlaps / exp_n_overlaps, 2),
+                       p = round(p.higher,4)
+                       )
+}
+
+velasque_gene_universe &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_tpm.csv&quot;) %&gt;%
+  pull (gene_id)
+
+# 9386 genes in common between our two studies
+shared_gene_universe &lt;- intersect(rownames(expression_data), velasque_gene_universe)
+
+# Find overlaps with our expression modules, and the dsx-containing module in velasque et al
+module_overlaps &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
+  filter(`Gene symbol` %in% shared_gene_universe) %&gt;%
+  filter(Time == 8) %&gt;%   # Just od time 8h for now
+  left_join(read_csv(&quot;data/apis_gene_comparisons/velasque_doublesex.csv&quot;) %&gt;% 
+              mutate(dsx_module = &quot;yes&quot;) %&gt;% dplyr::select(gene, dsx_module), 
+            by = c(`Gene symbol` = &quot;gene&quot;)) %&gt;%
+  mutate(dsx_module = replace(dsx_module, is.na(dsx_module), &quot;no&quot;)) %&gt;%
+  group_by(module, dsx_module) %&gt;%
+  summarise(n=n(), .groups = &quot;drop&quot;) %&gt;%
+  arrange(module, dsx_module) 
+
+shared_gene_universe_meth &lt;- intersect(
+  readRDS(file = &quot;output/gene_meth_module_memberships.rds&quot;)$gene, 
+  velasque_gene_universe)
+  
+
+# Find overlaps with our METHYLATION modules, and the dsx-containing module in velasque et al
+module_overlaps_meth &lt;- readRDS(file = &quot;output/gene_meth_module_memberships.rds&quot;) %&gt;%
+  filter(gene %in% shared_gene_universe_meth) %&gt;%
+  left_join(read_csv(&quot;data/apis_gene_comparisons/velasque_doublesex.csv&quot;) %&gt;% 
+              mutate(dsx_module = &quot;yes&quot;) %&gt;% dplyr::select(gene, dsx_module), 
+            by = &quot;gene&quot;) %&gt;%
+  mutate(dsx_module = replace(dsx_module, is.na(dsx_module), &quot;no&quot;)) %&gt;%
+  group_by(module, dsx_module) %&gt;%
+  summarise(n=n(), .groups = &quot;drop&quot;) %&gt;%
+  arrange(module, dsx_module) 
+
+
+n_genes_in_dsx_module &lt;- sum(with(module_overlaps, n[dsx_module == &quot;yes&quot;]))
+  
+module_overlaps %&gt;%
+  split(.$module) %&gt;%
+  map_df(function(x){
+    
+    present_study_module_size &lt;- sum(x$n)
+    n_overlaps &lt;- with(x, n[dsx_module == &quot;yes&quot;])
+    
+    data.frame(Module = x$module[1],
+    overlap_hypergeometric_test(n_overlaps, 
+                                n_genes_in_dsx_module, 
+                                present_study_module_size, 
+                                length(shared_gene_universe)))
+    
+  }) %&gt;% arrange(-enrichment_ratio) %&gt;% 
+  mutate(p_adjust = p.adjust(p, method = &quot;BH&quot;)) %&gt;%
+  filter(p_adjust &lt; 0.05)
+
+# for methylation:
+module_overlaps_meth %&gt;%
+  split(.$module) %&gt;%
+  keep(~ nrow(.x) &gt; 1) %&gt;%
+  map_df(function(x){
+    
+    present_study_module_size &lt;- sum(x$n)
+    n_overlaps &lt;- with(x, n[dsx_module == &quot;yes&quot;])
+    
+    data.frame(Module = x$module[1],
+    overlap_hypergeometric_test(n_overlaps, 
+                                n_genes_in_dsx_module, 
+                                present_study_module_size, 
+                                length(shared_gene_universe)))
+    
+  }) %&gt;% arrange(-enrichment_ratio) %&gt;% 
+  mutate(p_adjust = p.adjust(p, method = &quot;BH&quot;)) %&gt;%
+  filter(p_adjust &lt; 0.05)
+
+
+
+# Comparison with doublesex module in velasque et al. https://www.biorxiv.org/content/10.1101/314492v1.full
+read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
+  filter(adj.P.Val &lt;= 0.05) %&gt;%
+  right_join(read_csv(&quot;data/apis_gene_comparisons/velasque_doublesex.csv&quot;), b
+             y = c(`Gene symbol` = &quot;gene&quot;)) %&gt;%
+  filter(!is.na(kWithin) &amp; !is.na(logFC.x)) %&gt;%
+  filter(Time == 8) %&gt;% print(n=Inf)
+
+
+x &lt;- read_tsv(&quot;~/Downloads/Methldiff_t0q8.txt&quot;)
+e %&gt;% full_join(caste_results %&gt;% filter(Time==8), by = c(&quot;Genes&quot; = &quot;Gene symbol&quot;)) %&gt;% 
+  filter(adj.P.Val &lt; 0.05) %&gt;%
+  filter(qvalue &lt; 0.05) %&gt;%
+  group_by(Genes) %&gt;%
+  summarise(n=n(), .groups = &quot;drop&quot;)
+
+x %&gt;% 
+  filter(qvalue &lt; 0.05) %&gt;%
+  full_join(caste_results %&gt;% 
+                  filter(Time==8 &amp; adj.P.Val &lt;= 0.05), # 8h sig genes
+                by = c(&quot;Genes&quot; = &quot;Gene symbol&quot;))  %&gt;%
+  mutate(type = case_when(
+    !is.na(meth.diff) &amp; !is.na(logFC) ~ &quot;both&quot;,
+    !is.na(meth.diff) &amp; is.na(logFC) ~ &quot;meth only&quot;,
+    is.na(meth.diff) &amp; !is.na(logFC)  ~ &quot;expr only&quot;
+  )) %&gt;% pull(type) %&gt;% table()
+
+
+caste_results %&gt;% filter(Time==8) %&gt;% pull(`Gene symbol`) %&gt;% unique %&gt;% length()
+x %&gt;% pull(Genes) %&gt;% unique %&gt;% length()
+
+overlap_hypergeometric_test(415, 415+2014, 415+1195, nrow(expression_data))
+
+# Load all the QvsW at each time point tests
+meth_data &lt;- map(c(2,4,6,8), function(i) {
+  glue::glue(&quot;/Users/lholman/Downloads/Methylation/Caste\ specific\ results/Routput-q{i}w{i}/DMSG/dmg-Am_HE_queen{i}.vs.worker{i}_details.txt&quot;) %&gt;%
+    read_tsv() %&gt;%
+    mutate(Time = i) %&gt;% 
+    dplyr::rename_at(vars(starts_with(&quot;queen&quot;)), ~ &quot;queen&quot; ) %&gt;% 
+    dplyr::rename_at(vars(starts_with(&quot;worker&quot;)), ~ &quot;worker&quot;)
+}) %&gt;% 
+  bind_rows() %&gt;%
+  select(Time, everything()) %&gt;%
+  select(-width, -strand, -coverage1, -coverage2) # width is always 1, strand is always +. Coverage is just Cs + Ts
+
+with(meth_data, paste(seqnames, start)) %&gt;% unique %&gt;% length()
+
+meth_data %&gt;%
+  group_by(Time) %&gt;% summarise(n(), .groups = &quot;drop&quot;)
+
+meth_data %&gt;%
+  arrange(-abs(queen-worker))
+
+meth_data %&gt;%
+  mutate(
+    cluster = kmeans(10^10*as.numeric(as.factor(meth_data$seqnames)) + meth_data$start, 224)$cluster 
+  ) %&gt;%
+  ggplot(aes(start, queen-worker, fill = queen-worker, group=1, size = is.dm)) + 
+  geom_hline(yintercept = 0) + 
+  geom_point(pch = 21) +
+ # geom_point(aes(y=worker), colour = &quot;red&quot;) +
+  facet_wrap(~ cluster, scales = &quot;free_x&quot;) + 
+  scale_fill_gradient2() + 
+  theme(strip.background = element_blank(),
+        strip.text = element_blank())
+
+
+xx &lt;- read_tsv(&quot;/Users/lholman/Downloads/Methylation/Caste\ specific\ results/Routput-q8w8/DMSG/dmg-Am_HE_queen8.vs.worker8_details.txt&quot;)
+
+dmr &lt;- xx %&gt;% filter(is.dm) %&gt;% as.data.frame()
+
+dmr %&gt;% pull(gene_Name) -&gt; dm_genes
+  select(gene_start, gene_end) %&gt;%
+  mutate(site = 1:n()) %&gt;%
+  gather(metric, position, -site) %&gt;%
+  ggplot(aes(position, y=1, group = site)) +
+    geom_line()
+  
+# meth counts for genes:
+files &lt;- list.files(&quot;/Users/lholman/Downloads/Methylation&quot;, pattern = &quot;ogl-Am_HE&quot;, recursive = T, full.names = T) 
+files &lt;- files[!grepl(&quot;vs&quot;, files)]
+files &lt;- files[!grepl(&quot;OGLall&quot;, files)]
+meth_genes &lt;- map_df(files, ~ read_tsv(.x) %&gt;% 
+         mutate(caste = &quot;t0&quot;,
+                caste = replace(caste, str_detect(.x, &quot;queen&quot;), &quot;queen&quot;),
+                caste = replace(caste, str_detect(.x, &quot;worker&quot;), &quot;worker&quot;),
+                time = as.numeric(str_remove_all(unlist(str_extract_all(.x, &quot;[:digit:][.]txt&quot;)), &quot;[.]txt&quot;)),
+                file = .x)) %&gt;%
+  mutate(gene_ID = str_remove_all(gene_ID, &quot;gene[-]&quot;)) %&gt;%
+  distinct(gene_ID, caste, time, .keep_all = TRUE) %&gt;%
+  dplyr::arrange(gene_ID, caste, time)
+
+
+meth_test_one_gene &lt;- function(gene){
+  focal_data &lt;- meth_genes %&gt;% 
+    filter(gene_ID == gene &amp; caste != &quot;t0&quot;) %&gt;% 
+    mutate(percent_meth = `%perSite`)
+
+  response &lt;- cbind(focal_data$percent_meth,
+                    100 - focal_data$percent_meth) %&gt;% round()
+  focal_data
+}
+
+meth_test_one_gene(&quot;Snf&quot;)</code></pre>
+<!-- From Wojciechowski et al. 2018 Genome Biology https://genome.cshlp.org/content/early/2018/08/20/gr.236497.118.full.pdf+html -->
+<!-- We find that genes differentially enriched with H3K4me3 -->
+<!-- (rho = 0.28; P-value = 2.7 × 10−17) and H3K36me3 (rho = 0.15; P-value = -->
+<!-- 4.6 × 10−5 -->
+<!-- ) show significant correlation with transcriptional differences, suggesting that caste-specific H3K4me3 and H3K36me3 -->
+<!-- patterns associate with caste-specific transcriptional profiles (Fig. -->
+<!-- 2D). In contrast, genes differentially enriched with H3K27ac -->
+<!-- show a nonsignificant correlation with caste-specific transcriptional differences (rho = 0.04; P-value = 0.074). -->
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1709,32 +2088,31 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] pheatmap_1.0.12    RColorBrewer_1.1-2 kableExtra_1.1.0   forcats_0.5.0     
- [5] stringr_1.4.0      dplyr_1.0.0        purrr_0.3.4        readr_1.3.1       
- [9] tidyr_1.1.0        tibble_3.0.1       ggplot2_3.3.1      tidyverse_1.3.0   
-[13] workflowr_1.6.2   
+ [1] gridExtra_2.3      RSQLite_2.2.0      DBI_1.1.0          dbplyr_1.4.4      
+ [5] pheatmap_1.0.12    RColorBrewer_1.1-2 kableExtra_1.1.0   forcats_0.5.0     
+ [9] stringr_1.4.0      dplyr_1.0.0        purrr_0.3.4        readr_1.3.1       
+[13] tidyr_1.1.0        tibble_3.0.1       ggplot2_3.3.1      tidyverse_1.3.0   
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.1        jsonlite_1.7.0    viridisLite_0.3.0 splines_4.0.0    
- [5] tmvnsim_1.0-2     modelr_0.1.8      assertthat_0.2.1  highr_0.8        
- [9] blob_1.2.1        cellranger_1.1.0  yaml_2.2.1        pillar_1.4.4     
-[13] backports_1.1.7   lattice_0.20-41   glue_1.4.1        digest_0.6.25    
-[17] promises_1.1.0    rvest_0.3.5       colorspace_1.4-1  plyr_1.8.6       
-[21] htmltools_0.5.0   httpuv_1.5.3.1    Matrix_1.2-18     psych_1.9.12.31  
-[25] pkgconfig_2.0.3   broom_0.5.6       haven_2.3.1       scales_1.1.1     
-[29] webshot_0.5.2     whisker_0.4       later_1.0.0       git2r_0.27.1     
-[33] mgcv_1.8-31       generics_0.0.2    farver_2.0.3      ellipsis_0.3.1   
-[37] withr_2.2.0       hexbin_1.28.1     cli_2.0.2         mnormt_2.0.0     
-[41] magrittr_1.5      crayon_1.3.4      readxl_1.3.1      evaluate_0.14    
-[45] fs_1.4.1          fansi_0.4.1       nlme_3.1-148      xml2_1.3.2       
-[49] tools_4.0.0       hms_0.5.3         lifecycle_0.2.0   munsell_0.5.0    
-[53] reprex_0.3.0      compiler_4.0.0    rlang_0.4.6       grid_4.0.0       
-[57] rstudioapi_0.11   labeling_0.3      rmarkdown_2.3     gtable_0.3.0     
-[61] DBI_1.1.0         reshape2_1.4.4    R6_2.4.1          lubridate_1.7.8  
-[65] knitr_1.29        rprojroot_1.3-2   stringi_1.4.6     parallel_4.0.0   
-[69] Rcpp_1.0.4.6      vctrs_0.3.0       dbplyr_1.4.4      tidyselect_1.1.0 
-[73] xfun_0.15        </code></pre>
-</div>
+ [1] nlme_3.1-148      fs_1.4.1          lubridate_1.7.8   bit64_0.9-7      
+ [5] webshot_0.5.2     httr_1.4.1        rprojroot_1.3-2   tools_4.0.0      
+ [9] backports_1.1.7   R6_2.4.1          mgcv_1.8-31       colorspace_1.4-1 
+[13] withr_2.2.0       tidyselect_1.1.0  mnormt_2.0.0      bit_1.1-15.2     
+[17] compiler_4.0.0    git2r_0.27.1      cli_2.0.2         rvest_0.3.5      
+[21] xml2_1.3.2        labeling_0.3      scales_1.1.1      hexbin_1.28.1    
+[25] psych_1.9.12.31   digest_0.6.25     rmarkdown_2.3     pkgconfig_2.0.3  
+[29] htmltools_0.5.0   highr_0.8         rlang_0.4.6       readxl_1.3.1     
+[33] rstudioapi_0.11   farver_2.0.3      generics_0.0.2    jsonlite_1.7.0   
+[37] vroom_1.2.1       magrittr_1.5      Matrix_1.2-18     Rcpp_1.0.4.6     
+[41] munsell_0.5.0     fansi_0.4.1       lifecycle_0.2.0   stringi_1.4.6    
+[45] whisker_0.4       yaml_2.2.1        plyr_1.8.6        grid_4.0.0       
+[49] blob_1.2.1        parallel_4.0.0    promises_1.1.0    crayon_1.3.4     
+[53] lattice_0.20-41   haven_2.3.1       splines_4.0.0     hms_0.5.3        
+[57] tmvnsim_1.0-2     knitr_1.29        pillar_1.4.4      reshape2_1.4.4   
+[61] reprex_0.3.0      glue_1.4.1        evaluate_0.14     modelr_0.1.8     
+[65] vctrs_0.3.0       httpuv_1.5.3.1    cellranger_1.1.0  gtable_0.3.0     
+[69] assertthat_0.2.1  xfun_0.15         broom_0.5.6       later_1.0.0      
+[73] viridisLite_0.3.0 memoise_1.1.0     workflowr_1.6.2   ellipsis_0.3.1   </code></pre>
 </div>
 </div>
 

@@ -7,15 +7,13 @@ output:
 
 
 
-```{r  pkgs, results='hide', message=FALSE, warning=FALSE}
+```{r pkgs, results='hide', message=FALSE, warning=FALSE}
 # All but 1 of these packages can be easily installed from CRAN or Bioconductor
 # However it was slightly harder to install the showtext package. On Mac, I did this:
 # installed 'homebrew' using Terminal: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
 # installed 'libpng' using Terminal: brew install libpng
 # installed 'showtext' in R using: devtools::install_github("yixuan/showtext")  
 library(showtext)
-
- setwd("/Users/lholman/Rprojects/Methylation_Apis")
 library(tidyverse)
 library(mice) # for imputation
 library(WGCNA)
@@ -127,7 +125,7 @@ if(!file.exists("data/Methylation_data/methylation_calls_filtered.rds")){
 
 ## Evidence of genome-wide hypermethylation in worker-destined larvae
 
-The below plot uses the gene-level estimates of % methylation for each sample provided by BWASP (these estimates seek the average % methylation of all the sites that map to the focal gene). The great majority of genes show higher average % methylation in worker-destined larvae, suggesting that the large numbers of genes are methylated in response to the rearing conditions experienced by workers, and/or are *de*-methylated in queen-destined larvae (later results suggest the former is more common). 
+The below plot uses the gene-level estimates of % methylation for each sample provided by BWASP (these estimates seek the average % methylation of all the sites that map to the focal gene). The great majority of genes show higher % methylation (averaged over time points and samples) in worker-destined larvae, suggesting that the large numbers of genes are methylated in response to the rearing conditions experienced by workers, and/or are *de*-methylated in queen-destined larvae (later results suggest the former is more common). 
 
 ```{r}
 network_input <- readRDS("data/Methylation_data/input_data_for_meth_network_CLEANED.rds") 
@@ -154,6 +152,17 @@ make_caste_diff_module_histogram <- function(binnumber){
     ylab("Number of genes")
 }
 make_caste_diff_module_histogram(100)
+
+# Ask Claire: Why does this give different results?
+# vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+#   filter(Genes %in% dat$name) %>%
+#   filter(comparison == "queen6.vs.worker6") %>%
+#   group_by(Genes) %>% summarise(diff = mean(meth.diff)) %>%
+#   ggplot(aes(diff)) +
+#   geom_vline(xintercept = 0, linetype = 2, colour = "tomato") +
+#   geom_histogram(fill = "white", colour = "grey10", bins = 100) +
+#   xlab("Caste difference in % methylation\n(Positive values = higher % methylation in workers)") +
+#   ylab("Number of genes")
 ```
 
 **Figure X**: Frequency distribution of the caste difference in % methylation across all 4,038 genes for which we managed to measure the mean % methylation of sites contained in the gene. The difference was positive for the majority of genes, indicating higher frequencies of methylation in worker-destined larvae relative to queen-destined.
@@ -162,83 +171,56 @@ make_caste_diff_module_histogram(100)
 
 ## Multivariate plots of the methylome
 
-### Impute missing data in matrix of sample-by-gene % methylation estimates
+### Reduce and plot the methylomes using NMDS
 
-Here, we keep all sites that were measured to at least 20x coverage in at least 10 samples. We then impute the missing methylation values (0: unmethylated, 1: methylated), according to a binomial distribution, using multiple imputation by chained equations (MICE) via the `mice` package. Imputed sites were assumed to have a coverage of 20x, and so for each one we generated the methylation data according to $X \sim Binom(20, p)$, where p is the estimated proportion methylated according to `mice`.
-```{r run_nmds}
-if(!file.exists("figures/meth_nmds_plot_imputed.rds")){
-  
-  site_matrix <- by_site %>%
+```{r echo=FALSE}
+ # Fix this, what happened here??
+  meth_matrix <- by_site %>%
     filter(numCs + numTs > 0) %>%
     mutate(p = numCs/(numCs+numTs)) %>%
     dplyr::select(site, sample, p) %>% 
     spread(site, p)
-  to_keep <- colnames(site_matrix[, apply(site_matrix, 2, function(x) sum(!is.na(x))) >= 10][,-1])
-  site_matrix <- expand_grid(site = to_keep, sample = unique(by_site$sample)) %>%
-    left_join(by_site, by = c("site", "sample")) %>%
-    dplyr::select(site, sample, numCs, numTs) %>%
-    mutate(row=1:n())
   
+  # Filter 
+  to_keep <- colnames(meth_matrix[, apply(meth_matrix, 2, function(x) sum(!is.na(x))) >= 10][,-1])
   
-  site_matrix <- site_matrix %>%
-    split(.$row) %>%
-    map_df(~ {
-      if(!is.na(.x$numCs)){
-        return(data.frame(site = .x$site, sample = .x$sample, 
-                          methylated = factor(c(rep(0, .x$numTs), rep(1, .x$numCs)))))
-      } else {
-        return(data.frame(site = .x$site, sample = .x$sample, 
-                          methylated = factor(rep(NA, 20), levels = c("0", "1")))) # assume 20 reads
-      }
-    }) %>%
-    left_join(by_site %>% 
-                dplyr::select(sample, caste, time, rep) %>% 
-                distinct(), by = "sample") %>%
-    as_tibble()
+nmds_r2 <- readRDS()
+```
+
+Here, we construct a sample-by-site matrix where each cell contains the propotion of methylated cytosines, containing all `r length(to_keep)` sites that were measured with 20x or better coverage in at least 10 samples. The data were then reduced to 16 components by non-metric multidimensional scaling (NMDS), preserving `r round(readRDS("output/meth_nmds_rs.rds")*100)`% of the variance in the original data. 
+
+
+Here, we keep all sites that were measured to at least 20x coverage in at least 10 samples. We then impute the missing methylation values (0: unmethylated, 1: methylated), according to a binomial distribution, using multiple imputation by chained equations (MICE) via the `mice` package. Imputed sites were assumed to have a coverage of 20x, and so for each one we generated the methylation data according to $X \sim Binom(20, p)$, where p is the estimated proportion methylated according to `mice`.
+```{r run_nmds}
+if(!file.exists("figures/meth_nmds_plot.rds")){
   
-  mice_output <- mice(site_matrix, m = 1)$imp$methylated 
-  site_matrix$methylated[is.na(site_matrix$methylated)] <- mice_output[[1]]
+  meth_matrix <- by_site %>%
+    filter(numCs + numTs > 0) %>%
+    mutate(p = numCs/(numCs+numTs)) %>%
+    dplyr::select(site, sample, p) %>% 
+    spread(site, p)
   
-  meth_sampleIDs <- site_matrix %>%
-    dplyr::select(sample, caste, time, rep) %>%
-    distinct()
+  # Filter to sites measured in 10+ samples, convert to a matrix
+  to_keep <- colnames(meth_matrix[, apply(meth_matrix, 2, function(x) sum(!is.na(x))) >= 10][,-1])
+  meth_matrix <- meth_matrix[, names(meth_matrix) %in% c("sample", to_keep)] 
+  meth_sampleIDs <- meth_matrix %>% pull(sample)
+  meth_matrix <- as.matrix(meth_matrix[,-1])
+  rownames(meth_matrix) <- meth_sampleIDs
   
-  meth_matrix_imputed <- site_matrix %>%
-    group_by(site, sample, caste, time, rep) %>%
-    summarise(coverage = n(),
-              prop_methyl = sum(methylated=="1") / coverage, 
-              .groups = "drop") 
-  
-  meth_matrix_unimputed <- by_site %>%
-    select(sample, site, prop) %>%
-    filter(site %in% unique(meth_matrix_imputed$site)) %>%
-    spread(site, prop) 
-  
-  meth_matrix_imputed <- meth_matrix_imputed %>%
-    dplyr::select(-coverage) %>%
-    spread(site, prop_methyl)
-  
-  meth_matrix_unimputed <- as.matrix(meth_matrix_unimputed[, -(1:4)])
-  rownames(meth_matrix_unimputed) <- meth_sampleIDs$sample
-  meth_matrix_imputed <- as.matrix(meth_matrix_imputed[, -(1:4)])
-  rownames(meth_matrix_imputed) <- meth_sampleIDs$sample
-  
-  meth_matrix_imputed_no_batch_effect <- t(
-    limma::removeBatchEffect(t(meth_matrix_imputed), 
-                             batch = meth_sampleIDs$rep))
-  
-  saveRDS(meth_matrix_unimputed, "data/Methylation_data/meth_matrix_unimputed.rds")
-  saveRDS(meth_matrix_imputed_no_batch_effect, "data/Methylation_data/meth_matrix_imputed.rds")
-  saveRDS(meth_sampleIDs, "data/Methylation_data/meth_sampleIDs.rds")
-  
-  nmds_plot <- function(meth_matrix, meth_sampleIDs){
+  nmds_plot <- function(meth_matrix){
+    
+    meth_sampleIDs <- rownames(meth_matrix)
     
     set.seed(1)
     nmds_output <- dist(meth_matrix) %>% nmds(maxdim = 16)
-    nmds_r2 <- tail(nmds_output$r2, 1)
-    print(nmds_r2)
-    nmds_output <- data.frame(meth_sampleIDs,
-                              nmds_output$conf[[length(nmds_output$conf)]])
+    saveRDS(tail(nmds_output$r2, 1), "output/meth_nmds_rs.rds")
+
+    nmds_output <- data.frame(
+      sample = meth_sampleIDs,
+      caste = substr(meth_sampleIDs, 1, 1),
+      time = str_extract(meth_sampleIDs, "[02468]"),
+      rep = substr(meth_sampleIDs, nchar(meth_sampleIDs), nchar(meth_sampleIDs)),
+      nmds_output$conf[[length(nmds_output$conf)]])
     
     pd <- position_dodge(0.2)
     dat <- nmds_output %>%
@@ -247,7 +229,7 @@ if(!file.exists("figures/meth_nmds_plot_imputed.rds")){
       mutate(NMDS = factor(gsub("X", "NMDS ", NMDS), 
                            levels = paste("NMDS", unique(sort(as.numeric(gsub("X", "", NMDS)))))),
              Replicate = paste("Replicate", rep)) %>%
-      mutate(caste = replace(as.character(caste), is.na(caste), "t0"),
+      mutate(caste = replace(as.character(caste), caste == "t", "t0"),
              caste = replace(as.character(caste), caste == "q", "Queen"),
              caste = replace(as.character(caste), caste == "w", "Worker")) %>%
       as_tibble()
@@ -260,79 +242,62 @@ if(!file.exists("figures/meth_nmds_plot_imputed.rds")){
                 se = sd(Score) / sqrt(n()),
                 .groups = "drop") %>%
       ggplot(aes(time, mean, colour = caste, group = caste)) + 
-      geom_line() +
+      geom_line(position = pd) +
       geom_errorbar(position = pd, aes(ymin = mean - se, ymax = mean + se), width = 0) +
       geom_point(position = pd) + 
       scale_colour_manual(values = c(queen_colour, worker_colour), 
                           name = "Cell type") +  
       facet_wrap(~NMDS, scales = "free_y") + 
       xlab("Time since the larva was grafted (hours)") + 
-      ylab("NMDS Score") + 
+      ylab("Mean NMDS Score (\u00B1 SE)") + 
       theme_bw()
   }
   
-  nmds_plot_unimputed <- nmds_plot(meth_matrix_unimputed, meth_sampleIDs)
-  nmds_plot_imputed <- nmds_plot(meth_matrix_imputed_no_batch_effect, meth_sampleIDs)
-  saveRDS(nmds_plot_unimputed, "figures/meth_nmds_plot_unimputed.rds")
-  saveRDS(nmds_plot_imputed, "figures/meth_nmds_plot_imputed.rds")
+  nmds_plot <- nmds_plot(meth_matrix)
+  saveRDS(nmds_plot, "figures/meth_nmds_plot.rds")
 }
 
-meth_matrix_unimputed <- readRDS("data/Methylation_data/meth_matrix_unimputed.rds")
-meth_matrix_imputed <- readRDS("data/Methylation_data/meth_matrix_imputed.rds")
-meth_sampleIDs <- readRDS("data/Methylation_data/meth_sampleIDs.rds")
-```
-
-### NMDS plots {.tabset}
-
-#### Calculated after imputing missing values
-```{r}
-readRDS("figures/meth_nmds_plot_imputed.rds")
-```
-
-#### Calculated on the raw, unimputed data
-```{r}
-readRDS("figures/meth_nmds_plot_unimputed.rds")
+meth_matrix <- readRDS("data/Methylation_data/meth_matrix.rds")
+# meth_sampleIDs <- readRDS("data/Methylation_data/meth_sampleIDs.rds")
+readRDS("figures/meth_nmds_plot.rds")
 ```
 
 
-### Heatmaps showing intergene variation in methylation and sample clustering {.tabset}
 
-#### Calculated on the raw, unimputed data
+### Heatmap showing similarities between samples and genes
+
 ```{r meth_sample_distance_heatmap}
-meth_sample_distance_heatmap <- function(df){
-  foc <- df[, apply(df, 2, function(x) sum(!is.na(x))) >= 20]
+meth_sample_heatmap <- function(meth_matrix){
+
+  foc <- readRDS("data/Methylation_data/input_data_for_meth_network_CLEANED.rds")
+  foc <- foc[,apply(foc, 2, function(x) sum(!is.na(x))) >= 15]
   
+  # Scale proportion methylation to have mean 0, variance 1
+  for(i in 1:ncol(foc)) {
+    foc[, i] <- as.numeric(scale(foc[, i]))
+  }
+
   paletteLength <- 50
-  myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[7], "white", brewer.pal(9, "Reds")[7]))(paletteLength)
-  myColor <- colorRampPalette(brewer.pal(9, "Reds")[7])(paletteLength)
-  myBreaks <- c(seq(min(t(foc), na.rm=T), 0.5,
-                    length.out=ceiling(paletteLength/2) + 1), 
-                seq(0.5 + max(t(foc), na.rm=T)/paletteLength, 
-                    max(t(foc), na.rm=T), length.out=floor(paletteLength/2)))
+  myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
+  myBreaks <- c(seq(min(foc, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
+                seq(max(foc, na.rm=T)/paletteLength, 
+                    max(foc, na.rm=T), length.out = floor(paletteLength/2)))
   
-  colnames(foc) <- NULL
-  
-  col <- rev(colorRampPalette(rev(brewer.pal(n = 7, name =
-                                               "BuGn")))(100))
-  t(foc) %>% 
-    pheatmap(cutree_cols = 2,  cutree_rows = 5, color = col)
+  foc %>%
+    pheatmap(col = myColor, breaks = myBreaks,
+             clustering_distance_rows = "euclidean",
+             clustering_distance_cols = "euclidean",
+             cutree_cols = 7, cutree_rows = 4, 
+             show_colnames = FALSE, polar = T)
 }
 
-meth_sample_distance_heatmap(meth_matrix_unimputed)
-```
-
-#### Calculated after imputing missing values
-```{r}
-meth_sample_distance_heatmap(meth_matrix_imputed)
+meth_sample_heatmap(meth_matrix)
 ```
 
 
 
 
-
-
-
-## Run Bayesian GLMs on the methylome data
+## Run Bayesian GAMs on the methylome data
 
 ### Count the number of sites before and after QC
 
@@ -364,7 +329,7 @@ The following code runs a Bayesian generalised linear model (GLM) on every site 
 - We only included _samples_ for which at least 20 reads mapped to the focal site
 - We only included _sites_ where we had at least one suitable sample per caste at 4-5 time points, where the t0 timpoint counts towards both castes. For example, we would include a site where we had measured 1 or more queen samples at times 2, 4, and 6, and one more more worker samples at times 2,4, and 8, as well as 1 or more t0 samples.
 
-Assuming that the focal dataset contained one or more t0 samples, we first generated multiple copies of the orignal dataset in which the t0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which there were approximately even numbers of queens and workers; for example, if there were data on all four t0 samples for the focal site, we relabelled the samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GLM on each of these datasets with the relablled t0 samples, and took the average by combining their posteriors using the `brm_multiple` function in `brms`. This procedure forces the intercept to be the same for both castes (which we know a prior must be the case), by effectively making each t0 sample affect the parameter estimates for both queens and workers. For sites for which no t0 samples were available, we simply ran a single GLM. 
+Assuming that the focal dataset contained one or more t0 samples, we first generated multiple copies of the orignal dataset in which the t0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which there were approximately even numbers of queens and workers; for example, if there were data on all four t0 samples for the focal site, we relabelled the samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these datasets with the relablled t0 samples, and took the average by combining their posteriors using the `brm_multiple` function in `brms`. This procedure forces the intercept to be the same for both castes (which we know a prior must be the case), by effectively making each t0 sample affect the parameter estimates for both queens and workers. For sites for which no t0 samples were available, we simply ran a single GLM. 
 
 Each model had the same formula, namely:
 
@@ -654,6 +619,9 @@ gene_meth_results_table <- tibble(site = sites) %>%
                         ~ paste0(c(.x[1], .x[2]), collapse = ", pos:"))) %>%
   arrange(desc(sig_caste), desc(sig_time_queen), desc(sig_time_worker), gene_name) 
 
+# For counting the significant genes:
+# gene_meth_results_table %>% filter(sig_caste == "\\*" | sig_time_queen == "\\*" | sig_time_queen == "\\*") %>% pull(gene_name) %>% unique() %>% length()
+
 # save list of sites for later plotting (significant ones)
 plot_sites <- gene_meth_results_table %>%
   filter(site_old %in% unique(c(sig_sites_caste, sig_sites_time_queen, sig_sites_time_worker))) %>%
@@ -671,7 +639,7 @@ gene_meth_results_table %>%
 
 ## Plots of estimated % methylation per site {.tabset}
 
-The following plots show the `r length(unique(c(sig_sites_caste, sig_sites_time_queen, sig_sites_time_worker)))` CpG sites that showed a statistically significant difference between castes and/or time points. The total number of sites tested was `r length(model_results)`.
+The following plots show the `r length(unique(c(sig_sites_caste, sig_sites_time_queen, sig_sites_time_worker)))` CpG sites that showed a statistically significant difference between castes and/or time points. The total number of sites tested was `r length(model_results)`. Of these, `r length(sig_sites_caste)` were differentially methylated between castes, `r length(sig_sites_time_queen)` showed significant temporal variation in queens, and `r length(sig_sites_time_worker)` showed significant temporal variation in workers.
 
 The plot below shows 16 of the `r length(unique(c(sig_sites_caste, sig_sites_time_queen, sig_sites_time_worker)))` significant sites; click the tabs to see the remainder. The red colour refers to queens, blue to workers. 
 
@@ -862,6 +830,11 @@ bwasp_timeW_sig_genes <- bwasp_timeW_sig_sites %>%
   mutate(`Also sig in Bayesian GAM analysis` = 
            ifelse(`Gene name` %in% intersection_timeW, "Yes", "")) %>%
   arrange(desc(`Also sig in Bayesian GAM analysis`))
+
+saveRDS(list(bwasp_caste_sig_genes=bwasp_caste_sig_genes, 
+             bwasp_timeQ_sig_genes=bwasp_timeQ_sig_genes,
+             bwasp_timeW_sig_genes=bwasp_timeW_sig_genes),
+         file = "output/bwasp_sig_genes.rds")
 ```
 
 #### Between castes
@@ -870,7 +843,7 @@ bwasp_caste_sig_genes %>%
   kable() %>% kable_styling() %>%
   scroll_box(height = "400px") 
 ```
-**Table XX:** The table shows the names of genes for which BWASP recorded a significant difference in methylation between queens and workers at one or more time points. Other columns identify the number of significant sites found for each gene, and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
+**Table XX:** The table shows the names of the `r nrow(bwasp_caste_sig_genes)` genes in which BWASP detected one or more sites showing a significant difference in methylation between queens and workers at one or more time points. Other columns identify the number of significant sites found for each gene (total number: `r nrow(bwasp_caste_sig_sites)`), and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
 
 
 #### Between time points (queens)
@@ -879,7 +852,7 @@ bwasp_timeQ_sig_genes %>%
   kable() %>% kable_styling() %>%
   scroll_box(height = "400px") 
 ```
-**Table XX:** The table shows the names of genes for which BWASP recorded a significant difference in methylation between one or more time points within the queen samples. Other columns identify the number of significant sites found for each gene, and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
+**Table XX:** The table shows the names of the `r nrow(bwasp_timeQ_sig_genes)` genes in which BWASP detected one or more sites showing a significant difference in methylation between one or more time points within the _queen_ samples. Other columns identify the number of significant sites found for each gene (total number: `r nrow(bwasp_timeQ_sig_sites)`), and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
 
 #### Between time points (workers)
 ```{r}
@@ -887,7 +860,7 @@ bwasp_timeW_sig_genes %>%
   kable() %>% kable_styling() %>%
   scroll_box(height = "400px") 
 ```
-**Table XX:** The table shows the names of genes for which BWASP recorded a significant difference in methylation between one or more time points within the worker samples. Other columns identify the number of significant sites found for each gene, and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
+**Table XX:** The table shows the names of the `r nrow(bwasp_timeW_sig_genes)` genes in which BWASP detected one or more sites showing a significant difference in methylation between one or more time points within the _worker_ samples. Other columns identify the number of significant sites found for each gene (total number: `r nrow(bwasp_timeW_sig_sites)`), and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
 
 ## Upset plots of differentially methylated sites
 
@@ -1522,173 +1495,6 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 
 
 
-## Caste differences in gene expression correlate with differences in methylation
-
-### Plot the relationship
-Here, the x axis shows the caste difference in methylation per gene, calculated using BWASP. We use BWASP for this analysis, rather than the bespoke Bayesian GLM method above, because the BWASP method can produce a measurement of the % methylation in many more genes, since BWASP relaxes the requirement that a gene has been measured at multiple time points. The graph shows that genes showing queen-biased methylation show worker-biased expression, and _vice versa_, though the relationship is weak and noisy suggesting that caste-biased methylation predicts caste-biased expression rather weakly. 
-```{r geneExpr, message=FALSE}
-if(!file.exists("output/meth_geneExpr_relationship_data_caste.csv")){
-  
-  meth_geneExpr_relationship_data_caste <- read_csv("output/caste_results.csv") %>%
-    select(Time, `Gene symbol`, logFC) %>%
-    left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
-                filter(grepl("queen", comparison) & grepl("worker", comparison)) %>%
-                mutate(time = str_extract(comparison, "[2468]")) %>%
-                group_by(Genes, time) %>%
-                summarise(mean_meth_diff = mean(meth.diff)) %>% 
-                mutate(time = as.numeric(time)), 
-              by = c(`Gene symbol` = "Genes", "Time" = "time")) %>%
-    filter(!is.na(mean_meth_diff) & !is.na(logFC))
-  
-  meth_geneExpr_relationship_data_timeQ <- read_csv("output/time_results.csv") %>%
-    filter(Caste == "Queen") %>%
-    select(Time, `Gene symbol`, logFC) %>%
-    left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
-                filter(grepl("queen", comparison) & !grepl("worker", comparison)) %>%
-                mutate(time = str_extract_all(comparison, "[2468]") %>%
-                         map_chr(~ paste0(.x, collapse = " vs "))) %>%
-                group_by(Genes, time) %>%
-                summarise(mean_meth_diff = mean(meth.diff)), 
-              by = c(`Gene symbol` = "Genes", "Time" = "time")) %>%
-    filter(!is.na(mean_meth_diff) & !is.na(logFC))
-  
-  meth_geneExpr_relationship_data_timeW <- read_csv("output/time_results.csv") %>%
-    filter(Caste == "Worker") %>%
-    select(Time, `Gene symbol`, logFC) %>%
-    left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
-                filter(!grepl("queen", comparison) & grepl("worker", comparison)) %>%
-                mutate(time = str_extract_all(comparison, "[2468]") %>%
-                         map_chr(~ paste0(.x, collapse = " vs "))) %>%
-                group_by(Genes, time) %>%
-                summarise(mean_meth_diff = mean(meth.diff)), 
-              by = c(`Gene symbol` = "Genes", "Time" = "time")) %>%
-    filter(!is.na(mean_meth_diff) & !is.na(logFC))
-  
-  write_csv(meth_geneExpr_relationship_data_caste, "output/meth_geneExpr_relationship_data_caste.csv")
-  write_csv(meth_geneExpr_relationship_data_timeQ, "output/meth_geneExpr_relationship_data_timeQ.csv")
-  write_csv(meth_geneExpr_relationship_data_timeW, "output/meth_geneExpr_relationship_data_timeW.csv")
-  
-} else {
-  meth_geneExpr_relationship_data_caste <- read_csv("output/meth_geneExpr_relationship_data_caste.csv")
-  meth_geneExpr_relationship_data_timeQ <- read_csv("output/meth_geneExpr_relationship_data_timeQ.csv")
-  meth_geneExpr_relationship_data_timeW <- read_csv("output/meth_geneExpr_relationship_data_timeW.csv")
-}
-
-hex_plot <- function(dat){
-  
-  ggplot(dat, aes(-1 * mean_meth_diff, logFC)) + 
-    geom_hline(yintercept = 0, linetype = 2) + 
-    geom_vline(xintercept = 0, linetype = 2) + 
-    geom_hex(bins = 50) + 
-    stat_smooth(method = "lm",  size = .7, colour = "red") + 
-    xlab("Caste difference in mean % methylation\n(higher values mean more methylation in queens)") + 
-    ylab("Caste difference in gene expression\n(Log FC; higher values mean more expression in queens)") + 
-    facet_wrap(~ paste(Time, "h post-grafting", sep = "")) + 
-    scale_fill_viridis_c(option = "A", direction = 1)
-}
-meth_geneExpr_relationship_data_caste %>% hex_plot()
-meth_geneExpr_relationship_data_timeQ %>% hex_plot()
-meth_geneExpr_relationship_data_timeW %>% hex_plot()
-```
-
-### Run Spearman's rank correlations {.tabset}
-
-#### Correlations between caste-specific methylation and caste-specific expression
-Here, we see that there is a significant, negative relationship between the caste bias in methylation and the caste bias in gene expression, at times 4h, 6h, and 8h (but not time 2h) post-grafting. The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM. 
-
-```{r warning=FALSE}
-run_corr <- function(time, dat){
-  xx <- cor.test(
-    filter(dat, Time == time)$mean_meth_diff * -1,
-    filter(dat, Time == time)$logFC, 
-    method = "spearman")
-  tibble(time = time, rho = xx$estimate, p = xx$p.value)
-}
-map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_caste)) %>%
-  kable() %>% kable_styling(full_width = FALSE)
-```
-
-#### Correlations between temporally-variable methylation and temporally-variable expression within castes
-Here, we see that there are significant correlations between the change in methylation levels and the change in expression levels between some pairs of time points. However, some of these correlations are negative (which suggests that genes for which the % methylated sites declined showed increasing expression levels), and some are positive (indicating that genes that gained methylation increased in expression). Specifically, the correlation was positive when comparing 2h and 8h samples (for both castes), and was negative when comparing 4h and 6h samples (significantly so in workers but not queens). The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM. 
-
-```{r warning=FALSE}
-run_corr <- function(time, dat){
-  xx <- cor.test(
-    filter(dat, Time == time)$mean_meth_diff * -1,
-    filter(dat, Time == time)$logFC, 
-    method = "spearman")
-  tibble(time = time, rho = xx$estimate, p = xx$p.value)
-}
-
-map_df(unique(meth_geneExpr_relationship_data_timeQ$Time), 
-       ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_timeQ)) %>%
-  mutate(Caste = "Queens") %>%
-  bind_rows(
-    map_df(unique(meth_geneExpr_relationship_data_timeW$Time), 
-           ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_timeW)) %>%
-      mutate(Caste = "Workers") 
-  ) %>%
-  kable() %>% kable_styling(full_width = FALSE)
-```
-
-
-
-### Check for significant overlap between significant gene lists
-
-Here, we count up the number of genes that were tested in both the differential expression and differential methylation assays, count the number that were significant in both analyses, and test whether the number of overlaps is greater than expected (using a hypergeometric test). 
-
-The number of overlaps is not significantly higher than expected by chance. However, this analysis is less precise/powerful than the previous ones involving correlations, since the sets of the 'significant' genes are somewhat arbitrary, and dependent on random variation in statistical power between genes (which depends heavily on nuisance differences, e.g. where the sequencing reads happened to land in each sample).
-
-```{r warning=FALSE, message=FALSE}
-genes_tested_meth <- map_chr(model_results, ~ .x$genes$gene[1]) %>% unique()
-genes_tested_expr <- read_csv("output/caste_results.csv")$`Gene symbol` %>% unique()
-
-universe <- intersect(genes_tested_expr, genes_tested_meth)
-
-sig_diff_expr <- read_csv("output/caste_results.csv") %>% 
-  filter(adj.P.Val < 0.05 & `Gene symbol` %in% universe) %>% pull(`Gene symbol`) %>% unique()
-sig_diff_meth <- gene_meth_results_table %>% 
-  filter(sig_caste == "\\*" & gene %in% universe) %>% pull(gene)  %>% unique()
-
-n_overlaps <- length(intersect(sig_diff_expr, sig_diff_meth))
-
-annotations %>%
-  filter(gene %in% intersect(sig_diff_expr, sig_diff_meth)) %>% 
-  dplyr::select(gene_name) %>% distinct() %>%
-  dplyr::rename(`Genes showing both differential expression and methylation (Bayesian method)` = gene_name) %>%
-  kable() %>% kable_styling() %>%
-  scroll_box(height = "300px")
-
-
-
-# Define a function to test whether the overlap of two sets of differentially expressed genes, 
-# drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
-# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
-overlap_hypergeometric_test <- function(
-  n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
-  
-  p.higher <- 1 - phyper(n_overlaps - 1, n_gene_set1, 
-                         overall_n_genes - n_gene_set1, n_in_set2)
- # percent_of_maximum_overlaps <- 100 * n.overlaps / min(c(num.sig1, num.sig2))
-  
-  exp_n_overlaps <- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
-  
-  tibble(
-    Test = "Overlap is higher than expected:",
-    obs_n_overlaps = n_overlaps,
-    exp_n_overlaps = round(exp_n_overlaps, 1),
-    enrichment_ratio = round(n_overlaps / exp_n_overlaps, 2),
-    p = round(p.higher, 4))
-}
-
-overlap_hypergeometric_test(
-  n_overlaps, 
-  length(sig_diff_expr),
-  length(sig_diff_meth),
-  length(universe)) %>%
-  kable() %>% kable_styling()
-```
-
 
 
 
@@ -1815,19 +1621,21 @@ if(!file.exists("output/meth_eigengenes.rds")){
   meth_eigengenes <- meth_network %>%
     rearrange_eigengene_data(sample_ids = meth_sampleIDs)
   
-  # meth_connectivity <- data.frame(
-  #   Gene = colnames(network_input),
-  #   intramodularConnectivity.fromExpr(
-  #     network_input,
-  #     meth_network$colors,
-  #     networkType = "signed",
-  #     scaleByMax = FALSE,
-  #     ignoreColors = "Module 0",
-  #     getWholeNetworkConnectivity = TRUE))
+  meth_connectivity <- tibble( # finish this.....
+    Gene = colnames(network_input),
+    intramodularConnectivity.fromExpr(
+      network_input,
+      meth_network$colors,
+      networkType = "signed",
+      scaleByMax = FALSE,
+      ignoreColors = "Module 0",
+      getWholeNetworkConnectivity = TRUE)) %>%
+    dplyr::select(Gene, kTotal)
   
   saveRDS(meth_network, file = "output/meth_network.rds")
   saveRDS(gene_meth_module_memberships, file = "output/gene_meth_module_memberships.rds")
   saveRDS(meth_eigengenes, file = "output/meth_eigengenes.rds")
+  write_csv(meth_connectivity, path = "output/meth_connectivity.csv")
 } else {
   meth_network <- readRDS(file = "output/meth_network.rds")
   gene_meth_module_memberships <- readRDS(file = "output/gene_meth_module_memberships.rds")
@@ -2082,7 +1890,7 @@ my_summary <- function(x) {
       mutate(PP = as.character(round(PP, 4)))
 }
 
-preds %>%
+eigengene_stats_table_meth <- preds %>%
   filter(Time %in% c(2,4,6,8)) %>%
   group_by(Time, Module, draw) %>%
   summarise(Caste_difference = eigengene[1] - eigengene[2], # Q - W
@@ -2090,8 +1898,12 @@ preds %>%
   group_by(Module, Time) %>%
   summarise(stats = list(my_summary(Caste_difference)),
             .groups = "drop") %>%
-  ungroup() %>% unnest(stats) %>% 
-  dplyr::rename(Caste_difference = Estimate) %>%
+  ungroup() %>% unnest(stats) 
+
+write_csv(eigengene_stats_table_meth, "output/eigengene_stats_table_meth.csv")
+
+eigengene_stats_table_meth %>% 
+  dplyr::rename(`Caste difference (positive: Q > W)` = Estimate) %>%
   dplyr::select(-Module) %>%
   kable(digits = 3) %>%
   kable_styling(full_width = FALSE) %>%
@@ -2105,6 +1917,21 @@ preds %>%
   scroll_box(height = "300px")
 ```
 
+#### Summary of significant caste biases
+
+There are 6 worker-biased modules (one of which is Module 0) and one module that did not show a caste bias (Module 3).
+```{r warning=F, message=F}
+read_csv("output/eigengene_stats_table_meth.csv") %>% 
+  split(.$Module) %>% map(~ sign(.x %>% filter(!is.na(X8) & X8 != "~" & Time != 2) %>% pull(Estimate))) %>% 
+  map_chr(~ {
+    if(length(.x) == 0) return("Unbiased")
+    ifelse(unique(.x) == 1, "Queen-biased", "Worker-biased")
+    }) %>% 
+  enframe("Module", "Direction") %>% 
+  mutate(Module = factor(Module, paste("Module", 0:6))) %>%
+  arrange(Direction, Module) %>%
+  kable() %>% kable_styling(full_width = FALSE)
+```
 
 
 
@@ -2422,60 +2249,65 @@ present_module_GO_table() %>%
 ```
 
 
-### Test for overlap between the co-expression and co-methylation modules
+<!-- ### Test for overlap between the co-expression and co-methylation modules -->
 
-Very few pairs of modules from the co-expression network and the co-methylation network overlapped significantly, suggesting either that suites of co-methylated genes are not necessarily co-expressed, or that uncertainty in the estimation of both networks makes such a relationship difficult to detect. The exception was Module 1 in the co-methylation network, which overlapped significantly with Modules 0 and 18 in the co-expression network (using hypergeometric tests with p-values corrected for multiple testing).
+<!-- Very few pairs of modules from the co-expression network and the co-methylation network overlapped significantly, suggesting either that suites of co-methylated genes are not necessarily co-expressed, or that uncertainty in the estimation of both networks makes such a relationship difficult to detect. The exception was Module 1 in the co-methylation network, which overlapped significantly with Modules 0 and 18 in the co-expression network (using hypergeometric tests with p-values corrected for multiple testing). -->
 
-```{r model_overlap_test, message=FALSE, warning=FALSE}
-# Load the RSEM expression_data for each sample-gene combination
-expression_data_common_genes <- as.matrix(read.table("data/Expression_data/Genes_2020_version.txt", row.names = 1, header = T))
-n_genes_before_filtering <- nrow(expression_data_common_genes)
-gsg <- goodSamplesGenes(t(expression_data_common_genes), verbose = 3) # exclude 217 genes due to too many missing samples or zero variance
+<!-- ```{r model_overlap_test, message=FALSE, warning=FALSE} -->
+<!-- # Load the RSEM expression_data for each sample-gene combination -->
+<!-- expression_data_common_genes <- as.matrix(read.table("data/Expression_data/Genes_2020_version.txt", row.names = 1, header = T)) -->
+<!-- n_genes_before_filtering <- nrow(expression_data_common_genes) -->
+<!-- gsg <- goodSamplesGenes(t(expression_data_common_genes), verbose = 3) # exclude 217 genes due to too many missing samples or zero variance -->
 
-expr_modules <- read_csv("output/caste_results.csv") %>% 
-  dplyr::select(`Gene symbol`, module) %>% distinct() %>%
-  filter(!is.na(module))
+<!-- expr_modules <- read_csv("output/caste_results.csv") %>%  -->
+<!--   dplyr::select(`Gene symbol`, module) %>% distinct() %>% -->
+<!--   filter(!is.na(module)) -->
 
-expression_data_common_genes <- t(expression_data_common_genes[gsg$goodGenes, gsg$goodSamples])
-rownames(expression_data_common_genes) <- str_remove_all(rownames(expression_data_common_genes), "RNAseq_tg_")
-rownames(expression_data_common_genes) <- str_remove_all(rownames(expression_data_common_genes), "_rep_")
+<!-- expression_data_common_genes <- t(expression_data_common_genes[gsg$goodGenes, gsg$goodSamples]) -->
+<!-- rownames(expression_data_common_genes) <- str_remove_all(rownames(expression_data_common_genes), "RNAseq_tg_") -->
+<!-- rownames(expression_data_common_genes) <- str_remove_all(rownames(expression_data_common_genes), "_rep_") -->
 
-cmn_genes <- intersect( colnames(expression_data_common_genes), 
-                        colnames(network_input)) %>%
-  intersect(expr_modules$`Gene symbol`) %>%
-  intersect(gene_meth_module_memberships$gene)
-cmn_samples <- intersect( rownames(expression_data_common_genes), rownames(network_input))
+<!-- cmn_genes <- intersect( colnames(expression_data_common_genes),  -->
+<!--                         colnames(network_input)) %>% -->
+<!--   intersect(expr_modules$`Gene symbol`) %>% -->
+<!--   intersect(gene_meth_module_memberships$gene) -->
+<!-- cmn_samples <- intersect( rownames(expression_data_common_genes), rownames(network_input)) -->
 
-expression_data_common_genes <- expression_data_common_genes[rownames(expression_data_common_genes) %in% cmn_samples, 
-                                                             colnames(expression_data_common_genes) %in% cmn_genes] 
+<!-- expression_data_common_genes <- expression_data_common_genes[ -->
+<!--   rownames(expression_data_common_genes) %in% cmn_samples, -->
+<!--   colnames(expression_data_common_genes) %in% cmn_genes] -->
 
-meth_data_common_genes <- network_input[rownames(network_input) %in% cmn_samples, 
-                                        colnames(network_input) %in% cmn_genes] 
+<!-- meth_data_common_genes <- network_input[rownames(network_input) %in% cmn_samples,  -->
+<!--                                         colnames(network_input) %in% cmn_genes]  -->
+<!-- expression_data_common_genes <- expression_data_common_genes[, match(colnames(meth_data_common_genes), colnames(expression_data_common_genes))] -->
 
-expr_modules <- expr_modules %>% 
-  filter(`Gene symbol` %in% cmn_genes) %>%
-  mutate(`Gene symbol` = factor(`Gene symbol`, cmn_genes )) %>% 
-  arrange(`Gene symbol`)
+<!-- expr_modules <- expr_modules %>%  -->
+<!--   filter(`Gene symbol` %in% cmn_genes) %>% -->
+<!--   mutate(`Gene symbol` = factor(`Gene symbol`, cmn_genes )) %>%  -->
+<!--   arrange(`Gene symbol`) -->
 
-gene_meth_module_memberships <- gene_meth_module_memberships %>% 
-  filter(gene %in% cmn_genes) %>%
-  mutate(gene = factor(gene, cmn_genes )) %>% 
-  arrange(gene)
+<!-- gene_meth_module_memberships <- gene_meth_module_memberships %>%  -->
+<!--   filter(gene %in% cmn_genes) %>% -->
+<!--   mutate(gene = factor(gene, cmn_genes )) %>%  -->
+<!--   arrange(gene) -->
 
 
-results <- overlapTableUsingKME(expression_data_common_genes, meth_data_common_genes,
-                   expr_modules$module, gene_meth_module_memberships$module, 
-                   cutoffMethod = "assigned")
-p_vals <- as.matrix(results$PvaluesHypergeo) 
+<!-- results <- overlapTableUsingKME(expression_data_common_genes, meth_data_common_genes, -->
+<!--                    expr_modules$module, gene_meth_module_memberships$module,  -->
+<!--                    cutoffMethod = "assigned") -->
+<!-- p_vals <- as.matrix(results$PvaluesHypergeo)  -->
 
-matrix(ifelse(p_vals %>% p.adjust() < 0.05, "\\*", ""), 
-                ncol = ncol(p_vals), dimnames = list(rownames(p_vals), colnames(p_vals))) %>%
-  as.data.frame() %>%
-  rename_all(~ str_replace_all(.x, "MM2_", "Methylation ")) %>%
-  rename_all(~ str_replace_all(.x, "Module ", "m")) %>%
-  rownames_to_column("Expression module") %>%
-  mutate(`Expression module` = str_remove_all(`Expression module`, "MM1_"),
-         `Expression module` = factor(`Expression module`, paste("Module", 0:18))) %>%
-  arrange(`Expression module`) %>%
-  kable() %>% kable_styling()
-```
+<!-- matrix(ifelse(p_vals %>% p.adjust() < 0.05, "\\*", ""),  -->
+<!--                 ncol = ncol(p_vals), dimnames = list(rownames(p_vals), colnames(p_vals))) %>% -->
+<!--   as.data.frame() %>% -->
+<!--   rename_all(~ str_replace_all(.x, "MM2_", "Methylation ")) %>% -->
+<!--   rename_all(~ str_replace_all(.x, "Module ", "m")) %>% -->
+<!--   rownames_to_column("Expression module") %>% -->
+<!--   mutate(`Expression module` = str_remove_all(`Expression module`, "MM1_"), -->
+<!--          `Expression module` = factor(`Expression module`, paste("Module", 0:18))) %>% -->
+<!--   arrange(`Expression module`) %>% -->
+<!--   kable() %>% kable_styling() -->
+<!-- ``` -->
+
+
+

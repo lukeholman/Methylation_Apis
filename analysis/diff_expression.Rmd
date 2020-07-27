@@ -113,26 +113,73 @@ tibble(` ` = c("Number of transcripts prior to filtering:",
 ### Reduce and plot the transcriptomes using NMDS
 
 <!-- #### Before removing the batch effects -->
+```{r}
+set.seed(1)
+nmds_output <- dist(expression_data) %>% nmds(maxdim = 16)
+saveRDS(tail(nmds_output$r2, 1), "output/expression_data_nmds_rs.rds")
+
+nmds_output <- data.frame(
+  sample = meth_sampleIDs,
+  caste = substr(meth_sampleIDs, 1, 1),
+  time = str_extract(meth_sampleIDs, "[02468]"),
+  rep = substr(meth_sampleIDs, nchar(meth_sampleIDs), nchar(meth_sampleIDs)),
+  nmds_output$conf[[length(nmds_output$conf)]])
+
+pd <- position_dodge(0.2)
+dat <- nmds_output %>%
+  mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
+  gather(NMDS, Score, starts_with("X")) %>%
+  mutate(NMDS = factor(gsub("X", "NMDS ", NMDS), 
+                       levels = paste("NMDS", unique(sort(as.numeric(gsub("X", "", NMDS)))))),
+         Replicate = paste("Replicate", rep)) %>%
+  mutate(caste = replace(as.character(caste), caste == "t", "t0"),
+         caste = replace(as.character(caste), caste == "q", "Queen"),
+         caste = replace(as.character(caste), caste == "w", "Worker")) %>%
+  as_tibble()
+
+bind_rows(dat %>% filter(caste == "t0") %>% mutate(caste = "Queen"),
+          dat %>% filter(caste == "t0") %>% mutate(caste = "Worker"),
+          dat %>% filter(caste != "t0")) %>%
+  group_by(NMDS, caste, time) %>%
+  summarise(mean = mean(Score),
+            se = sd(Score) / sqrt(n()),
+            .groups = "drop") %>%
+  ggplot(aes(time, mean, colour = caste, group = caste)) + 
+  geom_line(position = pd) +
+  geom_errorbar(position = pd, aes(ymin = mean - se, ymax = mean + se), width = 0) +
+  geom_point(position = pd) + 
+  scale_colour_manual(values = c(queen_colour, worker_colour), 
+                      name = "Cell type") +  
+  facet_wrap(~NMDS, scales = "free_y") + 
+  xlab("Time since the larva was grafted (hours)") + 
+  ylab("Mean NMDS Score (\u00B1 SE)") + 
+  theme_bw()
+```
+
+
 ```{r nmds1}
-nmds_output <- dist(t(expression_data)) %>% nmds(maxdim = 2)
+nmds_output <- dist(t(expression_data)) %>% nmds(maxdim = 1)
 nmds_r2 <- tail(nmds_output$r2, 1)
 nmds_output <- data.frame(Caste = sample_ids$caste,
                           Time = as.numeric(as.character(sample_ids$time_point)),
-                          Replicate = sample_ids$replicate,
+                          Replicate = paste("Replicate", sample_ids$replicate),
                           label = paste(sample_ids$caste, sample_ids$time_point),
-                          nmds_output$conf[[length(nmds_output$conf)]])
+                          NMDS_score= nmds_output$conf[[length(nmds_output$conf)]]) %>%
+  mutate(NMDS_score = as.numeric(scale(NMDS_score)))
 
-nmds_output %>%
-  mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
-  gather(NMDS, Score, starts_with("X")) %>%
-  mutate(NMDS = gsub("X", "NMDS ", NMDS),
-         Replicate = paste("Replicate", Replicate)) %>%
-  ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
+ bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
+              nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Worker"),
+              nmds_output %>% filter(Caste != "Time zero")) %>%
+  # mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>%
+  # gather(NMDS, Score, starts_with("X")) %>%
+  # mutate(NMDS = gsub("X", "NMDS ", NMDS),
+  #        Replicate = paste("Replicate", Replicate)) %>%
+  ggplot(aes(Time, NMDS_score, colour = Caste, group = Caste)) + 
   geom_line() +
   geom_point() + 
-  scale_colour_manual(values = c(queen_colour, "black", worker_colour), 
+  scale_colour_manual(values = c(queen_colour, worker_colour), 
                       name = "Cell type") + 
-  facet_grid(NMDS~Replicate) + 
+  facet_wrap(~Replicate) + 
   xlab("Time since the larva was grafted (hours)")
 ```
 
