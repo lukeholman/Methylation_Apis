@@ -125,19 +125,25 @@ nmds_output <- data.frame(Caste = sample_ids$caste,
          X3 = as.numeric(scale(X3))) %>%
   rename(`NMDS 1` = X1, `NMDS 2` = X2, `NMDS 3` = X3)
 
- bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
-              nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Worker"),
-              nmds_output %>% filter(Caste != "Time zero")) %>%
+t0_dat <- nmds_output %>% filter(Time == 0) %>%
+  gather(NMDS, Score, starts_with("NMDS"))
+
+bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
+          nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Worker"),
+          nmds_output %>% filter(Caste != "Time zero")) %>%
   gather(NMDS, Score, starts_with("NMDS")) %>%
+  mutate(Caste = factor(Caste, c("Queen", "t0", "Worker"))) %>%
   # mutate(NMDS = gsub("X", "NMDS ", NMDS),
   #        Replicate = paste("Replicate", Replicate)) %>%
   ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
   geom_line() +
   geom_point() + 
-  scale_colour_manual(values = c(queen_colour, worker_colour), 
-                      name = "Cell type") + 
+  geom_point(data =t0_dat, colour = "grey60") + 
+  scale_colour_manual(values = c(queen_colour, "grey60", worker_colour), 
+                      name = "Cell type", drop = FALSE) + 
   facet_grid(NMDS~Replicate) + 
-  xlab("Time since the larva was grafted (hours)")
+  xlab("Time since the larva was grafted (hours)") + 
+  theme_bw()
 ```
 
 **Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (termed NMDS 1-3; $r^2 =$ `r nmds_r2`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
@@ -177,9 +183,9 @@ nmds_output <- data.frame(Caste = sample_ids$caste,
 
 ### Heatmap showing similarities between samples and genes
 
-Here, the expression level of gene $j$ in transcriptome $i$ has been converted to a proportion of the total, then mean-centered and scaled. Thus, red indicates that the gene $j$ makes up an above-average fraction of transcriptome $i$, and blue indicates a below-average fraction.
+Here, the expression level of gene $j$ in transcriptome $i$ has been converted to a proportion of the total, then mean-centered and scaled. Thus, orange indicates that the gene $j$ makes up an above-average fraction of transcriptome $i$, and purple indicates a below-average fraction.
 
-Samples don't cluster perfectly (e.g. there is one 2h Worker sample clustering with some 6h and 8h Queen samples), perhaps because of batch effects (note the clustering by replicate). However, there is evident differentiation by caste and time for parts of the transcriptome. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. 
+Samples don't cluster perfectly, though this may be partly because of batch effects (note the clustering by replicate). However, there is evident differentiation by caste and time for parts of the transcriptome. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. 
 
 ```{r bigheatmap, fig.height=7.3}
 scaled_expression_data <- expression_data
@@ -197,21 +203,34 @@ for(i in 1:nrow(scaled_expression_data)) {
 name_converter <- sample_ids %>%
   mutate(new_name = paste(caste, " ", time_point, "h rep", replicate, sep = ""),
          new_name = str_replace_all(new_name, " 0h", "")) %>%
-  dplyr::select(sample_name, new_name)
+  dplyr::select(sample_name, new_name, caste) %>%
+  mutate(caste = replace(caste, caste == "Time zero", "t0"))
 
 rownames(scaled_expression_data) <- NULL
 colnames(scaled_expression_data) <- name_converter$new_name[match(colnames(scaled_expression_data), name_converter$sample_name)]
 
 paletteLength <- 50
-myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[7], "white", brewer.pal(9, "Reds")[7]))(paletteLength)
+myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
 myBreaks <- c(seq(min(scaled_expression_data, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
               seq(max(scaled_expression_data, na.rm=T)/paletteLength, max(scaled_expression_data, na.rm=T), length.out=floor(paletteLength/2)))
+
+
+
+annotation_row <- name_converter %>% select(new_name, caste) %>% as.data.frame()
+rownames(annotation_row) <- annotation_row$new
+annotation_row <- annotation_row %>% 
+  select(caste) %>% dplyr::rename(` ` = caste)
+
+
+annotation_colors <- 
+  list(` ` = c(Queen = queen_colour, t0 = "grey60", Worker = worker_colour))
 
 t(scaled_expression_data) %>%
   pheatmap(col = myColor, breaks = myBreaks,
            clustering_distance_rows = "euclidean",
            clustering_distance_cols = "euclidean",
            cutree_cols = 18, cutree_rows = 5, 
+           annotation_row = annotation_row, annotation_colors = annotation_colors,
            show_colnames = FALSE)
 ```
 

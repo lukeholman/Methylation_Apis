@@ -174,23 +174,19 @@ make_caste_diff_module_histogram(100)
 ### Reduce and plot the methylomes using NMDS
 
 ```{r echo=FALSE}
- # Fix this, what happened here??
-  meth_matrix <- by_site %>%
-    filter(numCs + numTs > 0) %>%
-    mutate(p = numCs/(numCs+numTs)) %>%
-    dplyr::select(site, sample, p) %>% 
-    spread(site, p)
-  
-  # Filter 
-  to_keep <- colnames(meth_matrix[, apply(meth_matrix, 2, function(x) sum(!is.na(x))) >= 10][,-1])
-  
-nmds_r2 <- readRDS()
+meth_matrix <- by_site %>%
+  filter(numCs + numTs > 0) %>%
+  mutate(p = numCs/(numCs+numTs)) %>%
+  dplyr::select(site, sample, p) %>% 
+  spread(site, p)
+
+# Filter to sites measured in 10+ samples, convert to a matrix
+to_keep <- colnames(meth_matrix[, apply(meth_matrix, 2, function(x) sum(!is.na(x))) >= 10][,-1])
 ```
 
-Here, we construct a sample-by-site matrix where each cell contains the propotion of methylated cytosines, containing all `r length(to_keep)` sites that were measured with 20x or better coverage in at least 10 samples. The data were then reduced to 16 components by non-metric multidimensional scaling (NMDS), preserving `r round(readRDS("output/meth_nmds_rs.rds")*100)`% of the variance in the original data. 
 
+Here, we construct a sample-by-site matrix where each cell contains the proportion of methylated cytosines, containing all `r length(to_keep)` sites that were measured with 20x or better coverage in at least 10 samples. We then reduce the data to 16 components by non-metric multidimensional scaling (NMDS), preserving `r round(readRDS("output/meth_nmds_rs.rds")*100)`% of the variance in the original data. 
 
-Here, we keep all sites that were measured to at least 20x coverage in at least 10 samples. We then impute the missing methylation values (0: unmethylated, 1: methylated), according to a binomial distribution, using multiple imputation by chained equations (MICE) via the `mice` package. Imputed sites were assumed to have a coverage of 20x, and so for each one we generated the methylation data according to $X \sim Binom(20, p)$, where p is the estimated proportion methylated according to `mice`.
 ```{r run_nmds}
 if(!file.exists("figures/meth_nmds_plot.rds")){
   
@@ -234,6 +230,7 @@ if(!file.exists("figures/meth_nmds_plot.rds")){
              caste = replace(as.character(caste), caste == "w", "Worker")) %>%
       as_tibble()
     
+    
     bind_rows(dat %>% filter(caste == "t0") %>% mutate(caste = "Queen"),
               dat %>% filter(caste == "t0") %>% mutate(caste = "Worker"),
               dat %>% filter(caste != "t0")) %>%
@@ -255,21 +252,21 @@ if(!file.exists("figures/meth_nmds_plot.rds")){
   
   nmds_plot <- nmds_plot(meth_matrix)
   saveRDS(nmds_plot, "figures/meth_nmds_plot.rds")
+  saveRDS(meth_matrix, "output/meth_matrix.rds")
 }
 
-meth_matrix <- readRDS("data/Methylation_data/meth_matrix.rds")
-# meth_sampleIDs <- readRDS("data/Methylation_data/meth_sampleIDs.rds")
 readRDS("figures/meth_nmds_plot.rds")
 ```
 
 
-
 ### Heatmap showing similarities between samples and genes
 
-```{r meth_sample_distance_heatmap}
-meth_sample_heatmap <- function(meth_matrix){
+Before plotting, the mean % methylation of sites in gene $j$ in methylome $i$ has been mean-centered and scaled. Thus, orange indicates that the gene $j$ makes up an above-average fraction of transcriptome $i$, and purple indicates a below-average fraction.
 
-  foc <- readRDS("data/Methylation_data/input_data_for_meth_network_CLEANED.rds")
+```{r meth_sample_distance_heatmap}
+meth_sample_heatmap <- function(){
+
+  foc <- readRDS("data/Methylation_data/input_data_for_meth_network_CLEANED.rds") # created in code below
   foc <- foc[,apply(foc, 2, function(x) sum(!is.na(x))) >= 15]
   
   # Scale proportion methylation to have mean 0, variance 1
@@ -283,17 +280,39 @@ meth_sample_heatmap <- function(meth_matrix){
                 seq(max(foc, na.rm=T)/paletteLength, 
                     max(foc, na.rm=T), length.out = floor(paletteLength/2)))
   
+
+  
+  name_converter <- tibble(old = rownames(foc),
+                           caste = ifelse(str_detect(old, "q"), "Queen", "Worker"),
+                           time = str_extract(old, "[02468]"),
+                           rep = substr(old, nchar(old), nchar(old))) %>%
+    mutate(caste = replace(caste, time == 0, "t0"),
+           new = paste(caste, " ", time, "h rep", rep, sep = ""),
+           new = str_replace_all(new, " 0h", ""))
+  
+  rownames(foc) <- name_converter$new[match(rownames(foc), name_converter$old)]
+  
+  annotation_row <- name_converter %>% select(new, caste) %>% as.data.frame()
+  rownames(annotation_row) <- annotation_row$new
+  annotation_row <- annotation_row %>% 
+    select(caste) %>% dplyr::rename(` ` = caste)
+  
+  
+  annotation_colors <- 
+    list(` ` = c(Queen = queen_colour, t0 = "grey60", Worker = worker_colour))
+  
+  
   foc %>%
     pheatmap(col = myColor, breaks = myBreaks,
              clustering_distance_rows = "euclidean",
              clustering_distance_cols = "euclidean",
-             cutree_cols = 7, cutree_rows = 4, 
-             show_colnames = FALSE, polar = T)
+             cutree_cols = 7, cutree_rows = 5,
+             annotation_row = annotation_row, annotation_colors = annotation_colors,
+             show_colnames = FALSE)
 }
 
-meth_sample_heatmap(meth_matrix)
+meth_sample_heatmap()
 ```
-
 
 
 
@@ -324,23 +343,23 @@ annotations %>%
 
 ### Run the models
 
-The following code runs a Bayesian generalised linear model (GLM) on every site for which we have enough data; specifically, 'enough data' means:
+The following code runs a Bayesian generalised additive model (GAM) on every site for which we have enough data; specifically, 'enough data' means:
 
 - We only included _samples_ for which at least 20 reads mapped to the focal site
 - We only included _sites_ where we had at least one suitable sample per caste at 4-5 time points, where the t0 timpoint counts towards both castes. For example, we would include a site where we had measured 1 or more queen samples at times 2, 4, and 6, and one more more worker samples at times 2,4, and 8, as well as 1 or more t0 samples.
 
-Assuming that the focal dataset contained one or more t0 samples, we first generated multiple copies of the orignal dataset in which the t0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which there were approximately even numbers of queens and workers; for example, if there were data on all four t0 samples for the focal site, we relabelled the samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these datasets with the relablled t0 samples, and took the average by combining their posteriors using the `brm_multiple` function in `brms`. This procedure forces the intercept to be the same for both castes (which we know a prior must be the case), by effectively making each t0 sample affect the parameter estimates for both queens and workers. For sites for which no t0 samples were available, we simply ran a single GLM. 
+Assuming that the focal dataset contained one or more t0 samples, we first generated multiple copies of the orignal dataset in which the t0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which there were approximately even numbers of queens and workers; for example, if there were data on all four t0 samples for the focal site, we relabelled the samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these datasets with the relablled t0 samples, and took the average by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the intercept estimate towards teh same value for both castes (which we know _a priori_ must be the case), by effectively making each t0 sample affect the parameter estimates for both queens and workers. For sites for which no t0 samples were available, we simply ran a single model. 
 
 Each model had the same formula, namely:
 
 `Binomial(number_methylated, Coverage) ~ caste + s(time, by = caste, k = 4) + replicate`
 
-That is, the response variable is the number of putative methylated cytosines (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a numeric predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. The biological replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
+That is, the response variable is the number of putative methylated cytosines (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a numeric predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
 
 After running the model, we use it to derive posterior predictions of the mean % methylation at each point in time, in each caste. From these, we can calculate the caste difference in methylation at each time point, and test whether the 95% credible interval of this difference includes zero (implying a significant difference in means). We also calculate the difference between various pairs of time points within each caste, as for the other analyses in this paper. 
 
 
-```{r bayesian_GLMs, eval = FALSE}
+```{r bayesian_GAMs, eval = FALSE}
 sites_done <- list.files("output/meth_sites_brms", 
                          pattern = "meth_brms_", full.names = TRUE) %>%
   map(~ try(readRDS(.x))) %>% map_chr(~ .x[[1]])
@@ -1537,7 +1556,7 @@ sampleDistMatrix %>%
 
 ```{r make_meth_network, message=FALSE, warning=FALSE, results='hide'}
 if(!file.exists("output/meth_eigengenes.rds")){
-  build_network <- function(meth_matrix){
+  build_network <- function(network_input){
     
     # meth_matrix needs samples=rows, columns= genes (opposite of limma!)
     
@@ -1547,7 +1566,7 @@ if(!file.exists("output/meth_eigengenes.rds")){
     # Pick the soft thresholding power that gives a model fit of 
     # R^2 > RsquaredCut for the scale-free topology model
     soft_power <- pickSoftThreshold(
-      meth_matrix, powerVector = 1:30, RsquaredCut = 0.9, verbose = 5)
+      network_input, powerVector = 1:30, RsquaredCut = 0.9, verbose = 5)
     
     print(soft_power)
     print(paste("Network was built using a soft thresholding power of", soft_power$powerEstimate))
@@ -1555,9 +1574,7 @@ if(!file.exists("output/meth_eigengenes.rds")){
     # Use this power to generate a gene co-expression network
     # Largely uses the default arguments, except as stated:
     blockwiseModules(
-      datExpr = meth_matrix,
-      # weights = meth_matrix_weights,
-      #corOptions = list(method = 'spearman'),
+      datExpr = network_input,
       power = soft_power$powerEstimate,
       networkType = "signed",
       minModuleSize = 30,
@@ -1616,12 +1633,19 @@ if(!file.exists("output/meth_eigengenes.rds")){
     convert_colors_to_numbers()
   
   gene_meth_module_memberships <- tibble(
-    gene = colnames(network_input), module = meth_network$colors) 
+    gene = colnames(network_input), 
+    module = meth_network$colors) 
+  
+  meth_sampleIDs <- tibble(
+      sample = rownames(network_input),
+      caste = substr(sample, 1, 1),
+      time = str_extract(sample, "[02468]"),
+      rep = substr(sample, nchar(sample), nchar(sample)))
   
   meth_eigengenes <- meth_network %>%
     rearrange_eigengene_data(sample_ids = meth_sampleIDs)
   
-  meth_connectivity <- tibble( # finish this.....
+  meth_connectivity <- tibble( 
     Gene = colnames(network_input),
     intramodularConnectivity.fromExpr(
       network_input,
@@ -1772,7 +1796,8 @@ raw_data <- brms_data[[1]] %>%
          Module = factor(Module, mod_levels)) %>% 
   mutate(Caste = replace(as.character(Caste), Caste == "q", "Queen"),
          Caste = replace(Caste, Caste == "w", "Worker"),
-         Caste = replace(Caste, Time == 0, "Pre-grafting"))
+         Caste = replace(Caste, Time == 0, "Pre-grafting"),
+         Time = as.numeric(Time))
 
 # Define y limits for the figure: 10% either side of the full range of the raw data
 ylimits <- c(min(raw_data$eigengene), max(raw_data$eigengene))
@@ -1801,7 +1826,7 @@ make_preds <- function(){
     as_tibble() %>%
     mutate(Module = factor(Module, mod_levels)) %>%
     group_by(Module, Time, Caste, draw) %>% # average over replicates
-    summarise(eigengene = mean(eigengene)) %>%
+    summarise(eigengene = mean(eigengene), .groups = "drop") %>%
     mutate(Caste = replace(Caste, Time == 0, "Pre-grafting")) %>%
     distinct()
 }
@@ -1935,10 +1960,14 @@ read_csv("output/eigengene_stats_table_meth.csv") %>%
 
 
 
-### Identify GO and KEGG terms enriched in each module
+## Identify GO and KEGG terms enriched in each module  {.tabset}
+
+#### Using _A. mellifera_ GO and KEGG annotations
+
 
 ```{r GO_and_KEGG_hypergeometric, message=FALSE, warning=FALSE, results='hide'}
 # Code up a hypergeometric test
+# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
 manual_GO_enrich <- function(
   GO_ID,
   number_genes_in_set_with_focal_GO,
@@ -1970,12 +1999,12 @@ manual_GO_enrich <- function(
   )
 }
 
-
+# grab names of genes in module i
 genes_in_module <- function(module_number){
   colnames(network_input)[meth_network$colors == paste("Module", module_number)] 
 }
 
-
+# Big function to run GO and KEGG hypergeo. enrichment tests, to see what terms are enriched in a gene set (e.g. genes in module i; could also be used for sig vs non-sig genes, but this is less powerful than the GSEA version above)
 GO_and_KEGG_hypergeometric <- function(
   gene_set, gene_universe, 
   gene_set_entrez, gene_universe_entrez,
@@ -1986,8 +2015,7 @@ GO_and_KEGG_hypergeometric <- function(
   neatness <- function(x) format(round(x, 4), nsmall = 4) # for rounding
   
   # Define internal GO enrichment function (custom; gives same results as clusterProfiler)
-  # However, it works without an Org.db, which we needed due to there being no publicly-available 
-  # GO annotations for many of our genes (we supplemented using BLAST2GO)
+  # However, it works without an Org.db, which we needed in order to use our custom GO annotations
   GO_enrichment <- function(gene_set,
                             gene_universe,
                             min_size,
@@ -2047,10 +2075,11 @@ GO_and_KEGG_hypergeometric <- function(
       distinct()
   }
   
-  # Define internal KEGG enrichment function (uses clusterProfiler)
+  # Define internal KEGG enrichment function (uses clusterProfiler::enrichKEGG)
   kegg_enrichment <- function(gene_set, gene_universe, 
                               GO_list, min_size, keep_all){
     
+    # if using D.mel annotations, first convert among orthologuous gene names
     if(GO_list == "dros_ortho_GO"){
       
       gene_set_CG_drosophila <- tibble(SYMBOL = gene_set) %>%
@@ -2075,21 +2104,22 @@ GO_and_KEGG_hypergeometric <- function(
         universe = gene_universe_CG_drosophila, minGSSize = min_size, maxGSSize = 500,
         qvalueCutoff = 1, use_internal_data = FALSE, pAdjustMethod = "BH")
     }
-    else {
+    else { # otherwise, it's much easier: plug in Apis names directly
       result <-  clusterProfiler::enrichKEGG(
         gene = gene_set_entrez, organism = "ame", keyType = "kegg", pvalueCutoff = p,
         universe = gene_universe_entrez, minGSSize = min_size, maxGSSize = 500,
         qvalueCutoff = 1, use_internal_data = FALSE, pAdjustMethod = "BH")
     }
     
-    if(is.null(result)) return(NULL)
+    if(is.null(result)) return(NULL) # if no enriched/annotated terms...
     
     result <- result@result
     is_enriched <- sapply(result$GeneRatio, 
-                          function(x) eval(parse(text=x))) > 
+                          function(x) eval(parse(text = x))) > 
       sapply(result$BgRatio, 
-             function(x) eval(parse(text=x)))
-    result <- result[is_enriched, ] %>% mutate(p.adjust = p.adjust(pvalue, method = "BH"))
+             function(x) eval(parse(text = x)))
+    result <- result[is_enriched, ] %>% 
+      mutate(p.adjust = p.adjust(pvalue, method = "BH"))
     
     if(nrow(result %>% filter(pvalue < p)) == 0) return(NULL)
     if(!keep_all) result <- result %>% filter(pvalue < 0.05)
@@ -2115,6 +2145,7 @@ GO_and_KEGG_hypergeometric <- function(
     bind_rows(GO_enrichment(gene_set, gene_universe, min_size, keep_all))
 }
 
+# Function to run GO_and_KEGG_hypergeometric on all the modules:
 make_module_GO_table <- function(
   eigengenes, GO_list,
   min_size = 5, keep_all = FALSE){
@@ -2134,7 +2165,7 @@ make_module_GO_table <- function(
     filter(gene_symbol %in% colnames(network_input))
   
   hub <- AnnotationHub::AnnotationHub()
-  select <- dplyr::select # wish this worked :(
+  select <- dplyr::select 
   rename <- dplyr::rename
   filter <- dplyr::filter
   apis.db <- hub[["AH81619"]]
@@ -2170,41 +2201,7 @@ make_module_GO_table <- function(
   }) 
 }
 
-# module_enrichment_plot <- function(df, is.KEGG = FALSE){
-#   label <- "Name of GO term"
-#   if(is.KEGG) label <- "Name of KEGG term"
-#   df %>% 
-#     arrange(Module, enrichment_LOR) %>% 
-#     mutate(Meaning = factor(Meaning, unique(Meaning)),
-#            Ontology = factor(
-#              Ontology, c("GO: Biological process", 
-#                           "GO: Molecular function", 
-#                           "GO: Cellular component", "KEGG"))) %>%
-#     ggplot(aes(Meaning, enrichment_LOR)) + 
-#     geom_bar(stat = "identity", colour = "grey10", fill = "#0CE3AC") + # aes(fill = sig), 
-#     facet_wrap(~Module) + 
-#     scale_fill_brewer(palette = "Accent", direction = -1) + 
-#     scale_x_discrete(labels = function(x) str_wrap(x, width = 60)) +
-#     theme_bw() +
-#     theme(legend.position = "none", 
-#           strip.background = element_blank(), 
-#           strip.text = element_text(size = 10)) + 
-#     ylab("Enrichment (log odds ratio)") + xlab(label) + 
-#     coord_flip() 
-# }  
-
-module_GO_table_amel <- make_module_GO_table(eigengenes, GO_list = "bee_GO") 
-module_GO_table_dmel <- make_module_GO_table(eigengenes, GO_list = "dros_ortho_GO") 
-```
-
-
-### Tables of the module enrichment results {.tabset}
-
-The table shows the 
-
-#### Using _A. mellifera_ GO and KEGG annotations
-
-```{r}
+# helper to present the results cleanly: 
 present_module_GO_table <- function(){
   
   focal <- bind_rows(
@@ -2230,12 +2227,18 @@ present_module_GO_table <- function(){
     mutate_if(is.numeric, ~ round(.x, 3)) 
 }
 
+module_GO_table_amel <- make_module_GO_table(eigengenes, GO_list = "bee_GO") 
+module_GO_table_dmel <- make_module_GO_table(eigengenes, GO_list = "dros_ortho_GO") 
+
+
+# Present Apis table:
 present_module_GO_table() %>%
   filter(Annotation == "A. mellifera") %>%
   dplyr::select(-Annotation) %>%
   kable() %>%
   kable_styling()
 ```
+
 
 
 #### Using _D. melanogaster_ GO and KEGG annotations
