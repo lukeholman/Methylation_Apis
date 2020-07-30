@@ -261,7 +261,7 @@ readRDS("figures/meth_nmds_plot.rds")
 
 ### Heatmap showing similarities between samples and genes
 
-Before plotting, the mean % methylation of sites in gene $j$ in methylome $i$ has been mean-centered and scaled. Thus, orange indicates that the gene $j$ makes up an above-average fraction of transcriptome $i$, and purple indicates a below-average fraction.
+Before plotting, the mean % methylation of sites in gene $j$ has been mean-centered and scaled. Thus, orange indicates that the gene $j$ has a methylation frequency above the average frequency for all the samples analysed, and purple indicates a below-average frequencies.
 
 ```{r meth_sample_distance_heatmap}
 meth_sample_heatmap <- function(){
@@ -799,7 +799,7 @@ bwasp_caste_sig_sites <- files[str_detect(files, "DMSG") &
                                  str_detect(files, "dms")] %>%
   map_df(~ read_tsv(.x)) %>% 
   mutate(site = paste(seqnames, start, end, sep = "~")) %>%
-  left_join(annotations, by = "site")
+  left_join(annotations, by = "site") 
 
 
 files <- list.files("data/BWASP_results/Temporal_Variation_Q_results/",
@@ -810,7 +810,7 @@ bwasp_timeQ_sig_sites <- files[str_detect(files, "DMSG") &
                                  str_detect(files, "dms")] %>%
   map_df(~ read_tsv(.x)) %>% 
   mutate(site = paste(seqnames, start, end, sep = "~")) %>%
-  left_join(annotations, by = "site")
+  left_join(annotations, by = "site") 
 
 files <- list.files("data/BWASP_results/Temporal_Variation_W_results/",
            recursive = T, pattern = "txt", full.names = T)
@@ -820,7 +820,7 @@ bwasp_timeW_sig_sites <- files[str_detect(files, "DMSG") &
                                  str_detect(files, "dms")] %>%
   map_df(~ read_tsv(.x)) %>% 
   mutate(site = paste(seqnames, start, end, sep = "~")) %>%
-  left_join(annotations, by = "site")
+  left_join(annotations, by = "site") 
 
 intersection_caste <- gene_meth_results_table$gene_name[gene_meth_results_table$sig_caste == "\\*"]
 intersection_timeQ <- gene_meth_results_table$gene_name[gene_meth_results_table$sig_time_queen == "\\*"]
@@ -848,7 +848,7 @@ bwasp_timeW_sig_genes <- bwasp_timeW_sig_sites %>%
   dplyr::rename(`Number of sig. differentially methylated sites` = value) %>%
   mutate(`Also sig in Bayesian GAM analysis` = 
            ifelse(`Gene name` %in% intersection_timeW, "Yes", "")) %>%
-  arrange(desc(`Also sig in Bayesian GAM analysis`))
+  arrange(desc(`Also sig in Bayesian GAM analysis`)) 
 
 saveRDS(list(bwasp_caste_sig_genes=bwasp_caste_sig_genes, 
              bwasp_timeQ_sig_genes=bwasp_timeQ_sig_genes,
@@ -881,7 +881,12 @@ bwasp_timeW_sig_genes %>%
 ```
 **Table XX:** The table shows the names of the `r nrow(bwasp_timeW_sig_genes)` genes in which BWASP detected one or more sites showing a significant difference in methylation between one or more time points within the _worker_ samples. Other columns identify the number of significant sites found for each gene (total number: `r nrow(bwasp_timeW_sig_sites)`), and state whether a significant result was also found for each gene in the Bayesian GAM analysis.
 
-## Upset plots of differentially methylated sites
+
+## Upset plots of differentially methylated genes
+
+These plots are similar to Venn diagrams, but they can display overlaps between many more categories. The horizontal bar plot in the lower left shows the number of genes that contain 1 or mroe significantly differentially methylated sites. The vertical bars showing the number of these genes that fall into each set intersection. For brevity, we only plot insections that contain two or more genes (there are a many extra sets containing a single gene that are not shown). 
+
+The two analytical approaches tell a slightly different story. The Bayesian GAM approach finds more genes that were significantly differentially methylated in multiple comparisons, because it fits a model to the full dataset, while the BWASP approach finds fewer such intersections because it compares each part of the dataset in isolation from the rest. The BWASP approach identifies many differences in methylation ebtween earlier and later time points in workers, while the Bayesian GAM additionally identifies caste differences at later time points (due to a difference in statistical power; the two analyses gives qualitatively similar results).
 
 ### UpSet plot for the Bayesian GAM results
 
@@ -890,20 +895,21 @@ bayesian_upset_data <-
   map_df(model_results, ~ .x$caste_difference %>% 
       mutate(site = .x$site,
              comparison = glue("queen{time}.vs.worker{time}"))) %>%
-      filter(p < 0.001) %>%
-      select(site, comparison) %>%
+      filter(p < 0.01) %>%
+      left_join(annotations) %>% select(gene, comparison) %>%
   bind_rows(map_df(model_results, ~ .x$time_difference %>% 
       mutate(site = .x$site,
              Caste = ifelse(Caste == "q", "queen", "worker"),
              comparison = glue("{Caste}_{Time}"))) %>%
-      filter(p < 0.001) %>%
-      select(site, comparison))
+      filter(p < 0.01) %>% 
+        left_join(annotations) %>% select(gene, comparison))
+        
 
 bayesian_upset_data %>% 
   split(.$comparison) %>%
-  map(~ .x %>% pull(site)) %>%
+  map(~ .x %>% pull(gene)) %>%
   fromList() %>%
-  upset(order.by = "freq", nsets = 24) 
+  upset(order.by = "freq", nsets = 9999, nintersects = 17) 
 ```
 
 ### UpSet plot for the BWASP pipeline results
@@ -915,49 +921,45 @@ if(!file.exists("output/upset_bwasp_data.rds")){
   methyl_diff <- vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
     dplyr::rename(gene_symbol = Genes)
   
-  #methyl_diff_by_gene_comparison <- methyl_diff %>%
-  #  group_by(gene_symbol, comparison) %>%
-  #  summarise(n_sites = n(),
-  #            mean_meth_diff = mean(meth.diff),
-  #            min_q = min(qvalue),
-  #            .groups = "drop")
-  
-  
   upset_bwasp_data <- methyl_diff %>%
-    filter(pvalue <= 0.001) %>% 
-    mutate(site = paste(seqnames, start, end, sep = "~")) %>%
-    select(site, comparison) %>% 
+    filter(qvalue <= 0.01) %>% # get sig sites (using p<0.05 gets thousands more, possibly spurious, sites)
+    select(gene_symbol, comparison) %>% # get unique gene names for these sig sites
     distinct() %>%
     split(.$comparison) %>%
-    map(~ .x %>% pull(site)) %>%
-    fromList() 
+    map(~ .x %>% pull(gene_symbol)) 
   
   saveRDS(upset_bwasp_data, "output/upset_bwasp_data.rds")
 }
 
+upset_bwasp_data <- readRDS("output/upset_bwasp_data.rds")
 
-
-readRDS("output/upset_bwasp_data.rds") %>%
-  upset(order.by = "freq", nsets = 999) 
-```
-
-### UpSet plot comparing the Bayesian GAM and BWASP results
-
-The UpSet plot shows the number of sites recorded as statistically significant in the Bayesian GAM approach, and in the Fisher's Exact test approach used in the BWASP pipeline. Sites were recorded as significantly differentially methylated between castes if they ...
-
-
-```{r inspect_BWASP, message=FALSE}
-list(
-  bwasp_caste = unique(bwasp_caste_sig_sites$gene_name[!is.na(bwasp_caste_sig_sites$gene_name)]) %>% unique(),
-  bwasp_timeQ = unique(bwasp_timeQ_sig_sites$gene_name[!is.na(bwasp_timeQ_sig_sites$gene_name)]) %>% unique(),
-  bwasp_timeW = unique(bwasp_timeW_sig_sites$gene_name[!is.na(bwasp_timeW_sig_sites$gene_name)]) %>% unique(),
-  bayes_caste = annotations %>% filter(site %in% sig_sites_caste) %>% pull(gene_name) %>% unique(),
-  bayes_timeQ = annotations %>% filter(site %in% sig_sites_time_queen) %>% pull(gene_name) %>% unique(),
-  bayes_timeW = annotations %>% filter(site %in% sig_sites_time_worker) %>% pull(gene_name) %>% unique()
-) %>%
+upset_bwasp_data %>%
   fromList() %>%
-  upset(order.by = "freq", nsets = 24)
+  upset(order.by = "freq", nsets = 9999, nintersects = 22) 
 ```
+
+
+<!-- ### UpSet plot comparing the Bayesian GAM and BWASP results -->
+
+<!-- The UpSet plot shows the number of sites recorded as statistically significant in the Bayesian GAM approach, and in the Fisher's Exact test approach used in the BWASP pipeline. Sites were recorded as significantly differentially methylated between castes if they ... -->
+
+
+<!-- ```{r message=FALSE} -->
+<!-- list( -->
+<!--   bwasp_caste = upset_bwasp_data[ -->
+<!--     str_detect(names(upset_bwasp_data), "queen") & str_detect(names(upset_bwasp_data), "worker")] %>% -->
+<!--   unlist() %>% unname() %>% unique(), -->
+<!--   bwasp_timeQ = upset_bwasp_data[str_detect(names(upset_bwasp_data), "queen") & !str_detect(names(upset_bwasp_data), "worker")] %>% -->
+<!--   unlist() %>% unname() %>% unique(), -->
+<!--   bwasp_timeW = upset_bwasp_data[!str_detect(names(upset_bwasp_data), "queen") & str_detect(names(upset_bwasp_data), "worker")] %>% -->
+<!--   unlist() %>% unname() %>% unique(), -->
+<!--   bayes_caste = annotations %>% filter(site %in% sig_sites_caste) %>% pull(gene) %>% unique(), -->
+<!--   bayes_timeQ = annotations %>% filter(site %in% sig_sites_time_queen) %>% pull(gene) %>% unique(), -->
+<!--   bayes_timeW = annotations %>% filter(site %in% sig_sites_time_worker) %>% pull(gene) %>% unique() -->
+<!-- ) %>% -->
+<!--   fromList() %>% -->
+<!--   upset(order.by = "freq", nsets = 9999) -->
+<!-- ``` -->
 
 
 
@@ -1005,7 +1007,26 @@ make_cor_heatmap(corr_mat_bayes)
 
 ### Using the BWASP results
 ```{r wide_bwasp, warning=FALSE, message=FALSE, fig.height=12, fig.width=12}
+sites_in_bayesian_analysis <- map_df(model_results, ~ .x$caste_difference %>% 
+      mutate(site = .x$site,
+             comparison = glue("queen{time}.vs.worker{time}"))) %>%
+      select(site, `Q-W_difference_percent_meth`, comparison) %>%
+  bind_rows(map_df(model_results, ~ .x$time_difference %>% 
+      mutate(site = .x$site,
+             Caste = ifelse(Caste == "q", "queen", "worker"),
+             comparison = glue("{Caste}_{Time}"))) %>%
+      select(site, `Estimate`, comparison) %>%
+      rename(`Q-W_difference_percent_meth` = Estimate)) %>%
+  select(site) %>%
+  distinct() %>%
+  mutate(seqnames = map_chr(strsplit(site, split = "~"), ~ .x[1]),
+         start = map_chr(strsplit(site, split = "~"), ~ .x[2]),
+         end = map_chr(strsplit(site, split = "~"), ~ .x[3]))
+
+
+
 wide_bwasp <- vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+  filter(seqnames %in% sites_in_bayesian_analysis$seqnames & start %in% sites_in_bayesian_analysis$start) %>%
   select(seqnames, start, comparison, meth.diff) %>%
   distinct() %>%
   mutate(site = paste(seqnames, start)) %>%
