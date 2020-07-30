@@ -414,7 +414,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-07-28
+<strong>Last updated:</strong> 2020-07-30
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -505,16 +505,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree12b05057df701bfc5d4a0a63c7e105bb3b7f5271targetblank12b0505a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/12b05057df701bfc5d4a0a63c7e105bb3b7f5271" target="_blank">12b0505</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree16bc076a4f2635c5987e929a0afa52eb8f789ac1targetblank16bc076a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/16bc076a4f2635c5987e929a0afa52eb8f789ac1" target="_blank">16bc076</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree12b05057df701bfc5d4a0a63c7e105bb3b7f5271targetblank12b0505a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree16bc076a4f2635c5987e929a0afa52eb8f789ac1targetblank16bc076a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/12b05057df701bfc5d4a0a63c7e105bb3b7f5271" target="_blank">12b0505</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/16bc076a4f2635c5987e929a0afa52eb8f789ac1" target="_blank">16bc076</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -531,6 +531,7 @@ Ignored files:
 
 Unstaged changes:
     Modified:   figures/eigengenes_expression_network.pdf
+    Modified:   figures/eigengenes_meth_network_fig.pdf
 
 </code></pre>
 <p>
@@ -569,6 +570,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/16bc076a4f2635c5987e929a0afa52eb8f789ac1/analysis/diff_methylation.Rmd" target="_blank">16bc076</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-30
+</td>
+<td>
+new upsets
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/5a17ade648ba14ed6101c9df39f35c4ba1076305/docs/diff_methylation.html" target="_blank">5a17ade</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-28
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -956,10 +991,47 @@ lukeholman
 
 readRDS(&quot;figures/meth_nmds_plot.rds&quot;)</code></pre>
 <p><img src="figure/diff_methylation.Rmd/run_nmds-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-run_nmds-1">
+Past versions of run_nmds-1.png
+</button>
+</p>
+<div id="fig-run_nmds-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/5a17ade648ba14ed6101c9df39f35c4ba1076305/docs/figure/diff_methylation.Rmd/run_nmds-1.png" target="_blank">5a17ade</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="heatmap-showing-similarities-between-samples-and-genes" class="section level3">
 <h3>Heatmap showing similarities between samples and genes</h3>
-<p>Before plotting, the mean % methylation of sites in gene <span class="math inline">\(j\)</span> in methylome <span class="math inline">\(i\)</span> has been mean-centered and scaled. Thus, orange indicates that the gene <span class="math inline">\(j\)</span> makes up an above-average fraction of transcriptome <span class="math inline">\(i\)</span>, and purple indicates a below-average fraction.</p>
+<p>Before plotting, the mean % methylation of sites in gene <span class="math inline">\(j\)</span> has been mean-centered and scaled. Thus, orange indicates that the gene <span class="math inline">\(j\)</span> has a methylation frequency above the average frequency for all the samples analysed, and purple indicates a below-average frequencies.</p>
 <pre class="r"><code>meth_sample_heatmap &lt;- function(){
 
   foc &lt;- readRDS(&quot;data/Methylation_data/input_data_for_meth_network_CLEANED.rds&quot;) # created in code below
@@ -1031,6 +1103,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/5a17ade648ba14ed6101c9df39f35c4ba1076305/docs/figure/diff_methylation.Rmd/meth_sample_distance_heatmap-1.png" target="_blank">5a17ade</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-28
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/828487df901e15b91d9b9bd3a3dc571ee819fd76/docs/figure/diff_methylation.Rmd/meth_sample_distance_heatmap-1.png" target="_blank">828487d</a>
@@ -31297,7 +31380,7 @@ bwasp_caste_sig_sites &lt;- files[str_detect(files, &quot;DMSG&quot;) &amp;
                                  str_detect(files, &quot;dms&quot;)] %&gt;%
   map_df(~ read_tsv(.x)) %&gt;% 
   mutate(site = paste(seqnames, start, end, sep = &quot;~&quot;)) %&gt;%
-  left_join(annotations, by = &quot;site&quot;)
+  left_join(annotations, by = &quot;site&quot;) 
 
 
 files &lt;- list.files(&quot;data/BWASP_results/Temporal_Variation_Q_results/&quot;,
@@ -31308,7 +31391,7 @@ bwasp_timeQ_sig_sites &lt;- files[str_detect(files, &quot;DMSG&quot;) &amp;
                                  str_detect(files, &quot;dms&quot;)] %&gt;%
   map_df(~ read_tsv(.x)) %&gt;% 
   mutate(site = paste(seqnames, start, end, sep = &quot;~&quot;)) %&gt;%
-  left_join(annotations, by = &quot;site&quot;)
+  left_join(annotations, by = &quot;site&quot;) 
 
 files &lt;- list.files(&quot;data/BWASP_results/Temporal_Variation_W_results/&quot;,
            recursive = T, pattern = &quot;txt&quot;, full.names = T)
@@ -31318,7 +31401,7 @@ bwasp_timeW_sig_sites &lt;- files[str_detect(files, &quot;DMSG&quot;) &amp;
                                  str_detect(files, &quot;dms&quot;)] %&gt;%
   map_df(~ read_tsv(.x)) %&gt;% 
   mutate(site = paste(seqnames, start, end, sep = &quot;~&quot;)) %&gt;%
-  left_join(annotations, by = &quot;site&quot;)
+  left_join(annotations, by = &quot;site&quot;) 
 
 intersection_caste &lt;- gene_meth_results_table$gene_name[gene_meth_results_table$sig_caste == &quot;\\*&quot;]
 intersection_timeQ &lt;- gene_meth_results_table$gene_name[gene_meth_results_table$sig_time_queen == &quot;\\*&quot;]
@@ -31346,7 +31429,7 @@ bwasp_timeW_sig_genes &lt;- bwasp_timeW_sig_sites %&gt;%
   dplyr::rename(`Number of sig. differentially methylated sites` = value) %&gt;%
   mutate(`Also sig in Bayesian GAM analysis` = 
            ifelse(`Gene name` %in% intersection_timeW, &quot;Yes&quot;, &quot;&quot;)) %&gt;%
-  arrange(desc(`Also sig in Bayesian GAM analysis`))
+  arrange(desc(`Also sig in Bayesian GAM analysis`)) 
 
 saveRDS(list(bwasp_caste_sig_genes=bwasp_caste_sig_genes, 
              bwasp_timeQ_sig_genes=bwasp_timeQ_sig_genes,
@@ -41220,29 +41303,69 @@ zinc finger RNA-binding protein
 </div>
 </div>
 </div>
-<div id="upset-plots-of-differentially-methylated-sites" class="section level2">
-<h2>Upset plots of differentially methylated sites</h2>
+<div id="upset-plots-of-differentially-methylated-genes" class="section level2">
+<h2>Upset plots of differentially methylated genes</h2>
+<p>These plots are similar to Venn diagrams, but they can display overlaps between many more categories. The horizontal bar plot in the lower left shows the number of genes that contain 1 or mroe significantly differentially methylated sites. The vertical bars showing the number of these genes that fall into each set intersection. For brevity, we only plot insections that contain two or more genes (there are a many extra sets containing a single gene that are not shown).</p>
+<p>The two analytical approaches tell a slightly different story. The Bayesian GAM approach finds more genes that were significantly differentially methylated in multiple comparisons, because it fits a model to the full dataset, while the BWASP approach finds fewer such intersections because it compares each part of the dataset in isolation from the rest. The BWASP approach identifies many differences in methylation ebtween earlier and later time points in workers, while the Bayesian GAM additionally identifies caste differences at later time points (due to a difference in statistical power; the two analyses gives qualitatively similar results).</p>
 <div id="upset-plot-for-the-bayesian-gam-results" class="section level3">
 <h3>UpSet plot for the Bayesian GAM results</h3>
 <pre class="r"><code>bayesian_upset_data &lt;- 
   map_df(model_results, ~ .x$caste_difference %&gt;% 
       mutate(site = .x$site,
              comparison = glue(&quot;queen{time}.vs.worker{time}&quot;))) %&gt;%
-      filter(p &lt; 0.001) %&gt;%
-      select(site, comparison) %&gt;%
+      filter(p &lt; 0.01) %&gt;%
+      left_join(annotations) %&gt;% select(gene, comparison) %&gt;%
   bind_rows(map_df(model_results, ~ .x$time_difference %&gt;% 
       mutate(site = .x$site,
              Caste = ifelse(Caste == &quot;q&quot;, &quot;queen&quot;, &quot;worker&quot;),
              comparison = glue(&quot;{Caste}_{Time}&quot;))) %&gt;%
-      filter(p &lt; 0.001) %&gt;%
-      select(site, comparison))
-
-bayesian_upset_data %&gt;% 
+      filter(p &lt; 0.01) %&gt;% 
+        left_join(annotations) %&gt;% select(gene, comparison))</code></pre>
+<pre><code>Joining, by = &quot;site&quot;
+Joining, by = &quot;site&quot;</code></pre>
+<pre class="r"><code>bayesian_upset_data %&gt;% 
   split(.$comparison) %&gt;%
-  map(~ .x %&gt;% pull(site)) %&gt;%
+  map(~ .x %&gt;% pull(gene)) %&gt;%
   fromList() %&gt;%
-  upset(order.by = &quot;freq&quot;, nsets = 24) </code></pre>
+  upset(order.by = &quot;freq&quot;, nsets = 9999, nintersects = 17) </code></pre>
 <p><img src="figure/diff_methylation.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/5a17ade648ba14ed6101c9df39f35c4ba1076305/docs/figure/diff_methylation.Rmd/unnamed-chunk-10-1.png" target="_blank">5a17ade</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="upset-plot-for-the-bwasp-pipeline-results" class="section level3">
 <h3>UpSet plot for the BWASP pipeline results</h3>
@@ -41252,30 +41375,21 @@ if(!file.exists(&quot;output/upset_bwasp_data.rds&quot;)){
   methyl_diff &lt;- vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
     dplyr::rename(gene_symbol = Genes)
   
-  #methyl_diff_by_gene_comparison &lt;- methyl_diff %&gt;%
-  #  group_by(gene_symbol, comparison) %&gt;%
-  #  summarise(n_sites = n(),
-  #            mean_meth_diff = mean(meth.diff),
-  #            min_q = min(qvalue),
-  #            .groups = &quot;drop&quot;)
-  
-  
   upset_bwasp_data &lt;- methyl_diff %&gt;%
-    filter(pvalue &lt;= 0.001) %&gt;% 
-    mutate(site = paste(seqnames, start, end, sep = &quot;~&quot;)) %&gt;%
-    select(site, comparison) %&gt;% 
+    filter(qvalue &lt;= 0.01) %&gt;% # get sig sites (using p&lt;0.05 gets thousands more, possibly spurious, sites)
+    select(gene_symbol, comparison) %&gt;% # get unique gene names for these sig sites
     distinct() %&gt;%
     split(.$comparison) %&gt;%
-    map(~ .x %&gt;% pull(site)) %&gt;%
-    fromList() 
+    map(~ .x %&gt;% pull(gene_symbol)) 
   
   saveRDS(upset_bwasp_data, &quot;output/upset_bwasp_data.rds&quot;)
 }
 
+upset_bwasp_data &lt;- readRDS(&quot;output/upset_bwasp_data.rds&quot;)
 
-
-readRDS(&quot;output/upset_bwasp_data.rds&quot;) %&gt;%
-  upset(order.by = &quot;freq&quot;, nsets = 999) </code></pre>
+upset_bwasp_data %&gt;%
+  fromList() %&gt;%
+  upset(order.by = &quot;freq&quot;, nsets = 9999, nintersects = 22) </code></pre>
 <p><img src="figure/diff_methylation.Rmd/upset_bwasp-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-upset_bwasp-1">
@@ -41314,58 +41428,24 @@ lukeholman
 </table>
 </div>
 </div>
-</div>
-<div id="upset-plot-comparing-the-bayesian-gam-and-bwasp-results" class="section level3">
-<h3>UpSet plot comparing the Bayesian GAM and BWASP results</h3>
-<p>The UpSet plot shows the number of sites recorded as statistically significant in the Bayesian GAM approach, and in the Fisher’s Exact test approach used in the BWASP pipeline. Sites were recorded as significantly differentially methylated between castes if they …</p>
-<pre class="r"><code>list(
-  bwasp_caste = unique(bwasp_caste_sig_sites$gene_name[!is.na(bwasp_caste_sig_sites$gene_name)]) %&gt;% unique(),
-  bwasp_timeQ = unique(bwasp_timeQ_sig_sites$gene_name[!is.na(bwasp_timeQ_sig_sites$gene_name)]) %&gt;% unique(),
-  bwasp_timeW = unique(bwasp_timeW_sig_sites$gene_name[!is.na(bwasp_timeW_sig_sites$gene_name)]) %&gt;% unique(),
-  bayes_caste = annotations %&gt;% filter(site %in% sig_sites_caste) %&gt;% pull(gene_name) %&gt;% unique(),
-  bayes_timeQ = annotations %&gt;% filter(site %in% sig_sites_time_queen) %&gt;% pull(gene_name) %&gt;% unique(),
-  bayes_timeW = annotations %&gt;% filter(site %in% sig_sites_time_worker) %&gt;% pull(gene_name) %&gt;% unique()
-) %&gt;%
-  fromList() %&gt;%
-  upset(order.by = &quot;freq&quot;, nsets = 24)</code></pre>
-<p><img src="figure/diff_methylation.Rmd/inspect_BWASP-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-inspect_BWASP-1">
-Past versions of inspect_BWASP-1.png
-</button>
-</p>
-<div id="fig-inspect_BWASP-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/828487df901e15b91d9b9bd3a3dc571ee819fd76/docs/figure/diff_methylation.Rmd/inspect_BWASP-1.png" target="_blank">828487d</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-22
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<!-- ### UpSet plot comparing the Bayesian GAM and BWASP results -->
+<!-- The UpSet plot shows the number of sites recorded as statistically significant in the Bayesian GAM approach, and in the Fisher's Exact test approach used in the BWASP pipeline. Sites were recorded as significantly differentially methylated between castes if they ... -->
+<!-- ```{r message=FALSE} -->
+<!-- list( -->
+<!--   bwasp_caste = upset_bwasp_data[ -->
+<!--     str_detect(names(upset_bwasp_data), "queen") & str_detect(names(upset_bwasp_data), "worker")] %>% -->
+<!--   unlist() %>% unname() %>% unique(), -->
+<!--   bwasp_timeQ = upset_bwasp_data[str_detect(names(upset_bwasp_data), "queen") & !str_detect(names(upset_bwasp_data), "worker")] %>% -->
+<!--   unlist() %>% unname() %>% unique(), -->
+<!--   bwasp_timeW = upset_bwasp_data[!str_detect(names(upset_bwasp_data), "queen") & str_detect(names(upset_bwasp_data), "worker")] %>% -->
+<!--   unlist() %>% unname() %>% unique(), -->
+<!--   bayes_caste = annotations %>% filter(site %in% sig_sites_caste) %>% pull(gene) %>% unique(), -->
+<!--   bayes_timeQ = annotations %>% filter(site %in% sig_sites_time_queen) %>% pull(gene) %>% unique(), -->
+<!--   bayes_timeW = annotations %>% filter(site %in% sig_sites_time_worker) %>% pull(gene) %>% unique() -->
+<!-- ) %>% -->
+<!--   fromList() %>% -->
+<!--   upset(order.by = "freq", nsets = 9999) -->
+<!-- ``` -->
 </div>
 </div>
 <div id="correlations-in-difference-in-methylation-for-each-comparison" class="section level2 tabset">
@@ -41445,7 +41525,26 @@ lukeholman
 </div>
 <div id="using-the-bwasp-results" class="section level3">
 <h3>Using the BWASP results</h3>
-<pre class="r"><code>wide_bwasp &lt;- vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+<pre class="r"><code>sites_in_bayesian_analysis &lt;- map_df(model_results, ~ .x$caste_difference %&gt;% 
+      mutate(site = .x$site,
+             comparison = glue(&quot;queen{time}.vs.worker{time}&quot;))) %&gt;%
+      select(site, `Q-W_difference_percent_meth`, comparison) %&gt;%
+  bind_rows(map_df(model_results, ~ .x$time_difference %&gt;% 
+      mutate(site = .x$site,
+             Caste = ifelse(Caste == &quot;q&quot;, &quot;queen&quot;, &quot;worker&quot;),
+             comparison = glue(&quot;{Caste}_{Time}&quot;))) %&gt;%
+      select(site, `Estimate`, comparison) %&gt;%
+      rename(`Q-W_difference_percent_meth` = Estimate)) %&gt;%
+  select(site) %&gt;%
+  distinct() %&gt;%
+  mutate(seqnames = map_chr(strsplit(site, split = &quot;~&quot;), ~ .x[1]),
+         start = map_chr(strsplit(site, split = &quot;~&quot;), ~ .x[2]),
+         end = map_chr(strsplit(site, split = &quot;~&quot;), ~ .x[3]))
+
+
+
+wide_bwasp &lt;- vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+  filter(seqnames %in% sites_in_bayesian_analysis$seqnames &amp; start %in% sites_in_bayesian_analysis$start) %&gt;%
   select(seqnames, start, comparison, meth.diff) %&gt;%
   distinct() %&gt;%
   mutate(site = paste(seqnames, start)) %&gt;%
@@ -42428,6 +42527,43 @@ saveRDS(network_input, &quot;data/Methylation_data/input_data_for_meth_network_C
   pheatmap(col = colors1, legend = FALSE,
            cutree_rows = 4, cutree_cols = 4)</code></pre>
 <p><img src="figure/diff_methylation.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/5a17ade648ba14ed6101c9df39f35c4ba1076305/docs/figure/diff_methylation.Rmd/unnamed-chunk-14-1.png" target="_blank">5a17ade</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="build-the-co-methylation-network" class="section level3">
 <h3>Build the co-methylation network</h3>
@@ -42606,6 +42742,43 @@ myBreaks &lt;- c(seq(min(mat, na.rm=T), 0, length.out=ceiling(paletteLength / 2)
 pheatmap(mat, color = myColor, breaks = myBreaks,
          cutree_rows = 5, cutree_cols = 5)</code></pre>
 <p><img src="figure/diff_methylation.Rmd/unnamed-chunk-17-1.png" width="432" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
+Past versions of unnamed-chunk-17-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-17-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/5a17ade648ba14ed6101c9df39f35c4ba1076305/docs/figure/diff_methylation.Rmd/unnamed-chunk-17-1.png" target="_blank">5a17ade</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-28
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="fit-bayesian-model-to-the-eigengene-estimates" class="section level3">
 <h3>Fit Bayesian model to the eigengene estimates</h3>
