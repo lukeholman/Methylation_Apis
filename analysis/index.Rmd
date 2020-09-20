@@ -8,6 +8,11 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r set, echo = FALSE, message = FALSE, warning = FALSE, results = FALSE}
+library(ggplot2)
+library(gganimate)
+```
+
 Statistical analysis for a forthcoming research paper.
 
 ### Differential expression analysis
@@ -18,3 +23,8 @@ Click [here](diff_methylation.html)
 
 ### Comparing the expression and methylation analysis
 Click [here](compare_expression_and_methylation.html) 
+
+
+### Animated version of Figure XX
+
+![](../figures/site_meth_hist/combined_animation.gif)
