@@ -1,7 +1,7 @@
-name: "Methylation_Apis"
+name: Methylation_Apis
 output_dir: ../docs
 navbar:
-  title: "DNA methylation in Apis larvae"
+  title: DNA methylation in Apis larvae
   left:
   - text: Home
     href: index.html
@@ -15,6 +15,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/lukeholman/Methylation_Apis
 output:
   workflowr::wflow_html:
     toc: yes
