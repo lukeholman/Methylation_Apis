@@ -26,13 +26,13 @@ present_study_data <- read_csv("output/caste_results.csv") %>%
 # (estimated by Fisher exact test in BWASP, then averaged over sites within each gene)
 # Note that a positive meth.diff value in comparison A.vs.B means that the B methylation percentage is higher than the A methylation percentage.
 # So, a meth.diff value of +10 means that workers have a 10% higher value of %mC than queens
-present_study_data <- present_study_data %>%
-  left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
-              filter(comparison == "queen8.vs.worker8") %>%      # USES THE 8-HOUR CASTE DIFFERENCE RESULTS
-              group_by(Genes) %>%
-              summarise(`Caste difference in % methylation in 8h larvae (positive: W > Q)` = median(meth.diff), 
-                        .groups = "drop"),
-            by = c("Gene symbol" = "Genes"))
+# present_study_data <- present_study_data %>%
+#   left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
+#               filter(comparison == "queen8.vs.worker8") %>%      # USES THE 8-HOUR CASTE DIFFERENCE RESULTS
+#               group_by(Genes) %>%
+#               summarise(`Caste difference in % methylation in 8h larvae (positive: W > Q)` = median(meth.diff), 
+#                         .groups = "drop"),
+#             by = c("Gene symbol" = "Genes"))
 
 # Merge with the present study's median % methylation of sites within each gene (from BWASP)
 present_study_data <- present_study_data %>%
@@ -121,6 +121,7 @@ merged_data <- merged_data %>%
 # They measured the response of the transcriptome to two larva-produced pheromones. 
 # One is called "brood pheromone" (it's 10 chemicals), one is called EBO: (E)-beta-ocimene.
 # They also compared expression profiles of workers that chose to forage on pollen or nectar
+# Positive number means higher expression after pheromone treatment
 ma_brood_phero <- read_csv("data/apis_gene_comparisons/Ma_2019_brood_pheromone_RNAseq/BP_pheromone.csv") %>% 
   dplyr::select(gene, log2FoldChange) %>% 
   dplyr::rename(brood_pheromone = log2FoldChange) %>%

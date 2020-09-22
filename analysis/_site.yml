@@ -1,10 +1,16 @@
 name: "Methylation_Apis"
 output_dir: ../docs
 navbar:
-  title: "Methylation_Apis"
+  title: "DNA methylation in Apis larvae"
   left:
   - text: Home
     href: index.html
+  - text: Expression
+    href: diff_expression.html
+  - text: Methylation
+    href: diff_methylation.html
+  - text: Integrative analyses
+    href: compare_expression_and_methylation.html
   - text: About
     href: about.html
   - text: License

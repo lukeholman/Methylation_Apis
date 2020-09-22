@@ -9,7 +9,7 @@ editor_options:
 ---
 
 ```{r set, echo = FALSE, message = FALSE, warning = FALSE, results = FALSE}
-library(ggplot2)
+library(magick)
 library(gganimate)
 ```
 
@@ -25,6 +25,6 @@ Click [here](diff_methylation.html)
 Click [here](compare_expression_and_methylation.html) 
 
 
-### Animated version of Figure XX
+### Animation showing the change in % methylation
 
-![](../figures/site_meth_hist/combined_animation.gif)
+![](https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif)

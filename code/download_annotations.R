@@ -38,10 +38,9 @@ entrez.tbl$beebase2[entrez.tbl$beebase2 == "-"] <- NA
 # Get the various gene names:
 gene_names <- gene_names %>% left_join(entrez.tbl, by = c("entrez_id" = "entrez.id"))
 
-# Remove this one gene. Seems to be an error - there are 2 genes called Fabp listed in gene_names with symbol = "Fabp",
-# one called "fatty acid binding protein", one called "FABP-like protein", that seem to be the same gene
-gene_names <- filter(gene_names, gene_name != "FABP-like protein")
-
+# Manually rename the gen symbol for this one from Fabp to Fabp-2, to match the gene name in the gff file
+# The NCBI file simply has two genes call Fabp, which causes bugs if not fixed.
+gene_names$gene_symbol[gene_names$beebase2 == "GB49757"] <- "Fabp-2"
 
 ############################################################
 # Get the GO annotations for A. mellifera
@@ -69,7 +68,7 @@ Amel_Dmel_orthologs <- read_csv("data/Amel_Dmel_orthologs.csv") %>% dplyr::selec
 # Get the Dmel GO annotations from the org.db
 # BiocManager::install("org.Dm.eg.db") 
 library(org.Dm.eg.db)
-dros_info <- select(org.Dm.eg.db, keys= keys(org.Dm.eg.db), columns = c("SYMBOL","FLYBASECG", "GO", "ONTOLOGY", "ENTREZID"))
+dros_info <- select(org.Dm.eg.db, keys= keys(org.Dm.eg.db), columns = c("SYMBOL", "FLYBASE", "FLYBASECG", "GO", "ONTOLOGY", "ENTREZID"))
 
 # Merge the Dmel and Amel GO annotations, and save
 # This dataframe lists all unique GO terms for the Apis gene *and* its ortholog(s) in Drosophila
@@ -78,7 +77,7 @@ dros_ortho_GO <- dros_info %>%
             by = c("SYMBOL" = "gene_Dmel")) %>%
   as_tibble() %>%
   filter(!is.na(gene_Amel)) %>%
-  dplyr::select(gene_Amel, GO, ONTOLOGY, FLYBASECG, ENTREZID) %>%
+  dplyr::select(gene_Amel, GO, ONTOLOGY, FLYBASE, FLYBASECG, ENTREZID) %>%
   dplyr::rename(SYMBOL = gene_Amel) %>%
   full_join(bee_GO, by = c("SYMBOL", "GO", "ONTOLOGY")) %>%
   distinct() 
@@ -87,7 +86,8 @@ dros_ortho_GO <- dros_info %>%
 # See https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000222#abstract2 for evidence of their function in sex differentiation
 # tra2 is transformer2, a major player in Drosophila sex determination
 # LOC113219102 is named "sex determination protein fruitless-like"; fruitless is important in Drosophila sex det.
-custom_ones <- tibble(SYMBOL = c("Csd", "Fem", "Dsx", "tra2", "LOC113219102"),
+# LOC411612 is "protein virilizer", Associated component of the WMM complex, a complex that mediates N6-methyladenosine (m6A) methylation of mRNAs, a modification that plays a role in the efficiency of mRNA splicing and is required for sex determination (PubMed:27919077). Required for sex determination and dosage compensation via Sxl alternative splicing: m6A methylation acts as a key regulator of Sxl pre-mRNA and promotes female-specific alternative splicing of Sxl, which determines female physiognomy 
+custom_ones <- tibble(SYMBOL = c("Csd", "Fem", "Dsx", "tra2", "LOC113219102", "LOC411612"),
                       GO = "GO:0007530", # this is the GO number for "sex determination"
                       ONTOLOGY = "BP")
 

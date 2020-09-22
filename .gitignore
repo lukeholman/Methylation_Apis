@@ -13,3 +13,4 @@ data/*
 methylation/*
 Expression/*
 output/*
+data/flybase2/*

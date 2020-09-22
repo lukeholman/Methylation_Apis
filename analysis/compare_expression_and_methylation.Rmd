@@ -121,7 +121,7 @@ genes_tested_expr <- read_csv("output/caste_results.csv")$`Gene symbol` %>% uniq
 universe <- intersect(genes_tested_expr, genes_tested_meth)
 sig_diff_expr <- read_csv("output/caste_results.csv") %>% 
   filter(adj.P.Val < 0.05 & `Gene symbol` %in% universe) %>% pull(`Gene symbol`) %>% unique()
-sig_diff_meth <- bwasp_sig_genes$bwasp_caste_sig_genes$`Gene name` %>% as.character() %>% unique()
+sig_diff_meth <- bwasp_sig_genes$bwasp_caste_sig_genes
 
 inters <- intersect(sig_diff_expr, annotations$gene[match(sig_diff_meth, annotations$gene_name)])
 n_overlaps <- length(inters)
