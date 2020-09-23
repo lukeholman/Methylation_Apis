@@ -515,7 +515,7 @@ my_data_table <- function(df){
           extend = 'pdf',
           pageSize = 'A4',
           orientation = 'landscape',
-          filename = 'tt')),
+          filename = 'Apis_methylation')),
         pageLength = 50
         )
     )
@@ -535,7 +535,8 @@ between_castes %>% dplyr::select(-site) %>%
 ```{r message=FALSE, warning=FALSE}
 temporal_change_queens %>% dplyr::select(-site) %>% 
   mutate(comparison = str_replace_all(comparison, "queen", "Q"),
-         comparison = str_replace_all(comparison, "[.]", " ")) %>%my_data_table()
+         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
+  my_data_table()
 ```
 **Table XX:** The table shows the `r length(na.omit(unique(temporal_change_queens$site)))` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were <0.05.
 
@@ -580,12 +581,14 @@ window_500bp_caste <- window_500bp_caste %>%
   full_join(window_500bp_caste %>% 
               filter(qvalue < q_threshold ) %>% 
               dplyr::select(seqnames, start, end) %>% distinct() %>%
-              add_gene_exon_columns() %>% distinct(), by = c("seqnames", "start", "end")) %>%
+              add_gene_exon_columns() %>% distinct(), 
+            by = c("seqnames", "start", "end")) %>%
   left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
             by = c("exon_in" = "gene_symbol")) %>%
   dplyr::select(-width, -strand) %>% distinct() %>%
   mutate(meth.diff = -1 * meth.diff) %>%
-  dplyr::rename(`Diff. in % methylation (postive means Q>W)` = meth.diff)
+  dplyr::rename(`Diff. in % methylation (postive means Q>W)` = meth.diff) 
+
 
 window_500bp_timeQ <- 
   list.files("data/BWASP_results/500bp_windows/Temporal_Q", full.names = TRUE) %>%
@@ -618,25 +621,39 @@ window_500bp_timeW <- window_500bp_timeW %>%
   dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff)
 
 window_500bp_caste %>%
+  mutate(comparison = str_replace(comparison, "queen", "Q"),
+         comparison = str_replace(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>%
   my_data_table()
 ```
 
-**Table XX:** The table shows the `r nrow(window_500bp_caste)` 500bp windows in which BWASP detected a significant difference in methylation between queens and workers at one or more time points. 
+```{r echo=FALSE}
+n_caste_windows <- window_500bp_caste %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
+n_queen_windows <- window_500bp_timeQ %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
+n_worker_windows <- window_500bp_timeW %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
+```
+
+
+**Table XX:** The table shows the `r n_caste_windows` 500bp windows in which BWASP detected a significant difference in methylation between queens and workers at one or more time points. 
 
 
 #### Temporally varying methylation (queens)
 ```{r message=FALSE, warning=FALSE}
 window_500bp_timeQ %>%
+  mutate(comparison = str_replace_all(comparison, "queen", "Q"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
   my_data_table()
 ```
-**Table XX:** The table shows the `r nrow(window_500bp_timeQ)` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae.
+**Table XX:** The table shows the `r n_queen_windows` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae.
 
 #### Temporally varying methylation (workers)
 ```{r message=FALSE, warning=FALSE}
 window_500bp_timeW %>%
+  mutate(comparison = str_replace_all(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
   my_data_table()
 ```
-**Table XX:** The table shows the `r nrow(window_500bp_timeW)` 500bp windows in which BWASP detected a significant change in methylation with time, in worker-destined larvae.
+**Table XX:** The table shows the `r n_worker_windows` 500bp windows in which BWASP detected a significant change in methylation with time, in worker-destined larvae.
 
 
 
@@ -1122,9 +1139,9 @@ gene_meth_results_table <- tibble(site = sites) %>%
               collect(n=Inf), 
             by = c("threeUTR_in" = "gene_symbol")) %>%
   dplyr::rename(gene_name_3UTR = gene_name) %>%
-  mutate(sig_caste = ifelse(site %in% sig_sites_caste, "\\*", " "),
-         sig_time_queen = ifelse(site %in% sig_sites_time_queen, "\\*", " "),
-         sig_time_worker = ifelse(site %in% sig_sites_time_worker, "\\*", " "),
+  mutate(sig_caste = ifelse(site %in% sig_sites_caste, "*", " "),
+         sig_time_queen = ifelse(site %in% sig_sites_time_queen, "*", " "),
+         sig_time_worker = ifelse(site %in% sig_sites_time_worker, "*", " "),
          site_old = site,
          site = paste(seqnames, start, sep = ", pos:")) %>%
   dplyr::select(-seqnames, -start) %>%
@@ -1143,6 +1160,7 @@ gene_meth_results_table %>%
   dplyr::rename(`Significant difference between castes` = sig_caste,
                 `Significant temporal change in queens` = sig_time_queen,
                 `Significant temporal change in workers` = sig_time_worker) %>%
+  dplyr::select(site, starts_with("Significant"), everything()) %>%
   my_data_table()
 ```
 
@@ -1403,11 +1421,11 @@ The heatmap shows data on the CpG sites that were measured with at least 5x cove
 
 Before plotting, the data on each site was scaled to mean zero and unit standard deviation. Next, we removed the effect of replicate (i.e. reps A-D) using `sva::ComBat()` to highlight the biologically interesting patterns in the data. Additionally, because it is not possible to plot the heatmap for tens of thousands of sites, we first clustered the sites into 100 groups of sites using k-means clustering (see `?pheatmap`). 
 
-In the figures, the orange colour indicates that a group of sites has a methylation frequency above the average for that site, while purple indicates a below-average methylation frequency. 
+In the figures, the orange colour indicates that the focal sample has a methylation frequency above the average for that group of CpG sites, while purple indicates a below-average methylation frequency. 
 
 #### Heatmap of sites with $\ge 75$% methylation
 
-```{r meth_sample_distance_heatmap, width = 11, height = 5.6, message=FALSE, warning=FALSE}
+```{r meth_sample_distance_heatmap, width = 11, height = 9, message=FALSE, warning=FALSE}
 meth_sample_heatmap <- function(mean_cutoff, colour_limits){
   
   # include all sites measured to 5x coverage in all 36 samples
@@ -1474,7 +1492,7 @@ meth_sample_heatmap(mean_cutoff = 0.75, colour_limits = c(-3, 2))
 
 #### Heatmap of sites with $\ge 2.7$% methylation
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, width = 11, height = 9}
 meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 3))
 ```
 
