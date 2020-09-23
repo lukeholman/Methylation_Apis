@@ -16,7 +16,6 @@ library(RSQLite)
 library(gridExtra)
 
 # Load annotations and database
-annotations <- readRDS("data/Methylation_data/meth_site_annotations.rds")
 db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
 
 # Load BWASP results
@@ -37,7 +36,7 @@ time_difference <- map_df(1:length(time_difference),
                            ~ mutate(time_difference[[.x]], site = sites[.x])) %>%
   filter(!is.nan(Estimate))
 
-# Criterion for significance: B-H adjusted p < 0.05
+# Criterion for significance: B-H adjusted p < 0.05     CHECK THIS
 sig_sites_caste <- caste_difference %>%
   group_by(site) %>%
   summarise(sig = ifelse(any(p.adjust(p, method = "BH") < 0.05), TRUE, FALSE), 

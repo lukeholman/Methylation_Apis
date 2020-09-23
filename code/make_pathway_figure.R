@@ -28,6 +28,9 @@ make_pathway_figure <- function(GO_output, ylab, xlab, alt_colours = FALSE){
   
   format_GO_results(GO_output) %>%
     mutate(Time = as.character(Time)) %>%
+    mutate(Test_type = replace(Test_type, Test_type == "GO: Biological process", "GO: BP"),
+           Test_type = replace(Test_type, Test_type == "GO: Molecular function", "GO: MF"),
+           Test_type = replace(Test_type, Test_type == "GO: Cellular component", "GO: CC")) %>%
     ggplot(aes(Time, term, fill = NES)) + 
     scale_fill_gradient2(low = col_low, high = col_high) + 
     geom_tile(colour = "black", size = 0.4)  + 

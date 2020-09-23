@@ -2559,11 +2559,7 @@ module_GO_table_dmel <- make_module_GO_table(eigengenes, GO_list = "dros_ortho_G
 present_module_GO_table() %>%
   filter(Annotation == "A. mellifera") %>%
   dplyr::select(-Annotation) %>%
-  datatable(rownames = FALSE, fillContainer = TRUE, filter = 'top', 
-            extensions = 'Buttons', 
-            options = list(
-              dom = 'Bfrtip', pageLength = 10,
-              buttons = c('copy', 'csv', 'excel', 'pdf')))
+  my_data_table()
 ```
 
 
@@ -2574,11 +2570,7 @@ present_module_GO_table() %>%
 present_module_GO_table() %>%
   filter(Annotation == "D. melanogaster") %>%
   dplyr::select(-Annotation) %>%
-  datatable(rownames = FALSE, fillContainer = TRUE, filter = 'top', 
-            extensions = 'Buttons', 
-            options = list(
-              dom = 'Bfrtip', pageLength = 10,
-              buttons = c('copy', 'csv', 'excel', 'pdf')))
+  my_data_table()
 ```
 
 
