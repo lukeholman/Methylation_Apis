@@ -282,11 +282,15 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
 
 ## Genomic context of sites with caste-specific methylation {.tabset}
 
-The following plots show estimates of the average difference in methylation between castes (within a timepoint) or timepoints (within a caste). These estimates were calculated by the BWASP pipelinee (which uses the methylkit package), and represent the unstandardised effect size, i.e. the difference in % methylated cytosines between teh two groups being compared. We then used a linear model to estimate the average effect size for sites of a particular type (e.g. sites in translated regions, or UTRs). This was accomplished by running a model with the effect size as the response variable, and the type of site as predictors (coded as binary variables, e.g. "in coding region" can be true or false). Note that all the site types except intergenic are not mutually exclusive, since a site can be e.g. in the promoter region of one gene and the exon of another; "intergenic" sites are those that do not map to the exons/introns/promoters of any known genes. 
+The following plots show estimates of the average difference in methylation between castes (within a timepoint) or timepoints (within a caste). These plots use the output of the BWASP pipelinee, which (among other things) uses the `methylkit` package to estimate the difference in % methylated cytosines at a given site between two groups of samples. This difference in % methylated cytosines is the (unstandardised) effect size. We then used a linear model to estimate the average effect size for sites of each genomic context privded in the .gff file of genome annotations (e.g. exons, introns, UTRs). This was accomplished by running a linear model with the following formula:
+
+$$y_i = \alpha + \beta_1x_{1i} + \beta_1x_{2i} + \beta_1x_{3i} + \beta_1x_{4i} + \beta_1x_{5i} + \epsilon_i$$
+Here, $y_i$ is the effect size for site $i$, $\alpha$ is the global intercept, the five $\beta$ terms are regression coefficients to be estimated, the five $x_i$ terms are binary predictor variables for site $i$, and $\epsilon_i$ is the residual (assumed to be sampled from a Normal distribution with mean zero). The five binary predictor variables describe whether the focal site is (or is not) in a coding region, a promoter, an intron, a 5'-UTR, or a 3'-UTR (note that sites can be overlap more than one of these). Promoter regions were defined as regions that are within 2000bb upstream or 200bp downstream of a gene. After fitting the model, we then used the estimated regression coefficients to find the estimated average effect size for sites that mapped uniquely to each of the five genomic features. One model was run for each comparison point (i.e. each panel in the figures below).
+
 
 ### Comparing queen- and worker-destined larvae
 
-```{r site_type_plots, message=FALSE, warning=FALSE, fig.width=4}
+```{r site_type_plots, message=FALSE, warning=FALSE, fig.width=4.6}
 get_bwasp_sites <- function(p_cutoff, q_cutoff, site_list = NULL){
   
   df <- list.files("data/BWASP_results/sites", 
@@ -350,12 +354,12 @@ make_lm_estimates <- function(comp){
     
   }
   if(str_detect(comp, "queen") & !str_detect(comp, "worker")) {
-    facet_label <- paste("Queens:", paste0(str_extract_all(comp, "[02468]")[[1]], collapse = " vs "))
+    facet_label <- paste("Queens: ", paste0(str_extract_all(comp, "[02468]")[[1]], collapse = " vs "), "h", sep = "")
     plotting_data <- plotting_data %>% 
       filter(comparison == comp)
   }
   if(!str_detect(comp, "queen") & str_detect(comp, "worker")) {
-    facet_label <- paste("Workers:", paste0(str_extract_all(comp, "[02468]")[[1]], collapse = " vs "))
+    facet_label <- paste("Workers: ", paste0(str_extract_all(comp, "[02468]")[[1]], collapse = " vs "), "h", sep = "")
     plotting_data <- plotting_data %>% 
       filter(comparison == comp)
   }
@@ -415,31 +419,32 @@ caste_plots
 ```
 
 ### Comparing queen-destined larvae across timepoints
-```{r fig.width=4}
+```{r fig.width=6.3}
 timeQ_plots
 ```
 
 ### Comparing worker-destined larvae across timepoints
-```{r fig.width=4}
+```{r fig.width=6.3}
 timeW_plots
 ```
 
 
 ## Results of the BWASP differential methylation pipeline
 
-The following sections show the results of statistical tests using the BWASP pipeline. The table shows a list of sites or 500bp genomic windows that were statistically significantly differentially methylated(using Fisher Exact tests). Using BWASP, we specified a series of pre-planned comparions (contrasts) to compare the methylation levels at each site A) between castes witin each time point (e.g. queen vs worker samples at 8h), and B) between time points within each caste (e.g. 2h vs 8h within the queen samples). The tabs in each sex show sites/windows that were significantly differenetially methylated between castes (at a given time point), or between time points (within each caste).
+The following sections show the results of statistical tests using the BWASP pipeline. The table shows a list of sites or 500bp genomic windows that were statistically significantly differentially methylated (using Fisher Exact tests implemented via `methylKit::calculateDiffMeth`). Using BWASP, we specified a series of pre-planned comparions (contrasts) to compare the methylation levels at each site A) between castes witin each time point (e.g. queen vs worker samples at 8h), and B) between time points within each caste (e.g. 2h vs 8h within the queen samples). The three tables in each section show sites/windows that were significantly differenetially methylated between castes (at a given time point), or between time points (within each caste).
 
-The Fisher Exact test approach is under-powered because one must ignores all the other data when estimating each effect size. For example, to test for differential methylation in the 't0 vs 6h queen' comparison, one must ignore all the data from worker samples, or from the other time points in queens. The Fisher Exact test appraoch is also problematic because we have run to many separate models for each site (to calculate each of the pairwise comparisons), instead of running just a single model for each site as in the generalised additive models presented below. 
+We caution that the Fisher Exact test approach is under-powered because it ignores the rest of the data when estimating each effect size. For example, to test for differential methylation in the '2h vs 6h queen' comparison, the test ignores all data from worker samples, or from the other time points in queens, which does not fully utilise the information in the dataset. The Fisher Exact test appraoch is also problematic because we have to run 24 separate hypothesis tests for each site (to calculate each of the 24 pairwise comparisons we examined), instead of running one model per site as in the generalised additive models presented below. The p-values below are corrected using the qvalue method (`?qvalue::qvalue`) within each comparison, and we identified candidate differentially methylated sites as those for which the q-value was <0.05 (or <0.01, in one case where tens of thousands of sites had qvalues just under 0.05).
 
-Nevertheless, the appraoch utilised in BWASP is the standard appraoch in the field, so it is helpful in that regard. Also, it is reassuring that some of our most interesting genes (e.g. _complementary sex determiner_) are significantly in the BWASP analysis as well as the Bayesian GAMs used below, despite the very different statistical approaches used. 
+Despite the issues with the Fisher Exact test approach, we include it to facilitate comparison with earlier work. 
 
-### List of significantly differentially methylated **sites** (DMSs) from BWASP {.tabset}
+
+### List of significantly differentially methylated **sites** (DMSs) from BWASP 
 
 #### Caste-specific methylation
 
 ```{r bwasp_results, message=FALSE, warning=FALSE}
-# Note that in the output of BWASP, a positive meth.diff value in comparison A.vs.B means that 
-# the B methylation percentage is higher than the A methylation percentage.
+# Note that in the output of BWASP, a positive meth.diff value in comparison "A.vs.B" means that 
+# the B methylation percentage is higher than the A methylation percentage. In one case we flip the sign for clarity.
 
 # Get significant sites. 'Significant' means both p and q < 0.05
 bwasp_sites <- get_bwasp_sites(0.05, 0.05)
@@ -487,22 +492,50 @@ list(
 ) %>% saveRDS("output/bwasp_sig_genes.rds")
 
 
-my_data_table <- function(df){
-  datatable(df, rownames = FALSE, fillContainer = TRUE, #filter = 'top', 
-            extensions = 'Buttons', 
-            options = list(
-              dom = 'Bfrtip', pageLength = 10,
-              buttons = c('copy', 'csv', 'excel', 'pdf')))
-} 
+# my_data_table <- function(df){
+#   datatable(df, rownames = FALSE, fillContainer = TRUE, #filter = 'top', 
+#             extensions = 'Buttons', height = 10,
+#             options = list(
+#               dom = 'Bfrtip', pageLength = 10,
+#               buttons = c('copy', 'csv', 'excel', 'pdf')))
+# } 
 
-between_castes %>% dplyr::select(-site) %>% my_data_table()
+my_data_table <- function(df){
+  datatable(
+    df, rownames=FALSE,
+    autoHideNavigation = TRUE,
+    extensions = c("Scroller",  "Buttons"),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender=TRUE,
+      scrollX=TRUE, scrollY=400,
+      scrollCollapse=TRUE,
+      buttons = 
+        list('pageLength', 'colvis', 'csv', list(
+          extend = 'pdf',
+          pageSize = 'A4',
+          orientation = 'landscape',
+          filename = 'tt')),
+        pageLength = 50
+        )
+    )
+}
+
+
+between_castes %>% dplyr::select(-site) %>% 
+  mutate(comparison = str_replace(comparison, "queen", "Q"),
+         comparison = str_replace(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>%
+  my_data_table()
 ```
 **Table XX:** The table shows the `r length(na.omit(unique(between_castes$site)))` sites for which BWASP reported a significant difference in methylation between queens and workers at one or more time points. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were <0.05.
 
 #### Temporally varying methylation (queens)
 
 ```{r message=FALSE, warning=FALSE}
-temporal_change_queens %>% dplyr::select(-site) %>% my_data_table()
+temporal_change_queens %>% dplyr::select(-site) %>% 
+  mutate(comparison = str_replace_all(comparison, "queen", "Q"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>%my_data_table()
 ```
 **Table XX:** The table shows the `r length(na.omit(unique(temporal_change_queens$site)))` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were <0.05.
 
@@ -521,19 +554,20 @@ n_extra_sig <- temporal_change_workers %>%
 
 Note: if we use the same cutoff as before, i.e. p < 0.05 and q < 0.05, there would be `r n_somewhat_sig` significant sites in this table. We therefore switched to $q$ < 0.01 for this table, yielding a more manageable number of sites to display.
 ```{r message=FALSE, warning=FALSE}
-temporal_change_workers %>% 
-  dplyr::select(-site) %>%
+temporal_change_workers %>% dplyr::select(-site) %>% 
+  mutate(comparison = str_replace_all(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>%
   filter(qvalue < 0.01) %>%
   my_data_table()
 ```
 **Table XX:** The table shows the `r n_extra_sig` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were <0.01 (note: this is lower than for the previous two tables; there would be `r n_somewhat_sig` sites if we used the same 0.05 cutoff for significance).
 
 
-### List of significantly differentially methylated **500bp windows** (DMWs) from BWASP {.tabset}
+### List of significantly differentially methylated **500bp windows** (DMWs) from BWASP
 
 #### Caste-specific methylation
 
-```{r BWASP_Venn, message=FALSE}
+```{r BWASP_Venn, message=FALSE, warning=FALSE}
 source("code/add_gene_exon_columns.R")
 q_threshold <- 0.01
 
@@ -591,14 +625,14 @@ window_500bp_caste %>%
 
 
 #### Temporally varying methylation (queens)
-```{r}
+```{r message=FALSE, warning=FALSE}
 window_500bp_timeQ %>%
   my_data_table()
 ```
 **Table XX:** The table shows the `r nrow(window_500bp_timeQ)` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae.
 
 #### Temporally varying methylation (workers)
-```{r}
+```{r message=FALSE, warning=FALSE}
 window_500bp_timeW %>%
   my_data_table()
 ```
@@ -612,13 +646,9 @@ window_500bp_timeW %>%
 
 We first remove sites with methylation levels too low for analysis, or which were measured in too few samples, and count up the number of sites suitable for analysis.
 
-The bisulphite conversion rate was about 99.73 (as measured by the apparent % methylation of sites in the phage lambda DNA), so we expect unmethylated sites to appear methylated about 0.27% of the time. To ensure we focus on sites where these 'false positive' signals of methylation provide only a modest portion of the observed % of Cs vs Ts (i.e. the estimate of % methylation), we chose to focus on sites that have 10$\times$ higher methylation rates than expected based on the low-level background 'noise'. That is, we excluded all sites where fewer than 2.7% of the reads were Cs (i.e. putatively methylated). This rules out the great majority of sites for which at least one C was observed.
-
-We also discarded sites that had been measured in fewer than 32 of our 36 samples.
+The bisulphite conversion rate was about 99.73 (as measured by the apparent % methylation of sites in the phage lambda DNA), so we expect unmethylated sites to appear methylated about 0.27% of the time. To ensure we focus on sites where these 'false positive' signals of methylation provide only a modest portion of the observed % of Cs vs Ts (i.e. the estimate of % methylation), we chose to focus on sites that have 10$\times$ higher methylation rates than expected based on the low-level background 'noise'. That is, we excluded all sites where fewer than 2.7% of the reads were Cs (i.e. putatively methylated). This rules out the great majority of sites for which at least one C was observed. We also discarded sites that had been measured in fewer than 32 of our 36 samples.
 
 #### Total number of sites with sufficient data for the GAMs:
-
-i.e. the number of sites measured in at least 32 samples, which had an average % methylation of >=2.7% (i.e. 10x higher than the background level of 0.27% "apparent" methylation that is actually failed BiS conversion). 
 
 ```{r}
 methylated_sites %>% length()
@@ -628,13 +658,13 @@ methylated_sites %>% length()
 
 ### Run preliminary frequentist GAMs using `mgcv::gam`
 
-There are too many sites to run the Bayesian models on all of them in a reasonable amount of time. We therefore first use a model selection approach with frequentist generalised additive model (GAMs; implemented in the `mgcv` package, which runs a similar model in <1 second) to select a set of sites that appear to show a caste difference in the frequency of methylation, which we then re-analyse using the slower Bayesian approach.
+There are too many sites to run our preferred Bayesian model on all of them in a reasonable amount of time. We therefore first use a model selection approach using the equivalent frequentist generalised additive model (GAMs; implemented in the `mgcv` package, which runs a similar model in <1 second) to select a set of sites that appear to show a caste difference in the frequency of methylation, which we then re-analyse using the slower (but more principled and information-rich) Bayesian approach. To summarise the following code: 
 
-- The analysis uses all the data except the time zero samples (which are complicated to model correctly because they do not neatly belong to either the queen or worker caste)
-- `Time` is modelled using a thin plate regression spline, allowing non-linear changes with time, with the amount of non-linearity being driven by the data. 
-- For each site, we fite 5 different models and then compare them using the corrected Akaike Information Criterion. The 5 models fitted included the following fixed effects: 1) neither caste nor time (a 'null model'), 2) caste, 3) time, 4) both caste and time, or 5) caste, time, and their interaction (the 'full model'). Additionally, all these models contained the experimental replicate as a fixed effect. 
-- The formula of the full model was the same as for the Bayesian models run below, i.e. `caste + s(time, by = caste, k = 4) + rep`.
-- The response variable was the number of cytosines observed at the site, given the total coverage at the sites (i.e. number of Cs plus number of Ts). We used Binomial errors and a logit link.
+- The frequentist analysis uses all samples except the time zero samples, since these are complicated to model correctly because they do not neatly belong to either the queen- or worker-destined treatments
+- `Time` is modelled using a thin plate regression spline (see `?mgcv::s`), allowing non-linear changes in % methylation with time, with the amount of non-linearity being driven by the data. 
+- For each site, we fit 5 different models and then compare them using the corrected Akaike Information Criterion (AICc). The 5 models fitted included the following fixed effects: 1) neither caste nor time (our 'null model'), 2) caste, 3) time, 4) both caste and time, or 5) caste, time, and their interaction (the 'full model'). Additionally, all these models contained the experimental replicate as a fixed effect. 
+- The formula of the full model was therefore same as for the Bayesian models run below, i.e. `caste + s(time, by = caste, k = 4) + rep`.
+- The response variable was the number of cytosines observed at the site, given the total coverage at the sites (i.e. number of reads containing Cs plus Ts). We used Binomial errors and a logit link.
 - Sites were re-analysed using the Bayesian models if A) the 'variable importance' of caste was at least 99% (indicating that there is >99% chance that caste is present in the top model out of the 5 that were considered), and/or B) the site was statistically significant in the BWASP results mentioned above. 
 
 
@@ -751,19 +781,19 @@ sites_for_bayes_GAM <- unique(c(sig_sites_caste_frequentist_GAM, sig_sites_caste
 
 ### Run the Bayesian GAMs
 
-The previous code chunk identified `r length(sites_for_bayes_GAM)` for analysis, which we now analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the t0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization using priors. 
+The previous code chunk identified `r length(sites_for_bayes_GAM)` candidate differentially-methylated sites, which we now analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called 'sceptical' priors (see the book/lecture series _Statistical Rethinking_ by Richard McElreath). 
 
-Assuming that the focal dataset contained one or more t0 samples, we first generated multiple copies of the orignal dataset in which the t0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which there were approximately even numbers of queens and workers; for example, if there were data on all four t0 samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these datasets with the relablled t0 samples, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case), by effectively making each t0 sample affect the parameter estimates for both queens and workers. 
+We first generated multiple copies of the orignal dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four t0 samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the t0 samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each t0 sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
 
 Each model had the same formula, namely:
 
 `Binomial(number_methylated, Coverage) ~ caste + s(time, by = caste, k = 4) + replicate`
 
-That is, the response variable is the number of putative methylated cytosines (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a numeric predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
+That is, the response variable is the number of putatively methylated cytosines observed (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a continuous predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a Bayesian generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
 
-After running the model, we use it to derive posterior predictions of the mean % methylation at each point in time, in each caste. From these, we can calculate the caste difference in methylation at each time point, and test whether the 95% credible interval of this difference includes zero (implying a significant difference in means). We also calculate the difference between various pairs of time points within each caste, as for the other analyses in this paper. 
+After running the model, we use the posterior parameter estimates to calculate posterior predictions of the mean % methylation at each point in time (using `fitted.brmsfit()`), in each caste. From these, we can calculate the caste difference in methylation at each time point, and test whether the 95% credible interval of this difference includes zero (implying a significant difference in means). We also calculate the difference between all possible pairs of time points within each caste.
 
-The following runs the models in parallel using `future_lapply`, and we try to save time by not recompiling the model between each site. Still take more than a day to run. Be sure to run in R (not RStudio) in order to use forking for parallelisation.
+The following runs the models in parallel using `future_lapply`, and we attempt to save time by not recompiling the model between each site. This still takes 1-2 days to run on a medium-spec desktop. This should be run in R (not RStudio) in order to use forking for parallel processing.
 
 ```{r bayesian_GAMs}
 done_already <- list.files("output/meth_sites_brms") %>% 
