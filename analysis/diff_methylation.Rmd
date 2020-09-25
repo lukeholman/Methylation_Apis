@@ -45,6 +45,7 @@ library(magick)
 library(sva) # for sva::ComBat
 options(stringsAsFactors = FALSE)
 library(GenomicFeatures)
+source("code/get_bwasp_sites.R")
 
 
 setwd("~/Rprojects/Methylation_Apis/")
@@ -251,7 +252,8 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
 }
 ```
 
-![](https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/combined_animation.gif)
+https://github.com/lukeholman/Methylation_Apis/blob/master/figures/site_meth_hist/combined_animation.gif
 
 ### Static figures equivalent to the animation {.tabset}
 
@@ -291,47 +293,6 @@ Here, $y_i$ is the effect size for site $i$, $\alpha$ is the global intercept, t
 ### Comparing queen- and worker-destined larvae
 
 ```{r site_type_plots, message=FALSE, warning=FALSE, fig.width=4.6}
-get_bwasp_sites <- function(p_cutoff, q_cutoff, site_list = NULL){
-  
-  df <- list.files("data/BWASP_results/sites", 
-             full.names = TRUE, recursive = TRUE) %>%
-    map_df(~ read_tsv(.x) %>% # filter by p and q
-             filter(pvalue < p_cutoff & qvalue < q_cutoff)) %>% 
-    left_join(tbl(db, "site_info") %>%
-                dplyr::select(site, seqnames, start) %>% collect(), 
-              by = c("seqnames", "start")) 
-  
-  # optionally, filter out sites not in site_list
-  if(!is.null(site_list)) df <- df %>% filter(site %in% site_list)
-  
-  df %>%
-    full_join(tbl(db, "site_annotations") %>% collect()) %>%
-    arrange(qvalue) %>% as.data.frame() %>%
-    left_join(tbl(db, "gene_names") %>% 
-                dplyr::select(gene_symbol, gene_name) %>% collect(), 
-              by = c("exon_in" = "gene_symbol")) %>%
-    dplyr::rename(exon_gene_name = gene_name) %>%
-    left_join(tbl(db, "gene_names") %>% 
-                dplyr::select(gene_symbol, gene_name) %>% collect(), 
-              by = c("intron_in" = "gene_symbol")) %>%
-    dplyr::rename(intron_gene_name = gene_name) %>%
-    left_join(tbl(db, "gene_names") %>% 
-                dplyr::select(gene_symbol, gene_name) %>% collect(), 
-              by = c("promoter_of" = "gene_symbol")) %>%
-    dplyr::rename(promoter_gene_name = gene_name) %>%
-    left_join(tbl(db, "gene_names") %>% 
-                dplyr::select(gene_symbol, gene_name) %>% collect(), 
-              by = c("fiveUTR_in" = "gene_symbol")) %>%
-    dplyr::rename(fiveUTR_gene_name = gene_name) %>%
-    left_join(tbl(db, "gene_names") %>% 
-                dplyr::select(gene_symbol, gene_name) %>% collect(), 
-              by = c("threeUTR_in" = "gene_symbol")) %>%
-    dplyr::rename(threeUTR_gene_name = gene_name) %>%
-    filter(!is.na(seqnames)) %>%
-    dplyr::select(site, everything()) %>%
-    as_tibble()
-}
-
 plotting_data <- get_bwasp_sites(p = 1, q = 1, 
                 site_list = methylated_sites) %>%
   mutate(in_exon = !is.na(exon_in),
@@ -479,16 +440,19 @@ temporal_change_workers <- bwasp_sites %>%
 
 # Save list of BWASP sig genes for "Compare expr + meth.Rmd"
 list(
-  bwasp_caste_sig_genes = unname(unlist(
-    dplyr::select(between_castes, ends_with("_gene_name")))) %>% 
-    unique() %>% na.omit %>% as.character(),
-  bwasp_timeQ_sig_genes = unname(unlist(
-    dplyr::select(temporal_change_queens, ends_with("_gene_name")))) %>% 
-    unique() %>% na.omit %>% as.character(),
-  bwasp_timeW_sig_genes = unname(unlist(
-    dplyr::select(temporal_change_workers %>% filter(qvalue < 0.01), 
-                  ends_with("_gene_name")))) %>% 
-    unique() %>% na.omit %>% as.character()
+  caste_sig_genes = bwasp_sites %>%
+  filter(str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
+  dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+    unlist() %>% unname() %>% na.omit() %>% unique(),
+  timeQ_sig_genes = bwasp_sites %>%
+  filter(str_detect(comparison, "queen") & !str_detect(comparison, "worker")) %>%
+  dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+    unlist() %>% unname() %>% na.omit() %>% unique(),
+  timeW_sig_genes = bwasp_sites %>%
+    filter(qvalue <= 0.01) %>%
+  filter(!str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
+  dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+    unlist() %>% unname() %>% na.omit() %>% unique()
 ) %>% saveRDS("output/bwasp_sig_genes.rds")
 
 
@@ -1089,22 +1053,27 @@ time_difference <- map_df(1:length(time_difference),
                                     site = sites[.x])) %>%
   filter(!is.nan(Estimate))
 
-# Criterion for significance: B-H adjusted p < 0.05
+# Criterion for significance: p < 0.0001 for at least one comparison
 sig_sites_caste <- caste_difference %>%
   group_by(site) %>%
-  summarise(sig = ifelse(any(p.adjust(p, method = "BH") < 0.05), TRUE, FALSE), 
+  summarise(sig = ifelse(any(p < 0.0001), TRUE, FALSE), 
             .groups = "drop") %>%
   filter(sig) %>% pull(site)
 
 sig_sites_time <- time_difference %>%
   group_by(site, Caste) %>%
-  summarise(sig = ifelse(any(p.adjust(p, method = "BH") < 0.05), TRUE, FALSE), 
+  summarise(sig = ifelse(any(p < 0.0001), TRUE, FALSE), 
             .groups = "drop") %>%
   filter(sig) %>% 
   spread(Caste, sig)
 
 sig_sites_time_queen <- sig_sites_time %>% filter(Queen) %>% pull(site)
 sig_sites_time_worker <- sig_sites_time %>% filter(Worker) %>% pull(site)
+
+saveRDS(list(sig_sites_caste = sig_sites_caste, 
+             sig_sites_time_queen = sig_sites_time_queen, 
+             sig_sites_time_worker = sig_sites_time_worker), 
+        "output/sig_sites_bayesianGAM.rds")
 
 gene_meth_results_table <- tibble(site = sites) %>%
   left_join(tbl(db, "site_info") %>% 
@@ -1147,15 +1116,18 @@ gene_meth_results_table <- tibble(site = sites) %>%
   dplyr::select(-seqnames, -start) %>%
   arrange(desc(sig_caste), desc(sig_time_queen), desc(sig_time_worker), gene_name_exon) 
 
+saveRDS(gene_meth_results_table, "output/gene_meth_results_table.rds")
+
+
 # For counting the significant genes:
 # gene_meth_results_table %>% filter(sig_caste == "\\*" | sig_time_queen == "\\*" | sig_time_queen == "\\*") %>% pull(gene_name_exon) %>% unique() %>% length()
 
-# save list of sites for later plotting (significant ones)
+# save list of sites for later plotting (highly significant ones)
 plot_sites <- caste_difference %>%
-  filter(p < 0.0001) %>%
+  filter(p == 0) %>%
   pull(site) %>% unique()
 
-gene_meth_results_table %>% 
+readRDS("output/gene_meth_results_table.rds") %>% 
   dplyr::select(-site_old) %>% 
   dplyr::rename(`Significant difference between castes` = sig_caste,
                 `Significant temporal change in queens` = sig_time_queen,
