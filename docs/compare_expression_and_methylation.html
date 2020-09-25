@@ -13,7 +13,7 @@
 
 <title>Comparisons of the expression and DNA methylation data</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -26,7 +26,27 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.13/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/dt-ext-scroller-1.10.20/css/scroller.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-scroller-1.10.20/js/dataTables.scroller.min.js"></script>
+<script src="site_libs/pdfmake-1.10.20/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.10.20/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.10.20/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.10.20/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.flash.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.10.20/js/buttons.print.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -380,7 +400,13 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/lukeholman/Methylation_Apis">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -423,7 +449,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-07-31
+<strong>Last updated:</strong> 2020-09-25
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -514,16 +540,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree7c59749e0682c887f1a6031bc15a39d890acbc06targetblank7c59749a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/7c59749e0682c887f1a6031bc15a39d890acbc06" target="_blank">7c59749</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreef1ef5bd25e4d398f1d03084040209335cdb58e27targetblankf1ef5bda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/f1ef5bd25e4d398f1d03084040209335cdb58e27" target="_blank">f1ef5bd</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree7c59749e0682c887f1a6031bc15a39d890acbc06targetblank7c59749a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreef1ef5bd25e4d398f1d03084040209335cdb58e27targetblankf1ef5bda" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/7c59749e0682c887f1a6031bc15a39d890acbc06" target="_blank">7c59749</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/f1ef5bd25e4d398f1d03084040209335cdb58e27" target="_blank">f1ef5bd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -534,15 +560,21 @@ Ignored files:
     Ignored:    .Rapp.history
     Ignored:    .Rproj.user/
     Ignored:    Expression/
+    Ignored:    analysis/figure/
     Ignored:    data/
     Ignored:    figures/.DS_Store
+    Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
 
+Untracked files:
+    Untracked:  code/get_bwasp_sites.R
+    Untracked:  test.Rmd
+    Untracked:  test.html
+
 Unstaged changes:
-    Modified:   analysis/_site.yml
     Modified:   analysis/diff_methylation.Rmd
-    Modified:   figures/eigengenes_expression_network.pdf
-    Modified:   figures/eigengenes_meth_network_fig.pdf
+    Modified:   analysis/index.Rmd
+    Modified:   code/create_merged_data.R
 
 </code></pre>
 <p>
@@ -581,6 +613,74 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/f1ef5bd25e4d398f1d03084040209335cdb58e27/analysis/compare_expression_and_methylation.Rmd" target="_blank">f1ef5bd</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-09-25
+</td>
+<td>
+commit third page
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/aaed173c188cea139b2c70bd675b2ce41b0bb0ae/analysis/compare_expression_and_methylation.Rmd" target="_blank">aaed173</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-09-23
+</td>
+<td>
+tweaks
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dd253379518d055323e6a6f9562faeae60bf88f1/analysis/compare_expression_and_methylation.Rmd" target="_blank">dd25337</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-09-23
+</td>
+<td>
+Many commits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/a8d7c554f690c3dd33a2bd444635daefef55030b/docs/compare_expression_and_methylation.html" target="_blank">a8d7c55</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-31
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -664,56 +764,47 @@ library(dbplyr)
 library(DBI)
 library(RSQLite)
 library(gridExtra)
+library(DT)
+library(showtext)
+library(WGCNA)
+
+# set up nice font for figure
+nice_font &lt;- &quot;Lora&quot;
+font_add_google(name = nice_font, family = nice_font, regular.wt = 400, bold.wt = 700)
+showtext_auto()
 
 # Load annotations and database
-annotations &lt;- readRDS(&quot;data/Methylation_data/meth_site_annotations.rds&quot;)
 db &lt;- dbConnect(SQLite(), &quot;data/apis_db.sqlite3&quot;) # DBI::dbListTables(db)
 
 # Load BWASP results
 bwasp_sig_genes &lt;- readRDS(&quot;output/bwasp_sig_genes.rds&quot;)
 
-# Load Bayesian GAM methylation results
-model_results &lt;- list.files(&quot;output/meth_sites_brms&quot;, 
-                            pattern = &quot;meth_brms_&quot;, full.names = TRUE) %&gt;%
-  map(~ tryCatch(readRDS(.x), error = function(e) NULL))
-sites &lt;- map_chr(model_results, ~ .x$site)
+# Load Bayesian results
+bayes_sig_sites &lt;- readRDS(&quot;output/sig_sites_bayesianGAM.rds&quot;)
+bayes_sig_genes &lt;- readRDS(&quot;output/gene_meth_results_table.rds&quot;)
 
-caste_difference &lt;- map(model_results, ~ .x$caste_difference)
-caste_difference &lt;- map_df(1:length(caste_difference), 
-                           ~ mutate(caste_difference[[.x]], site = sites[.x]))
 
-time_difference &lt;- map(model_results, ~ .x$time_difference) 
-time_difference &lt;- map_df(1:length(time_difference), 
-                           ~ mutate(time_difference[[.x]], site = sites[.x])) %&gt;%
-  filter(!is.nan(Estimate))
-
-# Criterion for significance: B-H adjusted p &lt; 0.05
-sig_sites_caste &lt;- caste_difference %&gt;%
-  group_by(site) %&gt;%
-  summarise(sig = ifelse(any(p.adjust(p, method = &quot;BH&quot;) &lt; 0.05), TRUE, FALSE), 
-            .groups = &quot;drop&quot;) %&gt;%
-  filter(sig) %&gt;% pull(site)
-
-sig_sites_time &lt;- time_difference %&gt;%
-  group_by(site, Caste) %&gt;%
-  summarise(sig = ifelse(any(p.adjust(p, method = &quot;BH&quot;) &lt; 0.05), TRUE, FALSE), 
-            .groups = &quot;drop&quot;) %&gt;%
-  filter(sig) %&gt;% 
-  spread(Caste, sig)
-
-sig_sites_time_queen &lt;- sig_sites_time %&gt;% filter(q) %&gt;% pull(site)
-sig_sites_time_worker &lt;- sig_sites_time %&gt;% filter(w) %&gt;% pull(site)
-
-gene_meth_results_table &lt;- tibble(site = sites) %&gt;%
-  left_join(annotations, by = &quot;site&quot;) %&gt;%
-  dplyr::select(gene_name, gene, site) %&gt;%
-  mutate(sig_caste = ifelse(site %in% sig_sites_caste, &quot;\\*&quot;, &quot; &quot;),
-         sig_time_queen = ifelse(site %in% sig_sites_time_queen, &quot;\\*&quot;, &quot; &quot;),
-         sig_time_worker = ifelse(site %in% sig_sites_time_worker, &quot;\\*&quot;, &quot; &quot;),
-         site_old = site,
-         site = map_chr(strsplit(site, split = &quot;~&quot;), 
-                        ~ paste0(c(.x[1], .x[2]), collapse = &quot;, pos:&quot;))) %&gt;%
-  arrange(desc(sig_caste), desc(sig_time_queen), desc(sig_time_worker), gene_name) 
+# Make html tables:
+my_data_table &lt;- function(df){
+  datatable(
+    df, rownames=FALSE,
+    autoHideNavigation = TRUE,
+    extensions = c(&quot;Scroller&quot;,  &quot;Buttons&quot;),
+    options = list(
+      dom = &#39;Bfrtip&#39;,
+      deferRender=TRUE,
+      scrollX=TRUE, scrollY=400,
+      scrollCollapse=TRUE,
+      buttons = 
+        list(&#39;pageLength&#39;,  &#39;csv&#39;, list(
+          extend = &#39;pdf&#39;,
+          pageSize = &#39;A4&#39;,
+          orientation = &#39;landscape&#39;,
+          filename = &#39;Apis_methylation&#39;)),
+        pageLength = 50
+        )
+    )
+}
 
 
 
@@ -758,20 +849,20 @@ worker_colour &lt;- RColorBrewer::brewer.pal(7, &quot;Blues&quot;)[4]</code></pr
 <p>Notably, <em>Complementary sex determiner</em> is significant in all three analyses (expression, and both versions of the methylation analyses). <em>maternal protein tudor</em> shows differential expression, and significant differential methylation (in the Bayesian GAM).</p>
 <div id="using-the-bwasp-methylation-results" class="section level3">
 <h3>Using the BWASP methylation results</h3>
-<pre class="r"><code>genes_tested_meth &lt;- colnames(readRDS(&quot;data/Methylation_data/input_data_for_meth_network_CLEANED.rds&quot;))
+<pre class="r"><code>genes_tested_meth &lt;- tbl(db, &quot;site_annotations&quot;) %&gt;%
+  dplyr::select(promoter_of, intron_in, fiveUTR_in, threeUTR_in) %&gt;% 
+  distinct() %&gt;% collect(n = Inf) %&gt;% 
+  unlist() %&gt;% unname() %&gt;% unique()
 genes_tested_expr &lt;- read_csv(&quot;output/caste_results.csv&quot;)$`Gene symbol` %&gt;% unique()
 universe &lt;- intersect(genes_tested_expr, genes_tested_meth)
 sig_diff_expr &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;% 
   filter(adj.P.Val &lt; 0.05 &amp; `Gene symbol` %in% universe) %&gt;% pull(`Gene symbol`) %&gt;% unique()
-sig_diff_meth &lt;- bwasp_sig_genes$bwasp_caste_sig_genes$`Gene name` %&gt;% as.character() %&gt;% unique()
+sig_diff_meth &lt;- bwasp_sig_genes$caste_sig_genes
 
-inters &lt;- intersect(sig_diff_expr, annotations$gene[match(sig_diff_meth, annotations$gene_name)])
+inters &lt;- intersect(sig_diff_expr, bwasp_sig_genes$caste_sig_genes)
 n_overlaps &lt;- length(inters)
 
-bwasp_table &lt;- annotations %&gt;%
-  filter(gene %in% inters) %&gt;% 
-  dplyr::select(gene_name) %&gt;% distinct() %&gt;%
-  dplyr::rename(`Genes showing both differential expression and methylation (BWASP pipeline)` = gene_name) 
+bwasp_table &lt;- tibble(`Genes showing both differential expression and methylation (BWASP pipeline)` = tbl(db, &quot;gene_names&quot;) %&gt;% filter(gene_symbol %in% inters) %&gt;% pull(gene_name)) 
 
 bwasp_hypergeometric &lt;- overlap_hypergeometric_test(
   n_overlaps, 
@@ -781,38 +872,9 @@ bwasp_hypergeometric &lt;- overlap_hypergeometric_test(
 
 
 bwasp_table %&gt;%
-  kable() %&gt;% kable_styling(full_width = FALSE) </code></pre>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Genes showing both differential expression and methylation (BWASP pipeline)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-complementary sex determiner
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-regulator of nonsense transcripts 2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-serine palmitoyltransferase 2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-transforming growth factor beta regulator 1
-</td>
-</tr>
-</tbody>
-</table>
+  my_data_table()</code></pre>
+<div id="htmlwidget-a6a90552489c1ce0c217" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a6a90552489c1ce0c217">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["complementary sex determiner","serine palmitoyltransferase 2","nucleolysin TIAR","transforming growth factor beta regulator 1","regulator of nonsense transcripts 2","G2/mitotic-specific cyclin-B3","DNA-directed RNA polymerase II subunit RPB1","eukaryotic translation initiation factor 3 subunit C","transportin-3","protein dopey homolog PFC0245c","galectin-8-like"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Genes showing both differential expression and methylation (BWASP pipeline)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>bwasp_hypergeometric %&gt;%
   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -835,16 +897,16 @@ One-tailed p
 <tbody>
 <tr>
 <td style="text-align:right;">
-4
+11
 </td>
 <td style="text-align:right;">
-5.8
+12.9
 </td>
 <td style="text-align:right;">
-0.69
+0.85
 </td>
 <td style="text-align:right;">
-0.123
+0.2116
 </td>
 </tr>
 </tbody>
@@ -852,17 +914,13 @@ One-tailed p
 </div>
 <div id="using-the-bayesian-gam-methylation-results" class="section level3">
 <h3>Using the Bayesian GAM methylation results</h3>
-<pre class="r"><code>genes_tested_meth &lt;- map_chr(model_results, ~ .x$genes$gene[1]) %&gt;% unique()
-universe &lt;- intersect(genes_tested_expr, genes_tested_meth)
-sig_diff_meth &lt;- gene_meth_results_table %&gt;% 
-  filter(sig_caste == &quot;\\*&quot; &amp; gene %in% universe) %&gt;% pull(gene)  %&gt;% unique()
+<pre class="r"><code>sig_diff_meth &lt;- bayes_sig_genes %&gt;% dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %&gt;%
+  unlist() %&gt;% unname() %&gt;% na.omit() %&gt;% unique()
 inters &lt;- intersect(sig_diff_expr, sig_diff_meth)
 n_overlaps &lt;- length(inters)
 
-bayes_table &lt;- annotations %&gt;%
-  filter(gene %in% inters) %&gt;% 
-  dplyr::select(gene_name) %&gt;% distinct() %&gt;%
-  dplyr::rename(`Genes showing both differential expression and methylation (Bayesian GAM)` = gene_name) 
+bayes_table &lt;- tibble(`Genes showing both differential expression and methylation (Bayesian GAM)` =
+tbl(db, &quot;gene_names&quot;) %&gt;% filter(gene_symbol %in% inters) %&gt;% pull(gene_name))
 
 bayes_hypergeometric &lt;- overlap_hypergeometric_test(
   n_overlaps, 
@@ -871,126 +929,9 @@ bayes_hypergeometric &lt;- overlap_hypergeometric_test(
   length(universe))
 
 bayes_table %&gt;%
-  kable() %&gt;% kable_styling(full_width = FALSE) %&gt;%
-  scroll_box(height = &quot;300px&quot;)</code></pre>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Genes showing both differential expression and methylation (Bayesian GAM)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-maternal protein tudor
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-complementary sex determiner
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-uncharacterized LOC113218557
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-protein PF14_0175
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-probable deoxyhypusine synthase
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-cytosolic Fe-S cluster assembly factor NUBP1 homolog
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-polycomb protein suz12-B
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-CCAAT/enhancer-binding protein zeta
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-TBC domain-containing protein kinase-like protein
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-kinesin 2B
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-WD repeat-containing protein 19
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-zinc transporter foi
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-DNA fragmentation factor subunit alpha
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-exocyst complex component 3
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-E3 ubiquitin-protein ligase synoviolin A
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-activated Cdc42 kinase-like
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ribosome biogenesis protein BMS1 homolog
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-protein arginine N-methyltransferase 9
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-multifunctional protein ADE2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-uncharacterized LOC412432
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-MATH and LRR domain-containing protein PFE0570w
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+  my_data_table()</code></pre>
+<div id="htmlwidget-c02f98123d86324de8d3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c02f98123d86324de8d3">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["complementary sex determiner","NMDA receptor 1","nicotinic acetylcholine receptor alpha8 subunit","integrin beta-PS","mitochondrial cytochrome C","rho GTPase-activating protein conundrum","protein FAM76A","tyrosine-protein kinase transmembrane receptor Ror2","uncharacterized LOC408316","putative uncharacterized protein DDB_G0277255","probable ATP-dependent RNA helicase DDX56","transcriptional adapter 2-alpha","26S proteasome non-ATPase regulatory subunit 11","CTD nuclear envelope phosphatase 1 homolog","heterogeneous nuclear ribonucleoprotein U-like protein 1","serine/threonine-protein kinase/endoribonuclease IRE1","protein preli-like","serine/threonine-protein kinase 10","colorectal mutant cancer protein","mitogen-activated protein kinase kinase kinase 15","armadillo repeat-containing protein 6 homolog","eukaryotic translation initiation factor 2D","major facilitator superfamily domain-containing protein 1","zinc finger protein 76","heat shock protein 70Cb ortholog","cerebellar degeneration-related protein 2-like","DNA ligase 1","uncharacterized protein MAL13P1.304","pre-mRNA-processing factor 39","X-box-binding protein 1","lissencephaly-1 homolog","ankyrin repeat and SAM domain-containing protein 1A","large proline-rich protein BAG6","death-associated protein 1","transcription initiation factor TFIID subunit 4","heat shock protein 90","RNA-binding protein squid","leucine-rich repeat and calponin homology domain-containing protein 1","V-type proton ATPase subunit H","arginine-glutamic acid dipeptide repeats protein","guanine nucleotide exchange factor for Rab-3A","protoheme IX farnesyltransferase, mitochondrial","tyrosine-protein kinase Abl","iron-sulfur cluster assembly enzyme ISCU, mitochondrial","monocarboxylate transporter 12","ataxin-2-like protein","sorting nexin-30","calreticulin","26S proteasome non-ATPase regulatory subunit 13","polycomb protein suz12-B","kinase D-interacting substrate of 220 kDa","40S ribosomal protein S9","uncharacterized LOC409221","arf-GAP with coiled-coil, ANK repeat and PH domain-containing protein 2","uncharacterized LOC409232","small ubiquitin-related modifier","collagen type IV alpha-3-binding protein","actin-related protein 2","uncharacterized LOC409323","ubiquitin carboxyl-terminal hydrolase 7","CAAX prenyl protease 2","WD repeat-containing protein 43","heat shock protein 60A","nuclear valosin-containing protein-like","protein RCC2 homolog","guanine nucleotide-binding protein subunit beta-like protein","eIF-2-alpha kinase activator GCN1","laminin subunit gamma-1","transmembrane protein 183B","methylglutaconyl-CoA hydratase, mitochondrial","zinc finger CCCH domain-containing protein 18","kinase suppressor of Ras 2","SWI/SNF complex subunit SMARCC2","cysteine-rich hydrophobic domain-containing protein 2","long-chain-fatty-acid--CoA ligase 4","cell division cycle protein 27 homolog","NAD-dependent protein deacetylase Sirt2","arginine-glutamic acid dipeptide repeats protein","ruvB-like 1","protein SMG7","polyadenylate-binding protein 2-B","Golgi reassembly-stacking protein 2","cyclin-dependent kinase 1","dnaJ homolog dnj-5","rhotekin-2","uncharacterized LOC409717","uncharacterized protein YER152C","rho GDP-dissociation inhibitor 2","vacuolar protein sorting-associated protein 4B","telomerase-binding protein EST1A","protein retinal degeneration B","26S proteasome non-ATPase regulatory subunit 12","tyrosine-protein kinase CSK","RNA-binding protein 26","dual specificity mitogen-activated protein kinase kinase dSOR1","zinc finger FYVE domain-containing protein 1","cyclin-dependent kinase 12","ankyrin repeat domain-containing protein 17","dnaJ homolog subfamily C member 11","dnaJ homolog subfamily C member 7","serine/threonine-protein phosphatase 4 regulatory subunit 4","mitochondrial folate transporter/carrier","centrosome-associated protein 350","superoxide dismutase 2, mitochondrial","geminin","ubiquitin carboxyl-terminal hydrolase 34","uncharacterized LOC410154","60S ribosomal protein L8","5'-nucleotidase domain-containing protein 3","phosphatidate phosphatase LPIN3","uncharacterized LOC410244","transmembrane GTPase Marf","syntaxin 1A","transcription elongation factor SPT6-like","GATOR complex protein WDR59","methionine aminopeptidase 1","importin subunit beta-1","ceramide-1-phosphate transfer protein","CLIP-associating protein 1-A","cullin-1","RNA-binding protein 5","putative E3 ubiquitin-protein ligase UBR7","protein lin-9 homolog","DNA topoisomerase 2-binding protein 1","ubiquitin-like modifier-activating enzyme 1","myosin-IB","NF-kappa-B inhibitor cactus","phosphatidylinositide phosphatase SAC1","WD repeat-containing protein 36","dnaJ protein homolog 1","serine/threonine-protein kinase greatwall","zinc transporter 7","FGGY carbohydrate kinase domain-containing protein","bromodomain containing 7","solute carrier family 12 member 4","baculoviral IAP repeat-containing protein 6","splicing factor 1","putative aldehyde dehydrogenase family 7 member A1 homolog","nischarin","ubiquitin-protein ligase E3A","WD repeat-containing protein 37","GTP-binding protein 128up","Golgi resident protein GCP60","elongation factor G, mitochondrial","protein tumorous imaginal discs, mitochondrial","60S ribosomal protein L30","protein transport protein Sec24B","negative elongation factor D","serine palmitoyltransferase 2","histone-arginine methyltransferase CARMER","integrator complex subunit 1","dynamin-1-like protein","nucleoporin NUP188 homolog","ribosomal protein S6 kinase alpha-2","SPARC-related modular calcium-binding protein 1","histone deacetylase Rpd3","mitogen-activated protein kinase kinase kinase 11","ubiquitin carboxyl-terminal hydrolase 14","tRNA (cytosine(34)-C(5))-methyltransferase","phosphopantothenate--cysteine ligase","zinc finger protein ubi-d4 A","liprin-beta-1","DNA replication licensing factor Mcm2","transcription factor RFX3","macrophage erythroblast attacher","SID1 transmembrane family member 1","mitogen-activated protein kinase kinase kinase 7 interacting protein 1","endoplasmic reticulum metallopeptidase 1","mitochondrial glycine transporter","protein cereblon","dual specificity protein phosphatase Mpk3","aldehyde dehydrogenase family 3 member B1","translationally-controlled tumor protein homolog","la protein homolog","phosphatase and tensin-like","exportin-2","putative serine protease K12H4.7","nucleolysin TIAR","V-type proton ATPase subunit C","ran GTPase-activating protein 1","zinc finger protein 184","E3 ubiquitin-protein ligase Ubr3","transforming growth factor beta regulator 1","histone-lysine N-methyltransferase PR-Set7","S-phase kinase-associated protein 2","exocyst complex component 3","dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit 2","F-box only protein 11","DNA replication complex GINS protein PSF1","uncharacterized LOC412079","myosin heavy chain, non-muscle","AP-3 complex subunit delta-1","ubiquitin-conjugating enzyme E2-24 kDa","DENN domain-containing protein 5B","kinesin 4B","HEAT repeat-containing protein 5B","SHC-transforming protein 1","UDP-glucose:glycoprotein glucosyltransferase","threonine--tRNA ligase, cytoplasmic","trans-1,2-dihydrobenzene-1,2-diol dehydrogenase","dipeptidyl peptidase 3","KAT8 regulatory NSL complex subunit 3","60S ribosomal protein L27","plexin-B","protein purity of essence","membrane-bound transcription factor site-1 protease","flap endonuclease 1","uncharacterized LOC412326","mediator of RNA polymerase II transcription subunit 23","E3 ubiquitin-protein ligase TM129","organic cation transporter protein","PH-interacting protein","microfibrillar-associated protein 1","mediator of RNA polymerase II transcription subunit 1","uncharacterized LOC412432","protein CASC1","PDF receptor","ribosomal RNA processing protein 1 homolog","double-stranded RNA-specific editase 1","integrator complex subunit 8","protein disulfide-isomerase A6 homolog","tyrosine-protein phosphatase corkscrew","uncharacterized LOC412543","cyclin-dependent kinase 9","calcitonin gene-related peptide type 1 receptor","DNA damage-binding protein 1","uncharacterized LOC412607","methyltransferase-like protein 13","protein ABHD13","protein mahjong","kinesin 2B","blastoderm-specific protein 25D","calcineurin-binding protein cabin-1","ATP-binding cassette sub-family B member 7, mitochondrial","importin-11","E3 ubiquitin-protein ligase SMURF2","AP-1 complex subunit gamma-1","branched-chain-amino-acid aminotransferase, cytosolic","E3 ubiquitin-protein ligase MYLIP","coiled-coil domain-containing protein 47","uncharacterized LOC413055","F-box/WD repeat-containing protein 7","serrate RNA effector molecule homolog","enhancer of mRNA-decapping protein 4","cysteine and histidine-rich protein 1 homolog","regulator of nonsense transcripts 2","probable ATP-dependent RNA helicase DHX35","LIM domain kinase 1","mortality factor 4-like protein 1","RNA exonuclease 4","ATP-binding cassette sub-family F member 2","putative inorganic phosphate cotransporter","ADP-dependent glucokinase","helicase domino","exportin-5","nucleoporin SEH1","putative glutamate synthase [NADPH]","histone-lysine N-methyltransferase EHMT2","phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta","protein lingerer","dynamin-like 120 kDa protein, mitochondrial","protein kibra","serine/threonine-protein kinase ULK3","insulin-degrading enzyme","probable G-protein coupled receptor 158","nucleolar complex protein 2 homolog","exportin-7","nuclear RNA export factor 1","presequence protease, mitochondrial","G2/mitotic-specific cyclin-B3","hexosaminidase D","arfGAP with SH3 domain, ANK repeat and PH domain-containing protein","helicase SKI2W","probable glutamine--tRNA ligase","nucleolar protein 14 homolog","traB domain-containing protein","enhancer of polycomb homolog 1","methionine--tRNA ligase, cytoplasmic","mitogen-activated protein kinase kinase kinase 7","folylpolyglutamate synthase, mitochondrial","CCA tRNA nucleotidyltransferase 1, mitochondrial","glucose-6-phosphate exchanger SLC37A2","retinol dehydrogenase 11","eukaryotic peptide chain release factor GTP-binding subunit ERF3A","derlin-2","polypeptide N-acetylgalactosaminyltransferase 5","ribosome biogenesis protein BMS1 homolog","malvolio","splicing factor U2AF 50 kDa subunit","adiponectin receptor protein","inosine-5'-monophosphate dehydrogenase 1b","clathrin heavy chain","guanine nucleotide-binding protein G(q) subunit alpha","egalitarian protein homolog","DNA-directed RNA polymerase II subunit RPB1","protogenin-like","serine/threonine-protein kinase PINK1, mitochondrial","exonuclease 1","1-acylglycerol-3-phosphate O-acyltransferase Pnpla3","conserved oligomeric Golgi complex subunit 8","kinesin 5A","Golgi pH regulator","E3 SUMO-protein ligase PIAS3","eukaryotic translation initiation factor 3 subunit C","neutral alpha-glucosidase AB","uncharacterized LOC551215","ATP-binding cassette sub-family E member 1","cathepsin O","spectrin alpha chain","T-complex protein 1 subunit zeta","ATPase family AAA domain-containing protein 3A homolog","uncharacterized LOC551338","cytosolic 10-formyltetrahydrofolate dehydrogenase","uncharacterized LOC551408","uncharacterized LOC551450","sister chromatid cohesion protein PDS5 homolog B","sphingomyelin phosphodiesterase 4","collagen alpha chain CG42342","pre-mRNA-processing factor 6","uncharacterized LOC551519","putative U5 small nuclear ribonucleoprotein 200 kDa helicase","BAG family molecular chaperone regulator 2","probable 26S proteasome non-ATPase regulatory subunit 3","poly(A) RNA polymerase, mitochondrial","carboxy-terminal domain RNA polymerase II polypeptide A small phosphatase 1","ras GTPase-activating protein-binding protein 2","FACT complex subunit spt16","calpain-D","pre-mRNA-processing-splicing factor 8","casein kinase II subunit beta","anillin","wee1-like protein kinase","palmitoyltransferase ZDHHC5","nucleolar protein 6","UPF0565 protein C2orf69 homolog","importin-7","inositol-tetrakisphosphate 1-kinase","rho GTPase-activating protein 190","DNA primase large subunit","phosphorylated CTD-interacting factor 1","S-adenosylhomocysteine hydrolase-like protein 1","hypoxia up-regulated protein 1","methionine aminopeptidase 2","6-phosphogluconolactonase","arf-GAP with dual PH domain-containing protein 1","xenotropic and polytropic retrovirus receptor 1 homolog","host cell factor 1","putative elongator complex protein 1","large subunit GTPase 1 homolog","1,2-dihydroxy-3-keto-5-methylthiopentene dioxygenase","YTH domain-containing family protein 1","serine/threonine-protein phosphatase 5","ATP-dependent helicase brm","protein dj-1beta","alcohol dehydrogenase [NADP(+)]","uracil phosphoribosyltransferase homolog","ovarian-specific serine/threonine-protein kinase Lok","putative N-acetylglucosamine-6-phosphate deacetylase","replication factor C subunit 3","kinesin-associated protein 3","uncharacterized protein DDB_G0287625","60S ribosomal export protein NMD3","myo-inositol 2-dehydrogenase","chromodomain-helicase-DNA-binding protein Mi-2 homolog","suppressor of cytokine signaling 5","uncharacterized LOC552044","developmentally-regulated GTP-binding protein 2","adhesion G protein-coupled receptor A3","beta-1,4-N-acetylgalactosaminyltransferase bre-4","mitochondrial-processing peptidase subunit alpha","phosphatidylinositol transfer protein alpha isoform","uncharacterized LOC552192","probable histone-binding protein Caf1","putative ATP-dependent RNA helicase me31b","N-acetyltransferase ESCO1","DNA replication licensing factor MCM4","far upstream element-binding protein 3","RNA-binding protein cabeza","protein germ cell-less","N-alpha-acetyltransferase 30","dolichyldiphosphatase 1","membrane-associated ring finger (C3HC4) 6","serine palmitoyltransferase 1","beta-1,3-galactosyltransferase 1-like","WD repeat-containing protein 3","DNA-directed RNA polymerase II subunit RPB3","MATH and LRR domain-containing protein PFE0570w-like","protein draper","roquin-1","kinesin 6A","ATP-dependent RNA helicase WM6","glucoside xylosyltransferase 1","cell division cycle 5-like protein","DEAD-box helicase Dbp80","uncharacterized LOC552585","protein ABHD4","E3 ubiquitin-protein ligase ZNRF2","vacuolar fusion protein CCZ1 homolog","stAR-related lipid transfer protein 7, mitochondrial","zinc transporter 1","ammonium transporter 1-like","DNA replication licensing factor Mcm3","K(lysine) acetyltransferase 2A","phosphoribosylformylglycinamidine synthase","proclotting enzyme","shugoshin 2","X-ray repair cross-complementing protein 6","acyl-CoA:lysophosphatidylglycerol acyltransferase 1","D-aspartate oxidase","N-acetylglucosamine-1-phosphotransferase subunits alpha/beta","aurora kinase B","eukaryotic translation initiation factor 2A","phenylalanine--tRNA ligase alpha subunit","ubiA prenyltransferase domain-containing protein 1 homolog","mediator of RNA polymerase II transcription subunit 14","metal transporter CNNM4","cytochrome c oxidase subunit NDUFA4","activating signal cointegrator 1 complex subunit 3","TATA box-binding protein-associated factor RNA polymerase I subunit B","catenin alpha","GB15078 protein","telomerase reverse transcriptase","mitochondrial fission regulator 2","translation initiation factor eIF-2B subunit delta","protein nessun dorma","DNA topoisomerase 2","putative peroxisomal biogenesis factor 10","AT-rich interactive domain-containing protein 2","pre-mRNA-splicing factor CWC22 homolog","uncharacterized LOC724357","ras-related GTP-binding protein A","DNA polymerase theta","calcium-transporting ATPase type 2C member 1","serine-rich adhesin for platelets","uncharacterized LOC724481","la-related protein 1B","eukaryotic translation initiation factor 1A, X-chromosomal","transcriptional regulator ATRX homolog","transducin beta-like protein 3","inner nuclear membrane protein Man1","RNA cytidine acetyltransferase","ribonuclease P protein subunit rpr2","uncharacterized LOC724680","protein-L-isoaspartate O-methyltransferase domain-containing protein 1","xanthine dehydrogenase","ATP-dependent 6-phosphofructokinase","uncharacterized LOC724770","uncharacterized LOC724843","protein FAM117B","delta(14)-sterol reductase","DNA polymerase alpha subunit B","importin-5","WASH complex subunit 2","nipped-B protein","nucleolin 1","gamma-glutamylcyclotransferase","uncharacterized LOC725061","39S ribosomal protein L4, mitochondrial","DNA fragmentation factor subunit alpha","proteasome adapter and scaffold protein ECM29","DNA-directed RNA polymerase I subunit RPA1","protein bark beetle","nucleoside-triphosphatase THEP1","DNA polymerase delta small subunit","nuclear pore complex protein Nup160 homolog","C2 domain-containing protein 3","leucine-rich melanocyte differentiation-associated protein","ubiquitin carboxyl-terminal hydrolase 45","leucine-rich repeat protein 1","cullin-2","sorting nexin-2","proteasome activator complex subunit 4A","protein transport protein Sec61 subunit alpha","myb-binding protein 1A","RNA polymerase-associated protein Rtf1","DNA-directed RNA polymerase I subunit RPA2","alpha-actinin, sarcomeric","protein aurora borealis","hyaluronan mediated motility receptor","replication protein A 70 kDa DNA-binding subunit","protein still life, isoform SIF type 1","replication factor C subunit 4-like","EH domain-binding protein 1","Hermansky-Pudlak syndrome 1 protein homolog","putative ATP-dependent RNA helicase DHX30","tetratricopeptide repeat protein 14 homolog","mitochondrial import inner membrane translocase subunit Tim10B","male-specific lethal 3 homolog","transportin-3","60S ribosomal protein L11","exostosin-2","DNA primase small subunit","anaphase-promoting complex subunit CDC26","histone acetyltransferase p300-like","uncharacterized LOC726286","M-phase inducer phosphatase","GPI ethanolamine phosphate transferase 1","uncharacterized LOC726325","glycerol-3-phosphate dehydrogenase","ubiquitin carboxyl-terminal hydrolase 10","protein lin-37 homolog","autophagy-related protein 2 homolog B","probable ATP-dependent RNA helicase DDX27","DNA (cytosine-5)-methyltransferase PliMCI","anaphase-promoting complex subunit 1","PEST proteolytic signal-containing nuclear protein","ruvB-like 2","ATP-dependent RNA helicase DDX51","zinc finger protein 91","nuclear factor related to kappaB binding protein","cleft lip and palate transmembrane protein 1 homolog","probable ATP-dependent RNA helicase spindle-E","NK-tumor recognition protein","acyl-CoA Delta(11) desaturase","structural maintenance of chromosomes protein 6","general transcription factor 3C polypeptide 5","histone-lysine N-methyltransferase ash1","nuclear pore complex protein Nup153","uncharacterized LOC727520","hairless","uncharacterized LOC100576155","E3 ubiquitin-protein ligase Su(dx)","TLD domain-containing protein 1","MATH and LRR domain-containing protein PFE0570w","restin homolog","maternal protein tudor","zinc finger and BTB domain-containing protein 41","serine/arginine repetitive matrix protein 2","probable elongator complex protein 3","merlin","uncharacterized LOC100576972","condensin complex subunit 2","uncharacterized LOC100577014","uncharacterized LOC100577050","glycine dehydrogenase (decarboxylating), mitochondrial","GRIP and coiled-coil domain-containing protein PFC0235w","gametocyte-specific factor 1","HEAT repeat-containing protein 6","ankyrin repeat and LEM domain-containing protein 2","cytospin-A","peptidyl-prolyl cis-trans isomerase sig-7-like","uncharacterized LOC100577742","putative uncharacterized protein DDB_G0282133","nucleolar protein 56","antitrypsin","DNA polymerase zeta catalytic subunit","uncharacterized protein PF11_0213","zinc finger matrin-type protein CG9776","dynein regulatory complex protein 1","DNA-directed RNA polymerase I subunit RPA12","uncharacterized protein PF11_0213","Golgi integral membrane protein 4","apoptotic protease-activating factor 1-like","centrosomal protein of 152 kDa","eukaryotic translation initiation factor 2 subunit 2","uncharacterized LOC100578706","aprataxin and PNK-like factor","protein strawberry notch-like","zinc finger protein 85","centrosome-associated zinc finger protein CP190","E3 ubiquitin-protein ligase TRIM33","pseudouridylate synthase 7 homolog","uncharacterized LOC102654925","hepatocyte nuclear factor 4-gamma","ATP-dependent RNA helicase p62-like","reticulon-1-A","probable ATP-dependent RNA helicase DDX55 homolog","protein dopey homolog PFC0245c","uncharacterized protein PFB0145c","stress-induced-phosphoprotein 1","pre-rRNA processing protein FTSJ3","cell wall integrity and stress response component 1","cyclic AMP response element-binding protein A","proline-, glutamic acid- and leucine-rich protein 1","glycolipid transfer protein","telomere-associated protein RIF1-like","small subunit processome component 20 homolog","protein inturned","uncharacterized LOC100578548","twinkle protein, mitochondrial","histone-lysine N-methyltransferase NSD2","translation factor GUF1 homolog, mitochondrial","sodium-independent sulfate anion transporter","galectin-8-like"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Genes showing both differential expression and methylation (Bayesian GAM)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>bayes_hypergeometric %&gt;%
   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1013,16 +954,16 @@ One-tailed p
 <tbody>
 <tr>
 <td style="text-align:right;">
-21
+584
 </td>
 <td style="text-align:right;">
-130.1
+565.8
 </td>
 <td style="text-align:right;">
-0.16
+1.03
 </td>
 <td style="text-align:right;">
-0
+0.1589
 </td>
 </tr>
 </tbody>
@@ -1036,40 +977,54 @@ One-tailed p
 <p>This binned scatterplot illustrates that genes showing queen-biased methylation tended to show worker-biased expression, and <em>vice versa</em>. The relationship appears weak and noisy, though we note that both the x and y axes are measured with considerable error, which would obscure the underlying correlation. The relationship appears to grow stronger at later time points, and the correlation is significantly negative for the 4h, 6h, and 8h (but not 2h) time points.</p>
 <pre class="r"><code>if(!file.exists(&quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)){
   
+  bwasp_gene_meth &lt;- read_tsv(&quot;data/meth_network_input/Network_persite.txt&quot;) %&gt;%
+    gather(&quot;sample&quot;, &quot;methylation&quot;, -Genes) %&gt;%
+    mutate(caste = case_when(
+      str_detect(sample, &quot;queen&quot;) ~ &quot;queen&quot;,
+      str_detect(sample, &quot;worker&quot;) ~ &quot;worker&quot;,
+      TRUE ~ &quot;t0&quot;
+    )) %&gt;% filter(caste!=&quot;t0&quot;) %&gt;%
+    mutate(time = str_extract(sample, &quot;[2468]&quot;),
+           ct = paste(caste, time, sep = &quot;&quot;)) %&gt;%
+    group_by(Genes, ct) %&gt;%
+    summarise(mean_meth = mean(methylation)) %&gt;%
+    spread(ct, mean_meth) %&gt;%
+    mutate(diff_meth2 = queen2 - worker2,
+           diff_meth4 = queen4 - worker4,
+           diff_meth6 = queen6 - worker6,
+           diff_meth8 = queen8 - worker8) %&gt;%
+    dplyr::select(Genes, starts_with(&quot;diff&quot;)) %&gt;%
+    gather(&quot;Time&quot;, &quot;diff_meth&quot;, -Genes) %&gt;%
+    mutate(Time = as.numeric(str_extract(Time, &quot;[2468]&quot;)))
+  
   meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
-    select(Time, `Gene symbol`, logFC) %&gt;%
-    left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
-                filter(grepl(&quot;queen&quot;, comparison) &amp; grepl(&quot;worker&quot;, comparison)) %&gt;%
-                mutate(time = str_extract(comparison, &quot;[2468]&quot;)) %&gt;%
-                group_by(Genes, time) %&gt;%
-                summarise(mean_meth_diff = mean(meth.diff)) %&gt;% 
-                mutate(time = as.numeric(time)), 
-              by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
-    filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
-  
-  meth_geneExpr_relationship_data_timeQ &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
-    filter(Caste == &quot;Queen&quot;) %&gt;%
-    select(Time, `Gene symbol`, logFC) %&gt;%
-    left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
-                filter(grepl(&quot;queen&quot;, comparison) &amp; !grepl(&quot;worker&quot;, comparison)) %&gt;%
-                mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
-                         map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
-                group_by(Genes, time) %&gt;%
-                summarise(mean_meth_diff = mean(meth.diff)), 
-              by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
-    filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
-  
-  meth_geneExpr_relationship_data_timeW &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
-    filter(Caste == &quot;Worker&quot;) %&gt;%
-    select(Time, `Gene symbol`, logFC) %&gt;%
-    left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
-                filter(!grepl(&quot;queen&quot;, comparison) &amp; grepl(&quot;worker&quot;, comparison)) %&gt;%
-                mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
-                         map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
-                group_by(Genes, time) %&gt;%
-                summarise(mean_meth_diff = mean(meth.diff)), 
-              by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
-    filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
+    dplyr::select(Time, `Gene symbol`, logFC) %&gt;%
+    left_join(bwasp_gene_meth, by = c(&quot;Gene symbol&quot; = &quot;Genes&quot;, &quot;Time&quot;)) %&gt;%
+    filter(!is.na(diff_meth) &amp; !is.na(logFC))
+  # 
+  # meth_geneExpr_relationship_data_timeQ &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
+  #   filter(Caste == &quot;Queen&quot;) %&gt;%
+  #   dplyr::select(Time, `Gene symbol`, logFC) %&gt;%
+  #   left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+  #               filter(grepl(&quot;queen&quot;, comparison) &amp; !grepl(&quot;worker&quot;, comparison)) %&gt;%
+  #               mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
+  #                        map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
+  #               group_by(Genes, time) %&gt;%
+  #               summarise(mean_meth_diff = mean(meth.diff)), 
+  #             by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
+  #   filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
+  # 
+  # meth_geneExpr_relationship_data_timeW &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
+  #   filter(Caste == &quot;Worker&quot;) %&gt;%
+  #   select(Time, `Gene symbol`, logFC) %&gt;%
+  #   left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
+  #               filter(!grepl(&quot;queen&quot;, comparison) &amp; grepl(&quot;worker&quot;, comparison)) %&gt;%
+  #               mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
+  #                        map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
+  #               group_by(Genes, time) %&gt;%
+  #               summarise(mean_meth_diff = mean(meth.diff)), 
+  #             by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
+  #   filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
   
   write_csv(meth_geneExpr_relationship_data_caste, &quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
   write_csv(meth_geneExpr_relationship_data_timeQ, &quot;output/meth_geneExpr_relationship_data_timeQ.csv&quot;)
@@ -1083,7 +1038,7 @@ One-tailed p
 
 hex_plot &lt;- function(dat){
   
-  ggplot(dat, aes(-1 * mean_meth_diff, logFC)) + 
+  ggplot(dat, aes(diff_meth, logFC)) + 
     geom_hline(yintercept = 0, linetype = 2) + 
     geom_vline(xintercept = 0, linetype = 2) + 
     geom_hex(bins = 50) + 
@@ -1091,10 +1046,14 @@ hex_plot &lt;- function(dat){
     xlab(&quot;Caste difference in mean % methylation\n(higher values mean more methylation in queens)&quot;) + 
     ylab(&quot;Caste difference in gene expression\n(Log FC; higher values mean more expression in queens)&quot;) + 
     facet_wrap(~ paste(Time, &quot;h post-grafting&quot;, sep = &quot;&quot;)) + 
-    scale_fill_viridis_c(option = &quot;A&quot;, direction = 1)
+    scale_fill_viridis_c(option = &quot;A&quot;, direction = 1) +
+    theme_bw() + 
+    theme(legend.position = &quot;top&quot;,
+          text = element_text(family = nice_font),
+          strip.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;))
 }
 meth_geneExpr_relationship_data_caste %&gt;% hex_plot()</code></pre>
-<p><img src="figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" width="528" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-geneExpr-1">
 Past versions of geneExpr-1.png
@@ -1139,11 +1098,11 @@ lukeholman
 <h3>Run Spearman’s rank correlations</h3>
 <p>There is a significant, negative relationship between the caste bias in methylation and the caste bias in gene expression, at times 4h, 6h, and 8h (but not time 2h) post-grafting. The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM.</p>
 <pre class="r"><code>run_corr &lt;- function(time, dat){
-  xx &lt;- cor.test(
-    filter(dat, Time == time)$mean_meth_diff * -1,
+  results &lt;- cor.test(
+    filter(dat, Time == time)$diff_meth,
     filter(dat, Time == time)$logFC, 
     method = &quot;spearman&quot;)
-  tibble(time = time, rho = xx$estimate, p = xx$p.value)
+  tibble(time = time, rho = results$estimate, p = results$p.value)
 }
 map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_caste)) %&gt;%
   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
@@ -1167,10 +1126,10 @@ p
 2
 </td>
 <td style="text-align:right;">
--0.0160333
+-0.0230384
 </td>
 <td style="text-align:right;">
-0.1141882
+0.02316
 </td>
 </tr>
 <tr>
@@ -1178,10 +1137,10 @@ p
 4
 </td>
 <td style="text-align:right;">
--0.0923266
+-0.0835949
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00000
 </td>
 </tr>
 <tr>
@@ -1189,10 +1148,10 @@ p
 6
 </td>
 <td style="text-align:right;">
--0.1677885
+-0.1537259
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00000
 </td>
 </tr>
 <tr>
@@ -1200,10 +1159,10 @@ p
 8
 </td>
 <td style="text-align:right;">
--0.2483767
+-0.2311193
 </td>
 <td style="text-align:right;">
-0.0000000
+0.00000
 </td>
 </tr>
 </tbody>
@@ -1230,17 +1189,19 @@ p
 <!-- ``` -->
 </div>
 </div>
-<div id="correlations-between-expression-and-methylation-modules" class="section level2">
+<div id="correlations-between-expression-and-methylation-modules" class="section level2 tabset">
 <h2>Correlations between expression and methylation modules</h2>
-<div id="plot-of-the-correlation-matrix" class="section level3">
-<h3>Plot of the correlation matrix</h3>
+<div id="plot-correlation-matrix" class="section level3">
+<h3>Plot correlation matrix</h3>
 <p><strong>Figure XX</strong>: Clustered correlation matrix showing relationships between pairs of modules from the network analyses of co-expression and co-methylation. The colour shows the sign and magnitude of the Pearson correlations between the module eigengenes from the expression and methylation networks. A positive correlation between expression module <span class="math inline">\(i\)</span> and methylation module <span class="math inline">\(j\)</span> indicates that samples which had comparatively high expression of the genes in <span class="math inline">\(i\)</span> tended to have comparatively high rates of methylation in <span class="math inline">\(j\)</span>. The negative relationship between expression and methylation (where workers have higher methylation, and queens higher expression, across large numbers of genes) is apparent.</p>
 <pre class="r"><code>mod_data &lt;- left_join(
   readRDS(&quot;output/meth_eigengenes.rds&quot;) %&gt;% 
     dplyr::rename(Replicate = Rep) %&gt;% 
-    select(Sample, Module, Eigengene) %&gt;%
+    dplyr::select(Sample, Module, Eigengene) %&gt;%
     spread(Module, Eigengene) %&gt;%
-    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Methylation m&quot;)),
+    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Methylation m&quot;)) %&gt;% 
+    mutate(Sample = str_replace(Sample, &quot;queen&quot;, &quot;q&quot;),
+           Sample = str_replace(Sample, &quot;worker&quot;, &quot;w&quot;)),
   read_csv(&quot;output/expression_eigengenes.csv&quot;) %&gt;% 
     dplyr::select(Sample, Module, Eigengene) %&gt;%
     mutate(Sample = str_remove_all(Sample, &quot;RNAseq_tg_&quot;),
@@ -1279,7 +1240,7 @@ tidy_annotation_row &lt;-
 annotation_row &lt;- tidy_annotation_row
 rownames(annotation_row) &lt;- annotation_row$Module
 annotation_row &lt;- annotation_row %&gt;% 
-  select(Direction) %&gt;% dplyr::rename(` ` = Direction)
+  dplyr::select(Direction) %&gt;% dplyr::rename(` ` = Direction)
 
 
 paletteLength &lt;- 50
@@ -1294,9 +1255,10 @@ cor_mods %&gt;%
   pheatmap(col = myColor, breaks = myBreaks,
            annotation_row = annotation_row, annotation_col = annotation_row, annotation_colors = annotation_colors,
            cutree_rows = 6, cutree_cols = 6,
+           cellwidth = 9, cellheight = 9,
            border_color = &quot;grey30&quot;, number_color = &quot;red&quot;,
            show_colnames = FALSE)</code></pre>
-<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" width="864" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
 Past versions of unnamed-chunk-4-1.png
@@ -1319,6 +1281,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/a8d7c554f690c3dd33a2bd444635daefef55030b/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">a8d7c55</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-07-31
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/642bfb7fb3071d393331c42ff6c5b61e01d90d90/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">642bfb7</a>
@@ -1346,9 +1319,10 @@ lukeholman
 </div>
 </div>
 </div>
-<div id="table-of-significant-correlations-between-expression-and-methylation-module-eigengenes" class="section level3">
-<h3>Table of significant correlations between expression and methylation module eigengenes</h3>
-<pre class="r"><code>corr.test_results &lt;- psych::corr.test(mod_data, adjust = &quot;BH&quot;)
+<div id="correlation-statistics" class="section level3">
+<h3>Correlation statistics</h3>
+<p>The table lists all pairs of co-expression modules and co-methylation modules for which the eigengenes showed a statistically significant correlations (Spearman’s correlations, <span class="math inline">\(p &lt; 0.05\)</span> after Benjamini-Hochberg correction).</p>
+<pre class="r"><code>corr.test_results &lt;- psych::corr.test(mod_data, adjust = &quot;BH&quot;, method = &quot;spearman&quot;)
 
 sig_corr &lt;- reshape2::melt(corr.test_results$p) %&gt;% 
   dplyr::rename(p = value) %&gt;% filter(p &lt; 0.05) %&gt;% 
@@ -1376,15 +1350,15 @@ sig_corr &lt;- reshape2::melt(corr.test_results$r) %&gt;%
   dplyr::rename(`Adjusted p` = p) %&gt;%
   dplyr::select(-swap, -temp1, -temp2) %&gt;% 
   left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Expression&quot;)),
-            by = c(&quot;Expression module&quot; = &quot;Module&quot;)) %&gt;% rename(expr_direction = Direction) %&gt;% 
+            by = c(&quot;Expression module&quot; = &quot;Module&quot;)) %&gt;% dplyr::rename(expr_direction = Direction) %&gt;% 
   left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Methylation&quot;)),
-            by = c(&quot;Methylation module&quot; = &quot;Module&quot;)) %&gt;% rename(meth_direction = Direction) %&gt;%
+            by = c(&quot;Methylation module&quot; = &quot;Module&quot;)) %&gt;% dplyr::rename(meth_direction = Direction) %&gt;%
   mutate(`Expression module` = str_remove_all(`Expression module`, &quot;Expression &quot;),
          `Methylation module` = str_remove_all(`Methylation module`, &quot;Methylation &quot;),
          `Expression module` = paste(`Expression module`, expr_direction, sep = &quot;: &quot;),
          `Methylation module` = paste(`Methylation module`, meth_direction, sep = &quot;: &quot;)) %&gt;%
   dplyr::select(-ends_with(&quot;direction&quot;))</code></pre>
-<p>Results of Spearman’s correlations testing the null hypothesis that the true correlation between each pair of expression eigengenes and methylation eigengenes is zero. The table shows the 30 pairs of expression and methylation modules whose eigengenes were significantly correlated across samples. All of the correlations are negative, and all of them involve module pairs for which the constituent genes show higher methylation in worker-destined larvae and higher expression in queen-destined larvae. This suggests that groups of genes become hyper-methylated in workers, at the same time as groups of genes are being transcriptionally down-regulated in workers. Or, conversely, that groups of genes become hypo-methylated in queens, at the same time as groups of genes are being transcriptionally up-regulated in queens. The p-values are adjusted for multiple testing using the Benjamini-Hochberg method. Note that the correlation coefficients are quite high, indicating that differences in methylation and expression covary strongly across samples.</p>
+<p>Results of Spearman’s correlations testing the null hypothesis that the true correlation between each pair of expression eigengenes and methylation eigengenes is zero. The table shows the 13 pairs of expression and methylation modules whose eigengenes were significantly correlated across samples. All of the correlations are negative, and all of them involve module pairs for which the constituent genes show higher methylation in worker-destined larvae and higher expression in queen-destined larvae. This suggests that groups of genes become hyper-methylated in workers, at the same time as groups of genes are being transcriptionally down-regulated in workers. Or, conversely, that groups of genes become hypo-methylated in queens, at the same time as groups of genes are being transcriptionally up-regulated in queens. The p-values are adjusted for multiple testing using the Benjamini-Hochberg method. Note that the correlation coefficients are quite high, indicating that differences in methylation and expression covary strongly across samples.</p>
 <pre class="r"><code>sig_corr %&gt;%
   kable() %&gt;%
   kable_styling(full_width = FALSE)  %&gt;%
@@ -1410,282 +1384,16 @@ Adjusted p
 <tbody>
 <tr>
 <td style="text-align:left;">
-m12: Queen-biased
+m11: Unbiased
 </td>
 <td style="text-align:left;">
-m1: Worker-biased
-</td>
-<td style="text-align:left;">
--0.54
-</td>
-<td style="text-align:left;">
-0.0040
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m6: Queen-biased
-</td>
-<td style="text-align:left;">
-m2: Worker-biased
-</td>
-<td style="text-align:left;">
--0.51
-</td>
-<td style="text-align:left;">
-0.0064
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m15: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.50
-</td>
-<td style="text-align:left;">
-0.0080
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m7: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.50
-</td>
-<td style="text-align:left;">
-0.0084
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m15: Queen-biased
-</td>
-<td style="text-align:left;">
-m1: Worker-biased
-</td>
-<td style="text-align:left;">
--0.48
-</td>
-<td style="text-align:left;">
-0.0119
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m12: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.48
-</td>
-<td style="text-align:left;">
-0.0120
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m4: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.47
-</td>
-<td style="text-align:left;">
-0.0124
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m4: Queen-biased
-</td>
-<td style="text-align:left;">
-m1: Worker-biased
-</td>
-<td style="text-align:left;">
--0.47
-</td>
-<td style="text-align:left;">
-0.0134
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m6: Queen-biased
-</td>
-<td style="text-align:left;">
-m1: Worker-biased
-</td>
-<td style="text-align:left;">
--0.47
-</td>
-<td style="text-align:left;">
-0.0139
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m14: Unbiased
-</td>
-<td style="text-align:left;">
-m5: Unbiased
-</td>
-<td style="text-align:left;">
--0.45
-</td>
-<td style="text-align:left;">
-0.0174
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m12: Queen-biased
-</td>
-<td style="text-align:left;">
-m1: Worker-biased
-</td>
-<td style="text-align:left;">
--0.54
-</td>
-<td style="text-align:left;">
-0.0204
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m12: Queen-biased
-</td>
-<td style="text-align:left;">
-m2: Worker-biased
+m5: Queen-biased
 </td>
 <td style="text-align:left;">
 -0.44
 </td>
 <td style="text-align:left;">
-0.0210
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m6: Queen-biased
-</td>
-<td style="text-align:left;">
-m2: Worker-biased
-</td>
-<td style="text-align:left;">
--0.51
-</td>
-<td style="text-align:left;">
-0.0288
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m12: Queen-biased
-</td>
-<td style="text-align:left;">
-m0: Worker-biased
-</td>
-<td style="text-align:left;">
--0.42
-</td>
-<td style="text-align:left;">
-0.0289
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m4: Queen-biased
-</td>
-<td style="text-align:left;">
-m2: Worker-biased
-</td>
-<td style="text-align:left;">
--0.42
-</td>
-<td style="text-align:left;">
-0.0294
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m7: Queen-biased
-</td>
-<td style="text-align:left;">
-m1: Worker-biased
-</td>
-<td style="text-align:left;">
--0.42
-</td>
-<td style="text-align:left;">
-0.0309
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m5: Queen-biased
-</td>
-<td style="text-align:left;">
-m2: Worker-biased
-</td>
-<td style="text-align:left;">
--0.41
-</td>
-<td style="text-align:left;">
-0.0316
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m12: Queen-biased
-</td>
-<td style="text-align:left;">
-m5: Unbiased
-</td>
-<td style="text-align:left;">
--0.41
-</td>
-<td style="text-align:left;">
-0.0327
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m15: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.50
-</td>
-<td style="text-align:left;">
-0.0339
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m7: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.50
-</td>
-<td style="text-align:left;">
-0.0350
+0.0067
 </td>
 </tr>
 <tr>
@@ -1693,55 +1401,13 @@ m3: Worker-biased
 m0: Unbiased
 </td>
 <td style="text-align:left;">
-m5: Unbiased
+m2: Unbiased
 </td>
 <td style="text-align:left;">
-0.41
+0.39
 </td>
 <td style="text-align:left;">
-0.0356
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m15: Queen-biased
-</td>
-<td style="text-align:left;">
-m5: Unbiased
-</td>
-<td style="text-align:left;">
--0.41
-</td>
-<td style="text-align:left;">
-0.0357
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m0: Unbiased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
-0.41
-</td>
-<td style="text-align:left;">
-0.0358
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m6: Queen-biased
-</td>
-<td style="text-align:left;">
-m4: Worker-biased
-</td>
-<td style="text-align:left;">
--0.41
-</td>
-<td style="text-align:left;">
-0.0359
+0.0185
 </td>
 </tr>
 <tr>
@@ -1749,83 +1415,153 @@ m4: Worker-biased
 m11: Unbiased
 </td>
 <td style="text-align:left;">
-m2: Worker-biased
+m3: Unbiased
 </td>
 <td style="text-align:left;">
--0.39
+0.38
 </td>
 <td style="text-align:left;">
-0.0460
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-m12: Queen-biased
-</td>
-<td style="text-align:left;">
-m3: Worker-biased
-</td>
-<td style="text-align:left;">
--0.48
-</td>
-<td style="text-align:left;">
-0.0474
+0.0215
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-m15: Queen-biased
+m5: Queen-biased
 </td>
 <td style="text-align:left;">
-m1: Worker-biased
+m3: Unbiased
 </td>
 <td style="text-align:left;">
--0.48
+0.38
 </td>
 <td style="text-align:left;">
-0.0474
+0.0220
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-m4: Queen-biased
+m14: Unbiased
 </td>
 <td style="text-align:left;">
-m5: Unbiased
+m5: Queen-biased
 </td>
 <td style="text-align:left;">
 -0.38
 </td>
 <td style="text-align:left;">
-0.0477
+0.0241
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-m15: Queen-biased
+m18: Unbiased
 </td>
 <td style="text-align:left;">
-m0: Worker-biased
+m6: Unbiased
 </td>
 <td style="text-align:left;">
--0.38
+0.37
 </td>
 <td style="text-align:left;">
-0.0478
+0.0256
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-m4: Queen-biased
+m0: Unbiased
 </td>
+<td style="text-align:left;">
+m1: Queen-biased
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+<td style="text-align:left;">
+0.0310
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m14: Unbiased
+</td>
+<td style="text-align:left;">
+m1: Queen-biased
+</td>
+<td style="text-align:left;">
+-0.36
+</td>
+<td style="text-align:left;">
+0.0314
+</td>
+</tr>
+<tr>
 <td style="text-align:left;">
 m3: Worker-biased
 </td>
 <td style="text-align:left;">
--0.47
+m5: Queen-biased
 </td>
 <td style="text-align:left;">
-0.0485
+-0.36
+</td>
+<td style="text-align:left;">
+0.0316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m18: Unbiased
+</td>
+<td style="text-align:left;">
+m3: Unbiased
+</td>
+<td style="text-align:left;">
+0.36
+</td>
+<td style="text-align:left;">
+0.0323
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m5: Queen-biased
+</td>
+<td style="text-align:left;">
+m0: Unbiased
+</td>
+<td style="text-align:left;">
+0.35
+</td>
+<td style="text-align:left;">
+0.0346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m13: Unbiased
+</td>
+<td style="text-align:left;">
+m8: Unbiased
+</td>
+<td style="text-align:left;">
+-0.35
+</td>
+<td style="text-align:left;">
+0.0362
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+m11: Unbiased
+</td>
+<td style="text-align:left;">
+m5: Queen-biased
+</td>
+<td style="text-align:left;">
+-0.44
+</td>
+<td style="text-align:left;">
+0.0413
 </td>
 </tr>
 </tbody>
@@ -1833,14 +1569,74 @@ m3: Worker-biased
 </div>
 </div>
 </div>
-<div id="compare-our-expresison-and-methylation-results-to-past-work" class="section level2">
-<h2>Compare our expresison and methylation results to past work</h2>
+<div id="compare-our-expression-and-methylation-results-to-past-work" class="section level2">
+<h2>Compare our expression and methylation results to past work</h2>
+<div id="correlation-heatmap-for-many-gene-level-variables" class="section level3">
+<h3>Correlation heatmap for many gene-level variables</h3>
 <pre class="r"><code>source(&quot;code/create_merged_data.R&quot;)
  
 merged_data &lt;- merged_data %&gt;% 
   dplyr::select(-beebase, -gene_name, -entrez_id) %&gt;%
-  dplyr::select(gene, everything())</code></pre>
-<p>Correlations across <em>Apis</em> genes in all sorts of variables from various studies:</p>
+  dplyr::select(gene, everything())
+
+# new test:
+library(edgeR)
+counts &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_counts.csv&quot;)
+treatments &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/treatments.csv&quot;, col_types = &quot;ccc&quot;)
+# dsx_gene_names &lt;- read_tsv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/descriptions.tsv&quot;, col_names = c(&quot;gene_id&quot;, &quot;description&quot;))
+
+counts &lt;- counts %&gt;% filter(! grepl(&quot;ERCC&quot;, gene_id))
+design &lt;- model.matrix(~treatment, treatments)
+cds &lt;- DGEList(counts[,  treatments$sample], group = treatments$treatment)
+cds &lt;- calcNormFactors(cds) 
+cds &lt;- estimateDisp(cds, design)
+de.tgw &lt;- exactTest(cds, pair = c(&quot;DSX&quot;, &quot;GFP&quot;)) # positive logFC means higher levels in control, or lower in dsx RNAi treatment
+de.tgw$table$gene_id &lt;- counts$gene_id
+
+dsx_results &lt;- de.tgw$table %&gt;% 
+  arrange(-logFC) # %&gt;% as_tibble() %&gt;% left_join(dsx_gene_names)
+
+dsx_results &lt;- dsx_results %&gt;% 
+  mutate(logFC = -1 * logFC) %&gt;%
+  dplyr::select(gene_id, logFC) %&gt;% 
+  dplyr::rename(`Expression change after doublesex knockdown (Velasque 2018)` = logFC)
+
+merged_data &lt;- left_join(merged_data, dsx_results, by = c(&quot;gene&quot; = &quot;gene_id&quot;))
+
+
+
+
+do_corrs &lt;- function(variable){
+  corr.test_results &lt;- psych::corr.test(
+    merged_data %&gt;% dplyr::select(-gene), 
+    adjust = &quot;BH&quot;, method = &quot;spearman&quot;)
+  
+  sig_corr &lt;- reshape2::melt(corr.test_results$p) %&gt;% 
+    dplyr::rename(p = value) %&gt;% filter(p &lt; 0.05) %&gt;% 
+    filter(Var1 == variable | Var2 == variable) %&gt;%
+    as.data.frame() %&gt;%
+    left_join(reshape2::melt(corr.test_results$r) %&gt;% 
+                dplyr::rename(r = value), 
+              by = c(&quot;Var1&quot;, &quot;Var2&quot;)) %&gt;%
+    mutate(Var1 = as.character(Var1), Var2 = as.character(Var2))
+  
+  for(i in 1:nrow(sig_corr)){
+    foc &lt;- c(sig_corr$Var1[i], sig_corr$Var2[i])
+    foc &lt;- foc[foc != variable]
+    if(length(foc) == 1) sig_corr$Var1[i] &lt;- foc[foc != variable]
+    if(length(foc) == 0) sig_corr$Var1[i] &lt;- NA
+  }
+  
+  sig_corr %&gt;% 
+    filter(!is.na(Var1)) %&gt;%
+    distinct() %&gt;%
+    distinct(r, .keep_all = TRUE) %&gt;% 
+    arrange(p) %&gt;% filter(r != 1) %&gt;%
+    mutate(r = round(r, 3), p = format(round(-1 * log10(p), 1), nsmall = 1)) %&gt;%
+    mutate(p = replace(p, is.na(p), &quot;Inf&quot;)) %&gt;%
+    dplyr::rename(Correlate = Var1, `-log10 adjusted p` = p) %&gt;%
+    dplyr::select(Correlate, r, `-log10 adjusted p`) 
+}</code></pre>
 <pre class="r"><code>corrs &lt;- merged_data %&gt;%
   rename_all(~ str_replace_all(.x, &quot;\n&quot;, &quot; &quot;)) %&gt;%
   dplyr::select(-gene) %&gt;%
@@ -1852,9 +1648,10 @@ myBreaks &lt;- c(seq(min(corrs, na.rm=T), 0, length.out = ceiling(paletteLength/
               seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out=floor(paletteLength/2)))
 
 pheatmap(corrs, color = myColor, breaks = myBreaks,
+         cellwidth = 9, cellheight = 9,
          clustering_distance_rows = &quot;correlation&quot;,
          clustering_distance_cols = &quot;correlation&quot;,
-         border_color = &quot;grey20&quot;,
+         border_color = &quot;grey30&quot;,
          cutree_rows = 6, cutree_cols = 6, show_colnames = F)</code></pre>
 <p><img src="figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <p>
@@ -1894,8 +1691,9 @@ lukeholman
 </table>
 </div>
 </div>
-<p>Scatterplots showing some of these same relationships explicitly:</p>
-<p>(NB I need to find out what positive logFC means for the Wojciechowski histone data)</p>
+</div>
+<div id="scatterplots-showing-correlations-with-our-main-outcome-variables" class="section level3 tabset">
+<h3>Scatterplots showing correlations with our main outcome variables</h3>
 <pre class="r"><code>make_a_plot &lt;- function(yvar, xvar){
   
   merged_data &lt;- merged_data %&gt;%
@@ -1923,7 +1721,7 @@ lukeholman
   
   ylab &lt;- str_remove_all(yvar, &quot;Warner_&quot;)
   
-  p + stat_bin_hex() + 
+  p + stat_bin_hex(bins = 200) + 
     stat_smooth(method = &quot;loess&quot;, colour = &quot;tomato&quot;, formula = &quot;y ~ x&quot;) + 
     scale_fill_viridis_c(option = &quot;D&quot;) +
     coord_cartesian(ylim = ylim) + 
@@ -1933,119 +1731,93 @@ lukeholman
 }
 variables &lt;- names(sapply(merged_data, is.numeric)[sapply(merged_data, is.numeric)])
 
-plots_expression &lt;- variables[variables != &quot;Caste difference in expression in 8h larvae (positive: W &gt; Q)&quot;] %&gt;%
-  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in expression in 8h larvae (positive: W &gt; Q)&quot;) 
+# make_a_plot(&quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;,
+#             &quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;)
+
+expression_corr_table &lt;- do_corrs(&quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;)
+methylation_corr_table &lt;- do_corrs(&quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;) 
+
+plots_expression &lt;- (expression_corr_table$Correlate) %&gt;%
+  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;) 
 plots_expression &lt;- plots_expression[!sapply(plots_expression, is.null)]
 
-plots_meth &lt;- variables[variables != &quot;Caste difference in % methylation in 8h larvae (positive: W &gt; Q)&quot;] %&gt;%
-  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in % methylation in 8h larvae (positive: W &gt; Q)&quot;) 
-plots_meth &lt;- plots_meth[!sapply(plots_meth, is.null)]
-
-do.call(grid.arrange, c(plots_expression, list(bottom = &quot;Caste difference in expression in 8h larvae (positive: W &gt; Q)&quot;)))</code></pre>
-<p><img src="figure/compare_expression_and_methylation.Rmd/scatterplots-1.png" width="1536" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-scatterplots-1">
-Past versions of scatterplots-1.png
-</button>
-</p>
-<div id="fig-scatterplots-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/7515d53d223c21f594ca9e33d14f81acd98748a9/docs/figure/compare_expression_and_methylation.Rmd/scatterplots-1.png" target="_blank">7515d53</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-27
-</td>
-</tr>
-</tbody>
-</table>
+plots_meth &lt;- (methylation_corr_table$Correlate) %&gt;%
+  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;) 
+plots_meth &lt;- plots_meth[!sapply(plots_meth, is.null)]</code></pre>
+<div id="caste-biased-expression-in-8h-larvae" class="section level4">
+<h4>Caste-biased <em>expression</em> in 8h larvae</h4>
+<pre class="r"><code>do.call(grid.arrange, 
+        c(plots_expression, 
+          list(bottom = &quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;)))</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/make_scatterplot1-1.png" width="1536" style="display: block; margin: auto;" /></p>
+</div>
+<div id="caste-biased-methylation-in-8h-larvae" class="section level4">
+<h4>Caste-biased <em>methylation</em> in 8h larvae</h4>
+<pre class="r"><code>do.call(grid.arrange, 
+        c(plots_meth, 
+          list(bottom = &quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;)))</code></pre>
+<p><img src="figure/compare_expression_and_methylation.Rmd/make_scatterplot2-1.png" width="1536" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<pre class="r"><code>do.call(grid.arrange, c(plots_meth, list(bottom = &quot;Caste difference in % methylation in 8h larvae (positive: W &gt; Q)&quot;)))</code></pre>
-<p><img src="figure/compare_expression_and_methylation.Rmd/scatterplots-2.png" width="1536" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-scatterplots-2">
-Past versions of scatterplots-2.png
-</button>
-</p>
-<div id="fig-scatterplots-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/7515d53d223c21f594ca9e33d14f81acd98748a9/docs/figure/compare_expression_and_methylation.Rmd/scatterplots-2.png" target="_blank">7515d53</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-27
-</td>
-</tr>
-</tbody>
-</table>
+<div id="statistical-tables-associated-with-these-scatterplots" class="section level3 tabset">
+<h3>Statistical tables associated with these scatterplots</h3>
+<div id="correlations-with-caste-specific-expression" class="section level4">
+<h4>Correlations with caste-specific expression</h4>
+<p>The tables shows results of all the significant Spearman correlations between <code>Caste difference in expression in 8h larvae (positive: Q &gt; W)</code> and other variables shown in Figure X.</p>
+<pre class="r"><code>expression_corr_table %&gt;%
+  my_data_table()</code></pre>
+<div id="htmlwidget-20336aac86f7a7ef5997" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-20336aac86f7a7ef5997">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["% methylated cytosines in gene body","Connectivity in the\ntranscriptome","Expression difference between nectar and pollen foragers (Ma 2019)","Caste difference in % methylation in 8h larvae (positive: Q &gt; W)","Ovary (Flyatlas2)","Expression response to queen pheromone (Holman 2019)","Positive selection\n(Gamma)","Female bias in expression (Flyatlas2)","Expression response to EBO pheromone (Ma 2019)","Queen vs Worker: Adult Head (Warner 2018)","Mated vs Virgin queen: Adult Head (Warner 2018)","Queen vs Worker: Adult Mesosoma (Warner 2018)","Queen vs Worker: Adult Gaster (Warner 2018)","Queen vs Worker: Pupae (Warner 2018)","Expression response to brood pheromone (Ma 2019)","Male vs Mated queen: Adult Gaster (Warner 2018)","Queen vs Worker: L4 larvae (Warner 2018)","Expression change after doublesex knockdown (Velasque 2018)","Mated vs Virgin queen: Adult Mesosoma (Warner 2018)","Salivary gland (Flyatlas2)","Male vs Mated queen: Adult Head (Warner 2018)","Male vs Mated queen: Adult Mesosoma (Warner 2018)","Queen vs Worker: L2 larvae (Warner 2018)","Mated vs Virgin queen: Adult Gaster (Warner 2018)","Virgin Spermatheca (Flyatlas2)","Queen vs Worker: L5 larvae (Warner 2018)","Mated Spermatheca (Flyatlas2)","Nurse vs Forager: Adult Head (Warner 2018)","Midgut (Flyatlas2)","Fat body (Flyatlas2)","Caste difference in H3K36me3 at 96h (positive: Q &gt; W; Woj. 2018)","Brain / CNS (Flyatlas2)","Connectivity in the\nmethylome","Hindgut (Flyatlas2)","Malpighian Tubules (Flyatlas2)","Caste difference in H3K4me3 at 96h (positive: Q &gt; W; Woj. 2018)","Head (Flyatlas2)","Caste difference in H3K27ac at 96h (positive: Q &gt; W; Woj. 2018)","Queen vs Worker: L3 larvae (Warner 2018)","Nurse vs Forager: Adult Mesosoma (Warner 2018)","Thoracicoabdominal ganglion (Flyatlas2)","Log2 mean expression level"],[-0.428,-0.475,-0.307,-0.231,-0.313,-0.22,0.214,-0.268,-0.182,0.167,0.159,0.153,-0.147,0.144,-0.147,-0.139,-0.134,-0.131,0.131,-0.186,0.118,0.118,0.11,-0.102,-0.132,0.087,-0.098,-0.067,-0.093,-0.093,-0.201,-0.078,-0.078,-0.073,-0.072,-0.161,0.056,-0.12,0.033,-0.029,-0.039,-0.022],["  Inf","  Inf","186.7","117.2","101.4"," 85.2"," 78.9"," 73.3"," 64.5"," 57.3"," 51.7"," 47.9"," 44.3"," 42.6"," 41.7"," 40.0"," 36.9"," 36.4"," 35.3"," 35.3"," 29.1"," 29.0"," 25.3"," 22.0"," 18.0"," 16.0"," 10.4","  9.9","  9.4","  9.2","  8.6","  6.7","  6.4","  5.9","  5.8","  5.7","  3.7","  3.3","  2.7","  2.3","  2.1","  1.6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Correlate<\/th>\n      <th>r<\/th>\n      <th>-log10 adjusted p<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="correlations-with-caste-specific-methylation" class="section level4">
+<h4>Correlations with caste-specific methylation</h4>
+<p>The tables shows results of all the significant Spearman correlations between <code>Caste difference in methylation in 8h larvae (positive: Q &gt; W)</code> and other variables shown in Figure X.</p>
+<pre class="r"><code>methylation_corr_table %&gt;%
+  my_data_table()</code></pre>
+<div id="htmlwidget-56896f0dd227b3126475" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-56896f0dd227b3126475">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["% methylated cytosines in gene body","Connectivity in the\ntranscriptome","Caste difference in expression in 8h larvae (positive: Q &gt; W)","Expression change after doublesex knockdown (Velasque 2018)","Positive selection\n(Gamma)","Ovary (Flyatlas2)","Salivary gland (Flyatlas2)","Log2 mean expression level","Queen vs Worker: L5 larvae (Warner 2018)","Queen vs Worker: L4 larvae (Warner 2018)","Queen vs Worker: Pupae (Warner 2018)","Midgut (Flyatlas2)","Mated vs Virgin queen: Adult Head (Warner 2018)","Female bias in expression (Flyatlas2)","Malpighian Tubules (Flyatlas2)","Hindgut (Flyatlas2)","Connectivity in the\nmethylome","Expression response to EBO pheromone (Ma 2019)","Fat body (Flyatlas2)","Queen vs Worker: Adult Head (Warner 2018)","Crop (Flyatlas2)","Male vs Mated queen: Adult Head (Warner 2018)","Nurse vs Forager: Adult Mesosoma (Warner 2018)","Male vs Mated queen: Adult Gaster (Warner 2018)","Rectal pad (Flyatlas2)","Eye (Flyatlas2)","Virgin Spermatheca (Flyatlas2)","Expression difference between nectar and pollen foragers (Ma 2019)","Caste difference in H3K36me3 at 96h (positive: Q &gt; W; Woj. 2018)","Mated Spermatheca (Flyatlas2)","Queen vs Worker: Adult Gaster (Warner 2018)","Nurse vs Forager: Adult Gaster (Warner 2018)","Expression response to queen pheromone (Holman 2019)","Thoracicoabdominal ganglion (Flyatlas2)","Mated vs Virgin queen: Adult Mesosoma (Warner 2018)","Brain / CNS (Flyatlas2)","Caste difference in H3K4me3 at 96h (positive: Q &gt; W; Woj. 2018)","Queen vs Worker: Adult Mesosoma (Warner 2018)","Male vs Mated queen: Adult Mesosoma (Warner 2018)","Caste difference in H3K27ac at 96h (positive: Q &gt; W; Woj. 2018)","Mated vs Virgin queen: Adult Gaster (Warner 2018)","Nurse vs Forager: Adult Head (Warner 2018)","Head (Flyatlas2)"],[0.469,0.334,-0.231,0.216,-0.194,0.222,0.195,0.132,-0.12,0.119,-0.115,0.162,-0.111,0.155,0.147,0.143,0.141,0.093,0.125,-0.079,0.109,-0.075,0.073,0.07,0.098,0.091,0.083,0.053,0.156,0.068,0.047,-0.047,0.046,0.054,-0.035,0.049,0.11,-0.031,-0.03,0.091,0.027,0.026,0.031],["  Inf","251.9","117.2"," 98.8"," 64.9"," 50.2"," 38.7"," 38.3"," 29.8"," 29.4"," 27.4"," 26.8"," 25.5"," 24.7"," 22.4"," 21.2"," 19.4"," 17.3"," 16.2"," 13.5"," 12.6"," 12.2"," 11.5"," 10.6"," 10.4","  9.0","  7.6","  6.0","  5.3","  5.3","  5.2","  5.1","  4.4","  3.5","  3.1","  2.9","  2.9","  2.5","  2.4","  2.1","  2.0","  1.9","  1.4"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Correlate<\/th>\n      <th>r<\/th>\n      <th>-log10 adjusted p<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
-<pre class="r"><code>rm(plots_expression)
-rm(plots_meth)</code></pre>
-<!-- Test idea about the doublesex module in Velasque et al. -->
+</div>
+<div id="comparing-our-modules-to-the-doublesex-sensitive-module-in-velasque-et-al." class="section level2">
+<h2>Comparing our modules to the doublesex-sensitive module in Velasque et al.</h2>
+<p>Here, we compare our expression and methylation results to those of Velasque et al. (<a href="https://www.biorxiv.org/node/96427.full">link</a>), who use RNAi to knockdown the expression of the key sex-determination gene <em>doublesex</em> (<em>dsx</em>) in adult <em>Apis mellifera</em> workers, in order to test the hypothesis that sex determination pathways have been co-opted to control caste determination. Using similar statistical methods to ours (i.e. using <code>WGCNA</code>), Velasque et al. identified a transcriptional module containing <em>dsx</em> and many other genes that co-varied with the experimentally-induxed changes in <em>dsx</em> expression.</p>
+<p>In the code below we use a hypergeometric test to identify modules from the present study that overlap significantly with the <em>dsx</em>-sensitive module from Velasque et al. We find that some of our caste-specific modules contain many of the same genes as the <em>dsx</em>-sensitive module, providing further evidence that ancient sex differentiation genes play an important role in caste determination.</p>
+<div id="comparing-our-co-expression-modules" class="section level3">
+<h3>Comparing our co-expression modules</h3>
 <pre class="r"><code># Define a function to test whether the overlap of two sets of differentially expressed genes, 
 # drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
 # Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
 overlap_hypergeometric_test &lt;- function(n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
   p.higher &lt;- 1 - phyper(n_overlaps - 1, n_gene_set1, overall_n_genes - n_gene_set1, n_in_set2)
- # percent_of_maximum_overlaps &lt;- 100 * n.overlaps / min(c(num.sig1, num.sig2))
-  
-  exp_n_overlaps &lt;- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
 
-  data.frame(Test = &quot;Overlap is higher than expected:&quot;,
-                       obs_n_overlaps = n_overlaps,
-                       exp_n_overlaps = round(exp_n_overlaps,1),
-                       enrichment_ratio = round(n_overlaps / exp_n_overlaps, 2),
-                       p = round(p.higher,4)
-                       )
+  exp_n_overlaps &lt;- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
+  
+  tibble(Test = &quot;Overlap is higher than expected:&quot;,
+         `Obs. number overlaps` = n_overlaps,
+         `Exp. number overlaps` = round(exp_n_overlaps,1),
+         `Enrichment ratio` = round(n_overlaps / exp_n_overlaps, 2),
+         p = round(p.higher, 4)
+  )
 }
 
+# Get the list of genes that were studied by Velasque et al.
 velasque_gene_universe &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_tpm.csv&quot;) %&gt;%
   pull (gene_id)
 
-# 9386 genes in common between our two studies
+
+
+# Load our RSEM expression_data for each sample-gene combination
+expression_data &lt;- as.matrix(read.table(&quot;data/Expression_data/Genes_2020_version.txt&quot;, row.names = 1, header = T))
+n_genes_before_filtering &lt;- nrow(expression_data)
+gsg &lt;- goodSamplesGenes(t(expression_data), verbose = 0) # exclude 217 genes due to too many missing samples or zero variance
+expression_data &lt;- expression_data[gsg$goodGenes, gsg$goodSamples]
+
+
+# There are 9386 genes in common between our expression data and Velasque et al.&#39;s data
 shared_gene_universe &lt;- intersect(rownames(expression_data), velasque_gene_universe)
 
-# Find overlaps with our expression modules, and the dsx-containing module in velasque et al
+# Find overlaps with our EXPRESSION modules, and the dsx-containing module in velasque et al
 module_overlaps &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
   filter(`Gene symbol` %in% shared_gene_universe) %&gt;%
   filter(Time == 8) %&gt;%   # Just od time 8h for now
@@ -2057,6 +1829,7 @@ module_overlaps &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
   summarise(n=n(), .groups = &quot;drop&quot;) %&gt;%
   arrange(module, dsx_module) 
 
+# Now find the shared gene universe for our co-methylation network and Velasque et al&#39;s data
 shared_gene_universe_meth &lt;- intersect(
   readRDS(file = &quot;output/gene_meth_module_memberships.rds&quot;)$gene, 
   velasque_gene_universe)
@@ -2073,28 +1846,27 @@ module_overlaps_meth &lt;- readRDS(file = &quot;output/gene_meth_module_membersh
   summarise(n=n(), .groups = &quot;drop&quot;) %&gt;%
   arrange(module, dsx_module) 
 
-
+# Count the genes in Velasque et al&#39;s dsx-containing module
 n_genes_in_dsx_module &lt;- sum(with(module_overlaps, n[dsx_module == &quot;yes&quot;]))
   
-module_overlaps %&gt;%
+expression_dsx_overlap_table &lt;- module_overlaps %&gt;%
   split(.$module) %&gt;%
   map_df(function(x){
     
     present_study_module_size &lt;- sum(x$n)
     n_overlaps &lt;- with(x, n[dsx_module == &quot;yes&quot;])
     
-    data.frame(Module = x$module[1],
+    tibble(Module = x$module[1]) %&gt;%
+      bind_cols(
     overlap_hypergeometric_test(n_overlaps, 
                                 n_genes_in_dsx_module, 
                                 present_study_module_size, 
-                                length(shared_gene_universe)))
-    
-  }) %&gt;% arrange(-enrichment_ratio) %&gt;% 
+                                length(shared_gene_universe)))}) %&gt;% 
+  arrange(-`Enrichment ratio`) %&gt;% 
   mutate(p_adjust = p.adjust(p, method = &quot;BH&quot;)) %&gt;%
   filter(p_adjust &lt; 0.05)
 
-# for methylation:
-module_overlaps_meth %&gt;%
+methylation_dsx_overlap_table &lt;- module_overlaps_meth %&gt;%
   split(.$module) %&gt;%
   keep(~ nrow(.x) &gt; 1) %&gt;%
   map_df(function(x){
@@ -2102,122 +1874,268 @@ module_overlaps_meth %&gt;%
     present_study_module_size &lt;- sum(x$n)
     n_overlaps &lt;- with(x, n[dsx_module == &quot;yes&quot;])
     
-    data.frame(Module = x$module[1],
-    overlap_hypergeometric_test(n_overlaps, 
-                                n_genes_in_dsx_module, 
-                                present_study_module_size, 
-                                length(shared_gene_universe)))
-    
-  }) %&gt;% arrange(-enrichment_ratio) %&gt;% 
+    tibble(Module = x$module[1]) %&gt;%
+      bind_cols(
+        overlap_hypergeometric_test(n_overlaps, 
+                                    n_genes_in_dsx_module, 
+                                    present_study_module_size, 
+                                    length(shared_gene_universe)))}) %&gt;% 
+  arrange(-`Enrichment ratio`) %&gt;% 
   mutate(p_adjust = p.adjust(p, method = &quot;BH&quot;)) %&gt;%
   filter(p_adjust &lt; 0.05)
 
-
-
-# Comparison with doublesex module in velasque et al. https://www.biorxiv.org/content/10.1101/314492v1.full
-read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
-  filter(adj.P.Val &lt;= 0.05) %&gt;%
-  right_join(read_csv(&quot;data/apis_gene_comparisons/velasque_doublesex.csv&quot;), b
-             y = c(`Gene symbol` = &quot;gene&quot;)) %&gt;%
-  filter(!is.na(kWithin) &amp; !is.na(logFC.x)) %&gt;%
-  filter(Time == 8) %&gt;% print(n=Inf)
-
-
-x &lt;- read_tsv(&quot;~/Downloads/Methldiff_t0q8.txt&quot;)
-e %&gt;% full_join(caste_results %&gt;% filter(Time==8), by = c(&quot;Genes&quot; = &quot;Gene symbol&quot;)) %&gt;% 
-  filter(adj.P.Val &lt; 0.05) %&gt;%
-  filter(qvalue &lt; 0.05) %&gt;%
-  group_by(Genes) %&gt;%
-  summarise(n=n(), .groups = &quot;drop&quot;)
-
-x %&gt;% 
-  filter(qvalue &lt; 0.05) %&gt;%
-  full_join(caste_results %&gt;% 
-                  filter(Time==8 &amp; adj.P.Val &lt;= 0.05), # 8h sig genes
-                by = c(&quot;Genes&quot; = &quot;Gene symbol&quot;))  %&gt;%
-  mutate(type = case_when(
-    !is.na(meth.diff) &amp; !is.na(logFC) ~ &quot;both&quot;,
-    !is.na(meth.diff) &amp; is.na(logFC) ~ &quot;meth only&quot;,
-    is.na(meth.diff) &amp; !is.na(logFC)  ~ &quot;expr only&quot;
-  )) %&gt;% pull(type) %&gt;% table()
-
-
-caste_results %&gt;% filter(Time==8) %&gt;% pull(`Gene symbol`) %&gt;% unique %&gt;% length()
-x %&gt;% pull(Genes) %&gt;% unique %&gt;% length()
-
-overlap_hypergeometric_test(415, 415+2014, 415+1195, nrow(expression_data))
-
-# Load all the QvsW at each time point tests
-meth_data &lt;- map(c(2,4,6,8), function(i) {
-  glue::glue(&quot;/Users/lholman/Downloads/Methylation/Caste\ specific\ results/Routput-q{i}w{i}/DMSG/dmg-Am_HE_queen{i}.vs.worker{i}_details.txt&quot;) %&gt;%
-    read_tsv() %&gt;%
-    mutate(Time = i) %&gt;% 
-    dplyr::rename_at(vars(starts_with(&quot;queen&quot;)), ~ &quot;queen&quot; ) %&gt;% 
-    dplyr::rename_at(vars(starts_with(&quot;worker&quot;)), ~ &quot;worker&quot;)
-}) %&gt;% 
-  bind_rows() %&gt;%
-  select(Time, everything()) %&gt;%
-  select(-width, -strand, -coverage1, -coverage2) # width is always 1, strand is always +. Coverage is just Cs + Ts
-
-with(meth_data, paste(seqnames, start)) %&gt;% unique %&gt;% length()
-
-meth_data %&gt;%
-  group_by(Time) %&gt;% summarise(n(), .groups = &quot;drop&quot;)
-
-meth_data %&gt;%
-  arrange(-abs(queen-worker))
-
-meth_data %&gt;%
-  mutate(
-    cluster = kmeans(10^10*as.numeric(as.factor(meth_data$seqnames)) + meth_data$start, 224)$cluster 
-  ) %&gt;%
-  ggplot(aes(start, queen-worker, fill = queen-worker, group=1, size = is.dm)) + 
-  geom_hline(yintercept = 0) + 
-  geom_point(pch = 21) +
- # geom_point(aes(y=worker), colour = &quot;red&quot;) +
-  facet_wrap(~ cluster, scales = &quot;free_x&quot;) + 
-  scale_fill_gradient2() + 
-  theme(strip.background = element_blank(),
-        strip.text = element_blank())
-
-
-xx &lt;- read_tsv(&quot;/Users/lholman/Downloads/Methylation/Caste\ specific\ results/Routput-q8w8/DMSG/dmg-Am_HE_queen8.vs.worker8_details.txt&quot;)
-
-dmr &lt;- xx %&gt;% filter(is.dm) %&gt;% as.data.frame()
-
-dmr %&gt;% pull(gene_Name) -&gt; dm_genes
-  select(gene_start, gene_end) %&gt;%
-  mutate(site = 1:n()) %&gt;%
-  gather(metric, position, -site) %&gt;%
-  ggplot(aes(position, y=1, group = site)) +
-    geom_line()
-  
-# meth counts for genes:
-files &lt;- list.files(&quot;/Users/lholman/Downloads/Methylation&quot;, pattern = &quot;ogl-Am_HE&quot;, recursive = T, full.names = T) 
-files &lt;- files[!grepl(&quot;vs&quot;, files)]
-files &lt;- files[!grepl(&quot;OGLall&quot;, files)]
-meth_genes &lt;- map_df(files, ~ read_tsv(.x) %&gt;% 
-         mutate(caste = &quot;t0&quot;,
-                caste = replace(caste, str_detect(.x, &quot;queen&quot;), &quot;queen&quot;),
-                caste = replace(caste, str_detect(.x, &quot;worker&quot;), &quot;worker&quot;),
-                time = as.numeric(str_remove_all(unlist(str_extract_all(.x, &quot;[:digit:][.]txt&quot;)), &quot;[.]txt&quot;)),
-                file = .x)) %&gt;%
-  mutate(gene_ID = str_remove_all(gene_ID, &quot;gene[-]&quot;)) %&gt;%
-  distinct(gene_ID, caste, time, .keep_all = TRUE) %&gt;%
-  dplyr::arrange(gene_ID, caste, time)
-
-
-meth_test_one_gene &lt;- function(gene){
-  focal_data &lt;- meth_genes %&gt;% 
-    filter(gene_ID == gene &amp; caste != &quot;t0&quot;) %&gt;% 
-    mutate(percent_meth = `%perSite`)
-
-  response &lt;- cbind(focal_data$percent_meth,
-                    100 - focal_data$percent_meth) %&gt;% round()
-  focal_data
-}
-
-meth_test_one_gene(&quot;Snf&quot;)</code></pre>
+expression_dsx_overlap_table %&gt;%
+  dplyr::select(-Test, -p) %&gt;%
+  dplyr::rename(`FDR-adjusted p` = p_adjust) %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Module
+</th>
+<th style="text-align:right;">
+Obs. number overlaps
+</th>
+<th style="text-align:right;">
+Exp. number overlaps
+</th>
+<th style="text-align:right;">
+Enrichment ratio
+</th>
+<th style="text-align:right;">
+FDR-adjusted p
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Module 7
+</td>
+<td style="text-align:right;">
+117
+</td>
+<td style="text-align:right;">
+25.5
+</td>
+<td style="text-align:right;">
+4.59
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 18
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3.7
+</td>
+<td style="text-align:right;">
+2.67
+</td>
+<td style="text-align:right;">
+0.0085500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 5
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+30.7
+</td>
+<td style="text-align:right;">
+2.60
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 11
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+14.6
+</td>
+<td style="text-align:right;">
+2.54
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 14
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+7.9
+</td>
+<td style="text-align:right;">
+2.28
+</td>
+<td style="text-align:right;">
+0.0025333
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 13
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+8.4
+</td>
+<td style="text-align:right;">
+1.89
+</td>
+<td style="text-align:right;">
+0.0209000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 4
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+37.6
+</td>
+<td style="text-align:right;">
+1.73
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 6
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+26.6
+</td>
+<td style="text-align:right;">
+1.73
+</td>
+<td style="text-align:right;">
+0.0007600
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 8
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+19.4
+</td>
+<td style="text-align:right;">
+1.70
+</td>
+<td style="text-align:right;">
+0.0051571
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="comparing-our-co-methylation-modules" class="section level3">
+<h3>Comparing our co-methylation modules</h3>
+<pre class="r"><code>methylation_dsx_overlap_table %&gt;%
+  dplyr::select(-Test) %&gt;%
+  kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Module
+</th>
+<th style="text-align:right;">
+Obs. number overlaps
+</th>
+<th style="text-align:right;">
+Exp. number overlaps
+</th>
+<th style="text-align:right;">
+Enrichment ratio
+</th>
+<th style="text-align:right;">
+p
+</th>
+<th style="text-align:right;">
+p_adjust
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Module 1
+</td>
+<td style="text-align:right;">
+295
+</td>
+<td style="text-align:right;">
+118.1
+</td>
+<td style="text-align:right;">
+2.50
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 0
+</td>
+<td style="text-align:right;">
+278
+</td>
+<td style="text-align:right;">
+218.9
+</td>
+<td style="text-align:right;">
+1.27
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
 <!-- From Wojciechowski et al. 2018 Genome Biology https://genome.cshlp.org/content/early/2018/08/20/gr.236497.118.full.pdf+html -->
 <!-- We find that genes differentially enriched with H3K4me3 -->
 <!-- (rho = 0.28; P-value = 2.7 × 10−17) and H3K36me3 (rho = 0.15; P-value = -->
@@ -2249,32 +2167,54 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] gridExtra_2.3      RSQLite_2.2.0      DBI_1.1.0          dbplyr_1.4.4      
- [5] pheatmap_1.0.12    RColorBrewer_1.1-2 kableExtra_1.1.0   forcats_0.5.0     
- [9] stringr_1.4.0      dplyr_1.0.0        purrr_0.3.4        readr_1.3.1       
-[13] tidyr_1.1.0        tibble_3.0.1       ggplot2_3.3.1      tidyverse_1.3.0   
-[17] workflowr_1.6.2   
+ [1] edgeR_3.30.1          limma_3.44.1          WGCNA_1.69           
+ [4] fastcluster_1.1.25    dynamicTreeCut_1.63-1 showtext_0.8-1       
+ [7] showtextdb_2.0        sysfonts_0.8.1        DT_0.13              
+[10] gridExtra_2.3         RSQLite_2.2.0         DBI_1.1.0            
+[13] dbplyr_1.4.4          pheatmap_1.0.12       RColorBrewer_1.1-2   
+[16] kableExtra_1.1.0      forcats_0.5.0         stringr_1.4.0        
+[19] dplyr_1.0.0           purrr_0.3.4           readr_1.3.1          
+[22] tidyr_1.1.0           tibble_3.0.1          ggplot2_3.3.1        
+[25] tidyverse_1.3.0       workflowr_1.6.2      
 
 loaded via a namespace (and not attached):
- [1] nlme_3.1-148      fs_1.4.1          lubridate_1.7.8   bit64_0.9-7      
- [5] webshot_0.5.2     httr_1.4.1        rprojroot_1.3-2   tools_4.0.0      
- [9] backports_1.1.7   R6_2.4.1          mgcv_1.8-31       colorspace_1.4-1 
-[13] withr_2.2.0       tidyselect_1.1.0  mnormt_2.0.0      bit_1.1-15.2     
-[17] compiler_4.0.0    git2r_0.27.1      cli_2.0.2         rvest_0.3.5      
-[21] xml2_1.3.2        labeling_0.3      scales_1.1.1      hexbin_1.28.1    
-[25] psych_1.9.12.31   digest_0.6.25     rmarkdown_2.3     pkgconfig_2.0.3  
-[29] htmltools_0.5.0   highr_0.8         rlang_0.4.6       readxl_1.3.1     
-[33] rstudioapi_0.11   farver_2.0.3      generics_0.0.2    jsonlite_1.7.0   
-[37] vroom_1.2.1       magrittr_1.5      Matrix_1.2-18     Rcpp_1.0.4.6     
-[41] munsell_0.5.0     fansi_0.4.1       lifecycle_0.2.0   stringi_1.4.6    
-[45] whisker_0.4       yaml_2.2.1        plyr_1.8.6        grid_4.0.0       
-[49] blob_1.2.1        parallel_4.0.0    promises_1.1.0    crayon_1.3.4     
-[53] lattice_0.20-41   haven_2.3.1       splines_4.0.0     hms_0.5.3        
-[57] tmvnsim_1.0-2     knitr_1.29        pillar_1.4.4      reshape2_1.4.4   
-[61] reprex_0.3.0      glue_1.4.1        evaluate_0.14     modelr_0.1.8     
-[65] vctrs_0.3.0       httpuv_1.5.3.1    cellranger_1.1.0  gtable_0.3.0     
-[69] assertthat_0.2.1  xfun_0.15         broom_0.5.6       later_1.0.0      
-[73] viridisLite_0.3.0 memoise_1.1.0     ellipsis_0.3.1   </code></pre>
+  [1] colorspace_1.4-1      ellipsis_0.3.1        rprojroot_1.3-2      
+  [4] htmlTable_1.13.3      base64enc_0.1-3       fs_1.4.1             
+  [7] rstudioapi_0.11       hexbin_1.28.1         farver_2.0.3         
+ [10] bit64_0.9-7           AnnotationDbi_1.50.0  fansi_0.4.1          
+ [13] lubridate_1.7.8       xml2_1.3.2            codetools_0.2-16     
+ [16] splines_4.0.0         mnormt_2.0.0          doParallel_1.0.15    
+ [19] impute_1.62.0         knitr_1.29            Formula_1.2-3        
+ [22] jsonlite_1.7.0        broom_0.5.6           cluster_2.1.0        
+ [25] GO.db_3.11.4          png_0.1-7             compiler_4.0.0       
+ [28] httr_1.4.1            backports_1.1.7       assertthat_0.2.1     
+ [31] Matrix_1.2-18         cli_2.0.2             later_1.0.0          
+ [34] acepack_1.4.1         htmltools_0.5.0       tools_4.0.0          
+ [37] gtable_0.3.0          glue_1.4.1            reshape2_1.4.4       
+ [40] Rcpp_1.0.4.6          Biobase_2.48.0        cellranger_1.1.0     
+ [43] vctrs_0.3.0           preprocessCore_1.50.0 nlme_3.1-148         
+ [46] crosstalk_1.1.0.1     iterators_1.0.12      psych_1.9.12.31      
+ [49] xfun_0.15             rvest_0.3.5           lifecycle_0.2.0      
+ [52] scales_1.1.1          hms_0.5.3             promises_1.1.0       
+ [55] parallel_4.0.0        curl_4.3              yaml_2.2.1           
+ [58] memoise_1.1.0         rpart_4.1-15          latticeExtra_0.6-29  
+ [61] stringi_1.4.6         highr_0.8             S4Vectors_0.26.1     
+ [64] foreach_1.5.0         checkmate_2.0.0       BiocGenerics_0.34.0  
+ [67] rlang_0.4.6           pkgconfig_2.0.3       matrixStats_0.56.0   
+ [70] evaluate_0.14         lattice_0.20-41       labeling_0.3         
+ [73] htmlwidgets_1.5.1     bit_1.1-15.2          tidyselect_1.1.0     
+ [76] plyr_1.8.6            magrittr_1.5          R6_2.4.1             
+ [79] IRanges_2.22.2        generics_0.0.2        Hmisc_4.4-0          
+ [82] mgcv_1.8-31           pillar_1.4.4          haven_2.3.1          
+ [85] whisker_0.4           foreign_0.8-80        withr_2.2.0          
+ [88] survival_3.1-12       nnet_7.3-14           modelr_0.1.8         
+ [91] crayon_1.3.4          tmvnsim_1.0-2         rmarkdown_2.3        
+ [94] jpeg_0.1-8.1          locfit_1.5-9.4        grid_4.0.0           
+ [97] readxl_1.3.1          data.table_1.12.8     blob_1.2.1           
+[100] git2r_0.27.1          reprex_0.3.0          digest_0.6.25        
+[103] webshot_0.5.2         httpuv_1.5.3.1        stats4_4.0.0         
+[106] munsell_0.5.0         viridisLite_0.3.0    </code></pre>
+</div>
 </div>
 </div>
 
