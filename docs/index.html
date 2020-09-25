@@ -11,7 +11,7 @@
 
 
 
-<title>Apis methylation and gene expression project</title>
+<title>Methylation and gene expression during caste differentiation in Apis mellifera</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,6 +22,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -299,7 +301,13 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/lukeholman/Methylation_Apis">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -309,14 +317,14 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Apis methylation and gene expression project</h1>
+<h1 class="title toc-ignore">Methylation and gene expression during caste differentiation in Apis mellifera</h1>
 
 </div>
 
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -325,7 +333,7 @@ $(document).ready(function () {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -334,10 +342,10 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-09-21
+<strong>Last updated:</strong> 2020-09-25
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -353,12 +361,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -425,16 +433,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree51164fff0a9339ea18bed19d6e6bbaa93fff93fatargetblank51164ffa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/51164fff0a9339ea18bed19d6e6bbaa93fff93fa" target="_blank">51164ff</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree4fb434d13131d708ae797ae4eecb74dca9255373targetblank4fb434da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/4fb434d13131d708ae797ae4eecb74dca9255373" target="_blank">4fb434d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree51164fff0a9339ea18bed19d6e6bbaa93fff93fatargetblank51164ffa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree4fb434d13131d708ae797ae4eecb74dca9255373targetblank4fb434da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/51164fff0a9339ea18bed19d6e6bbaa93fff93fa" target="_blank">51164ff</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/4fb434d13131d708ae797ae4eecb74dca9255373" target="_blank">4fb434d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -447,30 +455,15 @@ Ignored files:
     Ignored:    Expression/
     Ignored:    data/
     Ignored:    figures/.DS_Store
+    Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
 
 Untracked files:
-    Untracked:  code/add_gene_exon_columns.R
-    Untracked:  code/get_flyatlas2_data.R
-    Untracked:  code/parse_gff_file.R
-    Untracked:  figure/
-    Untracked:  figures/site_meth_hist/
     Untracked:  test.Rmd
     Untracked:  test.html
 
 Unstaged changes:
-    Modified:   .gitignore
-    Modified:   analysis/_site.yml
-    Modified:   analysis/compare_expression_and_methylation.Rmd
     Modified:   analysis/diff_methylation.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   code/create_merged_data.R
-    Modified:   code/download_annotations.R
-    Modified:   code/download_methyl_googledrive.R
-    Modified:   code/make_database.R
-    Modified:   figures/eigengenes_expression_network.pdf
-    Modified:   figures/eigengenes_meth_network_fig.pdf
-    Modified:   figures/meth_nmds_plot.rds
 
 </code></pre>
 <p>
@@ -509,6 +502,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/4fb434d13131d708ae797ae4eecb74dca9255373/analysis/index.Rmd" target="_blank">4fb434d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-09-25
+</td>
+<td>
+index tweaks
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dd253379518d055323e6a6f9562faeae60bf88f1/analysis/index.Rmd" target="_blank">dd25337</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-09-23
+</td>
+<td>
+Many commits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/dd253379518d055323e6a6f9562faeae60bf88f1/docs/index.html" target="_blank">dd25337</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-09-23
+</td>
+<td>
+Many commits
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -703,7 +747,7 @@ First commit
 </div>
 </div>
 </div>
-<p>Statistical analysis for a forthcoming research paper.</p>
+<p><img src="https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif" /> Figure: Animation showing the changing methylome for CpG sites of different types. See <a href="diff_methylation.html">here</a> for further info.</p>
 <div id="differential-expression-analysis" class="section level3">
 <h3>Differential expression analysis</h3>
 <p>Click <a href="diff_expression.html">here</a></p>
@@ -715,10 +759,6 @@ First commit
 <div id="comparing-the-expression-and-methylation-analysis" class="section level3">
 <h3>Comparing the expression and methylation analysis</h3>
 <p>Click <a href="compare_expression_and_methylation.html">here</a></p>
-</div>
-<div id="animation-showing-the-change-in-methylation" class="section level3">
-<h3>Animation showing the change in % methylation</h3>
-<p><img src="https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -743,20 +783,21 @@ attached base packages:
 
 other attached packages:
 [1] gganimate_1.0.5.9000 ggplot2_3.3.1        magick_2.3          
+[4] workflowr_1.6.2     
 
 loaded via a namespace (and not attached):
  [1] Rcpp_1.0.4.6      compiler_4.0.0    pillar_1.4.4      later_1.0.0      
- [5] git2r_0.27.1      workflowr_1.6.2   prettyunits_1.1.1 progress_1.2.2   
- [9] tools_4.0.0       digest_0.6.25     evaluate_0.14     lifecycle_0.2.0  
-[13] tibble_3.0.1      gtable_0.3.0      pkgconfig_2.0.3   rlang_0.4.6      
-[17] yaml_2.2.1        xfun_0.15         withr_2.2.0       stringr_1.4.0    
-[21] dplyr_1.0.0       knitr_1.29        hms_0.5.3         generics_0.0.2   
-[25] fs_1.4.1          vctrs_0.3.0       rprojroot_1.3-2   grid_4.0.0       
-[29] tidyselect_1.1.0  glue_1.4.1        R6_2.4.1          rmarkdown_2.3    
-[33] farver_2.0.3      tweenr_1.0.1      purrr_0.3.4       magrittr_1.5     
-[37] whisker_0.4       backports_1.1.7   scales_1.1.1      promises_1.1.0   
-[41] htmltools_0.5.0   ellipsis_0.3.1    colorspace_1.4-1  httpuv_1.5.3.1   
-[45] stringi_1.4.6     munsell_0.5.0     crayon_1.3.4     </code></pre>
+ [5] git2r_0.27.1      prettyunits_1.1.1 progress_1.2.2    tools_4.0.0      
+ [9] digest_0.6.25     evaluate_0.14     lifecycle_0.2.0   tibble_3.0.1     
+[13] gtable_0.3.0      pkgconfig_2.0.3   rlang_0.4.6       yaml_2.2.1       
+[17] xfun_0.15         withr_2.2.0       stringr_1.4.0     dplyr_1.0.0      
+[21] knitr_1.29        hms_0.5.3         generics_0.0.2    fs_1.4.1         
+[25] vctrs_0.3.0       rprojroot_1.3-2   grid_4.0.0        tidyselect_1.1.0 
+[29] glue_1.4.1        R6_2.4.1          rmarkdown_2.3     farver_2.0.3     
+[33] tweenr_1.0.1      purrr_0.3.4       magrittr_1.5      whisker_0.4      
+[37] backports_1.1.7   scales_1.1.1      promises_1.1.0    htmltools_0.5.0  
+[41] ellipsis_0.3.1    colorspace_1.4-1  httpuv_1.5.3.1    stringi_1.4.6    
+[45] munsell_0.5.0     crayon_1.3.4     </code></pre>
 </div>
 </div>
 
