@@ -253,32 +253,30 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
 ```
 
 ![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/combined_animation.gif)
-https://github.com/lukeholman/Methylation_Apis/blob/master/figures/site_meth_hist/combined_animation.gif
-
 ### Static figures equivalent to the animation {.tabset}
 
 #### Translated regions (exons, excluding UTRs)
 
 <!-- Fix these by changing to raw github links -->
 
-![](../figures/site_meth_hist/translated_plot.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/translated_plot.png)
 
 #### Promoter regions
-![](../figures/site_meth_hist/promoter_plot.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/promoter_plot.png)
 
 #### Introns
-![](../figures/site_meth_hist/intron_plot.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/intron_plot.png)
 
 #### 5'-UTRs
-![](../figures/site_meth_hist/5UTR_plot.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/5UTR_plot.png)
 
 #### 3'-UTRs
 
-![](../figures/site_meth_hist/3UTR_plot.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/3UTR_plot.png)
 
 #### Intergenic regions
 
-![](../figures/site_meth_hist/3UTR_plot.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/intergenic_plot.png)
 
 
 
