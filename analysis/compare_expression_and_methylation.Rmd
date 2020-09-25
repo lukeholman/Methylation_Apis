@@ -547,7 +547,7 @@ make_a_plot <- function(yvar, xvar){
     scale_fill_viridis_c(option = "D") +
     coord_cartesian(ylim = ylim) + 
     ylab(NULL) + xlab(NULL) + 
-    facet_wrap(~ t, labeller = labeller(t = label_wrap_gen(10))) +
+    facet_wrap(~ t, labeller = labeller(t = label_wrap_gen(33))) +
     theme_bw(10) + 
     theme(legend.position = "none",
          # text = element_text(family = nice_font),
