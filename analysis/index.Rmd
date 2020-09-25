@@ -1,5 +1,5 @@
 ---
-title: "Apis methylation and gene expression project"
+title: "Methylation and gene expression during caste differentiation in Apis mellifera"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -13,7 +13,10 @@ library(magick)
 library(gganimate)
 ```
 
-Statistical analysis for a forthcoming research paper.
+![](https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif)
+Figure: Animation showing the changing methylome for CpG sites of different types. See [here](diff_methylation.html) for further info.
+
+
 
 ### Differential expression analysis
 Click [here](diff_expression.html) 
@@ -25,6 +28,4 @@ Click [here](diff_methylation.html)
 Click [here](compare_expression_and_methylation.html) 
 
 
-### Animation showing the change in % methylation
 
-![](https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif)

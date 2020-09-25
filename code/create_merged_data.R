@@ -12,13 +12,12 @@ gene_names <- tbl(db, "gene_names") %>% collect()
 # Get the present study's expresison limma::voom results, and associate with their beebase IDs for matching the older studies
 present_study_data <- read_csv("output/caste_results.csv") %>% 
   dplyr::filter(Time == 8) %>%              # USES THE 8-HOUR CASTE DIFFERENCE AND EXPRESSION LEVEL RESULTS
-  mutate(logFC = logFC * -1) %>%            # change the sign so that positive now means more expression in workers
   left_join(tbl(db, "gene_names") %>% 
               dplyr::select(gene_symbol, gene_name, entrez_id, beebase2) %>% 
               collect(n = Inf), 
             by = c("Gene symbol" = "gene_symbol")) %>% 
   dplyr::select(beebase2, logFC, AveExpr, `Gene symbol`, entrez_id, gene_name) %>%
-  dplyr::rename(`Caste difference in expression in 8h larvae (positive: W > Q)` = logFC) %>%
+  dplyr::rename(`Caste difference in expression in 8h larvae (positive: Q > W)` = logFC) %>%
   mutate(entrez_id = replace(entrez_id, is.na(entrez_id), gsub("LOC", "", `Gene symbol`[is.na(entrez_id)]))) %>%
   dplyr::rename(beebase = beebase2)
 
@@ -26,23 +25,42 @@ present_study_data <- read_csv("output/caste_results.csv") %>%
 # (estimated by Fisher exact test in BWASP, then averaged over sites within each gene)
 # Note that a positive meth.diff value in comparison A.vs.B means that the B methylation percentage is higher than the A methylation percentage.
 # So, a meth.diff value of +10 means that workers have a 10% higher value of %mC than queens
-# present_study_data <- present_study_data %>%
-#   left_join(vroom::vroom("data/methyl_diff_results/methyl_diff_results.tsv") %>%
-#               filter(comparison == "queen8.vs.worker8") %>%      # USES THE 8-HOUR CASTE DIFFERENCE RESULTS
-#               group_by(Genes) %>%
-#               summarise(`Caste difference in % methylation in 8h larvae (positive: W > Q)` = median(meth.diff), 
-#                         .groups = "drop"),
-#             by = c("Gene symbol" = "Genes"))
+
+bwasp_gene_meth <- read_tsv("data/meth_network_input/Network_persite.txt") %>%
+  gather("sample", "methylation", -Genes) %>%
+  mutate(caste = case_when(
+    str_detect(sample, "queen") ~ "queen",
+    str_detect(sample, "worker") ~ "worker",
+    TRUE ~ "t0"
+  )) %>% filter(caste!="t0") %>%
+  mutate(time = str_extract(sample, "[2468]"),
+         ct = paste(caste, time, sep = "")) %>%
+  group_by(Genes, ct) %>%
+  summarise(mean_meth = mean(methylation)) %>%
+  spread(ct, mean_meth) %>%
+  mutate(diff_meth2 = queen2 - worker2,
+         diff_meth4 = queen4 - worker4,
+         diff_meth6 = queen6 - worker6,
+         diff_meth8 = queen8 - worker8) %>%
+  dplyr::select(Genes, starts_with("diff")) %>%
+  gather("Time", "diff_meth", -Genes) %>%
+  mutate(Time = as.numeric(str_extract(Time, "[2468]"))) %>%
+  filter(Time == 8) %>% dplyr::select(Genes, diff_meth) %>%
+  dplyr::rename(`Caste difference in % methylation in 8h larvae (positive: Q > W)` = diff_meth)
+
+present_study_data <- present_study_data %>%
+  left_join(bwasp_gene_meth,
+            by = c("Gene symbol" = "Genes"))
 
 # Merge with the present study's median % methylation of sites within each gene (from BWASP)
 present_study_data <- present_study_data %>%
-  left_join(vroom::vroom("data/Methylation_data/methylation_calls.txt") %>% 
-              filter(str_detect(sample, "8")) %>% 
-              dplyr::select(gene, numCs, numTs) %>%
-              group_by(gene) %>%
-              summarise(percent_meth = 100 * sum(numCs) / (sum(numCs) + sum(numTs)), .groups = "drop"),
-            by = c("Gene symbol" = "gene")
-  )
+  left_join(read_tsv("data/meth_network_input/Network_persite.txt") %>%
+              gather(key, value, -Genes) %>%
+              filter(str_detect(key, "8")) %>%
+              group_by(Genes) %>%
+              summarise(mean_percent_meth_8h = mean(value) * 100),
+            by = c("Gene symbol" = "Genes")
+  ) 
 
 
 # og version using the network methylation data:
@@ -110,11 +128,14 @@ merged_data <- present_study_data %>%
 # https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R
 merged_data <- merged_data %>% 
   left_join(read_csv("data/apis_gene_comparisons/wojciechowski_histone_data/H3K4me3.csv") %>% 
-              mutate(H3K4me3_caste = -1 * caste_difference) %>% dplyr::select(gene, H3K4me3_caste), by =  c("beebase" = "gene")) %>%
+              mutate(H3K4me3_caste = caste_difference) %>% 
+              dplyr::select(gene, H3K4me3_caste), by =  c("beebase" = "gene")) %>%
   left_join(read_csv("data/apis_gene_comparisons/wojciechowski_histone_data/H3K27ac.csv") %>% 
-              mutate(H3K27ac_caste = -1 * caste_difference) %>% dplyr::select(gene, H3K27ac_caste), by =  c("beebase" = "gene")) %>%
+              mutate(H3K27ac_caste = caste_difference) %>% 
+              dplyr::select(gene, H3K27ac_caste), by =  c("beebase" = "gene")) %>%
   left_join(read_csv("data/apis_gene_comparisons/wojciechowski_histone_data/H3K36me3.csv") %>% 
-              mutate(H3K36me3_caste = -1 * caste_difference) %>% dplyr::select(gene, H3K36me3_caste), by =  c("beebase" = "gene"))
+              mutate(H3K36me3_caste = caste_difference) %>% 
+              dplyr::select(gene, H3K36me3_caste), by =  c("beebase" = "gene"))
 
 
 # Add data from Ma et al. 2019 BMC Genomics
@@ -146,14 +167,14 @@ m.rename <- function(merged, col, new) {
 
 merged_data <- merged_data %>%
 #  m.rename("CAI", "Codon usage bias\n(CAI)") %>%
-  m.rename("percent_meth", "% methylated cytosines in gene body") %>%
+  m.rename("mean_percent_meth_8h", "% methylated cytosines in gene body") %>%
   m.rename("gamma", "Positive selection\n(Gamma)") %>%
   m.rename("AveExpr", "Log2 mean expression level") %>%
   m.rename("expr_connectivity", "Connectivity in the\ntranscriptome") %>%
   m.rename("meth_connectivity", "Connectivity in the\nmethylome") %>%
-  m.rename("H3K4me3_caste", "Caste difference in H3K4me3 at 96h (positive: W > Q; Woj. 2018)") %>%
-  m.rename("H3K27ac_caste", "Caste difference in H3K27ac at 96h (positive: W > Q; Woj. 2018)") %>%
-  m.rename("H3K36me3_caste", "Caste difference in H3K36me3 at 96h (positive: W > Q; Woj. 2018)") %>%
+  m.rename("H3K4me3_caste", "Caste difference in H3K4me3 at 96h (positive: Q > W; Woj. 2018)") %>%
+  m.rename("H3K27ac_caste", "Caste difference in H3K27ac at 96h (positive: Q > W; Woj. 2018)") %>%
+  m.rename("H3K36me3_caste", "Caste difference in H3K36me3 at 96h (positive: Q > W; Woj. 2018)") %>%
   m.rename("Pheromone sensitivity", "Expression response to queen pheromone (Holman 2019)") %>%
   m.rename("brood_pheromone", "Expression response to brood pheromone (Ma 2019)") %>%
   m.rename("EBO_pheromone", "Expression response to EBO pheromone (Ma 2019)") %>%
@@ -164,6 +185,39 @@ merged_data <- merged_data %>%
   dplyr::rename(gene = `Gene symbol`) %>%
   dplyr::select(gene, beebase, entrez_id, gene_name, everything()) %>%
   arrange(gene)
+
+# Merge in the data from Flyatlas2, showing the sex difference in expression in whole bodies 
+# for each gene in Drosophila (converted to bee orthologs using the ortholog relationships from Warner et al)
+sex_diff <- read_csv("data/database_tables/flyatlas2_sex_diff.csv") %>%
+  left_join(read_csv("data/database_tables/dros_ortho_GO.csv") %>% 
+              dplyr::select(FLYBASE, SYMBOL) %>% distinct(), by = c("gene" = "FLYBASE")) %>%
+  arrange(SYMBOL) %>% dplyr::select(-gene) %>%
+  mutate(sex_bias = -1 * log(as.numeric(`M/F`))) %>%
+  filter(Tissue == "Whole body" & !is.na(sex_bias)) %>%
+  dplyr::rename(`Female bias in expression (Flyatlas2)` = sex_bias) %>%
+  dplyr::select(SYMBOL, `Female bias in expression (Flyatlas2)`)
+
+# Merge in the data from Flyatlas2, showing the enrichment of each gene in each tissue type, for female Drosophila
+# (converted to bee orthologs using the ortholog relationships from Warner et al)
+# Enrichment is expressed as FPKM_i / max(FPKM), where i is tissue i and max is the maximum FPKM recorded for all the tissues.
+flyatlas <- read_csv("data/database_tables/flyatlas2_fpkm.csv") %>%
+  left_join(read_csv("data/database_tables/dros_ortho_GO.csv") %>% 
+              dplyr::select(FLYBASE, SYMBOL) %>% distinct(), by = c("gene" = "FLYBASE")) %>%
+  arrange(SYMBOL) %>% dplyr::select(-gene) %>%
+  mutate(FPKM = as.numeric(FPKM)) %>%
+  filter(type == "Female" & !(Tissue %in% c("Whole body", "Carcass"))) %>%
+  split(.$SYMBOL) %>%
+  map_df(~ .x %>% mutate(FPKM = FPKM / max(FPKM, na.rm = TRUE))) %>%
+  dplyr::select(SYMBOL, Tissue, FPKM) %>%
+  spread(Tissue, FPKM) %>%
+  select_if(~ sum(!is.na(.x)) > 0) %>%
+  rename_all(~ paste(.x, "(Flyatlas2)"))
+
+
+merged_data <- merged_data %>%
+  left_join(sex_diff, by = c("gene" = "SYMBOL")) %>%
+  left_join(flyatlas, by = c("gene" = "SYMBOL (Flyatlas2)")) 
+
 
 # Remove this variable - too many missing values
 # merged_data <- merged_data %>%
