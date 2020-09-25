@@ -533,6 +533,7 @@ make_a_plot <- function(yvar, xvar){
   ylim <- range(merged_data$y)
   ylim[1] <- ylim[1] - (ylim[1]*0.05)
   ylim[2] <- ylim[2] + (ylim[2]*0.05)
+  merged_data$t <- str_remove_all(yvar, "Warner_")
   
   p <- ggplot(merged_data, aes(x, y)) + 
     geom_vline(xintercept = 0, linetype = 2, colour = "black") 
@@ -541,15 +542,17 @@ make_a_plot <- function(yvar, xvar){
     p <- p + geom_hline(yintercept = 0, linetype = 2, colour = "black")
   }
   
-  ylab <- str_remove_all(yvar, "Warner_")
-  
   p + stat_bin_hex(bins = 200) + 
     stat_smooth(method = "loess", colour = "tomato", formula = "y ~ x") + 
     scale_fill_viridis_c(option = "D") +
     coord_cartesian(ylim = ylim) + 
-    ylab(ylab) + xlab(NULL) + 
+    ylab(NULL) + xlab(NULL) + 
+    facet_wrap(~ t, labeller = labeller(t = label_wrap_gen(10))) +
     theme_bw(10) + 
-    theme(legend.position = "none") 
+    theme(legend.position = "none",
+         # text = element_text(family = nice_font),
+          strip.background = element_rect(fill = "white", colour = "white"))
+    
 }
 variables <- names(sapply(merged_data, is.numeric)[sapply(merged_data, is.numeric)])
 
