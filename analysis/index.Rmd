@@ -13,8 +13,9 @@ library(magick)
 library(gganimate)
 ```
 
-![](https://raw.githubusercontent.com/lukeholman/lukesfiles/master/combined_animation.gif)
-Figure: Animation showing the changing methylome for CpG sites of different types. See [here](diff_methylation.html) for further info.
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/combined_animation.gif)
+
+**Figure**: Animation showing the changing methylome for CpG sites of different types. See [here](diff_methylation.html) for further info.
 
 
 

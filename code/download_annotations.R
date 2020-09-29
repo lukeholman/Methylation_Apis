@@ -87,9 +87,21 @@ dros_ortho_GO <- dros_info %>%
 # tra2 is transformer2, a major player in Drosophila sex determination
 # LOC113219102 is named "sex determination protein fruitless-like"; fruitless is important in Drosophila sex det.
 # LOC411612 is "protein virilizer", Associated component of the WMM complex, a complex that mediates N6-methyladenosine (m6A) methylation of mRNAs, a modification that plays a role in the efficiency of mRNA splicing and is required for sex determination (PubMed:27919077). Required for sex determination and dosage compensation via Sxl alternative splicing: m6A methylation acts as a key regulator of Sxl pre-mRNA and promotes female-specific alternative splicing of Sxl, which determines female physiognomy 
-custom_ones <- tibble(SYMBOL = c("Csd", "Fem", "Dsx", "tra2", "LOC113219102", "LOC411612"),
-                      GO = "GO:0007530", # this is the GO number for "sex determination"
-                      ONTOLOGY = "BP")
+
+# tbl(db, "dros_ortho_GO") %>%  # grab all the Drosophila sex diff genes:
+#   filter(GO %in% c("GO:0007530", "GO:0018993", "GO:0018992", "GO:0030237", "GO:0007545", "GO:0030238", "GO:0007538")) %>% 
+#   pull(SYMBOL) %>% unique() %>% sort() ->x
+
+
+custom_ones <- tibble(
+  SYMBOL = 
+    c("Csd", "Dsx", "Emc", "Fem", "LOC102654580", "LOC113219102", "LOC409022", 
+      "LOC409900", "LOC410553", "LOC411612", "LOC411754", "LOC413742", "LOC551911", 
+      "LOC552100", "LOC552833", "LOC725155", "LOC726002", "tra2"),
+  GO = "GO:0007530", # this is the GO number for "sex determination"
+  ONTOLOGY = "BP")
+
+
 
 dros_ortho_GO <- dros_ortho_GO %>% 
   full_join(custom_ones, by = c("SYMBOL", "GO", "ONTOLOGY")) %>%

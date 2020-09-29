@@ -30,7 +30,7 @@ db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
 bwasp_sig_genes <- readRDS("output/bwasp_sig_genes.rds")
 
 # Load Bayesian results
-bayes_sig_sites <- readRDS("output/sig_sites_bayesianGAM.rds")
+# bayes_sig_sites <- readRDS("output/sig_sites_bayesianGAM.rds")
 bayes_sig_genes <- readRDS("output/gene_meth_results_table.rds")
 
 

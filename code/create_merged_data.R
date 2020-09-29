@@ -58,7 +58,7 @@ present_study_data <- present_study_data %>%
               gather(key, value, -Genes) %>%
               filter(str_detect(key, "8")) %>%
               group_by(Genes) %>%
-              summarise(mean_percent_meth_8h = mean(value) * 100),
+              summarise(mean_percent_meth_8h = mean(value)),
             by = c("Gene symbol" = "Genes")
   ) 
 
@@ -190,7 +190,8 @@ merged_data <- merged_data %>%
 # for each gene in Drosophila (converted to bee orthologs using the ortholog relationships from Warner et al)
 sex_diff <- read_csv("data/database_tables/flyatlas2_sex_diff.csv") %>%
   left_join(read_csv("data/database_tables/dros_ortho_GO.csv") %>% 
-              dplyr::select(FLYBASE, SYMBOL) %>% distinct(), by = c("gene" = "FLYBASE")) %>%
+              dplyr::select(FLYBASE, SYMBOL) %>%
+              distinct(), by = c("gene" = "FLYBASE")) %>%
   arrange(SYMBOL) %>% dplyr::select(-gene) %>%
   mutate(sex_bias = -1 * log(as.numeric(`M/F`))) %>%
   filter(Tissue == "Whole body" & !is.na(sex_bias)) %>%
@@ -206,8 +207,8 @@ flyatlas <- read_csv("data/database_tables/flyatlas2_fpkm.csv") %>%
   arrange(SYMBOL) %>% dplyr::select(-gene) %>%
   mutate(FPKM = as.numeric(FPKM)) %>%
   filter(type == "Female" & !(Tissue %in% c("Whole body", "Carcass"))) %>%
-  split(.$SYMBOL) %>%
-  map_df(~ .x %>% mutate(FPKM = FPKM / max(FPKM, na.rm = TRUE))) %>%
+  # split(.$SYMBOL) %>%
+  # map_df(~ .x %>% mutate(FPKM = FPKM / max(FPKM, na.rm = TRUE))) %>%
   dplyr::select(SYMBOL, Tissue, FPKM) %>%
   spread(Tissue, FPKM) %>%
   select_if(~ sum(!is.na(.x)) > 0) %>%

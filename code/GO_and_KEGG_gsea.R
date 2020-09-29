@@ -7,11 +7,11 @@
 
 GO_and_KEGG_gsea <- function(df, GO_list, min.size = 5, keep.all = FALSE){
   
-  df <- df %>% arrange(statistic)
   p <- 0.05; if(keep.all) p <- 1 # Set the significance threshold
   
   # Set up the geneList object in the form needed by the fgsea function - 
   # a named, ranked vector of the test statistic (e.g. logFC, diff in % methylation)
+  df <- df %>% arrange(statistic)
   geneList <- df$statistic
   names(geneList) <- df$gene
   gene_universe <- names(geneList)
@@ -104,12 +104,13 @@ GO_and_KEGG_gsea <- function(df, GO_list, min.size = 5, keep.all = FALSE){
         GO_enrichment(geneList, "MF", GO_list=GO_list),
         GO_enrichment(geneList, "CC", GO_list=GO_list),
         kegg_enrichment(geneList, GO_list=GO_list)) %>%
-    mutate(gene_names = leadingEdge %>% 
-             map(~ annotations %>% filter(gene %in% unique(.x)) %>% 
-                   pull(gene_name) %>% unique()),
-           term = as.character(term))
+    mutate(gene_names = map(leadingEdge, ~ {
+      foc_genes <- unique(.x)
+      tbl(db, "gene_names") %>% 
+        filter(gene_symbol %in% foc_genes) %>%
+        pull(gene_name) %>% unique()
+    }),
+    term = as.character(term))
 }
-
-
 
 
