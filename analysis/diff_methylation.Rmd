@@ -1353,12 +1353,15 @@ plot_one_site <- function(focal_site){
 # plot_one_site(4053130) # sex-lethal homolog
 
 plot_sites_split <- split(plot_sites, ceiling(seq_along(plot_sites) / 16))
+done_already <- as.numeric(str_extract(list.files("figures/bayes_sites/"), "[:digit:]+"))
 
 redo <- FALSE
-if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split) | redo){
-  for(i in 1:length(plot_sites_split)){
+if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split)){
+  if(!redo) plot_sites_split <- plot_sites_split[(1:length(plot_sites_split))[-done_already]]
+  for(i in as.numeric(names(plot_sites_split))){
+    print(i)
     ggsave(glue("figures/bayes_sites/plot{i}.png"), 
-           do.call("grid.arrange", lapply(plot_sites_split[[i]], plot_one_site)),
+           do.call("grid.arrange", lapply(plot_sites_split[[which(as.numeric(names(plot_sites_split)) == i)]], plot_one_site)),
            height = 9, width = 9)
   }
 }
@@ -1434,24 +1437,41 @@ if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split) | redo)
 
 ![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot15.png)
 
+### Group 16
 
-<!-- ### Group 16 -->
-<!-- ```{r by_site_plots16, fig.height=9, fig.width=9} -->
-<!-- if(redo) saveRDS(do.call("grid.arrange", lapply(plot_sites[237:251], plot_one_site)), "figures/bayes_sites/plot16.rds") -->
-<!-- readRDS("figures/bayes_sites/plot16.rds") -->
-<!-- ``` -->
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot16.png)
 
-<!-- ## more here -->
+### Group 17
 
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot17.png)
 
+### Group 18
 
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot18.png)
 
+### Group 19
 
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot19.png)
 
+### Group 20
 
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot20.png)
 
+### Group 21
 
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot21.png)
 
+### Group 22
+
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot22.png)
+
+### Group 23
+
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot23.png)
+
+### Group 24
+
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot24.png)
 
 
 ## Multivariate plots of the methylome
