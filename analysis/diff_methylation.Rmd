@@ -1474,6 +1474,7 @@ if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split)){
 ![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot24.png)
 
 
+
 ## Multivariate plots of the methylome
 
 ### Reduce and plot the methylomes using NMDS
@@ -1583,7 +1584,7 @@ In the figures, the orange colour indicates that the focal sample has a methylat
 
 #### Heatmap of sites with $\ge 75$% methylation
 
-```{r meth_sample_distance_heatmap, width = 11, height = 12, message=FALSE, warning=FALSE}
+```{r meth_sample_distance_heatmap, width = 10, height = 14, message=FALSE, warning=FALSE}
 meth_sample_heatmap <- function(mean_cutoff, colour_limits){
   
   # include all sites measured to 5x coverage in all 36 samples
@@ -1610,7 +1611,8 @@ meth_sample_heatmap <- function(mean_cutoff, colour_limits){
   
 
   paletteLength <- 50
-  myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
+  myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], 
+                                "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
   # myBreaks <- c(seq(min(foc, na.rm=T)/2, 0, length.out=ceiling(paletteLength/2) + 1),
   #               seq(max(foc, na.rm=T)/(2*paletteLength),
   #                   max(foc, na.rm=T)/2, length.out = floor(paletteLength/2)))
@@ -1650,7 +1652,7 @@ meth_sample_heatmap(mean_cutoff = 0.75, colour_limits = c(-3, 2))
 
 #### Heatmap of sites with $\ge 2.7$% methylation
 
-```{r message=FALSE, warning=FALSE, width = 11, height = 12}
+```{r message=FALSE, warning=FALSE, width = 10, height = 14}
 meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 3))
 ```
 
@@ -1833,8 +1835,9 @@ The output of `fgsea` includes the "normalised enrichment score" (NES) which des
 ```{r}
 source("code/GO_and_KEGG_gsea.R") 
 
-
 if(!file.exists("output/meth_gsea_results.rds")){
+  
+  sig_thres <- 0.01
   
   gene_caste_difference <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
     left_join(tbl(db, "site_annotations") %>% 
@@ -1914,7 +1917,7 @@ if(!file.exists("output/meth_gsea_results.rds")){
       mutate(Time = 8, Comparison = "Caste")
   ) 
   significant <- GO_Amel_annotations_caste %>% 
-    filter(pval < 0.05) %>% pull(pathway) %>% unique()
+    filter(pval < sig_thres) %>% pull(pathway) %>% unique()
   GO_Amel_annotations_caste <- GO_Amel_annotations_caste %>%
     filter(pathway %in% significant)
   
@@ -1938,7 +1941,8 @@ if(!file.exists("output/meth_gsea_results.rds")){
       GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "dros_ortho_GO") %>% 
       mutate(Time = 8, Comparison = "Caste")
   ) 
-  significant <- GO_Dmel_annotations_caste %>% filter(pval < 0.05) %>% 
+  significant <- GO_Dmel_annotations_caste %>% 
+    filter(pval < sig_thres) %>% 
     pull(pathway) %>% unique()
   GO_Dmel_annotations_caste <- GO_Dmel_annotations_caste %>%
     filter(pathway %in% significant)
@@ -1954,9 +1958,9 @@ if(!file.exists("output/meth_gsea_results.rds")){
     mutate(Time = "Worker", Comparison = "Worker temporal change")
   
   significant_q <- GO_Amel_annotations_temporalQ %>% 
-    filter(pval < 0.05) %>% pull(pathway) %>% unique()
+    filter(pval < sig_thres) %>% pull(pathway) %>% unique()
   significant_w <- GO_Amel_annotations_temporalW %>% 
-    filter(pval < 0.05) %>% pull(pathway) %>% unique()
+    filter(pval < sig_thres) %>% pull(pathway) %>% unique()
   
   GO_Amel_annotations_temporalQ <- GO_Amel_annotations_temporalQ %>%
     filter(pathway %in% unique(c(significant_q, significant_w)))
@@ -1973,9 +1977,9 @@ if(!file.exists("output/meth_gsea_results.rds")){
     mutate(Time = "Worker", Comparison = "Worker temporal change")
   
   significant_q <- GO_Dmel_annotations_temporalQ %>% 
-    filter(pval < 0.05) %>% pull(pathway) %>% unique()
+    filter(pval < sig_thres) %>% pull(pathway) %>% unique()
   significant_w <- GO_Dmel_annotations_temporalW %>% 
-    filter(pval < 0.05) %>% pull(pathway) %>% unique()
+    filter(pval < sig_thres) %>% pull(pathway) %>% unique()
   
   GO_Dmel_annotations_temporalQ <- GO_Dmel_annotations_temporalQ %>%
     filter(pathway %in% unique(c(significant_q, significant_w)))
@@ -1993,12 +1997,16 @@ if(!file.exists("output/meth_gsea_results.rds")){
 ```
 
 ```{r eval=FALSE}
-left_join(gene_timeQ, gene_timeW %>% dplyr::rename(statistic2 = statistic)) %>% arrange(-abs(statistic - statistic2)) %>% print(n=200)
+left_join(gene_timeQ, gene_timeW %>% 
+            dplyr::rename(statistic2 = statistic)) %>% 
+  arrange(-abs(statistic - statistic2)) %>% print(n=200)
 
-left_join(gene_timeQ, gene_timeW %>% dplyr::rename(statistic2 = statistic)) %>%
+left_join(gene_timeQ, gene_timeW %>% 
+            dplyr::rename(statistic2 = statistic)) %>%
   filter(abs(statistic) > 0.1 | abs(statistic2) > 0.1) -> labs
 
-left_join(gene_timeQ, gene_timeW %>% dplyr::rename(statistic2 = statistic)) %>% 
+left_join(gene_timeQ, gene_timeW %>% 
+            dplyr::rename(statistic2 = statistic)) %>% 
   ggplot(aes(statistic, statistic2)) + geom_point() + 
   geom_text_repel(data = labs, aes(label = gene_name))
 ```
@@ -2011,71 +2019,164 @@ Red means that there is higher % methylation for genes annotated with the focal 
 
 #### GO: Biological process {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=16, fig.width = 6.9}
 source("code/make_pathway_figure.R")
+
+GO_KEGG_results$GO_Dmel_annotations_caste %>% 
+  group_by(term) %>%
+  summarise(p = min(pval)) %>% arrange(-p)
 
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
+###### Table
+```{r}
+do_GO_table <- function(GO_results){
+  GO_results %>%
+    mutate(leadingEdge = map_chr(leadingEdge, ~ paste0(.x, collapse = ", ")),
+           gene_names = map_chr(gene_names, ~ paste0(.x, collapse = ", "))) %>%
+    dplyr::select(-ES, -log2err, -Comparison) %>%
+    dplyr::select(Time, term, everything()) %>%
+    dplyr::rename(Term=term, `Term type` = Test_type, ID = pathway, 
+                  `Normalised enrichment score` = NES, 
+                  `Leading edge genes` = leadingEdge,
+                  `Corresponding gene names` = gene_names) %>%
+    my_data_table() %>% formatSignif(c('pval', 'padj', 'Normalised enrichment score'), 2)
+}
 
-##### Using the _A. mellifera_ annotations
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=5, fig.width = 6.9}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
     make_pathway_figure("", "Hours post-grafting")
 ```
 
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
 
 #### GO: Molecular function {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.width=6.9, fig.height = 11.5}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Molecular function") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
-##### Using the _D. melanogaster_ annotations
+###### Table
+```{r}
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.width=6.9, fig.height = 10.4}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Molecular function") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
+
+
 #### GO: Cellular component {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.width=6.9, fig.height = 10.4}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
-##### Using the _A. mellifera_ annotations
+###### Table
+```{r}
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.width=6.9, fig.height = 6}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
+
 #### KEGG pathways {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
 
+###### Figure
 ```{r fig.width=6.9, fig.height = 5.5}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "KEGG") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
-##### Using the _A. mellifera_ annotations
+###### Table
+```{r}
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.width=6.9, fig.height = 8}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "KEGG") %>%
   make_pathway_figure("", "Hours post-grafting")
+```
+
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
 ```
 
 
@@ -2086,7 +2187,9 @@ Orange means that the temporal change in % methylation was comparatively large a
 
 #### GO: Biological process {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=8, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
@@ -2094,7 +2197,31 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
-##### Using the _A. mellifera_ annotations
+###### Table
+```{r}
+do_GO_table <- function(GO_results){
+  GO_results %>%
+    mutate(leadingEdge = map_chr(leadingEdge, ~ paste0(.x, collapse = ", ")),
+           gene_names = map_chr(gene_names, ~ paste0(.x, collapse = ", "))) %>%
+    dplyr::select(-ES, -log2err, -Comparison) %>%
+    dplyr::select(Time, term, everything()) %>%
+    dplyr::rename(Term=term, `Term type` = Test_type, ID = pathway, Caste = Time,
+                  `Normalised enrichment score` = NES, 
+                  `Leading edge genes` = leadingEdge,
+                  `Corresponding gene names` = gene_names) %>%
+    my_data_table() %>% formatSignif(c('pval', 'padj', 'Normalised enrichment score'), 2)
+}
+
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=5, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
@@ -2102,10 +2229,20 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
 
 #### GO: Molecular function {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=9, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
@@ -2113,7 +2250,18 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
-##### Using the _A. mellifera_ annotations
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=5, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
@@ -2121,10 +2269,20 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
 
 #### GO: Cellular component {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=11, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
@@ -2132,7 +2290,18 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
-##### Using the _A. mellifera_ annotations
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=5, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
@@ -2140,9 +2309,19 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
 #### KEGG pathways {.tabset}
 
-##### Using the _D. melanogaster_ annotations
+##### Using the _D. melanogaster_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=5, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
@@ -2150,7 +2329,18 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
-##### Using the _A. mellifera_ annotations
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
+```
+
+
+##### Using the _A. mellifera_ annotations {.tabset}
+
+###### Figure
 ```{r fig.height=5, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
@@ -2158,6 +2348,13 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
   make_pathway_figure("", "Caste", alt_colours = TRUE)
 ```
 
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
+```
 
 
 
@@ -2174,7 +2371,7 @@ rownames(network_input) <- gns
 network_input <- t(network_input)
 
 # Filter using WGCNA::goodSamplesGenes
-gsg <- goodSamplesGenes(network_input, verbose = 3)
+gsg <- goodSamplesGenes(network_input, verbose = 0)
 network_input <- network_input[gsg$goodSamples, gsg$goodGenes]
 
 # Remove genes with no variability in % methylation
@@ -2307,6 +2504,7 @@ num_modules <- length(unique(meth_network$colors)) - 1
 ```
 
 The algorithm in WGCNA has grouped the `r length(meth_network$colors)` transcripts into `r num_modules` modules of variable size. Note that Module 0 contains all the transcripts that were not assigned to a module (indicating that their expression did not covary detectably with other genes).
+
 ```{r}
 meth_network$colors %>% table() %>% pander()
 ```
@@ -2611,7 +2809,6 @@ read_csv("output/eigengene_stats_table_meth.csv") %>%
 
 #### Using _A. mellifera_ GO and KEGG annotations
 
-
 ```{r GO_and_KEGG_hypergeometric, message=FALSE, warning=FALSE, results='hide'}
 # Code up a hypergeometric test
 # Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
@@ -2876,15 +3073,14 @@ present_module_GO_table <- function(){
 
 module_GO_table_amel <- make_module_GO_table(eigengenes, GO_list = "bee_GO") 
 module_GO_table_dmel <- make_module_GO_table(eigengenes, GO_list = "dros_ortho_GO") 
+```
 
-
-# Present Apis table:
+```{r}
 present_module_GO_table() %>%
   filter(Annotation == "A. mellifera") %>%
   dplyr::select(-Annotation) %>%
   my_data_table()
 ```
-
 
 
 #### Using _D. melanogaster_ GO and KEGG annotations
