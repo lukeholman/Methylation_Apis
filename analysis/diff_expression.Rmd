@@ -41,6 +41,8 @@ library(pheatmap)
 library(RColorBrewer)
 library(ggrepel)
 library(broom)
+library(sva)
+library(glue)
 library(fgsea) # for enrichment tests; source("https://bioconductor.org/biocLite.R"); biocLite("fgsea") 
 
 
@@ -52,6 +54,28 @@ showtext_auto()
 # define colours
 queen_colour <- "#d13b40"
 worker_colour <- RColorBrewer::brewer.pal(7, "Blues")[4]
+
+# Make html tables:
+my_data_table <- function(df){
+  datatable(
+    df, rownames=FALSE,
+    autoHideNavigation = TRUE,
+    extensions = c("Scroller",  "Buttons"),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender=TRUE,
+      scrollX=TRUE, scrollY=400,
+      scrollCollapse=TRUE,
+      buttons = 
+        list('pageLength', 'colvis', 'csv', list(
+          extend = 'pdf',
+          pageSize = 'A4',
+          orientation = 'landscape',
+          filename = 'Apis_expression')),
+      pageLength = 50
+    )
+  )
+}
 
 
 kable_table <- function(df) {
@@ -149,48 +173,11 @@ bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
 **Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (termed NMDS 1-3; $r^2 =$ `r nmds_r2`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
 
 
-
-<!-- #### After removing the batch effects -->
-<!-- ```{r nmds2} -->
-<!-- expression_no_batch_effect <- limma::removeBatchEffect(expression_data,  -->
-<!--                                                 batch = sample_ids$replicate) -->
-<!-- set.seed(12345) -->
-<!-- nmds_output <- dist(t(expression_no_batch_effect)) %>% nmds(maxdim = 2) -->
-<!-- nmds_r2 <- tail(nmds_output$r2, 1) -->
-<!-- nmds_output <- data.frame(Caste = sample_ids$caste, -->
-<!--                           Time = as.numeric(as.character(sample_ids$time_point)), -->
-<!--                           Replicate = sample_ids$replicate, -->
-<!--                           label = paste(sample_ids$caste, sample_ids$time_point), -->
-<!--                           nmds_output$conf[[length(nmds_output$conf)]]) -->
-
-<!-- nmds_output %>% -->
-<!--   mutate_at(vars(starts_with("X")), ~ as.numeric(scale(.x))) %>% -->
-<!--   gather(NMDS, Score, starts_with("X")) %>% -->
-<!--   mutate(NMDS = gsub("X", "NMDS ", NMDS), -->
-<!--          Replicate = paste("Replicate", Replicate)) %>% -->
-<!--   ggplot(aes(Time, Score, colour = Caste, group = Caste)) +  -->
-<!--   geom_line() + -->
-<!--   geom_point() +  -->
-<!--   scale_colour_manual(values = c(queen_colour, "black", worker_colour),  -->
-<!--                       name = "Cell type") +  -->
-<!--   facet_grid(NMDS~Replicate) +  -->
-<!--   xlab("Time since the larva was grafted (hours)") -->
-<!-- ``` -->
-
-<!-- **Figure**: Results of non-metric multidimensional scaling analysis, after removing the batch effects using `limma::removeBatchEffect`. -->
-
-
-
 ### Heatmap showing similarities between samples and genes
 
-Here, the expression level of gene $j$ in transcriptome $i$ has been converted to a proportion of the total, then mean-centered and scaled. Thus, orange indicates that the gene $j$ makes up an above-average fraction of transcriptome $i$, and purple indicates a below-average fraction.
-
-Samples don't cluster perfectly, though this may be partly because of batch effects (note the clustering by replicate). However, there is evident differentiation by caste and time for parts of the transcriptome. The 'transcriptional modules' that we later analyse using WGCNA are also apparent. 
-
-```{r bigheatmap, fig.height=7.3}
-scaled_expression_data <- expression_data
-
+```{r bigheatmap, fig.height=6.4, fig.width=8.7, message=F, warning=F}
 # Convert the gene expression values to a fraction of total for each sample
+scaled_expression_data <- expression_data
 for(i in 1:ncol(scaled_expression_data)) {
   scaled_expression_data[,i] <- 100 * scaled_expression_data[,i] / sum(scaled_expression_data[,i])
 }
@@ -209,11 +196,30 @@ name_converter <- sample_ids %>%
 rownames(scaled_expression_data) <- NULL
 colnames(scaled_expression_data) <- name_converter$new_name[match(colnames(scaled_expression_data), name_converter$sample_name)]
 
+
+# Remove batch effects using sva::Combat
+pheno <- tibble(sample = colnames(scaled_expression_data),
+                caste = factor(substr(sample, 1, 1)), 
+                time = str_extract(sample, "[02468]"),
+                caste_time = paste(caste, time),
+                rep = substr(sample, nchar(sample), nchar(sample))) 
+batch <- pheno$rep
+mod <- model.matrix(~ caste_time, data=pheno)
+
+scaled_expression_data <- invisible(ComBat(dat = scaled_expression_data, 
+                                             batch = batch, 
+                                             mod = mod, 
+                                             par.prior = TRUE))
+
+# Re-scale to have mean 0, variance 1
+for(i in 1:nrow(scaled_expression_data)) {
+  scaled_expression_data[i, ] <- as.numeric(scale(scaled_expression_data[i,]))
+}
+
 paletteLength <- 50
 myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
 myBreaks <- c(seq(min(scaled_expression_data, na.rm=T), 0, length.out=ceiling(paletteLength/2) + 1), 
               seq(max(scaled_expression_data, na.rm=T)/paletteLength, max(scaled_expression_data, na.rm=T), length.out=floor(paletteLength/2)))
-
 
 
 annotation_row <- name_converter %>% select(new_name, caste) %>% as.data.frame()
@@ -233,6 +239,8 @@ t(scaled_expression_data) %>%
            annotation_row = annotation_row, annotation_colors = annotation_colors,
            show_colnames = FALSE)
 ```
+
+**Figure XX:** Heatmap showing the transcriptome of each sample, where each column indicates one of the `r nrow(scaled_expression_data)` transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.
 
 
 ## Detecting differential expression with `limma::voom`
@@ -302,7 +310,6 @@ contrast_matrix <- cbind(
     Worker_4vs8 = Worker_8 - Worker_4,
     
     Worker_6vs8 = Worker_8 - Worker_6)
-
 
 
 get_results <- function(voom_fit, column){
@@ -379,12 +386,13 @@ time_results <- rbind(
 ```
 
 
-```{r eval=F}
+```{r eval=F, echo=F}
 corrrs <- cor(t(expression_data), method = "spearman") %>%
   as.data.frame() %>%
   rownames_to_column("other_gene") %>% as_tibble() %>%
   gather(focal_gene, correlation, -other_gene) %>%
   filter(focal_gene != other_gene) %>% select(focal_gene, other_gene, correlation)
+
 
 plot_corr_hist <- function(genes){
   corrrs %>%
@@ -395,7 +403,7 @@ plot_corr_hist <- function(genes){
     facet_wrap(~ focal_gene)
 }
 
-plot_corr_hist(c("Vg", "Dnmt1a", "Dnmt3", "Dsx", "LOC413289", "tra2", "Mrjp1", "Mrjp2", "5-HT1"))
+plot_corr_hist(c("Csd", "Dnmt1a", "Dnmt3", "Dsx", "Dl", "tra2", "Mrjp1", "Mrjp2", "5-HT1"))
 # 
 # median_corrs <- corrrs %>%
 #   group_by(focal_gene) %>%
@@ -415,6 +423,38 @@ plot_corr_hist(c("Vg", "Dnmt1a", "Dnmt3", "Dsx", "LOC413289", "tra2", "Mrjp1", "
 
 
 ## Significantly differentially expressed gene lists
+
+### Counting the significant genes
+
+#### Genes showing a difference between QDL and WDL by timepoint
+```{r}
+caste_results %>%
+  filter(adj.P.Val < 0.05) %>%
+  group_by(Time) %>%
+  summarise(n_significant_genes = n()) %>%
+  dplyr::rename(Comparison = Time) %>%
+  mutate(Comparison = glue("QDL vs WDL ({Comparison}h)")) %>%
+  kable_table() %>%
+  kable_styling(full_width = F)
+```
+
+#### Genes showing a difference between timepoints by caste
+```{r}
+time_results %>%
+  filter(adj.P.Val < 0.05) %>%
+  group_by(Caste, Time) %>%
+  summarise(n_significant_genes = n()) %>% 
+    dplyr::rename(Comparison = Time) %>%
+    mutate(Comparison = glue("{Caste} ({Comparison}h)"),
+           Comparison = str_replace_all(Comparison, " vs", "h vs"),
+           Comparison = str_replace_all(Comparison, "Queen", "QDL"),
+           Comparison = str_replace_all(Comparison, "Worker", "WDL")) %>%
+  ungroup() %>%
+  dplyr::select(Comparison, n_significant_genes) %>%
+  kable_table() %>%
+  kable_styling(full_width = F)
+```
+
 
 ### Caste-specific genes
 
@@ -454,14 +494,7 @@ get_intersections(caste_results, "Time") %>% melt() %>%
     by = "Gene symbol") %>%
   arrange(-abs(`logFC at 2h` + `logFC at 4h` + `logFC at 6h` + `logFC at 8h`)) %>%
   mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
-  # datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
-  datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
-            extensions = 'Buttons', options = list(
-              dom = 'Bfrtip', pageLength = 10,
-              buttons = c('copy', 'csv', 'excel', 'pdf')))
-            
-            
-            
+  my_data_table()
 ```
 
 ### Temporally-variable genes in queen-destined larvae
@@ -490,11 +523,7 @@ time_results %>%
       rename_at(vars(-`Gene symbol`), ~ paste("logFC: ", .x, "h", sep = "")),
     by = "Gene symbol") %>%
   mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
-  # datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
-  datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
-            extensions = 'Buttons', options = list(
-              dom = 'Bfrtip', pageLength = 10,
-              buttons = c('copy', 'csv', 'excel', 'pdf')))
+  my_data_table()
 ```
 
 ### Temporally-variable genes in worker-destined larvae
@@ -607,6 +636,7 @@ if(!file.exists("output/expr_gsea_results.rds")){
     dplyr::select(gene, statistic, Caste, Time) 
   
   # Do the GO and KEGG enrichments (see the file code/GO_and_KEGG_gsea.R)
+  p_thresh <- 0.01
   
   # Caste difference, at each time point (A. mellifera annotations)
   GO_Amel_annotations_caste <- rbind(
@@ -623,7 +653,8 @@ if(!file.exists("output/expr_gsea_results.rds")){
       GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "bee_GO") %>% 
       mutate(Time = 8, Comparison = "Caste")
   ) 
-  significant <- GO_Amel_annotations_caste %>% filter(pval < 0.05) %>% pull(pathway) %>% unique()
+  significant <- GO_Amel_annotations_caste %>% 
+    filter(pval < p_thresh) %>% pull(pathway) %>% unique()
   GO_Amel_annotations_caste <- GO_Amel_annotations_caste %>%
     filter(pathway %in% significant)
   
@@ -643,7 +674,8 @@ if(!file.exists("output/expr_gsea_results.rds")){
       GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "dros_ortho_GO") %>% 
       mutate(Time = 8, Comparison = "Caste")
   ) 
-  significant <- GO_Dmel_annotations_caste %>% filter(pval < 0.05) %>% pull(pathway) %>% unique()
+  significant <- GO_Dmel_annotations_caste %>% 
+    filter(pval < p_thresh) %>% pull(pathway) %>% unique()
   GO_Dmel_annotations_caste <- GO_Dmel_annotations_caste %>%
     filter(pathway %in% significant)
 
@@ -656,15 +688,17 @@ if(!file.exists("output/expr_gsea_results.rds")){
     GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "bee_GO") %>% 
     mutate(Time = "Queen", Comparison = "Queen temporal change")
   
-  GO_Amel_annotations_temporalW <- time_GO_data %>%          # WHAT THE HELL GOES HERE?
+  GO_Amel_annotations_temporalW <- time_GO_data %>%         
     filter(Caste == "Worker") %>%
     group_by(gene) %>%
     summarise(statistic = statistic[which.max(abs(statistic))], .groups = "drop") %>%
     GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "bee_GO") %>% 
     mutate(Time = "Worker", Comparison = "Worker temporal change")
   
-  significant_q <- GO_Amel_annotations_temporalQ %>% filter(pval < 0.05) %>% pull(pathway) %>% unique()
-  significant_w <- GO_Amel_annotations_temporalW %>% filter(pval < 0.05) %>% pull(pathway) %>% unique()
+  significant_q <- GO_Amel_annotations_temporalQ %>% 
+    filter(pval < p_thresh) %>% pull(pathway) %>% unique()
+  significant_w <- GO_Amel_annotations_temporalW %>% 
+    filter(pval < p_thresh) %>% pull(pathway) %>% unique()
   
   GO_Amel_annotations_temporalQ <- GO_Amel_annotations_temporalQ %>%
     filter(pathway %in% unique(c(significant_q, significant_w)))
@@ -672,22 +706,22 @@ if(!file.exists("output/expr_gsea_results.rds")){
     filter(pathway %in% unique(c(significant_q, significant_w)))
   
   # Temporal change, in each caste (D. mel)
-  GO_Dmel_annotations_temporalQ <- time_GO_data %>%          # WHAT THE HELL GOES HERE?
+  GO_Dmel_annotations_temporalQ <- time_GO_data %>%        
     filter(Caste == "Queen") %>%
     group_by(gene) %>%
     summarise(statistic = statistic[which.max(abs(statistic))], .groups = "drop") %>%
     GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "dros_ortho_GO") %>% 
     mutate(Time = "Queen", Comparison = "Queen temporal change")
   
-  GO_Dmel_annotations_temporalW <- time_GO_data %>%          # WHAT THE HELL GOES HERE?
+  GO_Dmel_annotations_temporalW <- time_GO_data %>%        
     filter(Caste == "Worker") %>%
     group_by(gene) %>%
     summarise(statistic = statistic[which.max(abs(statistic))], .groups = "drop") %>%
     GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "dros_ortho_GO") %>% 
     mutate(Time = "Worker", Comparison = "Queen temporal change")
   
-  significant_q <- GO_Dmel_annotations_temporalQ %>% filter(pval < 0.05) %>% pull(pathway) %>% unique()
-  significant_w <- GO_Dmel_annotations_temporalW %>% filter(pval < 0.05) %>% pull(pathway) %>% unique()
+  significant_q <- GO_Dmel_annotations_temporalQ %>% filter(pval < p_thresh) %>% pull(pathway) %>% unique()
+  significant_w <- GO_Dmel_annotations_temporalW %>% filter(pval < p_thresh) %>% pull(pathway) %>% unique()
   
   GO_Dmel_annotations_temporalQ <- GO_Dmel_annotations_temporalQ %>%
     filter(pathway %in% unique(c(significant_q, significant_w)))
@@ -705,37 +739,84 @@ if(!file.exists("output/expr_gsea_results.rds")){
 
 source("code/make_pathway_figure.R")
 
+do_GO_table <- function(GO_results){
+  GO_results %>%
+    mutate(leadingEdge = map_chr(leadingEdge, ~ paste0(.x, collapse = ", ")),
+           gene_names = map_chr(gene_names, ~ paste0(.x, collapse = ", "))) %>%
+    dplyr::select(-ES, -log2err, -Comparison) %>%
+    dplyr::select(Time, term, everything()) %>%
+    dplyr::rename(Term=term, `Term type` = Test_type, ID = pathway, 
+                  `Normalised enrichment score` = NES, 
+                  `Leading edge genes` = leadingEdge,
+                  `Corresponding gene names` = gene_names) %>%
+    my_data_table() %>% formatSignif(c('pval', 'padj', 'Normalised enrichment score'), 2)
+}
+
+
+
 BP_fig_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
   make_pathway_figure("", "Hours post-grafting")
+
+BP_tab_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
 
 MF_fig_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Molecular function") %>%
   make_pathway_figure("", "Hours post-grafting")
 
+MF_tab_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+
 CC_fig_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
   make_pathway_figure("", "Hours post-grafting")
+
+CC_tab_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
 
 kegg_fig_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "KEGG") %>%
   make_pathway_figure("", "Hours post-grafting")
 
+kegg_tab_Amel <- GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
+
 BP_fig_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
   make_pathway_figure("", "Hours post-grafting")
+
+BP_tab_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
 
 MF_fig_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Molecular function") %>%
   make_pathway_figure("", "Hours post-grafting")
 
+MF_tab_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+
 CC_fig_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
   make_pathway_figure("", "Hours post-grafting")
 
+CC_tab_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+
 kegg_fig_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "KEGG") %>%
   make_pathway_figure("", "Hours post-grafting")
+
+kegg_tab_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
 ```
 
 ### GO and KEGG enrichment using _A. mellifera_ annotations {.tabset}
@@ -743,48 +824,105 @@ kegg_fig_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
 Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
 
-#### GO: Biological process
+#### GO: Biological process {.tabset}
+
+##### Figure
 ```{r enrichBP, fig.height=10, fig.width = 5.3}
 BP_fig_Amel
 ```
 
-#### GO: Molecular function
+##### Table
+```{r}
+BP_tab_Amel
+```
+
+
+#### GO: Molecular function {.tabset}
+
+##### Figure
 ```{r enrichMF, fig.height=10, fig.width = 5.3}
 MF_fig_Amel
 ```
 
-#### GO: Cellular component
+##### Table
+```{r}
+MF_tab_Amel
+```
+
+#### GO: Cellular component {.tabset}
+
+##### Figure
 ```{r enrichCC, fig.width = 5.3}
 CC_fig_Amel
 ```
 
-#### KEGG
+##### Table
+```{r}
+CC_tab_Amel
+```
+
+#### KEGG {.tabset}
+
+##### Figure
 ```{r enrichKEGG, fig.height=14, fig.width = 5.3}
 kegg_fig_Amel
+```
+
+##### Table
+```{r}
+kegg_tab_Amel
 ```
 
 ### GO and KEGG enrichment using _D. melanogaster_ annotations {.tabset}
 
 Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
-#### GO: Biological process
+#### GO: Biological process {.tabset}
+
+##### Figure
 ```{r enrichBPmel, fig.height=35, fig.width = 5.3}
 BP_fig_Dmel
 ```
 
-#### GO: Molecular function
+##### Table
+```{r}
+BP_tab_Amel
+```
+
+#### GO: Molecular function {.tabset}
+
+##### Figure
 ```{r enrichMFmel, fig.height=25, fig.width = 5.3}
 MF_fig_Dmel
 ```
 
-#### GO: Cellular component
+##### Table
+```{r}
+MF_tab_Dmel
+```
+
+#### GO: Cellular component {.tabset}
+
+##### Figure
 ```{r enrichCCmel, fig.height=17, fig.width = 5.3}
 CC_fig_Dmel
 ```
 
-#### KEGG
+##### Table
+```{r}
+CC_tab_Dmel
+```
+
+#### KEGG {.tabset}
+
+##### Figure
 ```{r enrichKEGGmel, fig.height=11, fig.width = 5.3}
 kegg_fig_Dmel
+```
+
+##### Table
+```{r}
+kegg_tab_Dmel
 ```
 
 
@@ -798,15 +936,17 @@ if(!file.exists("output/expression_eigengenes.csv")){
     
     # We need samples=rows, columns= genes (opposite of limma!)
     my_data <- t(expression_data)
-    for(i in ncol(my_data)) my_data[,i] <- as.numeric(my_data[,i])   # needed to convert, from integers, for a WGCNA function to work
+    for(i in ncol(my_data)) my_data[,i] <- as.numeric(my_data[,i])   # needed to convert from integers for a WGCNA function to work! 
     
-    # Pick the soft thresholding power that gives a model fit of R^2 > RsquaredCut for the scale-free topology model
+    # Pick the soft thresholding power that gives a model fit of 
+    # R^2 > RsquaredCut for the scale-free topology model
     soft_power <- pickSoftThreshold(
       my_data, powerVector = 1:30, RsquaredCut = 0.85, verbose = 5)
     
-    print(paste("Network was built using a soft thresholding power of", soft_power$powerEstimate))
+    print(paste("Network was built using a soft thresholding power of", 
+                soft_power$powerEstimate))
     
-    cor <- WGCNA::cor
+    cor <- WGCNA::cor # 
     
     # Use this power to generate a gene co-expression network
     # Largely uses the default arguments, except as stated:
@@ -925,8 +1065,6 @@ brms_data <- expr_eigengenes %>%
   mutate(scaled_Time = as.numeric(scale(Time))) %>%
   mutate_at(vars(starts_with("m")), ~ as.numeric(scale(.x))) %>%
   mutate(Replicate = C(factor(Replicate), contr = "contr.sum")) 
-
-
 
 
 mat <- dplyr::select(brms_data, starts_with("m")) %>% 
@@ -1153,7 +1291,7 @@ new <- expand_grid(
 
 # Function to get all the predictions for each module
 make_preds <- function(){
-  preds <- fitted(brms_eigengene_model, new, summary = FALSE, re_formula = NA, nsamples = 5000) 
+  preds <- fitted(brms_eigengene_model, new, summary = FALSE, re_formula = NA, nsamples = 100) 
   
   map_df(1:length(unique(network$colors)), ~ {
     as.data.frame(preds[,, .x]) %>% 
@@ -1197,7 +1335,7 @@ pd <- position_dodge(0.35)
 
 set.seed(1)
 eigen_plot <- preds %>%
-  filter(draw %in% sample(max(preds$draw), 100)) %>% # plot random 100 posterior fit lines
+#  filter(draw %in% sample(max(preds$draw), 100)) %>% # plot random 100 posterior fit lines
   ggplot(aes(Time, eigengene)) +
   scale_fill_manual(values = c(queen_colour, worker_colour, "white"), 
                     aesthetics = c("colour", "fill"), name = "Cell type") +  
@@ -1589,7 +1727,6 @@ present_module_GO_table <- function(module_GO_tbl){
   
   focal <- module_GO_tbl %>%
     arrange(Module, Ontology, pvalue) %>%
-    # filter(Module == paste("Module", module) & pvalue < 0.05)  %>%
     filter(pvalue < 0.05)  %>%
     mutate(`Gene & Background ratios` = paste(GeneRatio, BgRatio),
            ID = paste(Meaning, " (", ID, ")", sep = "")) %>%
@@ -1597,28 +1734,20 @@ present_module_GO_table <- function(module_GO_tbl){
     dplyr::select(-GeneRatio, -BgRatio, -Meaning) %>%
     dplyr::select(Ontology, ID, `Gene & Background ratios`, everything())
   
-  # bp_rows <- which(focal$Ontology == "GO: Biological process")
-  # mf_rows <- which(focal$Ontology == "GO: Molecular function")
-  # cc_rows <- which(focal$Ontology == "GO: Cellular component")
-  # kg_rows <- which(focal$Ontology == "KEGG")
-  
   focal %>%
-   # dplyr::select(-Module) %>%
     dplyr::select(Module, everything()) %>%
-    mutate_if(is.numeric, ~ round(.x, 3)) %>%
-    datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
-              extensions = 'Buttons', options = list(
-                dom = 'Bfrtip', pageLength = 10,
-                buttons = c('copy', 'csv', 'excel', 'pdf')))
+    mutate_if(is.numeric, ~ round(.x, 3)) 
 }
-present_module_GO_table(module_GO_table_amel) 
+present_module_GO_table(module_GO_table_amel) %>%
+  my_data_table()
 ```
 
 
 #### Using _D. melanogaster_ annotations
 
 ```{r}
-present_module_GO_table(module_GO_table_dmel) 
+present_module_GO_table(module_GO_table_dmel) %>%
+  my_data_table()
 ```
 
 
