@@ -46,14 +46,14 @@ my_data_table <- function(df){
       scrollX=TRUE, scrollY=400,
       scrollCollapse=TRUE,
       buttons = 
-        list('pageLength',  'csv', list(
+        list('pageLength', 'colvis', 'csv', list(
           extend = 'pdf',
           pageSize = 'A4',
           orientation = 'landscape',
-          filename = 'Apis_methylation')),
-        pageLength = 50
-        )
+          filename = 'Apis_meth_expr')),
+      pageLength = 50
     )
+  )
 }
 
 
@@ -249,7 +249,7 @@ meth_geneExpr_relationship_data_caste %>% hex_plot()
 # meth_geneExpr_relationship_data_timeW %>% hex_plot()
 ```
 
-### Run Spearman's rank correlations
+### Spearman correlations
 
 There is a significant, negative relationship between the caste bias in methylation and the caste bias in gene expression, at times 4h, 6h, and 8h (but not time 2h) post-grafting. The gene-level estimates of % cytosine methylation come from BWASP, and the estimates of the logFC in expression comes from RSEM. 
 
@@ -509,7 +509,7 @@ pheatmap(corrs, color = myColor, breaks = myBreaks,
          clustering_distance_rows = "correlation",
          clustering_distance_cols = "correlation",
          border_color = "grey30",
-         cutree_rows = 6, cutree_cols = 6, show_colnames = F)
+         cutree_rows = 10, cutree_cols = 10, show_colnames = F)
 ```
 
 
@@ -547,7 +547,7 @@ make_a_plot <- function(yvar, xvar){
     scale_fill_viridis_c(option = "D") +
     coord_cartesian(ylim = ylim) + 
     ylab(NULL) + xlab(NULL) + 
-    facet_wrap(~ t, labeller = labeller(t = label_wrap_gen(33))) +
+    facet_wrap(~ t, labeller = labeller(t = label_wrap_gen(38))) +
     theme_bw(10) + 
     theme(legend.position = "none",
          # text = element_text(family = nice_font),

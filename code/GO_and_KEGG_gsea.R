@@ -7,7 +7,7 @@
 
 GO_and_KEGG_gsea <- function(df, GO_list, min.size = 5, keep.all = FALSE){
   
-  p <- 0.05; if(keep.all) p <- 1 # Set the significance threshold
+  p <- 0.01; if(keep.all) p <- 1 # Set the significance threshold
   
   # Set up the geneList object in the form needed by the fgsea function - 
   # a named, ranked vector of the test statistic (e.g. logFC, diff in % methylation)

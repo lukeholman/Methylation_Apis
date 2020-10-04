@@ -205,8 +205,9 @@ flyatlas <- read_csv("data/database_tables/flyatlas2_fpkm.csv") %>%
   left_join(read_csv("data/database_tables/dros_ortho_GO.csv") %>% 
               dplyr::select(FLYBASE, SYMBOL) %>% distinct(), by = c("gene" = "FLYBASE")) %>%
   arrange(SYMBOL) %>% dplyr::select(-gene) %>%
-  mutate(FPKM = as.numeric(FPKM)) %>%
   filter(type == "Female" & !(Tissue %in% c("Whole body", "Carcass"))) %>%
+  group_by(SYMBOL) %>%
+  mutate(FPKM = as.numeric(scale(as.numeric(FPKM)))) %>%
   # split(.$SYMBOL) %>%
   # map_df(~ .x %>% mutate(FPKM = FPKM / max(FPKM, na.rm = TRUE))) %>%
   dplyr::select(SYMBOL, Tissue, FPKM) %>%
