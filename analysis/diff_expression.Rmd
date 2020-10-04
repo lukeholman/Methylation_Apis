@@ -431,7 +431,7 @@ plot_corr_hist(c("Csd", "Dnmt1a", "Dnmt3", "Dsx", "Dl", "tra2", "Mrjp1", "Mrjp2"
 caste_results %>%
   filter(adj.P.Val < 0.05) %>%
   group_by(Time) %>%
-  summarise(n_significant_genes = n()) %>%
+  summarise(n_significant_genes = n(), .groups = "drop") %>%
   dplyr::rename(Comparison = Time) %>%
   mutate(Comparison = glue("QDL vs WDL ({Comparison}h)")) %>%
   kable_table() %>%
@@ -443,7 +443,7 @@ caste_results %>%
 time_results %>%
   filter(adj.P.Val < 0.05) %>%
   group_by(Caste, Time) %>%
-  summarise(n_significant_genes = n()) %>% 
+  summarise(n_significant_genes = n(), .groups = "drop") %>% 
     dplyr::rename(Comparison = Time) %>%
     mutate(Comparison = glue("{Caste} ({Comparison}h)"),
            Comparison = str_replace_all(Comparison, " vs", "h vs"),
@@ -560,58 +560,58 @@ time_results %>%
 ```
 
 
-## Overlaps in differential expression
+<!-- ## Overlaps in differential expression -->
 
-### UpSet plot
+<!-- ### UpSet plot -->
 
-The plot shows the number of significantly differentially expressed genes for each comparison, and the number of these that intersect for each pair of comparisons (similar to a Venn diagram, expect it can handle more categories).
+<!-- The plot shows the number of significantly differentially expressed genes for each comparison, and the number of these that intersect for each pair of comparisons (similar to a Venn diagram, expect it can handle more categories). -->
 
-```{r upset, fig.height=7}
-caste_results %>% 
-  mutate(Caste = "Caste difference", 
-         Time = paste(Time, "h", sep = "")) %>% 
-  select(Caste, Time, `Gene symbol`, 
-         `Gene name`, adj.P.Val) %>%
-  bind_rows(
-    time_results %>% 
-      select(Caste, Time, `Gene symbol`, 
-             `Gene name`, adj.P.Val) %>%
-      mutate(Time = paste(
-        substr(Time,1,1), 
-        "h", substr(Time,2,nchar(Time)), "h", sep = ""))) %>%
-  filter(adj.P.Val <= 0.05) %>% 
-  mutate(Comparison = paste(Caste, Time)) %>%
-  split(.$Comparison) %>%
-  map(~ .x %>% pull(`Gene symbol`)) %>%
-  fromList() %>%
-  upset(order.by = "freq", nsets = 999) 
-```
+<!-- ```{r upset, fig.height=7} -->
+<!-- caste_results %>%  -->
+<!--   mutate(Caste = "Caste difference",  -->
+<!--          Time = paste(Time, "h", sep = "")) %>%  -->
+<!--   select(Caste, Time, `Gene symbol`,  -->
+<!--          `Gene name`, adj.P.Val) %>% -->
+<!--   bind_rows( -->
+<!--     time_results %>%  -->
+<!--       select(Caste, Time, `Gene symbol`,  -->
+<!--              `Gene name`, adj.P.Val) %>% -->
+<!--       mutate(Time = paste( -->
+<!--         substr(Time,1,1),  -->
+<!--         "h", substr(Time,2,nchar(Time)), "h", sep = ""))) %>% -->
+<!--   filter(adj.P.Val <= 0.05) %>%  -->
+<!--   mutate(Comparison = paste(Caste, Time)) %>% -->
+<!--   split(.$Comparison) %>% -->
+<!--   map(~ .x %>% pull(`Gene symbol`)) %>% -->
+<!--   fromList() %>% -->
+<!--   upset(order.by = "freq", nsets = 999)  -->
+<!-- ``` -->
 
-### Correlations in log fold differences in expression
+<!-- ### Correlations in log fold differences in expression -->
 
-The figure plots each possible pairwise comparison for within and between castes, e.g. the Queen 6 vs 8 variable gives the log fold difference in gene expression that was estimated between the 6h and 8h queen samples that was estimated by `voom`. Note that many of the genes that increased in expression at times 0-6h in queens, and also genes in which queens have higher expression than workers, actually decrease in expression between 6h and 8h in queens (one can also see this in the eigengenes figure below). 
+<!-- The figure plots each possible pairwise comparison for within and between castes, e.g. the Queen 6 vs 8 variable gives the log fold difference in gene expression that was estimated between the 6h and 8h queen samples that was estimated by `voom`. Note that many of the genes that increased in expression at times 0-6h in queens, and also genes in which queens have higher expression than workers, actually decrease in expression between 6h and 8h in queens (one can also see this in the eigengenes figure below).  -->
 
-```{r cor_lfc, warning=FALSE, fig.height=10, fig.width=12}
-corr_mat <- (
-  caste_results %>% 
-    mutate(Caste = "Queen vs worker", 
-           Time = as.character(Time)) %>% 
-    select(Caste, Time, `Gene symbol`, `Gene name`, logFC) %>%
-    bind_rows(time_results %>% 
-                select(Caste, Time, `Gene symbol`, `Gene name`, logFC)) %>%
-    mutate(Comparison = paste(Caste, Time)) %>% 
-    select(`Gene symbol`, Comparison, logFC) %>% distinct() %>%
-    spread(Comparison, logFC) %>% select(-`Gene symbol`)) %>%
-  cor()
+<!-- ```{r cor_lfc, warning=FALSE, fig.height=10, fig.width=12} -->
+<!-- corr_mat <- ( -->
+<!--   caste_results %>%  -->
+<!--     mutate(Caste = "Queen vs worker",  -->
+<!--            Time = as.character(Time)) %>%  -->
+<!--     select(Caste, Time, `Gene symbol`, `Gene name`, logFC) %>% -->
+<!--     bind_rows(time_results %>%  -->
+<!--                 select(Caste, Time, `Gene symbol`, `Gene name`, logFC)) %>% -->
+<!--     mutate(Comparison = paste(Caste, Time)) %>%  -->
+<!--     select(`Gene symbol`, Comparison, logFC) %>% distinct() %>% -->
+<!--     spread(Comparison, logFC) %>% select(-`Gene symbol`)) %>% -->
+<!--   cor() -->
 
-colors2 <- colorRampPalette( c(rev(brewer.pal(9, "Blues")),
-                               "white", brewer.pal(9, "Reds")) )(255)
+<!-- colors2 <- colorRampPalette( c(rev(brewer.pal(9, "Blues")), -->
+<!--                                "white", brewer.pal(9, "Reds")) )(255) -->
 
-pheatmap(corr_mat, col = colors2, 
-         cutree_cols = 4, 
-         cutree_rows = 4, 
-         labels_row = NULL)
-```
+<!-- pheatmap(corr_mat, col = colors2,  -->
+<!--          cutree_cols = 4,  -->
+<!--          cutree_rows = 4,  -->
+<!--          labels_row = NULL) -->
+<!-- ``` -->
 
 
 ## Enriched pathways among the caste-biased genes 
