@@ -1104,7 +1104,7 @@ In `brms` notations (which is similar to e.g. `lme4` and many other R packages),
 
 $$ y \sim Caste + s(Time, by = Caste, k = 4) + Replicate$$
 
-where $y$ is the eigengene for module $j$. 
+where $y$ is the eigengene for module $j$. We specified regularising priors on all fixed effects estimates (i.e. `Normal(0, 2)`) to minimise overfitting to the data. 
 
 ```{r}
 # Define the model formula for all the j modules
@@ -1340,7 +1340,6 @@ pd <- position_dodge(0.35)
 
 set.seed(1)
 eigen_plot <- preds %>%
-#  filter(draw %in% sample(max(preds$draw), 100)) %>% # plot random 100 posterior fit lines
   ggplot(aes(Time, eigengene)) +
   scale_fill_manual(values = c(queen_colour, worker_colour, "white"), 
                     aesthetics = c("colour", "fill"), name = "Cell type") +  
