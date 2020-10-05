@@ -2020,9 +2020,9 @@ left_join(gene_timeQ, gene_timeW %>%
 
 Red means that there is higher % methylation for genes annotated with the focal pathway/process in queens, while blue means higher % methylation in workers. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent). 
 
-#### GO: Biological process {.tabset}
+#### Using the _D. melanogaster_ annotations {.tabset}
 
-##### Using the _D. melanogaster_ annotations {.tabset}
+##### GO: Biological process {.tabset}
 
 ###### Figure
 ```{r fig.height=8, fig.width = 6.9}
@@ -2054,26 +2054,8 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ```
 
 
-##### Using the _A. mellifera_ annotations {.tabset}
 
-###### Figure
-```{r fig.height=2.7, fig.width = 6.9}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  filter(Test_type == "GO: Biological process") %>%
-    make_pathway_figure("", "Hours post-grafting")
-```
-
-###### Table
-```{r}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  filter(Test_type == "GO: Biological process") %>%
-  do_GO_table()
-```
-
-
-#### GO: Molecular function {.tabset}
-
-##### Using the _D. melanogaster_ annotations {.tabset}
+##### GO: Molecular function {.tabset}
 
 ###### Figure
 ```{r fig.width=6.9, fig.height = 7}
@@ -2089,30 +2071,11 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
   do_GO_table()
 ```
 
-##### Using the _A. mellifera_ annotations {.tabset}
+
+##### GO: Cellular component {.tabset}
 
 ###### Figure
-```{r fig.width=6.9, fig.height = 6}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  filter(Test_type == "GO: Molecular function") %>%
-  make_pathway_figure("", "Hours post-grafting")
-```
-
-###### Table
-```{r}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  filter(Test_type == "GO: Molecular function") %>%
-  do_GO_table()
-```
-
-
-
-#### GO: Cellular component {.tabset}
-
-##### Using the _D. melanogaster_ annotations {.tabset}
-
-###### Figure
-```{r fig.width=4, fig.height = 10.4}
+```{r fig.width=6.9, fig.height = 4}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
   make_pathway_figure("", "Hours post-grafting")
@@ -2126,26 +2089,9 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ```
 
 
-##### Using the _A. mellifera_ annotations {.tabset}
-
-###### Figure
-```{r fig.width=4, fig.height = 6}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  filter(Test_type == "GO: Cellular component") %>%
-  make_pathway_figure("", "Hours post-grafting")
-```
-
-###### Table
-```{r}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  filter(Test_type == "GO: Cellular component") %>%
-  do_GO_table()
-```
 
 
-#### KEGG pathways {.tabset}
-
-##### Using the _D. melanogaster_ annotations {.tabset}
+##### KEGG pathways {.tabset}
 
 ###### Figure
 ```{r fig.width=6.9, fig.height = 5}
@@ -2162,7 +2108,59 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ```
 
 
-##### Using the _A. mellifera_ annotations {.tabset}
+
+#### Using the _A. mellifera_ annotations {.tabset}
+
+##### GO: Biological process {.tabset}
+
+###### Figure
+```{r fig.height=2.7, fig.width = 6.9}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
+    make_pathway_figure("", "Hours post-grafting")
+```
+
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
+##### GO: Molecular function {.tabset}
+
+###### Figure
+```{r fig.width=6.9, fig.height = 6}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  make_pathway_figure("", "Hours post-grafting")
+```
+
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
+##### GO: Cellular component {.tabset}
+
+###### Figure
+```{r fig.width=6.9, fig.height = 4}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  make_pathway_figure("", "Hours post-grafting")
+```
+
+###### Table
+```{r}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
+
+##### KEGG pathways {.tabset}
 
 ###### Figure
 ```{r fig.width=6.9, fig.height = 4}
