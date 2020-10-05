@@ -249,8 +249,6 @@ t(scaled_expression_data) %>%
 
 The formula used for the linear models is: `caste * time_point + replicate`. We then use this model to compute planned contrasts that test for a caste difference at each time point (2h, 4h, 6h, 8h), as well as to measure the ccaste-specific effect of time on gene expression (e.g. we test for changes in expression between 2h and 8h, separately in queens and workers).
 
-In the following tables, a **positive** log fold change in expression indicates **higher expression in queens** vs workers (for caste comparisons) or **higher expression at later times** than earlier times (for temporal comparisons).
-
 ```{r voom}
 voom_gene_data <- calcNormFactors(DGEList(expression_data))
 
@@ -458,7 +456,7 @@ time_results %>%
 
 ### Caste-specific genes
 
-You can also view this table on a full web page [here](caste_table.html), or press the buttons to export the table to PDF, .csv, or Excel formats.
+In the following table, a **positive** log fold change in expression indicates **higher expression in QDL** relative to WDL measured at the same time point. One can also view this table on a full web page [here](caste_table.html), or press the buttons to export the table.
 
 ```{r intersections}
 get_intersections <- function(results_df, split_by){
@@ -499,7 +497,7 @@ get_intersections(caste_results, "Time") %>% melt() %>%
 
 ### Temporally-variable genes in queen-destined larvae
 
-You can also view this table on a full web page [here](queen_time_table.html), or press the buttons to export the table to PDF, .csv, or Excel formats.
+In the following table, a **positive** log fold change in expression indicates **higher expression at later times** than earlier times for a given type of larva (QDL or WDL). You can also view this table on a full web page [here](queen_time_table.html), or press the buttons to export the table.
 
 ```{r temporal_Q}
 time_results %>% 
@@ -819,111 +817,280 @@ kegg_tab_Dmel <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
   do_GO_table()
 ```
 
-### GO and KEGG enrichment using _A. mellifera_ annotations {.tabset}
+
+### Enrichment results for genes showing _caste differences_ in expression
+
+#### GO and KEGG enrichment using _D. melanogaster_ annotations {.tabset}
 
 Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
+##### GO: Biological process {.tabset}
 
-#### GO: Biological process {.tabset}
-
-##### Figure
-```{r enrichBP, fig.height=10, fig.width = 5.3}
-BP_fig_Amel
-```
-
-##### Table
-```{r}
-BP_tab_Amel
-```
-
-
-#### GO: Molecular function {.tabset}
-
-##### Figure
-```{r enrichMF, fig.height=10, fig.width = 5.3}
-MF_fig_Amel
-```
-
-##### Table
-```{r}
-MF_tab_Amel
-```
-
-#### GO: Cellular component {.tabset}
-
-##### Figure
-```{r enrichCC, fig.width = 5.3}
-CC_fig_Amel
-```
-
-##### Table
-```{r}
-CC_tab_Amel
-```
-
-#### KEGG {.tabset}
-
-##### Figure
-```{r enrichKEGG, fig.height=14, fig.width = 5.3}
-kegg_fig_Amel
-```
-
-##### Table
-```{r}
-kegg_tab_Amel
-```
-
-### GO and KEGG enrichment using _D. melanogaster_ annotations {.tabset}
-
-Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
-
-#### GO: Biological process {.tabset}
-
-##### Figure
-```{r enrichBPmel, fig.height=35, fig.width = 5.3}
+###### Figure
+```{r fig.height=35, fig.width = 5.3}
 BP_fig_Dmel
 ```
 
-##### Table
+###### Table
 ```{r}
 BP_tab_Amel
 ```
 
-#### GO: Molecular function {.tabset}
+##### GO: Molecular function {.tabset}
 
-##### Figure
-```{r enrichMFmel, fig.height=25, fig.width = 5.3}
+###### Figure
+```{r fig.height=25, fig.width = 5.3}
 MF_fig_Dmel
 ```
 
-##### Table
+###### Table
 ```{r}
 MF_tab_Dmel
 ```
 
-#### GO: Cellular component {.tabset}
+##### GO: Cellular component {.tabset}
 
-##### Figure
-```{r enrichCCmel, fig.height=17, fig.width = 5.3}
+###### Figure
+```{r fig.height=17, fig.width = 5.3}
 CC_fig_Dmel
 ```
 
-##### Table
+###### Table
 ```{r}
 CC_tab_Dmel
 ```
 
-#### KEGG {.tabset}
+##### KEGG {.tabset}
 
-##### Figure
-```{r enrichKEGGmel, fig.height=11, fig.width = 5.3}
+###### Figure
+```{r fig.height=11, fig.width = 5.3}
 kegg_fig_Dmel
 ```
 
-##### Table
+###### Table
 ```{r}
 kegg_tab_Dmel
 ```
+
+#### GO and KEGG enrichment using _A. mellifera_ annotations {.tabset}
+
+Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
+
+
+##### GO: Biological process {.tabset}
+
+###### Figure
+```{r fig.height=10, fig.width = 5.3}
+BP_fig_Amel
+```
+
+###### Table
+```{r}
+BP_tab_Amel
+```
+
+
+##### GO: Molecular function {.tabset}
+
+###### Figure
+```{r fig.height=10, fig.width = 5.3}
+MF_fig_Amel
+```
+
+###### Table
+```{r}
+MF_tab_Amel
+```
+
+##### GO: Cellular component {.tabset}
+
+###### Figure
+```{r fig.width = 5.3}
+CC_fig_Amel
+```
+
+###### Table
+```{r}
+CC_tab_Amel
+```
+
+##### KEGG {.tabset}
+
+###### Figure
+```{r fig.height=14, fig.width = 5.3}
+kegg_fig_Amel
+```
+
+###### Table
+```{r}
+kegg_tab_Amel
+```
+
+### Enrichment results for genes showing _caste differences_ in expression
+
+#### GO and KEGG enrichment using _D. melanogaster_ annotations {.tabset}
+
+Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
+
+##### GO: Biological process {.tabset}
+
+###### Figure
+```{r fig.height=35, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Biological process") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
+##### GO: Molecular function {.tabset}
+
+###### Figure
+```{r fig.height=25, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Molecular function") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
+##### GO: Cellular component {.tabset}
+
+###### Figure
+```{r fig.height=17, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Cellular component") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
+##### KEGG {.tabset}
+
+###### Figure
+```{r fig.height=11, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "KEGG") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
+```
+
+#### GO and KEGG enrichment using _A. mellifera_ annotations {.tabset}
+
+Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
+
+
+##### GO: Biological process {.tabset}
+
+###### Figure
+```{r fig.height=10, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Biological process") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Biological process") %>%
+  do_GO_table()
+```
+
+##### GO: Molecular function {.tabset}
+
+###### Figure
+```{r fig.height=25, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Molecular function") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Molecular function") %>%
+  do_GO_table()
+```
+
+##### GO: Cellular component {.tabset}
+
+###### Figure
+```{r fig.height=17, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Cellular component") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Cellular component") %>%
+  do_GO_table()
+```
+
+##### KEGG {.tabset}
+
+###### Figure
+```{r fig.height=11, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "KEGG") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+```
+
+###### Table
+```{r}
+bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
+  filter(Test_type == "KEGG") %>%
+  do_GO_table()
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Gene coexpression network analysis
