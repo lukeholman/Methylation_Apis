@@ -454,7 +454,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-10-05
+<strong>Last updated:</strong> 2020-10-06
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -545,16 +545,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea7d5e2dacccea42135779363778178e1d1bd825atargetblanka7d5e2da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/a7d5e2dacccea42135779363778178e1d1bd825a" target="_blank">a7d5e2d</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree9cfc03db7f015ef8573f656051f79b329f58adc6targetblank9cfc03da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/9cfc03db7f015ef8573f656051f79b329f58adc6" target="_blank">9cfc03d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea7d5e2dacccea42135779363778178e1d1bd825atargetblanka7d5e2da" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree9cfc03db7f015ef8573f656051f79b329f58adc6targetblank9cfc03da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/a7d5e2dacccea42135779363778178e1d1bd825a" target="_blank">a7d5e2d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/9cfc03db7f015ef8573f656051f79b329f58adc6" target="_blank">9cfc03d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -618,6 +618,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/9cfc03db7f015ef8573f656051f79b329f58adc6/analysis/diff_expression.Rmd" target="_blank">9cfc03d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+<td>
+push
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/b6e8ac2028465fbbf48990c303000bb9a17e5a4e/docs/diff_expression.html" target="_blank">b6e8ac2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1900,7 +1934,7 @@ time_results &lt;- rbind(
 </div>
 <div id="significantly-differentially-expressed-gene-lists" class="section level2">
 <h2>Significantly differentially expressed gene lists</h2>
-<div id="counting-the-significant-genes" class="section level3">
+<div id="counting-the-significant-genes" class="section level3 tabset">
 <h3>Counting the significant genes</h3>
 <div id="genes-showing-a-difference-between-qdl-and-wdl-by-timepoint" class="section level4">
 <h4>Genes showing a difference between QDL and WDL by timepoint</h4>
@@ -3287,10 +3321,10 @@ mat &lt;- dplyr::select(brms_data, starts_with(&quot;m&quot;)) %&gt;%
   as.matrix()
 rownames(mat) &lt;- paste(brms_data$Caste, brms_data$Time, brms_data$Replicate)
 rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;NA 0&quot;, &quot;t0&quot;)
-rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;2&quot;, &quot;2h&quot;)
-rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;4&quot;, &quot;4h&quot;)
-rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;6&quot;, &quot;6h&quot;)
-rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;8&quot;, &quot;8h&quot;)
+rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;2&quot;, &quot;2h rep&quot;)
+rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;4&quot;, &quot;4h rep&quot;)
+rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;6&quot;, &quot;6h rep&quot;)
+rownames(mat) &lt;- str_replace_all(rownames(mat), &quot;8&quot;, &quot;8h rep&quot;)
 
 paletteLength &lt;- 50
 myColor &lt;- colorRampPalette(c(brewer.pal(9, &quot;Blues&quot;)[6], &quot;white&quot;, brewer.pal(9, &quot;Reds&quot;)[6]))(paletteLength)
@@ -3625,6 +3659,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b6e8ac2028465fbbf48990c303000bb9a17e5a4e/docs/figure/diff_expression.Rmd/eigen_plot-1.png" target="_blank">b6e8ac2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-05
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/bfcc5fd7aa2d5f6a69ebc8422db189330bd010a6/docs/figure/diff_expression.Rmd/eigen_plot-1.png" target="_blank">bfcc5fd</a>
 </td>
 <td>
@@ -3705,7 +3750,7 @@ lukeholman
 </div>
 </div>
 </div>
-<div id="calculate-effect-sizes-for-the-module-eigengenes" class="section level3">
+<div id="calculate-effect-sizes-for-the-module-eigengenes" class="section level3 tabset">
 <h3>Calculate effect sizes for the module eigengenes</h3>
 <p><strong>Table SX:</strong> The table shows a summary of the posterior estimate of the difference in mean module eigengenes between queen- and worker-destined larvae at each of the four time points. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-19 vector of eigengenes for the 19 modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure XXX), and fit “Replicate” as a random intercept. The eigengenes were mean-centred and scaled to unit variance, so the units in the ‘Caste difference’ column can be interpreted as the standardised effect size (Cohen’s <span class="math inline">\(d\)</span>, where positive values mean higher expression of the module in queens relative to workers). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed <span class="math inline">\(p\)</span>-value).</p>
 <div id="full-stats-table" class="section level4">
