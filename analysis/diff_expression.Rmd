@@ -1071,6 +1071,11 @@ mat <- dplyr::select(brms_data, starts_with("m")) %>%
   rename_all(~ str_replace_all(.x, "m", "Module ")) %>%
   as.matrix()
 rownames(mat) <- paste(brms_data$Caste, brms_data$Time, brms_data$Replicate)
+rownames(mat) <- str_replace_all(rownames(mat), "NA 0", "t0")
+rownames(mat) <- str_replace_all(rownames(mat), "2", "2h")
+rownames(mat) <- str_replace_all(rownames(mat), "4", "4h")
+rownames(mat) <- str_replace_all(rownames(mat), "6", "6h")
+rownames(mat) <- str_replace_all(rownames(mat), "8", "8h")
 
 paletteLength <- 50
 myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[6], "white", brewer.pal(9, "Reds")[6]))(paletteLength)
@@ -1141,25 +1146,25 @@ run_brms_eigengene_model <- function() {
   brm_multiple(
     brms_formula,
     data = brms_data,
-    prior = c(set_prior("normal(0, 5)", class = "b", resp = "m0"),
-              set_prior("normal(0, 5)", class = "b", resp = "m1"),
-              set_prior("normal(0, 5)", class = "b", resp = "m2"),
-              set_prior("normal(0, 5)", class = "b", resp = "m3"),
-              set_prior("normal(0, 5)", class = "b", resp = "m4"),
-              set_prior("normal(0, 5)", class = "b", resp = "m5"),
-              set_prior("normal(0, 5)", class = "b", resp = "m6"),
-              set_prior("normal(0, 5)", class = "b", resp = "m7"),
-              set_prior("normal(0, 5)", class = "b", resp = "m8"),
-              set_prior("normal(0, 5)", class = "b", resp = "m9"),
-              set_prior("normal(0, 5)", class = "b", resp = "m10"),
-              set_prior("normal(0, 5)", class = "b", resp = "m11"),
-              set_prior("normal(0, 5)", class = "b", resp = "m12"),
-              set_prior("normal(0, 5)", class = "b", resp = "m13"),
-              set_prior("normal(0, 5)", class = "b", resp = "m14"),
-              set_prior("normal(0, 5)", class = "b", resp = "m15"),
-              set_prior("normal(0, 5)", class = "b", resp = "m16"),
-              set_prior("normal(0, 5)", class = "b", resp = "m17"),
-              set_prior("normal(0, 5)", class = "b", resp = "m18")), 
+    prior = c(set_prior("normal(0, 2)", class = "b", resp = "m0"),
+              set_prior("normal(0, 2)", class = "b", resp = "m1"),
+              set_prior("normal(0, 2)", class = "b", resp = "m2"),
+              set_prior("normal(0, 2)", class = "b", resp = "m3"),
+              set_prior("normal(0, 2)", class = "b", resp = "m4"),
+              set_prior("normal(0, 2)", class = "b", resp = "m5"),
+              set_prior("normal(0, 2)", class = "b", resp = "m6"),
+              set_prior("normal(0, 2)", class = "b", resp = "m7"),
+              set_prior("normal(0, 2)", class = "b", resp = "m8"),
+              set_prior("normal(0, 2)", class = "b", resp = "m9"),
+              set_prior("normal(0, 2)", class = "b", resp = "m10"),
+              set_prior("normal(0, 2)", class = "b", resp = "m11"),
+              set_prior("normal(0, 2)", class = "b", resp = "m12"),
+              set_prior("normal(0, 2)", class = "b", resp = "m13"),
+              set_prior("normal(0, 2)", class = "b", resp = "m14"),
+              set_prior("normal(0, 2)", class = "b", resp = "m15"),
+              set_prior("normal(0, 2)", class = "b", resp = "m16"),
+              set_prior("normal(0, 2)", class = "b", resp = "m17"),
+              set_prior("normal(0, 2)", class = "b", resp = "m18")), 
     chains = 4, iter = 4000, cores = 1, inits = 0,
     control = list(adapt_delta = 0.9999, max_treedepth = 20))
 }
