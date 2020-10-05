@@ -545,16 +545,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree29f46642c3389dae25234669761767e2e2eaeda3targetblank29f4664a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/29f46642c3389dae25234669761767e2e2eaeda3" target="_blank">29f4664</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea7d5e2dacccea42135779363778178e1d1bd825atargetblanka7d5e2da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/a7d5e2dacccea42135779363778178e1d1bd825a" target="_blank">a7d5e2d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree29f46642c3389dae25234669761767e2e2eaeda3targetblank29f4664a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea7d5e2dacccea42135779363778178e1d1bd825atargetblanka7d5e2da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/29f46642c3389dae25234669761767e2e2eaeda3" target="_blank">29f4664</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/a7d5e2dacccea42135779363778178e1d1bd825a" target="_blank">a7d5e2d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -618,6 +618,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/a7d5e2dacccea42135779363778178e1d1bd825a/analysis/diff_expression.Rmd" target="_blank">a7d5e2d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-05
+</td>
+<td>
+expression commits
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/d7a7009798fa7b996c54adc77fa8aa14df4485f2/docs/diff_expression.html" target="_blank">d7a7009</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-05
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -3323,7 +3357,7 @@ lukeholman
 <p>Finally, our experiment was split into 4 replicates/blocks, and so we fit replicate as a random effect to account for similarity in eigengenes between samples measured in the same block, and prevent pseuodreplication.</p>
 <p>In <code>brms</code> notations (which is similar to e.g. <code>lme4</code> and many other R packages), the model formula for each module is written as</p>
 <p><span class="math display">\[ y \sim Caste + s(Time, by = Caste, k = 4) + Replicate\]</span></p>
-<p>where <span class="math inline">\(y\)</span> is the eigengene for module <span class="math inline">\(j\)</span>.</p>
+<p>where <span class="math inline">\(y\)</span> is the eigengene for module <span class="math inline">\(j\)</span>. We specified regularising priors on all fixed effects estimates (i.e. <code>Normal(0, 2)</code>) to minimise overfitting to the data.</p>
 <pre class="r"><code># Define the model formula for all the j modules
 j &lt;- length(unique(expr_eigengenes$Module))
 brms_formula &lt;- bf(
@@ -3532,7 +3566,6 @@ pd &lt;- position_dodge(0.35)
 
 set.seed(1)
 eigen_plot &lt;- preds %&gt;%
-#  filter(draw %in% sample(max(preds$draw), 100)) %&gt;% # plot random 100 posterior fit lines
   ggplot(aes(Time, eigengene)) +
   scale_fill_manual(values = c(queen_colour, worker_colour, &quot;white&quot;), 
                     aesthetics = c(&quot;colour&quot;, &quot;fill&quot;), name = &quot;Cell type&quot;) +  
@@ -3762,19 +3795,19 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.253
+-0.044
 </td>
 <td style="text-align:right;">
-0.612
+0.541
 </td>
 <td style="text-align:right;">
--1.324
+-1.024
 </td>
 <td style="text-align:right;">
-0.953
+1.005
 </td>
 <td style="text-align:left;">
-0.36
+0.48
 </td>
 <td style="text-align:left;">
 </td>
@@ -3784,22 +3817,21 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.493
+0.292
 </td>
 <td style="text-align:right;">
-0.407
+0.371
 </td>
 <td style="text-align:right;">
--0.305
+-0.419
 </td>
 <td style="text-align:right;">
-1.115
+0.936
 </td>
 <td style="text-align:left;">
-0.1
+0.21
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -3807,22 +3839,21 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.623
+0.443
 </td>
 <td style="text-align:right;">
-0.437
+0.386
 </td>
 <td style="text-align:right;">
--0.234
+-0.325
 </td>
 <td style="text-align:right;">
-1.482
+1.104
 </td>
 <td style="text-align:left;">
-0.06
+0.15
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -3830,19 +3861,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
-0.137
+0.250
 </td>
 <td style="text-align:right;">
-0.589
+0.436
 </td>
 <td style="text-align:right;">
--0.999
+-0.451
 </td>
 <td style="text-align:right;">
-1.261
+0.989
 </td>
 <td style="text-align:left;">
-0.4
+0.32
 </td>
 <td style="text-align:left;">
 </td>
@@ -3857,22 +3888,22 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.424
+-0.667
 </td>
 <td style="text-align:right;">
-0.415
+0.327
 </td>
 <td style="text-align:right;">
--2.159
+-1.260
 </td>
 <td style="text-align:right;">
--0.710
+-0.007
 </td>
 <td style="text-align:left;">
-0
+0.03
 </td>
 <td style="text-align:left;">
-***
+*
 </td>
 </tr>
 <tr>
@@ -3880,21 +3911,22 @@ PP
 4
 </td>
 <td style="text-align:right;">
--0.116
+-0.486
 </td>
 <td style="text-align:right;">
-0.308
+0.276
 </td>
 <td style="text-align:right;">
--0.744
+-1.061
 </td>
 <td style="text-align:right;">
-0.487
+0.004
 </td>
 <td style="text-align:left;">
-0.34
+0.03
 </td>
 <td style="text-align:left;">
+*
 </td>
 </tr>
 <tr>
@@ -3902,21 +3934,22 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.070
+-0.409
 </td>
 <td style="text-align:right;">
-0.325
+0.242
 </td>
 <td style="text-align:right;">
--0.542
+-0.822
 </td>
 <td style="text-align:right;">
-0.669
+0.056
 </td>
 <td style="text-align:left;">
-0.36
+0.04
 </td>
 <td style="text-align:left;">
+*
 </td>
 </tr>
 <tr>
@@ -3924,22 +3957,22 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.868
+-0.556
 </td>
 <td style="text-align:right;">
-0.471
+0.358
 </td>
 <td style="text-align:right;">
--1.880
+-1.284
 </td>
 <td style="text-align:right;">
--0.029
+0.092
 </td>
 <td style="text-align:left;">
-0.03
+0.05
 </td>
 <td style="text-align:left;">
-*
+~
 </td>
 </tr>
 <tr grouplength="4">
@@ -3952,22 +3985,22 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.115
+-0.432
 </td>
 <td style="text-align:right;">
-0.614
+0.460
 </td>
 <td style="text-align:right;">
--2.428
+-1.107
 </td>
 <td style="text-align:right;">
-0.054
+0.678
 </td>
 <td style="text-align:left;">
-0.04
+0.1
 </td>
 <td style="text-align:left;">
-*
+~
 </td>
 </tr>
 <tr>
@@ -3975,19 +4008,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.141
+-0.394
 </td>
 <td style="text-align:right;">
-0.497
+0.397
 </td>
 <td style="text-align:right;">
--0.830
+-1.012
 </td>
 <td style="text-align:right;">
-1.008
+0.323
 </td>
 <td style="text-align:left;">
-0.37
+0.16
 </td>
 <td style="text-align:left;">
 </td>
@@ -3997,19 +4030,19 @@ PP
 6
 </td>
 <td style="text-align:right;">
--0.006
+-0.555
 </td>
 <td style="text-align:right;">
-0.420
+0.394
 </td>
 <td style="text-align:right;">
--1.000
+-1.298
 </td>
 <td style="text-align:right;">
-0.807
+0.244
 </td>
 <td style="text-align:left;">
-0.5
+0.11
 </td>
 <td style="text-align:left;">
 </td>
@@ -4019,19 +4052,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
--1.556
+-0.933
 </td>
 <td style="text-align:right;">
-0.685
+0.521
 </td>
 <td style="text-align:right;">
--3.046
+-1.910
 </td>
 <td style="text-align:right;">
--0.172
+0.077
 </td>
 <td style="text-align:left;">
-0.02
+0.04
 </td>
 <td style="text-align:left;">
 *
@@ -4047,19 +4080,19 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.845
+-0.241
 </td>
 <td style="text-align:right;">
-0.699
+0.536
 </td>
 <td style="text-align:right;">
--2.041
+-1.309
 </td>
 <td style="text-align:right;">
-0.605
+0.639
 </td>
 <td style="text-align:left;">
-0.14
+0.36
 </td>
 <td style="text-align:left;">
 </td>
@@ -4069,19 +4102,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.513
+-0.074
 </td>
 <td style="text-align:right;">
-0.467
+0.409
 </td>
 <td style="text-align:right;">
--0.313
+-0.946
 </td>
 <td style="text-align:right;">
-1.370
+0.620
 </td>
 <td style="text-align:left;">
-0.13
+0.42
 </td>
 <td style="text-align:left;">
 </td>
@@ -4091,19 +4124,19 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.329
+-0.224
 </td>
 <td style="text-align:right;">
-0.492
+0.370
 </td>
 <td style="text-align:right;">
--0.585
+-0.904
 </td>
 <td style="text-align:right;">
-1.240
+0.409
 </td>
 <td style="text-align:left;">
-0.26
+0.3
 </td>
 <td style="text-align:left;">
 </td>
@@ -4113,22 +4146,22 @@ PP
 8
 </td>
 <td style="text-align:right;">
--1.398
+-0.718
 </td>
 <td style="text-align:right;">
-0.773
+0.499
 </td>
 <td style="text-align:right;">
--2.841
+-1.507
 </td>
 <td style="text-align:right;">
-0.054
+0.238
 </td>
 <td style="text-align:left;">
-0.03
+0.08
 </td>
 <td style="text-align:left;">
-*
+~
 </td>
 </tr>
 <tr grouplength="4">
@@ -4141,22 +4174,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.460
+-0.281
 </td>
 <td style="text-align:right;">
-0.599
+0.527
 </td>
 <td style="text-align:right;">
--2.402
+-1.329
 </td>
 <td style="text-align:right;">
--0.093
+0.888
 </td>
 <td style="text-align:left;">
-0.01
+0.26
 </td>
 <td style="text-align:left;">
-*
 </td>
 </tr>
 <tr>
@@ -4164,22 +4196,21 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.935
+0.272
 </td>
 <td style="text-align:right;">
-0.424
+0.451
 </td>
 <td style="text-align:right;">
-0.237
+-0.592
 </td>
 <td style="text-align:right;">
-1.796
+1.113
 </td>
 <td style="text-align:left;">
-0.01
+0.31
 </td>
 <td style="text-align:left;">
-*
 </td>
 </tr>
 <tr>
@@ -4187,22 +4218,22 @@ PP
 6
 </td>
 <td style="text-align:right;">
-1.345
+0.559
 </td>
 <td style="text-align:right;">
-0.414
+0.426
 </td>
 <td style="text-align:right;">
-0.587
+-0.229
 </td>
 <td style="text-align:right;">
-2.197
+1.364
 </td>
 <td style="text-align:left;">
-0
+0.08
 </td>
 <td style="text-align:left;">
-***
+~
 </td>
 </tr>
 <tr>
@@ -4210,19 +4241,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.233
+0.291
 </td>
 <td style="text-align:right;">
-0.610
+0.531
 </td>
 <td style="text-align:right;">
--1.382
+-0.642
 </td>
 <td style="text-align:right;">
-0.938
+1.303
 </td>
 <td style="text-align:left;">
-0.39
+0.34
 </td>
 <td style="text-align:left;">
 </td>
@@ -4237,22 +4268,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.288
+-0.440
 </td>
 <td style="text-align:right;">
-0.448
+0.466
 </td>
 <td style="text-align:right;">
--2.105
+-1.201
 </td>
 <td style="text-align:right;">
--0.509
+0.601
 </td>
 <td style="text-align:left;">
-0
+0.18
 </td>
 <td style="text-align:left;">
-***
 </td>
 </tr>
 <tr>
@@ -4260,16 +4290,38 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.579
+0.204
 </td>
 <td style="text-align:right;">
-0.354
+0.348
 </td>
 <td style="text-align:right;">
--0.250
+-0.519
 </td>
 <td style="text-align:right;">
-1.175
+0.804
+</td>
+<td style="text-align:left;">
+0.29
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:right; padding-left: 2em;" indentlevel="1">
+6
+</td>
+<td style="text-align:right;">
+0.635
+</td>
+<td style="text-align:right;">
+0.396
+</td>
+<td style="text-align:right;">
+-0.189
+</td>
+<td style="text-align:right;">
+1.394
 </td>
 <td style="text-align:left;">
 0.07
@@ -4280,47 +4332,25 @@ PP
 </tr>
 <tr>
 <td style="text-align:right; padding-left: 2em;" indentlevel="1">
-6
-</td>
-<td style="text-align:right;">
-1.114
-</td>
-<td style="text-align:right;">
-0.339
-</td>
-<td style="text-align:right;">
-0.546
-</td>
-<td style="text-align:right;">
-1.750
-</td>
-<td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-***
-</td>
-</tr>
-<tr>
-<td style="text-align:right; padding-left: 2em;" indentlevel="1">
 8
 </td>
 <td style="text-align:right;">
-0.315
+0.523
 </td>
 <td style="text-align:right;">
-0.423
+0.422
 </td>
 <td style="text-align:right;">
--0.491
+-0.235
 </td>
 <td style="text-align:right;">
-1.129
+1.293
 </td>
 <td style="text-align:left;">
-0.26
+0.09
 </td>
 <td style="text-align:left;">
+~
 </td>
 </tr>
 <tr grouplength="4">
@@ -4333,22 +4363,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.735
+-0.043
 </td>
 <td style="text-align:right;">
-0.465
+0.380
 </td>
 <td style="text-align:right;">
--1.576
+-0.740
 </td>
 <td style="text-align:right;">
-0.229
+0.644
 </td>
 <td style="text-align:left;">
-0.05
+0.47
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -4356,22 +4385,22 @@ PP
 4
 </td>
 <td style="text-align:right;">
-1.349
+0.897
 </td>
 <td style="text-align:right;">
-0.302
+0.278
 </td>
 <td style="text-align:right;">
-0.713
+0.386
 </td>
 <td style="text-align:right;">
-1.904
+1.360
 </td>
 <td style="text-align:left;">
-0
+0.01
 </td>
 <td style="text-align:left;">
-***
+*
 </td>
 </tr>
 <tr>
@@ -4379,16 +4408,16 @@ PP
 6
 </td>
 <td style="text-align:right;">
-1.996
+1.548
 </td>
 <td style="text-align:right;">
-0.310
+0.347
 </td>
 <td style="text-align:right;">
-1.283
+0.815
 </td>
 <td style="text-align:right;">
-2.576
+2.112
 </td>
 <td style="text-align:left;">
 0
@@ -4402,16 +4431,16 @@ PP
 8
 </td>
 <td style="text-align:right;">
-1.206
+1.460
 </td>
 <td style="text-align:right;">
-0.448
+0.439
 </td>
 <td style="text-align:right;">
-0.459
+0.635
 </td>
 <td style="text-align:right;">
-2.108
+2.424
 </td>
 <td style="text-align:left;">
 0
@@ -4430,22 +4459,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.836
+0.043
 </td>
 <td style="text-align:right;">
-0.434
+0.478
 </td>
 <td style="text-align:right;">
--1.572
+-0.920
 </td>
 <td style="text-align:right;">
-0.145
+0.866
 </td>
 <td style="text-align:left;">
-0.05
+0.44
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -4453,22 +4481,22 @@ PP
 4
 </td>
 <td style="text-align:right;">
-1.471
+0.754
 </td>
 <td style="text-align:right;">
-0.295
+0.370
 </td>
 <td style="text-align:right;">
-0.898
+0.087
 </td>
 <td style="text-align:right;">
-2.125
+1.408
 </td>
 <td style="text-align:left;">
-0
+0.02
 </td>
 <td style="text-align:left;">
-***
+*
 </td>
 </tr>
 <tr>
@@ -4476,22 +4504,22 @@ PP
 6
 </td>
 <td style="text-align:right;">
-1.715
+0.990
 </td>
 <td style="text-align:right;">
-0.318
+0.412
 </td>
 <td style="text-align:right;">
-1.074
+0.283
 </td>
 <td style="text-align:right;">
-2.359
+1.761
 </td>
 <td style="text-align:left;">
-0
+0.01
 </td>
 <td style="text-align:left;">
-***
+*
 </td>
 </tr>
 <tr>
@@ -4499,21 +4527,22 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.103
+0.515
 </td>
 <td style="text-align:right;">
-0.435
+0.453
 </td>
 <td style="text-align:right;">
--0.840
+-0.260
 </td>
 <td style="text-align:right;">
-0.667
+1.446
 </td>
 <td style="text-align:left;">
-0.41
+0.09
 </td>
 <td style="text-align:left;">
+~
 </td>
 </tr>
 <tr grouplength="4">
@@ -4526,22 +4555,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--2.166
+-0.765
 </td>
 <td style="text-align:right;">
-0.435
+0.649
 </td>
 <td style="text-align:right;">
--2.978
+-1.770
 </td>
 <td style="text-align:right;">
--1.299
+0.485
 </td>
 <td style="text-align:left;">
-0
+0.15
 </td>
 <td style="text-align:left;">
-***
 </td>
 </tr>
 <tr>
@@ -4549,22 +4577,21 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.577
+-0.002
 </td>
 <td style="text-align:right;">
-0.419
+0.415
 </td>
 <td style="text-align:right;">
--0.183
+-0.900
 </td>
 <td style="text-align:right;">
-1.405
+0.722
 </td>
 <td style="text-align:left;">
-0.06
+0.49
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -4572,22 +4599,22 @@ PP
 6
 </td>
 <td style="text-align:right;">
-1.319
+0.557
 </td>
 <td style="text-align:right;">
-0.381
+0.432
 </td>
 <td style="text-align:right;">
-0.614
+-0.344
 </td>
 <td style="text-align:right;">
-2.052
+1.304
 </td>
 <td style="text-align:left;">
-0
+0.1
 </td>
 <td style="text-align:left;">
-***
+~
 </td>
 </tr>
 <tr>
@@ -4595,19 +4622,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
-0.060
+0.484
 </td>
 <td style="text-align:right;">
-0.468
+0.504
 </td>
 <td style="text-align:right;">
--0.908
+-0.590
 </td>
 <td style="text-align:right;">
-0.916
+1.453
 </td>
 <td style="text-align:left;">
-0.44
+0.11
 </td>
 <td style="text-align:left;">
 </td>
@@ -4622,19 +4649,19 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.402
+0.038
 </td>
 <td style="text-align:right;">
-0.436
+0.383
 </td>
 <td style="text-align:right;">
--1.093
+-0.663
 </td>
 <td style="text-align:right;">
-0.491
+0.811
 </td>
 <td style="text-align:left;">
-0.16
+0.48
 </td>
 <td style="text-align:left;">
 </td>
@@ -4644,19 +4671,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.487
+0.335
 </td>
 <td style="text-align:right;">
-0.388
+0.279
 </td>
 <td style="text-align:right;">
--0.276
+-0.197
 </td>
 <td style="text-align:right;">
-1.165
+0.807
 </td>
 <td style="text-align:left;">
-0.09
+0.1
 </td>
 <td style="text-align:left;">
 ~
@@ -4667,22 +4694,21 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.509
+0.305
 </td>
 <td style="text-align:right;">
-0.344
+0.327
 </td>
 <td style="text-align:right;">
--0.138
+-0.256
 </td>
 <td style="text-align:right;">
-1.077
+0.944
 </td>
 <td style="text-align:left;">
-0.05
+0.22
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -4690,19 +4716,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.335
+-0.109
 </td>
 <td style="text-align:right;">
-0.458
+0.510
 </td>
 <td style="text-align:right;">
--1.185
+-1.072
 </td>
 <td style="text-align:right;">
-0.512
+0.793
 </td>
 <td style="text-align:left;">
-0.25
+0.44
 </td>
 <td style="text-align:left;">
 </td>
@@ -4717,22 +4743,22 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.939
+-0.964
 </td>
 <td style="text-align:right;">
-0.543
+0.560
 </td>
 <td style="text-align:right;">
--2.777
+-2.087
 </td>
 <td style="text-align:right;">
--0.950
+0.027
 </td>
 <td style="text-align:left;">
-0
+0.03
 </td>
 <td style="text-align:left;">
-***
+*
 </td>
 </tr>
 <tr>
@@ -4740,21 +4766,22 @@ PP
 4
 </td>
 <td style="text-align:right;">
--0.264
+-0.615
 </td>
 <td style="text-align:right;">
-0.424
+0.423
 </td>
 <td style="text-align:right;">
--1.097
+-1.579
 </td>
 <td style="text-align:right;">
-0.626
+0.167
 </td>
 <td style="text-align:left;">
-0.26
+0.05
 </td>
 <td style="text-align:left;">
+~
 </td>
 </tr>
 <tr>
@@ -4762,21 +4789,22 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.012
+-0.441
 </td>
 <td style="text-align:right;">
-0.412
+0.385
 </td>
 <td style="text-align:right;">
--0.867
+-1.225
 </td>
 <td style="text-align:right;">
-0.736
+0.377
 </td>
 <td style="text-align:left;">
-0.47
+0.08
 </td>
 <td style="text-align:left;">
+~
 </td>
 </tr>
 <tr>
@@ -4784,22 +4812,22 @@ PP
 8
 </td>
 <td style="text-align:right;">
--1.110
+-0.638
 </td>
 <td style="text-align:right;">
-0.476
+0.475
 </td>
 <td style="text-align:right;">
--2.000
+-1.467
 </td>
 <td style="text-align:right;">
--0.170
+0.295
 </td>
 <td style="text-align:left;">
-0
+0.08
 </td>
 <td style="text-align:left;">
-***
+~
 </td>
 </tr>
 <tr grouplength="4">
@@ -4812,22 +4840,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.963
+-0.322
 </td>
 <td style="text-align:right;">
-0.542
+0.444
 </td>
 <td style="text-align:right;">
--2.008
+-1.168
 </td>
 <td style="text-align:right;">
--0.055
+0.447
 </td>
 <td style="text-align:left;">
-0.02
+0.21
 </td>
 <td style="text-align:left;">
-*
 </td>
 </tr>
 <tr>
@@ -4835,19 +4862,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.425
+-0.061
 </td>
 <td style="text-align:right;">
-0.390
+0.360
 </td>
 <td style="text-align:right;">
--0.313
+-0.683
 </td>
 <td style="text-align:right;">
-1.207
+0.632
 </td>
 <td style="text-align:left;">
-0.15
+0.45
 </td>
 <td style="text-align:left;">
 </td>
@@ -4857,19 +4884,19 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.442
+-0.037
 </td>
 <td style="text-align:right;">
-0.385
+0.396
 </td>
 <td style="text-align:right;">
--0.258
+-0.849
 </td>
 <td style="text-align:right;">
-1.241
+0.605
 </td>
 <td style="text-align:left;">
-0.12
+0.47
 </td>
 <td style="text-align:left;">
 </td>
@@ -4879,22 +4906,21 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.911
+-0.339
 </td>
 <td style="text-align:right;">
-0.511
+0.525
 </td>
 <td style="text-align:right;">
--1.913
+-1.353
 </td>
 <td style="text-align:right;">
-0.099
+0.585
 </td>
 <td style="text-align:left;">
-0.03
+0.31
 </td>
 <td style="text-align:left;">
-*
 </td>
 </tr>
 <tr grouplength="4">
@@ -4907,22 +4933,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.539
+0.021
 </td>
 <td style="text-align:right;">
-0.443
+0.363
 </td>
 <td style="text-align:right;">
--1.371
+-0.704
 </td>
 <td style="text-align:right;">
-0.352
+0.646
 </td>
 <td style="text-align:left;">
-0.08
+0.48
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -4930,16 +4955,16 @@ PP
 4
 </td>
 <td style="text-align:right;">
-1.488
+1.149
 </td>
 <td style="text-align:right;">
-0.277
+0.259
 </td>
 <td style="text-align:right;">
-0.999
+0.728
 </td>
 <td style="text-align:right;">
-2.054
+1.610
 </td>
 <td style="text-align:left;">
 0
@@ -4953,16 +4978,16 @@ PP
 6
 </td>
 <td style="text-align:right;">
-2.249
+1.964
 </td>
 <td style="text-align:right;">
-0.286
+0.285
 </td>
 <td style="text-align:right;">
-1.661
+1.373
 </td>
 <td style="text-align:right;">
-2.824
+2.475
 </td>
 <td style="text-align:left;">
 0
@@ -4976,16 +5001,16 @@ PP
 8
 </td>
 <td style="text-align:right;">
-1.747
+1.826
 </td>
 <td style="text-align:right;">
-0.398
+0.344
 </td>
 <td style="text-align:right;">
-1.083
+1.247
 </td>
 <td style="text-align:right;">
-2.574
+2.387
 </td>
 <td style="text-align:left;">
 0
@@ -5004,22 +5029,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.627
+-0.378
 </td>
 <td style="text-align:right;">
-0.524
+0.399
 </td>
 <td style="text-align:right;">
--1.653
+-1.075
 </td>
 <td style="text-align:right;">
-0.415
+0.300
 </td>
 <td style="text-align:left;">
-0.08
+0.15
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -5027,19 +5051,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.291
+0.075
 </td>
 <td style="text-align:right;">
-0.391
+0.322
 </td>
 <td style="text-align:right;">
--0.526
+-0.434
 </td>
 <td style="text-align:right;">
-0.961
+0.645
 </td>
 <td style="text-align:left;">
-0.2
+0.47
 </td>
 <td style="text-align:left;">
 </td>
@@ -5049,22 +5073,22 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.652
+0.551
 </td>
 <td style="text-align:right;">
-0.371
+0.337
 </td>
 <td style="text-align:right;">
--0.066
+-0.091
 </td>
 <td style="text-align:right;">
-1.289
+1.112
 </td>
 <td style="text-align:left;">
-0.04
+0.07
 </td>
 <td style="text-align:left;">
-*
+~
 </td>
 </tr>
 <tr>
@@ -5072,19 +5096,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
-0.456
+0.596
 </td>
 <td style="text-align:right;">
-0.552
+0.449
 </td>
 <td style="text-align:right;">
--0.641
+-0.266
 </td>
 <td style="text-align:right;">
-1.546
+1.405
 </td>
 <td style="text-align:left;">
-0.23
+0.12
 </td>
 <td style="text-align:left;">
 </td>
@@ -5099,22 +5123,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.887
+-0.322
 </td>
 <td style="text-align:right;">
-0.610
+0.371
 </td>
 <td style="text-align:right;">
--1.996
+-1.015
 </td>
 <td style="text-align:right;">
-0.208
+0.385
 </td>
 <td style="text-align:left;">
-0.07
+0.21
 </td>
 <td style="text-align:left;">
-~
 </td>
 </tr>
 <tr>
@@ -5122,19 +5145,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.356
+0.019
 </td>
 <td style="text-align:right;">
-0.427
+0.362
 </td>
 <td style="text-align:right;">
--0.546
+-0.715
 </td>
 <td style="text-align:right;">
-1.180
+0.744
 </td>
 <td style="text-align:left;">
-0.2
+0.48
 </td>
 <td style="text-align:left;">
 </td>
@@ -5144,19 +5167,19 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.448
+0.155
 </td>
 <td style="text-align:right;">
-0.417
+0.407
 </td>
 <td style="text-align:right;">
--0.362
+-0.508
 </td>
 <td style="text-align:right;">
-1.305
+0.955
 </td>
 <td style="text-align:left;">
-0.15
+0.32
 </td>
 <td style="text-align:left;">
 </td>
@@ -5166,19 +5189,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.612
+-0.145
 </td>
 <td style="text-align:right;">
-0.499
+0.441
 </td>
 <td style="text-align:right;">
--1.482
+-0.927
 </td>
 <td style="text-align:right;">
-0.424
+0.687
 </td>
 <td style="text-align:left;">
-0.11
+0.35
 </td>
 <td style="text-align:left;">
 </td>
@@ -5193,22 +5216,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.354
+-0.366
 </td>
 <td style="text-align:right;">
-0.433
+0.402
 </td>
 <td style="text-align:right;">
--2.130
+-1.043
 </td>
 <td style="text-align:right;">
--0.461
+0.412
 </td>
 <td style="text-align:left;">
-0
+0.18
 </td>
 <td style="text-align:left;">
-***
 </td>
 </tr>
 <tr>
@@ -5216,22 +5238,22 @@ PP
 4
 </td>
 <td style="text-align:right;">
-1.003
+0.510
 </td>
 <td style="text-align:right;">
-0.322
+0.301
 </td>
 <td style="text-align:right;">
-0.443
+-0.091
 </td>
 <td style="text-align:right;">
-1.677
+1.063
 </td>
 <td style="text-align:left;">
-0
+0.07
 </td>
 <td style="text-align:left;">
-***
+~
 </td>
 </tr>
 <tr>
@@ -5239,16 +5261,16 @@ PP
 6
 </td>
 <td style="text-align:right;">
-1.793
+1.187
 </td>
 <td style="text-align:right;">
-0.355
+0.336
 </td>
 <td style="text-align:right;">
-1.118
+0.435
 </td>
 <td style="text-align:right;">
-2.464
+1.765
 </td>
 <td style="text-align:left;">
 0
@@ -5262,19 +5284,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
-1.015
+1.172
 </td>
 <td style="text-align:right;">
-0.416
+0.453
 </td>
 <td style="text-align:right;">
-0.266
+0.200
 </td>
 <td style="text-align:right;">
-1.727
+2.052
 </td>
 <td style="text-align:left;">
-0.02
+0.01
 </td>
 <td style="text-align:left;">
 *
@@ -5290,22 +5312,22 @@ PP
 2
 </td>
 <td style="text-align:right;">
--2.239
+-1.135
 </td>
 <td style="text-align:right;">
-0.580
+0.576
 </td>
 <td style="text-align:right;">
--3.352
+-2.185
 </td>
 <td style="text-align:right;">
--1.332
+-0.086
 </td>
 <td style="text-align:left;">
-0
+0.03
 </td>
 <td style="text-align:left;">
-***
+*
 </td>
 </tr>
 <tr>
@@ -5313,21 +5335,22 @@ PP
 4
 </td>
 <td style="text-align:right;">
--0.379
+-0.764
 </td>
 <td style="text-align:right;">
-0.447
+0.430
 </td>
 <td style="text-align:right;">
--1.324
+-1.737
 </td>
 <td style="text-align:right;">
-0.424
+-0.018
 </td>
 <td style="text-align:left;">
-0.23
+0.01
 </td>
 <td style="text-align:left;">
+*
 </td>
 </tr>
 <tr>
@@ -5335,19 +5358,19 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.177
+-0.415
 </td>
 <td style="text-align:right;">
-0.459
+0.433
 </td>
 <td style="text-align:right;">
--0.803
+-1.291
 </td>
 <td style="text-align:right;">
-0.910
+0.288
 </td>
 <td style="text-align:left;">
-0.34
+0.13
 </td>
 <td style="text-align:left;">
 </td>
@@ -5357,19 +5380,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.572
+-0.314
 </td>
 <td style="text-align:right;">
-0.611
+0.500
 </td>
 <td style="text-align:right;">
--1.721
+-1.283
 </td>
 <td style="text-align:right;">
-0.534
+0.554
 </td>
 <td style="text-align:left;">
-0.16
+0.26
 </td>
 <td style="text-align:left;">
 </td>
@@ -5384,22 +5407,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--0.627
+-0.293
 </td>
 <td style="text-align:right;">
-0.273
+0.249
 </td>
 <td style="text-align:right;">
--1.114
+-0.807
 </td>
 <td style="text-align:right;">
--0.058
+0.266
 </td>
 <td style="text-align:left;">
-0.02
+0.12
 </td>
 <td style="text-align:left;">
-*
 </td>
 </tr>
 <tr>
@@ -5407,19 +5429,19 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.733
+0.458
 </td>
 <td style="text-align:right;">
-0.225
+0.234
 </td>
 <td style="text-align:right;">
-0.279
+-0.014
 </td>
 <td style="text-align:right;">
-1.130
+0.899
 </td>
 <td style="text-align:left;">
-0.01
+0.03
 </td>
 <td style="text-align:left;">
 *
@@ -5430,16 +5452,16 @@ PP
 6
 </td>
 <td style="text-align:right;">
-1.413
+1.308
 </td>
 <td style="text-align:right;">
-0.235
+0.241
 </td>
 <td style="text-align:right;">
-0.866
+0.944
 </td>
 <td style="text-align:right;">
-1.848
+1.837
 </td>
 <td style="text-align:left;">
 0
@@ -5453,16 +5475,16 @@ PP
 8
 </td>
 <td style="text-align:right;">
-1.415
+1.567
 </td>
 <td style="text-align:right;">
-0.305
+0.284
 </td>
 <td style="text-align:right;">
-0.796
+1.065
 </td>
 <td style="text-align:right;">
-1.947
+2.040
 </td>
 <td style="text-align:left;">
 0
@@ -5481,22 +5503,21 @@ PP
 2
 </td>
 <td style="text-align:right;">
--1.246
+-0.588
 </td>
 <td style="text-align:right;">
-0.494
+0.500
 </td>
 <td style="text-align:right;">
--2.092
+-1.549
 </td>
 <td style="text-align:right;">
--0.355
+0.232
 </td>
 <td style="text-align:left;">
-0
+0.11
 </td>
 <td style="text-align:left;">
-***
 </td>
 </tr>
 <tr>
@@ -5504,16 +5525,16 @@ PP
 4
 </td>
 <td style="text-align:right;">
-0.211
+-0.115
 </td>
 <td style="text-align:right;">
-0.428
+0.357
 </td>
 <td style="text-align:right;">
--0.517
+-0.749
 </td>
 <td style="text-align:right;">
-1.244
+0.598
 </td>
 <td style="text-align:left;">
 0.34
@@ -5526,19 +5547,19 @@ PP
 6
 </td>
 <td style="text-align:right;">
-0.492
+0.209
 </td>
 <td style="text-align:right;">
-0.423
+0.410
 </td>
 <td style="text-align:right;">
--0.164
+-0.569
 </td>
 <td style="text-align:right;">
-1.276
+1.143
 </td>
 <td style="text-align:left;">
-0.13
+0.29
 </td>
 <td style="text-align:left;">
 </td>
@@ -5548,19 +5569,19 @@ PP
 8
 </td>
 <td style="text-align:right;">
--0.403
+0.045
 </td>
 <td style="text-align:right;">
-0.553
+0.497
 </td>
 <td style="text-align:right;">
--1.426
+-0.809
 </td>
 <td style="text-align:right;">
-0.910
+0.969
 </td>
 <td style="text-align:left;">
-0.19
+0.5
 </td>
 <td style="text-align:left;">
 </td>
@@ -5596,22 +5617,6 @@ Direction
 <tbody>
 <tr>
 <td style="text-align:left;">
-Module 4
-</td>
-<td style="text-align:left;">
-Queen-biased
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Module 5
-</td>
-<td style="text-align:left;">
-Queen-biased
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Module 6
 </td>
 <td style="text-align:left;">
@@ -5628,23 +5633,7 @@ Queen-biased
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 8
-</td>
-<td style="text-align:left;">
-Queen-biased
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Module 12
-</td>
-<td style="text-align:left;">
-Queen-biased
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Module 13
 </td>
 <td style="text-align:left;">
 Queen-biased
@@ -5676,6 +5665,38 @@ Unbiased
 </tr>
 <tr>
 <td style="text-align:left;">
+Module 3
+</td>
+<td style="text-align:left;">
+Unbiased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 4
+</td>
+<td style="text-align:left;">
+Unbiased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 5
+</td>
+<td style="text-align:left;">
+Unbiased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 8
+</td>
+<td style="text-align:left;">
+Unbiased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 Module 9
 </td>
 <td style="text-align:left;">
@@ -5684,7 +5705,7 @@ Unbiased
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 14
+Module 10
 </td>
 <td style="text-align:left;">
 Unbiased
@@ -5692,7 +5713,23 @@ Unbiased
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 16
+Module 11
+</td>
+<td style="text-align:left;">
+Unbiased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 13
+</td>
+<td style="text-align:left;">
+Unbiased
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Module 14
 </td>
 <td style="text-align:left;">
 Unbiased
@@ -5724,23 +5761,7 @@ Worker-biased
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 3
-</td>
-<td style="text-align:left;">
-Worker-biased
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Module 10
-</td>
-<td style="text-align:left;">
-Worker-biased
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Module 11
+Module 16
 </td>
 <td style="text-align:left;">
 Worker-biased
