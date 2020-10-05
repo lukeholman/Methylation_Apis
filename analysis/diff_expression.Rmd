@@ -926,7 +926,7 @@ kegg_fig_Amel
 kegg_tab_Amel
 ```
 
-### Enrichment results for genes showing _caste differences_ in expression
+### Enrichment results for genes showing _temporal changes_ in expression
 
 #### GO and KEGG enrichment using _D. melanogaster_ annotations {.tabset}
 
@@ -935,7 +935,7 @@ Red means relatively higher expression of the focal pathway/process in queens, b
 ##### GO: Biological process {.tabset}
 
 ###### Figure
-```{r fig.height=35, fig.width = 5.3}
+```{r fig.height=11, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Biological process") %>%
@@ -953,7 +953,7 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 ##### GO: Molecular function {.tabset}
 
 ###### Figure
-```{r fig.height=25, fig.width = 5.3}
+```{r fig.height=11, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Molecular function") %>%
@@ -971,7 +971,7 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 ##### GO: Cellular component {.tabset}
 
 ###### Figure
-```{r fig.height=17, fig.width = 5.3}
+```{r fig.height=11, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Cellular component") %>%
@@ -989,7 +989,7 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 ##### KEGG {.tabset}
 
 ###### Figure
-```{r fig.height=11, fig.width = 5.3}
+```{r fig.height=3, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "KEGG") %>%
@@ -1012,7 +1012,7 @@ Red means relatively higher expression of the focal pathway/process in queens, b
 ##### GO: Biological process {.tabset}
 
 ###### Figure
-```{r fig.height=10, fig.width = 5.3}
+```{r fig.height=4, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Biological process") %>%
@@ -1030,7 +1030,7 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
 ##### GO: Molecular function {.tabset}
 
 ###### Figure
-```{r fig.height=25, fig.width = 5.3}
+```{r fig.height=6, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Molecular function") %>%
@@ -1048,7 +1048,7 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
 ##### GO: Cellular component {.tabset}
 
 ###### Figure
-```{r fig.height=17, fig.width = 5.3}
+```{r fig.height=4, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Cellular component") %>%
@@ -1066,7 +1066,7 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
 ##### KEGG {.tabset}
 
 ###### Figure
-```{r fig.height=11, fig.width = 5.3}
+```{r fig.height=4, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
           GO_KEGG_results$GO_Amel_annotations_temporalW) %>% 
   filter(Test_type == "KEGG") %>%
