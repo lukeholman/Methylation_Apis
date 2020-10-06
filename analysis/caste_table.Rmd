@@ -9,7 +9,7 @@ output:
 library(tidyverse)
 library(kableExtra)
 
-x <- read_csv("output/caste_results.csv") %>%
+x <- read_csv("output/caste_results_with_modules.csv") %>%
   filter(adj.P.Val < 0.05) 
 
 gene_order <- x %>% arrange(P.Value) %>% 
