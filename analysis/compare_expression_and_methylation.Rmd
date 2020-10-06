@@ -57,35 +57,35 @@ my_data_table <- function(df){
 }
 
 
-
-
-# Define a function to test whether the overlap of two sets of differentially expressed genes, 
-# drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
-# Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
-overlap_hypergeometric_test <- function(
-  n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
-  
-  # Expected number of overlaps under the null the two gene lists are independent
-  exp_n_overlaps <- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
-
-  if(n_overlaps > exp_n_overlaps){ # p getting that number or larger...
-    p <- 1 - phyper(n_overlaps - 1, n_gene_set1, 
-                    overall_n_genes - n_gene_set1, n_in_set2)
-    
-  }
-  
-  if(n_overlaps < exp_n_overlaps){ # p getting that number or smaller...
-    p <- phyper(n_overlaps - 1, n_gene_set1, 
-                overall_n_genes - n_gene_set1, n_in_set2)
-  }
-  
-  tibble(
-    `Observed n overlaps` = n_overlaps,
-    `Expected n overlaps` = NA,
-    `Enrichment ratio` = round(n_overlaps / exp_n_overlaps, 2),
-    `One-tailed p` = round(p, 4)) %>% # p-value that the overlap is *higher* than expected under the null
-    mutate(`Expected n overlaps` = round(exp_n_overlaps, 1))
-}
+# 
+# 
+# # Define a function to test whether the overlap of two sets of differentially expressed genes, 
+# # drawn from a common pool (e.g. all the orthologs that were tested), is higher or lower than expected
+# # Inspiration for this code: https://stats.stackexchange.com/questions/10328/using-rs-phyper-to-get-the-probability-of-list-overlap
+# overlap_hypergeometric_test <- function(
+#   n_overlaps, n_gene_set1, n_in_set2, overall_n_genes){
+#   
+#   # Expected number of overlaps under the null the two gene lists are independent
+#   exp_n_overlaps <- overall_n_genes * (n_gene_set1 / overall_n_genes) * (n_in_set2 / overall_n_genes)
+# 
+#   if(n_overlaps > exp_n_overlaps){ # p getting that number or larger...
+#     p <- 1 - phyper(n_overlaps - 1, n_gene_set1, 
+#                     overall_n_genes - n_gene_set1, n_in_set2)
+#     
+#   }
+#   
+#   if(n_overlaps < exp_n_overlaps){ # p getting that number or smaller...
+#     p <- phyper(n_overlaps - 1, n_gene_set1, 
+#                 overall_n_genes - n_gene_set1, n_in_set2)
+#   }
+#   
+#   tibble(
+#     `Observed n overlaps` = n_overlaps,
+#     `Expected n overlaps` = NA,
+#     `Enrichment ratio` = round(n_overlaps / exp_n_overlaps, 2),
+#     `One-tailed p` = round(p, 4)) %>% # p-value that the overlap is *higher* than expected under the null
+#     mutate(`Expected n overlaps` = round(exp_n_overlaps, 1))
+# }
 
 
 # define plot colours
@@ -122,18 +122,18 @@ n_overlaps <- length(inters)
 
 bwasp_table <- tibble(`Genes showing both differential expression and methylation (BWASP pipeline)` = tbl(db, "gene_names") %>% filter(gene_symbol %in% inters) %>% pull(gene_name)) 
 
-bwasp_hypergeometric <- overlap_hypergeometric_test(
-  n_overlaps, 
-  length(sig_diff_expr),
-  length(sig_diff_meth),
-  length(universe))
+# bwasp_hypergeometric <- overlap_hypergeometric_test(
+#   n_overlaps, 
+#   length(sig_diff_expr),
+#   length(sig_diff_meth),
+#   length(universe))
 
 
 bwasp_table %>%
   my_data_table()
 
-bwasp_hypergeometric %>%
-  kable() %>% kable_styling(full_width = FALSE)
+# bwasp_hypergeometric %>%
+#   kable() %>% kable_styling(full_width = FALSE)
 ```
 
 
@@ -147,17 +147,17 @@ n_overlaps <- length(inters)
 bayes_table <- tibble(`Genes showing both differential expression and methylation (Bayesian GAM)` =
 tbl(db, "gene_names") %>% filter(gene_symbol %in% inters) %>% pull(gene_name))
 
-bayes_hypergeometric <- overlap_hypergeometric_test(
-  n_overlaps, 
-  length(sig_diff_expr),
-  length(sig_diff_meth),
-  length(universe))
+# bayes_hypergeometric <- overlap_hypergeometric_test(
+#   n_overlaps, 
+#   length(sig_diff_expr),
+#   length(sig_diff_meth),
+#   length(universe))
 
 bayes_table %>%
   my_data_table()
 
-bayes_hypergeometric %>%
-  kable() %>% kable_styling(full_width = FALSE)
+# bayes_hypergeometric %>%
+#   kable() %>% kable_styling(full_width = FALSE)
 ```
 
 
