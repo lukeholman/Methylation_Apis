@@ -419,7 +419,7 @@ time_results %>%
 
 ### Caste-specific genes
 
-In the following table, a **positive** log fold change in expression indicates **higher expression in QDL** relative to WDL measured at the same time point. One can also view this table on a full web page [here](caste_table.html), or press the buttons to export the table.
+In the following table, a **positive** log fold change in expression indicates **higher expression in QDL** relative to WDL measured at the same time point. One can also view this table on a full web page [here](caste_table.html) (including each gene's module membership according to the co-expression network analysis below), or press the buttons to export the table.
 
 ```{r intersections}
 get_intersections <- function(results_df, split_by){
@@ -715,7 +715,7 @@ do_GO_table <- function(GO_results){
 ```
 
 
-### Enrichment results for genes showing _caste differences_ in expression
+### Enrichment results for genes showing __caste differences__ in expression
 
 Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
@@ -790,7 +790,7 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ##### GO: Biological process {.tabset}
 
 ###### Figure
-```{r fig.height=10, fig.width = 5.3}
+```{r fig.height=8, fig.width = 5.3}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
   make_pathway_figure("", "Hours post-grafting")
@@ -807,7 +807,7 @@ GO_KEGG_results$GO_Amel_annotations_caste %>%
 ##### GO: Molecular function {.tabset}
 
 ###### Figure
-```{r fig.height=10, fig.width = 5.3}
+```{r fig.height=7, fig.width = 5.3}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Molecular function") %>%
   make_pathway_figure("", "Hours post-grafting")
@@ -839,7 +839,7 @@ GO_KEGG_results$GO_Amel_annotations_caste %>%
 ##### KEGG {.tabset}
 
 ###### Figure
-```{r fig.height=14, fig.width = 5.3}
+```{r fig.height=10, fig.width = 5.3}
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "KEGG") %>%
   make_pathway_figure("", "Hours post-grafting")
@@ -852,7 +852,7 @@ GO_KEGG_results$GO_Amel_annotations_caste %>%
   do_GO_table()
 ```
 
-### Enrichment results for genes showing _temporal changes_ in expression
+### Enrichment results for genes showing __temporal changes__ in expression
 
 Orange means that the temporal change in expression was comparatively large and positive for genes annotated with the focal pathway/process, while purple means the change in % methylation was comparatively large and negative. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
@@ -1007,16 +1007,6 @@ bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
 
 
 
-
-
-
-
-
-
-
-
-
-
 ## Gene coexpression network analysis
 
 ### Build the network using `WGCNA::blockwiseModules()`
@@ -1122,8 +1112,8 @@ if(!file.exists("output/expression_eigengenes.csv")){
               by = c(`Gene symbol` = "gene"))
   
   write_csv(connectivity, path = "output/gene_connectivity.csv")
-  write_csv(caste_results, path = "output/caste_results.csv")
-  write_csv(time_results, path = "output/time_results.csv")
+  write_csv(caste_results, path = "output/caste_results_with_modules.csv")
+  write_csv(time_results, path = "output/time_results_with_modules.csv")
   write_csv(expr_eigengenes, path = "output/expression_eigengenes.csv")
   saveRDS(network, file = "output/expression_network.rds")
 } else {
