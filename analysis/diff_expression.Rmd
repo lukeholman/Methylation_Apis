@@ -1804,11 +1804,11 @@ module_GO_table_dmel <- make_module_GO_table(expr_eigengenes, GO_list = "dros_or
 ```
 
 
-### Tables of the module enrichment results
+## Identify GO and KEGG terms enriched in each module {.tabset}
 
 Click the buttons to view or export these results.
 
-#### Using _A. mellifera_ annotations
+### Using _D. melanogaster_ annotations
 
 ```{r}
 present_module_GO_table <- function(module_GO_tbl){
@@ -1827,15 +1827,14 @@ present_module_GO_table <- function(module_GO_tbl){
     mutate(Module = str_remove_all(Module, " ")) %>%
     mutate_if(is.numeric, ~ round(.x, 3)) 
 }
-present_module_GO_table(module_GO_table_amel) %>%
+present_module_GO_table(module_GO_table_dmel) %>%
   my_data_table()
 ```
 
-
-#### Using _D. melanogaster_ annotations
+### Using _A. mellifera_ annotations
 
 ```{r}
-present_module_GO_table(module_GO_table_dmel) %>%
+present_module_GO_table(module_GO_table_amel) %>%
   my_data_table()
 ```
 
