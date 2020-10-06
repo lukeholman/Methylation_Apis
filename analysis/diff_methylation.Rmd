@@ -2016,7 +2016,7 @@ left_join(gene_timeQ, gene_timeW %>%
 
 
 
-### Enrichment results for genes showing _caste differences_ in methylation
+### Enrichment results for genes showing __caste differences__ in methylation
 
 Red means that there is higher % methylation for genes annotated with the focal pathway/process in queens, while blue means higher % methylation in workers. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent). 
 
@@ -2178,9 +2178,9 @@ GO_KEGG_results$GO_Amel_annotations_caste %>%
 
 
 
-### Enrichment results for genes showing _temporal changes_ in methylation 
+### Enrichment results for genes showing __temporal changes__ in methylation 
 
-Orange means that the temporal change in % methylation was comparatively large and positive for genes annotated with the focal pathway/process, while purple means the change in % methylation was comparatively large and positive. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
+Orange means that the temporal change in % methylation was comparatively large and positive for genes annotated with the focal pathway/process, while purple means the change in % methylation was comparatively large and negative. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).
 
 #### GO: Biological process {.tabset}
 
@@ -3064,8 +3064,9 @@ present_module_GO_table <- function(){
   kg_rows <- which(focal$Ontology == "KEGG")
   
   focal %>%
-   dplyr::select(Annotation, Module, everything()) %>%
-    mutate_if(is.numeric, ~ round(.x, 3)) 
+    dplyr::select(Annotation, Module, everything()) %>%
+    mutate_if(is.numeric, ~ round(.x, 3)) %>%
+    mutate(Module = paste("Module", Module, sep = ""))
 }
 
 module_GO_table_amel <- make_module_GO_table(eigengenes, GO_list = "bee_GO") 
