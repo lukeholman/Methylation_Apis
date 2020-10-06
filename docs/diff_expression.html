@@ -545,16 +545,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree95e64373179a4ac3344b0d51f79de5751c9be834targetblank95e6437a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/95e64373179a4ac3344b0d51f79de5751c9be834" target="_blank">95e6437</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree6a4b57506de959da5ad85073e96ab3c7fe58fcd2targetblank6a4b575a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/6a4b57506de959da5ad85073e96ab3c7fe58fcd2" target="_blank">6a4b575</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree95e64373179a4ac3344b0d51f79de5751c9be834targetblank95e6437a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree6a4b57506de959da5ad85073e96ab3c7fe58fcd2targetblank6a4b575a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/95e64373179a4ac3344b0d51f79de5751c9be834" target="_blank">95e6437</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/6a4b57506de959da5ad85073e96ab3c7fe58fcd2" target="_blank">6a4b575</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -620,6 +620,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/6a4b57506de959da5ad85073e96ab3c7fe58fcd2/analysis/diff_expression.Rmd" target="_blank">6a4b575</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+<td>
+wflow_publish(“analysis/diff_expression.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/diff_expression.html" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2253,7 +2287,7 @@ WDL (4h vs 8h)
 </div>
 <div id="caste-specific-genes" class="section level3">
 <h3>Caste-specific genes</h3>
-<p>In the following table, a <strong>positive</strong> log fold change in expression indicates <strong>higher expression in QDL</strong> relative to WDL measured at the same time point. One can also view this table on a full web page <a href="caste_table.html">here</a>, or press the buttons to export the table.</p>
+<p>In the following table, a <strong>positive</strong> log fold change in expression indicates <strong>higher expression in QDL</strong> relative to WDL measured at the same time point. One can also view this table on a full web page <a href="caste_table.html">here</a> (including each gene’s module membership according to the co-expression network analysis below), or press the buttons to export the table.</p>
 <pre class="r"><code>get_intersections &lt;- function(results_df, split_by){
   results_df &lt;- results_df %&gt;%
     mutate(Gene = paste(`Gene symbol`, `Gene name`, sep = &quot;~~&quot;)) %&gt;%
@@ -2534,7 +2568,7 @@ do_GO_table &lt;- function(GO_results){
 }</code></pre>
 </div>
 <div id="enrichment-results-for-genes-showing-caste-differences-in-expression" class="section level3">
-<h3>Enrichment results for genes showing <em>caste differences</em> in expression</h3>
+<h3>Enrichment results for genes showing <strong>caste differences</strong> in expression</h3>
 <p>Red means relatively higher expression of the focal pathway/process in queens, blue means higher in workers. Calculated separately for each of the 4 time points. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).</p>
 <div id="go-and-kegg-enrichment-using-d.-melanogaster-annotations" class="section level4 tabset">
 <h4>GO and KEGG enrichment using <em>D. melanogaster</em> annotations</h4>
@@ -2568,6 +2602,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-4-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/7162ba6cee9d42c488c090d3804f01e9ef455ee0/docs/figure/diff_expression.Rmd/unnamed-chunk-4-1.png" target="_blank">7162ba6</a>
@@ -2647,6 +2692,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-6-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/fa9a413c383cb652f88e0593e4c6b7a3c5aaaf44/docs/figure/diff_expression.Rmd/unnamed-chunk-6-1.png" target="_blank">fa9a413</a>
 </td>
 <td>
@@ -2711,6 +2767,43 @@ lukeholman
   filter(Test_type == &quot;GO: Cellular component&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-8-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-8-1">
+Past versions of unnamed-chunk-8-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-8-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-8-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-2" class="section level6">
 <h6>Table</h6>
@@ -2729,6 +2822,43 @@ lukeholman
   filter(Test_type == &quot;KEGG&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-10-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-10-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-3" class="section level6">
 <h6>Table</h6>
@@ -2750,6 +2880,43 @@ lukeholman
   filter(Test_type == &quot;GO: Biological process&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-12-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
+Past versions of unnamed-chunk-12-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-12-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-4" class="section level6">
 <h6>Table</h6>
@@ -2768,6 +2935,43 @@ lukeholman
   filter(Test_type == &quot;GO: Molecular function&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-14-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-14-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-5" class="section level6">
 <h6>Table</h6>
@@ -2786,6 +2990,43 @@ lukeholman
   filter(Test_type == &quot;GO: Cellular component&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-16-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-16-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-6" class="section level6">
 <h6>Table</h6>
@@ -2804,6 +3045,43 @@ lukeholman
   filter(Test_type == &quot;KEGG&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-18-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
+Past versions of unnamed-chunk-18-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-18-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-18-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-7" class="section level6">
 <h6>Table</h6>
@@ -2817,7 +3095,7 @@ lukeholman
 </div>
 </div>
 <div id="enrichment-results-for-genes-showing-temporal-changes-in-expression" class="section level3">
-<h3>Enrichment results for genes showing <em>temporal changes</em> in expression</h3>
+<h3>Enrichment results for genes showing <strong>temporal changes</strong> in expression</h3>
 <p>Orange means that the temporal change in expression was comparatively large and positive for genes annotated with the focal pathway/process, while purple means the change in % methylation was comparatively large and negative. A single asterisk indicates statistically significant enrichment, and a double asterisk indicates that this significant result remained after Benjamini-Hochberg false discovery rate correction (which is overly conservative here, since these multiple tests are not independent).</p>
 <div id="go-and-kegg-enrichment-using-d.-melanogaster-annotations-1" class="section level4 tabset">
 <h4>GO and KEGG enrichment using <em>D. melanogaster</em> annotations</h4>
@@ -2830,6 +3108,43 @@ lukeholman
   filter(Test_type == &quot;GO: Biological process&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-20-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-20-1">
+Past versions of unnamed-chunk-20-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-20-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-20-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-8" class="section level6">
 <h6>Table</h6>
@@ -2850,6 +3165,43 @@ lukeholman
   filter(Test_type == &quot;GO: Molecular function&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-22-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-22-1">
+Past versions of unnamed-chunk-22-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-22-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-22-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-9" class="section level6">
 <h6>Table</h6>
@@ -2870,6 +3222,43 @@ lukeholman
   filter(Test_type == &quot;GO: Cellular component&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-24-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-24-1">
+Past versions of unnamed-chunk-24-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-24-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-24-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-10" class="section level6">
 <h6>Table</h6>
@@ -2890,6 +3279,43 @@ lukeholman
   filter(Test_type == &quot;KEGG&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-26-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-26-1">
+Past versions of unnamed-chunk-26-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-26-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-26-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-11" class="section level6">
 <h6>Table</h6>
@@ -2913,6 +3339,43 @@ lukeholman
   filter(Test_type == &quot;GO: Biological process&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-28-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-28-1">
+Past versions of unnamed-chunk-28-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-28-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-28-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-12" class="section level6">
 <h6>Table</h6>
@@ -2933,6 +3396,43 @@ lukeholman
   filter(Test_type == &quot;GO: Molecular function&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-30-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-30-1">
+Past versions of unnamed-chunk-30-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-30-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-30-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-13" class="section level6">
 <h6>Table</h6>
@@ -2953,6 +3453,43 @@ lukeholman
   filter(Test_type == &quot;GO: Cellular component&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-32-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-32-1">
+Past versions of unnamed-chunk-32-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-32-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-32-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-14" class="section level6">
 <h6>Table</h6>
@@ -2973,6 +3510,43 @@ lukeholman
   filter(Test_type == &quot;KEGG&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;,  alt_colours = TRUE)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-34-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-34-1">
+Past versions of unnamed-chunk-34-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-34-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-34-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-15" class="section level6">
 <h6>Table</h6>
@@ -3091,8 +3665,8 @@ lukeholman
               by = c(`Gene symbol` = &quot;gene&quot;))
   
   write_csv(connectivity, path = &quot;output/gene_connectivity.csv&quot;)
-  write_csv(caste_results, path = &quot;output/caste_results.csv&quot;)
-  write_csv(time_results, path = &quot;output/time_results.csv&quot;)
+  write_csv(caste_results, path = &quot;output/caste_results_with_modules.csv&quot;)
+  write_csv(time_results, path = &quot;output/time_results_with_modules.csv&quot;)
   write_csv(expr_eigengenes, path = &quot;output/expression_eigengenes.csv&quot;)
   saveRDS(network, file = &quot;output/expression_network.rds&quot;)
 } else {
@@ -3232,6 +3806,43 @@ myBreaks &lt;- c(seq(min(mat, na.rm=T), 0, length.out=ceiling(paletteLength/2) +
 pheatmap(mat, color = myColor, breaks = myBreaks,
          cutree_rows = 5, cutree_cols = 5)</code></pre>
 <p><img src="figure/diff_expression.Rmd/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-38-1">
+Past versions of unnamed-chunk-38-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-38-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/b7df0a409ca73314175295c0c30df0ec128a53e5/docs/figure/diff_expression.Rmd/unnamed-chunk-38-1.png" target="_blank">b7df0a4</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="fit-bayesian-model-to-the-eigengene-estimates" class="section level3">
 <h3>Fit Bayesian model to the eigengene estimates</h3>
