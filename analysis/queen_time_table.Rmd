@@ -8,11 +8,11 @@ output:
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 
-n <- read_csv("output/time_results.csv") %>%
+n <- read_csv("output/time_results_with_modules.csv") %>%
   filter(adj.P.Val < 0.05 & Caste == "Queen" & Time == "0 vs 8") %>%
   nrow()
 
-n2 <- read_csv("output/time_results.csv") %>%
+n2 <- read_csv("output/time_results_with_modules.csv") %>%
   filter(adj.P.Val < 0.05 & Caste == "Queen" & Time != "0 vs 8") %>%
   nrow()
 ```
@@ -24,7 +24,7 @@ For brevity, we only show the genes that were statistically significant when com
 library(tidyverse)
 library(kableExtra)
 
-x <- read_csv("output/time_results.csv") %>%
+x <- read_csv("output/time_results_with_modules.csv") %>%
   filter(adj.P.Val < 0.05 & Caste == "Queen" & Time == "0 vs 8") 
 
 gene_order <- x %>% arrange(P.Value) %>% 
