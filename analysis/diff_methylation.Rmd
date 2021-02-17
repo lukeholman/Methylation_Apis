@@ -43,6 +43,7 @@ library(grid)
 library(gganimate)
 library(magick)
 library(sva) # for sva::ComBat
+library(lme4)
 options(stringsAsFactors = FALSE)
 library(GenomicFeatures)
 
@@ -80,9 +81,9 @@ methylated_sites <- tbl(db, "site_info") %>%
 
 ### Animation showing the shifting distribution
 
-The animation shows the distribution of % methylation for all the sites of the specified type. In all panels, the y-axis is truncated to better display the right tail of the distribution, because the majority of CpG sites have no methylation. To obtain thge data underlying this figure, we ...
+The animation shows the distribution of % methylation for all CpG sites of the specified type. Because the majority of CpG sites have no methylation in this species, we have truncated the y-axis so that the right tail of the distribution is visible. To obtain the data underlying this figure, we summed up the number of methylated and unmethylated sequencing reads for each site, across the four replicate samples for each caste/time combination, then found the % methylated reads. The histograms display the frequency in each of 101 bins, for QDL (red) and WDL (blue).
 
-One can view the same figure as static plots in the next section. 
+One can view non-animated versions of the the same figures in the next section. 
 
 ```{r make_animation, fig.showtext=TRUE}
 if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
@@ -117,7 +118,7 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
       filter_by_site(site_type) %>%
       mutate(coverage = numC + numT) %>%
       dplyr::select(site, sample, numC, coverage, caste, time) %>%
-      group_by(caste, time, site) %>% # combine over the 4 replicate samples...
+      group_by(caste, time, site) %>% # combine the reads over the 4 replicate samples...
       summarise(prop_meth = sum(numC) / sum(coverage), .groups = "drop") %>% 
       dplyr::select(caste, time, prop_meth) %>%
       collect(n = Inf) %>% 
@@ -177,7 +178,7 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
             text = element_text(family = nice_font),
             strip.background = element_blank(),
             panel.grid.major.x = element_blank()) + 
-      xlab("Site methylation level\n(% mCpGs; sites with <5% mCpGs excluded)") +
+      xlab("Site methylation level (% mCpGs)") +
       ylab("Number of CpG sites")
     
     ggsave(glue("figures/site_meth_hist/{site_type}_plot.png"), 
@@ -249,8 +250,86 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
   unlink("figures/site_meth_hist/intergenic_animation.gif")
   unlink("figures/site_meth_hist/combined_animation_top.gif")
   unlink("figures/site_meth_hist/combined_animation_bottom.gif")
+  
+  ####################################################
+  # Now make histogram from main methylation figure in the paper:
+  data_8h <- by_site %>%
+      filter(time == 8) %>%
+    select()
+  
+  get_fig1_data <- function(site_kind){
+    by_site %>%
+      filter(time == 8) %>%
+      filter_by_site(site_kind) %>%
+      mutate(coverage = numC + numT) %>%
+      dplyr::select(site, numC, coverage, caste) %>%
+      group_by(caste, site) %>% # combine the reads over the 4 replicate samples...
+      summarise(prop_meth = sum(numC) / sum(coverage), .groups = "drop") %>% 
+      dplyr::select(caste, prop_meth) %>%
+      collect(n = Inf) %>%
+      mutate(site_type = site_kind)
+  }
+  fig1_data <- get_fig1_data("translated") %>% 
+    bind_rows(get_fig1_data("promoter")) %>%
+    bind_rows(get_fig1_data("intron")) %>%
+    bind_rows(get_fig1_data("5UTR")) %>%
+    bind_rows(get_fig1_data("3UTR")) %>%
+    bind_rows(get_fig1_data("intergenic")) %>% 
+    mutate(caste = replace(caste, caste =="t", "Time 0"),
+           caste = factor(caste, c("Time 0", "Queen", "Worker")),
+           site_type = replace(site_type, site_type == "translated", "Protein-coding regions"),
+           site_type = replace(site_type, site_type == "promoter", "Promoter regions"),
+           site_type = replace(site_type, site_type == "intergenic", "Intergenic regions"),
+           site_type = replace(site_type, site_type == "intron", "Introns"),
+           site_type = replace(site_type, site_type == "5UTR", "5'-UTRs"),
+           site_type = replace(site_type, site_type == "3UTR", "3'-UTRs"),
+           site_type = factor(site_type, c("Protein-coding regions", "Promoter regions", "Introns", "5'-UTRs", "3'-UTRs", "Intergenic regions")))
+  
+
+  make_part_fig1 <- function(dat, ylims){
+    
+    dat %>%
+      ggplot(aes(x = 100 * prop_meth, fill = caste)) +
+      geom_histogram(data = dat %>% 
+                       filter(caste == "Time 0"), fill = "#b19cd9",
+                     alpha = 0.5, bins = n_bins, position = "dodge") +
+      geom_histogram(data = dat  %>% 
+                       filter(caste == "Queen"), fill = queen_colour,
+                     alpha = 0.5, bins = n_bins, position = "dodge") +
+      geom_histogram(data = dat  %>% 
+                       filter(caste == "Worker"), fill = worker_colour,
+                     alpha = 0.5, bins = n_bins,position = "dodge") +
+      facet_wrap(~ site_type) +
+      scale_fill_manual(values = c("#b19cd9", queen_colour, worker_colour)) +
+      coord_cartesian(ylim = c(0, ylims)) +
+      theme_bw() + 
+      theme(legend.position = "none", 
+            text = element_text(family = nice_font),
+            strip.background = element_blank(),
+            strip.text = element_text(hjust = 0),
+            panel.grid.major.x = element_blank()) + 
+      xlab(NULL) +
+      ylab(NULL)
+  }
+  
+  p1 <- fig1_data %>%
+    filter(site_type %in% c("Protein-coding regions", "Promoter regions", "Introns")) %>%
+    make_part_fig1(ylims = 2300) + theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  
+  p2 <- fig1_data %>%
+    filter(site_type %in% c("5'-UTRs", "3'-UTRs", "Intergenic regions")) %>%
+    make_part_fig1(ylims = 125) + xlab("% mCpGs")
+  
+  nice_histo <- arrangeGrob(
+    rbind(ggplotGrob(p1), ggplotGrob(p2)),
+    left = "Number of CpG sites")
+  
+  saveRDS(nice_histo, "figures/histo_fig1.rds")
 }
 ```
+
+
+
 
 ![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/site_meth_hist/combined_animation.gif)
 
@@ -280,69 +359,25 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
 
 
 
+
 ## Genomic context of sites with caste-specific methylation {.tabset}
 
-The following uses the results of the frequentist GAMs generated below. For each site, we fit 5 GAMs and combined them using model averaging to get predictions of the mean % methylation for QDL and WDL at each time point. We then calculated the difference in means for each kind of site (i.e. the effect size), for various pairwise comparisons between castes and time points. 
+The following uses the results of the GLMs generated below, which estimates the difference in mean % methylation for QDL and WDL at each time point, for each site (as well as the standard error associated with this difference in means). These can be thought of as effect sizes, which describe the effect of caste on methylation at each site. 
 
-We then used a linear model to estimate the average effect size for sites of each genomic context provided in the .gff file of genome annotations (e.g. exons, introns, UTRs). This was accomplished by running a linear model with the following formula:
+In this section, we analyse those effect sizes using a linear model, in order to estimate the average effect size for sites of each type. This was accomplished by running a linear model with the following formula:
 
 $$y_i = \alpha + \beta_1x_{1i} + \beta_1x_{2i} + \beta_1x_{3i} + \beta_1x_{4i} + \beta_1x_{5i} + \epsilon_i$$
-Here, $y_i$ is the effect size for site $i$, $\alpha$ is the global intercept, the five $\beta$ terms are regression coefficients to be estimated, the five $x_i$ terms are binary predictor variables for site $i$, and $\epsilon_i$ is the residual (assumed to be sampled from a Normal distribution with mean zero). The five binary predictor variables describe whether the focal site is (or is not) in a coding region, a promoter, an intron, a 5'-UTR, or a 3'-UTR (note that sites can be overlap more than one of these). Promoter regions were defined as regions that are within 2000bb upstream or 200bp downstream of a gene. After fitting the model, we then used the estimated regression coefficients to find the estimated average effect size for sites that mapped uniquely to each of the five genomic features. One model was run for each comparison point (i.e. each panel in the figures below).
+Here, $y_i$ is the effect size for site $i$, $\alpha$ is the global intercept, the five $\beta$ terms are regression coefficients to be estimated, the five $x_i$ terms are binary predictor variables for site $i$, and $\epsilon_i$ is the residual (assumed to follow a Normal distribution). The five binary predictor variables describe whether the focal site is (or is not) in a coding region, a promoter, an intron, a 5'-UTR, or a 3'-UTR respectively; note that any one site can overlap more than one of these genomic features. Promoter regions were defined as regions that are up to 2000bp upstream or 200bp downstream of a gene. After fitting the model, we then used the estimated regression coefficients to find the estimated average effect size for a site that maps uniquely to each one of the five genomic features. One model was run for each time point (i.e. one model for each of the figure panels below).
 
 
 ### Comparing queen- and worker-destined larvae
 
 ```{r site_type_plots, message=FALSE, warning=FALSE, fig.width=5.3, fig.showtext=TRUE}
-#if(!file.exists("figures/genomic_context_plot_timeW.rds")){
-  # plotting_data <- get_bwasp_sites(p = 1, q = 1, 
-  #                                  site_list = methylated_sites) %>%
-  #   mutate(in_exon = !is.na(exon_in),
-  #          in_promoter = !is.na(promoter_of),
-  #          in_intron = !is.na(intron_in),
-  #          in_5UTR = !is.na(fiveUTR_in),
-  #          in_3UTR = !is.na(threeUTR_in),
-  #          in_coding_region = translated == 1) %>% 
-  #   filter(!is.na(in_coding_region)) %>%
-  #   dplyr::select(comparison, starts_with("in_"), meth.diff, pvalue, qvalue) 
-  # 
-  #  make_lm_estimates <- function(comp){ 
-  #   
-  #   if(str_detect(comp, "queen") & str_detect(comp, "worker")) {
-  #     facet_label <- paste("Caste difference (", str_extract(comp, "[2468]"), "h)", sep = "")
-  #     plotting_data <- plotting_data %>% 
-  #       mutate(meth.diff = meth.diff * -1) %>%
-  #       filter(comparison == comp) 
-  #     
-  #   }
-  #   if(str_detect(comp, "queen") & !str_detect(comp, "worker")) {
-  #     facet_label <- paste("Queens: ", paste0(str_extract_all(comp, "[02468]")[[1]], collapse = " vs "), "h", sep = "")
-  #     plotting_data <- plotting_data %>% 
-  #       filter(comparison == comp)
-  #   }
-  #   if(!str_detect(comp, "queen") & str_detect(comp, "worker")) {
-  #     facet_label <- paste("Workers: ", paste0(str_extract_all(comp, "[02468]")[[1]], collapse = " vs "), "h", sep = "")
-  #     plotting_data <- plotting_data %>% 
-  #       filter(comparison == comp)
-  #   }
-  #   
-  #   model <- lm(Caste_difference ~ in_coding_region + in_promoter + in_intron + in_5UTR + in_3UTR, 
-  #               data =  plotting_data)
-  #   
-  #   new <- expand_grid(in_coding_region = c(TRUE, FALSE), 
-  #                      in_promoter = c(TRUE, FALSE), 
-  #                      in_intron = c(TRUE, FALSE), 
-  #                      in_5UTR = c(TRUE, FALSE), 
-  #                      in_3UTR = c(TRUE, FALSE)) 
-  #   new <- new[rowSums(new) %in% 0:1, ]
-  #   data.frame(new, mean_meth_diff = predict(model, newdata = new, se.fit = TRUE)) %>%
-  #     mutate(region = c("Coding region", "Promoters", "Introns", "5'-UTR", "3'-UTR", "Intergenic"),
-  #            region = factor(region, rev(unique(region))),
-  #            comparison = facet_label) 
-  # }
+# Note: this file is produced below, but the results fit here more logically
+foc_sites <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>% 
+  pull(Site) %>% unique()
 
-foc_sites <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>% pull(Site) %>% unique()
-
-plotting_data <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+plotting_data <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
   left_join(tbl(db, "site_annotations") %>% 
               filter(site %in% foc_sites) %>% 
               dplyr::select(-exon_rank) %>%
@@ -358,11 +393,11 @@ plotting_data <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
 
 rm(foc_sites)
 
-# args should be like "timeQ", 2, 6 for 2h vs 6h comp
+# args should be like "timeQ", 2, 6 (for 2h vs 6h comp in QDL)
 make_lm_estimates <- function(comparison, timepoint1, timepoint2){  
   
   if(comparison == "between_castes"){
-    facet_label <- paste("Caste difference (", timepoint1, "h)", sep = "")
+    facet_label <- paste(timepoint1, "h post-grafting", sep = "")
     plotting_data <- plotting_data %>% 
       filter(time == timepoint1) %>%
       dplyr::rename(meth.diff = Caste_difference) 
@@ -419,28 +454,28 @@ plot_lm_estimates <- function(lm_estimates, xl){
     ylab(xl) + xlab("Genomic region") +
     theme(
       text = element_text(family = nice_font),
+      strip.text = element_text(hjust = 0),
       strip.background = element_blank()
     )
 }
 
 genomic_context_plot_caste <- 
   map_df(c(2,4,6,8), ~ make_lm_estimates("between_castes", .x, NULL)) %>% 
-  plot_lm_estimates("Difference in % methylation\n(Mean \u00B1 95% CIs; positive means Queens > Workers)")
+  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)")
 
 genomic_context_plot_timeQ <-
   map2_df(combn(c(2,4,6,8), 2)[1,], 
           combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates("timeQ", .x, .y)) %>% 
-  plot_lm_estimates("Difference in % methylation\n(Mean \u00B1 95% CIs; positive means methylation increases over time)")
+  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)")
 
 genomic_context_plot_timeW <- 
   map2_df(combn(c(2,4,6,8), 2)[1,], 
           combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates("timeW", .x, .y)) %>% 
-  plot_lm_estimates("Difference in % methylation\n(Mean \u00B1 95% CIs; positive means methylation increases over time)")
+  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)")
 
 saveRDS(genomic_context_plot_caste, "figures/genomic_context_plot_caste.rds")
 saveRDS(genomic_context_plot_timeQ, "figures/genomic_context_plot_timeQ.rds")
 saveRDS(genomic_context_plot_timeW, "figures/genomic_context_plot_timeW.rds")
-
 
 readRDS("figures/genomic_context_plot_caste.rds")
 ```
@@ -557,16 +592,16 @@ n_sites2 <- ncol(foc)
 ```
 
 
-The heatmap shows data on the CpG sites that were measured with at least 5x coverage in all 36 samples. The version on the first tab is restricted to sites with an avearge methylation frequency of at least 75% (n = `r n_sites2` sites), while the second tab shows the data for all the methylated sites (i.e. all sites with a mean methylation frequency >2.7%; n = `r n_sites` sites). We chose to split the data this way in light of the earlier evidence that the greatest caste difference in methylation frequency was found among sites with high levels of methylation.
+The heatmap shows data on the CpG sites that were measured with at least 5x coverage in all 36 samples. The version on the first tab is restricted to sites with an avearge methylation frequency of at least 75% (n = `r n_sites2` sites), while the second tab shows the data for all the methylated sites (i.e. all sites with a mean methylation frequency >2.7%; n = `r n_sites` sites). We chose to split the data this way in light of the evidence in teh animation above that the greatest caste difference in methylation frequency was found among sites with high levels of methylation.
 
-Before plotting, the data on each site was scaled to mean zero and unit standard deviation. Next, we removed the effect of replicate (i.e. reps A-D) using `sva::ComBat()` to highlight the biologically interesting patterns in the data. Additionally, because it is not possible to plot the heatmap for tens of thousands of sites, we first clustered the sites into 100 groups of sites using k-means clustering (see `?pheatmap`). 
+Before plotting, the data on each site was scaled to mean zero and unit standard deviation. Next, we removed batch effects (i.e. the variance due to replicates A-D) using `sva::ComBat()`. Additionally, because it is technically challenging to plot a heatmap with many thousands of rows/columns, we first clustered the sites into 100 groups of sites using k-means clustering (see `?pheatmap`). 
 
-In the figures, the orange colour indicates that the focal sample has a methylation frequency above the average for that group of CpG sites, while purple indicates a below-average methylation frequency. 
+In the figures, the orange colour indicates that the focal sample has a methylation frequency above the average for that group of CpG sites, while purple indicates a below-average methylation frequency. The heatmap highlights that the QDL and WDL samples cluster together quite well, especially for the later time points. This indicates that QDL and WDL have disctinct methylomes, and became more distinct a few hours post-grafting. 
 
 #### Heatmap of sites with $\ge 75$% methylation
 
 ```{r meth_sample_distance_heatmap, width = 10, height = 14, message=FALSE, warning=FALSE}
-meth_sample_heatmap <- function(mean_cutoff, colour_limits){
+meth_sample_heatmap <- function(mean_cutoff, colour_limits, myColour){
   
   # include all sites measured to 5x coverage in all 36 samples
   foc <- readRDS("output/meth_matrix.rds") 
@@ -591,11 +626,8 @@ meth_sample_heatmap <- function(mean_cutoff, colour_limits){
   
   # Scale proportion methylation to have mean 0, variance 1
   for(i in 1:ncol(foc)) foc[, i] <- as.numeric(scale(foc[, i]))
-
-  paletteLength <- 50
-  myColor <- colorRampPalette(c(brewer.pal(9, "Purples")[7], 
-                                "white", brewer.pal(9, "Oranges")[7]))(paletteLength)
-  myBreaks <- seq(colour_limits[1], colour_limits[2], length.out=paletteLength)
+  
+  myBreaks <- seq(colour_limits[1], colour_limits[2], length.out=50)
 
   name_converter <- tibble(old = rownames(foc),
                            caste = ifelse(str_detect(old, "q"), "Queen", "Worker"),
@@ -616,22 +648,39 @@ meth_sample_heatmap <- function(mean_cutoff, colour_limits){
     list(` ` = c(Queen = queen_colour, t0 = "white", Worker = worker_colour))
   
   t(foc) %>%
-    pheatmap(col = myColor, breaks = myBreaks, kmeans_k = 100,
+    pheatmap(col = myColour, breaks = myBreaks, kmeans_k = 50,
              clustering_distance_rows = "euclidean",
              clustering_distance_cols = "euclidean",
              cutree_rows = 7, cutree_cols = 5,
+             annotation_legend = FALSE,
              annotation_col = annotation_row, annotation_colors = annotation_colors,
              show_rownames = FALSE)
 }
 
-set.seed(1)
-meth_sample_heatmap(mean_cutoff = 0.75, colour_limits = c(-3, 2))
+set.seed(10)
+myColour <- c(colorRampPalette(c(brewer.pal(9, "Purples")[7], "white"))(33),
+    colorRampPalette(c("white", brewer.pal(9, "Oranges")[7]))(18)[-1])
+
+heatmap75 <- meth_sample_heatmap(mean_cutoff = 0.75, colour_limits = c(-3, 1.5), myColour)
+
+my_gtable <- heatmap75$gtable
+my_gtable$grobs[[4]]$gp <- gpar(fontfamily = nice_font, fontsize=7) # x axis labels
+my_gtable$grobs[[7]]$gp <- gpar(fontfamily = nice_font, fontsize=7) # Q/W legend
+
+saveRDS(my_gtable, "figures/heatmap75.rds")
+heatmap75
 ```
 
 #### Heatmap of sites with $\ge 2.7$% methylation
 
 ```{r message=FALSE, warning=FALSE, width = 10, height = 14}
-meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 3))
+set.seed(10)
+myColour <- c(colorRampPalette(c(brewer.pal(9, "Purples")[7], "white"))(27),
+    colorRampPalette(c("white", brewer.pal(9, "Oranges")[7]))(24)[-1])
+
+heatmap_all <- meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 2.5), myColour)
+saveRDS(heatmap_all, "figures/heatmap_all.rds")
+heatmap_all
 ```
 
 
@@ -867,7 +916,7 @@ window_500bp_timeW %>%
 
 
 
-## Run Bayesian GAMs on the methylome data
+## GLM analysis of the methylome data
 
 ### Count the number of sites before and after QC
 
@@ -875,7 +924,7 @@ We first remove sites with methylation levels too low for analysis, or which wer
 
 The bisulphite conversion rate was about 99.73 (as measured by the apparent % methylation of sites in the phage lambda DNA), so we expect unmethylated sites to appear methylated about 0.27% of the time. To ensure we focus on sites where these 'false positive' signals of methylation provide only a modest portion of the observed % of Cs vs Ts (i.e. the estimate of % methylation), we chose to focus on sites that have 10$\times$ higher methylation rates than expected based on the low-level background 'noise'. That is, we excluded all sites where fewer than 2.7% of the reads were Cs (i.e. putatively methylated). This rules out the great majority of sites for which at least one C was observed. We also discarded sites that had been measured in fewer than 32 of our 36 samples.
 
-#### Total number of sites with sufficient data for the GAMs:
+#### Total number of sites with sufficient data for the GLMs:
 
 ```{r}
 methylated_sites %>% length()
@@ -883,151 +932,231 @@ methylated_sites %>% length()
 
 
 
-### Run preliminary frequentist GAMs using `mgcv::gam`
+### Run one GLM per site using `base::glm()`
 
-There are too many sites to run our preferred Bayesian model on all of them in a reasonable amount of time. We therefore first use a model selection approach using the equivalent frequentist generalised additive model (GAMs; implemented in the `mgcv` package, which runs a similar model in <1 second) to select a set of sites that appear to show a caste difference in the frequency of methylation, which we then re-analyse using the slower (but more principled and information-rich) Bayesian approach. To summarise the following code: 
+There are too many CpG sites to use the Bayesian approaches used elsewhere in this study in a reasonable amount of time. We therefore applied the equivalent frequentist generalised linear model, implemented using `base::glm()`.
 
-- The frequentist analysis uses all samples except the time zero samples, since these are complicated to model correctly because they do not neatly belong to either the queen- or worker-destined treatments
-- `Time` is modelled using a thin plate regression spline (see `?mgcv::s`), allowing non-linear changes in % methylation with time, with the amount of non-linearity being driven by the data. 
-- For each site, we fit 5 different models and then compare them using the corrected Akaike Information Criterion (AICc). The 5 models fitted included the following fixed effects: 1) neither caste nor time (our 'null model'), 2) caste, 3) time, 4) both caste and time, or 5) caste, time, and their interaction (the 'full model'). Additionally, all these models contained the experimental replicate as a fixed effect. 
-- The formula of the full model was therefore same as for the Bayesian models run below, i.e. `caste + s(time, by = caste, k = 4) + rep`.
+To summarise the following code:
+
+- These GLMs include all the samples except the four time zero samples. These samples were ommited because they do not neatly belong to either the queen- or worker-destined treatments, making it complicated to include in the model.
+- Non-linear effects of `Time` were modeled using a quadratic term, allowing accelerating or deccelerating changes in % methylation with time
+- For each site, we fit 6 different GLMs that we considered to be biologically plausible, and then performed model averaging based on their Akaike weights using `MuMIn::model.avg()`. All 6 models contained experimental block as a fixed effect, and optionally also contained the fixed effects time, time^2, the caste:time interaction, and the I(time^2):caste. Note that we did not fit the main effect of caste, which forces queens and workers to have the same % methylation estimate at time zero (which we know must be the case due to the experimental design)
 - The response variable was the number of cytosines observed at the site, given the total coverage at the sites (i.e. number of reads containing Cs plus Ts). We used Binomial errors and a logit link.
-- Sites were re-analysed using the Bayesian models if A) the 'variable importance' of caste was at least 99% (indicating that there is >99% chance that caste is present in the top model out of the 5 that were considered), and/or B) the site was statistically significant in the BWASP results mentioned above. 
+- After fitting the models and averaging them, we predicted the % methylation of the site in queens and workers at each time point, and calculated the caste difference, its 95% CIs, and the p-value for the null hypothesis that the caste difference was zero using bootstrapping.
+- Sites were re-analysed using the Bayesian models if A) the p-value for the caste difference was p < 0.00001 at one or more time points in this GLM analysis, and/or B) the site was statistically significant in the BWASP results mentioned above (FDR-corrected p-value of <0.05).
+
+```{r message=FALSE}
+# Set up split list of methylated CpG sites, and count the number of chunks of sites
+split_methylated_sites <- split(methylated_sites, ceiling(seq_along(methylated_sites)/1000))
+n_chunks <- length(split_methylated_sites)
+
+############## Create helper functions
+# Calculate AIC weight from delta-AIC values
+# The sum of the weights for all models containing a given predictor gives its "variable importance" 
+get_aic_weight <- function(aic_deltas){
+  exp(-0.5 * aic_deltas) / sum(exp(-0.5 * aic_deltas))
+}
+
+# inverse logit to convert from the logit link scale to a proportion
+inv_logit <- function(x) 1 / (1 + exp(-x))
+
+# run a binomial GLM given a formula and some data
+run_glm <- function(my_formula, dat) {
+  glm(as.formula(my_formula), data = dat, family = "binomial")
+}
+
+# Get random normals for nSamples, nBoots times, for each value in a vector of means and SDs
+# means and SDs should be the same length. Returns an array
+# Used below for bootstrapping the caste difference in methylation rate at each time point
+vectorised_rnorm <- function(nSamples, nBoots, means, SDs) {
+  m <- length(means)
+  aperm(array(rnorm(nSamples * m * nBoots, means, SDs), 
+              c(m, nSamples, nBoots)), c(2,1,3))
+}
+
+# List of GLM models to compare for each site:
+# Note that there is no main effect of caste, so the castes are constrained to have the same methylation at time 0 
+formulae <- c(
+  "cbind(numC, numT) ~ rep",
+  "cbind(numC, numT) ~ rep + time",
+  "cbind(numC, numT) ~ rep + time + I(time^2)",
+  "cbind(numC, numT) ~ rep + caste:time",
+  "cbind(numC, numT) ~ rep + caste:time + I(time^2)",
+  "cbind(numC, numT) ~ rep + caste:time + I(time^2) + I(time^2):caste"
+)
 
 
-```{r frequentist_GAMs, message=FALSE}
-if(!file.exists("output/list_of_DMS_frequentist_GAM.txt")){
+# Define a function to run the 6 GLMs on each site in a chunk, 
+# average the models, and save key results. The function either uses the real data, or shuffles them
+model_multiple_sites <- function(chunk_number, 
+                                 vector_of_chunks, 
+                                 random_caste, 
+                                 make_plot_data = FALSE){
+
+  print("Starting new chunk")
+  focal_sites <- vector_of_chunks[[chunk_number]]
   
-  model_multiple_sites <- function(chunk_number, vector_of_chunks){
+  # Get data from the database for the focal chunk of sites
+  focal_chunk <- by_site %>%  
+    filter(site %in% focal_sites & time != 0) %>% 
+    dplyr::select(sample, site, numC, numT, caste, time, rep) %>%
+    distinct() %>%
+    collect() 
+  
+  # Internal function to model one site using GAM, and compare models by AICc
+  do_one_site <- function(focal_site, data_chunk, nboots = 10000){
     
-    print("Starting new chunk")
-    focal_sites <- vector_of_chunks[[chunk_number]]
+    focal_site_data <- data_chunk %>%
+      filter(site == focal_site)
+
+    models <- lapply(formulae, run_glm, dat = focal_site_data)
     
-    # Get data from the database for the focal chunk of sites
-    focal_chunk <- by_site %>%  
-      filter(site %in% focal_sites & time != 0) %>% 
-      dplyr::select(site, numC, numT, caste, time, rep) %>%
-      distinct() %>%
-      collect() %>%
-      mutate(caste = factor(caste, c("Queen", "Worker")),
-             rep = C(factor(rep), contr = "contr.sum"))  
+    AICc_table <- data.frame(
+      Site = focal_site,
+      formula = str_remove_all(formulae, "cbind[(]numC, numT[)] ~ "),
+      AICc(models[[1]], models[[2]], models[[3]], models[[4]], models[[5]], models[[6]])
+    ) %>% as_tibble() %>% 
+      arrange(AICc) %>%
+      mutate(delta = AICc - AICc[1],
+             weight = get_aic_weight(delta))
+
+    # Predict new data and calculate caste difference, using model average parameter estimates
+    new <- expand_grid(caste = c("Queen", "Worker"), 
+                       time = c(2,4,6,8), 
+                       rep = c("A", "B", "C", "D"))
+  
+    # Note: predict on the link scale, not data scale
+    predictions_with_se <-
+      data.frame(new,
+                 predicted_prop_meth = predict(
+                   model.avg(models), backtransform = FALSE,
+                   newdata = new, se.fit = TRUE)) %>%
+      group_by(caste, time) %>%
+      summarise(predicted_prop_meth.fit = mean(predicted_prop_meth.fit),
+                predicted_prop_meth.se.fit = mean(predicted_prop_meth.se.fit), .groups = "drop")
+
+    # Get the caste mean prop. methylation (note back-transform from the link scale)
+    caste_means <- predictions_with_se %>% 
+      dplyr::select(-predicted_prop_meth.se.fit) %>% 
+      spread(caste, predicted_prop_meth.fit) %>%
+      mutate(Queen = inv_logit(Queen),
+             Worker = inv_logit(Worker),
+             Caste_difference = Queen - Worker)
     
-    # Internal function to model one site using GAM, and compare models by AICc
-    do_one_site <- function(focal_site, data_chunk){
-      
-      focal_site_data <- data_chunk %>%
-        filter(site == focal_site)
-      
-      m1 <- gam(cbind(numC, numT) ~ caste + s(time, by = caste, k = 4) + rep, data = focal_site_data, family = "binomial")
-      m2 <- gam(cbind(numC, numT) ~ caste + s(time,  k = 4) + rep, data = focal_site_data, family = "binomial")
-      m3 <- gam(cbind(numC, numT) ~ caste + rep, data = focal_site_data, family = "binomial")
-      m4 <- gam(cbind(numC, numT) ~ s(time,  k = 4) + rep, data = focal_site_data, family = "binomial")
-      m5 <- gam(cbind(numC, numT) ~ rep, data = focal_site_data, family = "binomial")
-      
-      new <- expand_grid(caste = c("Queen", "Worker"), time = c(2,4,6,8), rep = "A")
-      
-      model_averages <- 
-        data.frame(dplyr::select(new, -rep), 
-                   predicted_prop_meth = predict(model.avg(m1, m2, m3, m4, m5), 
-                                                 newdata = new, type = "link", backtransform = TRUE)) %>%
-        spread(caste, predicted_prop_meth) %>%
-        mutate(Caste_difference = Queen - Worker)
-      
-      
-      # Make AIC model comparison table on the 5 candidate models
-      AIC_table <- tibble(Site = focal_site, 
-                          Model = c("caste + s(time, by = caste)", 
-                                    "caste + s(time)", 
-                                    "caste", 
-                                    "s(time)", 
-                                    "Replicate only")) %>%
-        bind_cols(
-          AICc(m1, m2, m3, m4, m5) %>% as.data.frame() %>% as_tibble()
-        ) %>% arrange(AICc) %>% mutate(delta = AICc - AICc[1])
-      
-      list(model_averages, AIC_table)
+    # Find the caste differences (and their SE and 95% CIs) by bootstrapping
+    # Generate 4 Q and 4 W samples nboots times, and use to find SE/CIs of the caste difference
+    # Do this 4 times, separately for times 2,4,6,8
+    # 8 cols (q2 to q8, then w2 to w8), nBoots rows, giving bootstrapped means for 4 samples
+    boot_means <- vectorised_rnorm(nSamples = 4, nBoots = nboots, 
+                          means = predictions_with_se$predicted_prop_meth.fit, 
+                          SDs = predictions_with_se$predicted_prop_meth.se.fit) %>%
+    apply(2, colMeans)
+    
+    boot_caste_diff <- matrix(numeric(4*nboots), ncol = 4, nrow = nboots)
+    
+    for(i in 1:4){
+      boot_caste_diff[,i] <- inv_logit(boot_means[,i]) - inv_logit(boot_means[,i+4])
     }
     
+    # Helper code to summarise some bootstraps into SE and 95% CIs, and p
+    my_summary <- list(
+      SE = ~ sd(.x),
+      lower95 = ~ as.numeric(quantile(.x, probs = 0.025)),
+      upper95 = ~ as.numeric(quantile(.x, probs = 0.975)),
+      p = ~ 1 - max(c(sum(.x < 0), sum(.x > 0))) / nboots
+    )
     
-    # do_one_site <- function(focal_site, data_chunk){
-    #   
-    #   focal_site_data <- data_chunk %>%
-    #     filter(site == focal_site)
-    #   
-    #   # Make AIC model comparison table on the 5 candidate models
-    #   tibble(Site = focal_site, 
-    #          Model = c("caste + s(time, by = caste)", 
-    #                    "caste + s(time)", 
-    #                    "caste", 
-    #                    "s(time)", 
-    #                    "Replicate only")) %>%
-    #     bind_cols(
-    #       AICc(gam(cbind(numC, numT) ~ caste + s(time, by = caste, k = 4) + rep, data = focal_site_data, family = "binomial"),
-    #            gam(cbind(numC, numT) ~ caste + s(time,  k = 4) + rep, data = focal_site_data, family = "binomial"),
-    #            gam(cbind(numC, numT) ~ caste + rep, data = focal_site_data, family = "binomial"),
-    #            gam(cbind(numC, numT) ~ s(time,  k = 4) + rep, data = focal_site_data, family = "binomial"),
-    #            gam(cbind(numC, numT) ~ rep, data = focal_site_data, family = "binomial")) %>% as.data.frame() %>% as_tibble()
-    #     ) %>% arrange(AICc) %>% mutate(delta = AICc - AICc[1])
-    # }
-    plan("multiprocess")
-    future_lapply(focal_sites, do_one_site, data_chunk = focal_chunk) %>%
-      saveRDS(glue("data/meth_sites_GAMs/chunk_{chunk_number}.rds"))
+    caste_diff <- 
+      caste_means %>% 
+      left_join(
+        boot_caste_diff %>%
+          as.data.frame() %>%
+          dplyr::rename(`2` = V1, `4` = V2, `6` = V3, `8` = V4) %>%
+          summarise(across(everything(), my_summary)) %>%
+          gather() %>%
+          mutate(time = as.numeric(str_extract(key, "[2468]")),
+                 key = str_remove(key, "[2468]_")) %>%
+          mutate(key = factor(key, c("Caste_difference", "SE", "lower95", "upper95", "p"))) %>%
+          spread(key, value),
+        by = "time") %>%
+      mutate(Site = focal_site)
+    
+    list(AICc_table, caste_diff)
   }
   
-  split_methylated_sites <- split(methylated_sites, ceiling(seq_along(methylated_sites)/1000))
-  n_chunks <- length(split_methylated_sites)
-  gam_results <- lapply(1:n_chunks, model_multiple_sites, split_methylated_sites)
+  # Now model all the sites in the chunk, in parallel, and save this chunk's results to disk
+  file_path <- "output/meth_sites_frequentist_GLMs/chunk_{chunk_number}.rds"
+#  plan("multiprocess")
+  chunk_results <- lapply(focal_sites, do_one_site, data_chunk = focal_chunk)
   
-  # Calculate AIC weight from delta-AIC values
-  # The sum of the weights for all models with a predictor in them gives its "variable importance" 
-  get_aic_weight <- function(aic_deltas){
-    exp(-0.5 * aic_deltas) / sum(exp(-0.5 * aic_deltas))
-  }
+  if(make_plot_data) return(chunk_results)
   
-  frequentist_GAM_meth_diff <- list.files("data/meth_sites_GAMs", full.names = TRUE) %>%
-    map_df(~ readRDS(.x) %>% map_df(~ {
-      data.frame(Site = .x[[2]]$Site[1], .x[[1]])
-      })) %>% as_tibble() 
+  AIC_results <- map_df(chunk_results, ~ .x[[1]]) %>%
+    dplyr::select(ends_with("ite"), everything()) %>% as_tibble()
   
-  caste_importance <- list.files("data/meth_sites_GAMs", full.names = TRUE) %>%
-    map_df(~ readRDS(.x) %>% map_df(~ .x[[2]])) %>%
-    group_by(Site) %>%
-    mutate(weight = get_aic_weight(delta)) %>% 
-    ungroup() %>%
-    filter(Model %in% c("caste", "caste + s(time)", "caste + s(time, by = caste)")) %>%
-    group_by(Site) %>%  # sum the weights over the 3 models containining CASTE, i.e. "variable importance"
+  caste_diff_results <- map_df(chunk_results, ~ .x[[2]]) %>%
+    dplyr::select(ends_with("ite"), everything()) %>% as_tibble()
+  
+  list(AIC_results, caste_diff_results) %>%
+    saveRDS(glue(file_path))
+}
+
+# Define function to process the GLM output that was saved to disk
+process_GLM_output <- function(file_path){
+  all_chunks <- 
+    list.files(file_path, full.names = TRUE) %>%
+    map(~ readRDS(.x))
+
+  caste_importance <- all_chunks %>% 
+    map_df(~ .x[[1]]) %>%
+    filter(str_detect(formula, "caste")) %>%
+    group_by(Site) %>%  # sum the weights over the models containing CASTE, i.e. "variable importance"
     summarise(caste_importance = sum(weight), .groups = "drop")
   
-  time_importance <- list.files("data/meth_sites_GAMs", full.names = TRUE) %>%
-    map_df(~ readRDS(.x) %>% map_df(~ .x[[2]])) %>%
-    group_by(Site) %>%
-    mutate(weight = get_aic_weight(delta)) %>% 
-    ungroup() %>%
-    filter(Model %in% c("s(time)", "caste + s(time)", "caste + s(time, by = caste)")) %>%
-    group_by(Site) %>%  # sum the weights over the 3 models containining TIME, i.e. "variable importance"
+  time_importance <- all_chunks %>% 
+    map_df(~ .x[[1]]) %>%
+    filter(str_detect(formula, "time")) %>%
+    group_by(Site) %>%  # sum the weights over the models containing TIME, i.e. "variable importance"
     summarise(time_importance = sum(weight), .groups = "drop")
   
-  interaction_importance <- list.files("data/meth_sites_GAMs", full.names = TRUE) %>%
-    map_df(~ readRDS(.x) %>% map_df(~ .x[[2]])) %>%
-    group_by(Site) %>%
-    mutate(weight = get_aic_weight(delta)) %>% 
-    ungroup() %>%
-    filter(Model == "caste + s(time, by = caste)") %>%
-    dplyr::rename(interaction_importance = weight) %>%
-    dplyr::select(Site, interaction_importance)
+  interaction_importance <- all_chunks %>% 
+    map_df(~ .x[[1]]) %>%
+    filter(str_detect(formula, "caste[:]time")) %>%
+    group_by(Site) %>%  # sum the weights over the models containing CASTE, i.e. "variable importance"
+    summarise(interaction_importance = sum(weight), .groups = "drop")
   
   importance <- caste_importance %>%
     left_join(time_importance, by = "Site") %>%
     left_join(interaction_importance, by = "Site") %>%
     arrange(-interaction_importance)
   
-  write_tsv(importance, "output/list_of_DMS_frequentist_GAM.txt")
-  write_tsv(frequentist_GAM_meth_diff, "output/frequentist_GAM_meth_diff.txt")
-} else importance <- read_tsv("output/list_of_DMS_frequentist_GAM.txt")
+  output_methdiff <- "output/frequentist_GLM_meth_diff.txt"
+  output_importance <- "output/frequentist_GLM_importance.txt"
+  
+  map_df(all_chunks, ~ .x[[2]]) %>%
+     write_tsv(path = output_methdiff)
+  
+  importance %>% write_tsv(path = output_importance)
+}
 
-sig_sites_caste_frequentist_GAM <- importance %>% 
-  filter(caste_importance > 0.99) %>% pull(Site)  
+# Run the GLMs and parse the results
+if(!file.exists("output/frequentist_GLM_meth_diff.txt")){
+  glm_results <- lapply(1:n_chunks, model_multiple_sites, 
+                        vector_of_chunks = split_methylated_sites, 
+                        random_caste = random_caste, shuffle = FALSE)
+  rm(glm_results)
+  process_GLM_output("output/meth_sites_frequentist_GLMs", shuffle = FALSE)
+} else {
+  glm_results_real <- read_tsv("output/frequentist_GLM_meth_diff.txt")
+}
 
+
+
+# Find the sites that were significant in these GLMs
+sig_sites_caste_frequentist_GLM <- glm_results_real %>% 
+  filter(p < 0.00001) %>% pull(Site) %>% unique()
+
+# Find the sites that were significant in the BWASP pipeline
 sig_sites_caste_bwasp <- bwasp_between_castes %>%
   dplyr::select(site, seqnames, start) %>% distinct()
 
@@ -1045,7 +1174,6 @@ sig_sites_bwasp <- sig_sites_bwasp[complete.cases(sig_sites_bwasp), ] %>% distin
 bwasp_seq_names <- sig_sites_bwasp$seqnames %>% unique()
 bwasp_start <- sig_sites_bwasp$start %>% unique()
 
-
 sig_sites_caste_bwasp <- tbl(db, "site_info") %>%
   dplyr::select(site, seqnames, start) %>%
   filter(seqnames %in% bwasp_seq_names) %>%
@@ -1055,26 +1183,28 @@ sig_sites_caste_bwasp <- tbl(db, "site_info") %>%
   filter(pasted %in% paste(sig_sites_bwasp$seqnames, sig_sites_bwasp$start)) %>%
   distinct()
 
-sites_for_bayes_GAM <- unique(c(sig_sites_caste_frequentist_GAM, sig_sites_caste_bwasp$site))
+# Make the list of sites to analyse in the Bayesian GAMs below
+sites_for_bayes_GAM <- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_caste_bwasp$site))
 ```
+
+
 
 
 
 ### Run the Bayesian GAMs
 
-The previous code chunk identified `r length(sites_for_bayes_GAM)` candidate differentially-methylated sites, which we now analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called 'sceptical' priors (see the book/lecture series _Statistical Rethinking_ by Richard McElreath). 
+The BWASP pipeline and the previous code chunk together identified `r length(sites_for_bayes_GAM)` candidate differentially-methylated sites, which we now re-analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called 'skeptical' priors (see the book/lecture series _Statistical Rethinking_ by Richard McElreath). 
 
-We first generated multiple copies of the orignal dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four t0 samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the t0 samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each t0 sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
+We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four t0 samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the t0 samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each t0 sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
 
 Each model had the same formula, namely:
 
-`Binomial(number_methylated, Coverage) ~ caste + s(time, by = caste, k = 4) + replicate`
+`Binomial(number_methylated, Coverage) ~ caste:time + I(time^2) + I(time^2):caste + replicate`
 
 That is, the response variable is the number of putatively methylated cytosines observed (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a continuous predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a Bayesian generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
 
 After running the model, we use the posterior parameter estimates to calculate posterior predictions of the mean % methylation at each point in time (using `fitted.brmsfit()`), in each caste. From these, we can calculate the caste difference in methylation at each time point, and test whether the 95% credible interval of this difference includes zero (implying a significant difference in means). We also calculate the difference between all possible pairs of time points within each caste.
 
-The following runs the models in parallel using `future_lapply`, and we attempt to save time by not recompiling the model between each site. This still takes 1-2 days to run on a medium-spec desktop. This should be run in R (not RStudio) in order to use forking for parallel processing.
 
 ```{r bayesian_GAMs, eval=FALSE}
 done_already <- list.files("output/meth_sites_brms") %>% 
@@ -1098,7 +1228,9 @@ if(length(site_still_to_do) > 0){
            rep = C(factor(rep), contr = "contr.sum"))  
   
   # Define the formula for the model
-  brms_formula <- bf(numC | trials(coverage) ~ caste + s(time, by = caste, k = 4) + rep)
+ # brms_formula <- bf(numC | trials(coverage) ~ caste + s(time, by = caste, k = 4) + rep)
+   brms_formula <- bf(numC | trials(coverage) ~ rep + caste:time + I(time^2) + I(time^2):caste)
+  
   
   # count the t0 samples for this site
   n_t0_samples <- focal_site_data %>% 
@@ -1179,14 +1311,15 @@ if(length(site_still_to_do) > 0){
     data = data_permutations, family = "binomial",
     control = list(adapt_delta = 0.99))
   
-  plan("multiprocess")
+# plan("multiprocess")
   
   if(length(site_still_to_do) > 0){
     site_still_to_do %>%
-      future_lapply(function(focal_site) {
+     # future_lapply(function(focal_site) {
+      lapply(function(focal_site) {
         
         focal <- by_site %>%  
-          filter(site == focal_site) %>% 
+          dplyr::filter(site == focal_site) %>% 
           mutate(coverage = numC + numT) %>%
           dplyr::select(numC, coverage, caste, time, rep) %>%
           distinct() %>%
@@ -1334,7 +1467,7 @@ rm(done_already)
 
 ### Identifying "significant" sites {.tabset}
 
-We label a site as significantly differentially methylated between castes/timepoints if the posterior estimate of the difference in mean methylation between castes/timepoints excludes zero with over 95% probability (after applying Benjamini-Hochberg correction to control the false discovery rate). We chose this definition in an attempt to balance the risk of false positives and false negatives. 
+We label a site as significantly differentially methylated between castes/timepoints if the posterior estimate of the difference in mean methylation between castes/timepoints excludes zero with over 99.99% probability (similar to a one-tailed p-value of 0.0001). We chose this definition in an attempt to balance the risk of false positives and false negatives. 
 
 ```{r get_sig_sites_bayesian_GAMs}
 model_results <- list.files("output/meth_sites_brms", 
@@ -1481,8 +1614,8 @@ The following plots show the `r length(plot_sites)` CpG sites that showed a high
 
 The plot below shows 16 of the `r length(plot_sites)` significant sites; click the tabs to see the remainder. The red colour refers to queens, blue to workers. 
 
-```{r plot_one_site}
-plot_one_site <- function(focal_site){
+```{r plot_one_site, warning=FALSE, message=FALSE}
+plot_one_site <- function(focal_site, include_label = TRUE){
   
   preds <- model_results[map_dbl(model_results, ~ .x$site) == focal_site][[1]]$preds_for_plot
   
@@ -1494,6 +1627,11 @@ plot_one_site <- function(focal_site){
     dplyr::select(percent_meth, time, caste, rep) %>%
     collect() %>% mutate(caste = replace(caste, caste == "t0", NA)) %>%
     distinct()
+  
+  x <- lm(percent_meth ~ rep, data = raw_data)$coef %>% as.numeric()
+  raw_data$percent_meth[raw_data$rep == "B"] <- raw_data$percent_meth[raw_data$rep == "B"] + x[2]
+  raw_data$percent_meth[raw_data$rep == "C"] <- raw_data$percent_meth[raw_data$rep == "C"] + x[3]
+  raw_data$percent_meth[raw_data$rep == "D"] <- raw_data$percent_meth[raw_data$rep == "D"] + x[4]
   
   title <- paste0(tbl(db, "site_info") %>% 
                     filter(site == focal_site) %>% 
@@ -1509,7 +1647,7 @@ plot_one_site <- function(focal_site){
   
   subtitle <-  str_wrap(subtitle, width = 35)
   
-  preds %>%
+  p <- preds %>%
     ggplot(aes(time, percent_meth, colour = caste, fill = caste)) + 
     geom_line(alpha = 0.1, aes(group = paste(caste, draw))) +
     geom_line(data = means_lines, aes(group = caste), colour = "black", size = 1.15) +
@@ -1521,17 +1659,26 @@ plot_one_site <- function(focal_site){
     ylab(NULL) + # "Estimated mean % methylation of site"
     xlab(NULL) + # "Hours post-grafting into queen or worker cell"
     coord_cartesian(xlim = c(0,8)) +
-    labs(title = title,
-         subtitle = subtitle[1]) +
     theme_bw() + 
     theme(legend.position = "none",
           text = element_text(family = nice_font),
           plot.title = element_text(size = 10),
           plot.subtitle = element_text(size = 8))
+  
+  if(include_label) return(p + labs(title = title, subtitle = subtitle[1]))
+  else return(p)
 }
 
-# plot_one_site(1956531) # nice Csd plot
+# plot_one_site(1956531) # Csd plot
 # plot_one_site(4053130) # sex-lethal homolog
+# hist-lys N meth trithorax
+arrangeGrob(rbind(ggplotGrob(plot_one_site(1956531, include_label = F) + 
+                               labs(subtitle = "Intron in complementary sex determiner\npos: 11775528", 
+                                    y = "% mCpGs")), 
+                  ggplotGrob(plot_one_site(4053130, include_label = F) + 
+                               labs(subtitle = "Promoter of sex-lethal homolog\npos: 6578328",
+                                    x = "Hours post-grafting", y = "% mCpGs")))) %>%
+  saveRDS("figures/two_sites_for_big_meth_fig.rds")
 
 plot_sites_split <- split(plot_sites, ceiling(seq_along(plot_sites) / 16))
 done_already <- as.numeric(str_extract(list.files("figures/bayes_sites/"), "[:digit:]+"))
@@ -1658,6 +1805,38 @@ if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split)){
 
 
 
+```{r make_multipanel_fig, echo=FALSE}
+blankPlot <- ggplot() + geom_blank(aes(1, 1)) +
+  theme(plot.background = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(), 
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.x = element_blank(), 
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank())
+
+hm <- arrangeGrob(blankPlot, readRDS("figures/heatmap75.rds"), ncol = 1, heights = c(0.05,0.95))
+
+bottom_right <- arrangeGrob(blankPlot, readRDS("figures/two_sites_for_big_meth_fig.rds"), ncol = 1, heights = c(0.05,0.95))
+
+
+# 840 x 756px
+ggsave("figures/composite_figure.pdf", grid.arrange(
+  arrangeGrob(readRDS("figures/histo_fig1.rds"), 
+              readRDS("figures/genomic_context_plot_caste.rds") + 
+                geom_point(fill = "#b19cd9", pch=21) + 
+                xlab(NULL) + ylab("Mean caste difference in\n% mCpGs (\u00B195% CIs)"), 
+              nrow = 1, widths = c(0.6,0.4)),
+  arrangeGrob(blankPlot, hm, blankPlot, bottom_right, 
+              nrow = 1, widths = c(0.03, 0.6, 0.05, 0.32)), 
+  nrow = 2, heights = c(0.4, 0.6)),
+  height = 8, width = 8.6)
+  
+```
 
 
 
@@ -1756,20 +1935,20 @@ if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split)){
 
 To test whether the caste-specific sites differed because of changes in the queen methylome, the worker methylome, or both, we estimated the Spearman correlations between the 3 effect sizes per site (estimated using GAMs), namely the effect sizes measuring the change in % methylation between 8h QDL and 8h WDL, between 8h QDL and 2h QDL, and between 8h WDL and 2h WDL. 
 
-We found that the difference between 8h QDL and 8h WDL was positively correlated with the change from 2-8h in QDL, indicating that part of the 8h caste difference reflected changes in QDL. Moreover, we found that the difference between 8h WDL and 2h WDL was negatively correlated with the change from 2-8h in QDL, indicating that the 8h caste difference was also due to changes in WDL.
+We found that the difference between 8h QDL and 8h WDL was positively correlated with the change from 2-8h in QDL, indicating that part of the 8h caste difference reflected changes in QDL. Moreover, we found that the difference between 8h WDL and 2h WDL was negatively correlated with the change from 2-8h in QDL, suggesting that the 8h caste difference was also due to changes in WDL.
 
 ```{r message=FALSE, warning=FALSE}
-read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
   filter(time == 8) %>%
   dplyr::rename(`Queen 8h - Worker 8h`  = Caste_difference) %>%
   left_join(
-    read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+    read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
       group_by(Site) %>%
-      summarise(`Queen 8h - Queen 2h` = Queen[4] - Queen[1]), by = "Site") %>%
+      summarise(`Queen 8h - Queen 2h` = Queen[time == 8] - Queen[time == 2]), by = "Site") %>%
   left_join(
-    read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+    read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
       group_by(Site) %>%
-      summarise(`Worker 8h - Worker 2h` = Worker[4] - Worker[1]), by = "Site") %>%
+      summarise(`Worker 8h - Worker 2h` = Worker[time == 8] - Worker[time == 2]), by = "Site") %>%
   dplyr::select(contains("8h")) %>%
   cor(method = "spearman") %>%
   round(2) %>%
@@ -1826,7 +2005,7 @@ read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
 ## GO and KEGG enrichment of genes showing variable methylation
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-site_count <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>% 
+site_count <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>% 
   pull(Site) %>% unique() %>% length() %>% prettyNum(big.mark = ",")
 ```
 
@@ -1842,9 +2021,11 @@ if(!file.exists("output/meth_gsea_results.rds")){
   
   sig_thres <- 0.01
   
-  gene_caste_difference <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+  # Estimate caste difference in methylation for times 2/4/6/8 for each GENE 
+  # (calculated as the median estimated caste difference across all the sites within
+  # the exons, promoters, introns, and UTRs of each gene)
+  gene_caste_difference <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
     left_join(tbl(db, "site_annotations") %>% 
-                filter(site %in% !!importance$Site) %>% 
                 dplyr::select(-exon_rank, -translated) %>%
                 collect() %>% 
                 nest(gene = c(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in)) %>% 
@@ -1853,18 +2034,17 @@ if(!file.exists("output/meth_gsea_results.rds")){
     mutate(gene = map(gene, ~ unlist(.x) %>% unname() %>% na.omit() %>% as.character())) %>%
     unnest(gene) %>% distinct() %>%
     group_by(gene, time) %>%
-    summarise(statistic = mean(Caste_difference), .groups = "drop") %>%
+    summarise(statistic = median(Caste_difference), .groups = "drop") %>%
     arrange(-statistic) %>%
     left_join(tbl(db, "gene_names") %>% 
                 dplyr::select(gene_symbol, gene_name) %>% collect(), 
               by = c("gene" = "gene_symbol")) %>%
     distinct()
   
-  gene_timeQ <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+  gene_timeQ <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
     group_by(Site) %>%
-    summarise(statistic = Queen[4] - Queen[1]) %>%
+    summarise(statistic = Queen[time == 8] - Queen[time == 2], .groups = "drop") %>%
     left_join(tbl(db, "site_annotations") %>% 
-                filter(site %in% !!importance$Site) %>% 
                 dplyr::select(-exon_rank, -translated) %>%
                 collect() %>% 
                 nest(gene = c(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in)) %>% 
@@ -1876,15 +2056,14 @@ if(!file.exists("output/meth_gsea_results.rds")){
                 dplyr::select(gene_symbol, gene_name) %>% collect(), 
               by = c("gene" = "gene_symbol"))  %>%
     group_by(gene, gene_name) %>%
-    summarise(statistic = mean(statistic), .groups = "drop") %>%
+    summarise(statistic = median(statistic), .groups = "drop") %>%
     arrange(-statistic) %>%
     distinct()
   
-  gene_timeW <- read_tsv("output/frequentist_GAM_meth_diff.txt") %>%
+  gene_timeW <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
     group_by(Site) %>%
-    summarise(statistic = Worker[4] - Worker[1]) %>%
+    summarise(statistic = Worker[time == 8] - Worker[time == 2], .groups = "drop") %>%
     left_join(tbl(db, "site_annotations") %>% 
-                filter(site %in% !!importance$Site) %>% 
                 dplyr::select(-exon_rank, -translated) %>%
                 collect() %>% 
                 nest(gene = c(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in)) %>% 
@@ -1896,7 +2075,7 @@ if(!file.exists("output/meth_gsea_results.rds")){
                 dplyr::select(gene_symbol, gene_name) %>% collect(), 
               by = c("gene" = "gene_symbol")) %>%
     group_by(gene, gene_name) %>%
-    summarise(statistic = mean(statistic), .groups = "drop") %>%
+    summarise(statistic = median(statistic), .groups = "drop") %>%
     arrange(-statistic) %>%
     distinct()
   
@@ -2030,6 +2209,16 @@ source("code/make_pathway_figure.R")
 
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/meth_GO_for_composite_figure.rds")
+
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type != "GO: Biological process" & term != "molecular_function") %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/meth_GO_others.rds")
+
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
@@ -2060,7 +2249,7 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ###### Figure
 ```{r fig.width=6.9, fig.height = 7}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
-  filter(Test_type == "GO: Molecular function") %>%
+  filter(Test_type == "GO: Molecular function"  & term != "molecular_function") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
@@ -2115,6 +2304,10 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 
 ###### Figure
 ```{r fig.height=2.7, fig.width = 6.9}
+GO_KEGG_results$GO_Amel_annotations_caste %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/meth_all_enrichments_Amel.rds")
+
 GO_KEGG_results$GO_Amel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
     make_pathway_figure("", "Hours post-grafting")
@@ -2185,6 +2378,21 @@ Orange means that the temporal change in % methylation was comparatively large a
 #### GO: Biological process {.tabset}
 
 ##### Using the _D. melanogaster_ annotations {.tabset}
+
+```{r echo=FALSE}
+(bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>%
+  make_pathway_figure("", "Caste", alt_colours = TRUE) +
+     theme(text = element_text(family = nice_font))) %>%
+  saveRDS("figures/meth_GO_temporal_Dmel.rds")
+
+(bind_rows(GO_KEGG_results$GO_Amel_annotations_temporalQ,
+          GO_KEGG_results$GO_Amel_annotations_temporalW) %>%
+  make_pathway_figure("", "Caste", alt_colours = TRUE) +
+     theme(text = element_text(family = nice_font))) %>%
+  saveRDS("figures/meth_GO_temporal_Amel.rds")
+```
+
 
 ###### Figure
 ```{r fig.height=6, fig.width = 5.3}
@@ -2380,7 +2588,6 @@ network_input <- network_input[, colMeans(network_input) < 2.7]
 # Filter out genes unmethylated in most of the samples
 n_samples_with_methylation <- apply(network_input, 2, function(x) sum(x > 0))
 network_input <- network_input[, n_samples_with_methylation >= 30]
-
 ```
 
 
@@ -2562,13 +2769,12 @@ brms_data <- meth_eigengenes %>%
 
 
 # Define the model formula for all the j modules
-# old version:  + s(Time, by = Caste, k = 4) + (1 | Rep)
 j <- length(unique(meth_eigengenes$Module))
 brms_formula <- bf(
   paste("mvbind(",
         paste0(paste("m", 0:(j - 1), 
                      sep = ""), collapse = ","),
-        ") ~ Caste + s(Time, by = Caste, k = 4) + Rep", sep = "")    
+        ") ~ Caste:Time + I(Time^2) + I(Time^2):Caste + Rep", sep = "")    
 ) + set_rescor(FALSE)   
 
 brms_data <- list(
@@ -2592,23 +2798,25 @@ brms_data <- list(
            Caste = replace(Caste, Sample %in% c("t0A", "t0B"), "w"))) %>%
   map(~.x %>% rename_all(~ str_replace_all(.x, "Module ", "m")))
 
-brms_data <-map(brms_data, ~ .x %>% mutate(Time = as.numeric(Time), Caste = factor(Caste)))
+brms_data <- map(brms_data, 
+                 ~ .x %>% mutate(Time = as.numeric(Time), 
+                                 Caste = factor(Caste)))
 
 
 run_brms_eigengene_model <- function() {
   brm_multiple(
     brms_formula,
     data = brms_data,
-    prior = c(set_prior("normal(0, 5)", class = "b", resp = "m0"),
-              set_prior("normal(0, 5)", class = "b", resp = "m1"),
-              set_prior("normal(0, 5)", class = "b", resp = "m2"),
-              set_prior("normal(0, 5)", class = "b", resp = "m3"),
-              set_prior("normal(0, 5)", class = "b", resp = "m4"),
-              set_prior("normal(0, 5)", class = "b", resp = "m5"),
-              set_prior("normal(0, 5)", class = "b", resp = "m6"),
-              set_prior("normal(0, 5)", class = "b", resp = "m7"),
-              set_prior("normal(0, 5)", class = "b", resp = "m8"),
-              set_prior("normal(0, 5)", class = "b", resp = "m9")), 
+    prior = c(set_prior("normal(0, 2)", class = "b", resp = "m0"),
+              set_prior("normal(0, 2)", class = "b", resp = "m1"),
+              set_prior("normal(0, 2)", class = "b", resp = "m2"),
+              set_prior("normal(0, 2)", class = "b", resp = "m3"),
+              set_prior("normal(0, 2)", class = "b", resp = "m4"),
+              set_prior("normal(0, 2)", class = "b", resp = "m5"),
+              set_prior("normal(0, 2)", class = "b", resp = "m6"),
+              set_prior("normal(0, 2)", class = "b", resp = "m7"),
+              set_prior("normal(0, 2)", class = "b", resp = "m8"),
+              set_prior("normal(0, 2)", class = "b", resp = "m9")), 
     chains = 4, iter = 4000, cores = 1, inits = 0,
     control = list(adapt_delta = 0.9999, max_treedepth = 20))
 }
@@ -2639,10 +2847,10 @@ raw_data <- brms_data[[1]] %>%
          Time = as.numeric(Time))
 
 # Define y limits for the figure: 10% either side of the full range of the raw data
-ylimits <- c(min(raw_data$eigengene), max(raw_data$eigengene))
-range_frac <- 0.05 * (ylimits[2] - ylimits[1])
-ylimits <- c(ylimits[1] - range_frac,
-             ylimits[2] + range_frac) # add a little extra space for gene counts
+# ylimits <- c(min(raw_data$eigengene), max(raw_data$eigengene))
+# range_frac <- 0.05 * (ylimits[2] - ylimits[1])
+# ylimits <- c(ylimits[1] - range_frac,
+#              ylimits[2] + range_frac) # add a little extra space for gene counts
 
 # Define new data to get the lines and predicted means 
 new <- expand_grid(
@@ -2678,14 +2886,14 @@ preds <- make_preds()  %>%
 means_data <- preds %>%
   filter(Time %in% c(0,2,4,6,8)) %>%
   group_by(Module, Caste, Time) %>%
-  summarise(stats = list(as.data.frame(posterior_summary(eigengene))),
+  summarise(stats = list(as.data.frame(brms::posterior_summary(eigengene))),
             .groups = "drop") %>%
   ungroup() %>% unnest(stats) %>% dplyr::rename(eigengene = Estimate)
 
 # Find the posterior estimate of the median GAM fit line
 mean_line_data <- preds %>%
   group_by(Module, Caste, Time) %>%
-  summarise(stats = list(as.data.frame(posterior_summary(eigengene))),
+  summarise(stats = list(as.data.frame(brms::posterior_summary(eigengene))),
             .groups = "drop") %>%
   ungroup() %>% unnest(stats) %>% dplyr::rename(eigengene = Estimate)
 
@@ -2694,7 +2902,16 @@ gene_number_labels <- dplyr::rename(meth_network$colors %>% table() %>%
   broom::tidy(), Module = `.`) %>%
   mutate(label_text = paste(n, "genes"),
          Time = 8.01, eigengene = 4.7,
-         Module = factor(Module, mod_levels))
+         striptext = paste("m", str_extract_all(Module, "[:digit:]+"), " (", n, ")", sep = ""),
+         striptext = factor(striptext, striptext),
+         Module = factor(Module, mod_levels)) %>%
+  dplyr::select(Module, striptext)
+
+preds <- left_join(preds, gene_number_labels, by = "Module")
+raw_data <- left_join(raw_data, gene_number_labels, by = "Module")
+means_data <- left_join(means_data, gene_number_labels, by = "Module")
+mean_line_data <- left_join(mean_line_data, gene_number_labels, by = "Module")
+
 
 # Make the figure
 pd <- position_dodge(0.35)
@@ -2703,7 +2920,6 @@ eigen_plot <- preds %>%
   ggplot(aes(Time, eigengene)) +
   scale_fill_manual(values = c("white", queen_colour, worker_colour), 
                     aesthetics = c("colour", "fill"), name = "Cell type") +  
-  
   
   geom_line(alpha = 0.1, size = 0.4,
             aes(colour = Caste, group = paste(draw, Caste))) +
@@ -2716,22 +2932,22 @@ eigen_plot <- preds %>%
   # Add the posterior median +/- error bars
   geom_errorbar(data = means_data, 
                 width = 0, colour = "grey20",
-                aes(ymin = eigengene-Est.Error, group = Caste,
-                    ymax = eigengene+Est.Error), position = pd) +
-  geom_point(data = means_data, aes(fill = Caste), pch = 21, size = 2, alpha = 1, position = pd) +
+                aes(ymin = eigengene - Est.Error, group = Caste,
+                    ymax = eigengene + Est.Error), position = pd) +
+  geom_point(data = means_data, aes(fill = Caste), pch = 21, size = 1, alpha = 1, position = pd) +
   
-  geom_text(data = gene_number_labels, aes(label = label_text), 
-            size = 2.8, hjust = 1, colour = "grey20", family = nice_font) + 
-  facet_wrap(~ Module) + 
+  # geom_text(data = gene_number_labels, aes(label = label_text), 
+  #           size = 2.8, hjust = 1, colour = "grey20", family = nice_font) + 
+  facet_wrap(~ striptext, ncol = 5) + 
   ylab("Relative % methylation of genes in this module\n(eigengene, posterior estimates)") +
   xlab("Hours post-grafting into queen or worker cell") + 
-  coord_cartesian(ylim = ylimits, xlim = c(0,8)) + 
+  coord_cartesian(ylim = c(-2, 2.6), xlim = c(0,8)) + 
   theme_bw() + 
   theme(legend.position = "top",
         text = element_text(family = nice_font),
         strip.background = element_rect(fill = "white", colour = "white"))
 
-ggsave(eigen_plot, filename = "figures/eigengenes_meth_network_fig.pdf", width = 5.5, height = 6)
+saveRDS(eigen_plot, "figures/eigengenes_meth_network_fig.rds")
 eigen_plot
 ```
 
