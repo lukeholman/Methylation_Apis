@@ -431,7 +431,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -440,7 +440,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -449,10 +449,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-10-06
+<strong>Last updated:</strong> 2020-10-12
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -468,12 +468,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -497,7 +497,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongSeedstrongcodesetseed20190712code" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The command <code>set.seed(20190712)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+<p>The command <code>set.seed(20190712)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
 </div>
 </div>
 </div>
@@ -540,16 +540,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree572c2de9e8d554bc6e6472fc507dfc92b8ea9ea6targetblank572c2dea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/572c2de9e8d554bc6e6472fc507dfc92b8ea9ea6" target="_blank">572c2de</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree93dd14c6e63de55d2ae4a82f8daace26a464b020targetblank93dd14ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/93dd14c6e63de55d2ae4a82f8daace26a464b020" target="_blank">93dd14c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree572c2de9e8d554bc6e6472fc507dfc92b8ea9ea6targetblank572c2dea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree93dd14c6e63de55d2ae4a82f8daace26a464b020targetblank93dd14ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/572c2de9e8d554bc6e6472fc507dfc92b8ea9ea6" target="_blank">572c2de</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/93dd14c6e63de55d2ae4a82f8daace26a464b020" target="_blank">93dd14c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -567,17 +567,30 @@ Ignored files:
     Ignored:    output/
 
 Untracked files:
-    Untracked:  Rplot.png
-    Untracked:  Rplot01.png
-    Untracked:  test.Rmd
-    Untracked:  test.html
-    Untracked:  test.rds
+    Untracked:  figures/big_correlation_heatmap.pdf
+    Untracked:  figures/composite_GO.pdf
+    Untracked:  figures/composite_eigengenes.pdf
+    Untracked:  figures/composite_figure.pdf
+    Untracked:  figures/eigengenes_expression_network.rds
+    Untracked:  figures/eigengenes_meth_network_fig.rds
+    Untracked:  figures/expr_GO_for_composite_figure.rds
+    Untracked:  figures/heatmap75.rds
+    Untracked:  figures/histo_fig1.rds
+    Untracked:  figures/meth_GO_for_composite_figure.rds
+    Untracked:  figures/two_sites_for_big_meth_fig.rds
 
 Unstaged changes:
+    Modified:   analysis/compare_expression_and_methylation.Rmd
     Modified:   analysis/diff_expression.Rmd
     Modified:   analysis/diff_methylation.Rmd
-    Modified:   figures/eigengenes_expression_network.pdf
+    Modified:   code/create_merged_data.R
+    Modified:   code/make_pathway_figure.R
+    Modified:   code/parse_warner_data.R
+    Deleted:    figures/eigengenes_expression_network.pdf
     Modified:   figures/eigengenes_meth_network_fig.pdf
+    Modified:   figures/genomic_context_plot_caste.rds
+    Modified:   figures/genomic_context_plot_timeQ.rds
+    Modified:   figures/genomic_context_plot_timeW.rds
 
 </code></pre>
 <p>
@@ -616,6 +629,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/76317390e3e4462fd4c8cbf3c2c70a38436c1340/docs/compare_expression_and_methylation.html" target="_blank">7631739</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1080,78 +1110,52 @@ bayes_table %&gt;%
 <div id="plot-the-relationship" class="section level3">
 <h3>Plot the relationship</h3>
 <p>This binned scatterplot illustrates that genes showing queen-biased methylation tended to show worker-biased expression, and <em>vice versa</em>. The relationship appears weak and noisy, though we note that both the x and y axes are measured with considerable error, which would obscure the underlying correlation. The relationship appears to grow stronger at later time points, and the correlation is significantly negative for the 4h, 6h, and 8h (but not 2h) time points.</p>
-<pre class="r"><code>if(!file.exists(&quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)){
-  
-  bwasp_gene_meth &lt;- read_tsv(&quot;data/meth_network_input/Network_persite.txt&quot;) %&gt;%
-    gather(&quot;sample&quot;, &quot;methylation&quot;, -Genes) %&gt;%
-    mutate(caste = case_when(
-      str_detect(sample, &quot;queen&quot;) ~ &quot;queen&quot;,
-      str_detect(sample, &quot;worker&quot;) ~ &quot;worker&quot;,
-      TRUE ~ &quot;t0&quot;
-    )) %&gt;% filter(caste!=&quot;t0&quot;) %&gt;%
-    mutate(time = str_extract(sample, &quot;[2468]&quot;),
-           ct = paste(caste, time, sep = &quot;&quot;)) %&gt;%
-    group_by(Genes, ct) %&gt;%
-    summarise(mean_meth = mean(methylation)) %&gt;%
-    spread(ct, mean_meth) %&gt;%
-    mutate(diff_meth2 = queen2 - worker2,
-           diff_meth4 = queen4 - worker4,
-           diff_meth6 = queen6 - worker6,
-           diff_meth8 = queen8 - worker8) %&gt;%
-    dplyr::select(Genes, starts_with(&quot;diff&quot;)) %&gt;%
-    gather(&quot;Time&quot;, &quot;diff_meth&quot;, -Genes) %&gt;%
-    mutate(Time = as.numeric(str_extract(Time, &quot;[2468]&quot;)))
-  
-  meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
-    dplyr::select(Time, `Gene symbol`, logFC) %&gt;%
-    left_join(bwasp_gene_meth, by = c(&quot;Gene symbol&quot; = &quot;Genes&quot;, &quot;Time&quot;)) %&gt;%
-    filter(!is.na(diff_meth) &amp; !is.na(logFC))
-  # 
-  # meth_geneExpr_relationship_data_timeQ &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
-  #   filter(Caste == &quot;Queen&quot;) %&gt;%
-  #   dplyr::select(Time, `Gene symbol`, logFC) %&gt;%
-  #   left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
-  #               filter(grepl(&quot;queen&quot;, comparison) &amp; !grepl(&quot;worker&quot;, comparison)) %&gt;%
-  #               mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
-  #                        map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
-  #               group_by(Genes, time) %&gt;%
-  #               summarise(mean_meth_diff = mean(meth.diff)), 
-  #             by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
-  #   filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
-  # 
-  # meth_geneExpr_relationship_data_timeW &lt;- read_csv(&quot;output/time_results.csv&quot;) %&gt;%
-  #   filter(Caste == &quot;Worker&quot;) %&gt;%
-  #   select(Time, `Gene symbol`, logFC) %&gt;%
-  #   left_join(vroom::vroom(&quot;data/methyl_diff_results/methyl_diff_results.tsv&quot;) %&gt;%
-  #               filter(!grepl(&quot;queen&quot;, comparison) &amp; grepl(&quot;worker&quot;, comparison)) %&gt;%
-  #               mutate(time = str_extract_all(comparison, &quot;[2468]&quot;) %&gt;%
-  #                        map_chr(~ paste0(.x, collapse = &quot; vs &quot;))) %&gt;%
-  #               group_by(Genes, time) %&gt;%
-  #               summarise(mean_meth_diff = mean(meth.diff)), 
-  #             by = c(`Gene symbol` = &quot;Genes&quot;, &quot;Time&quot; = &quot;time&quot;)) %&gt;%
-  #   filter(!is.na(mean_meth_diff) &amp; !is.na(logFC))
-  
-  write_csv(meth_geneExpr_relationship_data_caste, &quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
-  write_csv(meth_geneExpr_relationship_data_timeQ, &quot;output/meth_geneExpr_relationship_data_timeQ.csv&quot;)
-  write_csv(meth_geneExpr_relationship_data_timeW, &quot;output/meth_geneExpr_relationship_data_timeW.csv&quot;)
-  
-} else {
-  meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
-  meth_geneExpr_relationship_data_timeQ &lt;- read_csv(&quot;output/meth_geneExpr_relationship_data_timeQ.csv&quot;)
-  meth_geneExpr_relationship_data_timeW &lt;- read_csv(&quot;output/meth_geneExpr_relationship_data_timeW.csv&quot;)
-}
+<pre class="r"><code>bwasp_gene_meth &lt;- read_tsv(&quot;data/meth_network_input/Network_persite.txt&quot;)
+bwasp_gene_meth &lt;- bwasp_gene_meth[
+  rowMeans(read_tsv(&quot;data/meth_network_input/Network_persite.txt&quot;)[,-1]) &gt; 5, ]
+
+
+bwasp_gene_meth &lt;- read_tsv(&quot;data/meth_network_input/Network_persite.txt&quot;) %&gt;%
+  gather(&quot;sample&quot;, &quot;methylation&quot;, -Genes) %&gt;%
+  mutate(caste = case_when(
+    str_detect(sample, &quot;queen&quot;) ~ &quot;queen&quot;,
+    str_detect(sample, &quot;worker&quot;) ~ &quot;worker&quot;,
+    TRUE ~ &quot;t0&quot;
+  )) %&gt;% filter(caste!=&quot;t0&quot;) %&gt;%
+  mutate(time = str_extract(sample, &quot;[2468]&quot;),
+         ct = paste(caste, time, sep = &quot;&quot;)) %&gt;%
+  group_by(Genes, ct) %&gt;%
+  summarise(mean_meth = mean(methylation)) %&gt;%
+  spread(ct, mean_meth) %&gt;%
+  mutate(diff_meth2 = queen2 - worker2,
+         diff_meth4 = queen4 - worker4,
+         diff_meth6 = queen6 - worker6,
+         diff_meth8 = queen8 - worker8) %&gt;%
+  dplyr::select(Genes, starts_with(&quot;diff&quot;)) %&gt;%
+  gather(&quot;Time&quot;, &quot;diff_meth&quot;, -Genes) %&gt;%
+  mutate(Time = as.numeric(str_extract(Time, &quot;[2468]&quot;)))
+
+meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/caste_results.csv&quot;) %&gt;%
+  dplyr::select(Time, `Gene symbol`, logFC) %&gt;%
+  left_join(bwasp_gene_meth, by = c(&quot;Gene symbol&quot; = &quot;Genes&quot;, &quot;Time&quot;)) %&gt;%
+  filter(!is.na(diff_meth) &amp; !is.na(logFC))
+
+write_csv(meth_geneExpr_relationship_data_caste, &quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
+
+
 
 hex_plot &lt;- function(dat){
   
   ggplot(dat, aes(diff_meth, logFC)) + 
     geom_hline(yintercept = 0, linetype = 2) + 
     geom_vline(xintercept = 0, linetype = 2) + 
-    geom_hex(bins = 50) + 
+    geom_hex(bins = 130) + 
     stat_smooth(method = &quot;lm&quot;,  size = .7, colour = &quot;red&quot;) + 
     xlab(&quot;Caste difference in mean % methylation\n(higher values mean more methylation in queens)&quot;) + 
     ylab(&quot;Caste difference in gene expression\n(Log FC; higher values mean more expression in queens)&quot;) + 
     facet_wrap(~ paste(Time, &quot;h post-grafting&quot;, sep = &quot;&quot;)) + 
     scale_fill_viridis_c(option = &quot;A&quot;, direction = 1) +
+    coord_cartesian(ylim = c(-2.5, 2.9), xlim = c(-15, 16)) +
     theme_bw() + 
     theme(legend.position = &quot;top&quot;,
           text = element_text(family = nice_font),
@@ -1207,8 +1211,6 @@ lukeholman
 </table>
 </div>
 </div>
-<pre class="r"><code># meth_geneExpr_relationship_data_timeQ %&gt;% hex_plot()
-# meth_geneExpr_relationship_data_timeW %&gt;% hex_plot()</code></pre>
 </div>
 <div id="spearman-correlations" class="section level3">
 <h3>Spearman correlations</h3>
@@ -1221,18 +1223,20 @@ lukeholman
   tibble(time = time, rho = results$estimate, p = results$p.value)
 }
 map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_caste)) %&gt;%
+  mutate(p = p.adjust(p)) %&gt;% 
+  dplyr::rename(`Adjusted p` = p, Time = time, `Spearman&#39;s rho` = rho) %&gt;%
   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:right;">
-time
+Time
 </th>
 <th style="text-align:right;">
-rho
+Spearman’s rho
 </th>
 <th style="text-align:right;">
-p
+Adjusted p
 </th>
 </tr>
 </thead>
@@ -1315,7 +1319,7 @@ p
     dplyr::rename(Replicate = Rep) %&gt;% 
     dplyr::select(Sample, Module, Eigengene) %&gt;%
     spread(Module, Eigengene) %&gt;%
-    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Methylation m&quot;)) %&gt;% 
+    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Meth m&quot;)) %&gt;% 
     mutate(Sample = str_replace(Sample, &quot;queen&quot;, &quot;q&quot;),
            Sample = str_replace(Sample, &quot;worker&quot;, &quot;w&quot;)),
   read_csv(&quot;output/expression_eigengenes.csv&quot;) %&gt;% 
@@ -1323,7 +1327,7 @@ p
     mutate(Sample = str_remove_all(Sample, &quot;RNAseq_tg_&quot;),
            Sample = str_remove_all(Sample, &quot;_rep_&quot;)) %&gt;%
     spread(Module, Eigengene) %&gt;%
-    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Expression m&quot;)), 
+    rename_all(~ str_replace_all(.x, &quot;Module &quot;, &quot;Expr m&quot;)), 
   by = c(&quot;Sample&quot;)) %&gt;% dplyr::select(-Sample) %&gt;%
   mutate_all(~ as.numeric(scale(.x)))# scale all the eigengenes
 
@@ -1341,7 +1345,7 @@ tidy_annotation_row &lt;-
     ifelse(unique(.x) == 1, &quot;Queen-biased&quot;, &quot;Worker-biased&quot;)
     }) %&gt;% 
   enframe(&quot;Module&quot;, &quot;Direction&quot;) %&gt;%
-  mutate(Module = str_replace_all(Module, &quot;Module &quot;, &quot;Expression m&quot;)) ,
+  mutate(Module = str_replace_all(Module, &quot;Module &quot;, &quot;Expr m&quot;)) ,
   read_csv(&quot;output/eigengene_stats_table_meth.csv&quot;) %&gt;% 
   split(.$Module) %&gt;% map(~ sign(.x %&gt;% filter(!is.na(X8) &amp; X8 != &quot;~&quot; &amp; Time != 2) %&gt;% pull(Estimate))) %&gt;% 
   map_chr(~ {
@@ -1349,7 +1353,7 @@ tidy_annotation_row &lt;-
     ifelse(unique(.x) == 1, &quot;Queen-biased&quot;, &quot;Worker-biased&quot;)
     }) %&gt;% 
   enframe(&quot;Module&quot;, &quot;Direction&quot;) %&gt;%
-  mutate(Module = str_replace_all(Module, &quot;Module &quot;, &quot;Methylation m&quot;)) ) %&gt;%
+  mutate(Module = str_replace_all(Module, &quot;Module &quot;, &quot;Meth m&quot;)) ) %&gt;%
   mutate(Module = factor(Module, levels = ordering)) %&gt;%
   arrange(Module) %&gt;% as.data.frame() 
 
@@ -1370,81 +1374,11 @@ annotation_colors &lt;-
 cor_mods %&gt;%
   pheatmap(col = myColor, breaks = myBreaks,
            annotation_row = annotation_row, annotation_col = annotation_row, annotation_colors = annotation_colors,
-           cutree_rows = 6, cutree_cols = 6,
+           cutree_rows = 6, cutree_cols = 6, annotation_legend = FALSE,
            cellwidth = 9, cellheight = 9,
            border_color = &quot;grey30&quot;, number_color = &quot;red&quot;,
            show_colnames = FALSE)</code></pre>
-<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" width="864" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
-Past versions of unnamed-chunk-4-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-4-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/29848633580ef996483ac6a136f795cd1be881f4/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">2984863</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-09-25
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/a8d7c554f690c3dd33a2bd444635daefef55030b/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">a8d7c55</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-31
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/642bfb7fb3071d393331c42ff6c5b61e01d90d90/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">642bfb7</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-27
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/184f525c0b4e7aa658bebed7f178ed7f1bc74761/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">184f525</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-26
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-5-1.png" width="864" style="display: block; margin: auto;" /></p>
 </div>
 <div id="correlation-statistics" class="section level3">
 <h3>Correlation statistics</h3>
@@ -1452,10 +1386,10 @@ lukeholman
 <pre class="r"><code>corr.test_results &lt;- psych::corr.test(mod_data, adjust = &quot;BH&quot;, method = &quot;spearman&quot;)
 
 sig_corr &lt;- reshape2::melt(corr.test_results$p) %&gt;% 
-  dplyr::rename(p = value) %&gt;% filter(p &lt; 0.05) %&gt;% 
-  filter((str_detect(Var1, &quot;Expres&quot;) &amp; str_detect(Var2, &quot;Meth&quot;)) | 
-           (str_detect(Var2, &quot;Expres&quot;) &amp; str_detect(Var1, &quot;Meth&quot;))) %&gt;% 
-  as.data.frame()
+  dplyr::rename(p = value) %&gt;% 
+  filter((str_detect(Var1, &quot;Expr&quot;) &amp; str_detect(Var2, &quot;Meth&quot;)) | 
+           (str_detect(Var2, &quot;Expr&quot;) &amp; str_detect(Var1, &quot;Meth&quot;))) %&gt;% 
+  as.data.frame() 
 
 
 sig_corr &lt;- reshape2::melt(corr.test_results$r) %&gt;% 
@@ -1475,16 +1409,17 @@ sig_corr &lt;- reshape2::melt(corr.test_results$r) %&gt;%
          r = format(round(r, 2), nsmall = 2),
          p = format(round(p, 4), nsmall = 4)) %&gt;%
   dplyr::rename(`Adjusted p` = p) %&gt;%
+  filter(`Adjusted p` &lt; 0.05) %&gt;%
   dplyr::select(-swap, -temp1, -temp2) %&gt;% 
-  left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Expression&quot;)),
+  left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Expr&quot;)),
             by = c(&quot;Expression module&quot; = &quot;Module&quot;)) %&gt;% dplyr::rename(expr_direction = Direction) %&gt;% 
-  left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Methylation&quot;)),
+  left_join(tidy_annotation_row %&gt;% filter(str_detect(Module, &quot;Meth&quot;)),
             by = c(&quot;Methylation module&quot; = &quot;Module&quot;)) %&gt;% dplyr::rename(meth_direction = Direction) %&gt;%
-  mutate(`Expression module` = str_remove_all(`Expression module`, &quot;Expression &quot;),
-         `Methylation module` = str_remove_all(`Methylation module`, &quot;Methylation &quot;),
+  mutate(`Expression module` = str_remove_all(`Expression module`, &quot;Expr &quot;),
+         `Methylation module` = str_remove_all(`Methylation module`, &quot;Meth &quot;),
          `Expression module` = paste(`Expression module`, expr_direction, sep = &quot;: &quot;),
          `Methylation module` = paste(`Methylation module`, meth_direction, sep = &quot;: &quot;)) %&gt;%
-  dplyr::select(-ends_with(&quot;direction&quot;))</code></pre>
+  dplyr::select(-ends_with(&quot;direction&quot;)) </code></pre>
 <p>Results of Spearman’s correlations testing the null hypothesis that the true correlation between each pair of expression eigengenes and methylation eigengenes is zero. The table shows the 13 pairs of expression and methylation modules whose eigengenes were significantly correlated across samples. All of the correlations are negative, and all of them involve module pairs for which the constituent genes show higher methylation in worker-destined larvae and higher expression in queen-destined larvae. This suggests that groups of genes become hyper-methylated in workers, at the same time as groups of genes are being transcriptionally down-regulated in workers. Or, conversely, that groups of genes become hypo-methylated in queens, at the same time as groups of genes are being transcriptionally up-regulated in queens. The p-values are adjusted for multiple testing using the Benjamini-Hochberg method. Note that the correlation coefficients are quite high, indicating that differences in methylation and expression covary strongly across samples.</p>
 <pre class="r"><code>sig_corr %&gt;%
   kable() %&gt;%
@@ -1694,6 +1629,10 @@ m5: Queen-biased
 </tbody>
 </table>
 </div>
+<p><img src="figure/compare_expression_and_methylation.Rmd/make_composite_plot-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>quartz_off_screen 
+                2 </code></pre>
 </div>
 </div>
 <div id="compare-our-expression-and-methylation-results-to-past-work" class="section level2">
@@ -1705,33 +1644,6 @@ m5: Queen-biased
 merged_data &lt;- merged_data %&gt;% 
   dplyr::select(-beebase, -gene_name, -entrez_id) %&gt;%
   dplyr::select(gene, everything())
-
-# new test:
-library(edgeR)
-counts &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_counts.csv&quot;)
-treatments &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/treatments.csv&quot;, col_types = &quot;ccc&quot;)
-# dsx_gene_names &lt;- read_tsv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/descriptions.tsv&quot;, col_names = c(&quot;gene_id&quot;, &quot;description&quot;))
-
-counts &lt;- counts %&gt;% filter(! grepl(&quot;ERCC&quot;, gene_id))
-design &lt;- model.matrix(~treatment, treatments)
-cds &lt;- DGEList(counts[,  treatments$sample], group = treatments$treatment)
-cds &lt;- calcNormFactors(cds) 
-cds &lt;- estimateDisp(cds, design)
-de.tgw &lt;- exactTest(cds, pair = c(&quot;DSX&quot;, &quot;GFP&quot;)) # positive logFC means higher levels in control, or lower in dsx RNAi treatment
-de.tgw$table$gene_id &lt;- counts$gene_id
-
-dsx_results &lt;- de.tgw$table %&gt;% 
-  arrange(-logFC) # %&gt;% as_tibble() %&gt;% left_join(dsx_gene_names)
-
-dsx_results &lt;- dsx_results %&gt;% 
-  mutate(logFC = -1 * logFC) %&gt;%
-  dplyr::select(gene_id, logFC) %&gt;% 
-  dplyr::rename(`Expression change after doublesex knockdown (Velasque 2018)` = logFC)
-
-merged_data &lt;- left_join(merged_data, dsx_results, by = c(&quot;gene&quot; = &quot;gene_id&quot;))
-
-
-
 
 do_corrs &lt;- function(variable){
   corr.test_results &lt;- psych::corr.test(
@@ -1770,16 +1682,16 @@ do_corrs &lt;- function(variable){
   cor(use = &quot;pairwise.complete.obs&quot;, method = &quot;spearman&quot;)
 
 paletteLength &lt;- 50
-myColor &lt;- colorRampPalette(c(brewer.pal(9, &quot;Blues&quot;)[6], &quot;white&quot;, brewer.pal(9, &quot;Reds&quot;)[7]))(paletteLength)
+myColor &lt;- colorRampPalette(c(brewer.pal(9, &quot;Purples&quot;)[6], &quot;white&quot;, brewer.pal(9, &quot;Oranges&quot;)[7]))(paletteLength)
 myBreaks &lt;- c(seq(min(corrs, na.rm=T), 0, length.out = ceiling(paletteLength/2) + 1), 
-              seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out=floor(paletteLength/2)))
+              seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out = floor(paletteLength/2)))
 
 pheatmap(corrs, color = myColor, breaks = myBreaks,
          cellwidth = 9, cellheight = 9,
          clustering_distance_rows = &quot;correlation&quot;,
          clustering_distance_cols = &quot;correlation&quot;,
          border_color = &quot;grey30&quot;,
-         cutree_rows = 10, cutree_cols = 10, show_colnames = F)</code></pre>
+         cutree_rows = 6, cutree_cols = 6, show_colnames = F)</code></pre>
 <p><img src="figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-big_cor_plot-1">
@@ -1851,6 +1763,636 @@ lukeholman
 </table>
 </div>
 </div>
+<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="meanings-and-sources-of-these-variables" class="section level3">
+<h3>Meanings and sources of these variables</h3>
+<p><strong>Table SX</strong>: Citation information for the variables in Figure XX, and a summary of their meanings.</p>
+<pre class="r"><code>read_csv(&quot;data/apis_gene_comparisons/variable_meanings.csv&quot;) %&gt;%
+  kable() %&gt;%
+  kable_styling(full_width = FALSE) %&gt;%
+  column_spec(1, width = &quot;5em&quot;) %&gt;%
+  column_spec(2, width = &quot;5em&quot;) %&gt;%
+  column_spec(3, width = &quot;50em&quot;) %&gt;%
+  column_spec(4, width = &quot;50em&quot;) %&gt;%
+  scroll_box(height = &quot;300px&quot;)  </code></pre>
+<pre><code>Parsed with column specification:
+cols(
+  Variable = col_character(),
+  Source = col_character(),
+  Description = col_character(),
+  Interpretation = col_character()
+)</code></pre>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Variable
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Source
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Description
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Interpretation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 5em; ">
+% mCpGs in gene body
+</td>
+<td style="text-align:left;width: 5em; ">
+Present study
+</td>
+<td style="text-align:left;width: 50em; ">
+Average % mCpGs inside the gene body (averaged over all eight 8h samples)
+</td>
+<td style="text-align:left;width: 50em; ">
+Shows the mean % mCpG, averaged over all CpG sites inside the gene. Output by BWASP
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+% mCpGs: QDL vs WDL (present study)
+</td>
+<td style="text-align:left;width: 5em; ">
+Present study
+</td>
+<td style="text-align:left;width: 50em; ">
+Mean % mCpGs for 8h queen-destined larvae minus the mean for 8h workder-destined larvae (averaged over all sites within the gene, then averaged over the four replicate samples)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean more methylation in QDL, low values mean more methylation in WDL, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Brain / CNS expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila brain and CNS, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Connectivity in the methylome
+</td>
+<td style="text-align:left;width: 5em; ">
+Present study
+</td>
+<td style="text-align:left;width: 50em; ">
+“Connectedness” of each gene in the co-methylation network, i.e. the sum of all the correlations between the focal gene and all the other genes. Output by the WGCNA package (which calls this parameter kTotal).
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean the gene is strongly co-methylated with many other genes, lower values mean less co-methylation.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Connectivity in the transcriptome
+</td>
+<td style="text-align:left;width: 5em; ">
+Present study
+</td>
+<td style="text-align:left;width: 50em; ">
+“Connectedness” of each gene in the co-expression network, i.e. the sum of all th correlations between the focal gene and all the other genes. Output by the WGCNA package (which calls this parameter kTotal).
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean the gene is strongly co-expressed with many other genes, lower values mean less co-expression.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Crop expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila crop, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in L2 larvae: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in expression between queen- and worker-destined L2 larvae (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in L3 larvae: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in expression between queen- and worker-destined L3 larvae (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in L4 larvae: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in expression between queen- and worker-destined L4 larvae (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in L5 larvae: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in expression between queen- and worker-destined L5 larvae (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in Pupae: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in expression between queen- and worker-destined pupae (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the gaster: Male vs Queen
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in gaster tissue from adult males versus adult, mated queens (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in males samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the gaster: Nurse vs Forager
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in gaster tissue from adult nurse workers versus adult, forager workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in males samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the gaster: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in gaster tissue from adult queens versus adult workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in males samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the head: Male vs Queen
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in head tissue from mated, adult queens and adult males (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the head: Nurse vs Forager
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in head tissue from adult nurse workers versus adult, forager workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the head: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in head tissue from adult queens versus adult workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the mesosoma: Male vs Queen
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in mesosoma tissue from mated, adult queens and adult males (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the mesosoma: Nurse vs Forager
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in mesosoma tissue from adult nurse workers versus adult, forager workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression in the mesosoma: Queen vs Worker
+</td>
+<td style="text-align:left;width: 5em; ">
+Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in mesosoma tissue from adult queens versus adult workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Expression: QDL vs WDL (present study)
+</td>
+<td style="text-align:left;width: 5em; ">
+Present study
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in expression between queen- and worker-destined larva eat 8h post-grafting (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean greater expression in QDL, low values mean greater expression in WDL, intermediate value indicate no caste bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Eye expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila eye, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Fat body expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila fat body, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Head expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila head, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Hindgut expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila hindgut, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Larval histone modification (H3K27ac): QDL vs WDL
+</td>
+<td style="text-align:left;width: 5em; ">
+Wojciechowski et al. 2018 Genome Biology, 10.1101/gr.236497.118
+</td>
+<td style="text-align:left;width: 50em; ">
+The authors collected chromatin from the head tissues of queen and worker larvae, 96h post-hatching, then measured histone modications using Chip-Seq. We re-calculated the caste difference in the Chip-Seq signal for each gene from the raw data (as described at <a href="https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R" class="uri">https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R</a>).
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean that chromatin inside this gene showed relatively more of this histone modification in queen-destined larvae, negative values mean the gene showed relatively more of this histone modification in worker-destined larvae.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Larval histone modification (H3K36me3): QDL vs WDL
+</td>
+<td style="text-align:left;width: 5em; ">
+Wojciechowski et al. 2018 Genome Biology, 10.1101/gr.236497.118
+</td>
+<td style="text-align:left;width: 50em; ">
+The authors collected chromatin from the head tissues of queen and worker larvae, 96h post-hatching, then measured histone modications using Chip-Seq. We re-calculated the caste difference in the Chip-Seq signal for each gene from the raw data (as described at <a href="https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R" class="uri">https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R</a>).
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean that chromatin inside this gene showed relatively more of this histone modification in queen-destined larvae, negative values mean the gene showed relatively more of this histone modification in worker-destined larvae.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Larval histone modification (H3K4me3): QDL vs WDL
+</td>
+<td style="text-align:left;width: 5em; ">
+Wojciechowski et al. 2018 Genome Biology, 10.1101/gr.236497.118
+</td>
+<td style="text-align:left;width: 50em; ">
+The authors collected chromatin from the head tissues of queen and worker larvae, 96h post-hatching, then measured histone modications using Chip-Seq. We re-calculated the caste difference in the Chip-Seq signal for each gene from the raw data (as described at <a href="https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R" class="uri">https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R</a>).
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean that chromatin inside this gene showed relatively more of this histone modification in queen-destined larvae, negative values mean the gene showed relatively more of this histone modification in worker-destined larvae.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Malpighian tubules expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila MTs, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Mated spermatheca expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the mated female Drosophila spermatheca, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Midgut expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila midgut, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Ovary expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the Drosophila ovary, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Positive selection (gamma)
+</td>
+<td style="text-align:left;width: 5em; ">
+Harpur et al. (2014) PNAS 10.1073/pnas.1315506111
+</td>
+<td style="text-align:left;width: 50em; ">
+The population size-scaled selection coefficient ‘gamma’ on nonsynonymous mutations, calculated from a Bayesian McDonald–Kreitman test.
+</td>
+<td style="text-align:left;width: 50em; ">
+Negative gamma denotes purifying selection and positive gamma denotes positive selection
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Rectal pad expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila rectal pad, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Salivary gland expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila salivary gland, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Thoraciocoabdominal ganglion expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila TAG, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Virgin spermatheca expression
+</td>
+<td style="text-align:left;width: 5em; ">
+Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
+</td>
+<td style="text-align:left;width: 50em; ">
+Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the virgin female Drosophila spermatheca, relative to the expression of that gene in the other tissues listed here
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Worker expression: Brood pheromone vs control
+</td>
+<td style="text-align:left;width: 5em; ">
+Ma et al. (2019) BMC Genomics 10.1186/s12864-019-5923-7
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in worker bees exposed to ‘brood pheromone’ (a blend of 10 chemicals) versus a control (logFC)
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean higher expression after EBO treatment, negative values mean lower expression (relative to controls). Expressed as Log fold change.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Worker expression: doublesex RNAi vs control
+</td>
+<td style="text-align:left;width: 5em; ">
+Velasque et al (2018) bioRxiv. <a href="https://doi.org/10.1101/314492" class="uri">https://doi.org/10.1101/314492</a>
+</td>
+<td style="text-align:left;width: 50em; ">
+Change in gene expression in the dsx RNAi treatment group relative to the control, expressed as Log fold change. Calculated from the raw data using EBSeq - see: <a href="https://github.com/lukeholman/Methylation_Apis/blob/master/code/create_merged_data.R" class="uri">https://github.com/lukeholman/Methylation_Apis/blob/master/code/create_merged_data.R</a>
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean the gene showed increased expression after dsx knockdown, negative values mean the gene showed reduced expression
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Worker expression: EBO pheromone vs control
+</td>
+<td style="text-align:left;width: 5em; ">
+Ma et al. (2019) BMC Genomics 10.1186/s12864-019-5923-7
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in workers exposed to the pheromone EBO ((E)-beta-ocimene) versus a control (logFC)
+</td>
+<td style="text-align:left;width: 50em; ">
+Positive values mean higher expression after EBO treatment, negative values mean lower expression (relative to controls). Expressed as Log fold change.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Worker expression: Pollen foragers vs Nectar foragers
+</td>
+<td style="text-align:left;width: 5em; ">
+Ma et al. (2019) BMC Genomics 10.1186/s12864-019-5923-7
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in brain tissue from adult pollen-foraging workers versus nectar-forager workers (log fold difference)
+</td>
+<td style="text-align:left;width: 50em; ">
+High values mean higher expression in workers foraging for pollen, low values mean higher expression in workers foraging for nectar
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 5em; ">
+Worker expression: Queen pheromone vs control
+</td>
+<td style="text-align:left;width: 5em; ">
+Holman et al. (2019) Nature Comms 10.1038/s41467-019-09567-2
+</td>
+<td style="text-align:left;width: 50em; ">
+Difference in gene expression in worker bees exposed to ‘queen pheromone’ (a blend of 5 chemicals) versus a control (logFC)
+</td>
+<td style="text-align:left;width: 50em; ">
+Higher values denote a larger change following queen pheromone exposure, lower values denote a smaller change
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="scatterplots-showing-correlations-with-our-main-outcome-variables" class="section level3 tabset">
 <h3>Scatterplots showing correlations with our main outcome variables</h3>
@@ -1888,24 +2430,22 @@ lukeholman
     facet_wrap(~ t, labeller = labeller(t = label_wrap_gen(38))) +
     theme_bw(10) + 
     theme(legend.position = &quot;none&quot;,
-         # text = element_text(family = nice_font),
+          text = element_text(family = nice_font),
           strip.background = element_rect(fill = &quot;white&quot;, colour = &quot;white&quot;))
     
 }
 variables &lt;- names(sapply(merged_data, is.numeric)[sapply(merged_data, is.numeric)])
 
-# make_a_plot(&quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;,
-#             &quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;)
 
-expression_corr_table &lt;- do_corrs(&quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;)
-methylation_corr_table &lt;- do_corrs(&quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;) 
+expression_corr_table &lt;- do_corrs(&quot;Expression: QDL vs WDL (present study)&quot;)
+methylation_corr_table &lt;- do_corrs(&quot;% mCpGs: QDL vs WDL (present study)&quot;) 
 
 plots_expression &lt;- (expression_corr_table$Correlate) %&gt;%
-  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in expression in 8h larvae (positive: Q &gt; W)&quot;) 
+  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Expression: QDL vs WDL (present study)&quot;) 
 plots_expression &lt;- plots_expression[!sapply(plots_expression, is.null)]
 
 plots_meth &lt;- (methylation_corr_table$Correlate) %&gt;%
-  sort() %&gt;% lapply(make_a_plot, xvar = &quot;Caste difference in % methylation in 8h larvae (positive: Q &gt; W)&quot;) 
+  sort() %&gt;% lapply(make_a_plot, xvar = &quot;% mCpGs: QDL vs WDL (present study)&quot;) 
 plots_meth &lt;- plots_meth[!sapply(plots_meth, is.null)]</code></pre>
 <div id="caste-biased-expression-in-8h-larvae" class="section level4">
 <h4>Caste-biased <em>expression</em> in 8h larvae</h4>
@@ -1935,6 +2475,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/76317390e3e4462fd4c8cbf3c2c70a38436c1340/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot1-1.png" target="_blank">7631739</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/eebba8dff1fc5818d7ea0bf7901be6e5a776afbd/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot1-1.png" target="_blank">eebba8d</a>
@@ -2025,6 +2576,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/76317390e3e4462fd4c8cbf3c2c70a38436c1340/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot2-1.png" target="_blank">7631739</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2020-10-06
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/eebba8dff1fc5818d7ea0bf7901be6e5a776afbd/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot2-1.png" target="_blank">eebba8d</a>
 </td>
 <td>
@@ -2092,7 +2654,7 @@ lukeholman
 <pre class="r"><code>expression_corr_table %&gt;%
   my_data_table()</code></pre>
 <div id="htmlwidget-20336aac86f7a7ef5997" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-20336aac86f7a7ef5997">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["% methylated cytosines in gene body","Connectivity in the\ntranscriptome","Expression difference between nectar and pollen foragers (Ma 2019)","Caste difference in % methylation in 8h larvae (positive: Q &gt; W)","Ovary (Flyatlas2)","Expression response to queen pheromone (Holman 2019)","Positive selection\n(Gamma)","Female bias in expression (Flyatlas2)","Expression response to EBO pheromone (Ma 2019)","Queen vs Worker: Adult Head (Warner 2018)","Mated vs Virgin queen: Adult Head (Warner 2018)","Queen vs Worker: Adult Mesosoma (Warner 2018)","Queen vs Worker: Adult Gaster (Warner 2018)","Queen vs Worker: Pupae (Warner 2018)","Head (Flyatlas2)","Expression response to brood pheromone (Ma 2019)","Male vs Mated queen: Adult Gaster (Warner 2018)","Salivary gland (Flyatlas2)","Queen vs Worker: L4 larvae (Warner 2018)","Expression change after doublesex knockdown (Velasque 2018)","Mated vs Virgin queen: Adult Mesosoma (Warner 2018)","Male vs Mated queen: Adult Head (Warner 2018)","Male vs Mated queen: Adult Mesosoma (Warner 2018)","Queen vs Worker: L2 larvae (Warner 2018)","Rectal pad (Flyatlas2)","Mated vs Virgin queen: Adult Gaster (Warner 2018)","Queen vs Worker: L5 larvae (Warner 2018)","Nurse vs Forager: Adult Head (Warner 2018)","Caste difference in H3K36me3 at 96h (positive: Q &gt; W; Woj. 2018)","Eye (Flyatlas2)","Crop (Flyatlas2)","Connectivity in the\nmethylome","Caste difference in H3K4me3 at 96h (positive: Q &gt; W; Woj. 2018)","Caste difference in H3K27ac at 96h (positive: Q &gt; W; Woj. 2018)","Queen vs Worker: L3 larvae (Warner 2018)","Brain / CNS (Flyatlas2)","Nurse vs Forager: Adult Mesosoma (Warner 2018)","Fat body (Flyatlas2)","Log2 mean expression level"],[-0.428,-0.475,-0.307,-0.231,-0.29,-0.22,0.214,-0.268,-0.182,0.167,0.159,0.153,-0.147,0.144,0.204,-0.147,-0.139,-0.198,-0.134,-0.131,0.131,0.118,0.118,0.11,0.155,-0.102,0.087,-0.067,-0.201,0.086,0.076,-0.078,-0.161,-0.12,0.033,-0.043,-0.029,0.034,-0.022],["  Inf","  Inf","186.7","117.2"," 86.4"," 85.2"," 78.9"," 73.3"," 64.5"," 57.3"," 51.7"," 47.9"," 44.3"," 42.6"," 42.5"," 41.7"," 40.0"," 39.9"," 36.9"," 36.4"," 35.3"," 29.1"," 29.0"," 25.3"," 24.7"," 22.0"," 16.0","  9.9","  8.6","  8.1","  6.4","  6.4","  5.7","  3.3","  2.7","  2.4","  2.3","  1.6","  1.6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Correlate<\/th>\n      <th>r<\/th>\n      <th>-log10 adjusted p<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_meth_expr"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-20336aac86f7a7ef5997">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["% mCpGs in gene body","Connectivity in the\ntranscriptome","Worker expression: Pollen foragers vs Nectar foragers","% mCpGs: QDL vs WDL (present study)","Ovary expression","Worker expression: Queen pheromone vs control","Positive selection\n(Gamma)","Worker expression: EBO pheromone vs control","Expression in the head: Queen vs Worker","Expression in the mesosoma: Queen vs Worker","Expression in the gaster: Queen vs Worker","Expression in Pupae: Queen vs Worker","Head expression","Worker expression: Brood pheromone vs control","Expression in the gaster: Queen vs Male","Salivary gland expression","Expression in L4 larvae: Queen vs Worker","Worker expression: doublesex RNAi vs control","Expression in the head: Queen vs Male","Expression in the mesosoma: Queen vs Male","Expression in L2 larvae: Queen vs Worker","Rectal pad expression","Expression in L5 larvae: Queen vs Worker","Expression in the head: Nurse vs Forager","Larval histone modification (H3K36me3): QDL vs WDL","Eye expression","Crop expression","Connectivity in the\nmethylome","Larval histone modification (H3K4me3): QDL vs WDL","Larval histone modification (H3K27ac): QDL vs WDL","Expression in L3 larvae: Queen vs Worker","Brain / CNS expression","Expression in the mesosoma: Nurse vs Forager","Fat body expression","Log2 mean expression level"],[-0.428,-0.475,-0.307,-0.231,-0.29,-0.22,0.214,-0.182,0.167,0.153,-0.147,0.144,0.204,-0.147,-0.139,-0.198,-0.134,-0.131,0.118,0.118,0.11,0.155,0.087,0.067,-0.201,0.086,0.076,-0.078,-0.161,-0.12,0.033,-0.043,0.029,0.034,-0.022],["  Inf","  Inf","186.7","117.2"," 86.4"," 85.2"," 78.9"," 64.5"," 57.3"," 47.9"," 44.3"," 42.6"," 42.5"," 41.7"," 40.0"," 39.9"," 36.9"," 36.4"," 29.1"," 29.0"," 25.3"," 24.7"," 16.0","  9.9","  8.6","  8.1","  6.4","  6.4","  5.7","  3.3","  2.7","  2.4","  2.3","  1.6","  1.6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Correlate<\/th>\n      <th>r<\/th>\n      <th>-log10 adjusted p<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_meth_expr"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="correlations-with-caste-specific-methylation" class="section level4">
 <h4>Correlations with caste-specific methylation</h4>
@@ -2100,13 +2662,13 @@ lukeholman
 <pre class="r"><code>methylation_corr_table %&gt;%
   my_data_table()</code></pre>
 <div id="htmlwidget-56896f0dd227b3126475" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-56896f0dd227b3126475">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["% methylated cytosines in gene body","Connectivity in the\ntranscriptome","Caste difference in expression in 8h larvae (positive: Q &gt; W)","Expression change after doublesex knockdown (Velasque 2018)","Positive selection\n(Gamma)","Log2 mean expression level","Queen vs Worker: L5 larvae (Warner 2018)","Queen vs Worker: L4 larvae (Warner 2018)","Ovary (Flyatlas2)","Queen vs Worker: Pupae (Warner 2018)","Mated vs Virgin queen: Adult Head (Warner 2018)","Female bias in expression (Flyatlas2)","Salivary gland (Flyatlas2)","Connectivity in the\nmethylome","Expression response to EBO pheromone (Ma 2019)","Virgin Spermatheca (Flyatlas2)","Queen vs Worker: Adult Head (Warner 2018)","Head (Flyatlas2)","Mated Spermatheca (Flyatlas2)","Male vs Mated queen: Adult Head (Warner 2018)","Nurse vs Forager: Adult Mesosoma (Warner 2018)","Male vs Mated queen: Adult Gaster (Warner 2018)","Malpighian Tubules (Flyatlas2)","Expression difference between nectar and pollen foragers (Ma 2019)","Caste difference in H3K36me3 at 96h (positive: Q &gt; W; Woj. 2018)","Queen vs Worker: Adult Gaster (Warner 2018)","Nurse vs Forager: Adult Gaster (Warner 2018)","Expression response to queen pheromone (Holman 2019)","Hindgut (Flyatlas2)","Mated vs Virgin queen: Adult Mesosoma (Warner 2018)","Caste difference in H3K4me3 at 96h (positive: Q &gt; W; Woj. 2018)","Fat body (Flyatlas2)","Queen vs Worker: Adult Mesosoma (Warner 2018)","Male vs Mated queen: Adult Mesosoma (Warner 2018)","Midgut (Flyatlas2)","Caste difference in H3K27ac at 96h (positive: Q &gt; W; Woj. 2018)","Mated vs Virgin queen: Adult Gaster (Warner 2018)","Nurse vs Forager: Adult Head (Warner 2018)","Rectal pad (Flyatlas2)"],[0.469,0.334,-0.231,0.216,-0.194,0.132,-0.12,0.119,0.164,-0.115,-0.111,0.155,0.138,0.141,0.093,-0.128,-0.079,-0.111,-0.108,-0.075,0.073,0.07,0.096,0.053,0.156,0.047,-0.047,0.046,0.053,-0.035,0.11,-0.046,-0.031,-0.03,0.041,0.091,0.027,0.026,-0.034],["  Inf","251.9","117.2"," 98.8"," 64.9"," 38.3"," 29.8"," 29.4"," 27.6"," 27.4"," 25.5"," 24.7"," 19.7"," 19.4"," 17.3"," 17.0"," 13.5"," 13.0"," 12.4"," 12.2"," 11.5"," 10.6","  9.9","  6.0","  5.3","  5.2","  5.1","  4.4","  3.4","  3.1","  2.9","  2.7","  2.5","  2.4","  2.3","  2.1","  2.0","  1.9","  1.6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Correlate<\/th>\n      <th>r<\/th>\n      <th>-log10 adjusted p<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_meth_expr"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-56896f0dd227b3126475">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["% mCpGs in gene body","Connectivity in the\ntranscriptome","Expression: QDL vs WDL (present study)","Worker expression: doublesex RNAi vs control","Positive selection\n(Gamma)","Log2 mean expression level","Expression in L5 larvae: Queen vs Worker","Expression in L4 larvae: Queen vs Worker","Ovary expression","Expression in Pupae: Queen vs Worker","Salivary gland expression","Connectivity in the\nmethylome","Worker expression: EBO pheromone vs control","Virgin Spermatheca expression","Expression in the head: Queen vs Worker","Head expression","Mated Spermatheca expression","Expression in the head: Queen vs Male","Expression in the mesosoma: Nurse vs Forager","Expression in the gaster: Queen vs Male","Malpighian Tubules expression","Worker expression: Pollen foragers vs Nectar foragers","Larval histone modification (H3K36me3): QDL vs WDL","Expression in the gaster: Queen vs Worker","Expression in the gaster: Nurse vs Forager","Worker expression: Queen pheromone vs control","Hindgut expression","Larval histone modification (H3K4me3): QDL vs WDL","Fat body expression","Expression in the mesosoma: Queen vs Worker","Expression in the mesosoma: Queen vs Male","Midgut expression","Larval histone modification (H3K27ac): QDL vs WDL","Expression in the head: Nurse vs Forager","Rectal pad expression"],[0.469,0.334,-0.231,0.216,-0.194,0.132,-0.12,0.119,0.164,-0.115,0.138,0.141,0.093,-0.128,-0.079,-0.111,-0.108,-0.075,-0.073,0.07,0.096,0.053,0.156,0.047,0.047,0.046,0.053,0.11,-0.046,-0.031,-0.03,0.041,0.091,-0.026,-0.034],["  Inf","251.9","117.2"," 98.8"," 64.9"," 38.3"," 29.8"," 29.4"," 27.6"," 27.4"," 19.7"," 19.4"," 17.3"," 17.0"," 13.5"," 13.0"," 12.4"," 12.2"," 11.5"," 10.6","  9.9","  6.0","  5.3","  5.2","  5.1","  4.4","  3.4","  2.9","  2.7","  2.5","  2.4","  2.3","  2.1","  1.9","  1.6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Correlate<\/th>\n      <th>r<\/th>\n      <th>-log10 adjusted p<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_meth_expr"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":1}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
 <div id="comparing-our-modules-to-the-doublesex-sensitive-module-in-velasque-et-al." class="section level2">
-<h2>Comparing our modules to the doublesex-sensitive module in Velasque et al.</h2>
-<p>Here, we compare our expression and methylation results to those of Velasque et al. (<a href="https://www.biorxiv.org/node/96427.full">link</a>), who use RNAi to knockdown the expression of the key sex-determination gene <em>doublesex</em> (<em>dsx</em>) in adult <em>Apis mellifera</em> workers, in order to test the hypothesis that sex determination pathways have been co-opted to control caste determination. Using similar statistical methods to ours (i.e. using <code>WGCNA</code>), Velasque et al. identified a transcriptional module containing <em>dsx</em> and many other genes that co-varied with the experimentally-induxed changes in <em>dsx</em> expression.</p>
+<h2>Comparing our modules to the doublesex-sensitive module in Velasque et al. </h2>
+<p>Here, we compare our expression and methylation results to those of Velasque et al. (<a href="https://www.biorxiv.org/node/96427.full">link</a>), who use RNAi to knockdown the expression of the key sex-determination gene <em>doublesex</em> (<em>dsx</em>) in adult <em>Apis mellifera</em> workers, in order to test the hypothesis that sex determination pathways have been co-opted to control caste determination. Using similar statistical methods to ours (i.e. using <code>WGCNA</code>), Velasque et al. identified a transcriptional module containing <em>dsx</em> and many other genes that co-varied with the experimentally-induxed changes in <em>dsx</em> expression.</p>
 <p>In the code below we use a hypergeometric test to identify modules from the present study that overlap significantly with the <em>dsx</em>-sensitive module from Velasque et al. We find that some of our caste-specific modules contain many of the same genes as the <em>dsx</em>-sensitive module, providing further evidence that ancient sex differentiation genes play an important role in caste determination.</p>
 <div id="comparing-our-co-expression-modules" class="section level3">
 <h3>Comparing our co-expression modules</h3>
@@ -2209,6 +2771,26 @@ methylation_dsx_overlap_table &lt;- module_overlaps_meth %&gt;%
   mutate(p_adjust = p.adjust(p, method = &quot;BH&quot;)) %&gt;%
   filter(p_adjust &lt; 0.05)
 
+# merge in caste-specificity of the modules:
+expression_dsx_overlap_table &lt;- expression_dsx_overlap_table %&gt;%
+  mutate(Module = unlist(str_extract_all(Module, &quot;[:digit:]+&quot;))) %&gt;%
+  left_join(tidy_annotation_row %&gt;%
+              filter(str_detect(Module, &quot;Expr&quot;)) %&gt;%
+              mutate(Module = unlist(str_extract_all(Module, &quot;[:digit:]+&quot;))), by = &quot;Module&quot;) %&gt;%
+  mutate(Module = paste(&quot;m&quot;, Module, &quot; (&quot;, Direction, &quot;)&quot;, sep = &quot;&quot;)) %&gt;%
+  dplyr::select(-Direction) %&gt;%
+  dplyr::rename(`Expression module` = Module)
+
+methylation_dsx_overlap_table &lt;- methylation_dsx_overlap_table %&gt;%
+  mutate(Module = unlist(str_extract_all(Module, &quot;[:digit:]+&quot;))) %&gt;%
+  left_join(tidy_annotation_row %&gt;%
+              filter(str_detect(Module, &quot;Meth&quot;)) %&gt;%
+              mutate(Module = unlist(str_extract_all(Module, &quot;[:digit:]+&quot;))), by = &quot;Module&quot;) %&gt;%
+  mutate(Module = paste(&quot;m&quot;, Module, &quot; (&quot;, Direction, &quot;)&quot;, sep = &quot;&quot;)) %&gt;%
+  dplyr::select(-Direction) %&gt;%
+  dplyr::rename(`Methylation module` = Module)
+  
+
 expression_dsx_overlap_table %&gt;%
   dplyr::select(-Test, -p) %&gt;%
   dplyr::rename(`FDR-adjusted p` = p_adjust) %&gt;%
@@ -2217,7 +2799,7 @@ expression_dsx_overlap_table %&gt;%
 <thead>
 <tr>
 <th style="text-align:left;">
-Module
+Expression module
 </th>
 <th style="text-align:right;">
 Obs. number overlaps
@@ -2236,7 +2818,7 @@ FDR-adjusted p
 <tbody>
 <tr>
 <td style="text-align:left;">
-Module 7
+m7 (Queen-biased)
 </td>
 <td style="text-align:right;">
 117
@@ -2253,7 +2835,7 @@ Module 7
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 18
+m18 (Unbiased)
 </td>
 <td style="text-align:right;">
 10
@@ -2270,7 +2852,7 @@ Module 18
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 5
+m5 (Unbiased)
 </td>
 <td style="text-align:right;">
 80
@@ -2287,7 +2869,7 @@ Module 5
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 11
+m11 (Unbiased)
 </td>
 <td style="text-align:right;">
 37
@@ -2304,7 +2886,7 @@ Module 11
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 14
+m14 (Unbiased)
 </td>
 <td style="text-align:right;">
 18
@@ -2321,7 +2903,7 @@ Module 14
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 13
+m13 (Unbiased)
 </td>
 <td style="text-align:right;">
 16
@@ -2338,7 +2920,7 @@ Module 13
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 4
+m4 (Unbiased)
 </td>
 <td style="text-align:right;">
 65
@@ -2355,7 +2937,7 @@ Module 4
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 6
+m6 (Queen-biased)
 </td>
 <td style="text-align:right;">
 46
@@ -2372,7 +2954,7 @@ Module 6
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 8
+m8 (Unbiased)
 </td>
 <td style="text-align:right;">
 33
@@ -2393,13 +2975,14 @@ Module 8
 <div id="comparing-our-co-methylation-modules" class="section level3">
 <h3>Comparing our co-methylation modules</h3>
 <pre class="r"><code>methylation_dsx_overlap_table %&gt;%
-  dplyr::select(-Test) %&gt;%
+  dplyr::select(-Test, -p) %&gt;%
+  dplyr::rename(`FDR-adjusted p` = p_adjust) %&gt;%
   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
-Module
+Methylation module
 </th>
 <th style="text-align:right;">
 Obs. number overlaps
@@ -2411,17 +2994,14 @@ Exp. number overlaps
 Enrichment ratio
 </th>
 <th style="text-align:right;">
-p
-</th>
-<th style="text-align:right;">
-p_adjust
+FDR-adjusted p
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Module 1
+m1 (Queen-biased)
 </td>
 <td style="text-align:right;">
 295
@@ -2435,13 +3015,10 @@ Module 1
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-0
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Module 0
+m0 (Unbiased)
 </td>
 <td style="text-align:right;">
 278
@@ -2451,9 +3028,6 @@ Module 0
 </td>
 <td style="text-align:right;">
 1.27
-</td>
-<td style="text-align:right;">
-0
 </td>
 <td style="text-align:right;">
 0
@@ -2493,14 +3067,14 @@ attached base packages:
 
 other attached packages:
  [1] edgeR_3.30.1          limma_3.44.1          WGCNA_1.69           
- [4] fastcluster_1.1.25    dynamicTreeCut_1.63-1 showtext_0.8-1       
+ [4] fastcluster_1.1.25    dynamicTreeCut_1.63-1 showtext_0.9         
  [7] showtextdb_2.0        sysfonts_0.8.1        DT_0.13              
 [10] gridExtra_2.3         RSQLite_2.2.0         DBI_1.1.0            
 [13] dbplyr_1.4.4          pheatmap_1.0.12       RColorBrewer_1.1-2   
 [16] kableExtra_1.1.0      forcats_0.5.0         stringr_1.4.0        
 [19] dplyr_1.0.0           purrr_0.3.4           readr_1.3.1          
 [22] tidyr_1.1.0           tibble_3.0.1          ggplot2_3.3.1        
-[25] tidyverse_1.3.0       workflowr_1.6.2      
+[25] tidyverse_1.3.0      
 
 loaded via a namespace (and not attached):
   [1] colorspace_1.4-1      ellipsis_0.3.1        rprojroot_1.3-2      
@@ -2510,35 +3084,35 @@ loaded via a namespace (and not attached):
  [13] lubridate_1.7.8       xml2_1.3.2            codetools_0.2-16     
  [16] splines_4.0.0         mnormt_2.0.0          doParallel_1.0.15    
  [19] impute_1.62.0         knitr_1.29            Formula_1.2-3        
- [22] jsonlite_1.7.0        broom_0.5.6           cluster_2.1.0        
- [25] GO.db_3.11.4          png_0.1-7             compiler_4.0.0       
- [28] httr_1.4.1            backports_1.1.7       assertthat_0.2.1     
- [31] Matrix_1.2-18         cli_2.0.2             later_1.0.0          
- [34] acepack_1.4.1         htmltools_0.5.0       tools_4.0.0          
- [37] gtable_0.3.0          glue_1.4.1            reshape2_1.4.4       
- [40] Rcpp_1.0.4.6          Biobase_2.48.0        cellranger_1.1.0     
- [43] vctrs_0.3.0           preprocessCore_1.50.0 nlme_3.1-148         
- [46] crosstalk_1.1.0.1     iterators_1.0.12      psych_1.9.12.31      
- [49] xfun_0.15             rvest_0.3.5           lifecycle_0.2.0      
- [52] scales_1.1.1          hms_0.5.3             promises_1.1.0       
- [55] parallel_4.0.0        curl_4.3              yaml_2.2.1           
- [58] memoise_1.1.0         rpart_4.1-15          latticeExtra_0.6-29  
- [61] stringi_1.4.6         highr_0.8             S4Vectors_0.26.1     
- [64] foreach_1.5.0         checkmate_2.0.0       BiocGenerics_0.34.0  
- [67] rlang_0.4.6           pkgconfig_2.0.3       matrixStats_0.56.0   
- [70] evaluate_0.14         lattice_0.20-41       labeling_0.3         
- [73] htmlwidgets_1.5.1     bit_1.1-15.2          tidyselect_1.1.0     
- [76] plyr_1.8.6            magrittr_1.5          R6_2.4.1             
- [79] IRanges_2.22.2        generics_0.0.2        Hmisc_4.4-0          
- [82] mgcv_1.8-31           pillar_1.4.4          haven_2.3.1          
- [85] whisker_0.4           foreign_0.8-80        withr_2.2.0          
- [88] survival_3.1-12       nnet_7.3-14           modelr_0.1.8         
- [91] crayon_1.3.4          tmvnsim_1.0-2         rmarkdown_2.3        
- [94] jpeg_0.1-8.1          locfit_1.5-9.4        grid_4.0.0           
- [97] readxl_1.3.1          data.table_1.12.8     blob_1.2.1           
-[100] git2r_0.27.1          reprex_0.3.0          digest_0.6.25        
-[103] webshot_0.5.2         httpuv_1.5.3.1        stats4_4.0.0         
-[106] munsell_0.5.0         viridisLite_0.3.0    </code></pre>
+ [22] jsonlite_1.7.0        workflowr_1.6.2       broom_0.5.6          
+ [25] cluster_2.1.0         GO.db_3.11.4          png_0.1-7            
+ [28] compiler_4.0.0        httr_1.4.1            backports_1.1.7      
+ [31] assertthat_0.2.1      Matrix_1.2-18         cli_2.0.2            
+ [34] later_1.0.0           acepack_1.4.1         htmltools_0.5.0      
+ [37] tools_4.0.0           gtable_0.3.0          glue_1.4.1           
+ [40] reshape2_1.4.4        Rcpp_1.0.4.6          Biobase_2.48.0       
+ [43] cellranger_1.1.0      vctrs_0.3.0           preprocessCore_1.50.0
+ [46] nlme_3.1-148          crosstalk_1.1.0.1     iterators_1.0.12     
+ [49] psych_1.9.12.31       xfun_0.15             rvest_0.3.5          
+ [52] lifecycle_0.2.0       scales_1.1.1          hms_0.5.3            
+ [55] promises_1.1.0        parallel_4.0.0        curl_4.3             
+ [58] yaml_2.2.1            memoise_1.1.0         rpart_4.1-15         
+ [61] latticeExtra_0.6-29   stringi_1.4.6         highr_0.8            
+ [64] S4Vectors_0.26.1      foreach_1.5.0         checkmate_2.0.0      
+ [67] BiocGenerics_0.34.0   rlang_0.4.6           pkgconfig_2.0.3      
+ [70] matrixStats_0.56.0    evaluate_0.14         lattice_0.20-41      
+ [73] labeling_0.3          htmlwidgets_1.5.1     bit_1.1-15.2         
+ [76] tidyselect_1.1.0      plyr_1.8.6            magrittr_1.5         
+ [79] R6_2.4.1              IRanges_2.22.2        generics_0.0.2       
+ [82] Hmisc_4.4-0           mgcv_1.8-31           pillar_1.4.4         
+ [85] haven_2.3.1           whisker_0.4           foreign_0.8-80       
+ [88] withr_2.2.0           survival_3.1-12       nnet_7.3-14          
+ [91] modelr_0.1.8          crayon_1.3.4          tmvnsim_1.0-2        
+ [94] rmarkdown_2.3         jpeg_0.1-8.1          locfit_1.5-9.4       
+ [97] grid_4.0.0            readxl_1.3.1          data.table_1.12.8    
+[100] blob_1.2.1            git2r_0.27.1          reprex_0.3.0         
+[103] digest_0.6.25         webshot_0.5.2         httpuv_1.5.3.1       
+[106] stats4_4.0.0          munsell_0.5.0         viridisLite_0.3.0    </code></pre>
 </div>
 </div>
 </div>

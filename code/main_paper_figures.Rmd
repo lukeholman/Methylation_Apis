@@ -1,0 +1,53 @@
+---
+output: pdf_document
+header-includes: 
+  \usepackage{booktabs}
+  \usepackage{microtype}
+  \usepackage{longtable}
+  \usepackage[margin=1in]{geometry}
+---
+
+```{r setup, include=FALSE, results='hide', warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+make_table <- function(file, LT = TRUE, digits = getOption("digits"), BT = TRUE){
+  tabl <- readRDS(file) 
+  
+  if(" " %in% names(tabl)) tabl$` ` <- gsub('\\\\', "", tabl$` `)
+  if("Q2.5" %in% names(tabl)) tabl <- rename(tabl, `Lower 95% CI` = "Q2.5")
+  if("Q97.5" %in% names(tabl)) tabl <- rename(tabl, `Upper 95% CI` = "Q97.5")
+
+  kable(tabl, "latex", longtable = LT, booktabs = BT, digits = digits) %>%
+    kable_styling(latex_options = c("repeat_header", "scale_down"), font_size = 7)
+}
+```
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Differences in CpG methylation between queen- and worker-destined larvae. \newline A)} Histogram showing the distribution of mean \% methylation for all CpG sites of the specified type, for QDL (red) and WDL (blue) sampled at 8h post-grafting (see supplementary material for an animated version showing the change over time; note truncated y-axes). \textbf{B.} Caste difference in mean \% methylated CpG sites (mCpGs) $\pm95\%$ confidence intervals (estimated using a linear model); positive values mean higher \% mCpGs in QDL. \textbf{C.} Heatmap showing average \% CpG methylation in 50 clusters of CpG sites (rows) for each of the 36 samples (columns). We filtered out sites with $<75\%$ CpG methylation (leaving n = 39,993 sites), removed batch effects, centered and scaled the data within sites, and finally grouped the sites into 50 clusters using $k$-means clustering. Orange indicates above-average methylation for that group of sites, and purple indicates below average. Note that WDL are characterised by hypomethylation and QDL by hypermethylation, and that samples from later time points show clearer clustering by caste (see Figure SX for a similar heatmap that was not restricted to highly methylated sites). \textbf{D.} \% methylation for two individual CpG sites, one from an intron inside \textit{Csd} and another in the promoter of \textit{sex-lethal homolog}. The points show the estimated \% methylation for the 36 individual samples (corrected for experimental block), while the lines are predictions from a Bayesian GAM (thick lines: posterior median, thin lines: 100 random draws from the posterior).
+}}
+\centering
+\includegraphics[width=1\textwidth]{../figures/composite_figure.pdf}
+\end{figure}
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Grafting larvae into a queen or worker cell produced correlated changes in the methylome and transcriptome. \newline A.} Module eigengenes from the gene co-expression network analysis (mean-centered and scaled), which represent the relative expression levels of sets of co-expressed genes (number of genes per module shown in parentheses). The points show the estimates for each sample, and the lines are predictions from a Bayesian multivariate GAM (details as in Figure 1). Some modules show increasingly caste-specific expression with time (e.g. 6, 12, 15, 17), while others either show constant expression, or temporal change that is the same in both castes. \textbf{B.} Similar plot showing the module eigengenes from the co-methylation network analysis. Note that there are fewer modules, and most genes clustered into Module 1, indicating that large numbers of genes are (de)methylated in unison. \textbf{C.} Correlations between the module eigengenes shown in panels A-B, where orange indicates positive correlation and purple indicates negative. Many of the expression modules are negatively correlated with methylation modules, indicating that methylation causes reduced expression (in the same and/or different sets of genes). The red/white/blue colour indicates modules that showed a statistically significant caste bias (red: higher in QDL, blue: higher in WDL, white: unbiased). \textbf{D.} Correlations in expression and \% CpG methylation across individual genes. The correlation is noisy but highly significant, especially at later time points, and we note that both variables are measured with error, obscuring the underlying correlation.
+}}
+\centering
+\includegraphics[width=1\textwidth]{../figures/composite_eigengenes.pdf}
+\end{figure}
+
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Results of GO: Biological Process enrichment tests. \newline A.} Results of Kolmogorov-Smirnov enrichment tests, searching for terms enriched among genes that show QDL- or WDL-biased expression (as measured by log fold difference; red: QDL-biased, blue: QDL-biased). The asterisks indicate that the term was statistically significant at this time point, while double asterisks indicate results that remained significant after Benjamini-Hochberg correction (which is overly-conservative here because the tests are not independent). For brevity, only the top 50 most significant GO terms are shown; see XXX for the remainder, as well as corresponding enrichment results for KEGG and the other two types of GO. \textbf{B.} Similar plot searching for terms enriched among genes that show QDL- or WDL-biased CpG methylation (as measured by the difference in mean % mCpGs).
+}}
+\centering
+\includegraphics[width=1\textwidth]{../figures/composite_GO.pdf}
+\end{figure}
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Correlations across genes for variables from the present study (as marked) or other studies (all others).} \newline The source and meaning of each variable is documented in Table SX. For variables including `vs', a positive value means higher expression/methylation in the first-listed group (e.g. a positive number for `\% mCpGs: QDL vs WDL' means higher methylation in QDL). See Table SX for the associated correlation test results. }}
+\centering
+\includegraphics[width=1.3\textwidth]{../figures/big_correlation_heatmap.pdf}
+\end{figure}

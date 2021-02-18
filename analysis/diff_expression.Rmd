@@ -157,12 +157,10 @@ bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
           nmds_output %>% filter(Caste != "Time zero")) %>%
   gather(NMDS, Score, starts_with("NMDS")) %>%
   mutate(Caste = factor(Caste, c("Queen", "t0", "Worker"))) %>%
-  # mutate(NMDS = gsub("X", "NMDS ", NMDS),
-  #        Replicate = paste("Replicate", Replicate)) %>%
   ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
   geom_line() +
   geom_point() + 
-  geom_point(data =t0_dat, colour = "grey60") + 
+  geom_point(data = t0_dat, colour = "grey60") + 
   scale_colour_manual(values = c(queen_colour, "grey60", worker_colour), 
                       name = "Cell type", drop = FALSE) + 
   facet_grid(NMDS~Replicate) + 
@@ -170,7 +168,7 @@ bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
   theme_bw()
 ```
 
-**Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (termed NMDS 1-3; $r^2 =$ `r nmds_r2`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
+**Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (% variance explained: `r round(100*nmds_r2, 1)`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
 
 
 ### Heatmap showing similarities between samples and genes
@@ -232,7 +230,7 @@ annotation_row <- annotation_row %>%
 
 
 annotation_colors <- 
-  list(` ` = c(Queen = queen_colour, t0 = "grey60", Worker = worker_colour))
+  list(` ` = c(Queen = queen_colour, t0 = "white", Worker = worker_colour))
 
 t(scaled_expression_data) %>%
   pheatmap(col = myColor, breaks = myBreaks,
@@ -244,6 +242,34 @@ t(scaled_expression_data) %>%
 ```
 
 **Figure XX:** Heatmap showing the transcriptome of each sample, where each column indicates one of the `r nrow(scaled_expression_data)` transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.
+
+```{r echo=FALSE}
+save_pheatmap_pdf <- function(x, filename, width=7, height=7) {
+   stopifnot(!missing(x))
+   stopifnot(!missing(filename))
+   
+   my_gtable <- x$gtable
+   my_gtable$grobs[[4]]$gp <- gpar(fontfamily = nice_font) # x axis labels
+   my_gtable$grobs[[7]]$gp <- gpar(fontfamily = nice_font) # Q/W legend
+   
+   pdf(filename, width = width, height = height)
+   grid::grid.newpage()
+   grid::grid.draw(my_gtable)
+   dev.off()
+}
+
+
+
+t(scaled_expression_data) %>%
+  pheatmap(col = myColor, breaks = myBreaks,
+           clustering_distance_rows = "euclidean",
+           clustering_distance_cols = "euclidean",
+           cutree_cols = 18, cutree_rows = 5, 
+           annotation_row = annotation_row, annotation_colors = annotation_colors,
+           show_colnames = FALSE) %>%
+  save_pheatmap_pdf("figures/expression_heatmap.pdf", width = 12, height = 7)
+```
+
 
 
 ## Detecting differential expression with `limma::voom`
@@ -728,10 +754,60 @@ Red means relatively higher expression of the focal pathway/process in queens, b
 
 ###### Figure
 ```{r fig.height=35, fig.width = 5.3}
+fig_dat <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Biological process") 
+
+top50 <- fig_dat %>%
+  group_by(term) %>%
+  summarise(p = min(pval), .groups = "drop") %>% 
+  arrange(p) %>% pull(term) %>% head(50)
+
+
+fig_dat %>%
+  filter(term %in% top50) %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/expr_GO_for_composite_figure.rds")
+
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
+
+```{r echo = FALSE}
+# Save supplmenetary figures
+remaining_terms <- fig_dat$term[!(fig_dat$term %in% top50)] %>% unique()
+remaining_terms[1:(length(remaining_terms)/2)]
+
+
+
+fig_dat %>%
+  filter(term %in% remaining_terms[1:(length(remaining_terms)/2)]) %>%
+  make_pathway_figure("", "Hours post-grafting") 
+
+fig_dat %>%
+  filter(term %in% remaining_terms[(1 + length(remaining_terms)/2):length(remaining_terms)]) %>%
+  make_pathway_figure("", "Hours post-grafting") 
+
+%>%
+  saveRDS("figures/expr_GO_BPremainder_dmel.rds")
+
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/expr_GO_MF_dmel.rds")
+
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Cellular component") %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/expr_GO_CC_dmel.rds")
+
+GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "KEGG") %>%
+  make_pathway_figure("", "Hours post-grafting") %>%
+  saveRDS("figures/expr_KEGG_dmel.rds")
+```
+
+
 
 ###### Table
 ```{r}
@@ -1260,96 +1336,6 @@ if(!file.exists("output/brms_eigengene_model_expression.rds")){
 ```
 
 
-
-
-
-<!-- ```{r} -->
-<!-- # OG version: -->
-<!-- eigengenes <- read_csv("output/expression_eigengenes.csv") # can delete after testing -->
-
-<!-- # Define the model formula for all the j modules -->
-<!-- j <- length(unique(eigengenes$Module)) -->
-<!-- brms_formula <- bf( -->
-<!--   paste("mvbind(", -->
-<!--         paste0(paste("m", 0:(j - 1),  -->
-<!--                      sep = ""), collapse = ","), -->
-<!--         ") ~ Caste + s(Time, by = Caste, k = 4) + Replicate", sep = "")  -->
-<!-- ) + set_rescor(FALSE)    -->
-
-<!-- mod_levels <- paste("Module", 0:(j - 1)) -->
-
-<!-- eigengenes$Time <- as.numeric(as.character(eigengenes$Time)) -->
-
-<!-- brms_data <- eigengenes %>% -->
-<!--   dplyr::select(Caste, Time, Replicate, Module, Eigengene) %>% -->
-<!--   spread(Module, Eigengene) %>% -->
-<!--   rename_all(~ str_replace_all(.x, "Module ", "m")) %>% -->
-<!--   mutate(across(starts_with("m"), ~ as.numeric(scale(.x)))) # scale the eigengenes -->
-
-<!-- t0_indexes <- which(brms_data$Caste == "Time zero") -->
-
-
-<!-- v1 <- brms_data$Caste; v2 <- brms_data$Caste; v3 <- brms_data$Caste -->
-<!-- v4 <- brms_data$Caste; v5 <- brms_data$Caste; v6 <- brms_data$Caste -->
-<!-- v1[t0_indexes] <- c("Queen", "Queen", "Worker", "Worker") -->
-<!-- v2[t0_indexes] <- c("Queen", "Worker", "Queen", "Worker") -->
-<!-- v3[t0_indexes] <- c("Queen", "Worker", "Worker", "Queen") -->
-<!-- v4[t0_indexes] <- c("Worker", "Queen", "Queen", "Worker") -->
-<!-- v5[t0_indexes] <- c("Worker", "Queen", "Worker", "Queen") -->
-<!-- v6[t0_indexes] <- c("Worker", "Worker", "Queen", "Queen") -->
-<!-- data_permutations <- list( -->
-<!--   brms_data %>% mutate(Caste = v1), -->
-<!--   brms_data %>% mutate(Caste = v2), -->
-<!--   brms_data %>% mutate(Caste = v3), -->
-<!--   brms_data %>% mutate(Caste = v4), -->
-<!--   brms_data %>% mutate(Caste = v5), -->
-<!--   brms_data %>% mutate(Caste = v6)) -->
-
-
-<!-- # run one model on each relabelled version of the data  -->
-<!-- brms_eigengene_model <- brm_multiple( -->
-<!--   brms_formula,  -->
-<!--   iter = 4000, chains = 1,  -->
-<!--   prior = prior(normal(0, 5), class = "b"),  -->
-<!--   data = data_permutations) -->
-<!-- ``` -->
-
-
-<!-- ```{r eigen_model, results='hide', warning=FALSE, message=FALSE} -->
-<!-- # Define the model formula for all the j modules -->
-<!-- j <- length(unique(eigengenes$Module)) -->
-<!-- brms_formula <- bf( -->
-<!--   paste("mvbind(", -->
-<!--         paste0(paste("m", 0:(j - 1),  -->
-<!--                      sep = ""), collapse = ","), -->
-<!--         ") ~ Time + Caste + Time:Caste + I(Time^2) + I(Time^2):Caste + Replicate", sep = "") # Caste + s(Time, by = Caste, k = 4) + (1 | Replicate) -->
-<!-- ) + set_rescor(FALSE)    -->
-
-<!-- mod_levels <- paste("Module", 0:(j - 1)) -->
-
-
-
-<!-- run_brms_eigengene_model <- function() { -->
-<!--   brm( -->
-<!--     brms_formula, -->
-<!--     data = brms_data, -->
-<!--     prior = c(set_prior("normal(0, 3)", class = "b")),  -->
-<!--     chains = 1, iter = 4000, cores = 1, inits = 0, -->
-<!--     control = list(adapt_delta = 0.9999, max_treedepth = 20)) -->
-<!-- } -->
-
-<!-- if(!file.exists("output/brms_eigengene_model_expression.rds")){ -->
-
-<!--   brms_eigengene_model_chain1 <- run_brms_eigengene_model() -->
-<!--   brms_eigengene_model_chain2 <- run_brms_eigengene_model() -->
-<!--   brms_eigengene_model_chain3 <- run_brms_eigengene_model() -->
-<!--   brms_eigengene_model_chain4 <- run_brms_eigengene_model() -->
-<!--   brms_eigengene_model <- combine_models(brms_eigengene_model_chain1, brms_eigengene_model_chain2, -->
-<!--                                        brms_eigengene_model_chain3, brms_eigengene_model_chain4) -->
-<!--   saveRDS(brms_eigengene_model, "output/brms_eigengene_model_expression.rds") -->
-<!-- } else brms_eigengene_model <- readRDS("output/brms_eigengene_model_expression.rds") -->
-<!-- ``` -->
-
 ### Make Figure X
 
 Plot the model-estimated means for the module expression levels ('eigengenes').
@@ -1362,7 +1348,9 @@ raw_data <- brms_data[[1]] %>%
   gather(Module, eigengene, starts_with("m")) %>%
   mutate(Module = str_replace_all(Module, "m", "Module "),
          Module = factor(Module, module_levels)) %>%
-    mutate(Caste = replace(Caste, Time == 0, NA))
+    mutate(Caste = replace(as.character(Caste), Time == 0, "Pre-grafting"),
+           Caste = replace(Caste, Caste == "q", "Queen"),
+           Caste = replace(Caste, Caste == "w", "Worker"))
 
 
 # Define y limits for the figure: 3% either side of the full range of the raw data
@@ -1400,6 +1388,7 @@ preds <- make_preds()
  
 # Calculate the median and Est.Error of the posterior at 0h, 2h, 4h, 6h and 8h in each caste
 means_data <- preds %>%
+  mutate(Caste = replace(Caste, is.na(Caste), "Pre-grafting")) %>%
   filter(Time %in% c(0,2,4,6,8)) %>%
   group_by(Module, Caste, Time) %>%
   summarise(stats = list(as.data.frame(posterior_summary(eigengene))),
@@ -1408,6 +1397,7 @@ means_data <- preds %>%
 
 # Find the posterior estimate of the median fit line
 mean_line_data <- preds %>%
+  mutate(Caste = replace(Caste, is.na(Caste), "Pre-grafting")) %>%
   group_by(Module, Caste, Time) %>%
   summarise(stats = list(as.data.frame(posterior_summary(eigengene)))) %>%
   ungroup() %>% unnest(stats) %>% dplyr::rename(eigengene = Estimate)
@@ -1417,15 +1407,26 @@ gene_number_labels <- dplyr::rename(network$colors %>% table() %>%
   broom::tidy(), Module = `.`) %>%
   mutate(label_text = paste(n, "genes"),
          Time = 8.21, eigengene = 3.5,
-         Module = factor(Module, module_levels))
+         striptext = paste("m", str_extract_all(Module, "[:digit:]+"), " (", n, ")", sep = ""),
+         striptext = factor(striptext, striptext),
+         Module = factor(Module, module_levels)) %>%
+  dplyr::select(Module, striptext)
+
+preds <- left_join(preds, gene_number_labels, by = "Module")
+raw_data <- left_join(raw_data, gene_number_labels, by = "Module")
+means_data <- left_join(means_data, gene_number_labels, by = "Module")
+mean_line_data <- left_join(mean_line_data, gene_number_labels, by = "Module")
+
 
 # Make the figure
 pd <- position_dodge(0.35)
 
 set.seed(1)
 eigen_plot <- preds %>%
+  mutate(Caste = replace(Caste, is.na(Caste), "Pre-grafting")) %>%
   ggplot(aes(Time, eigengene)) +
-  scale_fill_manual(values = c(queen_colour, worker_colour, "white"), 
+  facet_wrap(~ striptext) + 
+  scale_fill_manual(values = c("white", queen_colour, worker_colour), 
                     aesthetics = c("colour", "fill"), name = "Cell type") +  
   
   geom_line(alpha = 0.05, size = 0.4,
@@ -1442,21 +1443,20 @@ eigen_plot <- preds %>%
                 aes(ymin = eigengene - Est.Error, group = Caste,
                     ymax = eigengene + Est.Error), position = pd) +
   geom_point(data = means_data, aes(fill = Caste), 
-             pch = 21, size = 2, alpha = 0.7, position = pd) +
+             pch = 21, size = 1, alpha = 0.7, position = pd) +
   
-  geom_text(data = gene_number_labels, aes(label = label_text), 
-            size = 2.8, hjust = 1, colour = "grey20", family = nice_font) + 
-  facet_wrap(~ Module) + 
+  # geom_text(data = gene_number_labels, aes(label = label_text), 
+  #           size = 2.8, hjust = 1, colour = "grey20", family = nice_font) + 
   ylab("Relative expression of genes in this module\n(eigengene, posterior estimates)") +
   xlab("Hours post-grafting into queen or worker cell") + 
   
-  coord_cartesian(ylim = c(-3.6, 3.6)) +
+  coord_cartesian(ylim = c(-2, 3)) +
   theme_bw() + 
   theme(legend.position = "top",
         text = element_text(family = nice_font),
         strip.background = element_rect(fill = "white", colour = "white"))
 
-ggsave(eigen_plot, filename = "figures/eigengenes_expression_network.pdf", width = 8, height = 8)
+saveRDS(eigen_plot, "figures/eigengenes_expression_network.rds")
 eigen_plot
 ```
 

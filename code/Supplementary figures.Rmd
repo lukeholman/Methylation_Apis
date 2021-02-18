@@ -1,0 +1,120 @@
+---
+output: pdf_document
+header-includes: 
+  \usepackage{booktabs}
+  \usepackage{hyperref}
+  \usepackage{microtype}
+  \usepackage{longtable}
+  \usepackage[margin=1in]{geometry}
+  \renewcommand*{\thefigure}{S\arabic{figure}}
+---
+
+```{r setup, include=FALSE, results='hide', warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+make_table <- function(file, LT = TRUE, digits = getOption("digits"), BT = TRUE){
+  tabl <- readRDS(file) 
+  
+  if(" " %in% names(tabl)) tabl$` ` <- gsub('\\\\', "", tabl$` `)
+  if("Q2.5" %in% names(tabl)) tabl <- rename(tabl, `Lower 95% CI` = "Q2.5")
+  if("Q97.5" %in% names(tabl)) tabl <- rename(tabl, `Upper 95% CI` = "Q97.5")
+
+  kable(tabl, "latex", longtable = LT, booktabs = BT, digits = digits) %>%
+    kable_styling(latex_options = c("repeat_header", "scale_down"), font_size = 7)
+}
+
+# set up nice font for figure
+library(showtext)
+nice_font <- "Lora"
+font_add_google(name = nice_font, family = nice_font, regular.wt = 400, bold.wt = 700)
+showtext_auto()
+```
+
+\begin{figure}[h]
+\caption{\textbf{Title} Text
+}
+\end{figure}
+
+```{r fig.height = 7, fig.width = 6, fig.align='center'}
+cowplot::plot_grid(
+  plotlist = list(readRDS("../figures/genomic_context_plot_timeQ.rds"), 
+                  readRDS("../figures/genomic_context_plot_timeW.rds")), 
+  labels = c("A", "B"),
+  nrow = 2, align = 'v', axis = 'l', 
+  rel_heights = c(1, 1))
+```
+\newpage
+
+
+\begin{figure}[h]
+\caption{Similar heatmap to Figure 1C, except showing all CpG sites with at least 2.7\% methylated sequencing reads (n = 110,626 sites). 
+}
+\end{figure}
+
+```{r fig.height = 7, fig.width = 7, fig.align='center'}
+gridExtra::grid.arrange(readRDS("../figures/heatmap_all.rds")$gtable)
+```
+\newpage
+
+
+
+<!-- Mthylation GO figures -->
+
+\begin{figure}[h]
+\caption{GO and KEGG terms that are enriched among genes showing QDL- or WDL-biased methylation (as measured by the difference in mean \% CpG methylation for all sites in the introns, exons, and promoters of the gene; red: QDL-biased, blue: QDL-biased). Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations.
+}
+\end{figure}
+
+```{r fig.width=6, fig.height = 7, fig.align='center'}
+readRDS("../figures/meth_GO_others.rds")
+```
+\newpage
+
+
+\begin{figure}[h]
+\caption{GO and KEGG terms that are enriched among genes showing QDL- or WDL-biased methylation (as measured by the difference in mean \% CpG methylation for all sites in the introns, exons, and promoters of the gene; red: QDL-biased, blue: QDL-biased). Results are from Kolmogorov-Smirnov enrichment tests using the standard \textit{A. mellifera} GO and KEGG annotations.
+}
+\end{figure}
+
+```{r fig.width=6, fig.height = 7, fig.align='center'}
+readRDS("../figures/meth_all_enrichments_Amel.rds")
+```
+\newpage
+
+
+
+\begin{figure}[h]
+\caption{GO and KEGG terms that are enriched among genes showing temporally variable methylation within each treatment group (as measured by the difference in mean \% CpG methylation between the 2h and 8h QDL or WDL samples for all sites in the introns, exons, and promoters of the gene). Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations. Orange indicates functional categories for which the relevant genes show increasing methylation over time, purple indicates decreasing methylation over time. 
+}
+\end{figure}
+
+```{r fig.width=5.5, fig.height = 6.5, fig.align='center'}
+readRDS("../figures/meth_GO_temporal_Dmel.rds")
+```
+\newpage
+
+
+\begin{figure}[h]
+\caption{GO and KEGG terms that are enriched among genes showing temporally variable methylation within each treatment group (as measured by the difference in mean \% CpG methylation between the 2h and 8h QDL or WDL samples for all sites in the introns, exons, and promoters of the gene). Results are from Kolmogorov-Smirnov enrichment tests using the standard \textit{A. mellifera} GO and KEGG annotations. Orange indicates functional categories for which the relevant genes show increasing methylation over time, purple indicates decreasing methylation over time. 
+}
+\end{figure}
+
+```{r fig.width=4.6, fig.height = 3.6, fig.align='center'}
+readRDS("../figures/meth_GO_temporal_Amel.rds")
+```
+\newpage
+
+<!-- Expression GO figures -->
+
+
+\begin{figure}[h]
+\caption{This figure shows the remaining GO: Biological process terms...
+}
+\end{figure}
+
+```{r fig.width=6, fig.height = 12, fig.align='center'}
+readRDS("../figures/expr_GO_BPremainder_dmel.rds")
+```
+\newpage

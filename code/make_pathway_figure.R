@@ -7,14 +7,14 @@ make_pathway_figure <- function(GO_output, ylab, xlab, alt_colours = FALSE){
   
   format_GO_results <- function(GO_output){
     levels_order <- GO_output %>%
-      mutate(term_wrapped = str_wrap(term, width = 50)) %>%
+      mutate(term_wrapped = str_wrap(term, width = 60)) %>%
       group_by(term_wrapped) %>%
       #summarise(p = prod(padj)^0.25, .groups = "drop") %>%
       summarise(NES_mean = mean(NES), .groups = "drop") %>%
       arrange(NES_mean) %>% pull(term_wrapped) 
     
     GO_output %>% as_tibble() %>%
-      mutate(term = str_wrap(term, width = 50)) %>%
+      mutate(term = str_wrap(term, width = 60)) %>%
       mutate(term = factor(term, levels_order),
              sig = ifelse(pval < 0.05, "*", ""),
              sig = replace(sig, padj < 0.05, "**"))

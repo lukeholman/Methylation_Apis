@@ -592,7 +592,7 @@ n_sites2 <- ncol(foc)
 ```
 
 
-The heatmap shows data on the CpG sites that were measured with at least 5x coverage in all 36 samples. The version on the first tab is restricted to sites with an avearge methylation frequency of at least 75% (n = `r n_sites2` sites), while the second tab shows the data for all the methylated sites (i.e. all sites with a mean methylation frequency >2.7%; n = `r n_sites` sites). We chose to split the data this way in light of the evidence in teh animation above that the greatest caste difference in methylation frequency was found among sites with high levels of methylation.
+The heatmap shows data on the CpG sites that were measured with at least 5x coverage in all 36 samples. The version on the first tab is restricted to sites with an avearge methylation frequency of at least 75% (n = `r n_sites2` sites), while the second tab shows the data for all the methylated sites (i.e. all sites with a mean methylation frequency >2.7%; n = `r n_sites` sites). We chose to split the data this way in light of the evidence in the animation above that the greatest caste difference in methylation frequency was found among sites with high levels of methylation.
 
 Before plotting, the data on each site was scaled to mean zero and unit standard deviation. Next, we removed batch effects (i.e. the variance due to replicates A-D) using `sva::ComBat()`. Additionally, because it is technically challenging to plot a heatmap with many thousands of rows/columns, we first clustered the sites into 100 groups of sites using k-means clustering (see `?pheatmap`). 
 
@@ -893,7 +893,7 @@ n_worker_windows <- window_500bp_timeW %>% dplyr::select(seqnames, start, end) %
 ```
 
 
-**Table XX:** The table shows the `r prettyNum(n_caste_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant difference in methylation between queens and workers at one or more time points. 
+**Table XX:** The table shows the `r prettyNum(n_caste_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant difference in methylation between queens and workers at one or more time points. There is one row per annotation.
 
 
 #### Temporally varying methylation (queens)
@@ -903,7 +903,7 @@ window_500bp_timeQ %>%
          comparison = str_replace_all(comparison, "[.]", " ")) %>% 
   my_data_table()
 ```
-**Table XX:** The table shows the `r prettyNum(n_queen_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae.
+**Table XX:** The table shows the `r prettyNum(n_queen_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae. There is one row per annotation.
 
 #### Temporally varying methylation (workers)
 ```{r message=FALSE, warning=FALSE}
@@ -912,7 +912,7 @@ window_500bp_timeW %>%
          comparison = str_replace_all(comparison, "[.]", " ")) %>% 
   my_data_table()
 ```
-**Table XX:** The table shows the `r prettyNum(n_worker_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in worker-destined larvae.
+**Table XX:** The table shows the `r prettyNum(n_worker_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in worker-destined larvae. There is one row per annotation.
 
 
 
