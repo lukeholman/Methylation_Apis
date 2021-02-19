@@ -575,16 +575,16 @@ relative
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreedfd59c2663746d13395acdf38c3f83b4bb8e43aetargetblankdfd59c2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/dfd59c2663746d13395acdf38c3f83b4bb8e43ae" target="_blank">dfd59c2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree31bcb93d8207e8c4caa128c3f2a4f9ea282d46e2targetblank31bcb93a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/31bcb93d8207e8c4caa128c3f2a4f9ea282d46e2" target="_blank">31bcb93</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreedfd59c2663746d13395acdf38c3f83b4bb8e43aetargetblankdfd59c2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree31bcb93d8207e8c4caa128c3f2a4f9ea282d46e2targetblank31bcb93a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/dfd59c2663746d13395acdf38c3f83b4bb8e43ae" target="_blank">dfd59c2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/31bcb93d8207e8c4caa128c3f2a4f9ea282d46e2" target="_blank">31bcb93</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -601,14 +601,6 @@ Ignored files:
     Ignored:    figures/bayes_sites/.DS_Store
     Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
-
-Unstaged changes:
-    Modified:   figures/big_correlation_heatmap.pdf
-    Modified:   figures/composite_GO.pdf
-    Modified:   figures/composite_eigengenes.pdf
-    Modified:   figures/composite_figure.pdf
-    Modified:   figures/heatmap75.rds
-    Modified:   figures/heatmap_all.rds
 
 </code></pre>
 <p>
@@ -647,6 +639,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/31bcb93d8207e8c4caa128c3f2a4f9ea282d46e2/analysis/diff_methylation.Rmd" target="_blank">31bcb93</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-19
+</td>
+<td>
+commit new figs
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/31bcb93d8207e8c4caa128c3f2a4f9ea282d46e2/docs/diff_methylation.html" target="_blank">31bcb93</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-19
+</td>
+<td>
+commit new figs
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2778,7 +2804,7 @@ sites_for_bayes_GAM &lt;- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_ca
 <div id="run-the-bayesian-gams" class="section level3">
 <h3>Run the Bayesian GAMs</h3>
 <p>The BWASP pipeline and the previous code chunk together identified 3340 candidate differentially-methylated sites, which we now re-analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called ‘skeptical’ priors (see the book/lecture series <em>Statistical Rethinking</em> by Richard McElreath).</p>
-<p>We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four t0 samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the t0 samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the <code>brm_multiple</code> function in <code>brms</code>. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know <em>a priori</em> must be the case due to our experimental design), by effectively making each t0 sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model’s precision).</p>
+<p>We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four <span class="math inline">\(t_0\)</span> samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the <span class="math inline">\(t_0\)</span> samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the <code>brm_multiple</code> function in <code>brms</code>. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know <em>a priori</em> must be the case due to our experimental design), by effectively making each <span class="math inline">\(t_0\)</span> sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model’s precision).</p>
 <p>Each model had the same formula, namely:</p>
 <p><code>Binomial(number_methylated, Coverage) ~ caste:time + I(time^2) + I(time^2):caste + replicate</code></p>
 <p>That is, the response variable is the number of putatively methylated cytosines observed (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of <span class="math inline">\(n\)</span> Bernoulli trials where <span class="math inline">\(n\)</span> is the coverage of the site. The model formula contains time as a continuous predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a Bayesian generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely <code>normal(0, 5)</code>, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.</p>
@@ -5035,36 +5061,14 @@ network_input &lt;- network_input[, n_samples_with_methylation &gt;= 30]</code><
 </tr>
 </tbody>
 </table>
-<!-- ### Plot correlations between module eigengenes -->
-<!-- Note that some modules show correlated expression with other modules, forming 'meta-modules'. Moreover, we can see that certain modules appear to distinguish worker-destined larvae at later times (e.g. 6h and 8h) from queen-destined larvae, or early-stage workers. -->
-<!-- ```{r fig.height=9, fig.width=4.5} -->
-<!-- brms_data <- meth_eigengenes %>% -->
-<!--   mutate(Caste = replace(as.character(Caste), Time == 0, "t0")) %>% -->
-<!--   spread(Module, Eigengene) %>% -->
-<!--   mutate_at(vars(starts_with("m")), ~ as.numeric(scale(.x))) %>% # scale and centre eigengenes -->
-<!--   mutate(Rep = C(factor(Rep), contr = "contr.sum"))  -->
-<!-- mat <- dplyr::select(brms_data, starts_with("m")) %>%  -->
-<!--   rename_all(~ str_replace_all(.x, "m", "Module ")) %>% -->
-<!--   as.matrix() -->
-<!-- rownames(mat) <- paste(brms_data$Caste, " ", brms_data$Time, "h, Rep", brms_data$Rep, sep = "") -->
-<!-- rownames(mat) <- str_replace_all(rownames(mat), "t0 0h", "t0") -->
-<!-- rownames(mat) <- str_replace_all(rownames(mat), "q", "Queen") -->
-<!-- rownames(mat) <- str_replace_all(rownames(mat), "w", "Worker") -->
-<!-- paletteLength <- 50 -->
-<!-- myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[6], "white", brewer.pal(9, "Reds")[6]))(paletteLength) -->
-<!-- myBreaks <- c(seq(min(mat, na.rm=T), 0, length.out=ceiling(paletteLength / 2) + 1),  -->
-<!--               seq(max(mat, na.rm=T) / paletteLength, max(mat, na.rm = T), length.out=floor(paletteLength / 2))) -->
-<!-- pheatmap(mat, color = myColor, breaks = myBreaks, -->
-<!--          cutree_rows = 5, cutree_cols = 5) -->
-<!-- ``` -->
 </div>
 <div id="fit-bayesian-model-to-the-eigengene-estimates" class="section level3">
 <h3>Fit Bayesian model to the eigengene estimates</h3>
-<p>The following code chunk fits a Bayesian model to the eigenegene estimates produced by <code>WGCNA</code>. The ‘eigengene’ for sample <span class="math inline">\(i\)</span>, module <span class="math inline">\(j\)</span>, gives a measure of the expression level of all the coexpressed genes that were assigned to module <span class="math inline">\(j\)</span>, for sample <span class="math inline">\(i\)</span> relative to other samples. The eigengenes were transformed to have a mean of zero and standard deviation of 1 prior to analysis.</p>
+<p>The following code chunk fits a Bayesian multivariate model to the eigengene estimates from the co-methylation network produced by <code>WGCNA</code>. The ‘eigengene’ for sample <span class="math inline">\(i\)</span>, module <span class="math inline">\(j\)</span>, gives a measure of the methylation level of all the co-methylated genes that were assigned to module <span class="math inline">\(j\)</span>, for sample <span class="math inline">\(i\)</span> relative to other samples. The eigengenes were transformed to have a mean of zero and standard deviation of 1 prior to analysis.</p>
 <p>Because the module eigengenes are somewhat correlated with each other, it is valuable to run a single model of all <span class="math inline">\(j\)</span> module eigengenes (thereby using the information in this correlation), rather than running <span class="math inline">\(j\)</span> univariate models. We therefore ran a single multivariate model encompassing all 9 modules (including module zero, the unassigned genes).</p>
-<p>Furthermore, we expected <em>a priori</em> that some eigengenes will change non-linearly, for example increasing to a plateau, or increasing then decreasing again, throughout the course of development (as observed in the Bayesian GAMs above for individual methylated sites). We therefore used the same Bayesian GAM approach to model the eigengenes. Specifically, the time effect was modelled using a thin plate spline with basis dimension k=4, to allow for a non-linear time effect; the smooth used was allowed to differ between queens and workers, allowing for caste-specific change over time. As before, we ran the model on different versions of the data where the t0 samples were labelled as either queens or workers in each possible balanced combination then combined the posterior parameter estimates; this procedure forces the intercept at time zero to be the same for each caste.</p>
+<p>Furthermore, we expected <em>a priori</em> that some eigengenes will change non-linearly, for example by increasing to a plateau. We therefore used the same quadratic formula (implemented with `brms’) to model the eigengenes, to allow for a non-linear (and potentially caste-specific) time effect. As before, we ran the model on different versions of the data where the <span class="math inline">\(t_0\)</span> samples were labeled as either queens or workers in each possible balanced combination then combined the posterior parameter estimates; this procedure ensures that the <span class="math inline">\(t_0\)</span> samples have an equal effect on the predicted values for queens and workers. Note that the main effect of caste is again missing from the model, which forces the queen and worker samples to have the same value at <span class="math inline">\(t_0\)</span></p>
 <p>In <code>brms</code> notations (which is similar to e.g. the <code>lme4</code> and <code>mgcv</code> R packages), the model formula for each module is written as</p>
-<p><span class="math display">\[ y \sim caste + s(time, by = caste, k = 4) + replicate\]</span></p>
+<p><span class="math display">\[ y \sim Caste:Time + I(Time^2) + I(Time^2):Caste + Replicate\]</span></p>
 <p>where <span class="math inline">\(y\)</span> is the eigengene for module <span class="math inline">\(j\)</span>.</p>
 <pre class="r"><code>brms_data &lt;- meth_eigengenes %&gt;%
   mutate(Caste = replace(as.character(Caste), Time == 0, &quot;t0&quot;)) %&gt;%
@@ -6929,7 +6933,7 @@ other attached packages:
 [46] stringr_1.4.0          dplyr_1.0.0            purrr_0.3.4           
 [49] readr_1.3.1            tidyr_1.1.0            tibble_3.0.1          
 [52] ggplot2_3.3.2          tidyverse_1.3.0        showtext_0.9-1        
-[55] showtextdb_3.0         sysfonts_0.8.2        
+[55] showtextdb_3.0         sysfonts_0.8.2         workflowr_1.6.2       
 
 loaded via a namespace (and not attached):
   [1] Hmisc_4.4-0                   ps_1.3.3                     
@@ -6978,57 +6982,56 @@ loaded via a namespace (and not attached):
  [87] fastmap_1.0.1                 compiler_4.0.3               
  [89] abind_1.4-5                   httpuv_1.5.3.1               
  [91] rtracklayer_1.48.0            GenomeInfoDbData_1.2.3       
- [93] workflowr_1.6.2               edgeR_3.30.1                 
- [95] lattice_0.20-41               later_1.0.0                  
- [97] BiocFileCache_1.12.0          jsonlite_1.7.0               
- [99] scales_1.1.1                  estimability_1.3             
-[101] promises_1.1.0                doParallel_1.0.15            
-[103] latticeExtra_0.6-29           checkmate_2.0.0              
-[105] rmarkdown_2.5                 sandwich_2.5-1               
-[107] cowplot_1.0.0                 statmod_1.4.34               
-[109] webshot_0.5.2                 downloader_0.4               
-[111] igraph_1.2.5                  survival_3.2-7               
-[113] rsconnect_0.8.16              yaml_2.2.1                   
-[115] bayesplot_1.7.2               htmltools_0.5.0              
-[117] rstantools_2.1.1              memoise_1.1.0                
-[119] locfit_1.5-9.4                graphlayouts_0.7.0           
-[121] viridisLite_0.3.0             digest_0.6.25                
-[123] assertthat_0.2.1              mime_0.9                     
-[125] rappdirs_0.3.1                data.table_1.12.8            
-[127] blob_1.2.1                    preprocessCore_1.50.0        
-[129] shinythemes_1.1.2             splines_4.0.3                
-[131] Formula_1.2-3                 labeling_0.3                 
-[133] AnnotationHub_2.20.0          RCurl_1.98-1.2               
-[135] broom_0.5.6                   hms_0.5.3                    
-[137] modelr_0.1.8                  colorspace_1.4-1             
-[139] base64enc_0.1-3               BiocManager_1.30.10          
-[141] nnet_7.3-14                   mvtnorm_1.1-0                
-[143] enrichplot_1.8.1              fansi_0.4.1                  
-[145] R6_2.4.1                      lifecycle_0.2.0              
-[147] acepack_1.4.1                 StanHeaders_2.21.0-3         
-[149] curl_4.3                      minqa_1.2.4                  
-[151] DO.db_2.9                     qvalue_2.20.0                
-[153] TH.data_1.0-10                iterators_1.0.12             
-[155] htmlwidgets_1.5.1             triebeard_0.3.0              
-[157] polyclip_1.10-0               biomaRt_2.44.1               
-[159] markdown_1.1                  crosstalk_1.1.0.1            
-[161] gridGraphics_0.5-0            rvest_0.3.5                  
-[163] globals_0.12.5                openssl_1.4.1                
-[165] insight_0.8.4                 htmlTable_1.13.3             
-[167] codetools_0.2-16              matrixStats_0.56.0           
-[169] lubridate_1.7.8               GO.db_3.11.4                 
-[171] gtools_3.8.2                  prettyunits_1.1.1            
-[173] git2r_0.27.1                  httr_1.4.1                   
-[175] highr_0.8                     stringi_1.5.3                
-[177] progress_1.2.2                reshape2_1.4.4               
-[179] farver_2.0.3                  annotate_1.66.0              
-[181] viridis_0.5.1                 xml2_1.3.2                   
-[183] rvcheck_0.1.8                 boot_1.3-25                  
-[185] shinyjs_1.1                   ggplotify_0.0.5              
-[187] BiocVersion_3.11.1            bit_1.1-15.2                 
-[189] scatterpie_0.1.4              jpeg_0.1-8.1                 
-[191] ggraph_2.0.3                  pkgconfig_2.0.3              
-[193] knitr_1.30                   </code></pre>
+ [93] edgeR_3.30.1                  lattice_0.20-41              
+ [95] later_1.0.0                   BiocFileCache_1.12.0         
+ [97] jsonlite_1.7.0                scales_1.1.1                 
+ [99] estimability_1.3              promises_1.1.0               
+[101] doParallel_1.0.15             latticeExtra_0.6-29          
+[103] checkmate_2.0.0               rmarkdown_2.5                
+[105] sandwich_2.5-1                cowplot_1.0.0                
+[107] statmod_1.4.34                webshot_0.5.2                
+[109] downloader_0.4                igraph_1.2.5                 
+[111] survival_3.2-7                rsconnect_0.8.16             
+[113] yaml_2.2.1                    bayesplot_1.7.2              
+[115] htmltools_0.5.0               rstantools_2.1.1             
+[117] memoise_1.1.0                 locfit_1.5-9.4               
+[119] graphlayouts_0.7.0            viridisLite_0.3.0            
+[121] digest_0.6.25                 assertthat_0.2.1             
+[123] mime_0.9                      rappdirs_0.3.1               
+[125] data.table_1.12.8             blob_1.2.1                   
+[127] preprocessCore_1.50.0         shinythemes_1.1.2            
+[129] splines_4.0.3                 Formula_1.2-3                
+[131] labeling_0.3                  AnnotationHub_2.20.0         
+[133] RCurl_1.98-1.2                broom_0.5.6                  
+[135] hms_0.5.3                     modelr_0.1.8                 
+[137] colorspace_1.4-1              base64enc_0.1-3              
+[139] BiocManager_1.30.10           nnet_7.3-14                  
+[141] mvtnorm_1.1-0                 enrichplot_1.8.1             
+[143] fansi_0.4.1                   R6_2.4.1                     
+[145] lifecycle_0.2.0               acepack_1.4.1                
+[147] StanHeaders_2.21.0-3          curl_4.3                     
+[149] minqa_1.2.4                   DO.db_2.9                    
+[151] qvalue_2.20.0                 TH.data_1.0-10               
+[153] iterators_1.0.12              htmlwidgets_1.5.1            
+[155] triebeard_0.3.0               polyclip_1.10-0              
+[157] biomaRt_2.44.1                markdown_1.1                 
+[159] crosstalk_1.1.0.1             gridGraphics_0.5-0           
+[161] rvest_0.3.5                   globals_0.12.5               
+[163] openssl_1.4.1                 insight_0.8.4                
+[165] htmlTable_1.13.3              codetools_0.2-16             
+[167] matrixStats_0.56.0            lubridate_1.7.8              
+[169] GO.db_3.11.4                  gtools_3.8.2                 
+[171] prettyunits_1.1.1             git2r_0.27.1                 
+[173] httr_1.4.1                    highr_0.8                    
+[175] stringi_1.5.3                 progress_1.2.2               
+[177] reshape2_1.4.4                farver_2.0.3                 
+[179] annotate_1.66.0               viridis_0.5.1                
+[181] xml2_1.3.2                    rvcheck_0.1.8                
+[183] boot_1.3-25                   shinyjs_1.1                  
+[185] ggplotify_0.0.5               BiocVersion_3.11.1           
+[187] bit_1.1-15.2                  scatterpie_0.1.4             
+[189] jpeg_0.1-8.1                  ggraph_2.0.3                 
+[191] pkgconfig_2.0.3               knitr_1.30                   </code></pre>
 </div>
 </div>
 </div>
