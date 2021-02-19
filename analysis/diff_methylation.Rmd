@@ -1195,7 +1195,7 @@ sites_for_bayes_GAM <- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_caste
 
 The BWASP pipeline and the previous code chunk together identified `r length(sites_for_bayes_GAM)` candidate differentially-methylated sites, which we now re-analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called 'skeptical' priors (see the book/lecture series _Statistical Rethinking_ by Richard McElreath). 
 
-We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four t0 samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the t0 samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each t0 sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
+We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four $t_0$ samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the $t_0$ samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each $t_0$ sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
 
 Each model had the same formula, namely:
 
@@ -2714,49 +2714,19 @@ meth_network$colors %>% table() %>% pander()
 ```
 
 
-<!-- ### Plot correlations between module eigengenes -->
-<!-- Note that some modules show correlated expression with other modules, forming 'meta-modules'. Moreover, we can see that certain modules appear to distinguish worker-destined larvae at later times (e.g. 6h and 8h) from queen-destined larvae, or early-stage workers. -->
-
-<!-- ```{r fig.height=9, fig.width=4.5} -->
-<!-- brms_data <- meth_eigengenes %>% -->
-<!--   mutate(Caste = replace(as.character(Caste), Time == 0, "t0")) %>% -->
-<!--   spread(Module, Eigengene) %>% -->
-<!--   mutate_at(vars(starts_with("m")), ~ as.numeric(scale(.x))) %>% # scale and centre eigengenes -->
-<!--   mutate(Rep = C(factor(Rep), contr = "contr.sum"))  -->
-
-
-<!-- mat <- dplyr::select(brms_data, starts_with("m")) %>%  -->
-<!--   rename_all(~ str_replace_all(.x, "m", "Module ")) %>% -->
-<!--   as.matrix() -->
-<!-- rownames(mat) <- paste(brms_data$Caste, " ", brms_data$Time, "h, Rep", brms_data$Rep, sep = "") -->
-<!-- rownames(mat) <- str_replace_all(rownames(mat), "t0 0h", "t0") -->
-<!-- rownames(mat) <- str_replace_all(rownames(mat), "q", "Queen") -->
-<!-- rownames(mat) <- str_replace_all(rownames(mat), "w", "Worker") -->
-
-<!-- paletteLength <- 50 -->
-<!-- myColor <- colorRampPalette(c(brewer.pal(9, "Blues")[6], "white", brewer.pal(9, "Reds")[6]))(paletteLength) -->
-<!-- myBreaks <- c(seq(min(mat, na.rm=T), 0, length.out=ceiling(paletteLength / 2) + 1),  -->
-<!--               seq(max(mat, na.rm=T) / paletteLength, max(mat, na.rm = T), length.out=floor(paletteLength / 2))) -->
-
-<!-- pheatmap(mat, color = myColor, breaks = myBreaks, -->
-<!--          cutree_rows = 5, cutree_cols = 5) -->
-<!-- ``` -->
-
-
-
 
 
 ### Fit Bayesian model to the eigengene estimates
 
-The following code chunk fits a Bayesian model to the eigenegene estimates produced by `WGCNA`. The 'eigengene' for sample $i$, module $j$, gives a measure of the expression level of all the coexpressed genes that were assigned to module $j$, for sample $i$ relative to other samples. The eigengenes were transformed to have a mean of zero and standard deviation of 1 prior to analysis. 
+The following code chunk fits a Bayesian multivariate model to the eigengene estimates from the co-methylation network produced by `WGCNA`. The 'eigengene' for sample $i$, module $j$, gives a measure of the methylation level of all the co-methylated genes that were assigned to module $j$, for sample $i$ relative to other samples. The eigengenes were transformed to have a mean of zero and standard deviation of 1 prior to analysis. 
 
 Because the module eigengenes are somewhat correlated with each other, it is valuable to run a single model of all $j$ module eigengenes (thereby using the information in this correlation), rather than running $j$ univariate models. We therefore ran a single multivariate model encompassing all `r num_modules` modules (including module zero, the unassigned genes).  
 
-Furthermore, we expected _a priori_ that some eigengenes will change non-linearly, for example increasing to a plateau, or increasing then decreasing again, throughout the course of development (as observed in the Bayesian GAMs above for individual methylated sites). We therefore used the same Bayesian GAM approach to model the eigengenes. Specifically, the time effect was modelled using a thin plate spline with basis dimension k=4, to allow for a non-linear time effect; the smooth used was allowed to differ between queens and workers, allowing for caste-specific change over time. As before, we ran the model on different versions of the data where the t0 samples were labelled as either queens or workers in each possible balanced combination then combined the posterior parameter estimates; this procedure forces the intercept at time zero to be the same for each caste. 
+Furthermore, we expected _a priori_ that some eigengenes will change non-linearly, for example by increasing to a plateau. We therefore used the same quadratic formula (implemented with `brms') to model the eigengenes, to allow for a non-linear (and potentially caste-specific) time effect. As before, we ran the model on different versions of the data where the $t_0$ samples were labeled as either queens or workers in each possible balanced combination then combined the posterior parameter estimates; this procedure ensures that the $t_0$ samples have an equal effect on the predicted values for queens and workers. Note that the main effect of caste is again missing from the model, which forces the queen and worker samples to have the same value at $t_0$ 
 
 In `brms` notations (which is similar to e.g. the `lme4` and `mgcv` R packages), the model formula for each module is written as
 
-$$ y \sim caste + s(time, by = caste, k = 4) + replicate$$
+$$ y \sim Caste:Time + I(Time^2) + I(Time^2):Caste + Replicate$$
 
 where $y$ is the eigengene for module $j$. 
 

@@ -40,6 +40,7 @@ library(UpSetR)
 library(pheatmap)
 library(RColorBrewer)
 library(ggrepel)
+library(grid)
 library(broom)
 library(sva)
 library(glue)
@@ -257,8 +258,6 @@ save_pheatmap_pdf <- function(x, filename, width=7, height=7) {
    grid::grid.draw(my_gtable)
    dev.off()
 }
-
-
 
 t(scaled_expression_data) %>%
   pheatmap(col = myColor, breaks = myBreaks,
@@ -773,11 +772,12 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
   make_pathway_figure("", "Hours post-grafting")
 ```
 
-```{r echo = FALSE}
+```{r echo = FALSE, eval = FALSE}
+
+# FINISH THIS
 # Save supplmenetary figures
 remaining_terms <- fig_dat$term[!(fig_dat$term %in% top50)] %>% unique()
 remaining_terms[1:(length(remaining_terms)/2)]
-
 
 
 fig_dat %>%
@@ -1252,17 +1252,15 @@ pheatmap(mat, color = myColor, breaks = myBreaks,
 
 ### Fit Bayesian model to the eigengene estimates
 
-The following code chunk fits a Bayesian model to the eigenegene estimates produced by `WGCNA`. The 'eigengene' for sample $i$, module $j$, gives a measure of the expression level of all the coexpressed genes that were assigned to module $j$, for sample $i$ relative to other samples. The eigengenes were transformed to have a mean of zero and standard deviation of 1 prior to analysis. 
+The following code chunk fits a Bayesian multivariate model to the eigengene estimates from the co-expression network produced by `WGCNA`. The 'eigengene' for sample $i$, module $j$, gives a measure of the methylation level of all the co-expressed genes that were assigned to module $j$, for sample $i$ relative to other samples. The eigengenes were transformed to have a mean of zero and standard deviation of 1 prior to analysis. 
 
 Because the module eigengenes are somewhat correlated with each other, it is valuable to run a single model of all $j$ module eigengenes (thereby using the information in this correlation), rather than running $j$ univariate models. We therefore ran a single multivariate model encompassing all `r num_modules` modules (including module zero, the unassigned genes).  
 
-Furthermore, we expected a prior that some eigengenes will change non-linearly, for example increasing to a plateau, or increasing then decreasing again, throughout the course of development. We therefore fit the time effect using a thin plate regression line smooth (i.e. we used a generalised additive model) with basis dimension k=4, to allow for a non-linear time effect. To allow for a caste-specific change over time, we fit one smooth for the reference caste (queens), and fit a 'difference smooth' for the other caste to allow it to deviate.
+Furthermore, we expected _a priori_ that some eigengenes will change non-linearly, for example by increasing to a plateau. We therefore used the same quadratic formula (implemented with `brms') to model the eigengenes, to allow for a non-linear (and potentially caste-specific) time effect. As before, we ran the model on different versions of the data where the $t_0$ samples were labeled as either queens or workers in each possible balanced combination then combined the posterior parameter estimates; this procedure ensures that the $t_0$ samples have an equal effect on the predicted values for queens and workers. Note that the main effect of caste is again missing from the model, which forces the queen and worker samples to have the same value at $t_0$ 
 
-Finally, our experiment was split into 4 replicates/blocks, and so we fit replicate as a random effect to account for similarity in eigengenes between samples measured in the same block, and prevent pseuodreplication.
+In `brms` notations (which is similar to e.g. the `lme4` and `mgcv` R packages), the model formula for each module is written as
 
-In `brms` notations (which is similar to e.g. `lme4` and many other R packages), the model formula for each module is written as
-
-$$ y \sim Caste + s(Time, by = Caste, k = 4) + Replicate$$
+$$ y \sim Caste:Time + I(Time^2) + I(Time^2):Caste + Replicate$$
 
 where $y$ is the eigengene for module $j$. We specified regularising priors on all fixed effects estimates (i.e. `Normal(0, 2)`) to minimise overfitting to the data. 
 
@@ -1273,7 +1271,7 @@ brms_formula <- bf(
   paste("mvbind(",
         paste0(paste("m", 0:(j - 1), 
                      sep = ""), collapse = ","),
-        ") ~ Caste + s(Time, by = Caste, k = 4) + Replicate", sep = "") 
+        ") ~ Caste:Time + I(Time^2) + I(Time^2):Caste + Replicate", sep = "") 
 ) + set_rescor(FALSE)   
 
 mod_levels <- paste("m", 0:(j - 1), sep = "")
@@ -1340,7 +1338,7 @@ if(!file.exists("output/brms_eigengene_model_expression.rds")){
 
 Plot the model-estimated means for the module expression levels ('eigengenes').
 
-```{r eigen_plot, fig.width=10, fig.height=10, fig.showtext=TRUE, warning=F, message=F}
+```{r eigen_plot, eval=FALSE}
 module_levels <- paste("Module", 0:(length(mod_levels) - 1))
 
 # Data for the raw data point in figure
@@ -1415,8 +1413,19 @@ gene_number_labels <- dplyr::rename(network$colors %>% table() %>%
 preds <- left_join(preds, gene_number_labels, by = "Module")
 raw_data <- left_join(raw_data, gene_number_labels, by = "Module")
 means_data <- left_join(means_data, gene_number_labels, by = "Module")
-mean_line_data <- left_join(mean_line_data, gene_number_labels, by = "Module")
+mean_line_data <- left_join(mean_line_data, gene_number_labels, by = "Module") %>%
+  mutate(Caste = replace(Caste, Caste == "Pre-grafting", NA))
 
+# Extend the red and blue lines to zero
+preds <- bind_rows(
+  preds[is.na(preds$Caste), ] %>% mutate(Caste = "Queen"),
+  preds[is.na(preds$Caste), ] %>% mutate(Caste = "Worker"),
+  preds[!is.na(preds$Caste), ])
+
+mean_line_data <- bind_rows(
+  preds[is.na(mean_line_data$Caste), ] %>% mutate(Caste = "Queen"),
+  preds[is.na(mean_line_data$Caste), ] %>% mutate(Caste = "Worker"),
+  preds[!is.na(mean_line_data$Caste), ])
 
 # Make the figure
 pd <- position_dodge(0.35)
@@ -1450,15 +1459,19 @@ eigen_plot <- preds %>%
   ylab("Relative expression of genes in this module\n(eigengene, posterior estimates)") +
   xlab("Hours post-grafting into queen or worker cell") + 
   
-  coord_cartesian(ylim = c(-2, 3)) +
+  coord_cartesian(ylim = c(-2, 3.3)) +
   theme_bw() + 
   theme(legend.position = "top",
         text = element_text(family = nice_font),
         strip.background = element_rect(fill = "white", colour = "white"))
 
 saveRDS(eigen_plot, "figures/eigengenes_expression_network.rds")
-eigen_plot
 ```
+
+```{r fig.width=10, fig.height=10, fig.showtext=TRUE, warning=F, message=F}
+readRDS("figures/eigengenes_expression_network.rds")
+```
+
 
 ### Calculate effect sizes for the module eigengenes {.tabset}
 
