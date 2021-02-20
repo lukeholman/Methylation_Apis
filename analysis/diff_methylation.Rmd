@@ -1565,11 +1565,12 @@ p_thresh <- 0.0001
 n_sig_sites <- readRDS("output/gene_meth_results_table.rds") %>% 
   dplyr::select(-site_old) %>% 
   filter(caste_pval <= p_thresh | timeQ_pval <= p_thresh | timeW_pval <= p_thresh) %>%
-  select(site) %>% distinct() %>% nrow()
+  dplyr::select(site) %>% distinct() %>% nrow()
 
 # to count the sig loci:
 n_sig_sites <- gene_meth_results_table %>%
-  filter(caste_pval <= p_thresh | timeQ_pval <= p_thresh | timeW_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
+  filter(caste_pval <= p_thresh | timeQ_pval <= p_thresh | timeW_pval <= p_thresh) %>% 
+  pull(site) %>% unique() %>% length()
 
 n_sig_sites_caste <- gene_meth_results_table %>%
   filter(caste_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
