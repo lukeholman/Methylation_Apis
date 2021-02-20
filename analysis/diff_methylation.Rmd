@@ -1003,7 +1003,7 @@ model_multiple_sites <- function(chunk_number,
     distinct() %>%
     collect() 
   
-  # Internal function to model one site using GAM, and compare models by AICc
+  # Internal function to model one site using GLM, and compare models by AICc
   do_one_site <- function(focal_site, data_chunk, nboots = 10000){
     
     focal_site_data <- data_chunk %>%
@@ -1183,34 +1183,34 @@ sig_sites_caste_bwasp <- tbl(db, "site_info") %>%
   filter(pasted %in% paste(sig_sites_bwasp$seqnames, sig_sites_bwasp$start)) %>%
   distinct()
 
-# Make the list of sites to analyse in the Bayesian GAMs below
-sites_for_bayes_GAM <- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_caste_bwasp$site))
+# Make the list of sites to analyse in the Bayesian GLMs below
+sites_for_bayes_GLM <- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_caste_bwasp$site))
 ```
 
 
 
 
 
-### Run the Bayesian GAMs
+### Run the Bayesian GLMs
 
-The BWASP pipeline and the previous code chunk together identified `r length(sites_for_bayes_GAM)` candidate differentially-methylated sites, which we now re-analyse using a Bayesian generalised additive model (GAM). The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called 'skeptical' priors (see the book/lecture series _Statistical Rethinking_ by Richard McElreath). 
+The BWASP pipeline and the previous code chunk together identified `r length(sites_for_bayes_GLM)` candidate differentially-methylated sites, which we now re-analyse using a Bayesian GLM. The Bayesian approach is more flexible, e.g. it allows us to incorporate the time 0 samples into the analysis, facilitates calculation of 95% credible intervals for metrics of interest, and facilitates regularization of the parameter estimates using so-called 'skeptical' priors (see the book/lecture series _Statistical Rethinking_ by Richard McElreath). 
 
-We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four $t_0$ samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the $t_0$ samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GAM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each $t_0$ sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
+We first generated multiple copies of the original dataset in which the time 0 samples were relabelled as either a queen or worker. We generated all possible combinations of caste labels in which approximately equal numbers of queen and worker labels were applied to the time 0 samples; for example, if there were data on all four $t_0$ samples for the focal site (the typical situation for most of the sites in our post-QC dataset), we relabelled the $t_0$ samples 6 different ways as follows: QQWW, QWQW, QWWQ, WQQW, WQWQ, WWQQ. We then ran a Bayesian GLM on each of these six datasets, and then averaged their parameter estimates by combining their posteriors using the `brm_multiple` function in `brms`. This procedure will tend to push the estimate of % methylation at time zero towards the same value for both castes (which we know _a priori_ must be the case due to our experimental design), by effectively making each $t_0$ sample affect the parameter estimates for both queens and workers (but without duplicating any data, which would falsely inflate the model's precision).
 
 Each model had the same formula, namely:
 
 `Binomial(number_methylated, Coverage) ~ caste:time + I(time^2) + I(time^2):caste + replicate`
 
-That is, the response variable is the number of putatively methylated cytosines observed (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a continuous predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a Bayesian generalised additive model (GAM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
+That is, the response variable is the number of putatively methylated cytosines observed (i.e. sequencing reads that contain a C rather than a T, in the BiS-seq data) recorded, over a series of $n$ Bernoulli trials where $n$ is the coverage of the site. The model formula contains time as a continuous predictor, and caste, a 2-level factor. The effect of time is modelled using a thin plate spline smoothing term, i.e. this model is a Bayesian generalised additive model (GLM). We allowed for caste-specific changes in methylation over time by including the smoothing term to differ between castes. We used mildly regularising priors for all fixed effects, namely `normal(0, 5)`, which helps to prevent overfitting. Replicate (i.e. the 4 experimental blocks) was treated as a fixed factor.
 
 After running the model, we use the posterior parameter estimates to calculate posterior predictions of the mean % methylation at each point in time (using `fitted.brmsfit()`), in each caste. From these, we can calculate the caste difference in methylation at each time point, and test whether the 95% credible interval of this difference includes zero (implying a significant difference in means). We also calculate the difference between all possible pairs of time points within each caste.
 
 
-```{r bayesian_GAMs, eval=FALSE}
+```{r bayesian_GLMs, eval=FALSE}
 done_already <- list.files("output/meth_sites_brms") %>% 
   str_extract_all("[0123456789]+") %>% unlist()
 
-site_still_to_do <- sites_for_bayes_GAM[!(sites_for_bayes_GAM %in% done_already)]
+site_still_to_do <- sites_for_bayes_GLM[!(sites_for_bayes_GLM %in% done_already)]
 
 if(length(site_still_to_do) > 0){
   
@@ -1463,13 +1463,13 @@ rm(done_already)
 ```
 
 
-## Results of the Bayesian GAMs
+## Results of the Bayesian GLMs
 
 ### Identifying "significant" sites {.tabset}
 
 We label a site as significantly differentially methylated between castes/timepoints if the posterior estimate of the difference in mean methylation between castes/timepoints excludes zero with over 99.99% probability (similar to a one-tailed p-value of 0.0001). We chose this definition in an attempt to balance the risk of false positives and false negatives. 
 
-```{r get_sig_sites_bayesian_GAMs}
+```{r get_sig_sites_bayesian_GLMs}
 model_results <- list.files("output/meth_sites_brms", 
                             pattern = "meth_brms_", full.names = TRUE) %>%
   map(~ tryCatch(readRDS(.x), error = function(e) NULL))
@@ -1543,15 +1543,46 @@ gene_meth_results_table <- tibble(site = sites) %>%
 
 saveRDS(gene_meth_results_table, "output/gene_meth_results_table.rds")
 
-# save list of sites for later plotting (highly sig. caste ones)
+# save list of sites for later plotting (highly caste-different ones)
 plot_sites <- caste_difference %>%
-  filter(p < 10^-8) %>%
-  pull(site) %>% unique()
+  group_by(site) %>%
+  summarise(sum_diff = sum(abs(`Q-W_difference_percent_meth`))) %>%
+  arrange(-sum_diff) %>%
+  pull(site) %>% 
+  head(400)
+
+# 
+# plot_sites <- caste_difference %>%
+#   filter(p < 10^-8) %>%
+#   pull(site) %>% unique()
 ```
 
 #### List of statistically significant sites
 
-**Table SX:** The table shows the list of sites that show statistically significant differential methylation between castes and/or time points, as measured by the Bayesian generalised additive models. The criterion for significance was that the posterior estimates of the difference between a pair of means (e.g. the means for QDL and WDL at a given time point) excluded zero with 99.99% probability or better (similar to a one-tailed p-value of p < 0.0001; the table displays 1 minus this posterior probability, for comparison with p-values). The other columns show the annotations for the focal site, and the full names of any genes for those annotations.
+```{r echo = FALSE, results = 'hide'}
+p_thresh <- 0.0001
+
+n_sig_sites <- readRDS("output/gene_meth_results_table.rds") %>% 
+  dplyr::select(-site_old) %>% 
+  filter(caste_pval <= p_thresh | timeQ_pval <= p_thresh | timeW_pval <= p_thresh) %>%
+  select(site) %>% distinct() %>% nrow()
+
+# to count the sig loci:
+n_sig_sites <- gene_meth_results_table %>%
+  filter(caste_pval <= p_thresh | timeQ_pval <= p_thresh | timeW_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
+
+n_sig_sites_caste <- gene_meth_results_table %>%
+  filter(caste_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
+
+n_sig_sites_timeQ <- gene_meth_results_table %>%
+  filter(timeQ_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
+
+n_sig_sites_timeW <- gene_meth_results_table %>%
+  filter(timeW_pval <= p_thresh) %>% pull(site) %>% unique() %>% length() 
+```
+
+
+**Table SX:** The table shows the `r n_sig_sites` sites that show statistically significant differential methylation between castes and/or time points, as measured by the Bayesian generalised additive models (some sites span multiple rows due to being annotated with multiple genomic features). The criterion for significance was that the posterior estimates of the difference between a pair of means (e.g. the means for QDL and WDL at a given time point) excluded zero with 99.99% probability or better (similar to a one-tailed $p$-value of $p < 0.0001$; the table displays 1 minus this posterior probability, for comparison with $p$-values). The other columns show the annotations for the focal site, and the full names of any genes for those annotations.
 
 ```{r}
 # Criterion for significance: p < 0.0001 for at least one comparison
@@ -1595,24 +1626,7 @@ tibble(gene = gene_list) %>%
 
 ## Plots of estimated % methylation per site {.tabset}
 
-```{r echo=FALSE}
-n_sig_sites <- gene_meth_results_table %>%
-  filter(caste_pval <= p_thresh | timeQ_pval <= p_thresh | timeW_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
-
-n_sig_sites_caste <- gene_meth_results_table %>%
-  filter(caste_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
-
-n_sig_sites_timeQ <- gene_meth_results_table %>%
-  filter(timeQ_pval <= p_thresh) %>% pull(site) %>% unique() %>% length()
-
-n_sig_sites_timeW <- gene_meth_results_table %>%
-  filter(timeW_pval <= p_thresh) %>% pull(site) %>% unique() %>% length() 
-```
-
-
-The following plots show the `r length(plot_sites)` CpG sites that showed a highly statistically significant difference between castes and/or time points (defined as a proportion of at least $(1- 10^{-8})$ posterior probability of the differences in caste-specific means lies to one side of zero, for one or more time points). The total number of sites tested was `r nrow(importance)`. Of these, `r n_sig_sites_caste` were differentially methylated between castes with $p < 0.0001$, `r n_sig_sites_timeQ` showed significant temporal variation in queens, and `r n_sig_sites_timeW` showed significant temporal variation in workers. For brevity we only plot the most strongly significant sites, and focus only on sites showing a caste difference.
-
-The plot below shows 16 of the `r length(plot_sites)` significant sites; click the tabs to see the remainder. The red colour refers to queens, blue to workers. 
+The following plots show some of the `r n_sig_sites_caste` CpG sites that showed a statistically significant difference between castes. For brevity, we only plot the results for the 400 sites that showed the largest absolute caste difference (summed over time points). The plot below shows 16 of the `r length(plot_sites)` significant sites; click the tabs to see results for other sites. The red colour refers to queens, blue to workers. 
 
 ```{r plot_one_site, warning=FALSE, message=FALSE}
 plot_one_site <- function(focal_site, include_label = TRUE){
@@ -1680,16 +1694,18 @@ arrangeGrob(rbind(ggplotGrob(plot_one_site(1956531, include_label = F) +
                                     x = "Hours post-grafting", y = "% mCpGs")))) %>%
   saveRDS("figures/two_sites_for_big_meth_fig.rds")
 
+# Make all the plots
+redo <- FALSE
 plot_sites_split <- split(plot_sites, ceiling(seq_along(plot_sites) / 16))
 done_already <- as.numeric(str_extract(list.files("figures/bayes_sites/"), "[:digit:]+"))
-
-redo <- FALSE
 if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split)){
   if(!redo) plot_sites_split <- plot_sites_split[(1:length(plot_sites_split))[-done_already]]
   for(i in as.numeric(names(plot_sites_split))){
     print(i)
     ggsave(glue("figures/bayes_sites/plot{i}.png"), 
-           do.call("grid.arrange", lapply(plot_sites_split[[which(as.numeric(names(plot_sites_split)) == i)]], plot_one_site)),
+           do.call("grid.arrange", 
+                   lapply(plot_sites_split[[which(as.numeric(names(plot_sites_split)) == i)]], 
+                          plot_one_site)),
            height = 9, width = 9)
   }
 }
@@ -1801,7 +1817,9 @@ if(length(list.files("figures/bayes_sites/")) < length(plot_sites_split)){
 
 ![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot24.png)
 
+### Group 25
 
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot25.png)
 
 
 
@@ -1933,7 +1951,7 @@ ggsave("figures/composite_figure.pdf", grid.arrange(
 
 ## Correlations in difference in % methylation for each comparison
 
-To test whether the caste-specific sites differed because of changes in the queen methylome, the worker methylome, or both, we estimated the Spearman correlations between the 3 effect sizes per site (estimated using GAMs), namely the effect sizes measuring the change in % methylation between 8h QDL and 8h WDL, between 8h QDL and 2h QDL, and between 8h WDL and 2h WDL. 
+To test whether the caste-specific sites differed because of changes in the queen methylome, the worker methylome, or both, we estimated the Spearman correlations between the 3 effect sizes per site (estimated using GLMs), namely the effect sizes measuring the change in % methylation between 8h QDL and 8h WDL, between 8h QDL and 2h QDL, and between 8h WDL and 2h WDL. 
 
 We found that the difference between 8h QDL and 8h WDL was positively correlated with the change from 2-8h in QDL, indicating that part of the 8h caste difference reflected changes in QDL. Moreover, we found that the difference between 8h WDL and 2h WDL was negatively correlated with the change from 2-8h in QDL, suggesting that the 8h caste difference was also due to changes in WDL.
 
@@ -2009,7 +2027,7 @@ site_count <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
   pull(Site) %>% unique() %>% length() %>% prettyNum(big.mark = ",")
 ```
 
-The results in the following plots were calculated using GSEA tests for enrichment, implemented in the `fgsea` package. This test involves ranking genes by some statistic and then searching for GO and KEGG terms that are over-represented among genes at the top or bottom of the list. Here, we ranked the genes by the average of the difference in % methylation between 'classes' that was estimated for all the sites in the gene (defined as sites inside the exons, introns, or promoter regions of the gene). 'Classes' either means queens and workers (measured at the same time point), or different time points (measured in the same caste). We derive these estimates by model averaging across the five frequentist GAMs that were run on each of the `r site_count` sites for which sufficiant data were available. 
+The results in the following plots were calculated using GSEA tests for enrichment, implemented in the `fgsea` package. This test involves ranking genes by some statistic and then searching for GO and KEGG terms that are over-represented among genes at the top or bottom of the list. Here, we ranked the genes by the average of the difference in % methylation between 'classes' that was estimated for all the sites in the gene (defined as sites inside the exons, introns, or promoter regions of the gene). 'Classes' either means queens and workers (measured at the same time point), or different time points (measured in the same caste). We derive these estimates by model averaging across the five frequentist GLMs that were run on each of the `r site_count` sites for which sufficiant data were available. 
 
 The output of `fgsea` includes the "normalised enrichment score" (NES) which describes how much the pathway is over-represented at the top of this list (for positive NES), or over-represented at the bottom (negative NES), and there is an associated $p$-value for each NES (calculated by resampling).
 
@@ -2860,7 +2878,7 @@ means_data <- preds %>%
             .groups = "drop") %>%
   ungroup() %>% unnest(stats) %>% dplyr::rename(eigengene = Estimate)
 
-# Find the posterior estimate of the median GAM fit line
+# Find the posterior estimate of the median GLM fit line
 mean_line_data <- preds %>%
   group_by(Module, Caste, Time) %>%
   summarise(stats = list(as.data.frame(brms::posterior_summary(eigengene))),

@@ -1338,7 +1338,7 @@ if(!file.exists("output/brms_eigengene_model_expression.rds")){
 
 Plot the model-estimated means for the module expression levels ('eigengenes').
 
-```{r eigen_plot, eval=FALSE}
+```{r eigen_plot}
 module_levels <- paste("Module", 0:(length(mod_levels) - 1))
 
 # Data for the raw data point in figure
