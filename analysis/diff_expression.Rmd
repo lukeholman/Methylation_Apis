@@ -244,7 +244,7 @@ t(scaled_expression_data) %>%
 
 **Figure XX:** Heatmap showing the transcriptome of each sample, where each column indicates one of the `r nrow(scaled_expression_data)` transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.
 
-```{r echo=FALSE}
+```{r echo=FALSE, results='hide', warning=FALSE, message=FALSE}
 save_pheatmap_pdf <- function(x, filename, width=7, height=7) {
    stopifnot(!missing(x))
    stopifnot(!missing(filename))
@@ -752,7 +752,7 @@ Red means relatively higher expression of the focal pathway/process in queens, b
 ##### GO: Biological process {.tabset}
 
 ###### Figure
-```{r fig.height=35, fig.width = 5.3}
+```{r fig.height=26, fig.width = 5.3}
 fig_dat <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Biological process") 
 
@@ -819,7 +819,7 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ##### GO: Molecular function {.tabset}
 
 ###### Figure
-```{r fig.height=25, fig.width = 5.3}
+```{r fig.height=20, fig.width = 6.3}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Molecular function") %>%
   make_pathway_figure("", "Hours post-grafting")
@@ -835,7 +835,7 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ##### GO: Cellular component {.tabset}
 
 ###### Figure
-```{r fig.height=17, fig.width = 5.3}
+```{r fig.height=14, fig.width = 5.3}
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
   make_pathway_figure("", "Hours post-grafting")
@@ -1377,13 +1377,13 @@ make_preds <- function(){
     as_tibble() %>%
     mutate(Module = factor(Module, module_levels)) %>%
     group_by(Module, Time, Caste, draw) %>% # average over replicates
-    summarise(eigengene = mean(eigengene)) %>%
+    summarise(eigengene = mean(eigengene), .groups = "drop") %>%
     mutate(Caste = replace(Caste, Time == 0, NA)) %>%
     distinct()
 }
-preds <- make_preds()
+preds <- make_preds() 
 
- 
+
 # Calculate the median and Est.Error of the posterior at 0h, 2h, 4h, 6h and 8h in each caste
 means_data <- preds %>%
   mutate(Caste = replace(Caste, is.na(Caste), "Pre-grafting")) %>%
@@ -1397,11 +1397,11 @@ means_data <- preds %>%
 mean_line_data <- preds %>%
   mutate(Caste = replace(Caste, is.na(Caste), "Pre-grafting")) %>%
   group_by(Module, Caste, Time) %>%
-  summarise(stats = list(as.data.frame(posterior_summary(eigengene)))) %>%
+  summarise(stats = list(as.data.frame(posterior_summary(eigengene))), .groups = "drop") %>%
   ungroup() %>% unnest(stats) %>% dplyr::rename(eigengene = Estimate)
 
 
-gene_number_labels <- dplyr::rename(network$colors %>% table() %>% 
+gene_number_labels <- dplyr::rename(network$colors %>% table() %>%
   broom::tidy(), Module = `.`) %>%
   mutate(label_text = paste(n, "genes"),
          Time = 8.21, eigengene = 3.5,
@@ -1423,9 +1423,9 @@ preds <- bind_rows(
   preds[!is.na(preds$Caste), ])
 
 mean_line_data <- bind_rows(
-  preds[is.na(mean_line_data$Caste), ] %>% mutate(Caste = "Queen"),
-  preds[is.na(mean_line_data$Caste), ] %>% mutate(Caste = "Worker"),
-  preds[!is.na(mean_line_data$Caste), ])
+  mean_line_data[is.na(mean_line_data$Caste), ] %>% mutate(Caste = "Queen"),
+  mean_line_data[is.na(mean_line_data$Caste), ] %>% mutate(Caste = "Worker"),
+  mean_line_data[!is.na(mean_line_data$Caste), ])
 
 # Make the figure
 pd <- position_dodge(0.35)
@@ -1434,10 +1434,10 @@ set.seed(1)
 eigen_plot <- preds %>%
   mutate(Caste = replace(Caste, is.na(Caste), "Pre-grafting")) %>%
   ggplot(aes(Time, eigengene)) +
-  facet_wrap(~ striptext) + 
-  scale_fill_manual(values = c("white", queen_colour, worker_colour), 
-                    aesthetics = c("colour", "fill"), name = "Cell type") +  
-  
+  facet_wrap(~ striptext) +
+  scale_fill_manual(values = c("white", queen_colour, worker_colour),
+                    aesthetics = c("colour", "fill"), name = "Cell type") +
+
   geom_line(alpha = 0.05, size = 0.4,
             aes(colour = Caste, group = paste(draw, Caste))) +
   # Add the median best fit line
@@ -1445,22 +1445,22 @@ eigen_plot <- preds %>%
             aes(colour = Caste, group = Caste)) +
   # Add the raw data points
   geom_point(data = raw_data, aes(fill = Caste),
-             size = 0.8, pch = 21, colour = "black", stroke = 0.3, position = pd) + 
+             size = 0.8, pch = 21, colour = "black", stroke = 0.3, position = pd) +
   # Add the posterior median +/- error bars
-  geom_errorbar(data = means_data, 
+  geom_errorbar(data = means_data,
                 width = 0, colour = "grey20",
                 aes(ymin = eigengene - Est.Error, group = Caste,
                     ymax = eigengene + Est.Error), position = pd) +
-  geom_point(data = means_data, aes(fill = Caste), 
+  geom_point(data = means_data, aes(fill = Caste),
              pch = 21, size = 1, alpha = 0.7, position = pd) +
-  
-  # geom_text(data = gene_number_labels, aes(label = label_text), 
-  #           size = 2.8, hjust = 1, colour = "grey20", family = nice_font) + 
+
+  # geom_text(data = gene_number_labels, aes(label = label_text),
+  #           size = 2.8, hjust = 1, colour = "grey20", family = nice_font) +
   ylab("Relative expression of genes in this module\n(eigengene, posterior estimates)") +
-  xlab("Hours post-grafting into queen or worker cell") + 
-  
+  xlab("Hours post-grafting into queen or worker cell") +
+
   coord_cartesian(ylim = c(-2, 3.3)) +
-  theme_bw() + 
+  theme_bw() +
   theme(legend.position = "top",
         text = element_text(family = nice_font),
         strip.background = element_rect(fill = "white", colour = "white"))
