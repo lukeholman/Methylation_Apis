@@ -460,7 +460,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-02-20
+<strong>Last updated:</strong> 2021-03-10
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -575,16 +575,16 @@ relative
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree4d5eba08d9443e6540bbb6730e745cb3f05599d1targetblank4d5eba0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/4d5eba08d9443e6540bbb6730e745cb3f05599d1" target="_blank">4d5eba0</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree56d599b5aa68ae43aaefec90586aaaeae8d66f47targetblank56d599ba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/56d599b5aa68ae43aaefec90586aaaeae8d66f47" target="_blank">56d599b</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree4d5eba08d9443e6540bbb6730e745cb3f05599d1targetblank4d5eba0a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree56d599b5aa68ae43aaefec90586aaaeae8d66f47targetblank56d599ba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/4d5eba08d9443e6540bbb6730e745cb3f05599d1" target="_blank">4d5eba0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/56d599b5aa68ae43aaefec90586aaaeae8d66f47" target="_blank">56d599b</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -595,12 +595,52 @@ Ignored files:
     Ignored:    .Rapp.history
     Ignored:    .Rproj.user/
     Ignored:    Expression/
-    Ignored:    analysis/figure/
     Ignored:    data/
     Ignored:    figures/.DS_Store
     Ignored:    figures/bayes_sites/.DS_Store
     Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
+
+Untracked files:
+    Untracked:  code/Supplementary-figures_files/
+    Untracked:  code/supplementary_figures.Rmd
+    Untracked:  code/supplementary_figures.pdf
+    Untracked:  figures/expr_GO_BPremainder_dmel_part1.rds
+    Untracked:  figures/expr_GO_BPremainder_dmel_part2.rds
+    Untracked:  figures/expression_NMDS_plot.rds
+
+Unstaged changes:
+    Modified:   analysis/compare_expression_and_methylation.Rmd
+    Modified:   analysis/diff_expression.Rmd
+    Deleted:    code/PDF_supplementary_material.Rmd
+    Deleted:    code/Supplementary figures.Rmd
+    Deleted:    code/Supplementary-figures.pdf
+    Modified:   code/main_paper_figures.Rmd
+    Modified:   code/main_paper_figures.log
+    Modified:   code/main_paper_figures.pdf
+    Modified:   code/make_database.R
+    Modified:   figures/big_correlation_heatmap.pdf
+    Modified:   figures/composite_GO.pdf
+    Modified:   figures/composite_eigengenes.pdf
+    Modified:   figures/composite_figure.pdf
+    Modified:   figures/eigengenes_expression_network.rds
+    Modified:   figures/expr_GO_BPremainder_dmel.rds
+    Modified:   figures/expr_GO_CC_dmel.rds
+    Modified:   figures/expr_GO_MF_dmel.rds
+    Modified:   figures/expr_GO_for_composite_figure.rds
+    Modified:   figures/expr_KEGG_dmel.rds
+    Modified:   figures/expression_heatmap.pdf
+    Modified:   figures/genomic_context_plot_caste.rds
+    Modified:   figures/genomic_context_plot_timeQ.rds
+    Modified:   figures/genomic_context_plot_timeW.rds
+    Modified:   figures/heatmap75.rds
+    Modified:   figures/heatmap_all.rds
+    Modified:   figures/meth_GO_for_composite_figure.rds
+    Modified:   figures/meth_GO_others.rds
+    Modified:   figures/meth_GO_temporal_Amel.rds
+    Modified:   figures/meth_GO_temporal_Dmel.rds
+    Modified:   figures/meth_all_enrichments_Amel.rds
+    Modified:   figures/two_sites_for_big_meth_fig.rds
 
 </code></pre>
 <p>
@@ -639,6 +679,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/56d599b5aa68ae43aaefec90586aaaeae8d66f47/analysis/diff_methylation.Rmd" target="_blank">56d599b</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-10
+</td>
+<td>
+wflow_publish(“analysis/diff_methylation.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/a547fc2d34c3a22c5bde930a406a22535fcab2f1/docs/diff_methylation.html" target="_blank">a547fc2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1726,7 +1800,7 @@ make_lm_estimates &lt;- function(comparison, timepoint1, timepoint2){
            comparison = facet_label) 
 }
 
-plot_lm_estimates &lt;- function(lm_estimates, xl){
+plot_lm_estimates &lt;- function(lm_estimates, xl, fill_colour){
   lm_estimates %&gt;%
     mutate(mean_meth_diff.fit = 100 * mean_meth_diff.fit,
            mean_meth_diff.se.fit = 100 * mean_meth_diff.se.fit) %&gt;%
@@ -1734,7 +1808,7 @@ plot_lm_estimates &lt;- function(lm_estimates, xl){
     geom_errorbar(aes(ymin = (mean_meth_diff.fit - mean_meth_diff.se.fit*1.96),
                       ymax = (mean_meth_diff.fit + mean_meth_diff.se.fit*1.96), width = 0)) + 
     geom_hline(yintercept = 0, linetype = 2) + 
-    geom_point() + 
+    geom_point(fill = fill_colour, pch=21) + 
     coord_flip() + 
     facet_wrap(~ comparison) + xlab(NULL) + ylab(NULL) + 
     theme_bw() + 
@@ -1748,17 +1822,17 @@ plot_lm_estimates &lt;- function(lm_estimates, xl){
 
 genomic_context_plot_caste &lt;- 
   map_df(c(2,4,6,8), ~ make_lm_estimates(&quot;between_castes&quot;, .x, NULL)) %&gt;% 
-  plot_lm_estimates(&quot;Difference in % mCpGs (mean \u00B195% CIs)&quot;)
+  plot_lm_estimates(&quot;Mean caste difference in\n% mCpGs (\u00B195% CIs)&quot;, &quot;#b19cd9&quot;) 
 
 genomic_context_plot_timeQ &lt;-
   map2_df(combn(c(2,4,6,8), 2)[1,], 
           combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates(&quot;timeQ&quot;, .x, .y)) %&gt;% 
-  plot_lm_estimates(&quot;Difference in % mCpGs (mean \u00B195% CIs)&quot;)
+  plot_lm_estimates(&quot;Difference in % mCpGs (mean \u00B195% CIs)&quot;, queen_colour)
 
 genomic_context_plot_timeW &lt;- 
   map2_df(combn(c(2,4,6,8), 2)[1,], 
           combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates(&quot;timeW&quot;, .x, .y)) %&gt;% 
-  plot_lm_estimates(&quot;Difference in % mCpGs (mean \u00B195% CIs)&quot;)
+  plot_lm_estimates(&quot;Difference in % mCpGs (mean \u00B195% CIs)&quot;, worker_colour)
 
 saveRDS(genomic_context_plot_caste, &quot;figures/genomic_context_plot_caste.rds&quot;)
 saveRDS(genomic_context_plot_timeQ, &quot;figures/genomic_context_plot_timeQ.rds&quot;)
@@ -2222,14 +2296,7 @@ set.seed(10)
 myColour &lt;- c(colorRampPalette(c(brewer.pal(9, &quot;Purples&quot;)[7], &quot;white&quot;))(33),
     colorRampPalette(c(&quot;white&quot;, brewer.pal(9, &quot;Oranges&quot;)[7]))(18)[-1])
 
-heatmap75 &lt;- meth_sample_heatmap(mean_cutoff = 0.75, colour_limits = c(-3, 1.5), myColour)
-
-my_gtable &lt;- heatmap75$gtable
-my_gtable$grobs[[4]]$gp &lt;- gpar(fontfamily = nice_font, fontsize=7) # x axis labels
-my_gtable$grobs[[7]]$gp &lt;- gpar(fontfamily = nice_font, fontsize=7) # Q/W legend
-
-saveRDS(my_gtable, &quot;figures/heatmap75.rds&quot;)
-heatmap75</code></pre>
+heatmap75 &lt;- meth_sample_heatmap(mean_cutoff = 0.75, colour_limits = c(-3, 1.5), myColour)</code></pre>
 <p><img src="figure/diff_methylation.Rmd/meth_sample_distance_heatmap-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-meth_sample_distance_heatmap-1">
@@ -2301,6 +2368,13 @@ lukeholman
 </table>
 </div>
 </div>
+<pre class="r"><code>my_gtable &lt;- heatmap75$gtable
+my_gtable$grobs[[4]]$gp &lt;- gpar(fontfamily = nice_font, fontsize=7) # x axis labels
+my_gtable$grobs[[7]]$gp &lt;- gpar(fontfamily = nice_font, fontsize=7) # Q/W legend
+
+saveRDS(my_gtable, &quot;figures/heatmap75.rds&quot;)
+grid.arrange(my_gtable)</code></pre>
+<p><img src="figure/diff_methylation.Rmd/meth_sample_distance_heatmap-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="heatmap-of-sites-with-ge-2.7-methylation" class="section level4">
 <h4>Heatmap of sites with <span class="math inline">\(\ge 2.7\)</span>% methylation</h4>
@@ -2308,9 +2382,7 @@ lukeholman
 myColour &lt;- c(colorRampPalette(c(brewer.pal(9, &quot;Purples&quot;)[7], &quot;white&quot;))(27),
     colorRampPalette(c(&quot;white&quot;, brewer.pal(9, &quot;Oranges&quot;)[7]))(24)[-1])
 
-heatmap_all &lt;- meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 2.5), myColour)
-saveRDS(heatmap_all, &quot;figures/heatmap_all.rds&quot;)
-heatmap_all</code></pre>
+heatmap_all &lt;- meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 2.5), myColour)</code></pre>
 <p><img src="figure/diff_methylation.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
@@ -2382,6 +2454,13 @@ lukeholman
 </table>
 </div>
 </div>
+<pre class="r"><code>my_gtable &lt;- heatmap_all$gtable
+my_gtable$grobs[[4]]$gp &lt;- gpar(fontfamily = nice_font, fontsize=7) # x axis labels
+my_gtable$grobs[[7]]$gp &lt;- gpar(fontfamily = nice_font, fontsize=7) # Q/W legend
+
+saveRDS(my_gtable, &quot;figures/heatmap_all.rds&quot;)
+grid.arrange(my_gtable)</code></pre>
+<p><img src="figure/diff_methylation.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 </div>
@@ -3807,9 +3886,10 @@ GO_KEGG_results$GO_Dmel_annotations_caste %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;) %&gt;%
   saveRDS(&quot;figures/meth_GO_for_composite_figure.rds&quot;)
 
-GO_KEGG_results$GO_Dmel_annotations_caste %&gt;%
+(GO_KEGG_results$GO_Dmel_annotations_caste %&gt;%
   filter(Test_type != &quot;GO: Biological process&quot; &amp; term != &quot;molecular_function&quot;) %&gt;%
-  make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;) %&gt;%
+  make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;) +
+     theme(text = element_text(family = nice_font))) %&gt;%
   saveRDS(&quot;figures/meth_GO_others.rds&quot;)
 
 GO_KEGG_results$GO_Dmel_annotations_caste %&gt;%
@@ -4158,8 +4238,9 @@ lukeholman
 <h5>GO: Biological process</h5>
 <div id="figure-4" class="section level6">
 <h6>Figure</h6>
-<pre class="r"><code>GO_KEGG_results$GO_Amel_annotations_caste %&gt;%
-  make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;) %&gt;%
+<pre class="r"><code>(GO_KEGG_results$GO_Amel_annotations_caste %&gt;%
+  make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;) +
+     theme(text = element_text(family = nice_font))) %&gt;%
   saveRDS(&quot;figures/meth_all_enrichments_Amel.rds&quot;)
 
 GO_KEGG_results$GO_Amel_annotations_caste %&gt;%
@@ -6773,7 +6854,7 @@ module_GO_table_dmel &lt;- make_module_GO_table(eigengenes, GO_list = &quot;dros
   dplyr::select(-Annotation) %&gt;%
   my_data_table()</code></pre>
 <div id="htmlwidget-db886d090e3b4c84597b" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-db886d090e3b4c84597b">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module2","Module2","Module2","Module2","Module2","Module2","Module3","Module6","Module6","Module7","Module7","Module7","Module7","Module7"],["BP","BP","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","BP","BP","CC","CC","CC","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG"],["lipid metabolic process (GO:0006629)","translation (GO:0006412)","Peroxisome (ame04146)","Metabolic pathways (ame01100)","Biosynthesis of cofactors (ame01240)","Ribosome (ame03010)","Glycolysis / Gluconeogenesis (ame00010)","Pyruvate metabolism (ame00620)","Terpenoid backbone biosynthesis (ame00900)","Pentose and glucuronate interconversions (ame00040)","Fatty acid degradation (ame00071)","Steroid biosynthesis (ame00100)","Glycine, serine and threonine metabolism (ame00260)","hydrolase activity (GO:0016787)","odorant binding (GO:0005549)","olfactory receptor activity (GO:0004984)","iron ion binding (GO:0005506)","monooxygenase activity (GO:0004497)","heme binding (GO:0020037)","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen (GO:0016705)","structural constituent of cuticle (GO:0042302)","alcohol-forming fatty acyl-CoA reductase activity (GO:0102965)","fatty-acyl-CoA reductase (alcohol-forming) activity (GO:0080019)","structural constituent of ribosome (GO:0003735)","regulation of transcription, DNA-templated (GO:0006355)","intracellular signal transduction (GO:0035556)","cell junction (GO:0030054)","postsynaptic membrane (GO:0045211)","nucleus (GO:0005634)","Wnt signaling pathway (ame04310)","Notch signaling pathway (ame04330)","Hedgehog signaling pathway - fly (ame04341)","Longevity regulating pathway - multiple species (ame04213)","Phosphatidylinositol signaling system (ame04070)","Neuroactive ligand-receptor interaction (ame04080)","FoxO signaling pathway (ame04068)","Apoptosis - fly (ame04214)","MAPK signaling pathway - fly (ame04013)","G protein-coupled receptor activity (GO:0004930)","sequence-specific DNA binding (GO:0043565)","protein kinase activity (GO:0004672)","neurotransmitter:sodium symporter activity (GO:0005328)","transmembrane signaling receptor activity (GO:0004888)","ATP binding (GO:0005524)","acetylcholine-gated cation-selective channel activity (GO:0022848)","DNA binding (GO:0003677)","nucleotide binding (GO:0000166)","Nitrogen metabolism (ame00910)","Carbon metabolism (ame01200)","Glycolysis / Gluconeogenesis (ame00010)","Propanoate metabolism (ame00640)","Pyruvate metabolism (ame00620)","Biosynthesis of amino acids (ame01230)","Lysosome (ame04142)","Thiamine metabolism (ame00730)","Pantothenate and CoA biosynthesis (ame00770)","beta-Alanine metabolism (ame00410)","Metabolic pathways (ame01100)","Pantothenate and CoA biosynthesis (ame00770)","Nicotinate and nicotinamide metabolism (ame00760)","Pyrimidine metabolism (ame00240)"],["13/2079 14/3523","6/2079 6/3523","17/436 17/798","214/436 347/798","31/436 42/798","7/436 7/798","18/436 23/798","14/436 17/798","9/436 10/798","15/436 19/798","5/436 5/798","5/436 5/798","15/436 20/798","16/2079 17/3523","38/2079 48/3523","30/2079 37/3523","22/2079 27/3523","17/2079 20/3523","26/2079 33/3523","19/2079 23/3523","21/2079 27/3523","6/2079 6/3523","6/2079 6/3523","6/2079 6/3523","26/1159 54/3523","9/1159 15/3523","9/1159 12/3523","9/1159 12/3523","55/1159 127/3523","26/298 40/798","9/298 12/798","9/298 12/798","11/298 16/798","12/298 18/798","29/298 56/798","11/298 18/798","11/298 18/798","20/298 39/798","21/1159 36/3523","35/1159 71/3523","9/1159 14/3523","7/1159 10/3523","9/1159 15/3523","40/1159 95/3523","6/1159 9/3523","22/1159 48/3523","5/1159 7/3523","3/16 9/798","4/16 31/798","3/16 23/798","2/16 14/798","2/16 17/798","2/16 17/798","2/6 30/798","1/8 5/798","1/8 5/798","2/5 11/798","5/5 347/798","1/5 5/798","1/5 6/798","1/5 8/798"],[1.577,1.697,1.864,1.253,1.378,1.844,1.451,1.524,1.661,1.461,1.84,1.84,1.386,1.599,1.348,1.379,1.385,1.444,1.339,1.404,1.321,1.697,1.697,1.697,1.474,1.83,2.29,2.29,1.332,1.811,2.04,2.04,1.873,1.818,1.428,1.661,1.661,1.4,1.787,1.514,1.962,2.135,1.83,1.29,2.032,1.401,2.176,20.231,8.247,7.776,8,6.563,6.563,12.8,22.657,22.657,47.697,null,39.65,33,24.688],[0.007,0.042,0,0,0.007,0.014,0.016,0.016,0.021,0.025,0.048,0.048,0.05,0.002,0.003,0.004,0.012,0.013,0.014,0.015,0.033,0.042,0.042,0.042,0.014,0.028,0.003,0.003,0.008,0,0.009,0.009,0.01,0.01,0.016,0.033,0.033,0.049,0.001,0.003,0.016,0.018,0.028,0.036,0.04,0.041,0.043,0.001,0.002,0.009,0.03,0.043,0.043,0.019,0.049,0.049,0.002,0.015,0.031,0.037,0.049]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Module<\/th>\n      <th>Ontology<\/th>\n      <th>ID<\/th>\n      <th>Gene &amp; Background ratios<\/th>\n      <th>Enrichment<\/th>\n      <th>pvalue<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":[4,5]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-db886d090e3b4c84597b">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module2","Module2","Module2","Module2","Module2","Module2","Module3","Module6","Module6","Module7","Module7","Module7","Module7","Module7"],["BP","BP","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","BP","BP","CC","CC","CC","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG","KEGG"],["lipid metabolic process (GO:0006629)","translation (GO:0006412)","Peroxisome (ame04146)","Metabolic pathways (ame01100)","Biosynthesis of cofactors (ame01240)","Ribosome (ame03010)","Glycolysis / Gluconeogenesis (ame00010)","Pyruvate metabolism (ame00620)","Terpenoid backbone biosynthesis (ame00900)","Pentose and glucuronate interconversions (ame00040)","Fatty acid degradation (ame00071)","Steroid biosynthesis (ame00100)","hydrolase activity (GO:0016787)","odorant binding (GO:0005549)","olfactory receptor activity (GO:0004984)","iron ion binding (GO:0005506)","monooxygenase activity (GO:0004497)","heme binding (GO:0020037)","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen (GO:0016705)","structural constituent of cuticle (GO:0042302)","alcohol-forming fatty acyl-CoA reductase activity (GO:0102965)","fatty-acyl-CoA reductase (alcohol-forming) activity (GO:0080019)","structural constituent of ribosome (GO:0003735)","regulation of transcription, DNA-templated (GO:0006355)","intracellular signal transduction (GO:0035556)","cell junction (GO:0030054)","postsynaptic membrane (GO:0045211)","nucleus (GO:0005634)","Wnt signaling pathway (ame04310)","Notch signaling pathway (ame04330)","Hedgehog signaling pathway - fly (ame04341)","Longevity regulating pathway - multiple species (ame04213)","Phosphatidylinositol signaling system (ame04070)","Neuroactive ligand-receptor interaction (ame04080)","FoxO signaling pathway (ame04068)","Apoptosis - fly (ame04214)","MAPK signaling pathway - fly (ame04013)","G protein-coupled receptor activity (GO:0004930)","sequence-specific DNA binding (GO:0043565)","protein kinase activity (GO:0004672)","neurotransmitter:sodium symporter activity (GO:0005328)","transmembrane signaling receptor activity (GO:0004888)","ATP binding (GO:0005524)","acetylcholine-gated cation-selective channel activity (GO:0022848)","DNA binding (GO:0003677)","nucleotide binding (GO:0000166)","Nitrogen metabolism (ame00910)","Carbon metabolism (ame01200)","Glycolysis / Gluconeogenesis (ame00010)","Propanoate metabolism (ame00640)","Pyruvate metabolism (ame00620)","Biosynthesis of amino acids (ame01230)","Lysosome (ame04142)","Thiamine metabolism (ame00730)","Pantothenate and CoA biosynthesis (ame00770)","beta-Alanine metabolism (ame00410)","Metabolic pathways (ame01100)","Pantothenate and CoA biosynthesis (ame00770)","Nicotinate and nicotinamide metabolism (ame00760)","Pyrimidine metabolism (ame00240)"],["13/2079 14/3523","6/2079 6/3523","17/437 17/799","214/437 347/799","31/437 42/799","7/437 7/799","18/437 23/799","14/437 17/799","9/437 10/799","15/437 19/799","5/437 5/799","5/437 5/799","16/2079 17/3523","38/2079 48/3523","30/2079 37/3523","22/2079 27/3523","17/2079 20/3523","26/2079 33/3523","19/2079 23/3523","21/2079 27/3523","6/2079 6/3523","6/2079 6/3523","6/2079 6/3523","26/1159 54/3523","9/1159 15/3523","9/1159 12/3523","9/1159 12/3523","55/1159 127/3523","26/298 40/799","9/298 12/799","9/298 12/799","11/298 16/799","12/298 18/799","29/298 56/799","11/298 18/799","11/298 18/799","20/298 39/799","21/1159 36/3523","35/1159 71/3523","9/1159 14/3523","7/1159 10/3523","9/1159 15/3523","40/1159 95/3523","6/1159 9/3523","22/1159 48/3523","5/1159 7/3523","3/16 9/799","4/16 31/799","3/16 23/799","2/16 14/799","2/16 17/799","2/16 17/799","2/6 30/799","1/8 5/799","1/8 5/799","2/5 11/799","5/5 347/799","1/5 5/799","1/5 6/799","1/5 8/799"],[1.577,1.697,1.862,1.25,1.376,1.842,1.449,1.522,1.659,1.459,1.838,1.838,1.599,1.348,1.379,1.385,1.444,1.339,1.404,1.321,1.697,1.697,1.697,1.474,1.83,2.29,2.29,1.332,1.814,2.042,2.042,1.876,1.821,1.43,1.663,1.663,1.402,1.787,1.514,1.962,2.135,1.83,1.29,2.032,1.401,2.176,20.256,8.258,7.786,8.01,6.571,6.571,12.817,22.686,22.686,47.758,null,39.7,33.042,24.719],[0.007,0.042,0,0,0.007,0.014,0.016,0.016,0.022,0.025,0.048,0.048,0.002,0.003,0.004,0.012,0.013,0.014,0.015,0.033,0.042,0.042,0.042,0.014,0.028,0.003,0.003,0.008,0,0.009,0.009,0.01,0.01,0.016,0.033,0.033,0.048,0.001,0.003,0.016,0.018,0.028,0.036,0.04,0.041,0.043,0.001,0.002,0.009,0.03,0.043,0.043,0.019,0.049,0.049,0.002,0.015,0.031,0.037,0.049]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Module<\/th>\n      <th>Ontology<\/th>\n      <th>ID<\/th>\n      <th>Gene &amp; Background ratios<\/th>\n      <th>Enrichment<\/th>\n      <th>pvalue<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":[4,5]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="using-d.-melanogaster-go-and-kegg-annotations" class="section level4">
 <h4>Using <em>D. melanogaster</em> GO and KEGG annotations</h4>
@@ -6782,7 +6863,7 @@ module_GO_table_dmel &lt;- make_module_GO_table(eigengenes, GO_list = &quot;dros
   dplyr::select(-Annotation) %&gt;%
   my_data_table()</code></pre>
 <div id="htmlwidget-5c97bbef84e918e6759f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5c97bbef84e918e6759f">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module3","Module3","Module4","Module5","Module5","Module6","Module6","Module7","Module7"],["BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","CC","CC","CC","CC","CC","CC","CC","CC","CC","CC","CC","KEGG","KEGG","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","CC","CC","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","CC","CC","KEGG","CC","KEGG","KEGG","KEGG","KEGG","KEGG"],["oxidation-reduction process (GO:0055114)","lipid metabolic process (GO:0006629)","phospholipid metabolic process (GO:0006644)","innate immune response (GO:0045087)","signal transduction (GO:0007165)","arachidonic acid secretion (GO:0050482)","phototransduction, visible light (GO:0007603)","mitotic cell cycle (GO:0000278)","translation (GO:0006412)","intracellular protein transport (GO:0006886)","regulation of Toll signaling pathway (GO:0008592)","central nervous system formation (GO:0021556)","exocytosis (GO:0006887)","adult somatic muscle development (GO:0007527)","intercellular transport (GO:0010496)","lipid catabolic process (GO:0016042)","mitotic cytokinesis (GO:0000281)","phototransduction (GO:0007602)","transmembrane transport (GO:0055085)","proteolysis (GO:0006508)","pole plasm oskar mRNA localization (GO:0045451)","biological_process (GO:0008150)","integral component of membrane (GO:0016021)","mitochondrion (GO:0005739)","extracellular region (GO:0005576)","extracellular space (GO:0005615)","ribosome (GO:0005840)","gap junction (GO:0005921)","synaptic vesicle (GO:0008021)","spindle pole (GO:0000922)","peroxisome (GO:0005777)","nuclear chromatin (GO:0000790)","cleavage furrow (GO:0032154)","Metabolic pathways (dme01100)","Peroxisome (dme04146)","Ribosome (dme03010)","Biosynthesis of cofactors (dme01240)","odorant binding (GO:0005549)","olfactory receptor activity (GO:0004984)","hydrolase activity (GO:0016787)","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen (GO:0016705)","iron ion binding (GO:0005506)","monooxygenase activity (GO:0004497)","heme binding (GO:0020037)","structural constituent of cuticle (GO:0042302)","serine-type endopeptidase activity (GO:0004252)","flavin adenine dinucleotide binding (GO:0050660)","carboxylic ester hydrolase activity (GO:0052689)","transmembrane transporter activity (GO:0022857)","alcohol-forming fatty acyl-CoA reductase activity (GO:0102965)","fatty-acyl-CoA reductase (alcohol-forming) activity (GO:0080019)","oxidoreductase activity (GO:0016491)","structural constituent of ribosome (GO:0003735)","metal ion binding (GO:0046872)","Toll binding (GO:0005121)","neuropeptide hormone activity (GO:0005184)","GTP binding (GO:0005525)","Rab GTPase binding (GO:0017137)","phosphatidylinositol binding (GO:0035091)","oxidoreductase activity, acting on CH-OH group of donors (GO:0016614)","motor neuron axon guidance (GO:0008045)","courtship behavior (GO:0007619)","dendrite morphogenesis (GO:0048813)","compound eye morphogenesis (GO:0001745)","spiracle morphogenesis, open tracheal system (GO:0035277)","imaginal disc-derived wing morphogenesis (GO:0007476)","neuromuscular junction development (GO:0007528)","regulation of neuroblast proliferation (GO:1902692)","compound eye development (GO:0048749)","imaginal disc-derived wing margin morphogenesis (GO:0008587)","response to ecdysone (GO:0035075)","leg disc proximal/distal pattern formation (GO:0007479)","embryonic pattern specification (GO:0009880)","actin filament organization (GO:0007015)","potassium ion transport (GO:0006813)","synapse organization (GO:0050808)","wing disc development (GO:0035220)","open tracheal system development (GO:0007424)","axon guidance (GO:0007411)","imaginal disc-derived male genitalia development (GO:0007485)","R7 cell differentiation (GO:0045466)","maintenance of epithelial integrity, open tracheal system (GO:0035160)","positive regulation of ERK1 and ERK2 cascade (GO:0070374)","regulation of dendrite development (GO:0050773)","imaginal disc-derived leg joint morphogenesis (GO:0016348)","cuticle pattern formation (GO:0035017)","oogenesis (GO:0048477)","olfactory learning (GO:0008355)","segment polarity determination (GO:0007367)","associative learning (GO:0008306)","axon midline choice point recognition (GO:0016199)","potassium ion transmembrane transport (GO:0071805)","glial cell migration (GO:0008347)","positive regulation of filopodium assembly (GO:0051491)","synaptic growth at neuromuscular junction (GO:0051124)","negative regulation of transcription by RNA polymerase II (GO:0000122)","positive regulation of transcription by RNA polymerase II (GO:0045944)","positive regulation of cell migration (GO:0030335)","tissue development (GO:0009888)","positive regulation of Notch signaling pathway (GO:0045747)","dendrite (GO:0030425)","postsynaptic membrane (GO:0045211)","Neuroactive ligand-receptor interaction (dme04080)","FoxO signaling pathway (dme04068)","DNA-binding transcription activator activity, RNA polymerase II-specific (GO:0001228)","protein homodimerization activity (GO:0042803)","heparin binding (GO:0008201)","transcription regulatory region sequence-specific DNA binding (GO:0000976)","nuclear receptor activity (GO:0004879)","protein kinase activity (GO:0004672)","metalloendopeptidase activity (GO:0004222)","transcription corepressor activity (GO:0003714)","extracellular matrix structural constituent (GO:0005201)","activating transcription factor binding (GO:0033613)","G protein-coupled receptor activity (GO:0004930)","steroid hormone receptor activity (GO:0003707)","integral component of membrane (GO:0016021)","plasma membrane (GO:0005886)","Glyoxylate and dicarboxylate metabolism (dme00630)","integral component of membrane (GO:0016021)","Butanoate metabolism (dme00650)","Phagosome (dme04145)","TGF-beta signaling pathway (dme04350)","Pyrimidine metabolism (dme00240)","beta-Alanine metabolism (dme00410)"],["34/7746 49/16840","14/7746 17/16840","7/7746 7/16840","11/7746 13/16840","57/7746 96/16840","6/7746 6/16840","6/7746 6/16840","10/7746 12/16840","8/7746 9/16840","11/7746 14/16840","5/7746 5/16840","5/7746 5/16840","5/7746 5/16840","5/7746 5/16840","5/7746 5/16840","7/7746 8/16840","7/7746 8/16840","10/7746 13/16840","36/7746 61/16840","20/7746 31/16840","6/7746 7/16840","43/7746 76/16840","405/7746 703/16840","31/7746 41/16840","69/7746 110/16840","51/7746 88/16840","5/7746 5/16840","5/7746 5/16840","13/7746 18/16840","6/7746 7/16840","6/7746 7/16840","6/7746 7/16840","9/7746 12/16840","66/155 112/311","6/155 6/311","5/155 5/311","10/155 13/311","38/7746 48/16840","32/7746 40/16840","17/7746 18/16840","21/7746 25/16840","27/7746 35/16840","18/7746 21/16840","33/7746 46/16840","22/7746 28/16840","22/7746 29/16840","17/7746 22/16840","7/7746 7/16840","27/7746 41/16840","6/7746 6/16840","6/7746 6/16840","16/7746 22/16840","8/7746 9/16840","38/7746 62/16840","5/7746 5/16840","8/7746 10/16840","24/7746 39/16840","6/7746 7/16840","6/7746 7/16840","9/7746 12/16840","25/7961 34/16840","11/7961 12/16840","26/7961 36/16840","18/7961 23/16840","10/7961 11/16840","33/7961 49/16840","12/7961 14/16840","7/7961 7/16840","21/7961 29/16840","11/7961 13/16840","6/7961 6/16840","6/7961 6/16840","6/7961 6/16840","15/7961 20/16840","8/7961 9/16840","11/7961 14/16840","9/7961 11/16840","19/7961 28/16840","44/7961 74/16840","5/7961 5/16840","5/7961 5/16840","5/7961 5/16840","5/7961 5/16840","5/7961 5/16840","7/7961 8/16840","7/7961 8/16840","26/7961 41/16840","13/7961 18/16840","10/7961 13/16840","8/7961 10/16840","8/7961 10/16840","8/7961 10/16840","8/7961 10/16840","8/7961 10/16840","11/7961 15/16840","36/7961 61/16840","51/7961 90/16840","6/7961 7/16840","6/7961 7/16840","6/7961 7/16840","20/7961 28/16840","18/7961 25/16840","12/135 17/311","7/135 9/311","25/7961 35/16840","27/7961 39/16840","7/7961 8/16840","8/7961 10/16840","8/7961 10/16840","16/7961 24/16840","12/7961 17/16840","6/7961 7/16840","6/7961 7/16840","6/7961 7/16840","30/7961 50/16840","9/7961 12/16840","11/110 703/16840","5/110 245/16840","1/3 5/311","10/131 703/16840","1/1 5/311","1/2 5/311","1/2 6/311","1/1 6/311","1/1 6/311"],[1.511,1.792,2.175,1.841,1.293,2.175,2.175,1.813,1.933,1.709,2.175,2.175,2.175,2.175,2.175,1.903,1.903,1.673,1.284,1.404,1.864,1.231,1.266,1.646,1.367,1.262,2.175,2.175,1.571,1.864,1.864,1.864,1.631,1.318,2.047,2.04,1.581,1.725,1.742,2.056,1.828,1.679,1.865,1.562,1.71,1.651,1.681,2.175,1.433,2.175,2.175,1.582,1.933,1.334,2.175,1.74,1.339,1.864,1.864,1.631,1.557,1.94,1.529,1.657,1.924,1.426,1.814,2.116,1.533,1.791,2.116,2.116,2.116,1.588,1.881,1.663,1.732,1.436,1.259,2.116,2.116,2.116,2.116,2.116,1.852,1.852,1.343,1.529,1.628,1.693,1.693,1.693,1.693,1.693,1.552,1.25,1.2,1.814,1.814,1.814,1.512,1.524,1.687,1.835,1.513,1.466,1.852,1.693,1.693,1.411,1.494,1.814,1.814,1.814,1.27,1.587,2.55,3.225,30.6,1.897,null,61.2,50.833,null,null],[0.001,0.002,0.004,0.005,0.006,0.009,0.009,0.009,0.011,0.014,0.021,0.021,0.021,0.021,0.021,0.021,0.021,0.024,0.028,0.029,0.04,0.041,0,0,0,0.016,0.021,0.021,0.022,0.04,0.04,0.04,0.041,0.011,0.015,0.03,0.042,0,0,0,0,0,0,0,0,0.001,0.003,0.004,0.008,0.009,0.009,0.01,0.011,0.011,0.021,0.032,0.037,0.04,0.04,0.041,0.002,0.002,0.002,0.002,0.003,0.004,0.004,0.005,0.005,0.007,0.011,0.011,0.011,0.011,0.013,0.018,0.021,0.023,0.023,0.024,0.024,0.024,0.024,0.024,0.025,0.025,0.028,0.029,0.03,0.038,0.038,0.038,0.038,0.038,0.038,0.043,0.046,0.046,0.046,0.046,0.008,0.011,0.019,0.038,0.003,0.005,0.025,0.038,0.038,0.044,0.046,0.046,0.046,0.046,0.048,0.05,0.006,0.022,0.048,0.048,0.016,0.032,0.038,0.019,0.019]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Module<\/th>\n      <th>Ontology<\/th>\n      <th>ID<\/th>\n      <th>Gene &amp; Background ratios<\/th>\n      <th>Enrichment<\/th>\n      <th>pvalue<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":[4,5]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-5c97bbef84e918e6759f">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module0","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module1","Module3","Module3","Module4","Module5","Module5","Module6","Module6","Module7","Module7"],["BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","CC","CC","CC","CC","CC","CC","CC","CC","CC","CC","CC","KEGG","KEGG","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","BP","CC","CC","KEGG","KEGG","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","MF","CC","CC","KEGG","CC","KEGG","KEGG","KEGG","KEGG","KEGG"],["oxidation-reduction process (GO:0055114)","lipid metabolic process (GO:0006629)","phospholipid metabolic process (GO:0006644)","innate immune response (GO:0045087)","signal transduction (GO:0007165)","arachidonic acid secretion (GO:0050482)","phototransduction, visible light (GO:0007603)","mitotic cell cycle (GO:0000278)","translation (GO:0006412)","intracellular protein transport (GO:0006886)","regulation of Toll signaling pathway (GO:0008592)","central nervous system formation (GO:0021556)","exocytosis (GO:0006887)","adult somatic muscle development (GO:0007527)","intercellular transport (GO:0010496)","lipid catabolic process (GO:0016042)","mitotic cytokinesis (GO:0000281)","phototransduction (GO:0007602)","transmembrane transport (GO:0055085)","proteolysis (GO:0006508)","pole plasm oskar mRNA localization (GO:0045451)","biological_process (GO:0008150)","integral component of membrane (GO:0016021)","mitochondrion (GO:0005739)","extracellular region (GO:0005576)","extracellular space (GO:0005615)","ribosome (GO:0005840)","gap junction (GO:0005921)","synaptic vesicle (GO:0008021)","spindle pole (GO:0000922)","peroxisome (GO:0005777)","nuclear chromatin (GO:0000790)","cleavage furrow (GO:0032154)","Metabolic pathways (dme01100)","Peroxisome (dme04146)","Ribosome (dme03010)","Biosynthesis of cofactors (dme01240)","odorant binding (GO:0005549)","olfactory receptor activity (GO:0004984)","hydrolase activity (GO:0016787)","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen (GO:0016705)","iron ion binding (GO:0005506)","monooxygenase activity (GO:0004497)","heme binding (GO:0020037)","structural constituent of cuticle (GO:0042302)","serine-type endopeptidase activity (GO:0004252)","flavin adenine dinucleotide binding (GO:0050660)","carboxylic ester hydrolase activity (GO:0052689)","transmembrane transporter activity (GO:0022857)","alcohol-forming fatty acyl-CoA reductase activity (GO:0102965)","fatty-acyl-CoA reductase (alcohol-forming) activity (GO:0080019)","oxidoreductase activity (GO:0016491)","structural constituent of ribosome (GO:0003735)","metal ion binding (GO:0046872)","Toll binding (GO:0005121)","neuropeptide hormone activity (GO:0005184)","GTP binding (GO:0005525)","Rab GTPase binding (GO:0017137)","phosphatidylinositol binding (GO:0035091)","oxidoreductase activity, acting on CH-OH group of donors (GO:0016614)","motor neuron axon guidance (GO:0008045)","courtship behavior (GO:0007619)","dendrite morphogenesis (GO:0048813)","compound eye morphogenesis (GO:0001745)","spiracle morphogenesis, open tracheal system (GO:0035277)","imaginal disc-derived wing morphogenesis (GO:0007476)","neuromuscular junction development (GO:0007528)","regulation of neuroblast proliferation (GO:1902692)","compound eye development (GO:0048749)","imaginal disc-derived wing margin morphogenesis (GO:0008587)","response to ecdysone (GO:0035075)","leg disc proximal/distal pattern formation (GO:0007479)","embryonic pattern specification (GO:0009880)","actin filament organization (GO:0007015)","potassium ion transport (GO:0006813)","synapse organization (GO:0050808)","wing disc development (GO:0035220)","open tracheal system development (GO:0007424)","axon guidance (GO:0007411)","imaginal disc-derived male genitalia development (GO:0007485)","R7 cell differentiation (GO:0045466)","maintenance of epithelial integrity, open tracheal system (GO:0035160)","positive regulation of ERK1 and ERK2 cascade (GO:0070374)","regulation of dendrite development (GO:0050773)","imaginal disc-derived leg joint morphogenesis (GO:0016348)","cuticle pattern formation (GO:0035017)","oogenesis (GO:0048477)","olfactory learning (GO:0008355)","segment polarity determination (GO:0007367)","associative learning (GO:0008306)","axon midline choice point recognition (GO:0016199)","potassium ion transmembrane transport (GO:0071805)","glial cell migration (GO:0008347)","positive regulation of filopodium assembly (GO:0051491)","synaptic growth at neuromuscular junction (GO:0051124)","negative regulation of transcription by RNA polymerase II (GO:0000122)","positive regulation of transcription by RNA polymerase II (GO:0045944)","positive regulation of cell migration (GO:0030335)","tissue development (GO:0009888)","positive regulation of Notch signaling pathway (GO:0045747)","dendrite (GO:0030425)","postsynaptic membrane (GO:0045211)","Neuroactive ligand-receptor interaction (dme04080)","FoxO signaling pathway (dme04068)","DNA-binding transcription activator activity, RNA polymerase II-specific (GO:0001228)","protein homodimerization activity (GO:0042803)","heparin binding (GO:0008201)","transcription regulatory region sequence-specific DNA binding (GO:0000976)","nuclear receptor activity (GO:0004879)","protein kinase activity (GO:0004672)","metalloendopeptidase activity (GO:0004222)","transcription corepressor activity (GO:0003714)","extracellular matrix structural constituent (GO:0005201)","activating transcription factor binding (GO:0033613)","G protein-coupled receptor activity (GO:0004930)","steroid hormone receptor activity (GO:0003707)","integral component of membrane (GO:0016021)","plasma membrane (GO:0005886)","Glyoxylate and dicarboxylate metabolism (dme00630)","integral component of membrane (GO:0016021)","Butanoate metabolism (dme00650)","Phagosome (dme04145)","TGF-beta signaling pathway (dme04350)","Pyrimidine metabolism (dme00240)","beta-Alanine metabolism (dme00410)"],["34/7746 49/16840","14/7746 17/16840","7/7746 7/16840","11/7746 13/16840","57/7746 96/16840","6/7746 6/16840","6/7746 6/16840","10/7746 12/16840","8/7746 9/16840","11/7746 14/16840","5/7746 5/16840","5/7746 5/16840","5/7746 5/16840","5/7746 5/16840","5/7746 5/16840","7/7746 8/16840","7/7746 8/16840","10/7746 13/16840","36/7746 61/16840","20/7746 31/16840","6/7746 7/16840","43/7746 76/16840","405/7746 703/16840","31/7746 41/16840","69/7746 110/16840","51/7746 88/16840","5/7746 5/16840","5/7746 5/16840","13/7746 18/16840","6/7746 7/16840","6/7746 7/16840","6/7746 7/16840","9/7746 12/16840","66/156 112/312","6/156 6/312","5/156 5/312","10/156 13/312","38/7746 48/16840","32/7746 40/16840","17/7746 18/16840","21/7746 25/16840","27/7746 35/16840","18/7746 21/16840","33/7746 46/16840","22/7746 28/16840","22/7746 29/16840","17/7746 22/16840","7/7746 7/16840","27/7746 41/16840","6/7746 6/16840","6/7746 6/16840","16/7746 22/16840","8/7746 9/16840","38/7746 62/16840","5/7746 5/16840","8/7746 10/16840","24/7746 39/16840","6/7746 7/16840","6/7746 7/16840","9/7746 12/16840","25/7961 34/16840","11/7961 12/16840","26/7961 36/16840","18/7961 23/16840","10/7961 11/16840","33/7961 49/16840","12/7961 14/16840","7/7961 7/16840","21/7961 29/16840","11/7961 13/16840","6/7961 6/16840","6/7961 6/16840","6/7961 6/16840","15/7961 20/16840","8/7961 9/16840","11/7961 14/16840","9/7961 11/16840","19/7961 28/16840","44/7961 74/16840","5/7961 5/16840","5/7961 5/16840","5/7961 5/16840","5/7961 5/16840","5/7961 5/16840","7/7961 8/16840","7/7961 8/16840","26/7961 41/16840","13/7961 18/16840","10/7961 13/16840","8/7961 10/16840","8/7961 10/16840","8/7961 10/16840","8/7961 10/16840","8/7961 10/16840","11/7961 15/16840","36/7961 61/16840","51/7961 90/16840","6/7961 7/16840","6/7961 7/16840","6/7961 7/16840","20/7961 28/16840","18/7961 25/16840","12/135 17/312","7/135 9/312","25/7961 35/16840","27/7961 39/16840","7/7961 8/16840","8/7961 10/16840","8/7961 10/16840","16/7961 24/16840","12/7961 17/16840","6/7961 7/16840","6/7961 7/16840","6/7961 7/16840","30/7961 50/16840","9/7961 12/16840","11/110 703/16840","5/110 245/16840","1/3 5/312","10/131 703/16840","1/1 5/312","1/2 5/312","1/2 6/312","1/1 6/312","1/1 6/312"],[1.511,1.792,2.175,1.841,1.293,2.175,2.175,1.813,1.933,1.709,2.175,2.175,2.175,2.175,2.175,1.903,1.903,1.673,1.284,1.404,1.864,1.231,1.266,1.646,1.367,1.262,2.175,2.175,1.571,1.864,1.864,1.864,1.631,1.31,2.04,2.033,1.575,1.725,1.742,2.056,1.828,1.679,1.865,1.562,1.71,1.651,1.681,2.175,1.433,2.175,2.175,1.582,1.933,1.334,2.175,1.74,1.339,1.864,1.864,1.631,1.557,1.94,1.529,1.657,1.924,1.426,1.814,2.116,1.533,1.791,2.116,2.116,2.116,1.588,1.881,1.663,1.732,1.436,1.259,2.116,2.116,2.116,2.116,2.116,1.852,1.852,1.343,1.529,1.628,1.693,1.693,1.693,1.693,1.693,1.552,1.25,1.2,1.814,1.814,1.814,1.512,1.524,1.693,1.841,1.513,1.466,1.852,1.693,1.693,1.411,1.494,1.814,1.814,1.814,1.27,1.587,2.55,3.225,30.7,1.897,null,61.4,51,null,null],[0.001,0.002,0.004,0.005,0.006,0.009,0.009,0.009,0.011,0.014,0.021,0.021,0.021,0.021,0.021,0.021,0.021,0.024,0.028,0.029,0.04,0.041,0,0,0,0.016,0.021,0.021,0.022,0.04,0.04,0.04,0.041,0.012,0.015,0.03,0.043,0,0,0,0,0,0,0,0,0.001,0.003,0.004,0.008,0.009,0.009,0.01,0.011,0.011,0.021,0.032,0.037,0.04,0.04,0.041,0.002,0.002,0.002,0.002,0.003,0.004,0.004,0.005,0.005,0.007,0.011,0.011,0.011,0.011,0.013,0.018,0.021,0.023,0.023,0.024,0.024,0.024,0.024,0.024,0.025,0.025,0.028,0.029,0.03,0.038,0.038,0.038,0.038,0.038,0.038,0.043,0.046,0.046,0.046,0.046,0.008,0.011,0.019,0.038,0.003,0.005,0.025,0.038,0.038,0.044,0.046,0.046,0.046,0.046,0.048,0.05,0.006,0.022,0.047,0.048,0.016,0.032,0.038,0.019,0.019]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Module<\/th>\n      <th>Ontology<\/th>\n      <th>ID<\/th>\n      <th>Gene &amp; Background ratios<\/th>\n      <th>Enrichment<\/th>\n      <th>pvalue<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"columnDefs":[{"className":"dt-right","targets":[4,5]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <!-- ### Test for overlap between the co-expression and co-methylation modules -->
 <!-- Very few pairs of modules from the co-expression network and the co-methylation network overlapped significantly, suggesting either that suites of co-methylated genes are not necessarily co-expressed, or that uncertainty in the estimation of both networks makes such a relationship difficult to detect. The exception was Module 1 in the co-methylation network, which overlapped significantly with Modules 0 and 18 in the co-expression network (using hypergeometric tests with p-values corrected for multiple testing). -->
 <!-- ```{r model_overlap_test, message=FALSE, warning=FALSE} -->
