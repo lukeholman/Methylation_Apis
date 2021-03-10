@@ -26,6 +26,8 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
 <script src="site_libs/datatables-binding-0.13/datatables.js"></script>
@@ -55,6 +57,15 @@ div.section {
   padding-top: 12px;
 }
 </style>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -431,7 +442,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -440,7 +451,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -449,10 +460,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-10-12
+<strong>Last updated:</strong> 2021-03-10
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -468,12 +479,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -540,16 +551,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree93dd14c6e63de55d2ae4a82f8daace26a464b020targetblank93dd14ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/93dd14c6e63de55d2ae4a82f8daace26a464b020" target="_blank">93dd14c</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree28aa7ecdf9e456558d2bb88802ca3bb3af2dd93btargetblank28aa7eca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/28aa7ecdf9e456558d2bb88802ca3bb3af2dd93b" target="_blank">28aa7ec</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree93dd14c6e63de55d2ae4a82f8daace26a464b020targetblank93dd14ca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree28aa7ecdf9e456558d2bb88802ca3bb3af2dd93btargetblank28aa7eca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/93dd14c6e63de55d2ae4a82f8daace26a464b020" target="_blank">93dd14c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/28aa7ecdf9e456558d2bb88802ca3bb3af2dd93b" target="_blank">28aa7ec</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -567,30 +578,37 @@ Ignored files:
     Ignored:    output/
 
 Untracked files:
-    Untracked:  figures/big_correlation_heatmap.pdf
-    Untracked:  figures/composite_GO.pdf
-    Untracked:  figures/composite_eigengenes.pdf
-    Untracked:  figures/composite_figure.pdf
-    Untracked:  figures/eigengenes_expression_network.rds
-    Untracked:  figures/eigengenes_meth_network_fig.rds
-    Untracked:  figures/expr_GO_for_composite_figure.rds
-    Untracked:  figures/heatmap75.rds
-    Untracked:  figures/histo_fig1.rds
-    Untracked:  figures/meth_GO_for_composite_figure.rds
-    Untracked:  figures/two_sites_for_big_meth_fig.rds
+    Untracked:  code/Supplementary-figures_files/
+    Untracked:  code/supplementary_figures.Rmd
+    Untracked:  code/supplementary_figures.pdf
+    Untracked:  figures/expr_GO_BPremainder_dmel_part1.rds
+    Untracked:  figures/expr_GO_BPremainder_dmel_part2.rds
+    Untracked:  figures/expression_NMDS_plot.rds
 
 Unstaged changes:
-    Modified:   analysis/compare_expression_and_methylation.Rmd
-    Modified:   analysis/diff_expression.Rmd
-    Modified:   analysis/diff_methylation.Rmd
-    Modified:   code/create_merged_data.R
-    Modified:   code/make_pathway_figure.R
-    Modified:   code/parse_warner_data.R
-    Deleted:    figures/eigengenes_expression_network.pdf
-    Modified:   figures/eigengenes_meth_network_fig.pdf
+    Deleted:    code/PDF_supplementary_material.Rmd
+    Deleted:    code/Supplementary figures.Rmd
+    Deleted:    code/Supplementary-figures.pdf
+    Modified:   code/main_paper_figures.Rmd
+    Modified:   code/main_paper_figures.log
+    Modified:   code/main_paper_figures.pdf
+    Modified:   code/make_database.R
+    Modified:   figures/big_correlation_heatmap.pdf
+    Modified:   figures/composite_GO.pdf
+    Modified:   figures/composite_eigengenes.pdf
+    Modified:   figures/composite_figure.pdf
+    Modified:   figures/eigengenes_expression_network.rds
+    Modified:   figures/expr_GO_BPremainder_dmel.rds
+    Modified:   figures/expr_GO_CC_dmel.rds
+    Modified:   figures/expr_GO_MF_dmel.rds
+    Modified:   figures/expr_KEGG_dmel.rds
+    Modified:   figures/expression_heatmap.pdf
     Modified:   figures/genomic_context_plot_caste.rds
     Modified:   figures/genomic_context_plot_timeQ.rds
     Modified:   figures/genomic_context_plot_timeW.rds
+    Modified:   figures/heatmap_all.rds
+    Modified:   figures/meth_GO_others.rds
+    Modified:   figures/meth_all_enrichments_Amel.rds
 
 </code></pre>
 <p>
@@ -629,6 +647,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/28aa7ecdf9e456558d2bb88802ca3bb3af2dd93b/analysis/compare_expression_and_methylation.Rmd" target="_blank">28aa7ec</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-10
+</td>
+<td>
+wflow_publish(“analysis/compare_expression_and_methylation.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/analysis/compare_expression_and_methylation.Rmd" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+<td>
+Commit new figs
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/docs/compare_expression_and_methylation.html" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+<td>
+Commit new figs
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -674,7 +743,7 @@ Rmd
 lukeholman
 </td>
 <td>
-2020-10-05
+2020-10-04
 </td>
 <td>
 push to web
@@ -691,7 +760,7 @@ html
 lukeholman
 </td>
 <td>
-2020-10-05
+2020-10-04
 </td>
 <td>
 push to web
@@ -861,7 +930,7 @@ Rmd
 lukeholman
 </td>
 <td>
-2020-09-23
+2020-09-22
 </td>
 <td>
 Many commits
@@ -967,6 +1036,7 @@ library(dbplyr)
 library(DBI)
 library(RSQLite)
 library(gridExtra)
+library(grid)
 library(DT)
 library(showtext)
 library(WGCNA)
@@ -983,7 +1053,6 @@ db &lt;- dbConnect(SQLite(), &quot;data/apis_db.sqlite3&quot;) # DBI::dbListTabl
 bwasp_sig_genes &lt;- readRDS(&quot;output/bwasp_sig_genes.rds&quot;)
 
 # Load Bayesian results
-# bayes_sig_sites &lt;- readRDS(&quot;output/sig_sites_bayesianGAM.rds&quot;)
 bayes_sig_genes &lt;- readRDS(&quot;output/gene_meth_results_table.rds&quot;)
 
 
@@ -1048,8 +1117,8 @@ worker_colour &lt;- RColorBrewer::brewer.pal(7, &quot;Blues&quot;)[4]</code></pr
 <h2>Comparing significant gene lists from expression and methylation analyses</h2>
 <p>Here, we give tables showing genes that showed a statistically significant caste difference for both expression and methylation.</p>
 <p>We also use a hypergeometric test to test how many genes were significant (and how many were tested in total) in both the differential expression and differential methylation assays, and test whether the number of overlaps is greater or lower than expected under the null model that the two gene lists are independent (using a hypergeometric test via the <code>phyper</code> function).</p>
-<p>Using the BWASP results, the overlap of gene lists was not significant. However for the Bayesian GAM, the overlap was <em>lower</em> than expected under the null (<span class="math inline">\(p &lt; 0.0001\)</span>), indicating that the genes that show differential methylation are less likely than average to show differential expression (and <em>vice versa</em>).</p>
-<p>Notably, <em>Complementary sex determiner</em> is significant in all three analyses (expression, and both versions of the methylation analyses). <em>maternal protein tudor</em> shows differential expression, and significant differential methylation (in the Bayesian GAM).</p>
+<p>Using the BWASP results, the overlap of gene lists was not significant. However for the Bayesian GLM, the overlap was <em>lower</em> than expected under the null (<span class="math inline">\(p &lt; 0.0001\)</span>), indicating that the genes that show differential methylation are less likely than average to show differential expression (and <em>vice versa</em>).</p>
+<p>Notably, <em>Complementary sex determiner</em> is significant in all three analyses (expression, and both versions of the methylation analyses). <em>maternal protein tudor</em> shows differential expression, and significant differential methylation (in the Bayesian GLM).</p>
 <div id="using-the-bwasp-methylation-results" class="section level3">
 <h3>Using the BWASP methylation results</h3>
 <pre class="r"><code>genes_tested_meth &lt;- tbl(db, &quot;site_annotations&quot;) %&gt;%
@@ -1081,14 +1150,14 @@ bwasp_table %&gt;%
 <pre class="r"><code># bwasp_hypergeometric %&gt;%
 #   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
 </div>
-<div id="using-the-bayesian-gam-methylation-results" class="section level3">
-<h3>Using the Bayesian GAM methylation results</h3>
+<div id="using-the-bayesian-glm-methylation-results" class="section level3">
+<h3>Using the Bayesian GLM methylation results</h3>
 <pre class="r"><code>sig_diff_meth &lt;- bayes_sig_genes %&gt;% dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %&gt;%
   unlist() %&gt;% unname() %&gt;% na.omit() %&gt;% unique()
 inters &lt;- intersect(sig_diff_expr, sig_diff_meth)
 n_overlaps &lt;- length(inters)
 
-bayes_table &lt;- tibble(`Genes showing both differential expression and methylation (Bayesian GAM)` =
+bayes_table &lt;- tibble(`Genes showing both differential expression and methylation (Bayesian GLM)` =
 tbl(db, &quot;gene_names&quot;) %&gt;% filter(gene_symbol %in% inters) %&gt;% pull(gene_name))
 
 # bayes_hypergeometric &lt;- overlap_hypergeometric_test(
@@ -1100,7 +1169,7 @@ tbl(db, &quot;gene_names&quot;) %&gt;% filter(gene_symbol %in% inters) %&gt;% pu
 bayes_table %&gt;%
   my_data_table()</code></pre>
 <div id="htmlwidget-c02f98123d86324de8d3" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c02f98123d86324de8d3">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["complementary sex determiner","NMDA receptor 1","nicotinic acetylcholine receptor alpha8 subunit","integrin beta-PS","mitochondrial cytochrome C","rho GTPase-activating protein conundrum","protein FAM76A","tyrosine-protein kinase transmembrane receptor Ror2","uncharacterized LOC408316","putative uncharacterized protein DDB_G0277255","probable ATP-dependent RNA helicase DDX56","transcriptional adapter 2-alpha","26S proteasome non-ATPase regulatory subunit 11","CTD nuclear envelope phosphatase 1 homolog","heterogeneous nuclear ribonucleoprotein U-like protein 1","serine/threonine-protein kinase/endoribonuclease IRE1","protein preli-like","serine/threonine-protein kinase 10","colorectal mutant cancer protein","mitogen-activated protein kinase kinase kinase 15","armadillo repeat-containing protein 6 homolog","eukaryotic translation initiation factor 2D","major facilitator superfamily domain-containing protein 1","zinc finger protein 76","heat shock protein 70Cb ortholog","cerebellar degeneration-related protein 2-like","DNA ligase 1","uncharacterized protein MAL13P1.304","pre-mRNA-processing factor 39","X-box-binding protein 1","lissencephaly-1 homolog","ankyrin repeat and SAM domain-containing protein 1A","large proline-rich protein BAG6","death-associated protein 1","transcription initiation factor TFIID subunit 4","heat shock protein 90","RNA-binding protein squid","uncharacterized LOC409010","leucine-rich repeat and calponin homology domain-containing protein 1","V-type proton ATPase subunit H","arginine-glutamic acid dipeptide repeats protein","guanine nucleotide exchange factor for Rab-3A","protoheme IX farnesyltransferase, mitochondrial","tyrosine-protein kinase Abl","iron-sulfur cluster assembly enzyme ISCU, mitochondrial","monocarboxylate transporter 12","ataxin-2-like protein","sorting nexin-30","calreticulin","26S proteasome non-ATPase regulatory subunit 13","polycomb protein suz12-B","kinase D-interacting substrate of 220 kDa","40S ribosomal protein S9","uncharacterized LOC409221","arf-GAP with coiled-coil, ANK repeat and PH domain-containing protein 2","uncharacterized LOC409232","small ubiquitin-related modifier","collagen type IV alpha-3-binding protein","actin-related protein 2","uncharacterized LOC409323","ubiquitin carboxyl-terminal hydrolase 7","CAAX prenyl protease 2","WD repeat-containing protein 43","heat shock protein 60A","nuclear valosin-containing protein-like","protein RCC2 homolog","guanine nucleotide-binding protein subunit beta-like protein","eIF-2-alpha kinase activator GCN1","laminin subunit gamma-1","transmembrane protein 183B","methylglutaconyl-CoA hydratase, mitochondrial","zinc finger CCCH domain-containing protein 18","kinase suppressor of Ras 2","SWI/SNF complex subunit SMARCC2","cysteine-rich hydrophobic domain-containing protein 2","long-chain-fatty-acid--CoA ligase 4","cell division cycle protein 27 homolog","NAD-dependent protein deacetylase Sirt2","arginine-glutamic acid dipeptide repeats protein","ruvB-like 1","protein SMG7","polyadenylate-binding protein 2-B","Golgi reassembly-stacking protein 2","cyclin-dependent kinase 1","dnaJ homolog dnj-5","rhotekin-2","uncharacterized LOC409717","uncharacterized protein YER152C","rho GDP-dissociation inhibitor 2","vacuolar protein sorting-associated protein 4B","telomerase-binding protein EST1A","protein retinal degeneration B","26S proteasome non-ATPase regulatory subunit 12","tyrosine-protein kinase CSK","RNA-binding protein 26","dual specificity mitogen-activated protein kinase kinase dSOR1","zinc finger FYVE domain-containing protein 1","cyclin-dependent kinase 12","ankyrin repeat domain-containing protein 17","dnaJ homolog subfamily C member 11","dnaJ homolog subfamily C member 7","serine/threonine-protein phosphatase 4 regulatory subunit 4","mitochondrial folate transporter/carrier","centrosome-associated protein 350","superoxide dismutase 2, mitochondrial","geminin","ubiquitin carboxyl-terminal hydrolase 34","uncharacterized LOC410154","60S ribosomal protein L8","5'-nucleotidase domain-containing protein 3","phosphatidate phosphatase LPIN3","uncharacterized LOC410244","transmembrane GTPase Marf","syntaxin 1A","transcription elongation factor SPT6-like","GATOR complex protein WDR59","methionine aminopeptidase 1","importin subunit beta-1","alkaline phosphatase","ceramide-1-phosphate transfer protein","CLIP-associating protein 1-A","cullin-1","RNA-binding protein 5","putative E3 ubiquitin-protein ligase UBR7","protein lin-9 homolog","DNA topoisomerase 2-binding protein 1","ubiquitin-like modifier-activating enzyme 1","myosin-IB","NF-kappa-B inhibitor cactus","phosphatidylinositide phosphatase SAC1","WD repeat-containing protein 36","dnaJ protein homolog 1","serine/threonine-protein kinase greatwall","zinc transporter 7","FGGY carbohydrate kinase domain-containing protein","bromodomain containing 7","solute carrier family 12 member 4","baculoviral IAP repeat-containing protein 6","splicing factor 1","putative aldehyde dehydrogenase family 7 member A1 homolog","nischarin","ubiquitin-protein ligase E3A","WD repeat-containing protein 37","GTP-binding protein 128up","Golgi resident protein GCP60","elongation factor G, mitochondrial","protein tumorous imaginal discs, mitochondrial","60S ribosomal protein L30","protein transport protein Sec24B","negative elongation factor D","serine palmitoyltransferase 2","histone-arginine methyltransferase CARMER","integrator complex subunit 1","dynamin-1-like protein","nucleoporin NUP188 homolog","ribosomal protein S6 kinase alpha-2","SPARC-related modular calcium-binding protein 1","histone deacetylase Rpd3","mitogen-activated protein kinase kinase kinase 11","ubiquitin carboxyl-terminal hydrolase 14","tRNA (cytosine(34)-C(5))-methyltransferase","phosphopantothenate--cysteine ligase","zinc finger protein ubi-d4 A","liprin-beta-1","DNA replication licensing factor Mcm2","transcription factor RFX3","macrophage erythroblast attacher","SID1 transmembrane family member 1","mitogen-activated protein kinase kinase kinase 7 interacting protein 1","endoplasmic reticulum metallopeptidase 1","mitochondrial glycine transporter","protein cereblon","dual specificity protein phosphatase Mpk3","aldehyde dehydrogenase family 3 member B1","translationally-controlled tumor protein homolog","la protein homolog","phosphatase and tensin-like","exportin-2","putative serine protease K12H4.7","nucleolysin TIAR","V-type proton ATPase subunit C","ran GTPase-activating protein 1","zinc finger protein 184","E3 ubiquitin-protein ligase Ubr3","transforming growth factor beta regulator 1","histone-lysine N-methyltransferase PR-Set7","S-phase kinase-associated protein 2","exocyst complex component 3","dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit 2","F-box only protein 11","DNA replication complex GINS protein PSF1","uncharacterized LOC412079","myosin heavy chain, non-muscle","AP-3 complex subunit delta-1","ubiquitin-conjugating enzyme E2-24 kDa","DENN domain-containing protein 5B","kinesin 4B","HEAT repeat-containing protein 5B","SHC-transforming protein 1","UDP-glucose:glycoprotein glucosyltransferase","threonine--tRNA ligase, cytoplasmic","trans-1,2-dihydrobenzene-1,2-diol dehydrogenase","dipeptidyl peptidase 3","KAT8 regulatory NSL complex subunit 3","60S ribosomal protein L27","plexin-B","protein purity of essence","cytosolic Fe-S cluster assembly factor NUBP1 homolog","membrane-bound transcription factor site-1 protease","flap endonuclease 1","uncharacterized LOC412326","mediator of RNA polymerase II transcription subunit 23","exosome complex component RRP41","E3 ubiquitin-protein ligase TM129","organic cation transporter protein","PH-interacting protein","microfibrillar-associated protein 1","mediator of RNA polymerase II transcription subunit 1","uncharacterized LOC412432","protein CASC1","PDF receptor","ribosomal RNA processing protein 1 homolog","double-stranded RNA-specific editase 1","integrator complex subunit 8","protein disulfide-isomerase A6 homolog","tyrosine-protein phosphatase corkscrew","uncharacterized LOC412543","2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial","cyclin-dependent kinase 9","calcitonin gene-related peptide type 1 receptor","DNA damage-binding protein 1","uncharacterized LOC412607","methyltransferase-like protein 13","protein ABHD13","kinesin 3C","protein mahjong","kinesin 2B","blastoderm-specific protein 25D","calcineurin-binding protein cabin-1","ATP-binding cassette sub-family B member 7, mitochondrial","importin-11","E3 ubiquitin-protein ligase SMURF2","AP-1 complex subunit gamma-1","branched-chain-amino-acid aminotransferase, cytosolic","E3 ubiquitin-protein ligase MYLIP","coiled-coil domain-containing protein 47","uncharacterized LOC413055","H(+)/Cl(-) exchange transporter 7","F-box/WD repeat-containing protein 7","serrate RNA effector molecule homolog","enhancer of mRNA-decapping protein 4","cysteine and histidine-rich protein 1 homolog","regulator of nonsense transcripts 2","probable ATP-dependent RNA helicase DHX35","LIM domain kinase 1","mortality factor 4-like protein 1","RNA exonuclease 4","ATP-binding cassette sub-family F member 2","putative inorganic phosphate cotransporter","ADP-dependent glucokinase","helicase domino","exportin-5","nucleoporin SEH1","putative glutamate synthase [NADPH]","histone-lysine N-methyltransferase EHMT2","phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta","protein lingerer","dynamin-like 120 kDa protein, mitochondrial","protein kibra","dnaJ homolog subfamily C member 3","serine/threonine-protein kinase ULK3","insulin-degrading enzyme","probable G-protein coupled receptor 158","nucleolar complex protein 2 homolog","RNA polymerase II subunit A C-terminal domain phosphatase SSU72","uncharacterized LOC413620","exportin-7","nuclear RNA export factor 1","presequence protease, mitochondrial","G2/mitotic-specific cyclin-B3","hexosaminidase D","arfGAP with SH3 domain, ANK repeat and PH domain-containing protein","helicase SKI2W","probable glutamine--tRNA ligase","nucleolar protein 14 homolog","traB domain-containing protein","enhancer of polycomb homolog 1","methionine--tRNA ligase, cytoplasmic","mitogen-activated protein kinase kinase kinase 7","folylpolyglutamate synthase, mitochondrial","CCA tRNA nucleotidyltransferase 1, mitochondrial","glucose-6-phosphate exchanger SLC37A2","retinol dehydrogenase 11","eukaryotic peptide chain release factor GTP-binding subunit ERF3A","derlin-2","polypeptide N-acetylgalactosaminyltransferase 5","ribosome biogenesis protein BMS1 homolog","malvolio","splicing factor U2AF 50 kDa subunit","adiponectin receptor protein","inosine-5'-monophosphate dehydrogenase 1b","clathrin heavy chain","guanine nucleotide-binding protein G(q) subunit alpha","egalitarian protein homolog","DNA-directed RNA polymerase II subunit RPB1","protogenin-like","serine/threonine-protein kinase PINK1, mitochondrial","splicing factor 3B subunit 3","exonuclease 1","low-density lipoprotein receptor-related protein 6","1-acylglycerol-3-phosphate O-acyltransferase Pnpla3","conserved oligomeric Golgi complex subunit 8","kinesin 5A","Golgi pH regulator","E3 SUMO-protein ligase PIAS3","eukaryotic translation initiation factor 3 subunit C","neutral alpha-glucosidase AB","myosin-2 heavy chain","uncharacterized LOC551215","ATP-binding cassette sub-family E member 1","cathepsin O","spectrin alpha chain","T-complex protein 1 subunit zeta","ATPase family AAA domain-containing protein 3A homolog","uncharacterized LOC551338","cytosolic 10-formyltetrahydrofolate dehydrogenase","uncharacterized LOC551408","uncharacterized LOC551450","sister chromatid cohesion protein PDS5 homolog B","sphingomyelin phosphodiesterase 4","collagen alpha chain CG42342","pre-mRNA-processing factor 6","uncharacterized LOC551519","putative U5 small nuclear ribonucleoprotein 200 kDa helicase","BAG family molecular chaperone regulator 2","probable 26S proteasome non-ATPase regulatory subunit 3","poly(A) RNA polymerase, mitochondrial","carboxy-terminal domain RNA polymerase II polypeptide A small phosphatase 1","ras GTPase-activating protein-binding protein 2","FACT complex subunit spt16","calpain-D","pre-mRNA-processing-splicing factor 8","casein kinase II subunit beta","anillin","wee1-like protein kinase","palmitoyltransferase ZDHHC5","nucleolar protein 6","UPF0565 protein C2orf69 homolog","importin-7","inositol-tetrakisphosphate 1-kinase","rho GTPase-activating protein 190","DNA primase large subunit","phosphorylated CTD-interacting factor 1","S-adenosylhomocysteine hydrolase-like protein 1","hypoxia up-regulated protein 1","methionine aminopeptidase 2","6-phosphogluconolactonase","arf-GAP with dual PH domain-containing protein 1","xenotropic and polytropic retrovirus receptor 1 homolog","host cell factor 1","putative elongator complex protein 1","large subunit GTPase 1 homolog","1,2-dihydroxy-3-keto-5-methylthiopentene dioxygenase","YTH domain-containing family protein 1","serine/threonine-protein phosphatase 5","ATP-dependent helicase brm","protein dj-1beta","alcohol dehydrogenase [NADP(+)]","uracil phosphoribosyltransferase homolog","ovarian-specific serine/threonine-protein kinase Lok","putative N-acetylglucosamine-6-phosphate deacetylase","cleavage and polyadenylation specificity factor subunit CG7185","replication factor C subunit 3","kinesin-associated protein 3","uncharacterized protein DDB_G0287625","60S ribosomal export protein NMD3","myo-inositol 2-dehydrogenase","chromodomain-helicase-DNA-binding protein Mi-2 homolog","suppressor of cytokine signaling 5","uncharacterized LOC552044","developmentally-regulated GTP-binding protein 2","adhesion G protein-coupled receptor A3","beta-1,4-N-acetylgalactosaminyltransferase bre-4","mitochondrial-processing peptidase subunit alpha","phosphatidylinositol transfer protein alpha isoform","uncharacterized LOC552192","probable histone-binding protein Caf1","putative ATP-dependent RNA helicase me31b","N-acetyltransferase ESCO1","DNA replication licensing factor MCM4","far upstream element-binding protein 3","RNA-binding protein cabeza","protein germ cell-less","N-alpha-acetyltransferase 30","dolichyldiphosphatase 1","membrane-associated ring finger (C3HC4) 6","serine palmitoyltransferase 1","beta-1,3-galactosyltransferase 1-like","WD repeat-containing protein 3","DNA-directed RNA polymerase II subunit RPB3","MATH and LRR domain-containing protein PFE0570w-like","protein draper","roquin-1","kinesin 6A","ATP-dependent RNA helicase WM6","glucoside xylosyltransferase 1","cell division cycle 5-like protein","DEAD-box helicase Dbp80","activated Cdc42 kinase-like","uncharacterized LOC552585","protein ABHD4","E3 ubiquitin-protein ligase ZNRF2","vacuolar fusion protein CCZ1 homolog","stAR-related lipid transfer protein 7, mitochondrial","zinc transporter 1","ammonium transporter 1-like","DNA replication licensing factor Mcm3","K(lysine) acetyltransferase 2A","phosphoribosylformylglycinamidine synthase","proclotting enzyme","shugoshin 2","X-ray repair cross-complementing protein 6","acyl-CoA:lysophosphatidylglycerol acyltransferase 1","D-aspartate oxidase","N-acetylglucosamine-1-phosphotransferase subunits alpha/beta","aurora kinase B","uncharacterized LOC552753","eukaryotic translation initiation factor 2A","phenylalanine--tRNA ligase alpha subunit","ubiA prenyltransferase domain-containing protein 1 homolog","mediator of RNA polymerase II transcription subunit 14","metal transporter CNNM4","cytochrome c oxidase subunit NDUFA4","activating signal cointegrator 1 complex subunit 3","TATA box-binding protein-associated factor RNA polymerase I subunit B","catenin alpha","GB15078 protein","telomerase reverse transcriptase","mitochondrial fission regulator 2","translation initiation factor eIF-2B subunit delta","protein nessun dorma","DNA topoisomerase 2","putative peroxisomal biogenesis factor 10","AT-rich interactive domain-containing protein 2","pre-mRNA-splicing factor CWC22 homolog","uncharacterized LOC724357","ras-related GTP-binding protein A","DNA polymerase theta","calcium-transporting ATPase type 2C member 1","serine-rich adhesin for platelets","uncharacterized LOC724481","la-related protein 1B","eukaryotic translation initiation factor 1A, X-chromosomal","transcriptional regulator ATRX homolog","transducin beta-like protein 3","inner nuclear membrane protein Man1","RNA cytidine acetyltransferase","ribonuclease P protein subunit rpr2","uncharacterized LOC724680","protein-L-isoaspartate O-methyltransferase domain-containing protein 1","xanthine dehydrogenase","ATP-dependent 6-phosphofructokinase","uncharacterized LOC724770","uncharacterized LOC724843","ras association domain-containing protein 2","protein FAM117B","delta(14)-sterol reductase","DNA polymerase alpha subunit B","importin-5","WASH complex subunit 2","nipped-B protein","nucleolin 1","gamma-glutamylcyclotransferase","uncharacterized LOC725061","39S ribosomal protein L4, mitochondrial","DNA fragmentation factor subunit alpha","proteasome adapter and scaffold protein ECM29","DNA-directed RNA polymerase I subunit RPA1","protein bark beetle","nucleoside-triphosphatase THEP1","DNA polymerase delta small subunit","nuclear pore complex protein Nup160 homolog","C2 domain-containing protein 3","leucine-rich melanocyte differentiation-associated protein","ubiquitin carboxyl-terminal hydrolase 45","leucine-rich repeat protein 1","cullin-2","sorting nexin-2","proteasome activator complex subunit 4A","protein transport protein Sec61 subunit alpha","myb-binding protein 1A","RNA polymerase-associated protein Rtf1","DNA-directed RNA polymerase I subunit RPA2","alpha-actinin, sarcomeric","protein aurora borealis","hyaluronan mediated motility receptor","replication protein A 70 kDa DNA-binding subunit","protein still life, isoform SIF type 1","polycomb protein Scm","replication factor C subunit 4-like","EH domain-binding protein 1","Hermansky-Pudlak syndrome 1 protein homolog","putative ATP-dependent RNA helicase DHX30","tetratricopeptide repeat protein 14 homolog","mitochondrial import inner membrane translocase subunit Tim10B","male-specific lethal 3 homolog","transportin-3","60S ribosomal protein L11","exostosin-2","DNA primase small subunit","anaphase-promoting complex subunit CDC26","histone acetyltransferase p300-like","uncharacterized LOC726286","M-phase inducer phosphatase","GPI ethanolamine phosphate transferase 1","uncharacterized LOC726325","glycerol-3-phosphate dehydrogenase","ubiquitin carboxyl-terminal hydrolase 10","protein lin-37 homolog","autophagy-related protein 2 homolog B","probable ATP-dependent RNA helicase DDX27","DNA (cytosine-5)-methyltransferase PliMCI","anaphase-promoting complex subunit 1","laminin subunit beta-1","PEST proteolytic signal-containing nuclear protein","ruvB-like 2","ATP-dependent RNA helicase DDX51","zinc finger protein 91","nuclear factor related to kappaB binding protein","cleft lip and palate transmembrane protein 1 homolog","probable ATP-dependent RNA helicase spindle-E","NK-tumor recognition protein","acyl-CoA Delta(11) desaturase","structural maintenance of chromosomes protein 6","general transcription factor 3C polypeptide 5","protein HIRA homolog","histone-lysine N-methyltransferase ash1","nuclear pore complex protein Nup153","uncharacterized LOC727520","hairless","uncharacterized LOC100576155","E3 ubiquitin-protein ligase Su(dx)","TLD domain-containing protein 1","MATH and LRR domain-containing protein PFE0570w","restin homolog","maternal protein tudor","zinc finger and BTB domain-containing protein 41","serine/arginine repetitive matrix protein 2","probable elongator complex protein 3","merlin","uncharacterized LOC100576972","condensin complex subunit 2","uncharacterized LOC100577014","uncharacterized LOC100577050","glycine dehydrogenase (decarboxylating), mitochondrial","dual specificity protein kinase TTK","GRIP and coiled-coil domain-containing protein PFC0235w","gametocyte-specific factor 1","HEAT repeat-containing protein 6","ankyrin repeat and LEM domain-containing protein 2","cytospin-A","peptidyl-prolyl cis-trans isomerase sig-7-like","uncharacterized LOC100577742","putative uncharacterized protein DDB_G0282133","nucleolar protein 56","antitrypsin","DNA polymerase zeta catalytic subunit","uncharacterized protein PF11_0213","zinc finger matrin-type protein CG9776","dynein regulatory complex protein 1","DNA-directed RNA polymerase I subunit RPA12","uncharacterized protein PF11_0213","Golgi integral membrane protein 4","uncharacterized LOC100578341","apoptotic protease-activating factor 1-like","centrosomal protein of 152 kDa","eukaryotic translation initiation factor 2 subunit 2","uncharacterized LOC100578706","aprataxin and PNK-like factor","protein strawberry notch-like","zinc finger protein 85","centrosome-associated zinc finger protein CP190","E3 ubiquitin-protein ligase TRIM33","pseudouridylate synthase 7 homolog","uncharacterized LOC102654925","hepatocyte nuclear factor 4-gamma","ATP-dependent RNA helicase p62-like","reticulon-1-A","probable ATP-dependent RNA helicase DDX55 homolog","protein dopey homolog PFC0245c","uncharacterized protein PFB0145c","stress-induced-phosphoprotein 1","pre-rRNA processing protein FTSJ3","cell wall integrity and stress response component 1","cyclic AMP response element-binding protein A","proline-, glutamic acid- and leucine-rich protein 1","glycolipid transfer protein","telomere-associated protein RIF1-like","small subunit processome component 20 homolog","protein inturned","uncharacterized LOC100578548","twinkle protein, mitochondrial","histone-lysine N-methyltransferase NSD2","translation factor GUF1 homolog, mitochondrial","sodium-independent sulfate anion transporter","galectin-8-like"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Genes showing both differential expression and methylation (Bayesian GAM)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_meth_expr"}],"pageLength":50,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-c02f98123d86324de8d3">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["complementary sex determiner","NMDA receptor 1","nicotinic acetylcholine receptor alpha8 subunit","mitochondrial cytochrome C","rho GTPase-activating protein conundrum","tyrosine-protein kinase transmembrane receptor Ror2","uncharacterized LOC408316","T-cell immunomodulatory protein","putative uncharacterized protein DDB_G0277255","probable ATP-dependent RNA helicase DDX56","transcriptional adapter 2-alpha","26S proteasome non-ATPase regulatory subunit 11","CTD nuclear envelope phosphatase 1 homolog","heterogeneous nuclear ribonucleoprotein U-like protein 1","serine/threonine-protein kinase/endoribonuclease IRE1","protein preli-like","serine/threonine-protein kinase 10","pre-mRNA-splicing factor SPF27","colorectal mutant cancer protein","mitogen-activated protein kinase kinase kinase 15","zinc finger protein on ecdysone puffs","uncharacterized LOC408574","armadillo repeat-containing protein 6 homolog","macro domain-containing protein CT2219","heat shock protein cognate 5","major facilitator superfamily domain-containing protein 1","heat shock protein 70Cb ortholog","leukocyte tyrosine kinase receptor","DNA ligase 1","hexokinase-1","X-box-binding protein 1","lissencephaly-1 homolog","ankyrin repeat and SAM domain-containing protein 1A","large proline-rich protein BAG6","transcription initiation factor TFIID subunit 4","RNA-binding protein squid","uncharacterized LOC409010","pantothenate kinase 4","transcription elongation regulator 1","protein PF14_0175","V-type proton ATPase subunit H","arginine-glutamic acid dipeptide repeats protein","guanine nucleotide exchange factor for Rab-3A","enhancer of mRNA-decapping protein 3","protoheme IX farnesyltransferase, mitochondrial","REST corepressor 3","tyrosine-protein kinase Abl","iron-sulfur cluster assembly enzyme ISCU, mitochondrial","monocarboxylate transporter 12","ataxin-2-like protein","26S proteasome non-ATPase regulatory subunit 13","polycomb protein suz12-B","kinase D-interacting substrate of 220 kDa","SUMO-activating enzyme subunit 2","alanine aminotransferase 1","synaptic vesicle membrane protein VAT-1 homolog-like","phospholipase A-2-activating protein","uncharacterized LOC409221","arf-GAP with coiled-coil, ANK repeat and PH domain-containing protein 2","uncharacterized LOC409232","protein abrupt","small ubiquitin-related modifier","actin-related protein 2","PRKCA-binding protein","uncharacterized LOC409323","ubiquitin carboxyl-terminal hydrolase 7","UV excision repair protein RAD23 homolog B","WD repeat-containing protein 43","heat shock protein 60A","nuclear valosin-containing protein-like","plasminogen activator inhibitor 1 RNA-binding protein","protein RCC2 homolog","guanine nucleotide-binding protein subunit beta-like protein","eIF-2-alpha kinase activator GCN1","laminin subunit gamma-1","26S proteasome non-ATPase regulatory subunit 2","nuclear cap-binding protein subunit 1","transmembrane protein 183B","zinc finger CCCH domain-containing protein 18","cysteine-rich hydrophobic domain-containing protein 2","long-chain-fatty-acid--CoA ligase 4","TBC domain-containing protein kinase-like protein","NAD-dependent protein deacetylase Sirt2","ruvB-like 1","polyadenylate-binding protein 2-B","cyclin-dependent kinase 1","dnaJ homolog dnj-5","uncharacterized LOC409717","uncharacterized protein YER152C","rho GDP-dissociation inhibitor 2","vacuolar protein sorting-associated protein 4B","telomerase-binding protein EST1A","protein retinal degeneration B","26S proteasome non-ATPase regulatory subunit 12","tyrosine-protein kinase CSK","RNA-binding protein 26","dual specificity mitogen-activated protein kinase kinase dSOR1","zinc finger FYVE domain-containing protein 1","interference hedgehog","cyclin-dependent kinase 12","ankyrin repeat domain-containing protein 17","peroxisomal multifunctional enzyme type 2","dnaJ homolog subfamily C member 11","dnaJ homolog subfamily C member 7","serine/threonine-protein phosphatase 4 regulatory subunit 3","mitochondrial folate transporter/carrier","superoxide dismutase 2, mitochondrial","ubiquitin carboxyl-terminal hydrolase 34","uncharacterized LOC410154","histone-lysine N-methyltransferase setd3","60S ribosomal protein L8","5'-nucleotidase domain-containing protein 3","UDP-glucuronic acid decarboxylase 1","uncharacterized LOC410244","syntaxin 1A","GATOR complex protein WDR59","chromatin-remodeling ATPase INO80","calcium homeostasis endoplasmic reticulum protein","methionine aminopeptidase 1","importin subunit beta-1","alkaline phosphatase","CLIP-associating protein 1-A","cullin-1","protein phosphatase PP2A 55 kDa regulatory subunit","tubulin alpha chain","putative E3 ubiquitin-protein ligase UBR7","DNA topoisomerase 2-binding protein 1","MLX-interacting protein","ubiquitin-like modifier-activating enzyme 1","myosin-IB","nucleolar protein 9","NF-kappa-B inhibitor cactus","phosphatidylinositide phosphatase SAC1","WD repeat-containing protein 36","sestrin homolog","dnaJ protein homolog 1","zinc transporter 7","FGGY carbohydrate kinase domain-containing protein","bromodomain containing 7","solute carrier family 12 member 4","baculoviral IAP repeat-containing protein 6","splicing factor 1","putative aldehyde dehydrogenase family 7 member A1 homolog","AP-2 complex subunit alpha","DNA-directed RNA polymerase III subunit RPC3","integrator complex subunit 3","ubiquitin-protein ligase E3A","WD repeat-containing protein 37","zinc finger protein ZPR1","aryl hydrocarbon receptor nuclear translocator homolog","nucleolar protein 10","dedicator of cytokinesis protein 7","Golgi resident protein GCP60","protein tumorous imaginal discs, mitochondrial","60S ribosomal protein L30","protein transport protein Sec24B","negative elongation factor D","serine palmitoyltransferase 2","band 4.1-like protein 4A","histone-arginine methyltransferase CARMER","integrator complex subunit 1","dynamin-1-like protein","nucleoporin NUP188 homolog","ribosomal protein S6 kinase alpha-2","SPARC-related modular calcium-binding protein 1","histone deacetylase Rpd3","circadian locomoter output cycles protein kaput","E3 ubiquitin-protein ligase HERC2","glycerate kinase","signal recognition particle receptor subunit alpha homolog","ubiquitin carboxyl-terminal hydrolase 14","tRNA (cytosine(34)-C(5))-methyltransferase","protein virilizer","double-strand-break repair protein rad21 homolog","zinc finger protein ubi-d4 A","liprin-beta-1","transcription factor RFX3","macrophage erythroblast attacher","SID1 transmembrane family member 1","probable glutamate--tRNA ligase, mitochondrial","queuine tRNA-ribosyltransferase catalytic subunit","mitogen-activated protein kinase kinase kinase 7 interacting protein 1","mannosyl-oligosaccharide glucosidase GCS1","endoplasmic reticulum metallopeptidase 1","nuclear pore complex protein Nup133","probable E3 ubiquitin-protein ligase HERC4","YTH domain-containing protein 1","protein cereblon","aldehyde dehydrogenase family 3 member B1","la protein homolog","putative deoxyribonuclease TATDN1","p21-activated protein kinase-interacting protein 1-like","exportin-2","nucleolysin TIAR","V-type proton ATPase subunit C","ran GTPase-activating protein 1","NAD-dependent protein deacetylase sirtuin-1","nuclear pore complex protein Nup205","alanine--tRNA ligase, cytoplasmic","anaphase-promoting complex subunit 2","zinc finger protein 184","E3 ubiquitin-protein ligase Ubr3","transforming growth factor beta regulator 1","histone-lysine N-methyltransferase PR-Set7","S-phase kinase-associated protein 2","exocyst complex component 3","dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit 2","F-box only protein 11","DNA replication complex GINS protein PSF1","myosin heavy chain, non-muscle","AP-3 complex subunit delta-1","mediator of RNA polymerase II transcription subunit 15","DENN domain-containing protein 5B","kinesin 4B","serine/threonine-protein kinase Genghis Khan","HEAT repeat-containing protein 5B","SHC-transforming protein 1","UDP-glucose:glycoprotein glucosyltransferase","threonine--tRNA ligase, cytoplasmic","proliferation-associated protein 2G4","trans-1,2-dihydrobenzene-1,2-diol dehydrogenase","acidic mammalian chitinase","KAT8 regulatory NSL complex subunit 3","protein Hook homolog 3","60S ribosomal protein L27","plexin-B","protein purity of essence","cytosolic Fe-S cluster assembly factor NUBP1 homolog","membrane-bound transcription factor site-1 protease","flap endonuclease 1","uncharacterized LOC412326","mediator of RNA polymerase II transcription subunit 23","exosome complex component RRP41","macoilin-1","PH-interacting protein","mediator of RNA polymerase II transcription subunit 1","uncharacterized LOC412432","PDF receptor","protein lethal(2)denticleless","ribosomal RNA processing protein 1 homolog","double-stranded RNA-specific editase 1","integrator complex subunit 8","uncharacterized LOC412513","m7GpppN-mRNA hydrolase","protein disulfide-isomerase A6 homolog","tyrosine-protein phosphatase corkscrew","uncharacterized LOC412543","2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial","cyclin-dependent kinase 9","calcitonin gene-related peptide type 1 receptor","DNA damage-binding protein 1","uncharacterized LOC412607","methyltransferase-like protein 13","protein ABHD13","kinesin 3C","probable phosphoserine aminotransferase","protein mahjong","kinesin 2B","blastoderm-specific protein 25D","calcineurin-binding protein cabin-1","ATP-binding cassette sub-family B member 7, mitochondrial","solute carrier family 35 member F5","importin-11","uncharacterized LOC412835","AP-1 complex subunit gamma-1","branched-chain-amino-acid aminotransferase, cytosolic","protein bicaudal D","exportin-1","uncharacterized LOC413055","H(+)/Cl(-) exchange transporter 7","F-box/WD repeat-containing protein 7","serrate RNA effector molecule homolog","enhancer of mRNA-decapping protein 4","cysteine and histidine-rich protein 1 homolog","serine/threonine-protein kinase Tao","regulator of nonsense transcripts 2","LIM domain kinase 1","myb-like protein D","myosin-I heavy chain","mortality factor 4-like protein 1","myeloid differentiation primary response protein MyD88-A","ribosome maturation protein SBDS","methylcrotonoyl-CoA carboxylase subunit alpha, mitochondrial","RNA exonuclease 4","ATP-binding cassette sub-family F member 2","putative inorganic phosphate cotransporter","ADP-dependent glucokinase","helicase domino","exportin-5","nucleoporin SEH1","putative glutamate synthase [NADPH]","histone-lysine N-methyltransferase EHMT2","vesicle-trafficking protein SEC22b-B","phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta","protein lingerer","dynamin-like 120 kDa protein, mitochondrial","protein kibra","dnaJ homolog subfamily C member 3","uncharacterized LOC413484","insulin-degrading enzyme","probable G-protein coupled receptor 158","nucleolar complex protein 2 homolog","RNA polymerase II subunit A C-terminal domain phosphatase SSU72","uncharacterized LOC413620","exportin-7","nuclear RNA export factor 1","presequence protease, mitochondrial","G2/mitotic-specific cyclin-B3","hexosaminidase D","arfGAP with SH3 domain, ANK repeat and PH domain-containing protein","helicase SKI2W","probable glutamine--tRNA ligase","nucleolar protein 14 homolog","traB domain-containing protein","U3 small nucleolar RNA-associated protein 14 homolog A","enhancer of polycomb homolog 1","methionine--tRNA ligase, cytoplasmic","folylpolyglutamate synthase, mitochondrial","CCA tRNA nucleotidyltransferase 1, mitochondrial","glucose-6-phosphate exchanger SLC37A2","cytoplasmic tRNA 2-thiolation protein 1","eukaryotic peptide chain release factor GTP-binding subunit ERF3A","serine/threonine-protein kinase grp","thioredoxin-related transmembrane protein 1","leucine-rich repeat-containing protein 49","ribosome biogenesis protein BMS1 homolog","malvolio","splicing factor U2AF 50 kDa subunit","inosine-5'-monophosphate dehydrogenase 1b","TATA-box-binding protein","clathrin heavy chain","egalitarian protein homolog","DNA-directed RNA polymerase II subunit RPB1","protogenin-like","serine/threonine-protein kinase PINK1, mitochondrial","splicing factor 3B subunit 3","heat shock protein 75 kDa, mitochondrial","low-density lipoprotein receptor-related protein 6","1-acylglycerol-3-phosphate O-acyltransferase Pnpla3","putative uncharacterized protein DDB_G0274405","conserved oligomeric Golgi complex subunit 8","kinesin 5A","delta-1-pyrroline-5-carboxylate dehydrogenase, mitochondrial","26S proteasome regulatory subunit 4","Golgi pH regulator","protein sidekick","E3 SUMO-protein ligase PIAS3","eukaryotic translation initiation factor 3 subunit C","myosin-2 heavy chain","uncharacterized LOC551215","protein pelota","ATP-binding cassette sub-family E member 1","cathepsin O","spectrin alpha chain","ATPase family AAA domain-containing protein 3A homolog","uncharacterized LOC551338","ectonucleoside triphosphate diphosphohydrolase 5","uncharacterized protein PF11_0213","DNA polymerase delta catalytic subunit","cytosolic 10-formyltetrahydrofolate dehydrogenase","uncharacterized LOC551408","polycomb protein EED","actin-related protein 1","uncharacterized LOC551450","sister chromatid cohesion protein PDS5 homolog B","collagen alpha chain CG42342","glutamyl aminopeptidase","uncharacterized LOC551519","adenylate kinase","putative U5 small nuclear ribonucleoprotein 200 kDa helicase","ribosome biogenesis protein BOP1 homolog","BAG family molecular chaperone regulator 2","probable 26S proteasome non-ATPase regulatory subunit 3","uncharacterized LOC551566","carboxy-terminal domain RNA polymerase II polypeptide A small phosphatase 1","WD repeat-containing protein CG11141","calpain-D","pre-mRNA-processing-splicing factor 8","isoleucine--tRNA ligase, cytoplasmic","casein kinase II subunit beta","anillin","serine/threonine-protein kinase tousled-like 2","wee1-like protein kinase","palmitoyltransferase ZDHHC5","nucleolar protein 6","UPF0565 protein C2orf69 homolog","1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-1","lipoyltransferase 1, mitochondrial","S-adenosylmethionine decarboxylase proenzyme","importin-7","inositol-tetrakisphosphate 1-kinase","DNA primase large subunit","phosphorylated CTD-interacting factor 1","hypoxia up-regulated protein 1","methionine aminopeptidase 2","serine/threonine-protein kinase VRK1","pre-rRNA-processing protein TSR1 homolog","6-phosphogluconolactonase","arf-GAP with dual PH domain-containing protein 1","host cell factor 1","putative elongator complex protein 1","large subunit GTPase 1 homolog","1,2-dihydroxy-3-keto-5-methylthiopentene dioxygenase","YTH domain-containing family protein 1","probable dolichyl pyrophosphate Glc1Man9GlcNAc2 alpha-1,3-glucosyltransferase","membralin","STT3, subunit of the oligosaccharyltransferase complex, homolog B","serine/threonine-protein phosphatase 5","ATP-dependent helicase brm","protein dj-1beta","uncharacterized protein CG10915","prefoldin subunit 3","transient receptor potential mucolipin","SH3 domain-binding glutamic acid-rich protein homolog","alcohol dehydrogenase [NADP(+)]","uracil phosphoribosyltransferase homolog","ovarian-specific serine/threonine-protein kinase Lok","putative N-acetylglucosamine-6-phosphate deacetylase","cleavage and polyadenylation specificity factor subunit CG7185","replication factor C subunit 3","kinesin-associated protein 3","uncharacterized protein DDB_G0287625","60S ribosomal export protein NMD3","probable tRNA (guanine(26)-N(2))-dimethyltransferase","myo-inositol 2-dehydrogenase","chromodomain-helicase-DNA-binding protein Mi-2 homolog","suppressor of cytokine signaling 5","uncharacterized LOC552044","developmentally-regulated GTP-binding protein 2","transcriptional repressor p66-beta","poly [ADP-ribose] polymerase","adhesion G protein-coupled receptor A3","histone H3.3","kelch domain-containing protein 10 homolog","mitochondrial-processing peptidase subunit alpha","phosphatidylinositol transfer protein alpha isoform","uncharacterized LOC552192","probable histone-binding protein Caf1","putative ATP-dependent RNA helicase me31b","N-acetyltransferase ESCO1","ubiquitin thioesterase OTU1","zinc finger CCCH domain-containing protein 10","DNA replication licensing factor MCM4","far upstream element-binding protein 3","RNA-binding protein cabeza","protein germ cell-less","UDP-N-acetylglucosamine--dolichyl-phosphate N-acetylglucosaminephosphotransferase","N-alpha-acetyltransferase 30","dolichyldiphosphatase 1","serine palmitoyltransferase 1","beta-1,3-galactosyltransferase 1-like","uncharacterized LOC552431","DNA-directed RNA polymerase II subunit RPB3","MATH and LRR domain-containing protein PFE0570w-like","roquin-1","kinesin 6A","glucoside xylosyltransferase 1","cell division cycle 5-like protein","arginase-1","DEAD-box helicase Dbp80","activated Cdc42 kinase-like","uncharacterized LOC552585","protein ABHD4","E3 ubiquitin-protein ligase ZNRF2","oxysterol-binding protein-related protein 9","vacuolar fusion protein CCZ1 homolog","stAR-related lipid transfer protein 7, mitochondrial","zinc transporter 1","ammonium transporter 1-like","DNA replication licensing factor Mcm3","K(lysine) acetyltransferase 2A","phosphoribosylformylglycinamidine synthase","non-canonical poly(A) RNA polymerase PAPD5-like","alpha- and gamma-adaptin-binding protein p34","shugoshin 2","X-ray repair cross-complementing protein 6","acyl-CoA:lysophosphatidylglycerol acyltransferase 1","D-aspartate oxidase","zinc transporter foi","V-type proton ATPase subunit E","N-acetylglucosamine-1-phosphotransferase subunits alpha/beta","aurora kinase B","symplekin","uncharacterized LOC552753","cyclin-dependent kinase 11A","eukaryotic translation initiation factor 2A","phenylalanine--tRNA ligase alpha subunit","ubiA prenyltransferase domain-containing protein 1 homolog","mediator of RNA polymerase II transcription subunit 14","metal transporter CNNM4","activating signal cointegrator 1 complex subunit 3","TATA box-binding protein-associated factor RNA polymerase I subunit B","catenin alpha","GB15078 protein","mitochondrial fission regulator 2","ESF1 homolog","translation initiation factor eIF-2B subunit delta","pescadillo homolog","DNA topoisomerase 2","putative peroxisomal biogenesis factor 10","AT-rich interactive domain-containing protein 2","RING finger protein 17","uncharacterized LOC724357","nucleolar protein 12","DNA polymerase theta","calcium-transporting ATPase type 2C member 1","serine-rich adhesin for platelets","uncharacterized LOC724481","protein patched homolog 3","la-related protein 1B","nucleotide exchange factor SIL1","transcriptional regulator ATRX homolog","N-acetylglucosaminyl-phosphatidylinositol de-N-acetylase","RNA cytidine acetyltransferase","ribonuclease P protein subunit rpr2","SRSF protein kinase 3","uncharacterized LOC724680","xanthine dehydrogenase","ATP-dependent 6-phosphofructokinase","kinesin 6B","hemicentin-1","PRKC apoptosis WT1 regulator protein","uncharacterized LOC724770","tRNA (guanine(10)-N2)-methyltransferase homolog","ubiquitin-like with PHD and ring finger domains 1","uncharacterized LOC724843","ras association domain-containing protein 2","protein FAM117B","delta(14)-sterol reductase","DNA polymerase alpha subunit B","importin-5","WASH complex subunit 2","nipped-B protein","nucleolin 1","uncharacterized LOC725061","39S ribosomal protein L4, mitochondrial","DNA fragmentation factor subunit alpha","proteasome adapter and scaffold protein ECM29","DNA-directed RNA polymerase I subunit RPA1","protein bark beetle","nucleoside-triphosphatase THEP1","ATP-dependent DNA helicase DDX11","DNA polymerase delta small subunit","alkyldihydroxyacetonephosphate synthase","C2 domain-containing protein 3","nucleolar GTP-binding protein 2","leucine-rich melanocyte differentiation-associated protein","4-hydroxyphenylpyruvate dioxygenase","60S ribosomal protein L37a","ubiquitin carboxyl-terminal hydrolase 45","cullin-2","proteasome activator complex subunit 4A","protein transport protein Sec61 subunit alpha","centrosomal protein of 120 kDa","DNA polymerase alpha catalytic subunit","myb-binding protein 1A","protein MCM10 homolog","probable DNA-directed RNA polymerases I and III subunit RPAC2","DNA-directed RNA polymerase I subunit RPA2","signal recognition particle 9 kDa protein","alpha-actinin, sarcomeric","protein aurora borealis","syntaxin-16","replication protein A 70 kDa DNA-binding subunit","polycomb protein Scm","replication factor C subunit 4-like","uncharacterized LOC726025","cyclin-dependent kinases regulatory subunit","EH domain-binding protein 1","Hermansky-Pudlak syndrome 1 protein homolog","tetratricopeptide repeat protein 14 homolog","mitochondrial import inner membrane translocase subunit Tim10B","ubiquitin-conjugating enzyme E2-22 kDa","transportin-3","60S ribosomal protein L11","exostosin-2","pyroglutamyl-peptidase 1","DNA primase small subunit","GRB2-associated-binding protein 2","anaphase-promoting complex subunit CDC26","histone acetyltransferase p300-like","uncharacterized LOC726286","M-phase inducer phosphatase","GPI ethanolamine phosphate transferase 1","centrosomal protein of 97 kDa","ubiquitin carboxyl-terminal hydrolase 10","protein lin-37 homolog","autophagy-related protein 2 homolog B","probable ATP-dependent RNA helicase DDX27","DNA (cytosine-5)-methyltransferase PliMCI","serine/threonine-protein phosphatase 4 regulatory subunit 1","F-box/WD repeat-containing protein 4","uncharacterized LOC726647","anaphase-promoting complex subunit 1","laminin subunit beta-1","PEST proteolytic signal-containing nuclear protein","40S ribosomal protein S26","ATP-dependent RNA helicase DDX51","geranylgeranyl transferase type-2 subunit beta","transmembrane protein 209","zinc finger protein 91","cleft lip and palate transmembrane protein 1 homolog","NK-tumor recognition protein","structural maintenance of chromosomes protein 6","general transcription factor 3C polypeptide 5","uncharacterized LOC727223","protein HIRA homolog","histone-lysine N-methyltransferase ash1","DNA polymerase delta small subunit","proliferating cell nuclear antigen","nuclear pore complex protein Nup153","gonadal protein gdl","uncharacterized LOC727520","probable aspartate aminotransferase, cytoplasmic","bursicon subunit alpha","hairless","MATH and LRR domain-containing protein PFE0570w","uncharacterized LOC100576155","uncharacterized protein PF11_0213","E3 ubiquitin-protein ligase Su(dx)","TLD domain-containing protein 1","MATH and LRR domain-containing protein PFE0570w","uncharacterized LOC100576625","E3 ubiquitin-protein ligase synoviolin A","restin homolog","maternal protein tudor","zinc finger and BTB domain-containing protein 41","putative inactive caspase B","LHFPL tetraspan subfamily member 5 protein","serine/arginine repetitive matrix protein 2","merlin","condensin complex subunit 2","uncharacterized LOC100577014","uncharacterized LOC100577050","glycine dehydrogenase (decarboxylating), mitochondrial","dual specificity protein kinase TTK","uncharacterized protein MAL13P1.304","GRIP and coiled-coil domain-containing protein PFC0235w","gametocyte-specific factor 1","HEAT repeat-containing protein 6","ankyrin repeat and LEM domain-containing protein 2","cytospin-A","peptidyl-prolyl cis-trans isomerase sig-7-like","uncharacterized LOC100577742","ras-related protein Rab-35","putative uncharacterized protein DDB_G0282133","nucleolar protein 56","DNA polymerase zeta catalytic subunit","uncharacterized protein PF11_0213","glutamate--cysteine ligase catalytic subunit","uncharacterized LOC100578200","probable serine/threonine-protein kinase dyrk2","dynein regulatory complex protein 1","uncharacterized protein PF11_0213","uncharacterized LOC100578341","apoptotic protease-activating factor 1-like","centrosomal protein of 152 kDa","eukaryotic translation initiation factor 2 subunit 2","aprataxin and PNK-like factor","protein strawberry notch-like","SUN domain-containing ossification factor","cleavage and polyadenylation specificity factor 73","zinc finger protein 85","centrosome-associated zinc finger protein CP190","E3 ubiquitin-protein ligase TRIM33","pseudouridylate synthase 7 homolog","uncharacterized LOC102654925","hepatocyte nuclear factor 4-gamma","ATP-dependent RNA helicase p62-like","probable ATP-dependent RNA helicase DDX55 homolog","structure-specific endonuclease subunit slx1","protein dopey homolog PFC0245c","uncharacterized protein PFB0145c","stress-induced-phosphoprotein 1","pre-rRNA processing protein FTSJ3","cell wall integrity and stress response component 1","probable protein BRICK1-B","putative uncharacterized protein DDB_G0282499","uncharacterized LOC113219268","exosome component 10","xaa-Pro aminopeptidase 3","protein MMS22-like","cyclic AMP response element-binding protein A","proline-, glutamic acid- and leucine-rich protein 1","uncharacterized LOC100577351","glycolipid transfer protein","protein asteroid","telomere-associated protein RIF1-like","small subunit processome component 20 homolog","protein inturned","uncharacterized LOC100578548","twinkle protein, mitochondrial","histone-lysine N-methyltransferase NSD2","translation factor GUF1 homolog, mitochondrial","galectin-8-like","pancreatic triacylglycerol lipase-like"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Genes showing both differential expression and methylation (Bayesian GLM)<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_meth_expr"}],"pageLength":50,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code># bayes_hypergeometric %&gt;%
 #   kable() %&gt;% kable_styling(full_width = FALSE)</code></pre>
 </div>
@@ -1141,8 +1210,6 @@ meth_geneExpr_relationship_data_caste &lt;- read_csv(&quot;output/caste_results.
   filter(!is.na(diff_meth) &amp; !is.na(logFC))
 
 write_csv(meth_geneExpr_relationship_data_caste, &quot;output/meth_geneExpr_relationship_data_caste.csv&quot;)
-
-
 
 hex_plot &lt;- function(dat){
   
@@ -1185,6 +1252,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/docs/figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/29848633580ef996483ac6a136f795cd1be881f4/docs/figure/compare_expression_and_methylation.Rmd/geneExpr-1.png" target="_blank">2984863</a>
@@ -1379,6 +1457,43 @@ cor_mods %&gt;%
            border_color = &quot;grey30&quot;, number_color = &quot;red&quot;,
            show_colnames = FALSE)</code></pre>
 <p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-5-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-5-1.png" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="correlation-statistics" class="section level3">
 <h3>Correlation statistics</h3>
@@ -1630,9 +1745,43 @@ m5: Queen-biased
 </table>
 </div>
 <p><img src="figure/compare_expression_and_methylation.Rmd/make_composite_plot-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<pre><code>quartz_off_screen 
-                2 </code></pre>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-make_composite_plot-1">
+Past versions of make_composite_plot-1.png
+</button>
+</p>
+<div id="fig-make_composite_plot-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/docs/figure/compare_expression_and_methylation.Rmd/make_composite_plot-1.png" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="compare-our-expression-and-methylation-results-to-past-work" class="section level2">
@@ -1675,8 +1824,9 @@ do_corrs &lt;- function(variable){
     mutate(p = replace(p, is.na(p), &quot;Inf&quot;)) %&gt;%
     dplyr::rename(Correlate = Var1, `-log10 adjusted p` = p) %&gt;%
     dplyr::select(Correlate, r, `-log10 adjusted p`) 
-}</code></pre>
-<pre class="r"><code>corrs &lt;- merged_data %&gt;%
+}
+
+corrs &lt;- merged_data %&gt;%
   rename_all(~ str_replace_all(.x, &quot;\n&quot;, &quot; &quot;)) %&gt;%
   dplyr::select(-gene) %&gt;%
   cor(use = &quot;pairwise.complete.obs&quot;, method = &quot;spearman&quot;)
@@ -1684,86 +1834,14 @@ do_corrs &lt;- function(variable){
 paletteLength &lt;- 50
 myColor &lt;- colorRampPalette(c(brewer.pal(9, &quot;Purples&quot;)[6], &quot;white&quot;, brewer.pal(9, &quot;Oranges&quot;)[7]))(paletteLength)
 myBreaks &lt;- c(seq(min(corrs, na.rm=T), 0, length.out = ceiling(paletteLength/2) + 1), 
-              seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out = floor(paletteLength/2)))
-
-pheatmap(corrs, color = myColor, breaks = myBreaks,
+              seq(max(corrs, na.rm=T)/paletteLength, max(corrs, na.rm=T), length.out = floor(paletteLength/2)))</code></pre>
+<pre class="r"><code>pheatmap(corrs, color = myColor, breaks = myBreaks,
          cellwidth = 9, cellheight = 9,
          clustering_distance_rows = &quot;correlation&quot;,
          clustering_distance_cols = &quot;correlation&quot;,
          border_color = &quot;grey30&quot;,
          cutree_rows = 6, cutree_cols = 6, show_colnames = F)</code></pre>
-<p><img src="figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" width="1152" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-big_cor_plot-1">
-Past versions of big_cor_plot-1.png
-</button>
-</p>
-<div id="fig-big_cor_plot-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/eebba8dff1fc5818d7ea0bf7901be6e5a776afbd/docs/figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" target="_blank">eebba8d</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-10-05
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/a6816f27ff8c141617abe85622fa11e938b17c97/docs/figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" target="_blank">a6816f2</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-09-30
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/29848633580ef996483ac6a136f795cd1be881f4/docs/figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" target="_blank">2984863</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-09-25
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/lukeholman/Methylation_Apis/blob/7515d53d223c21f594ca9e33d14f81acd98748a9/docs/figure/compare_expression_and_methylation.Rmd/big_cor_plot-1.png" target="_blank">7515d53</a>
-</td>
-<td>
-lukeholman
-</td>
-<td>
-2020-07-27
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/compare_expression_and_methylation.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/compare_expression_and_methylation.Rmd/big_cor_plot_save-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="meanings-and-sources-of-these-variables" class="section level3">
 <h3>Meanings and sources of these variables</h3>
@@ -1771,18 +1849,7 @@ lukeholman
 <pre class="r"><code>read_csv(&quot;data/apis_gene_comparisons/variable_meanings.csv&quot;) %&gt;%
   kable() %&gt;%
   kable_styling(full_width = FALSE) %&gt;%
-  column_spec(1, width = &quot;5em&quot;) %&gt;%
-  column_spec(2, width = &quot;5em&quot;) %&gt;%
-  column_spec(3, width = &quot;50em&quot;) %&gt;%
-  column_spec(4, width = &quot;50em&quot;) %&gt;%
   scroll_box(height = &quot;300px&quot;)  </code></pre>
-<pre><code>Parsed with column specification:
-cols(
-  Variable = col_character(),
-  Source = col_character(),
-  Description = col_character(),
-  Interpretation = col_character()
-)</code></pre>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:300px; ">
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
@@ -1803,590 +1870,590 @@ Interpretation
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 % mCpGs in gene body
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Present study
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Average % mCpGs inside the gene body (averaged over all eight 8h samples)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Shows the mean % mCpG, averaged over all CpG sites inside the gene. Output by BWASP
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 % mCpGs: QDL vs WDL (present study)
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Present study
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Mean % mCpGs for 8h queen-destined larvae minus the mean for 8h workder-destined larvae (averaged over all sites within the gene, then averaged over the four replicate samples)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean more methylation in QDL, low values mean more methylation in WDL, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Brain / CNS expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila brain and CNS, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Connectivity in the methylome
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Present study
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 “Connectedness” of each gene in the co-methylation network, i.e. the sum of all the correlations between the focal gene and all the other genes. Output by the WGCNA package (which calls this parameter kTotal).
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean the gene is strongly co-methylated with many other genes, lower values mean less co-methylation.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Connectivity in the transcriptome
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Present study
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 “Connectedness” of each gene in the co-expression network, i.e. the sum of all th correlations between the focal gene and all the other genes. Output by the WGCNA package (which calls this parameter kTotal).
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean the gene is strongly co-expressed with many other genes, lower values mean less co-expression.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Crop expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila crop, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in L2 larvae: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in expression between queen- and worker-destined L2 larvae (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in L3 larvae: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in expression between queen- and worker-destined L3 larvae (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in L4 larvae: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in expression between queen- and worker-destined L4 larvae (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in L5 larvae: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in expression between queen- and worker-destined L5 larvae (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in Pupae: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in expression between queen- and worker-destined pupae (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the gaster: Male vs Queen
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in gaster tissue from adult males versus adult, mated queens (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in males samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the gaster: Nurse vs Forager
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in gaster tissue from adult nurse workers versus adult, forager workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in males samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the gaster: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in gaster tissue from adult queens versus adult workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in males samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the head: Male vs Queen
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in head tissue from mated, adult queens and adult males (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the head: Nurse vs Forager
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in head tissue from adult nurse workers versus adult, forager workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the head: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in head tissue from adult queens versus adult workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the mesosoma: Male vs Queen
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in mesosoma tissue from mated, adult queens and adult males (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the mesosoma: Nurse vs Forager
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in mesosoma tissue from adult nurse workers versus adult, forager workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression in the mesosoma: Queen vs Worker
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Warner et al. (2018) Nature Comms 10.1038/s41467-019-10546-w
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in mesosoma tissue from adult queens versus adult workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in queen samples, low values mean greater expression in worker samples, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Expression: QDL vs WDL (present study)
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Present study
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in expression between queen- and worker-destined larva eat 8h post-grafting (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean greater expression in QDL, low values mean greater expression in WDL, intermediate value indicate no caste bias
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Eye expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila eye, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Fat body expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila fat body, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Head expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila head, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Hindgut expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila hindgut, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Larval histone modification (H3K27ac): QDL vs WDL
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Wojciechowski et al. 2018 Genome Biology, 10.1101/gr.236497.118
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 The authors collected chromatin from the head tissues of queen and worker larvae, 96h post-hatching, then measured histone modications using Chip-Seq. We re-calculated the caste difference in the Chip-Seq signal for each gene from the raw data (as described at <a href="https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R" class="uri">https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R</a>).
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean that chromatin inside this gene showed relatively more of this histone modification in queen-destined larvae, negative values mean the gene showed relatively more of this histone modification in worker-destined larvae.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Larval histone modification (H3K36me3): QDL vs WDL
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Wojciechowski et al. 2018 Genome Biology, 10.1101/gr.236497.118
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 The authors collected chromatin from the head tissues of queen and worker larvae, 96h post-hatching, then measured histone modications using Chip-Seq. We re-calculated the caste difference in the Chip-Seq signal for each gene from the raw data (as described at <a href="https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R" class="uri">https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R</a>).
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean that chromatin inside this gene showed relatively more of this histone modification in queen-destined larvae, negative values mean the gene showed relatively more of this histone modification in worker-destined larvae.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Larval histone modification (H3K4me3): QDL vs WDL
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Wojciechowski et al. 2018 Genome Biology, 10.1101/gr.236497.118
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 The authors collected chromatin from the head tissues of queen and worker larvae, 96h post-hatching, then measured histone modications using Chip-Seq. We re-calculated the caste difference in the Chip-Seq signal for each gene from the raw data (as described at <a href="https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R" class="uri">https://github.com/lukeholman/queen-pheromone-RNAseq/blob/master/code/wojciechowski_histone_analysis.R</a>).
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean that chromatin inside this gene showed relatively more of this histone modification in queen-destined larvae, negative values mean the gene showed relatively more of this histone modification in worker-destined larvae.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Malpighian tubules expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila MTs, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Mated spermatheca expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the mated female Drosophila spermatheca, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Midgut expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila midgut, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Ovary expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the Drosophila ovary, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Positive selection (gamma)
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Harpur et al. (2014) PNAS 10.1073/pnas.1315506111
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 The population size-scaled selection coefficient ‘gamma’ on nonsynonymous mutations, calculated from a Bayesian McDonald–Kreitman test.
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Negative gamma denotes purifying selection and positive gamma denotes positive selection
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Rectal pad expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila rectal pad, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Salivary gland expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila salivary gland, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Thoraciocoabdominal ganglion expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the female Drosophila TAG, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Virgin spermatheca expression
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Leader et al. (2018) Nucl acids Res 10.1093/nar/gkx976
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Expression level (FPKM) of the Drosophila 1-to-1 ortholog of the focal gene in the virgin female Drosophila spermatheca, relative to the expression of that gene in the other tissues listed here
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the expression level is higher in the focal tissue than the average expression across all tissues; negative values mean it is lower than the average
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Worker expression: Brood pheromone vs control
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Ma et al. (2019) BMC Genomics 10.1186/s12864-019-5923-7
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in worker bees exposed to ‘brood pheromone’ (a blend of 10 chemicals) versus a control (logFC)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean higher expression after EBO treatment, negative values mean lower expression (relative to controls). Expressed as Log fold change.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Worker expression: doublesex RNAi vs control
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Velasque et al (2018) bioRxiv. <a href="https://doi.org/10.1101/314492" class="uri">https://doi.org/10.1101/314492</a>
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Change in gene expression in the dsx RNAi treatment group relative to the control, expressed as Log fold change. Calculated from the raw data using EBSeq - see: <a href="https://github.com/lukeholman/Methylation_Apis/blob/master/code/create_merged_data.R" class="uri">https://github.com/lukeholman/Methylation_Apis/blob/master/code/create_merged_data.R</a>
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean the gene showed increased expression after dsx knockdown, negative values mean the gene showed reduced expression
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Worker expression: EBO pheromone vs control
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Ma et al. (2019) BMC Genomics 10.1186/s12864-019-5923-7
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in workers exposed to the pheromone EBO ((E)-beta-ocimene) versus a control (logFC)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Positive values mean higher expression after EBO treatment, negative values mean lower expression (relative to controls). Expressed as Log fold change.
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Worker expression: Pollen foragers vs Nectar foragers
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Ma et al. (2019) BMC Genomics 10.1186/s12864-019-5923-7
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in brain tissue from adult pollen-foraging workers versus nectar-forager workers (log fold difference)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 High values mean higher expression in workers foraging for pollen, low values mean higher expression in workers foraging for nectar
 </td>
 </tr>
 <tr>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Worker expression: Queen pheromone vs control
 </td>
-<td style="text-align:left;width: 5em; ">
+<td style="text-align:left;">
 Holman et al. (2019) Nature Comms 10.1038/s41467-019-09567-2
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Difference in gene expression in worker bees exposed to ‘queen pheromone’ (a blend of 5 chemicals) versus a control (logFC)
 </td>
-<td style="text-align:left;width: 50em; ">
+<td style="text-align:left;">
 Higher values denote a larger change following queen pheromone exposure, lower values denote a smaller change
 </td>
 </tr>
@@ -2477,6 +2544,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot1-1.png" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/76317390e3e4462fd4c8cbf3c2c70a38436c1340/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot1-1.png" target="_blank">7631739</a>
 </td>
 <td>
@@ -2494,7 +2572,7 @@ lukeholman
 lukeholman
 </td>
 <td>
-2020-10-05
+2020-10-04
 </td>
 </tr>
 <tr>
@@ -2576,6 +2654,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/dfd59c2663746d13395acdf38c3f83b4bb8e43ae/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot2-1.png" target="_blank">dfd59c2</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-02-18
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/76317390e3e4462fd4c8cbf3c2c70a38436c1340/docs/figure/compare_expression_and_methylation.Rmd/make_scatterplot2-1.png" target="_blank">7631739</a>
 </td>
 <td>
@@ -2593,7 +2682,7 @@ lukeholman
 lukeholman
 </td>
 <td>
-2020-10-05
+2020-10-04
 </td>
 </tr>
 <tr>
@@ -2689,9 +2778,9 @@ overlap_hypergeometric_test &lt;- function(n_overlaps, n_gene_set1, n_in_set2, o
 }
 
 # Get the list of genes that were studied by Velasque et al.
-velasque_gene_universe &lt;- read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_tpm.csv&quot;) %&gt;%
-  pull (gene_id)
-
+velasque_gene_universe &lt;- 
+  read_csv(&quot;https://raw.githubusercontent.com/MikheyevLab/dsx-rnai/master/data/genes_tpm.csv&quot;) %&gt;%
+  pull(gene_id)
 
 
 # Load our RSEM expression_data for each sample-gene combination
@@ -2699,7 +2788,6 @@ expression_data &lt;- as.matrix(read.table(&quot;data/Expression_data/Genes_2020
 n_genes_before_filtering &lt;- nrow(expression_data)
 gsg &lt;- goodSamplesGenes(t(expression_data), verbose = 0) # exclude 217 genes due to too many missing samples or zero variance
 expression_data &lt;- expression_data[gsg$goodGenes, gsg$goodSamples]
-
 
 # There are 9386 genes in common between our expression data and Velasque et al.&#39;s data
 shared_gene_universe &lt;- intersect(rownames(expression_data), velasque_gene_universe)
@@ -3035,14 +3123,6 @@ m0 (Unbiased)
 </tr>
 </tbody>
 </table>
-<!-- From Wojciechowski et al. 2018 Genome Biology https://genome.cshlp.org/content/early/2018/08/20/gr.236497.118.full.pdf+html -->
-<!-- We find that genes differentially enriched with H3K4me3 -->
-<!-- (rho = 0.28; P-value = 2.7 × 10−17) and H3K36me3 (rho = 0.15; P-value = -->
-<!-- 4.6 × 10−5 -->
-<!-- ) show significant correlation with transcriptional differences, suggesting that caste-specific H3K4me3 and H3K36me3 -->
-<!-- patterns associate with caste-specific transcriptional profiles (Fig. -->
-<!-- 2D). In contrast, genes differentially enriched with H3K27ac -->
-<!-- show a nonsignificant correlation with caste-specific transcriptional differences (rho = 0.04; P-value = 0.074). -->
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -3051,30 +3131,31 @@ m0 (Unbiased)
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.0.0 (2020-04-24)
+<pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Catalina 10.15.4
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
 LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 
 locale:
-[1] en_AU.UTF-8/en_AU.UTF-8/en_AU.UTF-8/C/en_AU.UTF-8/en_AU.UTF-8
+[1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] grid      stats     graphics  grDevices utils     datasets  methods  
+[8] base     
 
 other attached packages:
  [1] edgeR_3.30.1          limma_3.44.1          WGCNA_1.69           
- [4] fastcluster_1.1.25    dynamicTreeCut_1.63-1 showtext_0.9         
- [7] showtextdb_2.0        sysfonts_0.8.1        DT_0.13              
+ [4] fastcluster_1.1.25    dynamicTreeCut_1.63-1 showtext_0.9-1       
+ [7] showtextdb_3.0        sysfonts_0.8.2        DT_0.13              
 [10] gridExtra_2.3         RSQLite_2.2.0         DBI_1.1.0            
 [13] dbplyr_1.4.4          pheatmap_1.0.12       RColorBrewer_1.1-2   
 [16] kableExtra_1.1.0      forcats_0.5.0         stringr_1.4.0        
 [19] dplyr_1.0.0           purrr_0.3.4           readr_1.3.1          
-[22] tidyr_1.1.0           tibble_3.0.1          ggplot2_3.3.1        
-[25] tidyverse_1.3.0      
+[22] tidyr_1.1.0           tibble_3.0.1          ggplot2_3.3.2        
+[25] tidyverse_1.3.0       workflowr_1.6.2      
 
 loaded via a namespace (and not attached):
   [1] colorspace_1.4-1      ellipsis_0.3.1        rprojroot_1.3-2      
@@ -3082,37 +3163,37 @@ loaded via a namespace (and not attached):
   [7] rstudioapi_0.11       hexbin_1.28.1         farver_2.0.3         
  [10] bit64_0.9-7           AnnotationDbi_1.50.0  fansi_0.4.1          
  [13] lubridate_1.7.8       xml2_1.3.2            codetools_0.2-16     
- [16] splines_4.0.0         mnormt_2.0.0          doParallel_1.0.15    
- [19] impute_1.62.0         knitr_1.29            Formula_1.2-3        
- [22] jsonlite_1.7.0        workflowr_1.6.2       broom_0.5.6          
- [25] cluster_2.1.0         GO.db_3.11.4          png_0.1-7            
- [28] compiler_4.0.0        httr_1.4.1            backports_1.1.7      
- [31] assertthat_0.2.1      Matrix_1.2-18         cli_2.0.2            
- [34] later_1.0.0           acepack_1.4.1         htmltools_0.5.0      
- [37] tools_4.0.0           gtable_0.3.0          glue_1.4.1           
- [40] reshape2_1.4.4        Rcpp_1.0.4.6          Biobase_2.48.0       
- [43] cellranger_1.1.0      vctrs_0.3.0           preprocessCore_1.50.0
- [46] nlme_3.1-148          crosstalk_1.1.0.1     iterators_1.0.12     
- [49] psych_1.9.12.31       xfun_0.15             rvest_0.3.5          
- [52] lifecycle_0.2.0       scales_1.1.1          hms_0.5.3            
- [55] promises_1.1.0        parallel_4.0.0        curl_4.3             
- [58] yaml_2.2.1            memoise_1.1.0         rpart_4.1-15         
- [61] latticeExtra_0.6-29   stringi_1.4.6         highr_0.8            
- [64] S4Vectors_0.26.1      foreach_1.5.0         checkmate_2.0.0      
- [67] BiocGenerics_0.34.0   rlang_0.4.6           pkgconfig_2.0.3      
- [70] matrixStats_0.56.0    evaluate_0.14         lattice_0.20-41      
- [73] labeling_0.3          htmlwidgets_1.5.1     bit_1.1-15.2         
- [76] tidyselect_1.1.0      plyr_1.8.6            magrittr_1.5         
- [79] R6_2.4.1              IRanges_2.22.2        generics_0.0.2       
- [82] Hmisc_4.4-0           mgcv_1.8-31           pillar_1.4.4         
- [85] haven_2.3.1           whisker_0.4           foreign_0.8-80       
- [88] withr_2.2.0           survival_3.1-12       nnet_7.3-14          
- [91] modelr_0.1.8          crayon_1.3.4          tmvnsim_1.0-2        
- [94] rmarkdown_2.3         jpeg_0.1-8.1          locfit_1.5-9.4       
- [97] grid_4.0.0            readxl_1.3.1          data.table_1.12.8    
-[100] blob_1.2.1            git2r_0.27.1          reprex_0.3.0         
-[103] digest_0.6.25         webshot_0.5.2         httpuv_1.5.3.1       
-[106] stats4_4.0.0          munsell_0.5.0         viridisLite_0.3.0    </code></pre>
+ [16] splines_4.0.3         mnormt_2.0.0          doParallel_1.0.15    
+ [19] impute_1.62.0         knitr_1.30            Formula_1.2-3        
+ [22] jsonlite_1.7.0        broom_0.5.6           cluster_2.1.0        
+ [25] GO.db_3.11.4          png_0.1-7             compiler_4.0.3       
+ [28] httr_1.4.1            backports_1.1.7       assertthat_0.2.1     
+ [31] Matrix_1.2-18         cli_2.0.2             later_1.0.0          
+ [34] acepack_1.4.1         htmltools_0.5.0       tools_4.0.3          
+ [37] gtable_0.3.0          glue_1.4.2            reshape2_1.4.4       
+ [40] Rcpp_1.0.4.6          Biobase_2.48.0        cellranger_1.1.0     
+ [43] vctrs_0.3.0           preprocessCore_1.50.0 nlme_3.1-149         
+ [46] crosstalk_1.1.0.1     iterators_1.0.12      psych_1.9.12.31      
+ [49] xfun_0.19             rvest_0.3.5           lifecycle_0.2.0      
+ [52] scales_1.1.1          hms_0.5.3             promises_1.1.0       
+ [55] parallel_4.0.3        curl_4.3              yaml_2.2.1           
+ [58] memoise_1.1.0         rpart_4.1-15          latticeExtra_0.6-29  
+ [61] stringi_1.5.3         highr_0.8             S4Vectors_0.26.1     
+ [64] foreach_1.5.0         checkmate_2.0.0       BiocGenerics_0.34.0  
+ [67] rlang_0.4.6           pkgconfig_2.0.3       matrixStats_0.56.0   
+ [70] evaluate_0.14         lattice_0.20-41       labeling_0.3         
+ [73] htmlwidgets_1.5.1     bit_1.1-15.2          tidyselect_1.1.0     
+ [76] plyr_1.8.6            magrittr_2.0.1        R6_2.4.1             
+ [79] IRanges_2.22.2        generics_0.0.2        Hmisc_4.4-0          
+ [82] mgcv_1.8-33           pillar_1.4.4          haven_2.3.1          
+ [85] whisker_0.4           foreign_0.8-80        withr_2.2.0          
+ [88] survival_3.2-7        nnet_7.3-14           modelr_0.1.8         
+ [91] crayon_1.3.4          tmvnsim_1.0-2         rmarkdown_2.5        
+ [94] jpeg_0.1-8.1          locfit_1.5-9.4        readxl_1.3.1         
+ [97] data.table_1.12.8     blob_1.2.1            git2r_0.27.1         
+[100] reprex_0.3.0          digest_0.6.25         webshot_0.5.2        
+[103] httpuv_1.5.3.1        stats4_4.0.3          munsell_0.5.0        
+[106] viridisLite_0.3.0    </code></pre>
 </div>
 </div>
 </div>
@@ -3140,7 +3221,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
