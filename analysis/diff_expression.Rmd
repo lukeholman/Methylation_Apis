@@ -137,7 +137,7 @@ tibble(` ` = c("Number of transcripts prior to filtering:",
 
 ### Reduce and plot the transcriptomes using NMDS
 
-```{r nmds_transcriptome}
+```{r nmds_transcriptome, fig.showtext=TRUE, fig.height=5, fig.width=7}
 nmds_output <- dist(t(expression_data)) %>% nmds(maxdim = 3)
 nmds_r2 <- tail(nmds_output$r2, 1)
 nmds_output <- data.frame(Caste = sample_ids$caste,
@@ -153,9 +153,15 @@ nmds_output <- data.frame(Caste = sample_ids$caste,
 t0_dat <- nmds_output %>% filter(Time == 0) %>%
   gather(NMDS, Score, starts_with("NMDS"))
 
-bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
-          nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Worker"),
-          nmds_output %>% filter(Caste != "Time zero")) %>%
+nmds_plot <- bind_rows(
+  nmds_output %>% 
+    filter(Time == 0) %>% 
+    mutate(Caste = "Queen"),
+  nmds_output %>% 
+    filter(Time == 0) %>% 
+    mutate(Caste = "Worker"),
+  nmds_output %>% 
+    filter(Caste != "Time zero")) %>%
   gather(NMDS, Score, starts_with("NMDS")) %>%
   mutate(Caste = factor(Caste, c("Queen", "t0", "Worker"))) %>%
   ggplot(aes(Time, Score, colour = Caste, group = Caste)) + 
@@ -166,7 +172,12 @@ bind_rows(nmds_output %>% filter(Time == 0) %>% mutate(Caste = "Queen"),
                       name = "Cell type", drop = FALSE) + 
   facet_grid(NMDS~Replicate) + 
   xlab("Time since the larva was grafted (hours)") + 
-  theme_bw()
+  theme_bw() +
+  theme(text = element_text(family = nice_font),
+        strip.background = element_blank())
+
+saveRDS(nmds_plot, "figures/expression_NMDS_plot.rds")
+nmds_plot
 ```
 
 **Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (% variance explained: `r round(100*nmds_r2, 1)`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
@@ -761,7 +772,6 @@ top50 <- fig_dat %>%
   summarise(p = min(pval), .groups = "drop") %>% 
   arrange(p) %>% pull(term) %>% head(50)
 
-
 fig_dat %>%
   filter(term %in% top50) %>%
   make_pathway_figure("", "Hours post-grafting") %>%
@@ -775,35 +785,73 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ```{r echo = FALSE, eval = FALSE}
 
 # FINISH THIS
-# Save supplmenetary figures
+# Save supplementary figures
 remaining_terms <- fig_dat$term[!(fig_dat$term %in% top50)] %>% unique()
-remaining_terms[1:(length(remaining_terms)/2)]
+remaining_terms_part1 <- remaining_terms[1:(length(remaining_terms)/2)]
+remaining_terms_part2 <- remaining_terms[(1 + length(remaining_terms)/2):length(remaining_terms)]
 
+# Biological process (not including the ones in the composite GO figure in the main paper)
+left_side <- fig_dat %>%
+  filter(term %in% remaining_terms_part1) %>%
+  make_pathway_figure("", "Hours post-grafting")  +
+  theme(text = element_text(family = nice_font),
+        strip.text = element_blank(), 
+        strip.background = element_blank(), 
+        legend.position = "none")
+right_side <- fig_dat %>%
+  filter(term %in% remaining_terms_part2) %>%
+  make_pathway_figure("", "Hours post-grafting")  +
+  theme(text = element_text(family = nice_font),
+        strip.text = element_blank(), 
+        strip.background = element_blank(),
+        legend.position = "none") + 
+  scale_y_discrete(position = "right", expand = c(0,0))
 
-fig_dat %>%
-  filter(term %in% remaining_terms[1:(length(remaining_terms)/2)]) %>%
-  make_pathway_figure("", "Hours post-grafting") 
-
-fig_dat %>%
-  filter(term %in% remaining_terms[(1 + length(remaining_terms)/2):length(remaining_terms)]) %>%
-  make_pathway_figure("", "Hours post-grafting") 
-
-%>%
+grid.arrange(left_side, right_side, ncol=2) %>%
   saveRDS("figures/expr_GO_BPremainder_dmel.rds")
 
-GO_KEGG_results$GO_Dmel_annotations_caste %>%
-  filter(Test_type == "GO: Molecular function") %>%
-  make_pathway_figure("", "Hours post-grafting") %>%
+# Molecular function
+MF_terms <- GO_KEGG_results$GO_Dmel_annotations_caste %>%
+  filter(Test_type == "GO: Molecular function") 
+MF_terms_part1 <- MF_terms[1:(length(MF_terms)/2)]
+MF_terms_part2 <- MF_terms[(1 + length(MF_terms)/2):length(MF_terms)]
+
+left_side <- fig_dat %>%
+  filter(term %in% MF_terms_part1) %>%
+  make_pathway_figure("", "Hours post-grafting")  +
+  theme(text = element_text(family = nice_font),
+        strip.text = element_blank(), 
+        strip.background = element_blank(), 
+        legend.position = "none")
+right_side <- fig_dat %>%
+  filter(term %in% MF_terms_part1) %>%
+  make_pathway_figure("", "Hours post-grafting")  +
+  theme(text = element_text(family = nice_font),
+        strip.text = element_blank(), 
+        strip.background = element_blank(),
+        legend.position = "none") + 
+  scale_y_discrete(position = "right", expand = c(0,0))
+
+grid.arrange(left_side, right_side, ncol=2) %>%
   saveRDS("figures/expr_GO_MF_dmel.rds")
 
-GO_KEGG_results$GO_Dmel_annotations_caste %>%
+
+# (GO_KEGG_results$GO_Dmel_annotations_caste %>%
+#   filter(Test_type == "GO: Molecular function") %>%
+#   make_pathway_figure("", "Hours post-grafting")  +
+#      theme(text = element_text(family = nice_font))) %>%
+#   saveRDS("figures/expr_GO_MF_dmel.rds")
+
+(GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "GO: Cellular component") %>%
-  make_pathway_figure("", "Hours post-grafting") %>%
+  make_pathway_figure("", "Hours post-grafting") +
+     theme(text = element_text(family = nice_font))) %>%
   saveRDS("figures/expr_GO_CC_dmel.rds")
 
-GO_KEGG_results$GO_Dmel_annotations_caste %>%
+(GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type == "KEGG") %>%
-  make_pathway_figure("", "Hours post-grafting") %>%
+  make_pathway_figure("", "Hours post-grafting") +
+     theme(text = element_text(family = nice_font))) %>%
   saveRDS("figures/expr_KEGG_dmel.rds")
 ```
 
