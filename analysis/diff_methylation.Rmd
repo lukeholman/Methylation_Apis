@@ -439,7 +439,7 @@ make_lm_estimates <- function(comparison, timepoint1, timepoint2){
            comparison = facet_label) 
 }
 
-plot_lm_estimates <- function(lm_estimates, xl){
+plot_lm_estimates <- function(lm_estimates, xl, fill_colour){
   lm_estimates %>%
     mutate(mean_meth_diff.fit = 100 * mean_meth_diff.fit,
            mean_meth_diff.se.fit = 100 * mean_meth_diff.se.fit) %>%
@@ -447,7 +447,7 @@ plot_lm_estimates <- function(lm_estimates, xl){
     geom_errorbar(aes(ymin = (mean_meth_diff.fit - mean_meth_diff.se.fit*1.96),
                       ymax = (mean_meth_diff.fit + mean_meth_diff.se.fit*1.96), width = 0)) + 
     geom_hline(yintercept = 0, linetype = 2) + 
-    geom_point() + 
+    geom_point(fill = fill_colour, pch=21) + 
     coord_flip() + 
     facet_wrap(~ comparison) + xlab(NULL) + ylab(NULL) + 
     theme_bw() + 
@@ -461,17 +461,17 @@ plot_lm_estimates <- function(lm_estimates, xl){
 
 genomic_context_plot_caste <- 
   map_df(c(2,4,6,8), ~ make_lm_estimates("between_castes", .x, NULL)) %>% 
-  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)")
+  plot_lm_estimates("Mean caste difference in\n% mCpGs (\u00B195% CIs)", "#b19cd9") 
 
 genomic_context_plot_timeQ <-
   map2_df(combn(c(2,4,6,8), 2)[1,], 
           combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates("timeQ", .x, .y)) %>% 
-  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)")
+  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)", queen_colour)
 
 genomic_context_plot_timeW <- 
   map2_df(combn(c(2,4,6,8), 2)[1,], 
           combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates("timeW", .x, .y)) %>% 
-  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)")
+  plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)", worker_colour)
 
 saveRDS(genomic_context_plot_caste, "figures/genomic_context_plot_caste.rds")
 saveRDS(genomic_context_plot_timeQ, "figures/genomic_context_plot_timeQ.rds")
@@ -600,7 +600,7 @@ In the figures, the orange colour indicates that the focal sample has a methylat
 
 #### Heatmap of sites with $\ge 75$% methylation
 
-```{r meth_sample_distance_heatmap, width = 10, height = 14, message=FALSE, warning=FALSE}
+```{r meth_sample_distance_heatmap, width = 10, height = 14, message=FALSE, warning=FALSE, fig.showtext=TRUE}
 meth_sample_heatmap <- function(mean_cutoff, colour_limits, myColour){
   
   # include all sites measured to 5x coverage in all 36 samples
@@ -668,19 +668,24 @@ my_gtable$grobs[[4]]$gp <- gpar(fontfamily = nice_font, fontsize=7) # x axis lab
 my_gtable$grobs[[7]]$gp <- gpar(fontfamily = nice_font, fontsize=7) # Q/W legend
 
 saveRDS(my_gtable, "figures/heatmap75.rds")
-heatmap75
+grid.arrange(my_gtable)
 ```
 
 #### Heatmap of sites with $\ge 2.7$% methylation
 
-```{r message=FALSE, warning=FALSE, width = 10, height = 14}
+```{r message=FALSE, warning=FALSE, width = 10, height = 14, fig.showtext=TRUE}
 set.seed(10)
 myColour <- c(colorRampPalette(c(brewer.pal(9, "Purples")[7], "white"))(27),
     colorRampPalette(c("white", brewer.pal(9, "Oranges")[7]))(24)[-1])
 
 heatmap_all <- meth_sample_heatmap(mean_cutoff = 0, colour_limits = c(-3, 2.5), myColour)
-saveRDS(heatmap_all, "figures/heatmap_all.rds")
-heatmap_all
+
+my_gtable <- heatmap_all$gtable
+my_gtable$grobs[[4]]$gp <- gpar(fontfamily = nice_font, fontsize=7) # x axis labels
+my_gtable$grobs[[7]]$gp <- gpar(fontfamily = nice_font, fontsize=7) # Q/W legend
+
+saveRDS(my_gtable, "figures/heatmap_all.rds")
+grid.arrange(my_gtable)
 ```
 
 
@@ -1846,9 +1851,7 @@ bottom_right <- arrangeGrob(blankPlot, readRDS("figures/two_sites_for_big_meth_f
 # 840 x 756px
 ggsave("figures/composite_figure.pdf", grid.arrange(
   arrangeGrob(readRDS("figures/histo_fig1.rds"), 
-              readRDS("figures/genomic_context_plot_caste.rds") + 
-                geom_point(fill = "#b19cd9", pch=21) + 
-                xlab(NULL) + ylab("Mean caste difference in\n% mCpGs (\u00B195% CIs)"), 
+              readRDS("figures/genomic_context_plot_caste.rds") + xlab(NULL), 
               nrow = 1, widths = c(0.6,0.4)),
   arrangeGrob(blankPlot, hm, blankPlot, bottom_right, 
               nrow = 1, widths = c(0.03, 0.6, 0.05, 0.32)), 
@@ -2231,9 +2234,10 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
   make_pathway_figure("", "Hours post-grafting") %>%
   saveRDS("figures/meth_GO_for_composite_figure.rds")
 
-GO_KEGG_results$GO_Dmel_annotations_caste %>%
+(GO_KEGG_results$GO_Dmel_annotations_caste %>%
   filter(Test_type != "GO: Biological process" & term != "molecular_function") %>%
-  make_pathway_figure("", "Hours post-grafting") %>%
+  make_pathway_figure("", "Hours post-grafting") +
+     theme(text = element_text(family = nice_font))) %>%
   saveRDS("figures/meth_GO_others.rds")
 
 GO_KEGG_results$GO_Dmel_annotations_caste %>%
@@ -2323,8 +2327,9 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 
 ###### Figure
 ```{r fig.height=2.7, fig.width = 6.9}
-GO_KEGG_results$GO_Amel_annotations_caste %>%
-  make_pathway_figure("", "Hours post-grafting") %>%
+(GO_KEGG_results$GO_Amel_annotations_caste %>%
+  make_pathway_figure("", "Hours post-grafting") +
+     theme(text = element_text(family = nice_font))) %>%
   saveRDS("figures/meth_all_enrichments_Amel.rds")
 
 GO_KEGG_results$GO_Amel_annotations_caste %>%
