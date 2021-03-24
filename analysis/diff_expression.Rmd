@@ -464,7 +464,7 @@ In the following table, a **positive** log fold change in expression indicates *
 get_intersections <- function(results_df, split_by){
   results_df <- results_df %>%
     mutate(Gene = paste(`Gene symbol`, `Gene name`, sep = "~~")) %>%
-    filter(adj.P.Val <= 0.05)
+    filter(adj.P.Val <= 0.05) # note: this is the criterion used for significant diff. expression
   splitter <- results_df %>% pull(!! split_by)
   sig_genes <- results_df %>%
     pull(`Gene`) %>%
@@ -476,7 +476,7 @@ get_intersections <- function(results_df, split_by){
 }
 
 
-get_intersections(caste_results, "Time") %>% melt() %>% 
+caste_table <- get_intersections(caste_results, "Time") %>% melt() %>% 
   mutate(
     `Hour(s) with a significant caste difference:` = gsub(":", ", ", L1),
     split = strsplit(as.character(value), split = "~~"),
@@ -493,7 +493,11 @@ get_intersections(caste_results, "Time") %>% melt() %>%
       rename_at(vars(-`Gene symbol`), ~ paste("logFC at ", .x, "h", sep = "")),
     by = "Gene symbol") %>%
   arrange(-abs(`logFC at 2h` + `logFC at 4h` + `logFC at 6h` + `logFC at 8h`)) %>%
-  mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
+  mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) 
+
+caste_table %>% write_csv("figures/supp_tables/tableS10.csv")
+
+caste_table %>%
   my_data_table()
 ```
 
@@ -502,7 +506,7 @@ get_intersections(caste_results, "Time") %>% melt() %>%
 In the following table, a **positive** log fold change in expression indicates **higher expression at later times** than earlier times for a given type of larva (QDL or WDL). You can also view this table on a full web page [here](queen_time_table.html)  (including each gene's module membership according to the co-expression network analysis below), or press the buttons to export the table.
 
 ```{r temporal_Q}
-time_results %>% 
+timeQ_table <- time_results %>% 
   filter(Caste == "Queen") %>%
   get_intersections("Time") %>% 
   melt() %>% 
@@ -522,7 +526,11 @@ time_results %>%
       spread(Time, logFC) %>%
       rename_at(vars(-`Gene symbol`), ~ paste("logFC: ", .x, "h", sep = "")),
     by = "Gene symbol") %>%
-  mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
+  mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) 
+
+timeQ_table %>% write_csv("figures/supp_tables/tableS11.csv")
+
+timeQ_table %>%
   my_data_table()
 ```
 
@@ -531,7 +539,7 @@ time_results %>%
 You can also view this table on a full web page [here](worker_time_table.html) (including each gene's module membership according to the co-expression network analysis below), or press the buttons to export the table to PDF, .csv, or Excel formats.
 
 ```{r temporal_W}
-time_results %>% 
+timeW_table <- time_results %>% 
   filter(Caste == "Worker") %>%
   get_intersections("Time") %>% 
   melt() %>% 
@@ -551,12 +559,18 @@ time_results %>%
       spread(Time, logFC) %>%
       rename_at(vars(-`Gene symbol`), ~ paste("logFC: ", .x, "h", sep = "")),
     by = "Gene symbol") %>%
-  mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) %>%
-  # datatable(options = list(pageLength = 10), rownames = FALSE, filter = 'top', fillContainer = TRUE)
-  datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,
-            extensions = 'Buttons', options = list(
-              dom = 'Bfrtip', pageLength = 10,
-              buttons = c('copy', 'csv', 'excel', 'pdf')))
+  mutate_at(vars(starts_with("logFC")), ~ round(.x, 2)) 
+
+timeW_table %>% write_csv("figures/supp_tables/tableS12.csv")
+
+timeW_table %>%
+  my_data_table()
+
+# %>%
+#   datatable(rownames = FALSE, filter = 'top', fillContainer = TRUE,  # probably old code meant to delete?
+#             extensions = 'Buttons', options = list(
+#               dom = 'Bfrtip', pageLength = 10,
+#               buttons = c('copy', 'csv', 'excel', 'pdf')))
 ```
 
 
@@ -1523,7 +1537,7 @@ readRDS("figures/eigengenes_expression_network.rds")
 
 ### Calculate effect sizes for the module eigengenes {.tabset}
 
-**Table SX:** The table shows a summary of the posterior estimate of the difference in mean module eigengenes between queen- and worker-destined larvae at each of the four time points. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-`r num_modules` vector of eigengenes for the `r num_modules` modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure XXX), and fit "Replicate" as a random intercept. The eigengenes were mean-centred and scaled to unit variance, so the units in the 'Caste difference' column can be interpreted as the standardised effect size (Cohen's $d$, where positive values mean higher expression of the module in queens relative to workers). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed $p$-value).
+**Table SX:** The table shows a summary of the posterior estimate of the difference in mean module eigengenes between queen- and worker-destined larvae at each of the four time points. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-`r num_modules` vector of eigengenes for the `r num_modules` modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure 4A), and adjusted for Replicate. The eigengenes were mean-centred and scaled to unit variance, so the units in the 'Caste difference' column can be interpreted as the standardised effect size (Cohen's $d$, where positive values mean higher expression of the module in queens relative to workers). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed $p$-value).
 
 #### Full stats table
 ```{r}
@@ -1888,6 +1902,10 @@ present_module_GO_table <- function(module_GO_tbl){
     mutate(Module = str_remove_all(Module, " ")) %>%
     mutate_if(is.numeric, ~ round(.x, 3)) 
 }
+
+present_module_GO_table(module_GO_table_dmel) %>%
+  write_csv("output/module_GO_table_expr.csv")
+
 present_module_GO_table(module_GO_table_dmel) %>%
   my_data_table()
 ```

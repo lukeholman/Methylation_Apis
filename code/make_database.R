@@ -118,7 +118,7 @@ by_site <- tbl(db, "methylation_counts") %>%
   left_join(tbl(db, "site_annotations"), by = "site")
 
 # Count up the Cs and Ts by gene. This includes all the sites that are between the
-# stop and start codons of all the exons of the gene (i.e. CDS and UTRs, but not promoters)
+# stop and start codons of all the exons of the gene (i.e. CDS, introns, and UTRs, but not promoters)
 
 fully_covered_sites <- tbl(db, "site_info") %>% # about 5 million sites
   filter(n_samples==36) %>%

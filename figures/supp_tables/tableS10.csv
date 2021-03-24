@@ -1,0 +1,2849 @@
+Gene symbol,Gene name,Hour(s) with a significant caste difference:,logFC at 2h,logFC at 4h,logFC at 6h,logFC at 8h
+LOC107964173,uncharacterized LOC107964173,"4, 6, 8",0.05,3.93,4.81,6.33
+LOC408817,alanine--glyoxylate aminotransferase 2-like,"4, 6, 8",1.03,3.61,3.76,3.23
+LOC412843,phosphoenolpyruvate carboxykinase,"4, 6, 8",0.39,2.53,3.79,4.79
+LOC107965350,uncharacterized LOC107965350,"4, 6, 8",0.4,3.84,3.4,3.6
+Hex70a,hexamerin 70a,"4, 6, 8",0.42,2.74,3.76,4.04
+HEX70b,hexamerin 70b,"4, 6, 8",0.37,3.25,3.6,3.45
+LOC406105,esterase A2,"4, 6, 8",0.75,3.36,2.7,3.33
+LOC102656472,uncharacterized LOC102656472,"6, 8",-0.32,2.66,4.37,3
+LOC113218740,uncharacterized LOC113218740,"4, 6, 8",1.37,2.66,2.28,3.16
+Hex70c,hexamerin 70c,8,0.43,3.08,2.76,2.66
+LOC107965565,uncharacterized LOC107965565,"4, 6, 8",0.84,3.19,2.33,2.48
+LOC102656066,uncharacterized LOC102656066,"4, 6, 8",0.12,2.61,2.63,3.29
+LOC113219321,uncharacterized LOC113219321,"4, 6, 8",1.85,2.81,2.08,1.9
+LOC113219088,uncharacterized LOC113219088,"4, 6, 8",-0,3.15,2.16,3.22
+LOC113219221,esterase E4-like,"4, 6, 8",0.84,1.99,2.4,3.24
+LOC725540,uncharacterized LOC725540,"4, 6, 8",0.66,2.51,2.59,2.5
+LOC113218825,uncharacterized LOC113218825,"4, 6, 8",0.88,2.95,2.19,2.12
+Hex110,hexamerin 110,"4, 6, 8",0.65,2.19,2.65,2.22
+LOC550965,probable cytochrome P450 6a14,"4, 6, 8",0.68,1.88,2.11,2.6
+LOC107964278,uncharacterized LOC107964278,"4, 6, 8",0.45,2.12,1.99,2.7
+LOC725784,uncharacterized LOC725784,"4, 6, 8",0.8,1.47,2.09,2.73
+LOC100578397,uncharacterized LOC100578397,"4, 6, 8",0.67,1.78,2.24,2.16
+LOC113218911,uncharacterized LOC113218911,"4, 6, 8",-0.06,1.92,1.52,3.42
+LOC107966105,uncharacterized LOC107966105,"4, 6, 8",0.57,1.91,1.98,2.16
+LOC107964635,uncharacterized LOC107964635,"4, 6, 8",1.06,1.72,1.48,2.14
+LOC102655070,uncharacterized LOC102655070,"4, 6, 8",0.16,2.24,1.83,2.15
+LOC102654601,uncharacterized LOC102654601,"4, 6, 8",0.19,2,1.81,2.31
+LOC113218518,chymotrypsin inhibitor-like,"4, 6, 8",-0.4,1.99,1.63,3.08
+LOC408650,inositol oxygenase,"4, 6, 8",0.01,1.62,2.15,2.52
+LOC107965336,uncharacterized LOC107965336,6,0.73,2.05,2.18,1.29
+LOC727243,uncharacterized LOC727243,"4, 6, 8",0.5,2.24,2.15,1.36
+LOC113219104,uncharacterized LOC113219104,"4, 6, 8",0.72,1.67,1.09,2.65
+Grd,GABA-gated ion channel,"4, 6, 8",0.62,2.06,1.65,1.73
+LOC102654936,uncharacterized LOC102654936,"4, 6, 8",0.17,1.87,2.08,1.93
+LOC102656859,uncharacterized LOC102656859,"6, 8",0.45,1.32,1.86,2.4
+LOC102656634,uncharacterized LOC102656634,"4, 6, 8",0.45,1.77,1.7,2.09
+LOC107963970,uncharacterized LOC107963970,"4, 6, 8",-0.19,2.22,2.03,1.95
+LOC100578731,uncharacterized LOC100578731,"4, 6, 8",0.32,1.73,1.96,1.89
+LOC102656747,uncharacterized LOC102656747,"4, 8",0.86,2.22,0.62,2.15
+LOC410201,phosphatidate phosphatase LPIN3,"4, 6",0.75,2.15,1.98,0.93
+LOC413575,facilitated trehalose transporter Tret1,"4, 6, 8",0.72,1.55,2.21,1.28
+LOC413574,26S proteasome non-ATPase regulatory subunit 2,"4, 6, 8",0.11,1.78,1.97,1.84
+LOC102656625,uncharacterized LOC102656625,4,0.4,2.99,1.53,0.77
+LOC113219212,uncharacterized LOC113219212,"4, 6, 8",0.53,1.87,1.4,1.84
+LOC409628,neutral ceramidase,"4, 6, 8",0.43,1.45,1.88,1.87
+LOC409709,putative glucosylceramidase 4,8,0.68,0.87,1.35,2.47
+LOC102656630,uncharacterized LOC102656630,"4, 8",-0.32,2.24,0.82,2.65
+LOC408299,purine nucleoside phosphorylase,"4, 6, 8",0.38,1.46,1.61,1.87
+LOC100577527,uncharacterized LOC100577527,"6, 8",-0.31,1.56,1.96,2.11
+LOC408859,pyrroline-5-carboxylate reductase 2,"4, 6, 8",0.86,1.72,1.51,1.14
+LOC412310,cilia- and flagella-associated protein 20-like,"6, 8",0.28,0.3,1.89,2.75
+LOC102655519,uncharacterized LOC102655519,"4, 6, 8",0.59,1.45,1.34,1.66
+LOC100577827,uncharacterized LOC100577827,"4, 6, 8",0.28,1.81,1.29,1.59
+LOC551046,cys-loop ligand-gated ion channel subunit 12344,"6, 8",0.22,0.92,1.54,2.23
+LOC724993,uncharacterized LOC724993,"4, 6, 8",-0.04,1.58,1.8,1.57
+LOC102654641,uncharacterized LOC102654641,6,-0.18,1.18,2.74,1.15
+LOC107964868,uncharacterized LOC107964868,"4, 6, 8",0.28,1.03,1.53,2.02
+LOC102653939,uncharacterized LOC102653939,6,1.21,1.1,1.87,0.66
+LOC107965086,uncharacterized LOC107965086,"6, 8",0.12,0.86,2.13,1.69
+LOC724644,uncharacterized LOC724644,"4, 6, 8",0.47,1.64,1.45,1.22
+LOC410626,sodium-coupled monocarboxylate transporter 1,"4, 6, 8",0.57,1.17,1.53,1.44
+LOC725305,uncharacterized LOC725305,"4, 6, 8",0.15,1.65,1.77,1.11
+LOC726418,flavin-containing monooxygenase FMO GS-OX-like 4,"6, 8",0.42,0.7,1.43,2.1
+LOC725708,uncharacterized LOC725708,"4, 6, 8",0.27,1.42,1.21,1.73
+LOC410614,tubulin alpha chain,8,0.26,1.16,0.88,2.33
+LOC100576617,uncharacterized LOC100576617,"4, 6, 8",0.15,1.31,1.47,1.71
+CSP4,chemosensory protein 4,"6, 8",0.58,1.13,1.48,1.43
+LOC552771,hydroxyacid oxidase 1,"4, 6, 8",0.15,1.22,1.39,1.8
+LOC100577669,uncharacterized LOC100577669,"6, 8",0.48,1.1,1.61,1.36
+LOC100576637,trypsin 5G1,"4, 8",0.12,1.49,1.08,1.84
+LOC107964743,uncharacterized LOC107964743,"4, 6, 8",0.23,1.39,1.49,1.4
+LOC408453,cytochrome P450 9e2,"4, 8",0.25,1.21,0.93,2.12
+LOC112935903,cytochrome P450 6a14-like,6,0.71,0.93,1.9,0.96
+LOC726871,synaptic vesicle glycoprotein 2B,"4, 6, 8",0.74,1.42,1.36,0.95
+LOC113219316,uncharacterized LOC113219316,4,-0.07,2.6,1.11,0.83
+LOC411099,protein yippee-like 1,"4, 6, 8",0.41,1.83,1.09,1.11
+LOC113218934,uncharacterized LOC113218934,8,0.89,1.2,0.97,1.35
+LOC107963967,serine protease inhibitor 3,"6, 8",0.3,1.42,1.41,1.24
+LOC552804,tubulin-specific chaperone cofactor E-like protein,"4, 6, 8",0.23,1.36,1.36,1.42
+LOC102656564,uncharacterized LOC102656564,"6, 8",0.11,0.41,2.08,1.76
+LOC551044,"glucose dehydrogenase [FAD, quinone]","4, 6, 8",-0.02,1.24,1.39,1.71
+LOC410424,"pyruvate dehydrogenase (acetyl-transferring) kinase, mitochondrial","4, 6, 8",0.58,1.45,1.17,1.11
+LOC100578606,uncharacterized LOC100578606,"6, 8",0.58,1.27,1.22,1.25
+Hbg2,alpha-glucosidase,"4, 6, 8",0.22,0.93,1.42,1.72
+LOC102654592,coiled-coil domain-containing protein 112,"4, 6, 8",0.47,1.45,1.3,0.99
+LOC100577539,uncharacterized LOC100577539,"6, 8",0.33,0.6,1.43,1.84
+LOC100577142,G-protein coupled receptor Mth,"4, 6, 8",0.29,1,1.29,1.61
+LOC100578532,uncharacterized LOC100578532,"4, 6, 8",-0.22,1.41,1.46,1.5
+LOC107965483,uncharacterized LOC107965483,4,0.09,1.82,0.98,1.25
+LOC552459,glycine-rich cell wall structural protein,"4, 8",0.14,1.24,0.88,1.85
+LOC107964972,uncharacterized LOC107964972,8,0.24,0.66,1.42,1.78
+LOC102653975,uncharacterized LOC102653975,"4, 6, 8",0.16,1.11,1.27,1.47
+LOC102654939,uncharacterized LOC102654939,"4, 6, 8",0.01,1.19,1.28,1.51
+LOC413109,uncharacterized LOC413109,"6, 8",0.07,1.23,1.58,1.1
+LOC100577135,protein amnionless,6,-1.45,-0.16,-1.6,-0.76
+LOC411188,L-lactate dehydrogenase,"6, 8",0.32,0.69,1.19,1.77
+LOC552024,myo-inositol 2-dehydrogenase,6,0.46,0.83,1.75,0.89
+LOC406081,glucose oxidase,"4, 6, 8",0.18,1.09,1.01,1.63
+LOC102655088,uncharacterized LOC102655088,"6, 8",0.2,0.99,1.1,1.62
+LOC113218776,uncharacterized LOC113218776,"6, 8",0.55,0.1,1.65,1.61
+LOC113219028,pancreatic triacylglycerol lipase-like,"4, 6, 8",0.12,1.16,1.58,1.04
+LOC102653666,uncharacterized LOC102653666,"6, 8",-0.21,1.07,1.38,1.64
+LOC102656882,cytochrome P450 9e2-like,4,0.45,1.51,0.88,1.01
+LOC107965318,uncharacterized LOC107965318,"6, 8",0.01,0.88,1.42,1.54
+LOC100576901,cGMP-dependent protein kinase 1,"4, 6, 8",0.44,1.21,1.24,0.95
+LOC410535,protein lozenge,"6, 8",-0.21,1.11,1.21,1.73
+LOC410495,cytochrome P450 307a1,8,0.28,0.94,1.1,1.51
+LOC107965219,feline leukemia virus subgroup C receptor-related protein 2,"4, 6, 8",-0.33,-0.79,-1.01,-1.7
+LOC552523,L-threonine ammonia-lyase,8,0.49,0.86,0.98,1.49
+LOC113219113,uncharacterized LOC113219113,"4, 6, 8",0.57,0.81,0.84,1.58
+LOC107965355,uncharacterized LOC107965355,8,0.15,1.13,0.71,1.8
+LOC113219133,uncharacterized LOC113219133,8,0.09,1.15,0.92,1.61
+LOC411207,CCAAT/enhancer-binding protein,"4, 6, 8",0.28,0.76,1.34,1.39
+LOC100577013,uncharacterized LOC100577013,8,0.45,1.07,0.99,1.27
+LOC100578928,calcium and integrin-binding protein 1,"4, 6, 8",0.45,1.18,1.1,1.03
+LOC725270,sentrin-specific protease 6,6,-0.34,-0.56,-1.8,-1.06
+LOC413596,receptor-type guanylate cyclase gcy-4,"4, 6",0.65,1.48,1.01,0.61
+LOC725263,tumor protein p53-inducible nuclear protein 2,"4, 6, 8",0.43,1.28,0.88,1.16
+LOC102654050,uncharacterized LOC102654050,"4, 8",0.27,1.39,1.02,1.06
+LOC102653589,uncharacterized LOC102653589,8,0.12,0.68,1.17,1.76
+LOC409448,collagen alpha-1(IX) chain,"4, 6, 8",-0.2,-0.88,-1.47,-1.16
+LOC100577164,uncharacterized LOC100577164,"6, 8",0.48,0.63,1.34,1.26
+LOC102654676,neurofilament heavy polypeptide,"4, 6, 8",0.23,1.06,0.9,1.49
+LOC725202,chymotrypsin inhibitor,"4, 8",-0.07,1.41,0.76,1.55
+LOC100578546,uncharacterized LOC100578546,"2, 4, 6",-1.26,-0.88,-1.14,-0.37
+LOC724608,transient receptor potential,8,0.46,1.14,0.94,1.1
+LOC100577777,cysteine-rich venom protein 1,8,0.3,0.53,1.14,1.67
+LOC102655564,uncharacterized LOC102655564,"4, 6, 8",0.21,0.91,1.16,1.36
+LOC113218907,uncharacterized LOC113218907,"6, 8",0.25,0.55,1.38,1.44
+LOC724552,elongation of very long chain fatty acids protein AAEL008004,"4, 6, 8",0.53,0.73,1.2,1.16
+LOC100578557,solute carrier family 46 member 3,8,-0.04,0.85,1.25,1.56
+LOC100578354,uncharacterized LOC100578354,8,-0.19,1.1,1.28,1.41
+LOC552592,facilitated trehalose transporter Tret1,4,1.66,1.64,0.68,-0.43
+LOC411186,synaptic vesicle glycoprotein 2C,"4, 6",0.24,1.23,1.37,0.71
+LOC100577537,uncharacterized LOC100577537,"6, 8",0.32,0.44,0.97,1.83
+LOC725578,uncharacterized LOC725578,"4, 6, 8",0.6,1.11,0.9,0.93
+LOC102654965,uncharacterized LOC102654965,"6, 8",0.09,0.7,1.4,1.33
+LOC102653599,uncharacterized LOC102653599,4,0.67,1.56,0.43,0.86
+LOC113218724,uncharacterized LOC113218724,"6, 8",0.26,0.75,1.26,1.25
+LOC113219126,uncharacterized LOC113219126,8,0.58,0.83,0.93,1.18
+Fibroin3,silk fibroin 3,8,-0.13,1.17,1,1.48
+LOC107965484,uncharacterized LOC107965484,4,-0.13,2.05,0.99,0.6
+LOC552149,aquaporin AQPAn.G,"4, 6, 8",0.43,0.79,0.9,1.4
+LOC410732,3-phosphoinositide-dependent protein kinase 1,"4, 6, 8",0.36,1.15,0.71,1.27
+LOC727110,yellow-x2,"6, 8",0.01,0.74,1.1,1.62
+Vg,vitellogenin,"6, 8",0.05,-0.31,-1.37,-1.84
+LOC726362,4-coumarate--CoA ligase 1,"4, 6, 8",0.3,0.87,1.1,1.2
+LOC725890,kinesin F,6,0.23,0.54,1.79,0.89
+LOC107964224,uncharacterized LOC107964224,"6, 8",0.02,-0.83,-1.12,-1.46
+LOC102655661,ecdysone-induced protein 74EF-like,"4, 6, 8",0.36,1.21,1,0.81
+LOC550930,TGF-beta receptor type-1,8,0.46,1.28,0.51,1.13
+LOC552792,nanchung,6,0.49,0.83,1.34,0.69
+LOC113219215,uncharacterized LOC113219215,"4, 6, 8",-0.33,0.78,1.2,1.67
+Or63,odorant receptor 63,"4, 8",0.06,1.15,0.68,1.43
+LOC107964196,uncharacterized LOC107964196,8,0.19,1,0.64,1.5
+LOC102654381,uncharacterized LOC102654381,"4, 6, 8",0.55,0.93,0.63,1.22
+LOC100577185,uncharacterized LOC100577185,8,-0.29,-0.72,-0.83,-1.47
+LOC100576446,solute carrier family 26 member 6,"4, 6, 8",0.13,0.69,1.16,1.32
+LOC102656189,uncharacterized LOC102656189,"4, 6, 8",0.17,1.01,0.85,1.28
+LOC725978,translation initiation factor IF-2,"4, 8",0.19,1.22,0.59,1.29
+LOC100578420,uncharacterized LOC100578420,"4, 6, 8",0.17,1.12,1,1
+LOC726040,4-coumarate--CoA ligase 1,"4, 6, 8",0.31,0.49,1.06,1.43
+LOC551957,headcase protein,"4, 6, 8",0.3,1.2,1.01,0.77
+LOC725159,probable cytochrome P450 6a14,8,0.44,-0.69,-1,-2.02
+LOC100576458,urea transporter 2,"6, 8",0.45,0.35,0.98,1.49
+LOC724216,juvenile hormone acid O-methyltransferase,"6, 8",0.09,0.67,0.92,1.56
+LOC113219372,organic cation transporter protein-like,4,-0.03,1.41,1.09,0.76
+LOC724872,uncharacterized LOC724872,"6, 8",-0.06,0.24,1.58,1.47
+LOC113219226,protein AF-9-like,8,-0.26,0.63,1.11,1.74
+LOC724518,serine-rich adhesin for platelets,"4, 6, 8",0.24,0.69,1.07,1.2
+LOC724565,trypsin-7,8,0.24,0.86,0.55,1.55
+LOC410167,sorbitol dehydrogenase,"6, 8",-0.1,0.75,1,1.55
+LOC100578733,nose resistant to fluoxetine protein 6,"4, 6, 8",-0.25,-0.74,-1.13,-1.07
+LOC410562,serine/threonine-protein kinase meng-po,"6, 8",0.17,0.81,1,1.2
+LOC410465,UNC93-like protein,8,0.14,0.9,1.04,1.1
+LOC408666,uncharacterized LOC408666,"4, 6, 8",0.01,0.6,1.19,1.37
+CSP2,chemosensory protein 2,"6, 8",0.08,0.75,1.22,1.1
+LOC411978,myrosinase 1,"4, 6, 8",0.18,0.63,1.18,1.16
+LOC107964158,uncharacterized LOC107964158,"4, 6, 8",0.12,0.98,0.94,1.1
+LOC551086,zinc finger protein chinmo,4,0.3,1.43,0.72,0.68
+LOC113218875,uncharacterized LOC113218875,"4, 6, 8",0.52,0.95,0.9,0.75
+LOC413263,putative inorganic phosphate cotransporter,"4, 6",0.89,1.11,0.96,0.15
+Nrx-1,neurexin 1,4,0.38,1.1,0.97,0.63
+LOC102655235,uncharacterized LOC102655235,8,0.36,0.75,1.01,0.97
+LOC726969,farnesyl pyrophosphate synthase,"6, 8",-0.15,0.81,1.17,1.25
+LOC724304,ATP-binding cassette sub-family G member 1,"4, 6, 8",0.08,1,0.88,1.11
+LOC102656575,uncharacterized LOC102656575,"4, 6, 8",-0.07,1.02,1.14,0.99
+LOC410013,calexcitin-2,"6, 8",-0.13,-0.51,-1.15,-1.28
+LOC409667,BCL2/adenovirus E1B 19 kDa protein-interacting protein 3,"4, 6, 8",0.14,1.1,0.95,0.88
+LOC113219364,uncharacterized LOC113219364,"4, 8",-0.35,-1.51,-0.24,-0.98
+LOC107965117,uncharacterized LOC107965117,"6, 8",-0.13,0.86,0.96,1.37
+LOC107964291,uncharacterized LOC107964291,"6, 8",0.32,0.88,0.99,0.86
+LOC724952,sodium-independent sulfate anion transporter,8,0.51,0.84,0.8,0.9
+LOC724211,cytochrome P450 9e2,"6, 8",0.36,0.4,1.24,1.05
+LOC724561,E3 ubiquitin-protein ligase DCST1,"4, 6, 8",0.25,0.94,0.82,1.02
+LOC113219098,uncharacterized LOC113219098,4,0.46,1.39,0.78,0.4
+LOC551094,fatty-acid amide hydrolase 2-B,"6, 8",0.34,0.78,0.96,0.94
+LOC726230,cAMP-responsive element-binding protein-like 2,"6, 8",0.29,0.72,1.13,0.87
+LOC724433,kell blood group glycoprotein homolog,8,0.34,0.5,0.96,1.21
+LOC411093,testis-specific serine/threonine-protein kinase 1,"4, 6, 8",0.37,0.7,0.82,1.12
+LOC550828,elongation of very long chain fatty acids protein AAEL008004,6,-0.12,-0.83,-1.56,-0.49
+LOC409792,electroneutral sodium bicarbonate exchanger 1,"6, 8",0.4,0.43,0.94,1.21
+LOC726347,uncharacterized LOC726347,8,0.58,0.61,0.81,0.98
+LOC409829,F-box/LRR-repeat protein 20,"4, 8",0.39,1.22,0.57,0.79
+ACSF2,acyl-CoA synthetase family member 2,"6, 8",-0.09,0.69,0.87,1.49
+LOC113219197,uncharacterized LOC113219197,8,0.25,-1.08,-0.68,-1.43
+LOC412855,Down syndrome cell adhesion molecule-like protein Dscam2,6,0.57,0.81,1.01,0.55
+LOC408718,leukocyte tyrosine kinase receptor,"4, 6, 8",0.24,0.88,0.84,0.98
+LOC113219095,uncharacterized LOC113219095,8,0.41,0.61,0.75,1.17
+LOC408456,facilitated trehalose transporter Tret1-2 homolog,"4, 6, 8",0.14,0.98,0.99,0.82
+LOC552640,ammonium transporter 1-like,"6, 8",0.27,0.48,1.16,1.01
+LOC409361,dopamine N-acetyltransferase,"6, 8",0.45,0.45,1.02,0.99
+LOC100577053,"glycine dehydrogenase (decarboxylating), mitochondrial","4, 6, 8",0.17,0.77,0.99,0.98
+LOC725114,chymotrypsin inhibitor,"4, 6, 8",-0.23,0.88,0.91,1.36
+LOC113218752,uncharacterized LOC113218752,"4, 8",-0.08,1.28,0.52,1.17
+CPR5,cuticular protein 5,8,0.32,0.89,0.61,1.06
+LOC408467,chloride channel protein 2,"4, 6, 8",0.56,0.75,0.83,0.75
+LOC727522,uncharacterized LOC727522,"4, 6",0.4,0.93,0.94,0.61
+LOC102656121,uncharacterized LOC102656121,"6, 8",0.59,0.48,0.78,1.03
+LOC107964899,uncharacterized LOC107964899,8,-0.19,0.92,0.73,1.41
+LOC410654,cholecystokinin receptor-like,8,0.4,0.46,0.78,1.23
+LOC100576425,uncharacterized LOC100576425,"4, 6, 8",0.01,0.9,1,0.96
+LOC100579047,cuticular protein 10,8,0.12,0.65,0.65,1.43
+LOC725230,histone H4,"4, 6, 8",-0,0.87,0.7,1.29
+LOC107964601,uncharacterized LOC107964601,6,-0.18,0.83,1.25,0.95
+LOC410353,CUGBP Elav-like family member 4,4,0.49,1.17,0.48,0.7
+E75,ecdysone-induced protein 75,"4, 6, 8",-0.06,1.15,0.69,1.02
+LOC724421,fibrillin-2,"6, 8",-0.1,0.6,0.97,1.33
+LOC726905,cilia- and flagella-associated protein 61-like,6,0.11,0.86,1.15,0.68
+LOC552297,low density lipoprotein receptor adapter protein 1-B,"6, 8",0.52,0.4,1.02,0.85
+LOC412774,uncharacterized LOC412774,8,0.3,0.59,0.61,1.27
+LOC100576913,uncharacterized LOC100576913,8,-0.33,0.96,0.77,1.38
+LOC100576895,putative fatty acyl-CoA reductase CG5065,8,-0.02,0.71,0.84,1.25
+LOC100578017,uncharacterized LOC100578017,"4, 8",0.06,0.96,0.78,0.95
+LOC409039,uncharacterized LOC409039,"4, 8",0.3,1.07,0.5,0.88
+LOC552193,proton-coupled amino acid transporter-like protein CG1139,"4, 6, 8",0.54,0.7,0.86,0.64
+LOC102656221,uncharacterized LOC102656221,6,-0.09,0.88,1.08,0.86
+LOC102656592,uncharacterized LOC102656592,"6, 8",-0.87,0.52,1.42,1.66
+LOC100576841,uncharacterized LOC100576841,"4, 6, 8",0.41,0.64,0.71,0.97
+LOC408805,progestin and adipoQ receptor family member 3,6,0.79,0.7,0.76,0.48
+LOC411048,sestrin homolog,4,0.44,1.22,0.52,0.54
+LOC411297,insulin-like peptide receptor,"4, 8",-0,1.25,0.54,0.94
+LOC113219373,uncharacterized LOC113219373,"4, 8",-0.06,-1.36,0,-1.3
+LOC408697,KN motif and ankyrin repeat domain-containing protein 3,"4, 6",0.63,0.84,0.85,0.38
+LOC412088,mucin-12,8,0.23,0.74,0.68,1.05
+LOC409187,MD-2-related lipid-recognition protein,"4, 6, 8",0.22,0.73,0.75,1
+LOC102654405,uncharacterized LOC102654405,8,0.4,0.86,0.62,0.81
+LOC725698,uncharacterized LOC725698,8,0.54,0.38,0.82,0.95
+LOC107966086,uncharacterized LOC107966086,8,0.17,0.79,0.81,0.92
+LOC725439,uncharacterized LOC725439,"6, 8",-0.2,-0.5,-0.68,-1.3
+LOC102653857,uncharacterized LOC102653857,8,0.41,0.86,0.51,0.9
+LOC102656537,uncharacterized LOC102656537,"6, 8",0.3,0.49,0.87,1.02
+LOC552215,uncharacterized LOC552215,"6, 8",-0.27,0.61,0.75,1.58
+LOC725831,uncharacterized LOC725831,"4, 8",-0.07,1.1,0.51,1.11
+LOC552229,esterase B1,8,-0.14,0.23,0.43,2.13
+nAChRa7,nicotinic acetylcholine receptor alpha7 subunit,"4, 6, 8",0.58,0.86,0.64,0.58
+LOC100577496,glutamate receptor 3,"6, 8",0.63,0.57,0.77,0.68
+LOC726371,cysteine dioxygenase type 1,"4, 6, 8",0.08,0.77,0.87,0.93
+LOC113218886,uncharacterized LOC113218886,8,0.61,0.62,0.45,0.97
+LOC102655862,uncharacterized LOC102655862,"4, 6",0.23,1.02,0.87,0.53
+LOC107964461,uncharacterized LOC107964461,"6, 8",0.1,0.1,1.08,1.36
+LOC725500,laccase,"6, 8",0.15,0.35,0.94,1.19
+Foxp,FoxP protein,"4, 6, 8",0.12,0.92,0.65,0.94
+Pban,pheromone biosynthesis-activating neuropeptide,8,0.23,0.65,0.72,1.02
+LOC100578389,uncharacterized LOC100578389,4,0.24,1.24,0.89,0.26
+LOC552512,kinesin 3E,"4, 6, 8",0.01,0.79,0.73,1.09
+LOC100577487,uncharacterized LOC100577487,8,-0.07,-0.11,-1.03,-1.41
+LOC414008,ribonucleoside-diphosphate reductase subunit M2,"4, 6, 8",-0.3,-0.57,-1.03,-0.72
+LOC726914,probable serine/threonine-protein kinase DDB_G0272282,"4, 6, 8",0.05,0.81,0.89,0.86
+LOC552672,proclotting enzyme,8,0.11,0.82,0.5,1.16
+LOC552190,prisilkin-39,"6, 8",0.24,0.48,0.82,1.06
+LOC725123,activity-regulated cytoskeleton associated protein 2,4,0.34,1.28,0.17,0.81
+LOC412439,PDF receptor,4,-0.09,-1.45,-0.72,-0.32
+LOC409260,short-chain dehydrogenase/reductase family 16C member 6,"4, 6, 8",0.53,0.65,0.88,0.52
+LOC411569,protein TANC2,"4, 6, 8",0.04,0.91,0.84,0.79
+LOC410278,putative inorganic phosphate cotransporter,8,0.45,0.6,0.51,1
+LOC100576405,AT-rich interactive domain-containing protein 5B,"4, 8",0.06,0.97,0.7,0.85
+LOC113218844,uncharacterized LOC113218844,8,0.38,0.84,0.33,1.02
+LOC725238,histone H1,"4, 8",0.05,0.97,0.62,0.93
+LOC102656570,"glucose dehydrogenase [FAD, quinone]","4, 8",0.24,0.79,0.61,0.93
+LOC113219297,uncharacterized LOC113219297,"6, 8",0.4,0.55,0.66,0.96
+LOC725422,box A-binding factor,"4, 6, 8",0.24,0.75,0.75,0.81
+LOC412896,octopamine receptor beta-2R,6,0.52,0.44,1.32,0.27
+Tret1,trehalose transporter 1,8,0.78,0.51,0.58,0.67
+LOC725380,chymotrypsin inhibitor,8,-0.08,0.68,0.71,1.23
+LOC724178,uncharacterized LOC724178,"4, 6",0.68,0.77,0.73,0.36
+LOC100578213,probable serine/threonine-protein kinase dyrk2,8,0.21,0.48,0.54,1.28
+LOC113219108,uncharacterized LOC113219108,"4, 8",0.03,1.02,0.49,0.95
+LOC113219094,uncharacterized LOC113219094,"6, 8",0.33,0.31,0.72,1.12
+LOC725074,omega-conotoxin-like protein 1,"4, 8",-0.17,0.73,0.63,1.3
+LOC725803,protein artichoke,8,0.22,0.74,0.6,0.93
+LOC102654777,organic cation transporter protein,"4, 6, 8",0.17,0.86,0.86,0.59
+LOC102653894,uncharacterized LOC102653894,"4, 6, 8",0.03,0.73,0.72,1.01
+LOC410828,"tryptophan 2,3-dioxygenase","4, 6, 8",0.2,0.73,0.74,0.81
+LOC412914,uncharacterized LOC412914,"4, 8",0.27,0.69,0.54,0.98
+LOC107965199,UDP-glucuronosyltransferase 1-1,"6, 8",0.5,0.51,0.58,0.88
+LOC113218551,uncharacterized LOC113218551,"4, 8",0.18,0.95,0.6,0.73
+LOC100576555,cytochrome b561 domain-containing protein 2,8,-0.25,0,0.9,1.8
+LOC408348,uncharacterized LOC408348,8,0.52,0.33,0.06,1.54
+LOC412470,MAP kinase-interacting serine/threonine-protein kinase 1,"4, 6, 8",0.36,0.96,0.59,0.54
+LOC107963974,uncharacterized LOC107963974,8,-0.03,0.55,0.71,1.22
+LOC100577923,protein LLP homolog,"6, 8",-0.5,-0.55,-0.8,-0.59
+LOC100577943,scavenger receptor class B member 1,6,0.22,0.83,0.83,0.58
+LOC406132,histone H4,"4, 6, 8",0.17,0.79,0.62,0.87
+LOC102653934,uncharacterized LOC102653934,"6, 8",0.06,0.68,0.92,0.77
+LOC102656639,hepatoma-derived growth factor-related protein 2-like,8,0.18,0.58,0.75,0.91
+LOC410336,dipeptidyl aminopeptidase-like protein 6,"6, 8",0.06,0.5,1.05,0.81
+LOC726495,protein D2,"6, 8",0.07,0.57,0.83,0.95
+LOC408690,calmodulin,"4, 6, 8",-0.01,0.87,0.78,0.77
+TpnCIIIa,troponin C type IIIa,8,0,0.82,0.39,1.2
+LOC551632,methyl farnesoate epoxidase,"6, 8",0.11,0.52,0.9,0.87
+LOC413576,facilitated trehalose transporter Tret1-2 homolog,"6, 8",0.44,0.53,0.77,0.66
+LOC410829,uncharacterized LOC410829,4,0.37,0.91,0.63,0.45
+LOC100576925,uncharacterized LOC100576925,8,0.19,0.5,0.52,1.13
+LOC410448,carcinine transporter,"4, 6, 8",-0.04,0.64,0.96,0.79
+LOC100576935,uncharacterized LOC100576935,8,-0.12,0.72,0.52,1.2
+LOC107964181,uncharacterized LOC107964181,"6, 8",-0.3,-0.46,-0.7,-0.87
+LOC113218762,uncharacterized LOC113218762,"6, 8",-0.41,0.58,0.91,1.25
+LOC102655530,uncharacterized LOC102655530,"6, 8",-0.01,0.46,0.72,1.13
+ILP-2,insulin-like peptide 2,"4, 6, 8",-0.29,-0.56,-0.82,-0.65
+LOC107964083,uncharacterized LOC107964083,6,-0.14,0.23,1.26,0.95
+LOC100576986,uncharacterized LOC100576986,8,0.04,0.59,0.56,1.12
+LOC102656498,uncharacterized LOC102656498,"6, 8",0.01,0.56,0.92,0.8
+LOC410550,"aminomethyltransferase, mitochondrial","6, 8",0.11,0.58,0.69,0.91
+LOC725281,"probable malate dehydrogenase, mitochondrial","6, 8",0.15,0.35,0.78,1.01
+LOC724734,hemicentin-1,"6, 8",0.02,0.4,0.59,1.28
+LOC727455,UBA-like domain-containing protein 2,4,0.35,1.1,0.47,0.35
+LOC413416,protein bicaudal C homolog 1-B,"4, 6, 8",0.47,0.74,0.57,0.48
+LOC408478,facilitated trehalose transporter Tret1,4,0.48,0.75,0.54,0.48
+LOC100576132,uncharacterized LOC100576132,"4, 6, 8",-0.28,-0.41,-0.55,-1.02
+LOC724348,short-chain dehydrogenase/reductase,"4, 8",0.06,0.67,0.49,1.04
+LOC113218671,uncharacterized LOC113218671,8,0.39,0.16,0.65,1.06
+LOC412330,ubiquitin-conjugating enzyme E2 H,"4, 8",0.26,0.85,0.46,0.67
+LOC107965237,flocculation protein FLO11,"6, 8",0.26,0.46,0.76,0.77
+LOC408455,zinc finger protein rotund,"4, 6",0.46,0.63,0.71,0.45
+LOC408607,SEC23-interacting protein,"4, 6, 8",0.28,0.67,0.77,0.52
+LOC100577269,uncharacterized LOC100577269,8,0.33,0.6,0.37,0.94
+LOC725800,fibrillin-2,"6, 8",0,-0.57,-0.71,-0.96
+LOC726149,sodium channel protein Nach,8,0.19,0.47,0.68,0.9
+LOC409882,TLD domain-containing protein 2,"4, 6, 8",0.14,0.73,0.68,0.69
+LOC410756,regulating synaptic membrane exocytosis protein 1,8,0.22,0.65,0.42,0.93
+LOC725344,histone H2B,"6, 8",0.17,0.59,0.7,0.75
+LOC113219388,uncharacterized LOC113219388,"6, 8",0.05,0.61,0.73,0.84
+LOC100576287,uncharacterized LOC100576287,8,0.02,0.54,0.31,1.34
+LOC102656571,uncharacterized LOC102656571,"6, 8",0.41,0.33,0.55,0.91
+LOC113219265,trypsin-1-like,6,-0.07,0.45,-1.63,-0.96
+GlnS,glutamine synthetase,6,0.4,0.5,0.86,0.44
+LOC107964221,uncharacterized LOC107964221,"4, 6, 8",0.03,0.72,0.66,0.78
+LOC107965624,uncharacterized LOC107965624,8,0.22,0.7,0.35,0.93
+LOC413385,uncharacterized LOC413385,"4, 6, 8",0.23,0.78,0.64,0.54
+LOC725272,histone H3,"4, 8",-0.09,0.79,0.55,0.94
+LOC725632,protein MCM10 homolog,"6, 8",-0.27,-0.44,-0.8,-0.67
+LOC551123,RNA-binding protein Musashi homolog Rbp6,8,-0,0.87,0.44,0.87
+LOC409633,ras-related and estrogen-regulated growth inhibitor,8,0.72,0.07,0.36,1.02
+LOC100576690,negative elongation factor E,6,0.39,0.68,0.8,0.3
+LOC409203,UDP-glucuronosyltransferase 2A3,"4, 8",0.25,0.84,0.43,0.65
+LOC724307,paired mesoderm homeobox protein 2-like,8,0.34,0.63,0.56,0.62
+LOC107964328,bone morphogenetic protein 10,"6, 8",0.06,0.14,-1.11,-1.26
+LOC100576508,uronyl 2-sulfotransferase,8,0.01,0.26,0.84,1.05
+LOC726658,uncharacterized LOC726658,"6, 8",0.29,0.54,0.69,0.64
+LOC725046,uncharacterized LOC725046,"4, 8",0.26,0.61,0.41,0.87
+LOC408280,cell surface glycoprotein 1,8,-0.13,0.83,0.38,1.08
+LOC412688,ribosome biogenesis protein NOP53,"6, 8",-0.31,-0.46,-0.67,-0.71
+LOC107964020,alpha-tocopherol transfer protein,8,0.18,0.57,0.58,0.81
+LOC725918,"39S ribosomal protein L53, mitochondrial","4, 6, 8",-0.11,-0.56,-0.79,-0.68
+Gpdh,glycerol-3-phosphate dehydrogenase,"6, 8",0.21,0.5,0.81,0.62
+LOC726158,glutathione hydrolase 1 proenzyme,"4, 6, 8",-0.01,-0.57,-0.7,-0.85
+LOC725308,histone H2A,8,0.13,0.62,0.52,0.86
+LOC113219349,uncharacterized LOC113219349,8,-0.01,-0.46,-0.63,-1.03
+LOC100578300,uncharacterized LOC100578300,8,0.3,0.5,0.63,0.69
+LOC107965094,uncharacterized LOC107965094,6,0.15,0.64,0.76,0.57
+LOC409701,zwei Ig domain protein zig-8,"4, 6, 8",-0.02,0.7,0.66,0.78
+LOC113218525,uncharacterized LOC113218525,"4, 8",0.3,0.75,0.06,1.01
+Obp14,odorant binding protein 14,"6, 8",-0.12,-0.54,-0.76,-0.7
+LOC107964315,uncharacterized LOC107964315,8,0.22,0.59,0.33,0.97
+LOC724189,uncharacterized LOC724189,8,0.11,0.57,0.62,0.8
+LOC409869,kinesin 3A,"4, 8",0.26,0.6,0.5,0.74
+LOC409207,synaptic vesicle membrane protein VAT-1 homolog-like,4,0.39,0.82,0.55,0.33
+Cyp314a1,cytochrome P450 314A1,8,0.09,0.52,0.69,0.8
+LOC408406,cyclin-dependent kinase 4,"4, 8",0.4,0.72,0.45,0.52
+LOC107964233,uncharacterized LOC107964233,8,0.42,-0.89,-0.75,-0.87
+LOC727254,mitochondrial cardiolipin hydrolase,8,-0.07,0.67,0.44,1.05
+LOC102655645,uncharacterized LOC102655645,"6, 8",0.47,0.25,0.68,0.69
+LOC410464,protein escargot,"6, 8",0.04,0.5,0.65,0.88
+LOC113218669,uncharacterized LOC113218669,8,0.1,0.57,0.3,1.12
+LOC100578925,protein Tob1,4,0.3,0.81,0.51,0.46
+LOC113218997,uncharacterized LOC113218997,8,-0.33,0.54,0.61,1.25
+LOC551055,1-acylglycerol-3-phosphate O-acyltransferase Pnpla3,6,0.41,0.62,0.76,0.29
+LOC724654,cytochrome b5,8,-0.17,0.78,0.46,1
+LOC727135,uncharacterized LOC727135,"4, 6, 8",0.08,0.59,0.66,0.73
+LOC724904,acylphosphatase-2,"6, 8",-0.42,0.11,1.22,1.16
+LOC100577268,uncharacterized LOC100577268,4,-0.06,0.95,0.6,0.58
+LOC100577028,insulin-like growth factor I,8,0.21,0.32,0.28,1.24
+LOC408525,neuronal acetylcholine receptor subunit alpha-10,8,-0.03,0.41,0.55,1.13
+LOC100577635,uncharacterized LOC100577635,8,0.32,0.43,0.47,0.84
+LOC100577455,golgin subfamily A member 6-like protein 22,4,0.36,0.85,0.63,0.22
+LOC100578618,uncharacterized LOC100578618,8,-0.3,0.57,0.88,0.91
+CSP3,chemosensory protein 3,8,0.01,0.64,0.57,0.84
+LOC102654184,plectin,"6, 8",-0.04,0.35,0.7,1.05
+LOC409424,"solute carrier family 2, facilitated glucose transporter member 1",6,0.42,0.48,0.85,0.3
+Csd,complementary sex determiner,"6, 8",-0.27,-0.53,-0.66,-0.6
+LOC726571,venom acid phosphatase Acph-1,"6, 8",0.19,0.51,0.63,0.71
+LOC100578881,histone H3.3-like type 1,6,-0.41,-0.38,-0.78,-0.49
+LOC100578233,dynein regulatory complex protein 1,"6, 8",-0.13,-0.4,-0.91,-0.61
+LOC726953,parathyroid hormone/parathyroid hormone-related peptide receptor,6,0.42,0.56,0.94,0.12
+LOC113218601,uncharacterized LOC113218601,4,0.3,0.8,0.43,0.52
+LOC409639,UPF0183 protein CG7083,8,0.22,0.63,0.53,0.67
+LOC725725,peritrophin-1,8,-0.04,0.51,0.16,1.41
+LOC102655699,uncharacterized LOC102655699,"6, 8",-0.02,0.46,0.72,0.89
+LOC410468,protein hairy,"6, 8",0,0.54,0.69,0.82
+LOC724286,uncharacterized LOC724286,6,0.11,0.57,0.91,0.46
+LOC107965509,uncharacterized LOC107965509,8,0.15,0.71,0.47,0.72
+LOC102654638,uncharacterized LOC102654638,4,0.24,0.78,0.47,0.54
+LOC410449,uncharacterized LOC410449,8,-0,0.53,0.51,0.99
+LOC100576746,uncharacterized LOC100576746,8,0.18,0.56,0.43,0.85
+LOC410200,mRNA turnover protein 4 homolog,"6, 8",-0.24,-0.41,-0.72,-0.65
+LOC726424,metabotropic glutamate receptor,"6, 8",-0.1,-0.52,-0.65,-0.74
+LOC725361,A disintegrin and metalloproteinase with thrombospondin motifs adt-1,"6, 8",0.14,0.27,0.59,1.02
+LOC726542,histone H3,"4, 6, 8",0.1,0.6,0.49,0.82
+LOC107964909,uncharacterized LOC107964909,"4, 8",-0.27,0.97,0.55,0.76
+LOC725389,box A-binding factor,"6, 8",0.27,0.41,0.71,0.6
+LOC100576569,uncharacterized LOC100576569,8,-0.04,0.75,0.58,0.7
+LOC100576528,uncharacterized LOC100576528,"4, 8",0.31,0.74,0.35,0.59
+LOC726736,laminin subunit beta-1,8,-0.07,-0.52,-0.41,-0.99
+LOC100577955,odorant receptor 13a,8,0.27,0.03,0.38,1.32
+LOC408310,caveolin-3,8,0.2,0.77,0.13,0.9
+LOC410705,synaptic vesicle glycoprotein 2C,8,0.27,0.6,0.34,0.78
+LOC551465,"homogentisate 1,2-dioxygenase",8,0.01,0.43,0.34,1.21
+LOC107964742,uncharacterized LOC107964742,8,-0.3,1.04,0.26,0.98
+LOC412858,hemicentin-2,6,0.55,0.34,0.75,0.35
+LOC102654750,uncharacterized LOC102654750,8,-0.28,0.44,0.81,1.01
+LOC408727,SET and MYND domain-containing protein 4-like,8,0.32,0.42,0.29,0.96
+LOC410179,uncharacterized LOC410179,"6, 8",0.26,0.49,0.63,0.6
+LOC107964412,N-glycosylase/DNA lyase,"4, 6, 8",-0.37,-0.59,-0.56,-0.45
+LOC409780,CUGBP Elav-like family member 2,4,0.26,0.84,0.34,0.54
+LOC408827,carbonic anhydrase 1,4,0.45,0.7,0.43,0.38
+LOC107965363,uncharacterized LOC107965363,8,-0.04,0.57,0.55,0.89
+LOC725391,uncharacterized LOC725391,8,0.3,-0.08,0.66,1.08
+LOC412299,muscarinic acetylcholine receptor DM1,4,0.54,0.57,0.43,0.42
+LOC408320,uncharacterized LOC408320,8,0.07,0.66,0.47,0.76
+LOC726393,capa receptor-like GPCR,4,0.04,0.92,0.49,0.51
+LOC550645,max-binding protein MNT,"6, 8",0.09,0.55,0.61,0.71
+LOC413478,spermine oxidase,"6, 8",-0.09,0.31,0.78,0.95
+LOC102655299,uncharacterized LOC102655299,8,-0.06,0.54,0.59,0.88
+LOC724962,uncharacterized LOC724962,"6, 8",-0.25,0.72,0.88,0.6
+LOC725189,protein bric-a-brac 2,"4, 6, 8",0.11,0.65,0.53,0.67
+LOC102653596,uncharacterized LOC102653596,8,-0.13,0.43,0.68,0.98
+LOC551562,"dynein beta chain, ciliary",8,-0.06,0.59,0.51,0.91
+LOC727239,protein P54-like,"6, 8",-0.19,-0.36,-0.57,-0.84
+LOC100577997,CAPA peptides,8,-0.08,0.59,0.43,1.01
+LOC724687,disks large-associated protein 5,8,-0.25,-0.5,-0.51,-0.69
+LOC410948,aromatic-L-amino-acid decarboxylase,"6, 8",-0.23,0.34,1.06,0.77
+LOC551406,cell growth-regulating nucleolar protein,8,-0.14,-0.53,-0.5,-0.77
+LOC107964138,uncharacterized LOC107964138,8,-0.49,-0.54,-0.4,-0.51
+LOC107965413,uncharacterized LOC107965413,8,0.37,0.31,0.5,0.75
+LOC725335,"probable cytochrome P450 12a5, mitochondrial",8,-0.03,0.76,0.51,0.69
+LOC726629,uncharacterized LOC726629,8,-0.09,0.43,0.43,1.16
+Dnmt3,DNA methyltransferase 3,"4, 6, 8",0.01,0.57,0.49,0.87
+LOC102653658,uncharacterized LOC102653658,"6, 8",-0.13,-0.23,-0.68,-0.89
+LOC726923,DNA polymerase epsilon subunit 3,6,-0.49,-0.33,-0.73,-0.37
+LOC551553,facilitated trehalose transporter Tret1,"6, 8",0.26,0.22,0.73,0.7
+LOC411113,solute carrier family 12 member 4,"4, 8",0.34,0.58,0.45,0.54
+LOC725765,uncharacterized LOC725765,"6, 8",0.13,0.21,0.69,0.88
+LOC113218571,hydrocephalus-inducing protein-like,8,0.26,0.53,0.05,1.06
+LOC100576082,MATH and LRR domain-containing protein PFE0570w,8,0.15,-0.54,-0.52,-0.99
+LOC113218523,uncharacterized LOC113218523,4,0.29,0.98,0.06,0.58
+LOC409131,monocarboxylate transporter 12,"6, 8",0.28,0.39,0.54,0.68
+LOC408759,protein FAM102B,8,0.13,0.77,0.34,0.67
+Cyp4g11,cytochrome P450 4G11,"6, 8",0.16,0.31,0.51,0.91
+LOC100576736,uncharacterized LOC100576736,8,0.44,0.28,0.29,0.9
+LOC100578703,uncharacterized LOC100578703,"6, 8",0.01,0.5,0.69,0.7
+LOC100578361,uncharacterized LOC100578361,8,-0.51,-0.41,-0.14,-0.84
+LOC100576136,zinc finger BED domain-containing protein 1,6,0.01,-0.37,-1.07,-0.47
+LOC408822,uncharacterized LOC408822,4,0.21,0.91,0.25,0.52
+LOC410706,rho GTPase-activating protein 7,"4, 6, 8",0.12,0.67,0.54,0.58
+LOC406147,short-chain dehydrogenase/reductase,8,-0.32,-0.15,-0.38,-1.03
+LOC410860,battenin,6,0.61,0.21,0.68,0.38
+LOC408465,vesicle-associated membrane protein 2,"4, 8",0.1,0.7,0.48,0.61
+LOC409288,tribbles homolog 2,8,0.33,0.41,0.51,0.64
+LOC100578430,uncharacterized LOC100578430,6,0.07,0.54,0.85,0.42
+LOC410805,open rectifier potassium channel protein 1,"4, 6, 8",0.24,0.53,0.69,0.42
+LOC551290,cathepsin O,"4, 6, 8",0.15,0.6,0.47,0.65
+LOC409966,dexamethasone-induced Ras-related protein 1,"6, 8",0.05,0.48,0.73,0.61
+Hsp90,heat shock protein 90,"6, 8",0.39,-0.65,-1.05,-0.57
+LOC412619,amidophosphoribosyltransferase,"6, 8",0.01,0.28,0.69,0.89
+LOC107964398,ADP/ATP translocase 1,8,-0.21,0.5,0.66,0.92
+LOC102656349,uncharacterized LOC102656349,4,-0.05,1.02,0.47,0.43
+LOC100577054,uncharacterized LOC100577054,8,-0.19,0.36,0.64,1.07
+LOC725746,uncharacterized LOC725746,"4, 6, 8",-0.18,-0.34,-0.7,-0.66
+LOC726750,fibroin heavy chain,8,0.25,0.43,0.33,0.87
+LOC408532,myophilin,"6, 8",0.21,0.4,0.56,0.69
+LOC551948,uracil phosphoribosyltransferase homolog,"4, 6, 8",-0.07,-0.71,-0.5,-0.59
+LOC411570,TPPP family protein CG45057,"6, 8",0.4,0.33,0.62,0.51
+LOC409105,uncharacterized LOC409105,"6, 8",0.16,0.51,0.59,0.59
+LOC102654445,uncharacterized LOC102654445,8,0.21,0.4,0.47,0.78
+LOC113218632,uncharacterized LOC113218632,"4, 8",0.18,0.68,0.43,0.56
+LOC551087,periodic tryptophan protein 2 homolog,8,-0.17,-0.43,-0.46,-0.79
+LOC100577043,uncharacterized LOC100577043,8,-0.39,0.83,0.56,0.85
+LOC411700,heat shock protein 83,4,0.1,-0.95,-0.64,-0.37
+LOC413086,DNA ligase 3,"4, 6, 8",-0.02,0.58,0.56,0.73
+LOC107964319,calmodulin-lysine N-methyltransferase,8,0.34,0.44,0.44,0.64
+LOC107964093,uncharacterized LOC107964093,"4, 8",-0.01,0.9,0.19,0.77
+LOC408809,diacylglycerol kinase theta,8,0.14,0.68,0.45,0.58
+LOC408664,homeodomain-interacting protein kinase 2,8,0.27,0.6,0.36,0.62
+LOC413942,"acyl-CoA synthetase short-chain family member 3, mitochondrial","6, 8",0.25,0.41,0.62,0.56
+LOC410852,protein Fe65 homolog,"4, 6",0.23,0.61,0.65,0.34
+LOC410323,"dynein heavy chain 7, axonemal",8,0.33,0.15,0.47,0.87
+LOC102655420,uncharacterized LOC102655420,6,-0.35,-0.54,-0.62,-0.31
+LOC408877,neurogenic protein mastermind,4,0.19,0.86,0.41,0.37
+LOC100577092,uncharacterized LOC100577092,8,0.17,0.7,0.33,0.63
+LOC724119,ESF1 homolog,"6, 8",-0.21,-0.4,-0.57,-0.64
+LOC411114,synaptosomal-associated protein 25,"6, 8",0.06,0.51,0.51,0.73
+LOC100578448,uncharacterized LOC100578448,4,-0,0.98,0.44,0.4
+LOC725362,protein arginine N-methyltransferase 1,"4, 6, 8",-0.04,-0.54,-0.64,-0.6
+LOC410998,E3 ubiquitin-protein ligase TRIM9,6,0.28,0.53,0.55,0.45
+LOC107965805,uncharacterized LOC107965805,8,0.1,0.48,0.26,0.97
+LOC410795,trehalase,"4, 6, 8",0.23,0.55,0.52,0.5
+LOC412764,MFS-type transporter SLC18B1,"6, 8",-0.25,-0.46,-0.58,-0.53
+LOC113218779,70 kDa peptidyl-prolyl isomerase-like,8,-0.3,-0.39,-0.48,-0.63
+LOC726353,uncharacterized LOC726353,6,0.25,-0.12,1.2,0.47
+LOC725782,"alpha-actinin, sarcomeric","4, 8",0.09,0.64,0.43,0.64
+LOC100577723,uncharacterized LOC100577723,8,-0.06,0.63,0.44,0.79
+LOC551629,"isoleucine--tRNA ligase, cytoplasmic",8,0.11,-0.57,-0.45,-0.89
+LOC552844,complexin,4,-0.02,0.97,0.45,0.4
+LOC100577228,uncharacterized protein MAL13P1.304,8,0.32,-0.64,-0.34,-1.13
+LOC552101,uncharacterized LOC552101,8,0.11,0.64,0.44,0.6
+LOC724685,protein-L-isoaspartate O-methyltransferase domain-containing protein 1,"4, 6, 8",-0.05,0.55,0.67,0.63
+LOC725154,serine protease snake,"6, 8",-0.2,-0.29,-0.45,-0.86
+LOC551558,trichohyalin,"6, 8",0.11,0.5,0.59,0.6
+LOC408852,protein similar,8,0.37,0.24,0.6,0.58
+LOC726961,testis-expressed protein 10 homolog,8,0.07,-0.57,-0.55,-0.73
+LOC100578394,uncharacterized LOC100578394,8,0.23,0.02,0.61,0.92
+LOC408844,dual specificity protein phosphatase 10,8,0.12,0.57,0.41,0.69
+LOC102655878,uncharacterized LOC102655878,8,-0.23,0.53,0.45,1.04
+Gb15078,GB15078 protein,8,0.11,0.46,0.42,0.8
+LOC102654929,uncharacterized LOC102654929,"4, 8",-0.04,0.78,0.24,0.79
+LOC408955,"4-aminobutyrate aminotransferase, mitochondrial","6, 8",0.11,0.34,0.65,0.68
+LOC102653777,uncharacterized LOC102653777,8,0.09,0.34,0.33,1.02
+LOC409306,"2-oxoisovalerate dehydrogenase subunit beta, mitochondrial",8,0.02,0.43,0.43,0.89
+LOC726289,transcription factor AP-1,"4, 6",0.29,0.61,0.53,0.34
+LOC102655950,peroxisome biogenesis factor 2,8,-0,0.61,0.38,0.78
+LOC107964499,uncharacterized LOC107964499,4,0.18,0.72,0.44,0.43
+LOC411833,la protein homolog,"6, 8",-0.19,-0.34,-0.51,-0.72
+LOC411091,RNA-binding protein 34,8,-0.3,-0.26,-0.48,-0.72
+Qbp-1,Queen brain-selective protein-1,8,-0.43,0.46,0.75,0.99
+LOC410867,uncharacterized LOC410867,"4, 6",0.23,0.59,0.53,0.42
+LOC412458,farnesol dehydrogenase,"4, 6, 8",0.17,0.53,0.57,0.5
+LOC725607,cyclin-dependent kinase 2-associated protein 1,8,-0.07,-0.43,-0.61,-0.65
+LOC726335,protein CBFA2T2,8,0.13,0.45,0.5,0.68
+LOC551647,uncharacterized LOC551647,"6, 8",0.3,0.31,0.62,0.52
+LOC100578901,DPH3 homolog,8,-0.32,-0.38,-0.43,-0.63
+LOC724721,farnesol dehydrogenase,"6, 8",0.18,0.49,0.56,0.52
+LOC412810,V-type proton ATPase 116 kDa subunit a,6,0.4,0.27,0.72,0.36
+LOC725302,H2.0-like homeobox protein,8,0.09,0.65,0.29,0.72
+LOC725967,D-3-phosphoglycerate dehydrogenase,"6, 8",0.23,0.3,0.52,0.71
+LOC552556,arginase-1,8,-0.03,0.21,0.56,1.01
+LOC552377,diacylglycerol O-acyltransferase 1,8,0.08,0.55,0.45,0.66
+LOC409839,regulator of nonsense transcripts 1,4,0.34,0.6,0.47,0.34
+LOC552373,dolichyldiphosphatase 1,"4, 6, 8",-0.06,-0.45,-0.66,-0.59
+LOC726251,uncharacterized LOC726251,8,-0.03,-0.29,-0.54,-0.88
+LOC411065,monocarboxylate transporter 14,"6, 8",0.2,-0.49,-0.62,-0.83
+LOC408733,protein pinocchio,"6, 8",0.4,0.3,0.62,0.42
+LOC408696,uncharacterized LOC408696,8,0.12,0.42,0.31,0.89
+LOC102656274,uncharacterized LOC102656274,8,-0.01,0.27,0.44,1.03
+LOC107965723,uncharacterized LOC107965723,8,-0.42,-0.34,-0.37,-0.6
+LOC100577014,uncharacterized LOC100577014,"4, 8",0.1,0.57,0.46,0.6
+LOC551602,ras GTPase-activating protein-binding protein 2,8,0.31,-0.47,-0.36,-1.22
+LOC100577306,uncharacterized LOC100577306,8,0.19,0.66,0.09,0.8
+LOC100577875,tenascin,8,-0.03,0.39,0.44,0.94
+LOC412128,DENN domain-containing protein 5B,6,0.45,0.44,0.65,0.18
+LOC409950,fibrillin-1,"4, 6, 8",0.06,0.48,0.62,0.57
+LOC102655278,uncharacterized LOC102655278,"4, 8",-0.17,0.9,0.18,0.82
+LOC102653800,"glutamate receptor ionotropic, kainate 2",8,0.03,0.3,0.53,0.86
+LOC726535,secretin receptor,8,-0,0.51,0.26,0.95
+LOC552657,phosphoribosylformylglycinamidine synthase,"6, 8",-0.02,0.27,0.64,0.84
+LOC408818,hexokinase-1,"6, 8",0.21,0.38,0.58,0.55
+LOC725952,uncharacterized LOC725952,8,-0.26,0.62,0.46,0.91
+cad,homeotic protein caudal,8,-0.09,-0.03,-0.59,-1
+Mir1175,microRNA mir-1175,6,-0.17,-0.39,-0.83,-0.33
+LOC102654925,uncharacterized LOC102654925,6,-0.11,-0.46,-0.68,-0.45
+LOC724770,uncharacterized LOC724770,"6, 8",-0.08,-0.47,-0.52,-0.64
+LOC410001,regulating synaptic membrane exocytosis protein 2,4,0.15,0.72,0.35,0.48
+LOC107965637,uncharacterized LOC107965637,8,0.32,-0.14,0.62,0.9
+LOC107965038,zinc transporter 2,"4, 8",0.15,0.5,0.43,0.63
+LOC724936,uncharacterized LOC724936,8,0.49,0.12,0.3,0.8
+LOC725258,very-long-chain 3-oxoacyl-CoA reductase,8,0.22,-0.12,0.49,1.12
+LOC100578068,lateral signaling target protein 2 homolog,4,0.17,0.95,0.37,0.21
+LOC413390,ATP-binding cassette sub-family F member 1,"4, 6, 8",-0.03,-0.59,-0.45,-0.62
+LOC410862,solute carrier family 41 member 3,"4, 8",0.4,-0.73,-0.21,-1.15
+LOC411629,zinc finger protein ubi-d4 A,"4, 6, 8",-0.04,-0.55,-0.56,-0.55
+LOC409928,RNA polymerase II elongation factor Ell,6,0.5,0.61,0.66,-0.08
+LOC411187,L-lactate dehydrogenase,8,0.1,0.04,0.38,1.18
+LOC100577127,"proline-, glutamic acid- and leucine-rich protein 1",8,-0.15,-0.38,-0.4,-0.77
+LOC725453,guanine nucleotide-binding protein subunit gamma-e,4,0.03,0.73,0.44,0.49
+LOC552600,GILT-like protein 1,8,0.1,0.32,0.47,0.8
+LOC102653690,uncharacterized LOC102653690,8,0.04,0.54,0.4,0.72
+LOC724133,peptide chain release factor 1,8,-0.41,-0.35,-0.47,-0.46
+LOC100578561,early growth response protein 1,8,0.12,0.37,0.48,0.72
+LOC726019,protein PTHB1-like,8,-0.21,0.52,0.14,1.24
+LOC100578706,uncharacterized LOC100578706,"4, 6, 8",0.27,0.41,0.52,0.49
+LOC113219230,protein canopy homolog 3,"6, 8",-0.18,-0.24,-0.65,-0.61
+LOC410498,potassium voltage-gated channel subfamily H member 6,"4, 6, 8",0.09,0.59,0.59,0.43
+LOC102655449,uncharacterized LOC102655449,8,0.13,0.49,-0.14,1.21
+LOC726278,synaptic vesicular amine transporter-like,8,0.34,0.32,0.37,0.67
+LOC726861,myosuppressin,8,0.06,0.47,0.54,0.62
+LOC726286,uncharacterized LOC726286,8,0.04,0.37,0.53,0.74
+LOC100577332,GATA-binding factor C,"6, 8",-0.16,0.29,0.64,0.92
+LOC409142,sodium- and chloride-dependent transporter XTRP3,8,0.15,0.49,0.42,0.63
+LOC410982,protein croquemort,8,0.03,0.4,0.43,0.83
+LOC102654832,uncharacterized LOC102654832,"4, 6, 8",-0.26,-0.5,-0.55,-0.37
+LOC412131,kinesin 4B,8,-0.24,-0.37,-0.42,-0.65
+LOC102656085,uncharacterized LOC102656085,8,-0.29,-0.5,-0.37,-0.52
+LOC551197,probable cytochrome P450 6a13,"6, 8",0.04,0.4,0.66,0.58
+LOC100577958,putative uncharacterized protein DDB_G0282133,8,-0.08,-0.56,-0.28,-0.76
+LOC410207,dihydropyrimidine dehydrogenase [NADP(+)],"6, 8",0.16,0.3,0.67,0.55
+LOC107964061,cell wall integrity and stress response component 1,6,0.38,0.27,0.79,0.23
+LOC726323,uncharacterized LOC726323,8,0.07,0.33,0.49,0.78
+LOC409023,methylthioribose-1-phosphate isomerase,"6, 8",-0.13,-0.35,-0.74,-0.45
+LOC726978,homeodomain-only protein,8,0.11,0.2,0.59,0.77
+LOC412308,flap endonuclease 1,"6, 8",-0.27,-0.25,-0.51,-0.65
+LOC726695,uncharacterized LOC726695,8,0.04,-0.42,-0.44,-0.85
+LOC411353,lipase 3,"6, 8",0.06,0.32,0.5,0.78
+LOC412031,S-phase kinase-associated protein 2,"4, 6, 8",-0.13,-0.44,-0.67,-0.43
+LOC551661,uncharacterized LOC551661,8,0.11,0.32,0.27,0.97
+nanos,protein nanos,"4, 8",-0.12,0.78,0.48,0.52
+LOC726282,uncharacterized LOC726282,8,0.13,0.45,0.33,0.75
+LOC408463,uncharacterized LOC408463,8,0.05,0.31,0.42,0.89
+LOC411509,tRNA (adenine(58)-N(1))-methyltransferase catalytic subunit TRMT61A,"4, 6, 8",-0.25,-0.45,-0.45,-0.51
+Adar,adenosine deaminase acting on RNA,8,0.14,0.49,0.26,0.77
+LOC724457,uncharacterized LOC724457,"6, 8",-0.35,-0.24,-0.6,-0.47
+LOC113218927,uncharacterized LOC113218927,8,-0.04,0.47,0.38,0.84
+LOC725414,histone H3,8,-0.03,0.61,0.28,0.8
+LOC551524,zinc carboxypeptidase,6,-0.44,-0.07,-0.82,-0.33
+LOC552832,glycine N-methyltransferase,8,0.15,0.25,0.27,0.98
+LOC724378,BMP and activin membrane-bound inhibitor homolog,8,0.18,0.4,0.43,0.63
+LOC412876,"pyruvate carboxylase, mitochondrial",6,0.35,0.41,0.68,0.2
+LOC100577641,protein snakeskin,8,0.05,0.42,0.48,0.7
+LOC408872,COUP transcription factor 2,8,0.02,0.42,0.51,0.7
+LOC113219352,uncharacterized LOC113219352,8,-0.07,-0.54,-0.25,-0.78
+LOC100577214,protein giant-lens,8,0.1,0.49,0.4,0.64
+LOC113219244,zinc finger protein 346-like,8,0.1,0.48,0.3,0.76
+LOC409483,protein lin-54 homolog,8,0.12,-0.38,-0.11,-1.28
+LOC725841,hyaluronan mediated motility receptor,8,-0.06,-0.39,-0.41,-0.77
+LOC725455,fructose-bisphosphate aldolase,8,-0.31,0.66,0.45,0.85
+LOC100576625,uncharacterized LOC100576625,"6, 8",-0.15,-0.48,-0.55,-0.46
+LOC551869,vitamin K-dependent gamma-carboxylase,8,0.29,0.35,0.51,0.49
+LOC113218548,cilia- and flagella-associated protein 251-like,8,-0.16,0.57,0.53,0.7
+LOC410479,zwei Ig domain protein zig-8,"4, 8",-0.02,0.68,0.24,0.75
+LOC725970,"protein still life, isoform SIF type 1","4, 8",0.16,0.68,0.32,0.48
+LOC724995,1-acyl-sn-glycerol-3-phosphate acyltransferase alpha,"6, 8",-0.22,-0.3,-0.69,-0.42
+LOC100576828,protein maelstrom homolog,"4, 8",-0.29,-0.59,-0.27,-0.49
+LOC102655746,uncharacterized LOC102655746,6,-0.26,-0.46,-0.5,-0.42
+LOC107964603,uncharacterized LOC107964603,8,-0.18,0.12,0.68,1.01
+LOC552839,TATA box-binding protein-associated factor RNA polymerase I subunit B,8,-0.02,-0.42,-0.54,-0.66
+LOC102653649,uncharacterized LOC102653649,8,-0.28,0.28,-0.06,1.69
+LOC551918,chromatin assembly factor 1 subunit B,"6, 8",-0.1,-0.46,-0.54,-0.53
+LOC100578437,ataxin-7-like protein 1,8,-0.01,0.49,0.33,0.81
+LOC100577165,uncharacterized LOC100577165,6,-0.22,0.54,0.86,0.45
+LOC408918,death-associated protein 1,8,0.16,0.42,0.38,0.68
+LOC102655073,histone H4,"4, 8",0.01,0.72,0.33,0.56
+LOC724874,facilitated trehalose transporter Tret1,6,-0.04,0.42,0.73,0.52
+LOC725404,"actin, muscle",8,-0.11,0.24,0.56,0.94
+LOC725178,chitooligosaccharidolytic beta-N-acetylglucosaminidase,4,-0.01,0.82,0.34,0.48
+LOC100576936,uncharacterized LOC100576936,8,0.01,0.36,0.08,1.16
+LOC102656388,uncharacterized LOC102656388,6,-0.15,-0.45,-0.81,-0.21
+LOC410554,"methylcrotonoyl-CoA carboxylase beta chain, mitochondrial","6, 8",0.12,0.4,0.5,0.6
+LOC410379,uncharacterized LOC410379,"4, 6, 8",0.15,0.57,0.52,0.37
+LOC100577679,origin recognition complex subunit 2,"4, 6",-0.12,-0.59,-0.58,-0.32
+LOC410288,phytanoyl-CoA dioxygenase,8,0.11,0.17,0.38,0.96
+LOC724413,uncharacterized LOC724413,6,-0.34,-0.5,-0.59,-0.18
+LOC100576990,condensin complex subunit 2,8,-0.14,-0.32,-0.42,-0.73
+LOC726812,RNA polymerase I-specific transcription initiation factor RRN3,8,-0.1,-0.52,-0.43,-0.56
+LOC410262,probable 28S rRNA (cytosine-C(5))-methyltransferase,"6, 8",-0.23,-0.38,-0.45,-0.56
+LOC725041,leucine-rich repeat-containing protein 15,8,0.05,0.52,0.11,0.93
+LOC724603,receptor-type guanylate cyclase Gyc76C-like,4,-0.07,-0.71,-0.27,-0.56
+LOC412610,glutathione synthetase,"6, 8",-0.29,-0.36,-0.49,-0.46
+LOC102654683,farnesyl pyrophosphate synthase,6,-0.08,0.59,0.93,0.17
+LOC408670,Down syndrome cell adhesion molecule-like protein Dscam2,"6, 8",0.03,0.41,0.68,0.49
+LOC410337,venom dipeptidylpeptidase IV,8,0.04,0.43,0.49,0.65
+LOC412711,kinesin 2B,8,-0.25,-0.25,-0.16,-0.95
+LOC100577771,uncharacterized LOC100577771,"4, 6, 8",0.01,0.49,0.59,0.51
+LOC408788,UDP-glucuronosyltransferase 1-3,8,0.15,0.22,0.4,0.83
+LOC107965489,uncharacterized LOC107965489,8,0.11,0.3,0.51,0.68
+LOC413141,oxidative stress-induced growth inhibitor 2,4,0.31,0.48,0.43,0.38
+LOC100577293,uncharacterized LOC100577293,6,-0.48,-0.37,-0.53,-0.23
+LOC411757,probable glucosamine 6-phosphate N-acetyltransferase,"6, 8",-0.26,-0.43,-0.5,-0.42
+LOC727593,UDP-glucuronosyltransferase 2C1,"4, 6",0.15,0.6,0.59,0.26
+LOC410189,5'-nucleotidase domain-containing protein 3,8,0.01,-0.28,-0.4,-0.92
+LOC727293,guanine deaminase,"6, 8",-0.2,-0.43,-0.5,-0.46
+LOC413789,elongation of very long chain fatty acids protein AAEL008004,4,0.24,0.65,0.52,0.18
+LOC411525,choline/ethanolamine kinase,"4, 6",0.19,0.5,0.6,0.3
+LOC726461,protein shank,"6, 8",0.27,0.15,0.48,0.7
+LOC102656433,uncharacterized LOC102656433,8,-0.27,-0.33,-0.4,-0.59
+LOC413021,papilin,8,0.1,-0.23,-0.44,-1.02
+LOC107964839,rootletin,8,0.03,-0.4,-0.34,-0.88
+Abscam,Dscam family member AbsCAM,6,-0.07,0.48,0.89,0.3
+LOC552840,deoxynucleoside kinase,"6, 8",-0.13,-0.29,-0.52,-0.65
+LOC724959,WASH complex subunit 2,8,0.09,-0.51,-0.38,-0.79
+LOC100578519,uncharacterized protein PF11_0207,8,-0.06,-0.26,-0.43,-0.84
+LOC107964911,CRISP/Allergen/PR-1,8,0.91,0.29,-0.25,0.64
+LOC107964510,uncharacterized LOC107964510,6,-0.11,-0.3,-0.73,-0.45
+LOC411288,"cAMP-specific 3',5'-cyclic phosphodiesterase",4,0.27,0.67,0.42,0.22
+LOC726589,dentin matrix acidic phosphoprotein 1,8,-0.15,-0.39,-0.45,-0.59
+LOC551460,homeobox protein cut,"6, 8",0.06,0.33,0.53,0.66
+LOC413740,iodotyrosine deiodinase 1,8,0.02,0.53,0.36,0.67
+LOC410492,cytochrome P450 9e2,8,-0.04,0.67,0.22,0.73
+LOC410018,protein I'm not dead yet,"6, 8",0.3,0.24,0.45,0.6
+LOC102655272,NHP2-like protein 1,6,-0.25,-0.43,-0.71,-0.18
+LOC100578579,uncharacterized LOC100578579,8,0.16,0.53,0.36,0.53
+LOC413588,bystin,"4, 6, 8",-0.18,-0.47,-0.43,-0.49
+LOC409139,uncharacterized LOC409139,6,0.28,0.25,0.6,0.43
+LOC551737,synapsin,4,0.18,0.69,0.27,0.42
+LOC102654781,protein G12,"6, 8",0.03,-0.25,-0.65,-0.7
+LOC724372,nucleolar protein 12,8,-0.3,-0.3,-0.4,-0.57
+LOC725099,spermidine synthase,"4, 6, 8",-0.07,-0.71,-0.46,-0.33
+LOC551739,DNA primase large subunit,"6, 8",-0.26,-0.34,-0.51,-0.45
+LOC100578797,uncharacterized LOC100578797,8,0.19,0.25,0.32,0.81
+LOC413964,serine/threonine-protein kinase grp,"6, 8",-0.17,-0.38,-0.66,-0.35
+LOC100577801,zinc finger protein ush,8,0.39,0.3,0.43,0.44
+LOC726537,probable ATP-dependent RNA helicase DDX27,8,-0.14,-0.32,-0.44,-0.66
+LOC100578014,CCAAT/enhancer-binding protein zeta,8,-0.21,-0.4,-0.38,-0.57
+LOC725350,GATA-binding factor A,8,-0.06,0.51,0.32,0.79
+LOC413620,uncharacterized LOC413620,8,0.34,-0.57,-0.33,-1.01
+LOC413529,something about silencing protein 10,8,-0.32,-0.34,-0.38,-0.52
+LOC100576623,piggyBac transposable element-derived protein 4,"6, 8",-0.34,-0.21,-0.52,-0.47
+LOC100576146,aladin,"6, 8",-0.02,-0.28,-0.64,-0.61
+LOC724442,serine-rich adhesin for platelets,"4, 6",0.3,0.59,0.53,0.13
+LOC725618,myb-binding protein 1A,8,-0.06,-0.43,-0.39,-0.66
+LOC412315,ran-specific GTPase-activating protein,"6, 8",-0.29,-0.28,-0.51,-0.47
+LOC409360,fatty acid hydroxylase domain-containing protein 2,8,0.14,0.45,0.26,0.7
+LOC408920,long-chain fatty acid transport protein 4,"6, 8",0.04,0.17,0.51,0.83
+LOC725961,coiled-coil domain-containing protein 58,"6, 8",-0.24,-0.35,-0.57,-0.39
+LOC113219065,uncharacterized LOC113219065,"4, 8",-0.18,0.65,0.33,0.74
+LOC413749,serine protease inhibitor 88Ea,8,-0.04,0.32,0.48,0.78
+LOC409515,long-chain-fatty-acid--CoA ligase 4,"4, 6, 8",0.06,-0.44,-0.53,-0.62
+LOC113218557,uncharacterized LOC113218557,8,-0.04,-0.46,-0.4,-0.63
+LOC725144,uncharacterized LOC725144,"4, 6",0.03,0.66,0.57,0.27
+LOC413582,Allatostatin A receptor,"6, 8",0.05,0.23,0.65,0.6
+LOC408435,"POU domain, class 6, transcription factor 2",4,0.18,0.86,0.31,0.18
+Y-y,yellow-y,8,0.02,0.25,0.41,0.86
+nAChRa6,nicotinic acetylcholine receptor alpha6 subunit,4,0.02,0.95,0.57,-0.01
+LOC107965749,acyl-CoA Delta(11) desaturase-like,"4, 8",0.11,0.58,0.33,0.52
+LOC100578343,uncharacterized LOC100578343,"4, 6, 8",0.1,0.44,0.4,0.58
+LOC409626,chymotrypsin-2,8,0.1,0.29,0.42,0.72
+LOC410638,aromatic-L-amino-acid decarboxylase,6,0.47,0.18,0.74,0.15
+LOC725400,4-hydroxyphenylpyruvate dioxygenase,"4, 8",-0.28,0.65,0.37,0.79
+LOC100577222,uncharacterized LOC100577222,8,-0.31,0.51,0.3,1.02
+LOC412745,blastoderm-specific protein 25D,8,0.28,-0.46,-0.3,-1.05
+LOC410438,neuroendocrine convertase 1,"6, 8",0,0.24,0.52,0.76
+LOC412960,receptor-type tyrosine-protein phosphatase kappa,4,0.14,1.14,0.14,0.1
+LOC552326,uncharacterized LOC552326,6,-0.02,-0.04,-1.07,-0.4
+LOC408451,NADPH oxidase 5,6,0.14,0.6,0.63,0.15
+LOC724921,uncharacterized LOC724921,8,0.49,-0.3,-0.39,-1.32
+LOC410254,"glutaryl-CoA dehydrogenase, mitochondrial",8,-0.02,0.41,0.41,0.71
+LOC409714,serine-rich adhesin for platelets,6,0.26,0.38,0.63,0.24
+LOC100578698,uncharacterized LOC100578698,8,-0.02,0.42,0.35,0.75
+LOC726733,cysteine-rich protein 1,8,0,0.49,0.24,0.78
+LOC725332,nuclear pore complex protein Nup160 homolog,8,0.12,-0.4,-0.34,-0.89
+LOC412817,importin-4,8,0.17,-0.47,-0.38,-0.84
+LOC551860,uncharacterized LOC551860,8,0.06,-0.51,-0.35,-0.71
+LOC100577676,E3 ubiquitin-protein ligase TRAIP,8,-0.1,-0.38,-0.51,-0.52
+LOC100576421,uncharacterized LOC100576421,"6, 8",0.27,0.36,0.5,0.38
+LOC413591,nucleolar complex protein 2 homolog,8,-0.14,-0.28,-0.45,-0.64
+LOC552037,POC1 centriolar protein homolog A,6,-0.38,-0.11,-0.69,-0.33
+LOC107966044,uncharacterized LOC107966044,6,-0.04,0.06,1.13,0.36
+LOC413553,zinc transporter ZIP1-like,8,0.25,0.36,0.48,0.43
+LOC113218664,putative uncharacterized protein DDB_G0282499,8,0.03,-0.44,-0.09,-1.01
+LOC100577498,actin cytoskeleton-regulatory complex protein PAN1,8,0.26,0.31,0.43,0.51
+LOC100577719,uncharacterized LOC100577719,"6, 8",0.18,0.39,0.47,0.48
+LOC552095,poly [ADP-ribose] polymerase,"6, 8",-0.2,-0.29,-0.42,-0.6
+RCC1,regulator of chromosome condensation 1,"4, 6",-0.19,-0.52,-0.51,-0.29
+LOC552245,N-acetyltransferase ESCO1,"6, 8",-0.06,-0.41,-0.45,-0.58
+LOC727085,zinc finger protein 558,8,-0.15,0.23,0.61,0.82
+LOC113218655,uncharacterized LOC113218655,8,-0.08,0.27,0.66,0.65
+LOC412491,double-stranded RNA-specific editase 1,"6, 8",-0.07,-0.32,-0.4,-0.71
+LOC725614,protein cycle,8,0.17,0.29,0.43,0.61
+LOC410675,maternal B9.10 protein,8,0.51,-0.74,-0.17,-1.1
+LOC408473,uncharacterized LOC408473,"6, 8",0.19,0.25,0.58,0.48
+LOC410475,tRNA pseudouridine(38/39) synthase,6,-0.34,-0.44,-0.46,-0.25
+LOC412898,peptidylglycine alpha-hydroxylating monooxygenase,"6, 8",0.11,0.42,0.52,0.45
+LOC411809,enolase-phosphatase E1,"6, 8",-0.2,-0.36,-0.47,-0.47
+LOC100576457,probable ribosome biogenesis protein RLP24,"4, 6, 8",-0.21,-0.39,-0.53,-0.37
+LOC551490,collagen alpha chain CG42342,4,0.02,0.59,0.42,0.47
+LOC412888,A disintegrin and metalloproteinase with thrombospondin motifs 7,8,0.05,0.48,0.28,0.68
+LOC725935,claspin-like,8,-0.16,-0.33,-0.38,-0.62
+LOC102655025,uncharacterized LOC102655025,8,0.06,0.32,0.15,0.95
+LOC113219278,uncharacterized LOC113219278,8,-0.28,0.34,0.61,0.81
+LOC410754,post-GPI attachment to proteins factor 2-like,8,0.28,-0.55,-0.5,-0.72
+LOC410582,"ornithine aminotransferase, mitochondrial",8,0.08,0.26,0.33,0.82
+LOC551242,eukaryotic translation initiation factor 3 subunit E,"4, 6, 8",-0.08,-0.39,-0.42,-0.59
+LOC412472,protein lethal(2)denticleless,"4, 6, 8",-0.03,-0.4,-0.5,-0.56
+LOC411738,lutropin-choriogonadotropic hormone receptor,8,0.45,0.05,0.42,0.57
+LOC726525,serine/threonine-protein kinase fused,"6, 8",-0.08,0.35,0.43,0.78
+LOC552397,Krueppel-like factor 6,"6, 8",0.35,0.39,0.37,0.37
+LOC102656444,protein dopey homolog PFC0245c,8,-0.02,-0.49,-0.25,-0.72
+LOC552645,mesencephalic astrocyte-derived neurotrophic factor homolog,"6, 8",-0.1,-0.37,-0.47,-0.54
+LOC408887,ankyrin repeat and SAM domain-containing protein 1A,4,0.03,0.89,0.4,0.16
+LOC102653944,uncharacterized LOC102653944,"6, 8",-0.2,0.33,0.63,0.71
+LOC725197,protein penguin,8,0.2,-0.65,-0.18,-0.85
+LOC552697,zinc transporter foi,8,0.02,-0.48,-0.37,-0.64
+LOC408864,waprin-Phi1,8,0.19,0.26,0.24,0.79
+LOC551799,putative mediator of RNA polymerase II transcription subunit 26,8,0.07,0.35,0.44,0.62
+LOC412546,regulator of telomere elongation helicase 1 homolog,8,-0.05,-0.36,-0.33,-0.73
+LOC552010,60S ribosomal export protein NMD3,"4, 8",-0.23,-0.5,-0.36,-0.37
+LOC410237,uncharacterized LOC410237,"4, 6, 8",0,0.41,0.4,0.66
+LOC726527,protein FAM136A,6,-0.25,-0.31,-0.49,-0.41
+LOC411534,circadian locomoter output cycles protein kaput,4,0.29,0.56,0.4,0.22
+LOC100576799,uncharacterized LOC100576799,"4, 6, 8",0.1,-0.47,-0.56,-0.53
+LOC411201,discoidin domain-containing receptor 2,4,0.28,0.62,0.09,0.49
+LOC100576773,epidermal retinol dehydrogenase 2,"6, 8",0.06,0.3,0.55,0.55
+LOC410747,"glucose dehydrogenase [FAD, quinone]",6,-0.19,-0.6,-0.73,0.07
+LOC725511,protein Wnt-11b,8,0.03,0.5,0.4,0.53
+LOC102656390,uncharacterized LOC102656390,8,-0.2,-0.28,-0.36,-0.62
+LOC725461,leucine-rich repeat protein 1,"6, 8",-0.15,-0.34,-0.59,-0.39
+LOC408748,"transmembrane protein 11, mitochondrial","4, 6, 8",-0.04,-0.39,-0.62,-0.42
+LOC102655585,uncharacterized LOC102655585,8,-0.07,0.48,0.21,0.85
+LOC726297,"cytochrome c oxidase subunit 7C, mitochondrial",8,0.13,0.35,0.28,0.71
+LOC413664,GPI transamidase component PIG-S,"4, 6, 8",0.18,0.37,0.32,0.6
+LOC100578341,uncharacterized LOC100578341,"4, 6, 8",0.09,0.45,0.53,0.38
+LOC724916,tetraspanin-12,4,-0.15,0.93,0.33,0.35
+LOC724352,zinc finger protein 593 homolog,"6, 8",-0.14,-0.27,-0.59,-0.46
+LOC107964702,uncharacterized LOC107964702,8,-0.1,0.05,0.54,0.97
+LOC410972,nuclear pore complex protein Nup54,"4, 6, 8",-0.04,-0.52,-0.46,-0.43
+LOC102655618,translation initiation factor eIF-2B subunit epsilon,8,-0.04,-0.41,-0.43,-0.58
+LOC551901,eukaryotic translation initiation factor 4E-1A,"6, 8",-0.24,-0.28,-0.48,-0.46
+LOC551311,ribosome production factor 2 homolog,6,-0.3,-0.22,-0.51,-0.43
+LOC551561,"poly(A) RNA polymerase, mitochondrial",8,-0.16,-0.4,-0.34,-0.56
+LOC724891,DNA polymerase epsilon subunit 2,"6, 8",-0.27,-0.25,-0.49,-0.45
+LOC551990,replication factor C subunit 3,"6, 8",-0.26,-0.23,-0.49,-0.48
+LOC726947,TGF-beta-activated kinase 1 and MAP3K7-binding protein 3,8,0.1,0.53,0.3,0.52
+LOC552763,cell division control protein 6 homolog,"6, 8",-0.06,-0.33,-0.45,-0.62
+LOC113218624,uncharacterized LOC113218624,8,0.43,0.19,0.06,0.78
+LOC411115,baculoviral IAP repeat-containing protein 6,"4, 8",0.12,0.52,0.34,0.47
+LOC551910,farnesyl pyrophosphate synthase,6,0.14,0.32,0.75,0.25
+LOC102656594,uncharacterized LOC102656594,6,0.29,0.09,0.63,0.45
+LOC725964,uncharacterized LOC725964,8,-0.14,0.62,0.2,0.77
+LOC410363,uncharacterized LOC410363,4,0.21,0.66,0.4,0.18
+LOC412777,sodium/potassium/calcium exchanger Nckx30C,4,0.11,0.85,0.09,0.39
+LOC107964592,uncharacterized LOC107964592,8,-0.4,0.36,-0.1,1.6
+LOC409455,doublesex- and mab-3-related transcription factor A2,8,0.18,0.52,0.19,0.56
+LOC409590,cyclin-dependent kinase 1,"4, 6, 8",-0.07,-0.33,-0.6,-0.45
+LOC412125,ubiquitin-conjugating enzyme E2-24 kDa,8,0.27,-0.55,-0.34,-0.82
+LOC411396,neprilysin-4,8,-0.02,0.46,0.42,0.58
+LOC413383,carbonic anhydrase-related protein 10,6,0.01,0.45,0.74,0.24
+egh,"beta-1,4-mannosyltransferase egh","4, 6, 8",0.02,-0.43,-0.49,-0.54
+LOC726131,mitochondrial import inner membrane translocase subunit Tim10B,6,-0.26,-0.35,-0.57,-0.26
+LOC102656505,uncharacterized LOC102656505,8,-0.16,0.5,0.26,0.84
+LOC551153,exodeoxyribonuclease,6,-0.24,-0.3,-0.59,-0.31
+LOC551781,pre-rRNA-processing protein TSR1 homolog,"4, 6, 8",-0.09,-0.42,-0.39,-0.54
+LOC410534,uncharacterized LOC410534,8,0.13,0.32,0.46,0.53
+LOC102653841,uncharacterized LOC102653841,8,-0.06,-0.03,0.72,0.81
+LOC551686,apoptosis inhibitor 5,8,-0,-0.33,-0.39,-0.71
+LOC100577386,ankyrin repeat and LEM domain-containing protein 2,8,-0.21,-0.31,-0.32,-0.6
+LOC100577220,regulatory protein MIG1,8,0.07,-0.38,-0.36,-0.77
+MsrA,methionine sulphoxide reductase A,"4, 6, 8",0.12,-0.39,-0.62,-0.55
+LOC410635,fumarylacetoacetate hydrolase domain-containing protein 2A,"6, 8",0.14,0.23,0.46,0.6
+LOC552473,USP6 N-terminal-like protein,8,0.13,-0.38,-0.29,-0.89
+LOC100577150,uncharacterized LOC100577150,8,-0.25,0.6,0.32,0.76
+LOC726397,MAD2L1-binding protein,8,-0.13,-0.27,-0.52,-0.5
+LOC551779,histone H2A.V,"4, 6, 8",0.05,-0.45,-0.62,-0.41
+LOC410741,proton-coupled amino acid transporter-like protein pathetic,"4, 8",0.11,0.5,0.38,0.43
+LOC113219217,transcription factor 15-like,8,-0.34,0.41,0.52,0.83
+LOC100578023,SIFamide-related peptide,8,0.03,0.15,0.32,0.93
+LOC113218528,uncharacterized LOC113218528,"4, 8",0.12,0.71,0.09,0.5
+LOC107964590,uncharacterized LOC107964590,8,0.17,0.22,0.33,0.7
+LOC100576924,ankyrin repeat and death domain-containing protein 1A,"4, 8",-0.08,0.6,0.42,0.49
+LOC725015,monocarboxylate transporter 3,8,0.54,-0.6,-0.32,-1.04
+LOC100578330,uncharacterized LOC100578330,8,-0.13,-0.45,-0.16,-0.68
+LOC410501,NACHT and WD repeat domain-containing protein 2,"6, 8",0.17,0.16,0.51,0.59
+LOC551376,activating signal cointegrator 1 complex subunit 1,8,-0.05,-0.52,-0.38,-0.47
+LOC410410,ATP-dependent DNA helicase PIF1,"6, 8",-0.25,-0.31,-0.5,-0.35
+LOC100576326,phenoloxidase-activating factor 2,"4, 8",-0.08,0.57,0.26,0.67
+LOC413393,box C/D snoRNA protein 1,8,-0.11,-0.35,-0.41,-0.55
+LOC412708,calcyclin-binding protein,"6, 8",-0.08,-0.25,-0.64,-0.44
+LOC410872,SUMO-activating enzyme subunit 1,"6, 8",-0.26,-0.19,-0.55,-0.42
+LOC411568,ribosomal oxygenase 1,"6, 8",-0.12,-0.31,-0.53,-0.46
+LOC113218569,sodium-coupled monocarboxylate transporter 1-like,"6, 8",0.09,-0.34,-0.57,-0.6
+LOC725611,DNA polymerase alpha catalytic subunit,8,-0.03,-0.34,-0.4,-0.66
+LOC100577168,uncharacterized LOC100577168,8,0.14,0.17,0.39,0.71
+LOC102653588,cleavage and polyadenylation specificity factor 73,8,-0.14,-0.24,-0.41,-0.62
+LOC413678,"serine--pyruvate aminotransferase, mitochondrial",8,0.11,0.42,0.2,0.68
+LOC409707,zwei Ig domain protein zig-8,8,0.03,0.21,0.34,0.83
+LOC413568,probable G-protein coupled receptor 158,6,0.25,0.12,0.73,0.3
+LOC552680,X-ray repair cross-complementing protein 6,8,-0.15,-0.4,-0.26,-0.61
+Metrn,meteorin,"4, 8",-0.02,0.52,0.28,0.64
+LOC100576125,nucleoporin NDC1,"4, 6, 8",-0.09,-0.42,-0.49,-0.41
+LOC107965716,uncharacterized LOC107965716,8,0.09,-0.04,0.4,0.97
+LOC552293,sialin,8,-0.06,-0.4,-0.37,-0.58
+LOC100578769,uncharacterized LOC100578769,8,0.03,0.39,0.31,0.68
+LOC100578691,rhoGEF domain-containing protein gxcJ,"6, 8",-0.17,-0.32,-0.45,-0.46
+LOC100577065,lymphocyte expansion molecule-like,8,-0.44,0.17,0.6,1.08
+LOC100578089,uncharacterized protein PF11_0213,8,-0.01,-0.45,-0.42,-0.53
+LOC102655337,uncharacterized LOC102655337,8,0.12,0.35,0.33,0.6
+Camkii,calcium/calmodulin-dependent protein kinase II,4,0.27,0.57,0.34,0.22
+LOC408914,BAI1-associated protein 3,"4, 8",0,0.6,0.3,0.5
+LOC409558,polyadenylate-binding protein 2-B,8,0.26,-0.34,-0.31,-1.01
+LOC102653834,uncharacterized LOC102653834,8,0.09,0.47,-0.79,-1.17
+LOC413481,probable chitinase 10,"6, 8",-0.1,0.23,0.68,0.59
+LOC413168,retinol dehydrogenase 14,8,-0.23,0.41,0.27,0.95
+LOC413350,lachesin,"4, 8",0.12,0.58,0.15,0.55
+LOC550673,inosine-5'-monophosphate dehydrogenase 1b,"4, 6, 8",-0.04,-0.46,-0.39,-0.51
+LOC551137,proton-associated sugar transporter A,8,0.14,0.44,0.33,0.49
+LOC113218578,uncharacterized LOC113218578,8,-0.05,0.52,0.19,0.74
+LOC552480,BTB/POZ domain-containing protein KCTD5,8,-0.04,-0.36,-0.35,-0.65
+LOC725143,probable U3 small nucleolar RNA-associated protein 11,6,-0.37,-0.3,-0.42,-0.32
+LOC725922,mitochondrial basic amino acids transporter,8,-0.15,0.4,0.43,0.72
+LOC552536,adipocyte plasma membrane-associated protein,8,-0.06,-0.4,-0.28,-0.66
+LOC412531,GATOR complex protein NPRL3,8,0.05,-0.41,-0.4,-0.64
+LOC413441,dnaJ homolog subfamily C member 3,"6, 8",0.09,-0.34,-0.45,-0.7
+LOC412294,deoxynucleotidyltransferase terminal-interacting protein 2,"6, 8",-0.22,-0.3,-0.51,-0.36
+LOC725654,cell growth regulator with RING finger domain protein 1,6,0.3,0.35,0.57,0.17
+LOC551222,syntaxin-12,8,0.27,-0.58,-0.18,-0.91
+LOC113218581,uncharacterized LOC113218581,8,-0.03,0.36,0.38,0.68
+LOC413043,UDP-glucuronosyltransferase 1-3,8,0.15,-0.04,-0.54,-0.95
+LOC113219374,uncharacterized LOC113219374,8,0.28,-0.46,-0.36,-0.84
+LOC414043,leucine-rich repeat-containing protein 49,8,-0.29,-0.19,-0.33,-0.58
+LOC408953,peroxidase,"6, 8",0.17,0.32,0.44,0.45
+LOC410765,"7,8-dihydro-8-oxoguanine triphosphatase","6, 8",-0.15,-0.2,-0.56,-0.47
+LOC724251,alpha-sarcoglycan,"6, 8",0.11,0.22,0.53,0.52
+LOC552515,ATP-dependent RNA helicase WM6,"4, 6, 8",-0.07,-0.34,-0.52,-0.45
+LOC107965063,uncharacterized LOC107965063,8,0.2,0.28,0.26,0.63
+LOC113218540,uncharacterized LOC113218540,8,-0.07,0.4,0.29,0.76
+LOC410320,whirlin,"6, 8",0.14,0.33,0.45,0.46
+LOC100578237,uncharacterized protein PF11_0213,8,-0.17,-0.33,-0.34,-0.53
+LOC100576683,uncharacterized LOC100576683,"6, 8",0.14,0.09,0.63,0.52
+LOC408869,lissencephaly-1 homolog,8,0.03,0.35,0.35,0.65
+LOC552801,mitoferrin-1,8,0.16,-0.45,-0.32,-0.76
+LOC410246,netrin receptor UNC5B,8,0.07,0.36,0.27,0.66
+LOC410322,ral guanine nucleotide dissociation stimulator,8,0.06,0.38,0.38,0.56
+LOC724465,enhancer of split mbeta protein,8,-0.11,0.38,0.28,0.82
+LOC409043,high-affinity choline transporter 1,8,0.03,0.33,0.22,0.79
+LOC726798,sn1-specific diacylglycerol lipase beta,4,-0.03,0.66,0.44,0.3
+UHRF1,ubiquitin-like with PHD and ring finger domains 1,8,-0.03,-0.37,-0.2,-0.76
+LOC725732,uncharacterized LOC725732,6,0.27,0.28,0.57,0.25
+LOC727324,prolactin-releasing peptide receptor,8,-0.19,0.7,0.12,0.74
+LOC113219119,uncharacterized LOC113219119,8,-0.02,-0.51,-0.23,-0.61
+LOC410269,probable multidrug resistance-associated protein lethal(2)03659,"4, 6",0.34,0.45,0.46,0.13
+LOC724843,uncharacterized LOC724843,8,0.1,-0.53,-0.07,-0.87
+LOC107964882,uncharacterized LOC107964882,8,-0.23,0.44,0.33,0.82
+LOC413324,chitinase-like protein Idgf4,8,0.02,0.39,0.35,0.6
+LOC412436,protein CASC1,8,0.09,0.51,0.31,0.45
+LOC100576110,zinc finger protein GLI4,"6, 8",0.13,0.23,0.4,0.6
+LOC410891,protein dispatched,8,0.33,-0.55,-0.4,-0.74
+LOC726625,4-coumarate--CoA ligase 1,8,0.14,0.39,0.36,0.46
+LOC409859,DNA replication factor Cdt1,8,-0.03,-0.37,-0.3,-0.66
+LOC100577522,uncharacterized LOC100577522,8,-0.45,0.71,0.34,0.76
+LOC725106,UDP-glucuronosyltransferase 1-8,8,0.11,0.34,0.36,0.54
+LOC411140,putative aldehyde dehydrogenase family 7 member A1 homolog,8,-0.32,0.14,0.42,1.12
+LOC102653782,uncharacterized LOC102653782,8,-0.65,0.44,0.25,1.31
+LOC100578877,uncharacterized LOC100578877,8,0.18,0.46,0.24,0.47
+LOC410456,uncharacterized LOC410456,8,0.18,0.24,0.35,0.59
+LOC411640,DNA replication licensing factor Mcm2,8,-0.01,-0.23,-0.37,-0.74
+LOC413567,L-xylulose reductase,8,-0.07,0.22,0.4,0.81
+LOC410879,U3 small nucleolar RNA-interacting protein 2,"6, 8",-0.22,-0.35,-0.42,-0.36
+LOC100578005,nucleolar protein 56,"6, 8",-0.1,-0.19,-0.47,-0.59
+LOC107964413,uncharacterized LOC107964413,"6, 8",-0.31,0.41,0.68,0.58
+LOC725558,uncharacterized LOC725558,8,-0.18,0.17,0.62,0.74
+LOC724927,importin-5,"4, 6, 8",0.02,-0.46,-0.37,-0.54
+LOC410953,MLX-interacting protein,6,0.42,0.31,0.62,-0
+LOC724193,kinesin 8,8,-0.07,-0.25,-0.4,-0.63
+Eth,ecdysis triggering hormone,8,-0.11,0.33,0.38,0.76
+LOC726478,inhibin beta C chain,8,0.1,-0.08,0.37,0.95
+LOC102655479,putative uncharacterized protein DDB_G0271606,6,0.13,0.4,0.51,0.31
+LOC408275,uncharacterized LOC408275,"6, 8",0.05,0.28,0.5,0.51
+LOC726231,GRB2-associated-binding protein 2,"6, 8",0.16,0.32,0.42,0.45
+LOC726664,alpha-tubulin N-acetyltransferase,6,0.25,0.38,0.48,0.24
+LOC551846,membralin,4,0.13,0.59,0.38,0.25
+LOC408533,mitogen-activated protein kinase kinase kinase 15,8,0.15,-0.4,-0.24,-0.85
+LOC552345,gamma-1-syntrophin,"6, 8",-0.18,-0.33,-0.46,-0.37
+LOC413691,condensin complex subunit 3,"6, 8",-0.24,-0.27,-0.4,-0.44
+LOC102656029,homeobox protein Hmx,8,0.04,0.31,0.34,0.65
+LOC100576747,maternal protein tudor,8,0.25,-0.49,-0.23,-0.87
+LOC552348,methyltransferase-like protein 23,8,0.25,-0.49,-0.3,-0.8
+LOC411909,ran GTPase-activating protein 1,"6, 8",-0.18,-0.26,-0.44,-0.46
+LOC726804,protein BTG2,"4, 6",0.4,0.56,0.53,-0.16
+LOC552648,GPN-loop GTPase 3,6,-0.23,-0.26,-0.61,-0.24
+Tpx-4,thioredoxin peroxidase 4,8,-0.01,0.33,0.34,0.67
+LOC100577629,uncharacterized LOC100577629,8,0.06,0.51,0.26,0.51
+LOC113218710,uncharacterized LOC113218710,8,-0.07,0.32,0.4,0.68
+LOC551896,transcription factor E2F4,8,-0.16,-0.41,-0.33,-0.44
+LOC102655778,"translation factor GUF1 homolog, mitochondrial","6, 8",-0.2,-0.35,-0.43,-0.35
+LOC410802,microphthalmia-associated transcription factor,8,0.19,0.22,0.35,0.57
+LOC414048,ribosome biogenesis protein BMS1 homolog,8,-0.12,-0.28,-0.42,-0.51
+LOC551036,vacuole membrane protein 1,"4, 6, 8",-0.06,-0.4,-0.4,-0.47
+LOC724220,synaptotagmin-10,8,0.09,0.43,0.22,0.59
+LOC724212,60 kDa SS-A/Ro ribonucleoprotein,8,0.25,-0.4,-0.18,-1
+LOC726506,kinesin 14,"6, 8",-0.19,-0.31,-0.45,-0.37
+LOC724743,PRKC apoptosis WT1 regulator protein,"6, 8",0.17,0.23,0.44,0.49
+LOC410295,queuine tRNA-ribosyltransferase accessory subunit 2,"4, 6, 8",-0.16,-0.48,-0.4,-0.28
+LOC724946,cytochrome P450 6a14-like,"6, 8",-0.12,0.25,0.69,0.5
+nAChRb1,nicotinic acetylcholine receptor beta1 subunit,8,0.2,0.39,0.08,0.65
+LOC100577513,uncharacterized LOC100577513,8,-0.17,0.45,0.13,0.92
+LOC724367,protein lethal(2)essential for life,4,1.02,0.96,-0.62,-0.03
+Glob1,globin 1,8,-0.1,0.45,0.39,0.59
+LOC724718,xanthine dehydrogenase,6,0.06,0.3,0.64,0.32
+Burs,bursicon subunit alpha,8,-0.04,0.31,0.16,0.89
+LOC551595,WD repeat-containing protein CG11141,8,-0.06,-0.34,-0.21,-0.71
+LOC552359,active regulator of SIRT1,6,-0.24,-0.24,-0.57,-0.27
+LOC113219131,uncharacterized LOC113219131,6,0.37,0.04,0.88,0.04
+LOC413400,double-strand break repair protein MRE11,8,-0.3,-0.2,-0.41,-0.4
+LOC413280,acidic leucine-rich nuclear phosphoprotein 32 family member A,8,0.09,-0.46,-0.25,-0.69
+LOC726407,uncharacterized LOC726407,8,-0.02,0.33,0.28,0.74
+LOC727157,pro-resilin,8,-0.07,0.19,0.11,1.09
+LOC411209,uncharacterized LOC411209,8,0.48,-0.1,0.39,0.54
+LOC726468,histone H2A,8,-0.13,0.47,0.21,0.78
+LOC552781,H/ACA ribonucleoprotein complex subunit 2-like protein,6,-0.21,-0.31,-0.54,-0.25
+LOC414021,uncharacterized LOC414021,6,0.22,0.52,0.71,-0.13
+LOC552169,DNA repair and recombination protein RAD54B,8,-0.07,-0.34,-0.26,-0.65
+LOC724203,ribosome biogenesis protein BRX1 homolog,"6, 8",-0.2,-0.25,-0.44,-0.43
+LOC100576384,tyrosine-protein phosphatase 10D,4,0.2,0.44,0.38,0.3
+LOC408676,CREB-regulated transcription coactivator 1,8,0.02,0.5,0.26,0.53
+LOC408903,uncharacterized LOC408903,8,0.08,0.34,0.29,0.6
+LOC100578424,uncharacterized LOC100578424,8,-0.25,-0.3,-0.37,-0.4
+LOC408574,uncharacterized LOC408574,"6, 8",0.05,0.34,0.49,0.43
+LOC412271,serine/threonine-protein kinase Aurora-2,"6, 8",-0.14,-0.3,-0.42,-0.45
+LOC552148,thymidylate kinase,"6, 8",-0.08,-0.31,-0.43,-0.5
+LOC409739,motile sperm domain-containing protein 2,"6, 8",-0.12,-0.29,-0.46,-0.44
+LOC113218668,uncharacterized LOC113218668,8,-0.2,0.37,0.15,0.98
+LOC409904,uncharacterized LOC409904,"4, 8",0.12,0.59,0.14,0.46
+LOC408534,trypsin,8,0.04,0.26,0.43,0.58
+LOC102656896,uncharacterized LOC102656896,6,-0.56,-0.22,-0.75,0.22
+LOC551771,methionine aminopeptidase 2,"4, 8",0.12,0.45,0.33,0.41
+LOC725665,5-oxoprolinase,8,-0.14,0.28,0.42,0.75
+LOC107965557,uncharacterized LOC107965557,6,-0.29,-0.39,-0.53,-0.09
+LOC408420,RING finger protein nhl-1,8,0.14,0.21,0.41,0.55
+LOC551523,adenylate kinase,"4, 6, 8",-0.05,-0.48,-0.38,-0.4
+LOC102653764,waprin-Thr1,8,-0.54,0.35,0.3,1.19
+LOC100577030,QRFP-like peptide receptor,8,0.08,-0.04,0.41,0.85
+LOC100579026,uncharacterized LOC100579026,"6, 8",-0.22,0.35,0.53,0.64
+LOC102656308,uncharacterized LOC102656308,6,-0.05,0.46,1.04,-0.15
+LOC100578746,aprataxin and PNK-like factor,6,-0.16,-0.24,-0.61,-0.3
+LOC410043,ornithine decarboxylase,"4, 6, 8",0.13,-0.52,-0.49,-0.42
+LOC725013,sister chromatid cohesion protein DCC1,8,-0.17,-0.26,-0.18,-0.68
+LOC408500,endothelin-converting enzyme homolog,"6, 8",0.12,0.14,0.51,0.53
+LOC552566,1-acyl-sn-glycerol-3-phosphate acyltransferase gamma,8,0.11,-0.46,-0.23,-0.71
+LOC408770,protein turtle,4,0.08,0.73,0.04,0.44
+LOC725216,DNA-directed RNA polymerase I subunit RPA1,8,-0.08,-0.46,-0.25,-0.5
+LOC412878,DNA N6-methyl adenine demethylase,4,0.12,0.8,0.23,0.14
+LOC411347,peripheral plasma membrane protein CASK,4,0.06,0.63,0.34,0.26
+LOC725798,protein aurora borealis,8,-0.14,-0.27,-0.28,-0.6
+LOC100578801,uncharacterized LOC100578801,6,-0.42,-0.26,-0.61,0
+LOC412580,protein arginine N-methyltransferase 3,8,0.15,-0.48,-0.21,-0.75
+LOC724786,zinc finger HIT domain-containing protein 3,6,-0.31,-0.32,-0.43,-0.24
+LOC551301,solute carrier family 25 member 40,"4, 6, 8",-0.18,-0.37,-0.46,-0.28
+LOC107963983,pre-rRNA processing protein FTSJ3,8,-0.03,-0.5,-0.24,-0.51
+Reck,reversion-inducing-cysteine-rich protein with kazal motifs,8,0.12,0.3,0.21,0.66
+LOC413343,nucleoporin Nup37,"6, 8",-0.15,-0.26,-0.48,-0.4
+LOC552490,uncharacterized LOC552490,6,0.31,0.27,1.2,-0.49
+LOC726551,DNA ligase 4,8,0,-0.28,-0.41,-0.6
+LOC413768,"2-oxoglutarate dehydrogenase, mitochondrial","6, 8",-0.13,-0.3,-0.44,-0.41
+LOC551426,uncharacterized LOC551426,6,-0.29,-0.32,-0.45,-0.22
+LOC412460,putative cystathionine gamma-lyase 2,"4, 6, 8",0.01,-0.42,-0.33,-0.53
+LOC413720,nucleolar protein 14 homolog,8,-0.03,-0.42,-0.3,-0.54
+LOC100578726,protein kinase 4,8,-0.21,-0.31,-0.28,-0.48
+LOC412480,ribosomal RNA processing protein 1 homolog,8,-0.2,-0.29,-0.33,-0.46
+LOC410423,uncharacterized LOC410423,4,0.16,0.62,0.39,0.11
+LOC551591,carboxy-terminal domain RNA polymerase II polypeptide A small phosphatase 1,"6, 8",0.1,0.33,0.4,0.45
+LOC410561,ciliogenesis and planar polarity effector 2,6,-0.28,-0.24,-0.55,-0.2
+LOC413727,probable ATP-dependent RNA helicase pitchoune,8,0.03,-0.39,-0.36,-0.56
+LOC725432,60S ribosomal protein L37a,8,-0.03,0.36,0.3,0.64
+LOC725047,nucleolin 1,8,-0.02,-0.32,-0.23,-0.7
+LOC724329,dnaJ homolog subfamily C member 24,"6, 8",-0.13,-0.3,-0.41,-0.43
+LOC100576435,shootin-1,"6, 8",0.06,0.35,0.43,0.43
+LOC725926,collagen alpha-1(IV) chain,8,0.05,0.25,0.35,0.63
+LOC411724,"glycerol-3-phosphate acyltransferase 1, mitochondrial",6,0.4,0.06,0.6,0.21
+LOC113219322,uncharacterized LOC113219322,8,0.31,0.21,0.06,0.7
+LOC552260,U6 snRNA-associated Sm-like protein LSm1,"4, 6, 8",-0.07,-0.37,-0.46,-0.37
+LOC726838,"probable malate dehydrogenase, mitochondrial",8,-0.02,0.11,0.5,0.68
+LOC107965452,uncharacterized LOC107965452,8,0.14,0.02,0.04,1.07
+otd2,homeotic protein ocelliless,8,0.04,0.3,0.32,0.62
+LOC410690,haloacid dehalogenase-like hydrolase domain-containing 5,8,0.07,-0.42,-0.28,-0.64
+LOC724971,uncharacterized LOC724971,"6, 8",0.16,0.34,0.45,0.31
+LOC411452,band 4.1-like protein 4A,8,0.02,0.4,0.1,0.74
+LOC551724,S-adenosylmethionine decarboxylase proenzyme,"4, 6",-0,-0.56,-0.49,-0.21
+LOC107965415,uncharacterized LOC107965415,8,0.15,0.27,0.14,0.71
+LOC410940,DNA topoisomerase 2-binding protein 1,8,-0.02,-0.3,-0.36,-0.58
+LOC724157,uncharacterized LOC724157,8,-0.32,-0.27,-0.24,-0.43
+LOC413012,EH domain-containing protein 3,6,0.32,0.29,0.53,0.12
+LOC100578413,uncharacterized LOC100578413,"6, 8",0.07,-0,0.63,0.56
+LOC410672,smad nuclear interacting protein 1,"4, 6, 8",-0.13,-0.4,-0.35,-0.39
+LOC102655120,hepatocyte nuclear factor 4-gamma,6,0.23,0.41,0.43,0.18
+LOC726854,serine/threonine-protein phosphatase 6 regulatory ankyrin repeat subunit B-like,8,-0.05,0.24,0.26,0.81
+LOC102654870,uncharacterized LOC102654870,8,0.03,0.31,0.32,0.61
+LOC408291,"3-ketoacyl-CoA thiolase, mitochondrial","6, 8",-0.01,0.26,0.31,0.7
+LOC727622,"probable aspartate aminotransferase, cytoplasmic",8,0.11,-0.44,-0.22,-0.71
+LOC412521,m7GpppN-mRNA hydrolase,8,-0.17,-0.3,-0.3,-0.48
+LOC726497,autophagy-related protein 2 homolog B,6,0.18,0.23,0.56,0.29
+LOC552434,CCR4-NOT transcription complex subunit 11,"4, 6, 8",0,-0.49,-0.35,-0.42
+LOC726458,ETS-like protein pointed,8,-0.12,0.25,0.39,0.73
+LOC102654948,uncharacterized LOC102654948,8,-0.37,0.41,0.36,0.85
+LOC413233,"methylcrotonoyl-CoA carboxylase subunit alpha, mitochondrial","6, 8",-0.03,0.38,0.52,0.39
+LOC726129,UPF0547 protein C16orf87,8,-0.13,-0.27,-0.39,-0.46
+LOC412503,mitochondrial dicarboxylate carrier,8,0.27,-0.56,-0.38,-0.58
+LOC408897,nuclear receptor coactivator 6,"4, 8",0.17,0.41,0.32,0.35
+LOC100577520,uncharacterized protein C19orf47 homolog,8,-0.14,-0.36,-0.17,-0.58
+LOC727596,malectin,"4, 6, 8",0.03,-0.33,-0.49,-0.46
+LOC724679,uncharacterized LOC724679,8,-0.41,0.3,-0.32,-0.82
+LOC100576139,uncharacterized LOC100576139,8,0.08,0.27,0.27,0.63
+LOC551663,disintegrin and metalloproteinase domain-containing protein 11,8,0.04,0.39,0.35,0.48
+LOC725867,translin-associated protein X,"4, 6, 8",-0.26,-0.28,-0.4,-0.31
+LOC725941,zinc finger protein 800,8,0.06,-0.45,-0.22,-0.65
+LOC411893,"cytochrome P450 315a1, mitochondrial",8,-0.22,-0.25,-0.36,-0.42
+LOC724247,"rRNA methyltransferase 3, mitochondrial",8,-0.22,-0.26,-0.36,-0.41
+LOC100577501,nuclear pore membrane glycoprotein 210,8,0.05,-0.32,-0.27,-0.7
+LOC410447,importin subunit beta-1,"6, 8",0.11,-0.28,-0.65,-0.43
+LOC727128,60S ribosomal protein L34,8,0.02,0.35,0.3,0.58
+LOC551659,serine/threonine-protein kinase STE20,8,0.33,-0.5,-0.07,-1.01
+LOC100577766,uncharacterized LOC100577766,8,-0,-0.27,-0.24,-0.73
+LOC100379261,uncharacterized LOC100379261,"6, 8",0.31,0.2,0.38,0.36
+LOC552491,NADPH-dependent diflavin oxidoreductase 1,8,0,-0.39,-0.33,-0.53
+LOC412751,solute carrier family 35 member F5,8,0.01,-0.28,-0.26,-0.72
+LOC552206,putative ATP-dependent RNA helicase me31b,8,0.19,-0.38,-0.19,-0.87
+LOC726279,M-phase phosphoprotein 6,6,-0.26,-0.21,-0.53,-0.24
+LOC412243,protein split ends,4,0.31,0.53,0.24,0.15
+LOC726018,replication factor C subunit 4-like,6,-0.15,-0.25,-0.62,-0.22
+LOC410394,DCN1-like protein 5,8,0.15,-0.4,-0.27,-0.71
+LOC409487,probable glutamine-dependent NAD(+) synthetase,"4, 6, 8",0.16,0.33,0.38,0.37
+LOC408942,receptor expression-enhancing protein 2,8,0.24,0.23,0.33,0.44
+LOC107965599,uncharacterized LOC107965599,8,-0,0.46,0.25,0.53
+LOC551224,aminopeptidase N,8,0.17,0.32,0.22,0.53
+LOC412072,DNA replication complex GINS protein PSF1,6,-0.34,-0.3,-0.57,-0.03
+LOC550827,tubulin alpha-1 chain,6,-0.11,-0.2,-0.6,-0.32
+LOC100576699,uncharacterized LOC100576699,6,-0.44,0.12,-0.55,-0.36
+LOC409165,calreticulin,"6, 8",-0.02,-0.23,-0.36,-0.62
+LOC727007,alpha-tocopherol transfer protein,8,-0.06,0.35,0.36,0.58
+LOC411845,p21-activated protein kinase-interacting protein 1-like,8,0.02,-0.5,-0.26,-0.49
+LOC412578,mediator of RNA polymerase II transcription subunit 21,"6, 8",-0.21,-0.26,-0.46,-0.3
+LOC412150,endoplasmin,"6, 8",0.04,-0.18,-0.43,-0.67
+LOC724642,F-box/LRR-repeat protein 3,"4, 6",-0.36,-0.53,-0.46,0.11
+LOC551101,phenylalanine--tRNA ligase beta subunit,"6, 8",-0.15,-0.26,-0.39,-0.43
+LOC551121,dipeptidase 1,"4, 8",-0.15,0.5,0.34,0.54
+LOC551763,hypoxia up-regulated protein 1,8,0.03,-0.24,-0.27,-0.75
+LOC100577156,chitinase-3-like protein 1,8,-0.26,0.38,0.05,1.07
+LOC100578484,uncharacterized LOC100578484,6,-0.18,-0.34,-0.53,-0.18
+LOC411217,protein PFF0380w,8,0.19,-0.38,-0.32,-0.71
+LOC726085,probable prefoldin subunit 2,6,-0.27,-0.31,-0.37,-0.28
+LOC413892,ankyrin repeat domain-containing protein 65,8,0.18,0.3,0.06,0.69
+LOC551034,ADP-ribosylation factor-like protein 5B,8,0.09,-0.44,-0.25,-0.63
+LOC412985,guanine nucleotide-binding protein-like 1,8,-0.12,-0.41,-0.16,-0.54
+LOC552032,uncharacterized protein C1orf198 homolog,8,-0.13,-0.37,-0.33,-0.4
+LOC725536,Sjoegren syndrome nuclear autoantigen 1 homolog,6,-0.09,-0.38,-0.55,-0.2
+LOC494509,malvolio,"6, 8",0.01,0.03,0.49,0.69
+LOC107964438,uncharacterized LOC107964438,"4, 6",-0.12,0.53,0.48,0.34
+LOC409643,failed axon connections,"6, 8",0.05,-0.14,-0.45,-0.68
+LOC724506,HEAT repeat-containing protein 3,8,-0.15,-0.36,-0.31,-0.39
+LOC113219060,uncharacterized LOC113219060,8,0.25,0.41,0.01,0.54
+LOC409572,TWiK family of potassium channels protein 9,8,-0.12,0.38,0.3,0.66
+LOC100576717,restin homolog,8,0.24,-0.48,-0.07,-0.9
+LOC409979,DNA replication licensing factor Mcm7,"6, 8",-0.11,-0.19,-0.46,-0.46
+LOC408427,piezo-type mechanosensitive ion channel component,6,0.24,0.37,0.47,0.14
+LOC413718,probable glutamine--tRNA ligase,8,-0.21,-0.25,-0.25,-0.51
+LOC408634,major facilitator superfamily domain-containing protein 1,8,0.22,0.33,0.3,0.36
+LOC551374,uncharacterized protein PF11_0213,8,0.04,-0.32,-0.16,-0.78
+LOC408527,pre-mRNA-splicing factor SPF27,6,-0.26,-0.2,-0.44,-0.31
+LOC726375,bone morphogenetic protein 2-B,8,0.2,0.31,0.26,0.44
+LOC410637,nuclear receptor coactivator 3,6,0.47,0.38,0.5,-0.14
+LOC551329,ATPase family AAA domain-containing protein 3A homolog,8,-0.07,-0.3,-0.35,-0.49
+Hbg3,alpha-glucosidase,8,0.05,0.28,0.02,0.87
+LOC724715,lisH domain-containing protein FOPNL,6,-0.44,-0.16,-0.46,-0.15
+LOC727223,uncharacterized LOC727223,"4, 6, 8",0.22,0.29,0.39,0.31
+LOC413557,syndecan,6,0.32,0.4,0.45,0.04
+LOC724678,histone H2A,8,0.03,0.37,0.27,0.54
+LOC410662,lachesin,"4, 8",-0.07,0.55,0.13,0.59
+LOC409027,leucine-rich repeat and calponin homology domain-containing protein 1,8,0.12,0.45,0.09,0.55
+LOC412287,peptidyl-prolyl cis-trans isomerase FKBP4,"6, 8",-0.1,-0.14,-0.43,-0.54
+LOC102656618,uncharacterized LOC102656618,8,0.05,0.39,0.25,0.52
+LOC102653614,probable RNA methyltransferase CG11342,8,-0.01,0.39,0.39,0.43
+LOC410347,protein big brother,8,0.04,0.37,0.21,0.59
+LOC412262,protein Hook homolog 3,8,-0.19,-0.3,-0.3,-0.41
+LOC412357,GA-binding protein subunit beta-1,8,-0.07,-0.32,-0.19,-0.63
+LOC726331,alpha-2A adrenergic receptor,8,0.18,0.35,0.22,0.46
+LOC552214,nucleolar protein 16,6,-0.27,-0.27,-0.43,-0.23
+LOC726086,gem-associated protein 8,6,-0.3,-0.16,-0.51,-0.24
+LOC100576497,uncharacterized LOC100576497,8,0.13,0.2,0.16,0.7
+LOC410296,"b(0,+)-type amino acid transporter 1","4, 8",0.16,-0.49,-0.37,-0.51
+LOC100576894,"keratin, type II cytoskeletal 74",6,0.14,0.39,0.56,0.11
+LOC412399,organic cation transporter protein,8,-0.06,-0.21,-0.27,-0.66
+LOC408926,alpha-2-macroglobulin-like protein 1,"6, 8",0.27,0.22,0.41,0.3
+LOC410093,geminin,6,-0.26,-0.22,-0.46,-0.25
+LOC412221,proliferation-associated protein 2G4,"4, 6, 8",0.09,-0.37,-0.46,-0.45
+LOC100578446,pituitary homeobox x,8,0.04,-0.18,-0.02,-1.03
+LOC551556,probable serine/threonine-protein kinase DDB_G0283337,6,-0.6,-0.11,1.15,0.75
+LOC552261,EF-hand domain-containing protein D2 homolog,8,-0.03,-0.21,-0.14,-0.81
+LOC552244,probable pathogenesis-related protein CaO19.6200,6,0.12,0.28,0.45,0.35
+LOC724118,mitochondrial fission regulator 2,8,-0.14,-0.31,-0.25,-0.49
+LOC725669,DNA ligase 1,8,-0.27,-0.04,-0.23,-0.65
+LOC408438,insulin receptor substrate 1-B,4,0.25,0.54,0.37,0.03
+Syx1A,syntaxin 1A,8,0.12,0.37,0.29,0.41
+LOC410597,SET and MYND domain-containing protein 5,6,-0.13,-0.35,-0.52,-0.18
+LOC412788,scavenger receptor class B member 1,8,0.15,-0.35,-0.18,-0.8
+LOC725589,centrosomal protein of 120 kDa,8,-0.08,-0.34,-0.15,-0.63
+LOC410876,THUMP domain-containing protein 3,"6, 8",-0.17,-0.24,-0.45,-0.32
+LOC726110,glutamate-rich WD repeat-containing protein 1,"4, 6, 8",-0.04,-0.33,-0.45,-0.36
+LOC100577300,surfeit locus protein 6 homolog,8,-0.18,-0.2,-0.33,-0.47
+LOC102653759,zinc finger CCHC domain-containing protein 4,8,-0.15,-0.25,-0.28,-0.51
+LOC725570,tumor necrosis factor alpha-induced protein 8-like protein,8,0.13,0.26,0.32,0.47
+LOC413462,cyclin-G-associated kinase,"4, 6, 8",0.04,0.29,0.48,0.38
+LOC724275,uncharacterized LOC724275,8,0.29,-0.15,0.12,0.92
+LOC727144,tether containing UBX domain for GLUT4,8,-0.22,-0.22,-0.31,-0.42
+LOC552688,acyl-CoA:lysophosphatidylglycerol acyltransferase 1,"4, 6, 8",0.01,-0.36,-0.38,-0.46
+LOC413613,B-cell receptor-associated protein 31,8,-0.01,-0.41,-0.2,-0.57
+LOC725548,protein FAM151B,8,0.05,0.31,0.23,0.6
+LOC100577394,uncharacterized LOC100577394,8,-0.02,-0.54,0.14,-0.76
+LOC726148,hemicentin-1,8,0.1,0.07,0.24,0.78
+LOC100577046,uncharacterized LOC100577046,6,-0.15,-0.19,-0.54,-0.3
+LOC412694,uncharacterized LOC412694,8,0.08,0.2,0.26,0.64
+LOC410883,charged multivesicular body protein 6,6,-0.21,-0.31,-0.49,-0.17
+LOC551296,"UPF0160 protein MYG1, mitochondrial",6,-0.23,-0.25,-0.5,-0.21
+LOC552094,transcriptional repressor p66-beta,4,0.17,0.48,0.3,0.23
+LOC550811,protein timeless homolog,"6, 8",-0.18,-0.22,-0.41,-0.37
+LOC724141,protein yippee-like 5,8,-0.05,0.31,0.32,0.61
+LOC113219062,uncharacterized LOC113219062,8,-0.1,0.29,0.43,0.56
+LOC100578783,uncharacterized LOC100578783,8,-0.13,-0.1,-0.4,-0.55
+LOC410035,dorsal-ventral patterning protein Sog,6,0.14,0.5,0.64,-0.1
+LOC724869,histone H2B,8,-0.01,0.32,0.29,0.57
+LOC725329,UPF0489 protein C5orf22 homolog,8,0.03,0.32,0.28,0.54
+LOC113218770,uncharacterized LOC113218770,6,0.15,0.25,0.54,0.23
+LOC413101,histone acetyltransferase Tip60,4,0.24,0.41,0.22,0.3
+LOC412626,MOB kinase activator-like 3,6,-0.15,-0.32,-0.47,-0.23
+LOC107965212,uncharacterized LOC107965212,8,0.15,0.4,0.12,0.49
+LOC412282,"leucine--tRNA ligase, cytoplasmic",8,0.01,-0.37,-0.26,-0.54
+LOC552439,WD repeat-containing protein 3,8,-0.21,-0.18,-0.25,-0.53
+LOC724280,UPF0545 protein C22orf39 homolog,6,-0.46,-0.13,-0.41,-0.17
+LOC725378,nucleolar GTP-binding protein 2,8,-0.09,-0.3,-0.24,-0.54
+LOC411366,UPF0047 protein YjbQ,8,0.21,-0.51,-0.18,-0.69
+LOC100578380,tRNA (guanine-N(7)-)-methyltransferase,6,-0.29,-0.17,-0.47,-0.24
+LOC412599,arfaptin-2,8,0.22,-0.38,-0.28,-0.71
+LOC409673,DNA polymerase epsilon catalytic subunit A,8,-0.2,-0.25,-0.24,-0.48
+LOC412748,ATP-binding cassette sub-family G member 1,8,0.16,0.09,0.42,0.49
+LOC412937,probable elongator complex protein 2,"6, 8",-0.19,-0.31,-0.35,-0.3
+LOC726874,"ribonuclease Z, mitochondrial",8,-0.04,-0.37,-0.32,-0.43
+LOC100578723,protein RRNAD1,8,-0.16,-0.34,-0.3,-0.36
+LOC727515,mitochondrial import inner membrane translocase subunit Tim29,6,-0.35,-0.15,-0.47,-0.19
+Snf,U1 small nuclear ribonucleoprotein A,"6, 8",-0.15,-0.19,-0.43,-0.39
+LOC409505,cysteine-rich hydrophobic domain-containing protein 2,8,0.19,-0.46,-0.15,-0.75
+LOC411144,transcription initiation factor TFIID subunit 11,"6, 8",-0.25,-0.2,-0.4,-0.3
+LOC551790,arf-GAP with dual PH domain-containing protein 1,8,0.08,-0.19,-0.3,-0.75
+LOC552585,uncharacterized LOC552585,8,0.19,-0.45,-0.22,-0.66
+LOC726481,inositol monophosphatase 2,8,-0.01,-0.21,0.03,-0.95
+LOC726647,uncharacterized LOC726647,8,0.22,-0.44,-0.07,-0.86
+LOC727174,nucleolar protein 11,8,-0.16,-0.25,-0.21,-0.54
+LOC409409,serine/threonine-protein kinase dyf-5,8,0.2,0.18,0.31,0.46
+LOC412454,tetratricopeptide repeat protein 37,8,-0.01,-0.32,-0.24,-0.58
+LOC413721,uncharacterized LOC413721,8,0.24,-0.19,-0.31,-0.89
+LOC408426,lysosomal thioesterase PPT2 homolog,"4, 6",-0.15,-0.47,-0.49,-0.03
+LOC412722,protein singed,8,0.1,-0.4,-0.23,-0.62
+LOC551356,nesprin-1,"4, 6, 8",0.12,0.35,0.36,0.32
+LOC411026,WD repeat-containing protein 36,8,-0.08,-0.3,-0.27,-0.5
+LOC409320,leucine carboxyl methyltransferase 1,8,0.18,-0.45,-0.17,-0.7
+LOC414042,thioredoxin-related transmembrane protein 1,"6, 8",-0.06,-0.27,-0.36,-0.45
+LOC725056,glyoxylate/hydroxypyruvate reductase A,"6, 8",-0.11,-0.3,-0.39,-0.34
+LOC552642,DNA replication licensing factor Mcm3,8,-0.14,-0.13,-0.3,-0.57
+Eyg,eyegone,8,0.03,0.24,0.2,0.67
+Tert,telomerase reverse transcriptase,8,-0.06,-0.36,-0.03,-0.69
+LOC726045,apoptosis-resistant E3 ubiquitin protein ligase 1,8,0.12,0.38,0.25,0.4
+LOC725288,armadillo repeat-containing protein 3,8,-0.05,0.2,0.42,0.57
+LOC725323,ATP-dependent DNA helicase DDX11,8,0.01,-0.33,-0.29,-0.53
+LOC413194,myeloid differentiation primary response protein MyD88-A,8,-0.36,-0.21,-0.22,-0.35
+LOC413675,nuclear pore complex protein Nup107,"6, 8",-0.05,-0.21,-0.34,-0.55
+LOC409729,zinc finger protein 608,4,0,0.63,0.23,0.27
+LOC727119,uncharacterized LOC727119,8,-0.08,-0.46,-0.01,-0.59
+LOC726292,natterin-3,8,0.13,0.29,0.14,0.57
+LOC724982,uncharacterized LOC724982,8,-0.15,-0.16,-0.29,-0.54
+LOC413069,H(+)/Cl(-) exchange transporter 7,6,0.15,0.34,0.37,0.28
+LOC113218608,uncharacterized LOC113218608,8,-0.1,-0.25,-0.18,-0.61
+LOC551210,myosin-2 heavy chain,8,-0.06,-0.31,-0.28,-0.48
+LOC411698,ethanolaminephosphotransferase 1,8,0.25,-0.47,-0.39,-0.52
+LOC725409,7-methylguanosine phosphate-specific 5'-nucleotidase,6,-0.27,-0.27,-0.41,-0.18
+LOC551973,cleavage and polyadenylation specificity factor subunit CG7185,"6, 8",-0.12,-0.23,-0.34,-0.44
+LOC100577909,high mobility group protein I,"6, 8",-0.14,-0.15,-0.48,-0.36
+LOC411917,NAD-dependent protein deacetylase sirtuin-1,"6, 8",0.18,0.24,0.42,0.29
+LOC408722,sodium/potassium-transporting ATPase subunit beta-2,"4, 6",0.03,0.46,0.35,0.3
+LOC412398,macoilin-1,8,0.23,-0.49,-0.05,-0.83
+LOC100577517,uncharacterized LOC100577517,4,0.25,0.58,0.43,-0.12
+LOC408329,uncharacterized LOC408329,8,-0.07,0.32,0.18,0.7
+LOC411579,tRNA (cytosine(34)-C(5))-methyltransferase,8,-0.17,-0.19,-0.3,-0.47
+LOC551835,CTP synthase,"6, 8",-0.08,-0.24,-0.36,-0.45
+LOC411106,"3'(2'),5'-bisphosphate nucleotidase 1","4, 6, 8",-0.15,-0.28,-0.35,-0.34
+LOC551839,"1,2-dihydroxy-3-keto-5-methylthiopentene dioxygenase","4, 6, 8",-0.12,-0.33,-0.4,-0.28
+LOC551784,probable actin-related protein 2/3 complex subunit 2,"4, 6, 8",-0.08,-0.41,-0.32,-0.32
+LOC411380,60S ribosomal protein L30,8,0,0.3,0.26,0.57
+LOC409056,sodium-dependent phosphate transporter 2,8,0.14,0.25,0.22,0.51
+LOC551531,ribosome biogenesis protein BOP1 homolog,8,0.04,-0.32,-0.19,-0.65
+LOC410897,coiled-coil domain-containing protein 124,"6, 8",-0.09,-0.28,-0.35,-0.42
+LOC552265,rho GTPase-activating protein 32,"6, 8",0.18,0.2,0.36,0.39
+LOC413758,U3 small nucleolar RNA-associated protein 14 homolog A,8,-0.16,-0.22,-0.25,-0.5
+LOC410255,RUN domain-containing protein 1,8,0.14,-0.34,-0.23,-0.7
+LOC408294,protein FAM76A,"4, 8",-0.02,0.36,0.28,0.5
+LOC411145,nischarin,8,-0.06,-0.32,-0.24,-0.51
+LOC100576912,cyclic AMP response element-binding protein A,8,0.08,-0.27,-0.29,-0.64
+LOC100578356,apoptotic protease-activating factor 1-like,8,0.29,-0.39,-0.25,-0.78
+LOC100577393,epidermal growth factor receptor-like,8,0.15,0.22,0.19,0.56
+LOC725925,prolyl 3-hydroxylase OGFOD1,4,-0.13,-0.47,-0.32,-0.2
+LOC412741,manganese-transporting ATPase 13A1,8,0.12,-0.45,-0.14,-0.66
+LOC100576862,speckle targeted PIP5K1A-regulated poly(A) polymerase,8,0.02,-0.4,-0.24,-0.49
+LOC409450,guanine nucleotide-binding protein subunit beta-like protein,8,0,0.22,0.32,0.58
+LOC413508,RNA-binding protein Rsf1,"6, 8",0.08,-0.32,-0.35,-0.53
+LOC409060,golgin subfamily A member 6-like protein 22,8,0.15,0.25,0.32,0.4
+Ip3k,"inositol 1,4,5-triphosphate kinase",6,0.24,0.26,0.4,0.23
+LOC102656291,coiled-coil domain-containing protein 115,6,-0.29,-0.21,-0.41,-0.21
+LOC412443,regulator of microtubule dynamics protein 1,6,-0.38,-0.12,-0.46,-0.16
+5-HT1,serotonin receptor,8,0.06,0.37,0.08,0.61
+LOC413252,ATP-binding cassette sub-family F member 2,8,0.12,-0.44,-0.19,-0.6
+LOC551113,"delta-1-pyrroline-5-carboxylate dehydrogenase, mitochondrial","6, 8",0.05,0.16,0.43,0.48
+LOC551378,toll-like receptor Tollo,8,-0.1,-0.05,-0.34,-0.63
+LOC726428,probable RNA-binding protein EIF1AD,6,-0.18,-0.27,-0.51,-0.15
+LOC113219166,uncharacterized LOC113219166,4,-0.11,0.91,0.12,0.2
+LOC113219102,sex determination protein fruitless-like,8,-0.22,-0.23,-0.26,-0.41
+LOC552472,eukaryotic translation initiation factor 2-alpha kinase 1,8,-0.01,-0.14,-0.34,-0.62
+LOC726053,EH domain-binding protein 1,8,-0.13,-0.19,-0.17,-0.62
+LOC725061,uncharacterized LOC725061,8,-0.03,-0.38,-0.17,-0.53
+LOC411882,ER membrane protein complex subunit 2-B,8,-0.25,-0.24,-0.25,-0.37
+LOC413186,mitochondrial pyruvate carrier 3,8,0.14,-0.03,0.33,0.67
+LOC413197,G protein-coupled receptor kinase 1,8,0.06,0.32,0.37,0.36
+LOC726124,segmentation protein Runt,8,0.02,0.3,0.18,0.61
+LOC100578826,protein strawberry notch-like,8,0.24,-0.36,-0.16,-0.83
+LOC100576120,uncharacterized LOC100576120,6,-0.31,-0.23,-0.55,-0.03
+LOC726496,protein lin-37 homolog,"6, 8",-0.15,-0.24,-0.36,-0.36
+LOC551991,uncharacterized LOC551991,8,0.14,-0.42,0.22,1.16
+Cry2,cryptochrome 2,6,0.22,0.38,0.61,-0.1
+Nmdar1,NMDA receptor 1,8,0.09,0.2,0.35,0.47
+LOC100578455,uncharacterized LOC100578455,8,-0.04,0.13,0.4,0.62
+LOC409488,protein-L-isoaspartate(D-aspartate) O-methyltransferase,8,0.03,0.3,0.3,0.48
+LOC100578031,BTB/POZ domain-containing protein 6-B,8,0.17,-0.42,-0.22,-0.64
+LOC410188,60S ribosomal protein L8,8,0.02,0.32,0.3,0.47
+LOC724909,uncharacterized LOC724909,8,0.1,0.27,0.22,0.51
+LOC724620,inner nuclear membrane protein Man1,8,-0.03,-0.37,-0.26,-0.44
+LOC102654919,26S proteasome non-ATPase regulatory subunit 5,"6, 8",-0.26,-0.18,-0.33,-0.34
+LOC100577382,targeting protein for Xklp2 homolog,8,-0.14,-0.13,-0.34,-0.49
+LOC552259,staphylococcal nuclease domain-containing protein 1,8,0.05,-0.29,-0.2,-0.66
+LOC411510,DNA-directed RNA polymerases I and III subunit RPAC1,6,-0.18,-0.18,-0.47,-0.27
+LOC102654312,KRR1 small subunit processome component homolog,6,-0.24,-0.24,-0.36,-0.26
+LOC725495,homeobox protein GBX-2,8,0,0.26,0.13,0.71
+LOC552791,MIP18 family protein galla-2,6,-0.3,-0.25,-0.41,-0.14
+LOC413064,DNA replication licensing factor Mcm6,"6, 8",-0.09,-0.24,-0.39,-0.38
+LOC410343,nuclear pore complex protein Nup93,6,-0,-0.27,-0.55,-0.28
+LOC552446,collagen alpha-1(I) chain,8,0.2,0.27,-0.08,0.72
+LOC552204,"beta-1,3-glucosyltransferase",8,-0.22,-0.31,-0.28,-0.29
+LOC552590,transmembrane protein 120 homolog,8,-0.06,-0.26,-0.25,-0.53
+LOC100578669,uncharacterized LOC100578669,8,0.16,0.36,0.15,0.42
+LOC413987,polypeptide N-acetylgalactosaminyltransferase 5,8,-0.05,-0.27,-0.27,-0.51
+LOC724237,prostaglandin E2 receptor EP3 subtype,8,0,0.37,0.21,0.52
+LOC551762,S-adenosylhomocysteine hydrolase-like protein 1,"4, 6, 8",0.06,-0.37,-0.29,-0.5
+LOC413394,vesicle-trafficking protein SEC22b-B,"4, 6, 8",-0.06,-0.42,-0.34,-0.27
+LOC727127,NK-tumor recognition protein,8,0.09,-0.28,-0.14,-0.77
+LOC411472,dynamin-1-like protein,"4, 6, 8",-0.06,-0.28,-0.32,-0.44
+LOC725363,isopentenyl-diphosphate Delta-isomerase 1,"6, 8",-0.24,-0.22,-0.38,-0.25
+LOC409977,uncharacterized LOC409977,8,-0.1,-0.23,-0.21,-0.56
+LOC113219318,exosome component 10,8,-0.17,-0.26,-0.13,-0.55
+LOC410875,probable ribosome production factor 1,6,-0.19,-0.26,-0.41,-0.24
+LOC552430,N-acylneuraminate-9-phosphatase,8,0.13,-0.46,-0.28,-0.48
+LOC411240,nucleolar protein 10,8,-0.2,-0.21,-0.32,-0.37
+LOC550962,exonuclease 1,8,-0.19,-0.34,-0.13,-0.43
+LOC413735,glutamate--cysteine ligase regulatory subunit,"6, 8",-0.23,-0.18,-0.36,-0.32
+LOC100577931,TELO2-interacting protein 2,"6, 8",-0.12,-0.21,-0.49,-0.28
+LOC551466,CAAX prenyl protease 1 homolog,8,0.02,-0.34,-0.36,-0.42
+LOC411483,E3 UFM1-protein ligase 1 homolog,8,-0.15,-0.3,-0.17,-0.47
+LOC102656934,stress-induced-phosphoprotein 1,"6, 8",0.15,-0.26,-0.36,-0.63
+LOC552195,uncharacterized LOC552195,6,-0.18,-0.15,-0.68,-0.09
+LOC102656137,coiled-coil domain-containing protein 174,8,-0.02,-0.33,-0.18,-0.57
+LOC552291,DNA replication licensing factor MCM4,"4, 6, 8",-0.14,-0.29,-0.31,-0.35
+LOC107965266,glycoprotein 3-alpha-L-fucosyltransferase A,8,0.23,0.21,0.15,0.49
+LOC724542,U3 small nucleolar RNA-associated protein 4 homolog,"6, 8",-0.06,-0.31,-0.37,-0.34
+LOC410724,protein prickle,8,0.22,0.25,0.23,0.39
+LOC412636,protein ABHD13,"6, 8",0.13,-0.32,-0.39,-0.5
+LOC100576703,sarcalumenin,"6, 8",0.15,0.26,0.35,0.33
+LOC100576848,uncharacterized LOC100576848,8,0.11,-0.35,-0.23,-0.62
+LOC408371,probable ATP-dependent RNA helicase DDX56,8,-0.22,-0.21,-0.26,-0.39
+LOC100578708,protein Star,8,0.17,0.22,0.23,0.47
+LOC551780,uncharacterized protein CG3556,8,0.26,0.2,0.22,0.41
+LOC552780,ribonuclease P/MRP protein subunit POP5,6,-0.32,-0.19,-0.44,-0.13
+LOC113219258,uncharacterized LOC113219258,8,-0.01,0.09,-0.16,-1
+LOC551585,BLOC-1-related complex subunit 8 homolog,6,-0.24,-0.19,-0.39,-0.26
+LOC100576949,uncharacterized LOC100576949,8,0.15,0.22,0.36,0.35
+LOC726646,probable cytochrome P450 6a13,8,0.16,0.25,0.26,0.41
+LOC100577602,uncharacterized LOC100577602,8,-0.08,-0.27,-0.13,-0.6
+LOC409353,WD repeat-containing protein 43,8,-0.14,-0.26,-0.3,-0.39
+LOC409491,transmembrane protein 183B,6,-0.15,-0.29,-0.45,-0.2
+LOC408285,rho GTPase-activating protein conundrum,6,0.15,0.31,0.54,0.09
+LOC552710,asparagine synthetase domain-containing,"6, 8",-0.11,-0.21,-0.35,-0.41
+LOC552440,histone chaperone asf1,"4, 6, 8",-0.02,-0.31,-0.34,-0.41
+LOC408723,cerebellar degeneration-related protein 2-like,8,0.11,0.22,0.3,0.45
+Obp10,odorant binding protein 10,8,-0.1,0.36,0.23,0.6
+LOC726742,chromosome transmission fidelity protein 18 homolog,8,-0.05,-0.29,-0.27,-0.47
+LOC409892,dnaJ homolog subfamily C member 9,"6, 8",-0.12,-0.07,-0.44,-0.44
+LOC726220,pyroglutamyl-peptidase 1,6,-0.15,-0.35,-0.44,-0.14
+LOC551927,alcohol dehydrogenase [NADP(+)],"6, 8",-0.18,-0.08,-0.4,-0.41
+LOC726067,Hermansky-Pudlak syndrome 1 protein homolog,8,-0.06,-0.28,-0.31,-0.43
+LOC411642,NF-kappa-B inhibitor-interacting Ras-like protein,8,0.17,-0.52,-0.2,-0.53
+LOC100579005,uncharacterized LOC100579005,8,-0.17,0.57,-0.06,0.74
+LOC552028,sodium-coupled neutral amino acid transporter 9 homolog,8,0.05,-0.13,-0.35,-0.64
+LOC726668,PDZ and LIM domain protein 3,8,0.11,0.2,0.35,0.42
+LOC100576374,protein MMS22-like,8,0.05,-0.31,-0.14,-0.67
+LOC411670,LON peptidase N-terminal domain and RING finger protein 1,4,0.27,0.77,0.23,-0.2
+LOC410259,nuclear factor 1 X-type,4,0.03,0.58,0.27,0.19
+LOC409084,arginine-glutamic acid dipeptide repeats protein,"4, 6",0.23,0.31,0.35,0.18
+LOC411320,serine/threonine/tyrosine-interacting protein,"4, 6",-0.17,-0.39,-0.34,-0.17
+LOC412412,microfibrillar-associated protein 1,8,-0.1,-0.18,-0.2,-0.59
+LOC100576492,uncharacterized LOC100576492,6,-0.32,-0.16,-0.46,-0.12
+LOC409816,MORN repeat-containing protein 4 homolog,8,-0.14,0.21,0.25,0.74
+LOC102656587,ras-related protein Ral-a,"6, 8",-0.03,-0.27,-0.28,-0.49
+LOC552509,MKI67 FHA domain-interacting nucleolar phosphoprotein-like,8,-0.19,-0.24,-0.28,-0.36
+LOC412117,mediator of RNA polymerase II transcription subunit 15,8,-0.02,-0.34,-0.27,-0.44
+LOC409196,alanine aminotransferase 1,"6, 8",0.16,-0.37,-0.41,-0.45
+LOC552147,kelch domain-containing protein 10 homolog,8,0.1,-0.47,-0.25,-0.44
+LOC551535,ero1-like protein,8,0.21,-0.27,-0.34,-0.67
+LOC100577648,uncharacterized LOC100577648,6,-0.32,-0.18,-0.48,-0.08
+LOC411585,E3 ubiquitin-protein ligase NRDP1,"4, 6, 8",0.15,-0.46,-0.36,-0.39
+LOC408902,F-box/LRR-repeat protein 16,8,0.15,0.36,0.12,0.42
+Acph-1,venom acid phosphatase,8,0.29,-0.3,-0.16,-0.88
+LOC411164,DNA-directed RNA polymerase III subunit RPC3,8,-0.04,-0.36,-0.28,-0.38
+LOC410688,RNA-binding protein 5,8,0.07,-0.35,-0.16,-0.62
+LOC413099,enhancer of mRNA-decapping protein 4,8,0.02,-0.34,-0.01,-0.73
+LOC410055,probable tRNA(His) guanylyltransferase,6,-0.17,-0.19,-0.5,-0.19
+LOC724129,pescadillo homolog,8,-0.19,-0.19,-0.2,-0.48
+LOC100577250,zinc finger protein 845,8,0.27,-0.21,-0.1,-1.02
+LOC726369,"peptidyl-tRNA hydrolase 2, mitochondrial","6, 8",-0.18,-0.24,-0.34,-0.3
+LOC724437,adenomatous polyposis coli protein,8,0.17,-0.31,-0.29,-0.63
+LOC100578041,uncharacterized LOC100578041,8,-0.21,0.14,0.37,0.75
+LOC727189,geranylgeranyl pyrophosphate synthase,6,-0.15,-0.24,-0.42,-0.23
+LOC411746,uncharacterized LOC411746,8,0.15,-0.25,-0.25,-0.71
+LOC100576759,uncharacterized LOC100576759,8,0.13,-0.35,-0.22,-0.61
+LOC409736,methylmalonate-semialdehyde dehydrogenase [acylating]-like protein,8,-0.05,0.25,0.24,0.61
+LOC409610,rhotekin-2,"6, 8",-0.25,-0.18,-0.31,-0.31
+LOC409782,pikachurin,4,0.08,0.55,0,0.41
+LOC102654681,mitochondrial inner membrane protease subunit 2,8,0.2,-0.18,-0.24,-0.84
+LOC413840,glucose-6-phosphate exchanger SLC37A2,"4, 6, 8",0.2,0.32,0.29,0.23
+LOC107964343,serine/arginine repetitive matrix protein 1-like,8,0.08,0.23,0.27,0.46
+LOC550987,soluble calcium-activated nucleotidase 1,"4, 6",-0.11,-0.36,-0.46,-0.11
+LOC724731,kinesin 6B,8,-0.08,-0.29,-0.14,-0.54
+LOC413181,mortality factor 4-like protein 1,8,-0.09,-0.3,-0.25,-0.4
+LOC552223,dnaJ homolog shv,"6, 8",0.02,-0.24,-0.41,-0.42
+LOC102654959,myb-like protein Q,4,0.27,0.5,0.38,-0.1
+LOC551733,amyloid-beta-like protein,4,0.17,0.46,0.16,0.26
+LOC100576722,uncharacterized LOC100576722,8,-0.09,0.42,0.15,0.57
+LOC409852,transcription factor SPT20 homolog,6,0.07,0.22,0.59,0.17
+LOC726134,carboxylesterase,8,0.08,-0.25,-0.26,-0.61
+LOC100578548,uncharacterized LOC100578548,8,-0.1,0.36,0.34,0.44
+LOC726740,ubiquitin-conjugating enzyme E2 T,6,-0.31,-0.24,-0.41,-0.09
+LOC551208,"3-hydroxyisobutyrate dehydrogenase, mitochondrial",8,0.03,0.29,0.23,0.49
+LOC724772,leucine-rich repeat neuronal protein 1,8,0.05,0.2,0.25,0.55
+LOC552823,"malonyl-CoA decarboxylase, mitochondrial",8,0.05,-0.41,-0.15,-0.53
+LOC100578852,ribonucleases P/MRP protein subunit POP1,8,0.09,-0.33,-0.31,-0.49
+LOC726235,lymphoid-specific helicase,8,-0.09,-0.26,-0.34,-0.37
+LOC727263,chromobox protein homolog 5,8,-0.28,-0.15,-0.21,-0.4
+LOC411795,Golgi to ER traffic protein 4 homolog,"4, 8",0.07,-0.39,-0.28,-0.45
+LOC551689,nucleolar protein 6,8,0.06,-0.33,-0.19,-0.59
+CytC,mitochondrial cytochrome C,6,-0.05,-0.3,-0.42,-0.27
+LOC550968,"heat shock protein 75 kDa, mitochondrial","6, 8",-0.02,-0.23,-0.31,-0.48
+LOC409311,zinc finger CCCH domain-containing protein 15 homolog,8,-0.17,-0.15,-0.19,-0.53
+LOC551470,general transcription factor IIF subunit 2,6,-0.18,-0.24,-0.38,-0.24
+LOC100576346,protein PFC0760c,8,0.15,-0.3,-0.09,-0.8
+LOC724785,ran-binding protein 3,"4, 6",0.11,0.35,0.33,0.25
+LOC411546,FGFR1 oncogene partner 2 homolog,6,-0.28,-0.22,-0.37,-0.16
+LOC410451,venom serine carboxypeptidase,8,-0.16,0.17,0.26,0.76
+LOC409154,sorting nexin-30,"6, 8",0,0.26,0.33,0.44
+LOC408836,unc-112-related protein,8,0.19,0.11,0.33,0.41
+LOC411280,GTP-binding protein 128up,"4, 6",-0.13,-0.34,-0.39,-0.17
+LOC725085,basic helix-loop-helix neural transcription factor TAP,"6, 8",0.17,0.06,0.37,0.44
+LOC413000,proton-coupled amino acid transporter-like protein pathetic,8,0.39,-0.34,-0.45,-0.62
+LOC413384,leucine-rich repeat-containing protein 24,6,0.23,0.17,0.47,0.16
+LOC100577344,gametocyte-specific factor 1,6,-0.19,-0.23,-0.47,-0.15
+LOC727582,"tryptophan--tRNA ligase, cytoplasmic","6, 8",-0.17,-0.22,-0.37,-0.26
+LOC409230,"arf-GAP with coiled-coil, ANK repeat and PH domain-containing protein 2","4, 6",0.09,0.53,0.48,-0.07
+LOC725936,titin homolog,"4, 8",0.01,0.47,0.12,0.44
+LOC551817,putative peptidyl-prolyl cis-trans isomerase dodo,"6, 8",0.05,-0.22,-0.44,-0.42
+LOC725673,ribonucleoside-diphosphate reductase large subunit,"6, 8",-0.13,-0.18,-0.29,-0.41
+LOC409527,TBC domain-containing protein kinase-like protein,8,-0.08,-0.27,-0.22,-0.46
+LOC725633,probable DNA-directed RNA polymerases I and III subunit RPAC2,6,-0.27,-0.15,-0.4,-0.21
+LOC100577525,synergin gamma,8,0.21,-0.39,-0.1,-0.74
+LOC409231,dipeptidase 1,8,0.09,0.23,0.15,0.55
+LOC410517,extracellular serine/threonine protein CG31145,8,0.11,0.03,0.34,0.55
+LOC726638,protein artemis,4,-0.14,-0.48,-0.31,-0.1
+LOC725245,protein eiger,"6, 8",0.05,0.27,0.27,0.43
+LOC726703,venom acid phosphatase Acph-1,4,-0.11,0.73,0.13,0.26
+LOC413264,yellow-b,8,-0.26,0.17,0.45,0.65
+LOC412897,E3 ubiquitin-protein ligase MYLIP,"6, 8",0.16,0.13,0.34,0.38
+LOC102655485,uncharacterized LOC102655485,8,0.13,0.08,0.17,0.64
+LOC102656846,cyclin-A2,"6, 8",0.07,-0.26,-0.34,-0.48
+LOC726310,GPI ethanolamine phosphate transferase 1,"4, 8",-0.03,-0.35,-0.26,-0.38
+LOC410289,paraplegin,8,-0.15,-0.26,-0.19,-0.42
+LOC408443,uncharacterized LOC408443,4,-0.04,0.56,0.24,0.25
+LOC411502,SPARC-related modular calcium-binding protein 1,8,0.02,-0.3,-0.27,-0.47
+LOC102653741,uncharacterized LOC102653741,8,-0.01,0.29,0.24,0.5
+LOC413336,ADP-dependent glucokinase,8,0.04,-0.34,-0.3,-0.42
+LOC102656132,structure-specific endonuclease subunit slx1,"6, 8",-0.24,-0.13,-0.35,-0.29
+LOC413562,rho guanine nucleotide exchange factor 17,8,0.16,0.25,0.21,0.4
+LOC724540,probable galactose-1-phosphate uridylyltransferase,"6, 8",0.1,0.23,0.3,0.37
+LOC411763,"DNA polymerase subunit gamma-1, mitochondrial",8,0.05,-0.31,-0.16,-0.59
+LOC410960,myosin-IB,6,0.19,0.26,0.52,0.05
+LOC412823,gamma-tubulin complex component 2,8,-0.04,-0.31,-0.26,-0.41
+LOC413365,nucleoporin SEH1,"4, 6, 8",-0,-0.33,-0.38,-0.3
+LOC409006,arrestin red cell,4,0.2,0.49,0.28,0.05
+LOC550785,fructose-bisphosphate aldolase,"6, 8",0.14,0.12,0.46,0.29
+LOC411704,guanine nucleotide-binding protein G(i) subunit alpha,"4, 6",-0,-0.35,-0.39,-0.27
+LOC107965722,uncharacterized LOC107965722,8,0.01,0.38,0.09,0.52
+LOC413950,"N-alpha-acetyltransferase 25, NatB auxiliary subunit",8,-0.04,-0.24,-0.24,-0.49
+LOC411407,leucine-rich repeat-containing protein 47,8,-0.14,-0.34,-0.13,-0.4
+LOC552163,"dolichyl pyrophosphate Man9GlcNAc2 alpha-1,3-glucosyltransferase","6, 8",-0.03,-0.26,-0.35,-0.37
+LOC412663,laminin subunit alpha,8,0.19,-0.38,-0.19,-0.63
+LOC102656014,uncharacterized LOC102656014,8,0.18,-0.2,-0.24,-0.74
+LOC409550,eukaryotic translation initiation factor 3 subunit D,"6, 8",-0.13,-0.21,-0.33,-0.33
+LOC410396,"isocitrate dehydrogenase [NAD] subunit gamma, mitochondrial",8,0.06,-0.29,-0.22,-0.56
+LOC100578370,protein inturned,8,-0.17,-0.18,-0.28,-0.37
+LOC726789,40S ribosomal protein S26,8,-0.06,0.35,0.21,0.49
+LOC102656814,uncharacterized LOC102656814,8,-0.08,0.37,0.15,0.57
+LOC411918,nuclear pore complex protein Nup205,8,0.01,-0.19,-0.22,-0.6
+LOC552254,uncharacterized protein F21D5.5,8,-0.04,0.26,0.32,0.45
+LOC727192,structural maintenance of chromosomes protein 6,8,-0.15,-0.07,-0.29,-0.48
+LOC408957,uncharacterized LOC408957,6,0.06,0.31,0.39,0.24
+LOC409408,nuclear valosin-containing protein-like,8,-0.13,-0.17,-0.22,-0.48
+LOC408755,probable DNA replication complex GINS protein PSF2,6,-0.18,-0.3,-0.35,-0.17
+LOC412267,dynactin subunit 2,8,-0.25,-0.18,-0.3,-0.27
+LOC725860,synaptotagmin 13,4,0.17,0.34,0.25,0.24
+LOC413204,tropomyosin-2,8,-0.16,0.08,0.19,0.9
+LOC727501,gonadal protein gdl,6,-0.12,-0.26,-0.46,-0.16
+LOC100576487,apoptosis regulatory protein Siva,6,-0.19,-0.17,-0.45,-0.19
+LOC724648,N-acetylglucosaminyl-phosphatidylinositol de-N-acetylase,6,-0.18,-0.24,-0.43,-0.14
+LOC100577481,protein arginine N-methyltransferase 9,8,0.06,-0.29,-0.16,-0.6
+LOC412036,exocyst complex component 3,8,0.09,-0.18,-0.32,-0.58
+LOC726899,death-associated inhibitor of apoptosis 1,6,-0.13,-0.26,-0.38,-0.22
+LOC413579,"endoplasmic reticulum mannosyl-oligosaccharide 1,2-alpha-mannosidase",8,-0,-0.23,-0.24,-0.51
+LOC412762,heparan-sulfate 6-O-sulfotransferase 1-B,8,0.04,-0.2,-0.23,-0.6
+LOC412638,kinesin 3C,8,-0.03,-0.28,-0.19,-0.49
+LOC102654773,zinc finger protein 664,8,0.1,0.3,0.24,0.36
+LOC552082,vinculin,8,0.24,-0.37,-0.05,-0.81
+LOC552623,vacuolar fusion protein CCZ1 homolog,6,-0.19,-0.29,-0.3,-0.21
+LOC408625,nuclear pore complex protein Nup85,"6, 8",-0.05,-0.26,-0.38,-0.3
+LOC409088,uncharacterized LOC409088,6,-0.17,-0.22,-0.46,-0.14
+LOC410395,chromobox protein homolog 1,"6, 8",-0.04,-0.15,-0.32,-0.48
+LOC410105,"alpha-1,3-mannosyl-glycoprotein 2-beta-N-acetylglucosaminyltransferase",8,-0.05,-0.32,-0.24,-0.38
+LOC408734,"succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial",8,-0.04,0.43,0.04,0.55
+LOC411923,"alanine--tRNA ligase, cytoplasmic",8,0.02,-0.36,-0.08,-0.57
+LOC726025,uncharacterized LOC726025,8,-0.09,-0.29,-0.09,-0.51
+LOC102655306,uncharacterized LOC102655306,8,0.15,0,0.34,0.49
+LOC100577941,uncharacterized LOC100577941,8,0.22,-0.22,-0.35,-0.64
+LOC412929,androgen-induced gene 1 protein,"4, 6, 8",0,-0.39,-0.29,-0.31
+LOC550808,WD repeat-containing protein 75,8,-0.08,-0.22,-0.13,-0.56
+LOC100576563,growth factor receptor-bound protein 14,8,-0.13,0.26,0.26,0.6
+LOC551109,kinesin 5A,8,-0.1,-0.12,-0.26,-0.52
+LOC727251,DNA polymerase delta small subunit,"4, 6",-0.12,-0.35,-0.34,-0.17
+LOC551834,large subunit GTPase 1 homolog,8,-0.04,-0.3,-0.17,-0.48
+LOC550903,"arginine--tRNA ligase, cytoplasmic",8,-0.14,-0.21,-0.17,-0.47
+LOC113219326,uncharacterized LOC113219326,8,-0.09,0.4,0.01,0.66
+LOC100578269,uncharacterized LOC100578269,8,-0.3,0.2,0.23,0.86
+LOC552707,protein CDV3 homolog,8,0.06,-0.35,-0.21,-0.49
+LOC551570,leucine-rich melanocyte differentiation-associated protein,"4, 6, 8",0.07,-0.3,-0.41,-0.34
+LOC411627,retinoblastoma-like protein 1,8,0.08,-0.32,-0.3,-0.44
+LOC726488,ubiquitin carboxyl-terminal hydrolase 10,8,0.17,-0.41,-0.07,-0.66
+LOC410385,methionine aminopeptidase 1,8,-0.02,0.19,0.23,0.58
+LOC725642,probable ATP-dependent RNA helicase DDX10,8,-0.15,-0.23,-0.12,-0.48
+LOC413672,hexosaminidase D,8,0.14,-0.38,-0.06,-0.68
+LOC550935,splicing factor 3B subunit 3,"4, 8",0.07,-0.39,-0.24,-0.42
+LOC409498,kinase suppressor of Ras 2,8,0.1,0.18,0.28,0.42
+LOC411711,integrator complex subunit 6,"6, 8",0.04,-0.2,-0.38,-0.44
+LOC107964225,uncharacterized LOC107964225,8,-0.27,0.09,0.28,0.88
+LOC724762,ras-related protein Rab-28,6,0.02,0.12,0.48,0.36
+LOC551273,lysosomal Pro-X carboxypeptidase,"6, 8",-0.23,-0.13,-0.33,-0.29
+LOC552150,uncharacterized LOC552150,8,0.04,-0.39,-0.13,-0.5
+LOC725326,tRNA pseudouridine synthase-like 1,6,-0.08,-0.21,-0.41,-0.28
+LOC412067,cysteine and histidine-rich domain-containing protein,"6, 8",0.14,-0.27,-0.48,-0.37
+LOC724926,DNA polymerase alpha subunit B,"6, 8",-0.11,-0.22,-0.39,-0.27
+LOC409712,"short/branched chain specific acyl-CoA dehydrogenase, mitochondrial",8,0.09,0.25,0.16,0.48
+LOC725756,beta-galactosidase,8,0.07,0.17,0.21,0.53
+LOC725835,DNA polymerase epsilon subunit 4,6,-0.26,-0.24,-0.39,-0.08
+LOC102654520,putative uncharacterized protein DDB_G0282133,8,-0.11,0.33,0.32,0.43
+LOC551546,BAG family molecular chaperone regulator 2,"4, 6, 8",0.04,-0.35,-0.31,-0.36
+LOC725287,sulfhydryl oxidase 1,8,0.11,-0.2,-0.25,-0.63
+LOC102656093,probable ATP-dependent RNA helicase DDX55 homolog,8,-0.19,-0.1,-0.21,-0.47
+LOC411268,uncharacterized LOC411268,8,-0.04,-0.3,-0.18,-0.45
+LOC552553,huntingtin-interacting protein K,6,-0.17,-0.14,-0.4,-0.27
+LOC724326,peptidyl-prolyl cis-trans isomerase,8,0.05,0.27,0.21,0.44
+LOC413655,"3-oxoacyl-[acyl-carrier-protein] synthase, mitochondrial","4, 6, 8",-0.08,-0.3,-0.36,-0.23
+LOC552392,serine palmitoyltransferase 1,8,-0.15,-0.27,-0.26,-0.3
+INTS8,integrator complex subunit 8,"6, 8",-0.07,-0.28,-0.29,-0.33
+LOC409191,SUMO-activating enzyme subunit 2,8,-0.01,-0.19,-0.27,-0.5
+LOC413173,THO complex subunit 3,"6, 8",-0.05,-0.24,-0.3,-0.39
+LOC413245,RNA exonuclease 4,6,-0.24,-0.21,-0.33,-0.19
+LOC412059,F-box only protein 11,8,0.11,-0.23,-0.2,-0.66
+LOC551550,probable 26S proteasome non-ATPase regulatory subunit 3,"6, 8",-0.15,-0.21,-0.35,-0.27
+LOC726312,receptor-binding cancer antigen expressed on SiSo cells,"4, 8",-0.06,-0.28,-0.24,-0.39
+LOC100578132,glutamate--cysteine ligase catalytic subunit,"4, 8",0.11,-0.41,-0.28,-0.39
+LOC724356,RING finger protein 17,8,-0.08,-0.31,-0.16,-0.42
+LOC411095,zinc transporter 7,"4, 8",0.01,-0.38,-0.22,-0.38
+LOC726069,atrial natriuretic peptide receptor 1,8,0,0.15,0.37,0.44
+LOC724740,fork head domain transcription factor slp2,8,-0.08,0.37,0.15,0.52
+LOC411856,U3 small nucleolar ribonucleoprotein protein IMP4,6,-0.14,-0.31,-0.36,-0.15
+LOC408652,protein suppressor of white apricot,"6, 8",0,0.24,0.33,0.39
+LOC412097,AP-3 complex subunit delta-1,8,0.13,-0.26,-0.14,-0.7
+LOC552180,"cob(I)yrinic acid a,c-diamide adenosyltransferase, mitochondrial",6,-0.22,-0.25,-0.3,-0.19
+LOC409822,enhancer of split m7 protein,8,-0.19,0.27,0.12,0.77
+LOC408936,RNA-binding protein squid,"4, 6, 8",0.02,-0.34,-0.3,-0.34
+Lin-52,lin-52 protein,6,-0.16,-0.19,-0.52,-0.09
+LOC113218554,zinc finger protein 708-like,8,0.1,-0.38,-0.03,-0.66
+LOC410864,nuclear pore complex protein Nup50,8,-0.09,-0.15,-0.22,-0.51
+LOC552093,methyltransferase-like protein 2-A,6,-0.2,-0.26,-0.33,-0.17
+LOC409856,guanine nucleotide-releasing factor 2,8,0.07,-0.17,-0.05,-0.82
+LOC726834,mitochondrial inner membrane protease ATP23 homolog,"6, 8",-0.09,-0.2,-0.4,-0.27
+LOC411958,TWiK family of potassium channels protein 18,8,0.07,-0.15,-0.23,-0.65
+LOC409085,guanine nucleotide exchange factor for Rab-3A,8,0.2,-0.33,-0.26,-0.57
+LOC551582,maternal protein exuperantia,6,0.11,-0.29,-0.52,-0.26
+LOC411100,FGGY carbohydrate kinase domain-containing protein,"6, 8",0.09,0.12,0.29,0.46
+LOC551279,zinc finger CCCH domain-containing protein 11A,8,0.37,-0.47,-0.18,-0.67
+LOC725734,RNA-binding protein pno1,8,-0.09,-0.23,-0.25,-0.39
+LOC412209,probable cytochrome P450 6a17,8,-0.18,0.1,-0.39,-0.49
+LOC408580,eukaryotic translation initiation factor 2D,8,0.08,-0.34,-0.27,-0.43
+LOC412712,anaphase-promoting complex subunit 7,"6, 8",0.01,-0.17,-0.32,-0.48
+LOC724680,uncharacterized LOC724680,8,-0.08,-0.18,-0.3,-0.4
+LOC100578526,solute carrier family 35 member E2,"6, 8",-0.1,-0.17,-0.41,-0.28
+LOC551133,methyltransferase-like protein 6,"6, 8",0.13,0.18,0.37,0.27
+LOC551938,elongation of very long chain fatty acids protein AAEL008004,8,0.28,0.04,0.27,0.37
+LOC412835,uncharacterized LOC412835,"4, 6, 8",0.08,-0.38,-0.37,-0.28
+LOC551270,integrator complex subunit 9,"4, 6, 8",-0.06,-0.26,-0.33,-0.31
+LOC726081,mitochondrial import receptor subunit TOM70,"4, 6, 8",-0.02,-0.38,-0.27,-0.29
+LOC551796,cationic amino acid transporter 4,8,0.16,0.18,0.21,0.41
+LOC727222,serine/threonine-protein phosphatase 4 regulatory subunit 2,8,-0.01,-0.28,-0.15,-0.52
+LOC102654085,uncharacterized LOC102654085,4,0.39,1.18,-0.67,0.06
+LOC100576938,centromere protein L,"6, 8",-0.18,-0.06,-0.37,-0.34
+LOC413705,acidic mammalian chitinase,8,0.18,0.08,0.17,0.53
+LOC409294,60S ribosomal protein L23,8,-0.01,0.24,0.21,0.52
+LOC413926,sentrin-specific protease 1,8,-0.08,-0.26,-0.23,-0.39
+LOC409734,nuclear pore glycoprotein p62,"6, 8",-0.12,-0.17,-0.38,-0.27
+LOC411155,teneurin-a,4,0.4,0.38,0.26,-0.08
+LOC100577704,uncharacterized LOC100577704,8,-0.1,0.32,-0.03,0.76
+LOC413368,uncharacterized LOC413368,8,0.33,-0.19,-0.35,-0.75
+LOC100578833,putative leucine-rich repeat-containing protein DDB_G0290503,8,-0.16,-0.13,-0.18,-0.48
+LOC724455,T-complex protein 11-like protein 1,8,-0.01,-0.26,-0.13,-0.55
+LOC551677,wee1-like protein kinase,8,0.42,-0.46,-0.04,-0.87
+LOC102655490,uncharacterized LOC102655490,8,0.2,-0.2,0.01,0.93
+LOC411080,serine/threonine-protein kinase greatwall,"4, 6, 8",0.01,-0.32,-0.25,-0.38
+LOC410779,neuroligin 2,8,0.04,0.28,0.14,0.49
+LOC725747,SNAPIN protein homolog,"4, 8",-0.11,-0.36,-0.18,-0.29
+LOC551005,hexokinase type 2,"4, 6",0.02,0.5,0.44,-0.02
+LOC727210,"single-stranded DNA-binding protein, mitochondrial",6,-0.35,-0.1,-0.37,-0.12
+LOC724795,WASH complex subunit 1,8,0.09,0.27,0.28,0.31
+LOC410263,transmembrane GTPase Marf,"4, 8",0.08,-0.37,-0.25,-0.4
+LOC724269,connectin,8,0.35,-0.27,-0.17,-0.85
+LOC411837,putative deoxyribonuclease TATDN1,"4, 6, 8",-0.08,-0.3,-0.31,-0.25
+LOC552847,ubiquitin domain-containing protein 1,8,0.13,-0.44,-0.04,-0.6
+LOC412247,"rRNA methyltransferase 2, mitochondrial","6, 8",-0.28,-0.02,-0.35,-0.29
+FAR1,fatty acyl-CoA reductase 1,8,-0.04,-0.2,-0.15,-0.55
+LOC414012,sodium/hydrogen exchanger 8,8,-0.02,-0.3,-0.25,-0.37
+LOC413344,exportin-5,8,0.25,-0.43,-0.26,-0.51
+LOC724724,ATP-dependent 6-phosphofructokinase,6,0.18,0.16,0.39,0.22
+LOC409925,dual specificity mitogen-activated protein kinase kinase dSOR1,8,0.26,-0.51,-0.06,-0.63
+LOC410344,ubiquitin carboxyl-terminal hydrolase CYLD,8,0.08,-0.23,-0.22,-0.57
+LOC725024,autophagy-related protein 16-1,8,-0.11,-0.25,-0.27,-0.32
+LOC107965253,uncharacterized LOC107965253,8,-0.04,0.41,0.12,0.46
+LOC413091,serrate RNA effector molecule homolog,8,-0.17,-0.18,-0.21,-0.38
+LOC100578159,zinc finger matrin-type protein CG9776,8,-0,-0.27,-0.1,-0.57
+LOC410863,protein lin-9 homolog,8,-0.04,-0.25,-0.26,-0.39
+LOC410486,40S ribosomal protein SA,8,-0.11,0.27,0.13,0.65
+LOC100576333,nucleoredoxin,8,0.2,0.23,0.08,0.43
+LOC100577932,uncharacterized LOC100577932,6,0.13,-0.12,-0.62,-0.33
+LOC113218539,galectin-8-like,"4, 6, 8",0.02,-0.32,-0.4,-0.23
+LOC411989,eukaryotic initiation factor 4A-I,8,0.12,0.19,0.25,0.38
+LOC102653961,acidic repeat-containing protein,8,-0.05,-0.22,-0.19,-0.48
+LOC410050,mitotic checkpoint protein BUB3,"6, 8",-0.19,-0.13,-0.38,-0.25
+LOC551551,pre-mRNA-splicing factor Slu7,8,-0.14,-0.1,-0.17,-0.53
+LOC552848,MMS19 nucleotide excision repair protein homolog,8,0.02,-0.37,-0.22,-0.37
+LOC411541,glycerate kinase,8,-0.02,-0.18,-0.12,-0.61
+LOC727027,cleft lip and palate transmembrane protein 1 homolog,8,-0.03,-0.28,-0.24,-0.37
+LOC411600,PAX-interacting protein 1,8,0.15,0.25,0.24,0.3
+LOC100578522,peroxisomal biogenesis factor 19,"6, 8",-0.05,-0.29,-0.31,-0.28
+LOC551721,V-type proton ATPase subunit B,"4, 6, 8",-0.02,-0.32,-0.26,-0.33
+LOC726326,DNA repair protein XRCC3-like,6,-0.17,-0.25,-0.36,-0.16
+LOC552236,threonine aspartase 1,8,-0.1,-0.21,-0.32,-0.31
+LOC726227,DNA primase small subunit,6,-0.18,-0.05,-0.48,-0.23
+LOC552694,tyrosine-protein phosphatase non-receptor type 5,4,0.06,0.41,0.25,0.21
+LOC102654734,uncharacterized LOC102654734,6,0.22,0.3,-1.43,-0.03
+LOC411674,transcription factor RFX3,8,0.33,-0.31,-0.11,-0.84
+LOC412676,protein mahjong,8,0.02,-0.32,-0.14,-0.49
+LOC725038,NPC intracellular cholesterol transporter 2 homolog a,8,-0.18,0.33,0.12,0.65
+LOC100577577,peritrophin-1,8,-0.09,0.2,0.25,0.58
+LOC411808,"proline dehydrogenase, mitochondrial",8,0.03,-0.25,-0.26,-0.45
+LOC410037,dnaJ homolog subfamily C member 7,8,0.11,-0.26,-0.12,-0.66
+LOC724594,ADP-ribosylation factor-like protein 4C,8,0.31,-0.43,-0.16,-0.65
+LOC100577542,uncharacterized LOC100577542,8,-0.28,0.11,0.41,0.69
+LOC413889,cytoplasmic tRNA 2-thiolation protein 1,6,-0.13,-0.21,-0.48,-0.11
+LOC412721,nuclear pore complex protein Nup155,8,-0.02,-0.22,-0.17,-0.51
+LOC551205,neutral alpha-glucosidase AB,8,0.12,-0.27,-0.17,-0.61
+LOC725584,TBC1 domain family member 7,6,-0.25,-0.26,-0.39,-0.03
+LOC409529,ras-like protein 2,"6, 8",-0.06,0.26,0.33,0.4
+LOC411879,WD repeat-containing protein 82,"4, 8",0.32,-0.48,-0.28,-0.48
+LOC724656,RNA cytidine acetyltransferase,8,-0.1,-0.24,-0.12,-0.46
+LOC409540,MOB kinase activator-like 1,8,-0.12,-0.27,-0.18,-0.36
+LOC413166,myb-like protein D,8,0.22,-0.28,0.08,-0.95
+LOC410154,uncharacterized LOC410154,8,0,0.08,0.34,0.5
+LOC412601,mothers against decapentaplegic homolog 3,8,0.1,0.2,0.25,0.36
+LOC100578653,"twinkle protein, mitochondrial",8,-0.22,-0.12,-0.2,-0.39
+LOC552256,peroxisomal membrane protein PEX14,"4, 6, 8",-0.14,-0.3,-0.27,-0.21
+LOC100577823,uncharacterized LOC100577823,6,-0.32,-0.2,-0.36,-0.05
+LOC726681,formin-2,8,-0.19,0.25,0.25,0.62
+LOC409908,tyrosine-protein kinase CSK,8,-0.03,0.29,0.17,0.49
+LOC102654652,uncharacterized LOC102654652,8,-0.73,0.52,0.21,0.93
+LOC100578839,uncharacterized LOC100578839,6,-0.16,-0.06,-0.47,-0.24
+LOC725661,uncharacterized LOC725661,8,0.04,-0.37,-0.16,-0.43
+LOC551859,calmodulin,8,0.19,-0.36,-0.15,-0.6
+LOC725212,lysM and putative peptidoglycan-binding domain-containing protein 3,4,0.06,-0.42,-0.28,-0.28
+LOC412406,PH-interacting protein,8,0.21,-0.14,-0.12,-0.88
+LOC408896,semaphorin-2A,6,-0.14,-0.08,-0.49,-0.21
+LOC411995,dual specificity protein phosphatase CDC14AB,8,0.31,-0.29,-0.06,-0.87
+LOC724481,uncharacterized LOC724481,"6, 8",0.16,0.11,0.29,0.36
+LOC411121,WD repeat-containing protein 48,8,0.1,-0.33,-0.23,-0.45
+LOC408384,transcriptional adapter 2-alpha,"6, 8",-0.07,-0.13,-0.44,-0.27
+LOC107964437,THAP domain-containing protein 4,6,-0.26,-0.12,-0.42,-0.12
+LOC412696,TIP41-like protein,6,-0.21,-0.28,-0.36,-0.06
+LOC724587,nucleotide exchange factor SIL1,8,0.02,-0.25,-0.28,-0.41
+LOC411172,tetratricopeptide repeat protein 5,8,-0.01,-0.16,-0.31,-0.44
+LOC409177,kinase D-interacting substrate of 220 kDa,6,0.19,0.3,0.55,-0.12
+LOC725696,RNA polymerase-associated protein Rtf1,8,0.2,-0.28,-0.04,-0.79
+LOC727520,uncharacterized LOC727520,8,-0.14,-0.23,-0.18,-0.37
+LOC724537,ubiquitin carboxyl-terminal hydrolase 36,8,0.06,-0.35,-0.18,-0.45
+LOC726314,"protein SCO2 homolog, mitochondrial",6,-0.22,-0.27,-0.39,-0.03
+LOC100578193,uncharacterized LOC100578193,8,-0.15,0.3,0.14,0.62
+LOC409941,zinc finger FYVE domain-containing protein 1,"6, 8",0.09,0.15,0.36,0.31
+LOC551881,ATP-dependent helicase brm,8,-0.04,-0.22,-0.02,-0.63
+LOC725485,regulator of G-protein signaling 11,"4, 6",0.01,0.36,0.3,0.25
+LOC413815,"CCA tRNA nucleotidyltransferase 1, mitochondrial",8,-0.13,-0.2,-0.28,-0.31
+LOC413503,TWiK family of potassium channels protein 18-like,4,0.19,0.59,0.04,0.09
+LOC726983,geranylgeranyl transferase type-2 subunit alpha,8,0.03,-0.39,-0.01,-0.55
+LOC100576663,uncharacterized LOC100576663,8,0.06,-0.25,-0.05,-0.67
+LOC552327,UDP-N-acetylglucosamine--dolichyl-phosphate N-acetylglucosaminephosphotransferase,6,-0.25,-0.16,-0.36,-0.14
+LOC552200,probable histone-binding protein Caf1,"4, 6, 8",0.01,-0.24,-0.34,-0.34
+LOC726077,putative ATP-dependent RNA helicase DHX30,8,-0,-0.35,-0.07,-0.48
+LOC102655670,PCNA-associated factor,6,-0.2,-0.21,-0.46,-0.04
+LOC413388,histone-lysine N-methyltransferase EHMT2,8,0.17,-0.45,-0.01,-0.62
+LOC726320,serine protease inhibitor 27A,6,-0.13,-0.28,0.76,0.56
+LOC413144,actin related protein 11,6,-0.17,-0.18,-0.43,-0.13
+LOC100577120,dual specificity protein kinase TTK,8,-0.07,-0.19,-0.18,-0.47
+LOC413146,regulator of nonsense transcripts 2,8,0.04,-0.2,-0.11,-0.64
+LOC413878,"glutamyl-tRNA(Gln) amidotransferase subunit A, mitochondrial",6,-0.12,-0.16,-0.38,-0.25
+LOC413917,"alpha-1,2-mannosyltransferase ALG9",8,-0.02,-0.32,-0.16,-0.41
+LOC409911,protein disulfide-isomerase A3,8,-0.1,-0.23,-0.25,-0.33
+LOC410339,"transcription termination factor 3, mitochondrial",8,-0.2,-0.17,-0.21,-0.32
+LOC413855,rho GTPase-activating protein 24,8,-0.03,-0.24,-0.18,-0.45
+LOC411293,zinc finger protein 622,4,-0.09,-0.41,-0.29,-0.12
+LOC413303,vascular endothelial growth factor receptor 1,8,-0.13,-0.07,-0.15,-0.56
+LOC100577879,carbonic anhydrase-related protein 10,6,-0.07,0.32,0.54,0.11
+LOC113218676,uncharacterized LOC113218676,8,0.07,0.01,-0.02,0.84
+LOC724628,protein mago nashi homolog,6,-0.27,-0.15,-0.44,-0.05
+LOC550716,clathrin heavy chain,8,0.06,-0.25,-0.03,-0.68
+LOC725091,lachesin,8,0.14,0.11,0.19,0.45
+LOC552116,histone H3.3,"6, 8",0.02,-0.25,-0.41,-0.26
+LOC413055,uncharacterized LOC413055,8,-0.04,-0.14,-0.22,-0.5
+LOC409017,pantothenate kinase 4,8,0.03,-0.02,-0.11,-0.8
+LOC724370,probable cytosolic Fe-S cluster assembly factor AGAP009023,8,-0.17,-0.2,-0.18,-0.35
+LOC551622,protein misato,"6, 8",-0.07,-0.25,-0.29,-0.29
+LOC411897,phosphoglucomutase,8,0.07,-0.28,-0.2,-0.49
+LOC100578035,sphingolipid delta(4)-desaturase DES1,"4, 6",-0.02,-0.35,-0.44,-0.1
+LOC551355,integrator complex subunit 2,8,0.23,-0.21,-0.31,-0.61
+LOC551949,ovarian-specific serine/threonine-protein kinase Lok,8,0.12,-0.22,-0.19,-0.6
+LOC726054,transport and Golgi organization 2 homolog,6,-0.11,-0.24,-0.31,-0.24
+LOC727238,histone-lysine N-methyltransferase ash1,6,0.16,0.18,0.45,0.11
+LOC408446,"probable aconitate hydratase, mitochondrial",8,-0.07,0.17,0.24,0.55
+LOC409410,plasminogen activator inhibitor 1 RNA-binding protein,8,-0.08,-0.18,-0.28,-0.36
+LOC552766,tubulin alpha chain,8,-0.19,0.21,0.24,0.64
+LOC411778,RNA-binding protein 8A,6,-0.31,-0.09,-0.36,-0.13
+LOC724154,protein nessun dorma,6,-0.15,-0.1,-0.49,-0.16
+LOC413805,H/ACA ribonucleoprotein complex subunit 4,"6, 8",0.05,-0.08,-0.38,-0.48
+LOC100576253,DNA ligase 1,6,-0.14,0.34,0.41,0.29
+LOC409544,ruvB-like 1,8,-0.18,-0.1,-0.27,-0.35
+LOC726305,M-phase inducer phosphatase,6,0.13,0.25,0.36,0.16
+LOC100577308,dystrotelin,8,-0.01,-0.31,-0.16,-0.41
+LOC100578266,probable deoxyhypusine synthase,6,-0.23,-0.15,-0.33,-0.18
+LOC412961,protein bicaudal D,8,0.34,-0.36,-0.03,-0.85
+LOC413763,hydroxymethylglutaryl-CoA synthase 1,8,0.04,-0.26,-0.22,-0.45
+LOC726870,zinc finger CCHC domain-containing protein 8 homolog,8,0.06,-0.23,-0.09,-0.63
+LOC412545,zinc finger protein 277,8,-0.01,-0.26,-0.24,-0.37
+LOC412362,"glucose 1,6-bisphosphate synthase",8,-0.06,-0.2,-0.21,-0.42
+LOC551952,putative N-acetylglucosamine-6-phosphate deacetylase,8,0.13,0.25,0.25,0.26
+LOC411865,exportin-2,"6, 8",-0.09,-0.11,-0.35,-0.34
+LOC726872,LDLR chaperone boca,6,-0.33,-0.12,-0.41,-0.03
+LOC552303,RNA-binding protein cabeza,8,-0.13,-0.08,-0.28,-0.39
+LOC409721,uncharacterized protein YER152C,8,-0.02,0.29,0.2,0.42
+LOC102655244,histone-lysine N-methyltransferase NSD2,8,0.09,-0.34,-0.19,-0.45
+LOC409313,actin-related protein 2,8,0.09,-0.29,-0.2,-0.49
+LOC409092,enhancer of mRNA-decapping protein 3,8,-0.06,-0.26,-0.24,-0.33
+LOC552319,26S proteasome non-ATPase regulatory subunit 6,6,-0.16,-0.2,-0.38,-0.14
+LOC552611,protein ABHD4,6,0.12,0.12,0.36,0.29
+LOC411423,poly(ADP-ribose) glycohydrolase ARH3,6,-0.21,-0.23,-0.36,-0.09
+LOC551282,ribokinase,8,0.07,0.13,0.24,0.45
+LOC552447,clavesin-2,8,-0.1,0.3,0.22,0.47
+LOC414027,N-alpha-acetyltransferase 20,6,-0.27,-0.22,-0.39,-0.01
+LOC412085,post-GPI attachment to proteins factor 3,6,-0.01,-0.18,-0.44,-0.25
+LOC552479,protein draper,8,0.11,-0.27,-0.08,-0.64
+LOC413034,rho-related BTB domain-containing protein 1,8,-0.02,0.17,0.16,0.57
+LOC100577060,ankyrin repeat domain-containing protein 40,6,-0.18,-0.24,-0.34,-0.11
+LOC413809,mitogen-activated protein kinase kinase kinase 7,8,0.01,-0.24,-0.2,-0.45
+LOC102654200,uncharacterized LOC102654200,8,0.01,0.37,-0.03,0.52
+LOC727260,uncharacterized LOC727260,8,-0.13,-0.15,-0.03,-0.57
+LOC412884,AP-1 complex subunit gamma-1,8,0.18,-0.34,-0.1,-0.63
+LOC724738,bis(5'-adenosyl)-triphosphatase enpp4,8,-0.08,-0.17,-0.19,-0.43
+LOC410578,sodium- and chloride-dependent glycine transporter 2,8,-0.03,0.04,0.06,0.81
+LOC552733,aurora kinase B,6,-0.14,-0.18,-0.43,-0.12
+LOC413278,homer protein homolog 2,8,0.36,-0.35,-0.14,-0.74
+LOC726159,transportin-3,8,0.22,-0.35,-0.26,-0.47
+LOC102653748,growth/differentiation factor 8,"6, 8",-0.08,0.05,0.51,0.39
+LOC411730,mannosyl-oligosaccharide glucosidase GCS1,8,-0.1,-0.19,-0.17,-0.41
+LOC727390,uncharacterized LOC727390,8,0.17,0.27,0.01,0.41
+LOC113218582,"28S ribosomal protein S9, mitochondrial-like",8,-0.04,0.28,0.11,0.52
+LOC550701,peptidyl-prolyl cis-trans isomerase FKBP8,8,-0.19,-0.05,-0.24,-0.39
+LOC100576401,uncharacterized LOC100576401,8,-0.11,0.34,0.14,0.5
+LOC551702,UPF0565 protein C2orf69 homolog,4,0.05,-0.51,-0.2,-0.21
+LOC550854,protein PBDC1,6,-0.21,-0.24,-0.43,0.01
+LOC726786,proton-coupled amino acid transporter 1,8,0.19,0.1,-0.04,0.62
+LOC725616,allatostatin C,8,-0.06,0.33,0.04,0.55
+LOC113219268,uncharacterized LOC113219268,8,-0.06,0.19,0.18,0.56
+LOC413667,G2/mitotic-specific cyclin-B3,8,0.11,-0.33,-0.21,-0.44
+LOC726216,exostosin-2,8,-0.09,-0.19,-0.2,-0.39
+LOC411167,"cysteine--tRNA ligase, cytoplasmic",8,-0.14,-0.23,-0.2,-0.3
+LOC552516,glucoside xylosyltransferase 1,6,0.05,-0.22,-0.44,-0.26
+LOC552557,"lipoamide acyltransferase component of branched-chain alpha-keto acid dehydrogenase complex, mitochondrial","6, 8",0.02,0.19,0.28,0.37
+LOC410428,uncharacterized LOC410428,8,-0.05,-0.01,-0.33,-0.47
+TpnT,"troponin T, skeletal muscle",6,-0,0.21,0.38,0.28
+LOC727235,protein enabled,6,0.06,0.22,0.39,0.19
+LOC409867,FERM domain-containing protein 8,8,0.11,0.12,0.11,0.53
+LOC412016,transforming growth factor beta regulator 1,"6, 8",0.04,-0.19,-0.28,-0.43
+LOC724288,gem-associated protein 5,8,-0.11,-0.16,-0.21,-0.38
+LOC411572,ubiquitin carboxyl-terminal hydrolase 14,8,-0.01,-0.24,-0.21,-0.4
+LOC102655195,uncharacterized LOC102655195,8,-0.01,0.07,0.3,0.5
+LOC552263,ubiquitin thioesterase OTU1,"6, 8",0.03,-0.2,-0.37,-0.33
+LOC551252,tropomyosin,8,-0.1,0.23,0.29,0.44
+LOC552025,"tyrosine--tRNA ligase, mitochondrial","6, 8",-0.13,-0.19,-0.27,-0.27
+LOC408762,uncharacterized protein MAL13P1.304,8,0.14,-0.13,-0.22,-0.65
+LOC102654029,uncharacterized LOC102654029,"6, 8",-0.15,-0.14,-0.29,-0.28
+LOC113218750,uncharacterized LOC113218750,4,-0.37,1.01,0.26,-0.04
+LOC413433,protein lingerer,"6, 8",0.15,-0.17,-0.33,-0.51
+LOC411189,L-lactate dehydrogenase A-like 6A,8,-0.25,0.19,-0,0.92
+LOC552332,PC4 and SFRS1-interacting protein,8,-0,-0.24,-0.24,-0.38
+LOC552586,cytochrome c oxidase assembly factor 7 homolog,6,-0.25,-0.24,-0.35,-0.02
+LOC552725,N-acetylglucosamine-1-phosphotransferase subunits alpha/beta,8,0.02,-0.12,-0.28,-0.49
+LOC724233,40S ribosomal protein S17,8,0.03,0.2,0.12,0.5
+LOC411890,nucleolysin TIAR,8,0.13,-0.33,-0.19,-0.46
+LOC552437,phospholipid phosphatase 6,6,-0.13,-0.2,-0.29,-0.23
+LOC725316,transmembrane protein 208,6,-0.04,-0.3,-0.39,-0.13
+LOC412452,max-like protein X,"4, 6, 8",-0,-0.24,-0.37,-0.23
+LOC551912,c-Myc-binding protein,6,-0.25,-0.19,-0.43,0.01
+LOC551395,"acetyl-CoA acetyltransferase, cytosolic",8,-0.04,0.25,0.19,0.46
+LOC725070,DNA fragmentation factor subunit alpha,8,0.18,-0.41,-0.11,-0.51
+LOC552769,ubiA prenyltransferase domain-containing protein 1 homolog,6,0.08,-0.32,-0.33,-0.28
+LOC725424,nurim homolog,8,0.15,0.07,0.19,0.44
+LOC409594,dnaJ homolog dnj-5,8,-0.15,-0.15,0.08,-0.62
+LOC102653824,uncharacterized LOC102653824,"4, 6, 8",0.05,-0.37,-0.28,-0.25
+LOC410352,chromatin-remodeling ATPase INO80,"4, 6",0.13,0.34,0.34,0.04
+LOC409569,uncharacterized LOC409569,6,-0.21,-0.18,-0.31,-0.15
+LOC410114,solute carrier family 23 member 1,8,0.13,0.09,0.27,0.36
+LOC724798,tRNA (guanine(10)-N2)-methyltransferase homolog,8,-0.04,-0.18,-0.23,-0.4
+LOC409170,polycomb protein suz12-B,8,0.09,-0.31,-0.18,-0.45
+LOC726015,cytoplasmic dynein 2 light intermediate chain 1,8,-0.19,0.38,0.22,0.44
+LOC413261,serine/threonine-protein kinase polo,6,0.05,-0.29,-0.36,-0.25
+LOC551893,prefoldin subunit 3,6,-0.23,-0.15,-0.34,-0.13
+LOC724629,40S ribosomal protein S28,8,0.08,0.27,0.02,0.48
+LOC552705,protein jagunal,6,-0.11,-0.33,-0.36,-0.05
+LOC551773,serine/threonine-protein kinase VRK1,8,0.11,-0.24,-0.16,-0.55
+LOC102654054,uncharacterized LOC102654054,8,0.02,0.16,0.19,0.47
+LOC413520,mediator of RNA polymerase II transcription subunit 4,6,-0.08,-0.23,-0.36,-0.18
+LOC409240,HMG box-containing protein 4,6,-0.04,0.29,0.32,0.27
+LOC102655540,cytochrome c oxidase assembly protein COX19,8,0.03,-0.28,-0.13,-0.46
+LOC410299,ankyrin repeat domain-containing protein SOWAHB,6,0.16,0.09,0.43,0.16
+LOC727229,protein HIRA homolog,8,0.33,-0.36,-0.19,-0.62
+LOC552768,phenylalanine--tRNA ligase alpha subunit,"6, 8",-0.12,-0.2,-0.27,-0.26
+LOC724564,dehydrodolichyl diphosphate synthase complex subunit Nus1,"4, 6",0.03,-0.32,-0.37,-0.18
+LOC100576261,zinc finger protein 569,8,-0.13,-0.06,-0.21,-0.44
+LOC725405,DNA repair endonuclease XPF,8,-0.08,-0.26,-0.1,-0.4
+LOC552372,ER membrane protein complex subunit 8/9 homolog,6,-0.16,-0.29,-0.37,-0.02
+LOC724423,DNA polymerase theta,8,-0.08,-0.11,-0.15,-0.5
+LOC113218957,L-aminoadipate-semialdehyde dehydrogenase-phosphopantetheinyl transferase,6,-0.2,-0.2,-0.43,-0.01
+LOC410129,casein kinase I,8,0.26,-0.28,-0.2,-0.61
+LOC724596,transducin beta-like protein 3,8,0.01,-0.2,-0.12,-0.53
+LOC412769,protein archease-like,6,-0.11,-0.24,-0.36,-0.13
+LOC411540,small G protein signaling modulator 3 homolog,"6, 8",-0.02,-0.2,-0.33,-0.29
+LOC726694,uncharacterized LOC726694,6,0.12,-0.23,-0.4,-0.33
+LOC410330,phosphatidylserine synthase 1,"4, 6, 8",0.11,-0.34,-0.35,-0.26
+LOC100577649,kinesin-like protein Klp61F,8,-0.08,-0.09,-0.26,-0.4
+LOC100577253,GRIP and coiled-coil domain-containing protein PFC0235w,8,-0.07,-0.16,-0.11,-0.5
+LOC551728,F-box/LRR-repeat protein 20,8,0.28,-0.48,-0,-0.63
+LOC409638,elongation of very long chain fatty acids protein AAEL008004,6,0.19,0.1,0.57,-0.02
+LOC726337,mitochondrial intermembrane space import and assembly protein 40-B,6,-0.02,-0.26,-0.38,-0.17
+Pkc,protein kinase C,8,0.04,0.25,0.14,0.4
+LOC552398,"beta-1,3-galactosyltransferase 1-like",8,-0.08,-0.13,-0.24,-0.39
+LOC102654426,60S ribosomal protein L18,8,-0.07,0.25,0.11,0.54
+LOC410555,insulin-like growth factor-binding protein complex acid labile subunit,8,-0.11,0.14,0.25,0.55
+LOC551902,metaxin-1,"6, 8",-0.12,-0.1,-0.31,-0.3
+LOC724532,"eukaryotic translation initiation factor 1A, X-chromosomal","6, 8",-0.11,-0.16,-0.29,-0.27
+LOC409388,ras-related protein Rab-18-B,"4, 6",-0.18,-0.25,-0.25,-0.15
+LOC410118,D-glucuronyl C5-epimerase B,8,0.08,-0.22,-0.29,-0.39
+LOC409384,heat shock protein 60A,8,0.14,-0.2,-0.21,-0.56
+LOC550748,stromal membrane-associated protein 1,6,0.15,0.22,0.3,0.15
+LOC551309,transcription initiation factor TFIID subunit 1,8,0.07,-0.29,-0.1,-0.5
+LOC551731,rho GTPase-activating protein 190,"4, 6",0.21,0.24,0.27,0.1
+LOC408660,uncharacterized LOC408660,8,-0.15,0.29,0.13,0.55
+LOC408324,T-cell immunomodulatory protein,8,-0.04,0.18,0.23,0.45
+LOC102654083,centrosome-associated zinc finger protein CP190,8,0.07,-0.25,-0.07,-0.57
+LOC551184,eukaryotic translation initiation factor 3 subunit C,8,-0.01,-0.19,-0.18,-0.43
+LOC726711,ribonuclease H2 subunit C,6,-0.14,-0.09,-0.51,-0.08
+LOC107965085,bladder cancer-associated protein,6,0.2,-0.36,-0.47,-0.2
+LOC113218809,diuretic hormone class 2,8,0.2,-0.12,0.31,0.43
+LOC413976,derlin-2,8,0.22,-0.33,-0.17,-0.54
+LOC102656008,nuclear receptor subfamily 2 group E member 1,8,-0.02,0.15,-0.08,0.77
+LOC552371,ATP-binding cassette sub-family G member 4,8,0.25,0.07,0.24,0.26
+LOC413688,DNA-directed RNA polymerase III subunit RPC5,8,-0.05,-0.2,-0.09,-0.48
+LOC552662,non-canonical poly(A) RNA polymerase PAPD5-like,8,0.25,-0.41,-0.14,-0.52
+LOC551338,uncharacterized LOC551338,8,0.1,0.26,0.12,0.34
+LOC100576826,LHFPL tetraspan subfamily member 5 protein,8,-0.04,0.12,0.29,0.45
+LOC724415,dynamin-binding protein,8,0.17,-0.16,-0.12,-0.7
+LOC411581,phosphopantothenate--cysteine ligase,6,-0.15,-0.15,-0.32,-0.19
+LOC410155,histone-lysine N-methyltransferase setd3,8,0.12,-0.23,-0.06,-0.64
+LOC412442,retinol dehydrogenase 13,6,-0.14,-0.19,-0.31,-0.18
+LOC411972,CTD small phosphatase-like protein 2,8,0.04,-0.08,-0.14,-0.63
+LOC726184,uncharacterized LOC726184,8,0.1,0.15,0.2,0.36
+LOC102654365,"glutamyl-tRNA(Gln) amidotransferase subunit B, mitochondrial",8,-0.13,-0.09,-0.24,-0.35
+LOC725187,putative fatty acyl-CoA reductase CG8306-like,8,-0.11,-0.17,-0.26,-0.27
+LOC551226,WD repeat-containing protein 61,"6, 8",-0.12,-0.17,-0.3,-0.22
+LOC113218850,alpha-endosulfine,6,-0.16,-0.2,-0.31,-0.15
+LOC408511,protein preli-like,8,-0.1,-0.14,-0.23,-0.34
+LOC412326,uncharacterized LOC412326,8,0,-0.26,-0.17,-0.39
+LOC552468,MATH and LRR domain-containing protein PFE0570w-like,8,0.23,-0.18,-0.06,-0.8
+LOC551519,uncharacterized LOC551519,8,-0.07,-0.21,-0.06,-0.46
+LOC413451,rho GTPase-activating protein gacF,8,-0.11,-0.21,-0.05,-0.45
+LOC727300,low molecular weight phosphotyrosine protein phosphatase,6,-0.14,-0.11,-0.4,-0.16
+LOC412784,mitochondrial intermediate peptidase,8,-0.09,-0.13,-0.21,-0.38
+LOC552006,uncharacterized protein DDB_G0287625,"4, 6, 8",0.02,-0.26,-0.35,-0.22
+LOC410545,CLIP-associating protein 1-A,4,0.2,0.34,0.23,0.03
+LOC551540,replication factor C subunit 2,6,-0.12,-0.01,-0.45,-0.23
+LOC412064,probable U2 small nuclear ribonucleoprotein A',8,-0.2,-0.08,-0.23,-0.29
+LOC552313,sterol O-acyltransferase 1,"6, 8",0.11,0.04,-0.3,-0.65
+LOC100576770,serine hydrolase-like protein 2,8,-0.06,0.15,0.25,0.46
+LOC408710,"KH domain-containing, RNA-binding, signal transduction-associated protein 2",4,0.13,0.34,0.25,0.09
+LOC100578600,uncharacterized LOC100578600,8,-0,0.22,0.08,0.51
+LOC725813,uncharacterized LOC725813,8,-0.03,0.11,0.31,0.42
+LOC100576296,xaa-Pro aminopeptidase 3,8,-0.04,-0.2,-0.22,-0.34
+LOC725934,replication protein A 70 kDa DNA-binding subunit,8,-0.15,-0.15,-0.22,-0.29
+LOC413868,60S ribosomal protein L10a,8,-0.18,0.3,0.24,0.44
+LOC411596,pachytene checkpoint protein 2 homolog,6,-0.17,-0.19,-0.35,-0.09
+LOC552202,monocarboxylate transporter 9,8,0.28,0.36,-0.47,-0.96
+LOC100577418,uncharacterized LOC100577418,8,0.09,-0.24,-0.2,-0.46
+LOC409887,transcription factor Dp-1,6,-0.1,-0.34,-0.32,-0.05
+LOC413425,phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta,8,0.15,-0.23,-0.04,-0.68
+LOC551666,double-stranded RNA-binding protein Staufen homolog 2,6,0.13,0.18,0.34,0.15
+LOC100577122,cellular tumor antigen p53,6,-0.05,-0.22,-0.36,-0.17
+LOC552628,"39S ribosomal protein L18, mitochondrial",6,-0.18,-0.21,-0.35,-0.05
+LOC726782,PEST proteolytic signal-containing nuclear protein,6,-0.12,-0.18,-0.32,-0.17
+LOC413126,serine/threonine-protein kinase Tao,8,0.06,-0.28,0.05,-0.62
+LOC409861,nucleoside diphosphate kinase,8,-0.01,0.18,0.03,0.6
+LOC409119,REST corepressor 3,"4, 8",-0.06,-0.24,-0.14,-0.35
+LOC412232,dipeptidyl peptidase 3,8,-0.14,-0.17,-0.21,-0.28
+LOC410045,serine/threonine-protein phosphatase 4 regulatory subunit 4,4,-0.07,0.41,0.25,0.2
+LOC552211,protein THEM6,8,-0.02,0.24,0.08,0.49
+LOC408866,uncharacterized aarF domain-containing protein kinase 1,8,-0.07,-0.15,-0.25,-0.32
+LOC410387,conserved oligomeric Golgi complex subunit 3,8,0.05,-0.21,-0.11,-0.53
+LOC412690,probable palmitoyltransferase Zdhhc6,6,-0.16,-0.17,-0.38,-0.09
+LOC726816,ruvB-like 2,8,-0.09,-0.13,-0.27,-0.29
+LOC724924,protein FAM117B,8,0.21,-0.29,-0.18,-0.52
+LOC724659,ribonuclease P protein subunit rpr2,6,-0.21,-0.19,-0.37,-0.03
+LOC725201,"39S ribosomal protein L21, mitochondrial",8,-0.18,-0.09,-0.22,-0.29
+LOC113219187,uncharacterized LOC113219187,8,-0.01,-0.02,0.2,0.63
+LOC410073,cell division control protein 45 homolog,8,-0.02,-0.2,-0.26,-0.32
+LOC413666,peroxisome biogenesis factor 1,8,-0.01,0.12,0.29,0.39
+LOC102655284,serine--tRNA ligase,8,-0.11,-0.17,-0.22,-0.29
+LOC551919,leupaxin,8,0.06,0.22,0.19,0.32
+LOC411812,serine/threonine-protein kinase Doa,8,0.23,0.19,0.13,0.25
+LOC409860,GPI ethanolamine phosphate transferase 3,8,-0.04,-0.18,-0.16,-0.41
+LOC413011,"serine--tRNA ligase, cytoplasmic",8,-0.06,-0.2,-0.14,-0.39
+LOC413494,protein VAC14 homolog,8,0.21,-0.2,-0.12,-0.67
+LOC551903,DNA replication licensing factor Mcm5,"6, 8",-0.09,-0.11,-0.32,-0.27
+LOC411707,"probable glutamate--tRNA ligase, mitochondrial",8,-0.08,-0.13,-0.23,-0.34
+LOC552673,alpha- and gamma-adaptin-binding protein p34,6,-0.16,-0.15,-0.29,-0.19
+LOC413118,neuroblastoma-amplified sequence,8,0.08,-0.26,-0.02,-0.59
+LOC412190,probable ATP-dependent RNA helicase DDX47,8,-0.11,-0.13,-0.19,-0.36
+LOC410023,"persulfide dioxygenase ETHE1, mitochondrial",8,-0.06,0.11,0.17,0.57
+LOC113218590,low molecular weight phosphotyrosine protein phosphatase-like,6,-0.16,-0.22,-0.34,-0.07
+LOC102653601,zinc finger protein 85,8,0.09,-0.25,-0.12,-0.5
+LOC413627,uncharacterized LOC413627,6,-0.14,-0.13,-0.34,-0.17
+LOC727447,nuclear pore complex protein Nup153,8,0.18,-0.33,-0.09,-0.55
+LOC551435,protein disulfide-isomerase,8,-0.02,-0.23,-0.16,-0.37
+LOC726013,40S ribosomal protein S20,8,-0.1,0.25,0.14,0.49
+LOC411122,splicing factor 1,8,0.24,-0.4,-0.08,-0.55
+LOC409447,DNA repair and recombination protein RAD54-like,8,-0.14,-0.12,-0.2,-0.32
+LOC726544,serine/threonine-protein phosphatase 4 regulatory subunit 1,4,0.09,0.38,0.23,0.08
+LOC408965,glutamate receptor-interacting protein 1,8,-0.01,0.18,0.06,0.56
+LOC552065,integrator complex subunit 14,"4, 6, 8",-0.04,-0.19,-0.29,-0.27
+LOC726268,uncharacterized LOC726268,8,0.06,0.19,0.18,0.36
+LOC412200,"threonine--tRNA ligase, cytoplasmic","4, 6, 8",-0.01,-0.26,-0.28,-0.23
+LOC410042,glyoxylate reductase/hydroxypyruvate reductase,6,0.06,-0.27,-0.36,-0.21
+LOC102655617,ribonuclease P protein subunit p20,6,-0.08,-0.11,-0.44,-0.15
+LOC413439,single-strand selective monofunctional uracil DNA glycosylase,8,-0.13,0.01,-0.33,-0.33
+LOC550865,protogenin-like,8,0.14,-0.22,-0.05,-0.66
+LOC551584,"probable 28S ribosomal protein S6, mitochondrial",6,-0.27,-0.05,-0.38,-0.08
+LOC552508,kinesin 6A,8,-0.11,-0,-0.17,-0.5
+LOC413398,"39S ribosomal protein L32, mitochondrial",6,-0.19,-0.04,-0.41,-0.13
+LOC413708,delta-aminolevulinic acid dehydratase,6,-0.13,-0.13,-0.43,-0.09
+MARCH6,membrane-associated ring finger (C3HC4) 6,8,0.27,-0.35,-0.15,-0.55
+LOC409168,26S proteasome non-ATPase regulatory subunit 13,"6, 8",-0,-0.19,-0.26,-0.33
+LOC408589,macro domain-containing protein CT2219,8,-0.09,0.26,0.16,0.45
+LOC413539,insulin-degrading enzyme,8,-0.05,-0.17,-0.16,-0.4
+LOC727375,ankyrin repeat and MYND domain-containing protein 2,"6, 8",0.01,-0.2,-0.27,-0.32
+LOC409474,laminin subunit gamma-1,8,0.07,-0.16,-0.07,-0.62
+LOC412010,general transcription factor IIH subunit 4,8,-0.05,-0.15,-0.28,-0.3
+LOC102653702,transcription initiation factor TFIID subunit 13,"6, 8",-0,-0.17,-0.38,-0.22
+LOC551726,inositol-tetrakisphosphate 1-kinase,8,-0.01,-0.18,-0.21,-0.38
+LOC100577739,telomere-associated protein RIF1-like,8,0.29,-0.12,-0.11,-0.84
+LOC551235,ATP-binding cassette sub-family E member 1,"4, 6",0.05,-0.33,-0.33,-0.17
+LOC724303,AP-1 complex subunit sigma-2,4,0.1,-0.49,-0.25,-0.14
+LOC725069,peptide transporter family 1,"4, 8",0.05,-0.34,-0.09,-0.39
+LOC102655030,glucose-induced degradation protein 4 homolog,8,0.11,-0.22,-0.28,-0.38
+LOC408871,sorbitol dehydrogenase,8,-0.06,0.04,0.23,0.56
+LOC410331,transcription elongation factor SPT6-like,8,0.26,-0.22,-0.11,-0.7
+LOC552053,protein N-lysine methyltransferase FAM173B,6,-0.13,-0.12,-0.31,-0.21
+LOC100577735,peptidyl-prolyl cis-trans isomerase sig-7-like,8,-0.11,-0.06,-0.12,-0.47
+LOC100578071,DNA polymerase zeta catalytic subunit,8,-0.02,-0.29,-0.05,-0.41
+LOC411774,protein SMG9,6,-0.18,-0.16,-0.32,-0.11
+LOC413081,F-box/WD repeat-containing protein 7,8,0.16,-0.25,-0.1,-0.58
+LOC552527,cell division cycle 5-like protein,8,-0.06,-0.11,-0.12,-0.48
+LOC551216,protein pelota,6,-0.18,-0.12,-0.34,-0.13
+LOC410530,alkaline phosphatase,8,0.05,0.2,0.2,0.32
+LOC413583,uncharacterized LOC413583,6,0.05,0.19,0.49,0.04
+LOC551749,LARGE xylosyl- and glucuronyltransferase 1,8,0.04,0.26,0.11,0.36
+LOC551841,"probable dolichyl pyrophosphate Glc1Man9GlcNAc2 alpha-1,3-glucosyltransferase","4, 8",0.06,-0.32,-0.22,-0.28
+LOC100576530,uncharacterized LOC100576530,8,-0.26,0.2,0.26,0.57
+LOC412913,Golgi SNAP receptor complex member 2,6,-0.18,-0.24,-0.38,0.04
+LOC409986,peroxisomal multifunctional enzyme type 2,8,0.07,-0.19,-0.11,-0.53
+LOC551999,kinesin-associated protein 3,"4, 8",-0.1,-0.22,-0.17,-0.27
+LOC551479,40S ribosomal protein S21,8,-0.08,0.23,0.06,0.57
+LOC102656074,reticulon-1-A,8,0.04,-0.19,-0.06,-0.56
+LOC550656,splicing factor U2AF 50 kDa subunit,"6, 8",0.02,-0.13,-0.38,-0.27
+LOC412341,alpha-methylacyl-CoA racemase,"6, 8",-0.08,-0.18,-0.31,-0.2
+LOC100577574,leucine-rich repeat-containing protein 4C,8,-0.03,-0.12,-0.17,-0.44
+LOC411612,protein virilizer,8,-0.03,-0.18,-0.09,-0.46
+LOC552764,eukaryotic translation initiation factor 2A,8,0.09,-0.24,-0.19,-0.42
+Ancr-1,AncR-1 non-coding nuclear RNA,6,-0.16,0.35,0.34,0.23
+LOC408752,DNA ligase 1,8,-0.12,-0.09,-0.17,-0.39
+LOC410664,protein arginine N-methyltransferase 5,"4, 6",0.03,-0.27,-0.36,-0.16
+LOC551174,E3 SUMO-protein ligase PIAS3,8,-0.01,-0.17,-0.17,-0.42
+LOC408413,26S proteasome non-ATPase regulatory subunit 7,8,-0.01,-0.16,-0.19,-0.4
+LOC552675,myoneurin,8,-0.03,-0.13,-0.24,-0.37
+LOC413916,transmembrane protein 64,8,0.15,-0.32,-0.18,-0.41
+LOC410244,uncharacterized LOC410244,8,-0.03,-0.24,-0.22,-0.27
+LOC413739,synaptic vesicle glycoprotein 2C,8,0.33,-0.14,-0.3,-0.64
+LOC726400,forkhead box protein I1-ema,8,-0.14,0.15,0.25,0.5
+LOC411820,dual specificity protein phosphatase Mpk3,8,0.17,-0.18,-0.02,-0.73
+LOC100578235,DNA-directed RNA polymerase I subunit RPA12,6,-0.11,-0.26,-0.38,-0
+LOC113219042,uncharacterized LOC113219042,8,0.17,-0.25,-0.07,-0.61
+LOC102656130,uncharacterized LOC102656130,8,-0.04,0.15,0.2,0.44
+LOC551785,6-phosphogluconolactonase,6,-0.05,-0.2,-0.36,-0.14
+LOC724742,probable methyltransferase-like protein 15 homolog,8,-0.16,-0.14,-0.19,-0.26
+LOC100576817,zinc finger and BTB domain-containing protein 41,8,0.2,-0.24,-0.1,-0.6
+LOC412935,coiled-coil domain-containing protein 47,8,0.07,-0.2,-0.05,-0.57
+LOC411735,nuclear pore complex protein Nup133,8,-0.04,-0.14,-0.24,-0.34
+LOC100576850,RNA 3'-terminal phosphate cyclase-like protein,6,-0.12,-0.21,-0.4,-0.02
+LOC551510,uncharacterized LOC551510,8,-0.04,0.14,0.22,0.43
+LOC551613,"ATP-dependent RNA helicase SUV3 homolog, mitochondrial",8,-0.05,-0.15,-0.15,-0.41
+LOC552458,DNA-directed RNA polymerase II subunit RPB3,6,-0.17,-0.15,-0.38,-0.05
+LOC113218579,uncharacterized LOC113218579,8,-0.05,0.25,0.09,0.46
+LOC102654889,zinc finger protein 37,8,0.21,-0.27,-0.09,-0.6
+LOC413311,lipid droplet-associated hydrolase,6,-0.22,-0.2,-0.32,-0.01
+LOC413341,helicase domino,8,0.03,-0.26,-0.02,-0.5
+LOC552850,catenin alpha,8,0.16,-0.17,-0.19,-0.54
+LOC551864,transport and Golgi organization protein 11,8,-0,-0.21,-0.17,-0.37
+LOC413793,enhancer of polycomb homolog 1,8,0.22,-0.37,-0.01,-0.59
+LOC102656465,guanine nucleotide-binding protein G(o) subunit alpha,8,0.13,-0.06,-0.19,-0.64
+LOC100577763,small subunit processome component 20 homolog,8,-0.02,-0.12,-0.1,-0.5
+LOC100576983,uncharacterized LOC100576983,8,0.09,0.13,0.12,0.41
+LOC551029,inhibitor of growth protein 5,8,0.16,-0.27,-0.22,-0.42
+LOC551672,protein FAM114A2,8,-0.1,-0.14,-0.07,-0.43
+LOC412804,coiled-coil domain-containing protein 102A,8,0.13,-0.17,-0.15,-0.56
+LOC552412,probable protein phosphatase CG10417,8,0.14,-0.06,-0.2,-0.63
+LOC409599,60S ribosomal protein L35a,8,-0.01,0.2,0.13,0.42
+LOC727528,zinc finger BED domain-containing protein 1,8,0.16,-0.33,-0.05,-0.52
+LOC726364,metaxin-2,"4, 6, 8",-0.04,-0.24,-0.24,-0.22
+LOC413147,probable ATP-dependent RNA helicase DHX35,6,-0.03,-0.2,-0.35,-0.17
+LOC726887,ras-related protein Rab-32,8,0.32,-0.08,-0.1,-0.88
+Pten,phosphatase and tensin-like,8,0.07,-0.28,-0.12,-0.42
+LOC409728,40S ribosomal protein S5,8,-0.15,0.19,0.13,0.57
+LOC410012,WW domain-binding protein 2,"6, 8",0.08,0.15,0.26,0.25
+LOC412548,"2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial","6, 8",-0.1,0.17,0.29,0.39
+LOC100576472,E3 ubiquitin-protein ligase Su(dx),8,0.14,-0.18,-0.11,-0.59
+LOC412834,importin-11,"4, 6",0.03,-0.28,-0.32,-0.17
+LOC413154,uncharacterized protein C2orf42,8,-0.01,0.05,-0.17,-0.62
+LOC408904,non-specific lipid-transfer protein,8,0.2,-0.29,-0.06,-0.58
+LOC551021,low-density lipoprotein receptor-related protein 6,8,0.14,-0.19,-0.04,-0.66
+LOC727205,general transcription factor 3C polypeptide 5,8,-0.12,-0.15,-0.01,-0.46
+LOC724985,torsin-1A,6,-0.08,-0.23,-0.31,-0.12
+LOC100576155,uncharacterized LOC100576155,8,-0.16,-0.01,-0.26,-0.32
+KAT2A,K(lysine) acetyltransferase 2A,8,-0.13,-0.07,-0.2,-0.34
+LOC100577221,uncharacterized LOC100577221,8,-0.21,-0.11,-0.02,-0.41
+LOC100578774,centrosomal protein of 164 kDa,8,0.21,-0.3,-0.07,-0.59
+LOC410482,adenylosuccinate lyase,8,-0.07,0.04,0.1,0.66
+LOC725147,40S ribosomal protein S29,8,-0.07,0.22,0.03,0.56
+Rpn1,ribophorin I,8,-0.05,-0.16,-0.11,-0.41
+LOC409315,PRKCA-binding protein,8,-0.01,-0.23,-0.19,-0.31
+LOC410208,serine/threonine-protein kinase 3,8,0.43,-0.28,-0.16,-0.73
+LOC408750,pre-mRNA-processing factor 19,"6, 8",0.05,-0.16,-0.33,-0.3
+LOC725062,"39S ribosomal protein L4, mitochondrial",6,-0.09,-0.21,-0.31,-0.12
+LOC726417,uncharacterized LOC726417,"6, 8",-0.21,0.33,0.31,0.31
+LOC551215,uncharacterized LOC551215,6,-0.13,-0.15,-0.39,-0.07
+LOC552482,protoporphyrinogen oxidase,8,-0.14,-0.16,-0.07,-0.37
+LOC412112,uncharacterized LOC412112,8,-0.06,-0.17,-0.21,-0.29
+LOC100576162,uncharacterized protein PF11_0213,8,0.08,-0.22,-0.01,-0.59
+LOC413881,AP-3 complex subunit sigma-2,6,-0.11,-0.17,-0.32,-0.13
+LOC408662,WD repeat-containing protein 19,8,-0.05,-0.1,-0.15,-0.43
+LOC413592,probable ATP-dependent RNA helicase DHX34,8,-0.04,-0.2,-0.04,-0.45
+LOC726916,zinc finger protein 91,8,-0.02,-0.1,-0.15,-0.47
+LOC409078,uncharacterized LOC409078,8,0.05,0.03,0.11,0.55
+LOC410566,putative inorganic phosphate cotransporter,4,0.19,-0.47,-0.35,-0.1
+LOC551614,calpain-D,8,0.33,-0.4,0.05,-0.71
+LOC102654488,mpv17-like protein,4,-0.14,-0.3,-0.23,-0.06
+LOC409279,cullin-4A,8,0.27,-0.31,-0.07,-0.62
+LOC409536,arginine-glutamic acid dipeptide repeats protein,6,-0.01,0.23,0.36,0.14
+LOC100578321,host cell factor 2,6,0.39,0.02,0.43,-0.11
+LOC552720,V-type proton ATPase subunit E,6,-0.16,-0.2,-0.26,-0.11
+LOC413103,cysteine and histidine-rich protein 1 homolog,6,-0,-0.21,-0.39,-0.12
+LOC550822,egalitarian protein homolog,8,0.06,-0.24,0.01,-0.55
+LOC408775,heterogeneous nuclear ribonucleoprotein R,8,0.03,0.1,-0.19,-0.67
+LOC411719,queuine tRNA-ribosyltransferase catalytic subunit,8,-0.16,-0.19,-0.12,-0.26
+LOC725719,DNA-directed RNA polymerase I subunit RPA2,"6, 8",-0.05,-0.23,-0.24,-0.2
+LOC113219100,uncharacterized LOC113219100,8,0.14,-0.16,-0.28,-0.42
+LOC410305,transcription initiation factor TFIID subunit 12,"6, 8",-0.09,-0.15,-0.25,-0.23
+LOC412593,DNA damage-binding protein 1,8,0.13,-0.21,-0.17,-0.47
+LOC408979,eukaryotic translation initiation factor 5,6,0,-0.17,-0.35,-0.21
+LOC551194,glutathione hydrolase 7,8,-0.16,-0.19,-0.13,-0.25
+LOC409704,poly(A) polymerase type 3,8,-0.02,0.18,0.25,0.31
+LOC413196,ribosome maturation protein SBDS,6,-0.2,-0.09,-0.31,-0.13
+LOC724643,borealin,8,-0.11,-0.14,-0.2,-0.28
+LOC551566,uncharacterized LOC551566,8,0.3,-0.22,0.03,-0.83
+LOC551484,sphingomyelin phosphodiesterase 4,8,0.04,-0.17,-0.18,-0.41
+LOC408585,dynactin subunit 6,6,-0.14,-0.08,-0.33,-0.17
+LOC100576531,RNA pseudouridylate synthase domain-containing protein 1-like,6,-0.45,-0.01,-0.43,0.17
+LOC725376,C2 domain-containing protein 3,8,0.13,-0.27,-0.04,-0.53
+LOC411245,dedicator of cytokinesis protein 7,8,0.22,-0.34,-0.03,-0.57
+LOC551379,chitobiosyldiphosphodolichol beta-mannosyltransferase,8,-0.07,0.13,0.17,0.5
+LOC412624,methyltransferase-like protein 13,8,-0.12,-0.14,-0.2,-0.26
+LOC412432,uncharacterized LOC412432,8,0.08,-0.2,-0.08,-0.52
+LOC408573,eukaryotic translation initiation factor 6,6,0.05,-0.24,-0.34,-0.19
+LOC413891,NADH-ubiquinone oxidoreductase 49 kDa subunit,8,0.06,0.19,0.17,0.29
+LOC725612,WASH complex subunit 5,8,0.03,-0.16,-0.11,-0.47
+LOC100576131,zinc finger protein 267,8,0.43,-0.45,-0.09,-0.61
+LOC412281,protein purity of essence,6,0.27,0.12,0.27,0.06
+LOC410710,zinc transporter ZIP13 homolog,6,0.14,0.16,0.33,0.08
+LOC552752,symplekin,8,0.05,-0.17,-0.08,-0.51
+LOC724585,uncharacterized LOC724585,8,-0.03,-0.26,-0.07,-0.36
+LOC412919,TATA box-binding protein-like protein 1,8,0.21,-0.16,-0.17,-0.6
+LOC552020,neuromodulin,8,0.09,0.1,0.23,0.3
+LOC725128,uncharacterized LOC725128,8,0.06,0.2,0.12,0.33
+LOC100577742,uncharacterized LOC100577742,8,0.26,-0.39,-0.02,-0.56
+LOC100577050,uncharacterized LOC100577050,8,0.06,-0.19,0.03,-0.61
+LOC726175,nuclear protein 1,8,0.01,0.16,0.24,0.3
+LOC413619,RNA polymerase II subunit A C-terminal domain phosphatase SSU72,4,-0.04,-0.33,-0.21,-0.13
+LOC724925,delta(14)-sterol reductase,8,0.02,-0.21,-0.2,-0.32
+LOC100576819,putative inactive caspase B,6,-0.18,-0.15,-0.33,-0.05
+LOC102654640,pseudouridylate synthase 7 homolog,8,-0.11,-0.12,-0.05,-0.44
+LOC413389,dual specificity mitogen-activated protein kinase kinase hemipterous,6,0.27,-0.01,0.3,0.15
+LOC409323,uncharacterized LOC409323,8,0.08,0.19,0.22,0.23
+LOC724977,partitioning defective protein 6,8,0.18,-0.15,-0.11,-0.64
+LOC724593,transcriptional regulator ATRX homolog,8,-0.03,-0.14,-0.03,-0.5
+LOC725571,protein transport protein Sec61 subunit alpha,4,0.1,-0.37,-0.28,-0.15
+LOC412931,U3 small nucleolar RNA-associated protein 15 homolog,4,-0.13,-0.27,-0.21,-0.11
+LOC726121,golgin subfamily A member 6-like protein 22,8,-0.22,0.26,0.09,0.58
+LOC410169,twinfilin,4,-0.1,-0.32,-0.16,-0.13
+LOC413438,"dynamin-like 120 kDa protein, mitochondrial",8,-0.02,-0.18,-0.07,-0.43
+LOC551710,"electron transfer flavoprotein subunit alpha, mitochondrial",8,-0.02,0.17,0.09,0.47
+LOC412560,cyclin-dependent kinase 9,"6, 8",0.1,-0.15,-0.33,-0.32
+Prpf3,PRP3 pre-mRNA processing factor 3 homolog,8,-0.12,-0.09,-0.13,-0.36
+LOC107965043,uncharacterized LOC107965043,8,-0.18,-0.21,0.15,-0.46
+LOC725343,alkyldihydroxyacetonephosphate synthase,"4, 6",-0.04,-0.32,-0.33,-0.01
+LOC411410,protein transport protein Sec24B,8,0.27,-0.12,-0.09,-0.76
+LOC410606,"protein Skeletor, isoforms B/C",8,-0.06,0.01,0.34,0.41
+LOC100576606,MATH and LRR domain-containing protein PFE0570w,8,0.1,-0.19,0.05,-0.66
+LOC551365,lymphokine-activated killer T-cell-originated protein kinase,6,-0.16,-0.04,-0.37,-0.13
+LOC725832,"beta-1,3-glucan-binding protein 1",8,-0.79,0.39,0.11,1
+LOC550920,cell division cycle protein 16 homolog,6,-0.06,-0.2,-0.27,-0.17
+LOC550818,guanine nucleotide-binding protein G(q) subunit alpha,8,0.16,-0.15,-0.13,-0.57
+LOC552210,fumarylacetoacetase,8,-0.1,0.22,0.06,0.53
+LOC552809,cytochrome c oxidase subunit NDUFA4,8,0,0.17,0.16,0.36
+LOC726408,zinc finger protein 706,6,-0.15,-0.13,-0.29,-0.13
+LOC408945,sorting nexin-27,4,-0.07,0.35,0.15,0.27
+LOC551020,probable protein phosphatase 2C T23F11.1,8,0.1,-0.21,-0.07,-0.52
+LOC107965039,uncharacterized LOC107965039,8,-0.11,0.14,0.1,0.57
+LOC551612,FACT complex subunit spt16,8,0.02,-0.16,-0.14,-0.42
+LOC725269,protein bark beetle,8,0.08,-0.09,-0.1,-0.58
+LOC408754,TNF receptor-associated factor 4,6,-0.09,-0.11,-0.42,-0.08
+LOC552674,shugoshin 2,8,-0.05,-0.13,-0.06,-0.44
+LOC724757,histone H4,8,-0.1,0.29,0.14,0.38
+LOC410383,calcium homeostasis endoplasmic reticulum protein,8,0.24,-0.2,-0.12,-0.61
+LOC409155,"dihydrolipoyllysine-residue succinyltransferase component of 2-oxoglutarate dehydrogenase complex, mitochondrial",8,0.13,-0.34,-0.08,-0.41
+LOC411922,mitochondrial ribosome-associated GTPase 2,8,0.03,-0.13,-0.16,-0.44
+LOC724368,dnaJ homolog subfamily A member 1,6,0.21,-0.28,-0.35,-0.28
+GstS1,glutathione S-transferase S1,6,-0.05,-0.08,-0.44,-0.13
+LOC551373,ectonucleoside triphosphate diphosphohydrolase 5,8,0.17,-0.15,-0.21,-0.51
+LOC412198,UDP-glucose:glycoprotein glucosyltransferase,8,-0.08,-0.07,-0.09,-0.45
+LOC411731,endoplasmic reticulum metallopeptidase 1,8,0.2,-0.26,-0.1,-0.53
+LOC100578200,uncharacterized LOC100578200,6,-0.09,-0.19,-0.41,-0
+LOC412481,protein king tubby,8,0.25,-0.1,-0.12,-0.72
+LOC410357,protein ST7 homolog,4,0.01,-0.41,-0.13,-0.17
+LOC408312,tyrosine-protein kinase transmembrane receptor Ror2,8,0.11,0.05,-0.21,-0.65
+LOC102655034,calcium and integrin-binding family member 3,8,-0.08,0.12,0.23,0.42
+LOC409278,apolipoprotein D,8,-0.04,0.19,0.11,0.42
+LOC409423,male-specific lethal 1 homolog,8,-0.03,-0.1,-0.17,-0.39
+LOC726248,protein artichoke,8,-0.05,-0.08,0.41,0.4
+LOC552602,transmembrane emp24 domain-containing protein,6,-0.16,-0.11,-0.37,-0.06
+LOC413657,"presequence protease, mitochondrial",8,-0.09,-0.15,-0.04,-0.4
+Rps14,ribosomal protein S14,8,-0.09,0.24,0.06,0.49
+LOC413796,"methionine--tRNA ligase, cytoplasmic",8,-0.14,-0.12,-0.08,-0.35
+LOC552788,uncharacterized LOC552788,8,-0.05,-0.13,-0.19,-0.31
+LOC410538,probable C-mannosyltransferase DPY19L1,8,-0.05,0.11,0.1,0.52
+LOC102654517,uncharacterized LOC102654517,8,-0.13,0.27,0.09,0.46
+LOC725530,uncharacterized LOC725530,8,-0.1,0.17,0.12,0.5
+LOC102656862,uncharacterized LOC102656862,8,0.03,0.26,-0.33,0.73
+LOC409308,small ubiquitin-related modifier,6,-0.03,-0.19,-0.3,-0.16
+LOC411415,negative elongation factor D,"6, 8",-0.03,-0.05,-0.28,-0.33
+LOC409333,CAAX prenyl protease 2,8,0.05,0.13,0.12,0.38
+LOC552753,uncharacterized LOC552753,8,0.02,-0.1,-0.26,-0.34
+LOC552532,"probable leucine--tRNA ligase, mitochondrial",8,-0.12,-0.11,-0.05,-0.41
+LOC406146,hyaluronoglucosaminidase,8,-0.05,0.22,-0.02,0.53
+LOC408728,mediator of RNA polymerase II transcription subunit 18,6,-0.03,-0.12,-0.48,-0.04
+LOC551412,polycomb protein EED,"6, 8",-0.03,-0.08,-0.25,-0.32
+LOC102655523,transmembrane protein 218,"4, 6",0.09,-0.43,-0.42,0.08
+LOC725055,gamma-glutamylcyclotransferase,8,-0.12,-0.02,-0.27,-0.27
+LOC552282,probable Bax inhibitor 1,8,0.07,0.15,0.14,0.32
+LOC551586,programmed cell death protein 5,6,-0.25,-0.06,-0.33,-0.04
+LOC727087,serine/arginine-rich splicing factor 7,"6, 8",-0.05,-0.07,-0.31,-0.25
+LOC102655466,ADP-ribosylation factor-like protein 6,8,-0.17,0.18,0.02,0.63
+LOC552198,pleiotropic regulator 1,8,0.1,0.1,0.14,0.34
+LOC411573,cell cycle control protein 50A,6,0.02,-0.24,-0.26,-0.2
+LOC413407,transcription elongation factor B polypeptide 3,8,-0.07,-0.07,-0.1,-0.43
+LOC725268,S1 RNA-binding domain-containing protein 1,8,-0.09,-0.07,-0.1,-0.42
+LOC412172,SHC-transforming protein 1,8,0.03,-0.23,-0.17,-0.31
+LOC100578332,uncharacterized LOC100578332,8,0.3,-0.03,-0.12,-0.82
+LOC551593,sphingosine-1-phosphate lyase,8,0.05,-0.28,-0.14,-0.3
+LOC552703,KAT8 regulatory NSL complex subunit 2,8,-0.16,-0.1,-0.17,-0.23
+LOC726631,F-box/WD repeat-containing protein 4,"4, 6",0.05,-0.27,-0.28,-0.17
+LOC727350,ceramide synthase 6,8,0.04,-0.16,-0.13,-0.41
+LOC726784,sphingosine-1-phosphate phosphatase 1,"4, 6",-0.1,-0.27,-0.25,-0.05
+LOC550694,T-complex protein 1 subunit eta,8,-0.05,-0.1,-0.19,-0.33
+LOC727308,ephrin-B2,8,0.01,0.17,0.22,0.27
+LOC410470,putative polypeptide N-acetylgalactosaminyltransferase 9,8,0.37,-0.27,0.06,-0.83
+LOC551701,late secretory pathway protein AVL9 homolog,8,0.03,-0.1,0.11,-0.72
+LOC552085,developmentally-regulated GTP-binding protein 2,4,0.01,-0.33,-0.23,-0.12
+LOC550664,deubiquitinase DESI2,6,-0.03,-0.19,-0.33,-0.11
+LOC409403,ubiquitin carboxyl-terminal hydrolase 30 homolog,8,-0.03,-0.12,-0.1,-0.42
+LOC724567,methylosome protein 50,6,-0.09,-0.19,-0.36,-0.03
+LOC100576174,uncharacterized LOC100576174,6,0.06,-0.23,-0.37,-0.13
+LOC503505,venom protein 2,8,-0.14,0.27,0.14,0.4
+LOC411351,"elongation factor G, mitochondrial",8,-0.1,-0.08,-0.09,-0.4
+LOC413379,yellow-g,6,-0.44,0.24,-1.17,0.7
+LOC552186,cell division cycle protein 20 homolog,6,-0.17,-0.15,-0.25,-0.11
+LOC411790,mitochondrial glycine transporter,6,-0.06,-0.22,-0.44,0.05
+LOC413484,uncharacterized LOC413484,"6, 8",-0.13,-0.04,-0.28,-0.21
+LOC724991,phosphatidylinositol 4-phosphate 5-kinase type-1 alpha,8,0.14,-0,0.18,0.35
+LOC724619,multiple inositol polyphosphate phosphatase 1,6,-0.07,-0.28,-0.51,0.2
+LOC413018,exportin-1,8,0.22,-0.16,-0.15,-0.57
+LOC410079,zinc finger protein 385B,8,-0.06,0.26,0.17,0.29
+LOC727275,proliferating cell nuclear antigen,6,-0.05,-0.13,-0.36,-0.12
+LOC102654165,transmembrane protein 132C,8,0.39,-0.22,0.12,-0.95
+LOC409880,26S proteasome non-ATPase regulatory subunit 12,6,-0.14,-0.12,-0.27,-0.13
+LOC113218605,DNA ligase 1-like,6,-0.09,0.23,0.45,0.07
+LOC412540,carcinine transporter,8,0.26,-0.07,-0.36,-0.49
+LOC552051,dolichyl-diphosphooligosaccharide--protein glycosyltransferase 48 kDa subunit,6,-0.04,-0.17,-0.31,-0.14
+LOC113219111,"glycine cleavage system H protein, mitochondrial",8,-0.04,-0.09,0.2,0.6
+LOC726196,ubiquitin-fold modifier 1,6,0.05,-0.23,-0.32,-0.15
+LOC409741,rho GDP-dissociation inhibitor 2,"6, 8",-0.06,-0.14,-0.21,-0.24
+LOC726093,tetratricopeptide repeat protein 14 homolog,8,0.06,-0.14,-0.2,-0.38
+LOC412027,histone-lysine N-methyltransferase PR-Set7,8,0.22,-0.16,-0.02,-0.68
+LOC725274,3-hydroxyacyl-CoA dehydrogenase type-2,8,0.01,0.16,0.09,0.39
+LOC552141,"beta-1,4-N-acetylgalactosaminyltransferase bre-4",8,-0.04,-0.09,-0.2,-0.33
+LOC724123,translation initiation factor eIF-2B subunit delta,8,-0,-0.15,-0.16,-0.34
+LOC411699,SID1 transmembrane family member 1,6,-0.1,-0.14,-0.28,-0.13
+LOC410040,serine/arginine-rich splicing factor 1B,8,-0.05,-0.11,-0.21,-0.28
+LOC726336,splicing factor 3B subunit 2,8,-0.09,-0.11,-0.06,-0.4
+LOC102656263,protein farnesyltransferase subunit beta,"6, 8",-0.08,-0.15,-0.23,-0.2
+LOC409768,uncharacterized protein DDB_G0272420,8,0.03,-0.07,-0.26,-0.34
+LOC552152,"28S ribosomal protein S24, mitochondrial",6,-0.15,-0.15,-0.32,-0.03
+LOC724408,ras-related GTP-binding protein A,4,-0.19,-0.25,-0.19,-0.02
+LOC725550,proteasome activator complex subunit 4A,8,0.09,-0.15,-0.08,-0.5
+LOC412917,probable serine/threonine-protein kinase dyrk2,8,0.1,0.09,0.22,0.23
+LOC410999,"L-2-hydroxyglutarate dehydrogenase, mitochondrial","4, 8",-0.11,0.3,0.16,0.3
+LOC102655648,FAD synthase,8,0.04,-0.26,-0.11,-0.32
+LOC409645,MAPK regulated corepressor interacting protein 2,6,-0.02,-0.25,-0.33,-0.04
+LOC551350,myotrophin,"6, 8",-0.01,-0.15,-0.2,-0.29
+LOC409197,protein Dr1,"6, 8",-0.09,-0.08,-0.28,-0.2
+LOC409457,eIF-2-alpha kinase activator GCN1,8,0.14,-0.2,-0.21,-0.37
+LOC408850,pre-mRNA-processing factor 39,8,0.08,-0.26,-0.14,-0.33
+LOC100576512,U8-agatoxin-Ao1a,8,-0.02,-0,0.14,0.52
+Akhr,adipokinetic hormone receptor,8,0.2,0.03,0.03,0.39
+LOC409552,40S ribosomal protein S10,8,-0.05,0.16,0.02,0.52
+LOC724331,pre-mRNA-splicing factor CWC22 homolog,8,0.09,-0.18,-0.08,-0.47
+LOC412787,protein TAPT1 homolog,8,0.05,-0.23,-0.17,-0.29
+LOC551809,putative elongator complex protein 1,8,-0.05,-0.08,-0.12,-0.39
+LOC551090,conserved oligomeric Golgi complex subunit 8,8,-0.04,-0.04,-0.22,-0.33
+LOC409063,cysteine sulfinic acid decarboxylase,6,0.02,-0,-0.62,-0.04
+LOC408519,serine/threonine-protein kinase 10,6,0.19,0.2,0.27,-0.02
+LOC726913,cytochrome b5,8,0.11,0.01,0.06,0.46
+LOC410533,ceramide-1-phosphate transfer protein,8,0.13,-0.01,0.2,0.33
+LOC724207,phospholipid scramblase 2,"4, 8",-0.06,0.32,0.11,0.28
+LOC409499,UDP-glucose 4-epimerase,6,-0.15,-0.05,-0.44,-0.01
+LOC410990,nucleolar protein 9,8,0.06,-0.21,-0.07,-0.42
+LOC724160,uncharacterized LOC724160,8,-0.03,-0.17,-0.05,-0.38
+LOC412596,trafficking protein particle complex subunit 12,6,-0.06,-0.23,-0.23,-0.11
+LOC408578,armadillo repeat-containing protein 6 homolog,6,-0.09,-0.15,-0.24,-0.16
+LOC552354,protein slowmo,8,0.03,0.09,0.1,0.42
+LOC551401,cytosolic 10-formyltetrahydrofolate dehydrogenase,8,0.19,0.17,-0.42,-0.57
+LOC413080,"pyruvate dehydrogenase [acetyl-transferring]-phosphatase 1, mitochondrial",8,-0.02,-0.19,-0.19,-0.23
+LOC725587,serine/arginine repetitive matrix protein 5,6,-0.19,-0.02,-0.34,-0.09
+LOC551801,host cell factor 1,8,0.22,-0.16,-0.07,-0.63
+LOC409045,transcription elongation regulator 1,8,-0.09,-0.05,-0.08,-0.42
+LOC551128,26S proteasome regulatory subunit 4,6,-0.04,-0.07,-0.29,-0.24
+LOC725491,GPI mannosyltransferase 1,"4, 6",-0.02,-0.25,-0.23,-0.14
+LOC413636,exportin-7,8,0.14,-0.18,-0.17,-0.43
+LOC413171,myosin-I heavy chain,4,0.1,0.45,0.05,0.03
+LOC409341,lysosomal aspartic protease,8,0.01,0.07,0.07,0.49
+LOC727227,epidermal growth factor receptor substrate 15-like 1,8,0.02,-0.16,-0.1,-0.4
+LOC100578154,uncharacterized LOC100578154,8,-0.22,0.09,0.09,0.68
+LOC413663,myotubularin-related protein 4,8,0.09,0.13,0.22,0.2
+LOC413495,mediator of RNA polymerase II transcription subunit 27,6,-0.14,-0.05,-0.3,-0.14
+LOC551012,cation-independent mannose-6-phosphate receptor,8,0.02,-0.07,-0.13,-0.45
+LOC409337,zinc finger MIZ domain-containing protein 1,8,0.35,-0.12,0.08,-0.94
+LOC412739,roundabout homolog 2,8,0.13,-0.05,0.08,-0.79
+LOC551658,anillin,"6, 8",-0.07,-0.07,-0.25,-0.23
+LOC726277,anaphase-promoting complex subunit CDC26,8,-0.01,0.11,0.12,0.41
+LOC100578947,SUN domain-containing ossification factor,8,0.11,-0.19,0.01,-0.56
+LOC102654315,serine/threonine-protein kinase Nek5,8,-0.58,-0.11,0.38,0.94
+LOC409942,interference hedgehog,8,0.08,-0.06,-0.05,-0.6
+LOC551573,tyrosine-protein phosphatase non-receptor type 4,8,0.45,-0.16,-0.04,-0.87
+LOC408952,oxysterol-binding protein 1,8,0.15,0.05,0.18,0.25
+LOC100577398,uncharacterized LOC100577398,8,-0.15,0.21,0.02,0.55
+LOC725781,syndetin,8,-0.05,-0.13,-0.06,-0.38
+LOC726819,ATP-dependent RNA helicase DDX51,8,0.14,-0.2,-0.03,-0.53
+LOC409920,ubiquitin-conjugating enzyme E2 variant 2,6,0.08,-0.26,-0.24,-0.2
+LOC552346,coatomer subunit delta,8,0.06,-0.2,-0.04,-0.44
+LOC408598,MAGUK p55 subfamily member 7,8,0.06,0.04,0.09,0.43
+LOC411796,serine hydroxymethyltransferase,8,0.12,0.09,0.13,0.29
+LOC725184,gamma-aminobutyric acid receptor-associated protein,8,0.04,0.12,0.07,0.39
+LOC411071,dnaJ protein homolog 1,4,0.46,-0.64,-0.4,-0.04
+LOC409476,nuclear cap-binding protein subunit 1,8,-0.02,-0.1,-0.19,-0.31
+LOC100578253,Golgi integral membrane protein 4,8,-0.09,-0.19,-0.15,-0.19
+LOC107964271,uncharacterized LOC107964271,8,-0.03,0.17,-0.48,0.96
+LOC409893,protein alan shepard,"6, 8",-0.02,-0.01,-0.24,-0.35
+LOC410838,ubiquitin-conjugating enzyme E2 R2,8,-0.02,0.16,0.15,0.33
+LOC726869,transmembrane protein 209,8,0.08,-0.15,-0.23,-0.32
+LOC552497,roquin-1,8,0.07,-0.19,0.04,-0.54
+LOC724226,acyl-CoA Delta(11) desaturase,8,0.03,0.25,0.04,0.3
+LOC551518,glutamyl aminopeptidase,8,-0.06,-0.15,-0.11,-0.29
+LOC552572,eukaryotic translation initiation factor 5A,"6, 8",0,-0.09,-0.19,-0.33
+LOC411960,zinc finger protein 184,8,0.17,-0.18,-0.12,-0.48
+LOC408923,transcription initiation factor TFIID subunit 4,"4, 6",0.33,-0.44,-0.31,-0.19
+LOC725515,zinc finger protein 543,8,0.3,-0.29,-0.02,-0.61
+LOC413754,polycomb protein Sfmbt,8,0.45,-0.23,0.22,-1.06
+LOC100576968,merlin,8,0.08,-0.2,-0.05,-0.45
+LOC552036,suppressor of cytokine signaling 5,8,0.03,-0.18,-0.17,-0.29
+LOC724262,putative peroxisomal biogenesis factor 10,8,-0.14,0.19,0.12,0.45
+LOC551992,rRNA 2'-O-methyltransferase fibrillarin,6,-0.01,-0.2,-0.24,-0.17
+LOC552108,adhesion G protein-coupled receptor A3,8,0.04,-0.07,-0.03,-0.56
+LOC107964202,uncharacterized LOC107964202,8,0.08,0.12,0.16,0.26
+LOC100577976,GSK3-beta interaction protein,8,-0.13,0.12,0.08,0.55
+LOC100577451,glycolipid transfer protein,"4, 6, 8",0.07,-0.22,-0.26,-0.2
+LOC410070,centrosome-associated protein 350,8,0.29,-0.13,0.03,-0.8
+LOC412543,uncharacterized LOC412543,8,-0.05,0.14,0.09,0.43
+LOC551291,spectrin alpha chain,6,0.05,0.14,0.24,0.18
+LOC726726,serine/arginine repetitive matrix protein 1,8,-0.1,-0.07,0,-0.44
+LOC410283,transmembrane protein 222,8,0.1,0.1,0.02,0.39
+LOC102654952,lipase 3,6,-0.05,-0.11,-0.28,-0.17
+Brd7,bromodomain containing 7,6,0.21,0.15,0.29,-0.04
+LOC552567,DEAD-box helicase Dbp80,8,0.03,-0.1,-0.2,-0.34
+LOC551169,"succinate dehydrogenase [ubiquinone] iron-sulfur subunit, mitochondrial",6,-0.12,-0.17,-0.34,0.03
+LOC410726,putative E3 ubiquitin-protein ligase UBR7,6,-0.13,-0.08,-0.29,-0.11
+LOC726303,N-acetyltransferase family 8 member 3,6,-0.11,-0.14,-0.41,0.06
+LOC409497,zinc finger CCCH domain-containing protein 18,8,0.13,-0.19,0.08,-0.63
+LOC551168,protein sidekick,8,0.06,0.13,-0.09,-0.71
+LOC409494,"methylglutaconyl-CoA hydratase, mitochondrial",6,-0.1,-0.24,-0.3,0.03
+Hsc70-3,heat shock 70 kDa protein cognate 3,8,0.18,-0.09,-0.34,-0.36
+LOC409522,cell division cycle protein 27 homolog,8,0.14,-0.22,-0.05,-0.48
+LOC408925,protein arginine N-methyltransferase 7,6,-0.09,-0.16,-0.24,-0.1
+LOC412099,GRAM domain-containing protein 2B,8,0.2,-0.11,0.01,-0.71
+Sod2,"superoxide dismutase 2, mitochondrial",8,0.03,0.13,0.09,0.35
+LOC726438,centrosomal protein of 97 kDa,8,-0.02,-0.11,0.08,-0.55
+LOC412426,"ubiquinone biosynthesis monooxygenase COQ6, mitochondrial",6,0.04,-0.23,-0.25,-0.15
+LOC410227,inactive hydroxysteroid dehydrogenase-like protein 1,6,-0.08,0.07,0.41,0.2
+LOC406152,juvenile hormone epoxide hydrolase 1,6,-0.11,-0.11,-0.25,-0.13
+LOC552729,neuroguidin-A-like,8,0.2,-0.22,-0.12,-0.45
+LOC412351,E3 ubiquitin-protein ligase TM129,6,-0.13,-0.07,-0.29,-0.11
+LOC412529,tyrosine-protein phosphatase corkscrew,8,0.22,-0.25,-0.06,-0.51
+LOC100577870,ras-related protein Rab-35,8,-0.03,-0.06,-0.12,-0.39
+LOC100578090,uncharacterized LOC100578090,8,0.12,0.02,0.04,0.41
+LOC726833,TOM1-like protein 2,8,0.11,-0.18,0.13,-0.67
+LOC409229,phosphorylated adapter RNA export protein,8,0.2,-0.21,-0.15,-0.44
+LOC413746,adrenodoxin,"6, 8",-0.01,-0.17,-0.23,-0.18
+LOC412212,"apoptosis-inducing factor 1, mitochondrial",8,0.02,-0.13,-0.18,-0.31
+LOC100577113,uncharacterized LOC100577113,8,0.11,-0.31,0.24,-0.64
+LOC551436,T-complex protein 1 subunit theta,8,-0.07,-0.09,-0.15,-0.28
+RpL32,ribosomal protein L32,8,-0.11,0.17,0.04,0.5
+LOC413875,60S ribosomal protein L31,8,-0.12,0.15,0.09,0.48
+LOC552175,mitochondrial-processing peptidase subunit alpha,8,0.06,0.11,0.14,0.29
+LOC409708,glucosylceramidase-like,8,-0.09,0.05,0.14,0.5
+LOC409717,uncharacterized LOC409717,6,0.11,0.18,0.33,-0.03
+TpnCI,troponin C type I,8,-0,0.11,0.09,0.39
+LOC412017,etoposide-induced protein 2.4,8,0.11,-0.18,-0.19,-0.33
+LOC408843,F-box/WD repeat-containing protein 9,8,-0.03,0.11,0.14,0.37
+LOC102654955,"ATP synthase subunit b, mitochondrial",8,-0.15,-0.1,-0.13,-0.21
+LOC408288,"isovaleryl-CoA dehydrogenase, mitochondrial",8,-0.06,0.14,0.18,0.33
+LOC411177,integrator complex subunit 3,8,0.01,-0.26,-0.08,-0.26
+LOC412591,calcitonin gene-related peptide type 1 receptor,8,0.21,0.01,0.03,0.33
+LOC724497,protein patched homolog 3,8,0.05,0.19,0.06,0.29
+LOC409539,microtubule-associated protein 2,8,0.22,-0.14,0.08,-0.75
+LOC552814,activating signal cointegrator 1 complex subunit 3,8,0.07,-0.12,-0.09,-0.45
+LOC551438,actin-related protein 1,8,0.1,-0.26,-0.19,-0.24
+LOC551574,polymerase delta-interacting protein 2,8,0.02,0.18,0.14,0.24
+LOC551916,SH3 domain-binding glutamic acid-rich protein homolog,8,-0.07,-0.08,-0.15,-0.29
+LOC551983,thymidylate synthase,6,-0.16,-0.08,-0.26,-0.09
+LOC412345,exosome complex component RRP41,6,-0.08,-0.16,-0.29,-0.06
+LOC550829,DNA-directed RNA polymerase II subunit RPB1,8,0.19,-0.08,-0.01,-0.69
+Ppib,peptidylprolyl isomerase B (cyclophilin B),8,-0.14,-0.06,-0.19,-0.2
+LOC100577369,HEAT repeat-containing protein 6,8,-0.03,-0.16,-0.07,-0.33
+LOC412607,uncharacterized LOC412607,8,0.09,-0.16,-0.08,-0.43
+LOC724536,uncharacterized LOC724536,8,0.3,-0.09,-0.02,-0.77
+LOC409793,"NADH dehydrogenase [ubiquinone] flavoprotein 2, mitochondrial",8,0.1,0.05,0.19,0.24
+LOC408316,uncharacterized LOC408316,6,-0.01,0.04,0.49,0.07
+LOC412157,HEAT repeat-containing protein 5B,8,0.08,0.04,-0.01,-0.7
+LOC726029,probable RNA-binding protein 18,6,-0.26,-0.07,-0.25,-0
+LOC409259,protein abrupt,8,0,-0.12,-0.08,-0.38
+LOC410306,ADP-ribosylation factor 2,6,-0.1,-0.11,-0.24,-0.14
+LOC551596,uncharacterized LOC551596,8,0.04,-0.14,-0.17,-0.31
+LOC412422,mediator of RNA polymerase II transcription subunit 1,8,0.13,0.18,-0.27,-0.63
+LOC551516,uncharacterized LOC551516,8,0.09,0.08,0.1,0.31
+LOC100578718,protein distal antenna,8,-0.17,0.15,0.17,0.43
+LOC724822,glucose-fructose oxidoreductase domain-containing protein 2,8,0.04,-0.2,-0.14,-0.27
+LOC551644,40S ribosomal protein S15,8,-0.11,0.16,0.06,0.47
+LOC552679,cytochrome P450 4c3,4,0.12,-0.49,-0.33,0.13
+LOC726540,DNA (cytosine-5)-methyltransferase PliMCI,8,0.05,-0.07,-0.18,-0.38
+LOC552064,AP-3 complex subunit beta-2,8,-0.1,-0.02,-0.01,-0.45
+LOC409202,40S ribosomal protein S9,8,-0.04,0.12,0.07,0.43
+LOC725897,syntaxin-16,8,0.16,-0.13,-0.13,-0.47
+LOC411754,YTH domain-containing protein 1,8,0.13,-0.22,-0.02,-0.46
+LOC409532,NAD-dependent protein deacetylase Sirt2,8,-0.01,-0.17,-0.14,-0.26
+LOC726698,serine protease snake,8,0.08,0.13,0.14,0.23
+LOC409865,protein retinal degeneration B,8,0.17,-0.13,-0.13,-0.48
+LOC413869,retinol dehydrogenase 11,6,-0.1,-0.14,-0.23,-0.1
+LOC725039,eukaryotic translation initiation factor 4E-binding protein 1,8,-0,0.11,0.15,0.32
+LOC725980,"28S ribosomal protein S36, mitochondrial",8,-0.11,0.09,0.08,0.52
+LOC410107,broad-complex core protein isoforms 1/2/3/4/5,8,0.61,-0.07,0.45,-1.56
+LOC552018,probable tRNA (guanine(26)-N(2))-dimethyltransferase,8,-0.1,0.25,0.1,0.33
+Nipped-B,nipped-B protein,8,0.19,0.08,0.03,-0.87
+LOC409355,glutaredoxin 3,6,-0.11,-0.2,-0.31,0.05
+LOC411359,"protein tumorous imaginal discs, mitochondrial",8,-0.09,-0.04,-0.12,-0.32
+LOC726171,60S ribosomal protein L11,8,-0.1,0.17,0.03,0.47
+LOC724672,SRSF protein kinase 3,"4, 8",0.07,-0.33,-0.07,-0.24
+LOC409518,uncharacterized LOC409518,6,-0.04,0.11,0.37,0.13
+LOC412513,uncharacterized LOC412513,8,0.06,-0.13,-0.15,-0.35
+LOC551280,uncharacterized LOC551280,8,0.21,-0.28,0.17,-0.67
+LOC102654121,protein YIPF5,6,-0.07,-0.11,-0.35,-0.04
+LOC412526,protein disulfide-isomerase A6 homolog,"6, 8",-0.07,-0.02,-0.23,-0.25
+LOC100578030,antitrypsin,6,-0.1,-0.14,-0.25,-0.08
+LOC726325,uncharacterized LOC726325,8,0.21,-0.2,-0.12,-0.46
+LOC408531,PRADC1-like protein,"6, 8",0.05,-0.15,-0.22,-0.25
+LOC551712,"lipoyltransferase 1, mitochondrial","6, 8",0.1,0.05,0.19,0.22
+LOC726822,geranylgeranyl transferase type-2 subunit beta,6,-0.17,-0.1,-0.27,-0.03
+LOC413929,egl nine homolog 1,6,0.2,-0.2,0.34,0.23
+LOC412444,chymotrypsin-like elastase family member 2A,8,0.05,-0.29,0.06,0.74
+LOC113218716,protein C19orf12 homolog,6,-0.13,-0.09,-0.4,0.05
+LOC409965,cyclin-dependent kinase 12,8,0.26,-0.26,-0.02,-0.54
+LOC551256,protein CNPPD1,"6, 8",-0.02,-0.06,-0.25,-0.23
+LOC551894,transient receptor potential mucolipin,8,0.28,-0.18,-0.07,-0.58
+LOC100576359,integrator complex subunit 11,6,-0.11,-0.07,-0.3,-0.07
+LOC408959,protein unc-13 homolog 4B,8,-0.11,-0.25,0.09,-0.29
+LOC410612,solute carrier family 25 member 44,8,0.09,0.05,0.04,0.37
+LOC413909,"tyrosine--tRNA ligase, cytoplasmic",6,-0.1,-0.11,-0.24,-0.11
+LOC100578245,uncharacterized LOC100578245,6,-0.03,-0.3,-0.38,0.15
+LOC408457,protein LSM12 homolog,8,-0.01,-0.14,-0.18,-0.23
+LOC409795,telomerase-binding protein EST1A,8,0.15,0.16,-0.28,-0.58
+LOC409756,vacuolar protein sorting-associated protein 4B,8,0.03,-0.22,-0.13,-0.24
+LOC411481,ribosomal protein S6 kinase alpha-2,8,-0.06,-0.12,-0.11,-0.27
+LOC100578939,single Ig IL-1-related receptor,8,-0,0.03,0.02,0.51
+LOC725700,vacuolar protein sorting-associated protein 29,6,-0.12,-0.26,-0.29,0.12
+LOC409492,slowpoke-binding protein,8,-0.04,-0.04,0.25,0.37
+LOC409593,zinc finger MYND domain-containing protein 11,8,-0,-0.1,-0.04,-0.4
+LOC552660,ubiquitin carboxyl-terminal hydrolase 46,6,-0.07,-0.15,-0.31,-0.03
+LOC409534,uncharacterized LOC409534,8,0.01,-0.13,-0.2,-0.22
+LOC409501,SWI/SNF complex subunit SMARCC2,8,0.04,-0.11,-0.06,-0.41
+LOC409586,NADH dehydrogenase [ubiquinone] 1 beta subcomplex subunit 9,6,-0.17,-0.06,-0.31,-0.01
+LOC411230,zinc finger protein ZPR1,8,-0.1,-0.07,-0.12,-0.26
+LOC411503,histone deacetylase Rpd3,8,-0.02,-0.1,-0.01,-0.41
+LOC410992,ubiquitin-conjugating enzyme E2 C,6,-0.03,-0.13,-0.36,-0.02
+LOC727113,probable ATP-dependent RNA helicase spindle-E,8,0.04,-0.1,-0.1,-0.39
+LOC551295,T-complex protein 1 subunit zeta,8,-0.05,-0.13,-0.16,-0.21
+LOC726779,"39S ribosomal protein L33, mitochondrial",6,-0.17,-0.09,-0.53,0.25
+LOC410056,serine/threonine-protein phosphatase 4 regulatory subunit 3,8,0.07,-0.1,-0.11,-0.41
+LOC408706,heat shock protein 70Cb ortholog,8,0.27,-0.18,-0.2,-0.44
+LOC552535,adenylate cyclase type 9,8,0.1,-0.22,-0.03,-0.39
+LOC726419,"beta-1,3-galactosyltransferase",8,0.08,-0.17,0.02,-0.47
+LOC551709,"1-phosphatidylinositol 4,5-bisphosphate phosphodiesterase gamma-1",8,0.13,-0.02,-0.1,-0.56
+LOC411942,anaphase-promoting complex subunit 2,6,-0.04,0.05,-0.31,-0.25
+LOC725467,cullin-2,6,0.15,0.08,0.23,0.07
+LOC726047,cyclin-dependent kinases regulatory subunit,8,0.12,-0.25,-0.13,-0.27
+LOC551408,uncharacterized LOC551408,8,0.01,0.17,0.08,0.28
+LOC724943,phosphatidylinositol glycan anchor biosynthesis class U protein,6,-0.01,-0.21,-0.33,0.01
+LOC725884,60S acidic ribosomal protein P2,8,-0.05,0.13,-0.01,0.47
+LOC413810,"folylpolyglutamate synthase, mitochondrial",8,-0.13,0.11,0.25,0.31
+LOC724553,membrane-bound transcription factor site-2 protease,6,-0.1,-0.15,-0.3,0.02
+LOC725119,phospholipase D2,8,0.02,-0.17,0.03,-0.41
+LOC550914,DNA ligase 1,8,0.29,-0.08,-0.08,-0.66
+LOC100576866,probable elongator complex protein 3,6,-0.04,-0.11,-0.29,-0.09
+LOC410062,mitochondrial folate transporter/carrier,8,0.08,-0.04,0.11,0.38
+LOC552528,calnexin,8,0.02,-0.11,-0.03,-0.41
+LOC408497,heterogeneous nuclear ribonucleoprotein U-like protein 1,8,-0.05,-0.13,-0.06,-0.3
+LOC102655983,sodium-independent sulfate anion transporter,8,0.02,-0.05,-0.05,-0.44
+LOC550834,small ubiquitin-related modifier 3,6,-0.07,-0.14,-0.31,-0.02
+LOC411750,probable E3 ubiquitin-protein ligase HERC4,8,0.09,-0.15,-0.08,-0.4
+LOC725481,uncharacterized LOC725481,8,0.03,-0.1,-0.16,-0.3
+LOC552431,uncharacterized LOC552431,4,0.08,-0.35,-0.11,-0.15
+LOC726137,male-specific lethal 3 homolog,8,-0.05,0.05,-0.15,-0.38
+LOC551824,putative pre-mRNA-splicing factor ATP-dependent RNA helicase PRP1,"6, 8",0.09,-0.17,-0.21,-0.23
+LOC413351,integrator complex subunit 7,8,0.01,-0.12,-0.18,-0.24
+LOC551066,putative uncharacterized protein DDB_G0274405,8,0.01,-0.18,-0.13,-0.22
+LOC410740,RING finger protein 121,6,-0.02,-0.2,-0.27,-0.04
+LOC410078,echinoderm microtubule-associated protein-like 2,8,0.09,-0.2,0.04,-0.45
+LOC411299,Golgi resident protein GCP60,6,0,0.22,0.28,0.01
+LOC552325,protein germ cell-less,8,0.12,-0.22,-0.05,-0.37
+LOC413724,traB domain-containing protein,8,0.08,-0.1,-0.12,-0.38
+LOC725435,ubiquitin carboxyl-terminal hydrolase 45,8,0.04,-0.16,-0.02,-0.39
+LOC408699,"high affinity cAMP-specific and IBMX-insensitive 3',5'-cyclic phosphodiesterase 8",6,-0.04,0.15,0.45,-0.04
+LOC551673,serine/threonine-protein kinase tousled-like 2,6,0.17,0.11,0.26,-0.03
+LOC406097,integrin beta-PS,8,0.09,-0.15,-0.02,-0.44
+LOC409055,V-type proton ATPase subunit H,8,-0.06,-0.09,-0.14,-0.22
+LOC411836,exosome complex component RRP42,6,-0.08,-0.04,-0.34,-0.05
+LOC409066,pyridoxine-5'-phosphate oxidase,8,-0.02,0.08,0.15,0.3
+LOC725834,septin-7,8,0.24,-0.17,0.04,-0.61
+LOC552800,metal transporter CNNM4,8,0.42,-0.17,-0.1,-0.66
+LOC409024,tropomodulin,8,-0.05,0.05,0.14,0.36
+LOC409219,phospholipase A-2-activating protein,8,0.02,-0.15,-0.18,-0.2
+LOC551655,casein kinase II subunit beta,6,0.02,-0.09,-0.31,-0.12
+LOC412670,probable phosphoserine aminotransferase,8,-0.02,0.06,0.15,0.31
+LOC411720,mitogen-activated protein kinase kinase kinase 7 interacting protein 1,8,-0.02,-0.18,-0.1,-0.2
+LOC409991,dnaJ homolog subfamily C member 11,8,0.05,-0.13,-0.11,-0.31
+LOC408889,large proline-rich protein BAG6,8,0.16,-0.27,-0.07,-0.33
+LOC409151,ataxin-2-like protein,8,0.13,-0.2,0.04,-0.47
+LOC412296,deformed epidermal autoregulatory factor 1,6,-0.08,-0.15,-0.26,-0.02
+LOC409232,uncharacterized LOC409232,8,0.03,-0.13,-0.16,-0.25
+LOC409755,beta-parvin,"4, 6",-0.07,-0.19,-0.19,-0.06
+LOC552634,zinc transporter 1,8,-0.01,0.11,0.04,0.36
+nAChRa8,nicotinic acetylcholine receptor alpha8 subunit,8,-0.02,0.07,0.03,0.42
+Gtpx1,glutathione peroxidase-like 1,8,-0.06,0.13,0.07,0.36
+LOC100576163,short neuropeptide F,8,0.06,0.13,-0.21,0.53
+LOC408657,zinc finger protein 76,8,-0.07,-0.18,-0.06,-0.19
+LOC724701,protein FAN,8,0.01,0.01,-0.16,-0.35
+LOC409983,ankyrin repeat domain-containing protein 17,6,0.17,0.21,0.27,-0.14
+LOC552632,60S ribosomal protein L22,8,-0.14,0.16,0.06,0.42
+LOC412749,"ATP-binding cassette sub-family B member 7, mitochondrial",8,-0.09,-0.16,0.01,-0.26
+LOC725915,MAPK regulated corepressor interacting protein 2,8,0.07,-0.1,-0.07,-0.39
+LOC411714,uncharacterized protein C05D11.1,8,0.07,-0.11,-0.05,-0.4
+LOC724888,ras association domain-containing protein 2,8,0.35,-0.13,0.12,-0.83
+LOC724517,la-related protein 1B,8,0.25,-0.17,-0.14,-0.44
+LOC726145,ubiquitin-conjugating enzyme E2-22 kDa,6,-0.03,-0.16,-0.29,-0.02
+LOC552614,E3 ubiquitin-protein ligase ZNRF2,8,0.14,-0.2,-0.12,-0.31
+LOC413895,bone morphogenetic protein receptor type-2,8,0.14,-0.15,-0.01,-0.48
+LOC412260,serine/threonine-protein kinase SIK3-like,8,0.54,-0.25,0.04,-0.83
+Mir9865,microRNA mir-9865,8,-0.04,0.08,0.09,0.37
+LOC102656796,uncharacterized protein PFB0145c,8,0.41,-0.15,-0.01,-0.76
+LOC412177,"4-aminobutyrate aminotransferase, mitochondrial",8,-0.2,-0.21,0.08,0.82
+LOC727261,protein odr-4 homolog,8,-0.07,-0.05,-0.02,-0.34
+LOC102653931,uncharacterized LOC102653931,4,-0.17,0.78,0.1,-0.22
+LOC552728,uncharacterized LOC552728,8,-0.18,0.04,0.13,0.51
+LOC413573,set1/Ash2 histone methyltransferase complex subunit ASH2,8,0.01,-0.17,-0.1,-0.24
+LOC552701,"NAD-dependent protein deacylase sirtuin-5, mitochondrial",8,-0,0.15,-0.05,0.39
+LOC552183,phosphatidylinositol transfer protein alpha isoform,4,0.11,-0.28,-0.14,-0.19
+LOC727166,acyl-CoA Delta(11) desaturase,8,-0.02,0.17,0,0.34
+LOC113219283,ATP synthase mitochondrial F1 complex assembly factor 1,8,-0.19,0.13,0.16,0.39
+LOC552429,"peroxiredoxin-5, mitochondrial",8,-0.03,0.14,0.03,0.35
+LOC411147,AP-2 complex subunit alpha,8,0.04,-0.1,-0.16,-0.27
+LOC409263,glycoprotein-N-acetylgalactosamine 3-beta-galactosyltransferase 1,8,-0.03,0.19,0.01,0.32
+LOC551047,tetratricopeptide repeat protein 1,8,-0.02,-0.02,-0.21,-0.24
+LOC411822,aldehyde dehydrogenase family 3 member B1,8,0.01,-0.1,-0.14,-0.25
+LOC552620,oxysterol-binding protein-related protein 9,8,0.02,-0.05,-0.13,-0.33
+LOC724996,UPF0587 protein C1orf123 homolog,8,-0.23,0.21,0.02,0.49
+LOC551682,coiled-coil domain-containing protein 6,8,0.32,-0.24,0.11,-0.68
+LOC551795,xenotropic and polytropic retrovirus receptor 1 homolog,8,0.31,-0.13,-0.01,-0.65
+LOC413467,serine/threonine-protein kinase ULK3,8,-0.17,0.18,0.1,0.36
+LOC413372,putative glutamate synthase [NADPH],8,0.08,-0.17,-0.01,-0.37
+LOC725156,proteasome adapter and scaffold protein ECM29,8,0.02,-0.1,-0,-0.4
+LOC411204,WD repeat-containing protein 37,8,-0.02,0.14,0.05,0.31
+LOC409103,"protoheme IX farnesyltransferase, mitochondrial",8,0.03,-0.11,-0.16,-0.25
+LOC552031,chromodomain-helicase-DNA-binding protein Mi-2 homolog,6,0.09,0.1,0.28,-0
+LOC413594,abhydrolase domain-containing protein 2,8,0.29,-0.22,0.09,-0.64
+LOC551704,"glutamate receptor ionotropic, delta-2",8,-0.25,0.17,0.1,0.45
+LOC552692,D-aspartate oxidase,6,-0.13,-0.15,-0.27,0.08
+LOC411619,double-strand-break repair protein rad21 homolog,8,0.1,-0.1,-0.01,-0.46
+LOC408565,zinc finger protein on ecdysone puffs,8,0,-0.04,0.03,-0.47
+LOC409556,protein SMG7,8,0.04,-0.07,0.05,-0.49
+LOC724665,protein SET,8,0.05,-0.13,-0.11,-0.28
+LOC551480,WD repeat-containing protein 92,8,-0,0.1,0.06,0.32
+LOC412163,aldose reductase,8,0.07,0.11,0.1,0.19
+LOC409397,signal peptidase complex catalytic subunit SEC11A,8,-0.01,-0.13,-0.06,-0.26
+LOC411196,major facilitator superfamily domain-containing protein 6,6,-0.07,-0.14,-0.28,0.02
+LOC100578660,eukaryotic translation initiation factor 2 subunit 2,8,0.05,-0.04,-0.13,-0.35
+LOC551966,multifunctional protein ADE2,8,-0.02,-0.15,0.19,0.44
+LOC552435,ER degradation-enhancing alpha-mannosidase-like protein 3,8,0.18,-0.03,-0.1,-0.52
+LOC551462,sister chromatid cohesion protein PDS5 homolog B,8,0.09,-0.04,-0,-0.51
+LOC725551,high mobility group protein DSP1,8,-0,-0.12,-0.15,-0.19
+LOC410541,E3 ubiquitin-protein ligase Topors,8,0.14,-0.23,0.12,-0.49
+LOC411458,histone-arginine methyltransferase CARMER,8,0.35,-0.23,-0.05,-0.54
+LOC551958,uncharacterized LOC551958,8,0.11,-0.19,-0.12,-0.26
+LOC552182,probable E3 ubiquitin-protein ligase MGRN1,8,-0.05,-0.05,-0.14,-0.21
+LOC409574,"6-phosphofructo-2-kinase/fructose-2,6-bisphosphatase 1",8,-0.03,-0.11,-0.15,-0.18
+LOC412251,KAT8 regulatory NSL complex subunit 3,8,0.02,-0.1,0.11,-0.48
+LOC411013,phosphatidylinositide phosphatase SAC1,4,0.02,-0.22,-0.15,-0.1
+LOC100578990,"dynein intermediate chain 3, ciliary",8,0.02,0.1,-0.03,-0.55
+LOC100576829,serine/arginine repetitive matrix protein 2,8,0.11,-0.09,-0.02,-0.45
+LOC552034,toll-interacting protein,8,0.09,-0.01,0.08,0.28
+LOC412289,cytosolic Fe-S cluster assembly factor NUBP1 homolog,6,-0.05,-0.17,-0.27,0.05
+LOC409984,DET1- and DDB1-associated protein 1,6,0.01,-0.12,-0.26,-0.08
+LOC102655407,ATP-dependent RNA helicase p62-like,8,0.07,-0.11,-0.06,-0.35
+LOC726690,probable cytochrome P450 6a14,4,-0.13,0.46,0.15,-0.03
+LOC552192,uncharacterized LOC552192,8,0.24,-0.1,-0,-0.58
+LOC408834,beclin-1-like protein,8,-0.29,0.22,0.14,0.38
+LOC412972,WD repeat domain phosphoinositide-interacting protein 3,8,0.09,-0.18,-0.09,-0.26
+LOC409670,protein tyrosine phosphatase type IVA 1,8,-0,-0.11,-0.06,-0.27
+LOC551854,serine/threonine-protein phosphatase 5,6,0.08,-0.18,-0.25,-0.09
+LOC412332,mediator of RNA polymerase II transcription subunit 23,8,0.14,-0.11,-0.06,-0.41
+LOC411447,serine palmitoyltransferase 2,8,0.33,-0.23,-0.01,-0.53
+LOC102656541,uncharacterized LOC102656541,8,0.01,-0.03,0.08,-0.5
+LOC408347,putative uncharacterized protein DDB_G0277255,8,0.23,-0.12,-0.02,-0.53
+LOC551156,Golgi pH regulator,6,-0.07,-0.03,-0.28,-0.05
+LOC412293,membrane-bound transcription factor site-1 protease,8,0.04,-0.09,-0.02,-0.36
+LOC408672,programmed cell death protein 6,6,-0.1,-0.07,-0.29,0.02
+LOC412522,"pyruvate dehydrogenase E1 component subunit beta, mitochondrial",8,-0.17,0.15,0.09,0.36
+LOC102655185,serine-rich adhesin for platelets-like,8,0.12,0.36,-0.07,-0.83
+LOC409787,"paramyosin, long form",8,0.09,-0.09,-0.03,-0.4
+LOC726435,signal recognition particle subunit SRP72,8,-0.02,-0.07,-0.07,-0.28
+LOC724336,tRNA dimethylallyltransferase,8,-0.14,0.12,0.1,0.36
+LOC411832,translationally-controlled tumor protein homolog,8,-0.03,0.02,-0.01,0.45
+Hsc70-5,heat shock protein cognate 5,8,0.11,-0.12,-0.07,-0.34
+LOC552231,probable RNA-binding protein 19,8,-0.03,-0.04,-0.11,-0.25
+LOC100577582,putative mannose 6-phosphate receptor-like protein C530.09c,6,0,-0.13,-0.27,-0.03
+LOC410034,uncharacterized LOC410034,8,-0.02,-0.03,-0.15,-0.23
+LOC726728,anaphase-promoting complex subunit 1,8,0.19,-0.08,-0.04,-0.5
+LOC409475,26S proteasome non-ATPase regulatory subunit 2,8,0.09,-0.13,-0.16,-0.24
+LOC725167,uncharacterized LOC725167,8,-0.11,0.2,0.13,0.21
+LOC412045,dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit 2,8,-0.03,-0.06,-0.09,-0.25
+LOC724440,calcium-transporting ATPase type 2C member 1,8,0.21,-0.11,-0.13,-0.4
+LOC550929,"serine/threonine-protein kinase PINK1, mitochondrial",8,0.05,-0.08,-0.11,-0.29
+LOC552467,RNA-binding protein spenito,8,0.34,-0.25,0.07,-0.58
+LOC413183,G1/S-specific cyclin-D2,8,0.29,-0.15,-0.01,-0.55
+LOC552294,far upstream element-binding protein 3,8,0.09,-0.07,-0.05,-0.39
+LOC102655009,elongation of very long chain fatty acids protein AAEL008004,8,0.24,-0.22,-0.02,-0.42
+LOC550659,adiponectin receptor protein,8,0.09,-0.12,-0.09,-0.31
+LOC550663,putative oxidoreductase GLYR1 homolog,8,0.17,-0.16,-0.16,-0.27
+LOC551131,protein max,8,-0.03,-0.02,-0.13,-0.25
+LOC724488,protein lethal(2)essential for life,8,0.41,0.41,-0.44,-0.79
+LOC552759,cyclin-dependent kinase 11A,8,0.05,-0.06,-0.08,-0.33
+LOC411182,ubiquitin-protein ligase E3A,8,0.15,-0.14,-0.01,-0.42
+LOC552044,uncharacterized LOC552044,6,0.06,0.13,0.27,-0.04
+LOC412746,calcineurin-binding protein cabin-1,8,0.23,-0.13,0.1,-0.62
+LOC100576270,2-iminobutanoate/2-iminopropanoate deaminase,8,-0.14,0.02,0.02,0.52
+LOC410958,ubiquitin-like modifier-activating enzyme 1,8,0.03,-0.15,-0.11,-0.19
+LOC412092,"myosin heavy chain, non-muscle",8,0.22,-0,0.12,-0.75
+LOC551450,uncharacterized LOC551450,8,-0.03,0.05,0.07,0.33
+LOC552652,origin recognition complex subunit 4,8,0.07,-0.05,-0.09,-0.34
+LOC552564,40S ribosomal protein S7,8,-0.07,0.1,-0.03,0.41
+LOC412266,60S ribosomal protein L27,8,-0.14,0.1,0.03,0.42
+LOC408397,26S proteasome non-ATPase regulatory subunit 11,8,0.1,-0.16,-0.16,-0.19
+LOC726768,ATP-dependent RNA helicase dbp2,8,0.13,-0.06,0.04,-0.53
+LOC725397,probable E3 ubiquitin-protein ligase makorin-1,8,0.21,-0.19,-0.07,-0.37
+LOC727249,calcium/calmodulin-dependent protein kinase type 1,8,0.25,-0.12,-0.1,-0.44
+LOC411227,tyrosine-protein phosphatase non-receptor type 9,6,0.03,-0.12,-0.21,-0.11
+LOC409075,mesoderm induction early response protein 1,8,0.06,-0.07,-0.11,-0.3
+H,hairless,4,0.13,-0.29,-0.07,-0.18
+LOC552267,zinc finger CCCH domain-containing protein 10,8,0.15,-0.12,-0.08,-0.36
+LOC100577727,protein MANBAL,8,-0.31,0.06,0.09,0.57
+LOC551493,pre-mRNA-processing factor 6,8,-0,-0.09,-0.05,-0.26
+LOC409668,proteasome inhibitor PI31 subunit,8,-0.06,0.14,0,0.32
+LOC552756,cathepsin L1,8,-0.16,0.18,0.14,0.25
+LOC412132,serine/threonine-protein kinase Genghis Khan,8,0.15,0.09,0.05,-0.69
+LOC409362,fasciculation and elongation protein zeta-2,8,0.04,0.04,0.04,0.28
+LOC725299,nucleoside-triphosphatase THEP1,8,-0.16,0.07,0.11,0.38
+LOC552576,activated Cdc42 kinase-like,8,0.22,0,-0.12,-0.5
+LOC414001,mRNA-capping enzyme,8,0.01,0.09,0.06,0.23
+LOC412933,geranylgeranyl transferase type-1 subunit beta,6,-0,-0.05,-0.27,-0.07
+LOC411892,V-type proton ATPase subunit C,8,0.17,-0.23,-0.08,-0.26
+LOC551892,cytoplasmic protein NCK1,8,0.05,0.04,0.03,0.28
+LOC413690,helicase SKI2W,8,0.01,-0.03,0.01,-0.38
+LOC412079,uncharacterized LOC412079,8,0.06,-0.19,-0.02,-0.23
+LOC409915,RNA-binding protein 26,8,0.02,-0.14,-0.02,-0.25
+LOC107965288,probable protein BRICK1-B,8,-0.11,0.14,-0.06,0.42
+LOC411982,E3 ubiquitin-protein ligase CBL,8,0.22,-0.14,-0.06,-0.4
+LOC727298,intraflagellar transport protein 122 homolog,8,0.11,-0.08,-0.02,-0.4
+LOC551889,uncharacterized protein CG10915,8,0.17,-0.09,-0.05,-0.41
+LOC725390,leucine-rich melanocyte differentiation-associated protein,8,-0.08,0.11,-0.07,0.42
+LOC100576116,protein inscuteable homolog,4,0.01,0.36,-0.04,0.05
+LOC724700,"putative transferase CAF17 homolog, mitochondrial",8,-0.27,0.13,0.08,0.44
+LOC411566,mitogen-activated protein kinase kinase kinase 11,8,0.21,-0.16,0.11,-0.53
+LOC412002,E3 ubiquitin-protein ligase Ubr3,8,0.08,-0.14,0.05,-0.37
+LOC413524,exocyst complex component 1,8,0.09,0.01,-0.12,-0.37
+LOC409762,sarcoplasmic calcium-binding protein 1,8,-0.15,0.13,0,0.38
+LOC100577699,5-formyltetrahydrofolate cyclo-ligase,8,-0.12,0.12,0.07,0.31
+LOC552382,alpha-mannosidase 2,8,0.12,-0.11,0.01,-0.4
+LOC408853,X-box-binding protein 1,8,0.17,-0.15,-0.11,-0.28
+LOC551337,flotillin-1,8,0.02,-0.05,-0.12,-0.21
+LOC551725,importin-7,8,0.03,-0.08,-0.1,-0.22
+LOC411469,integrator complex subunit 1,8,0.2,-0.08,-0.08,-0.41
+LOC551754,phosphorylated CTD-interacting factor 1,8,0.43,-0.14,0,-0.66
+LOC100576908,polycomb protein Asx,8,0.28,-0.07,0.1,-0.67
+LOC725819,prolyl 3-hydroxylase 2,8,-0.02,-0.05,-0.07,-0.23
+LOC412231,"trans-1,2-dihydrobenzene-1,2-diol dehydrogenase",8,-0.06,0.04,0.11,0.28
+LOC725830,THO complex subunit 6 homolog,6,-0.08,-0.01,-0.26,-0.01
+LOC409053,protein PF14_0175,8,0.07,0.06,0.03,-0.53
+LOC100576947,meiosis-specific with OB domain-containing protein,8,-0.24,-0.19,-0.29,1.08
+LOC409571,Golgi reassembly-stacking protein 2,8,0.04,-0.09,-0.11,-0.2
+LOC552413,scaffold protein salvador,8,-0.06,0.08,0.09,0.24
+LOC410604,protein phosphatase PP2A 55 kDa regulatory subunit,8,0.09,-0.14,-0.07,-0.23
+LOC551398,DNA polymerase delta catalytic subunit,8,-0.08,0.04,-0.03,-0.28
+LOC413782,cartilage oligomeric matrix protein,8,0.05,-0.12,0.04,-0.32
+LOC102654666,uncharacterized LOC102654666,8,-0,0,-0.56,0.91
+LOC726002,tyrosine-protein kinase hopscotch,8,0.06,-0.04,0.07,-0.44
+LOC409250,beta-ureidopropionase,8,-0.04,0.03,-0.02,0.39
+LOC412274,plexin-B,8,0.11,-0.04,-0.12,-0.3
+LOC551882,protein dj-1beta,8,-0.08,0.08,-0.05,0.4
+LOC727202,carbohydrate sulfotransferase 11,8,0.01,-0.02,-0.1,0.47
+LOC413440,protein kibra,8,0.3,-0.04,0.05,-0.66
+LOC412868,ubiquitin recognition factor in ER-associated degradation protein 1,8,-0.03,0.07,0.03,0.27
+LOC410345,GATOR complex protein WDR59,8,-0.01,0.06,0.05,0.25
+LOC412245,acidic mammalian chitinase,8,0.07,-0.04,0.04,0.28
+DHRS4,dehydrogenase/reductase (SDR family) member 4,8,-0.05,0.05,0.03,0.31
+LOC409910,ras-like GTP-binding protein Rho1,8,0.15,-0.12,-0.03,-0.33
+LOC100578429,centrosomal protein of 152 kDa,8,0.3,0.08,0,-0.72
+LOC725492,sorting nexin-2,8,0.09,-0.03,-0.04,-0.37
+LOC552633,"stAR-related lipid transfer protein 7, mitochondrial",8,0.02,-0.05,-0.02,-0.29
+Fabp_1,"NA",8,-0.03,0.12,-0.01,0.25
+LOC413650,nuclear RNA export factor 1,8,0.14,-0.16,0,-0.32
+vas,ATP-dependent RNA helicase vasa,8,0.01,-0.02,-0.02,-0.3
+LOC726007,polycomb protein Scm,8,0.18,-0.02,-0.1,-0.39
+LOC100579021,transmembrane protein 42,8,-0.26,0.05,0.01,0.52
+LOC408577,phosphatidylinositol 3-kinase regulatory subunit alpha,8,0.08,-0.01,-0.08,-0.33
+LOC100576765,uncharacterized LOC100576765,8,-0.2,0.13,-0.01,0.41
+LOC410241,ras-related protein Rab-10,8,-0.01,0.03,0.04,0.27
+LOC413683,"arfGAP with SH3 domain, ANK repeat and PH domain-containing protein",8,0.05,-0.06,0.05,-0.37
+LOC726754,kynurenine formamidase,8,-0.17,-0.19,-0.28,0.32
+LOC412866,E3 ubiquitin-protein ligase SMURF2,8,0.45,-0.2,0.21,-0.78
+LOC100578924,zinc finger protein 271,8,-0.1,0.12,0.04,0.26
+LOC409521,hsp70-binding protein 1,6,-0.03,-0.07,-0.25,0.03
+LOC411631,liprin-beta-1,8,0.04,-0.11,0.01,-0.26
+LOC408563,centrosomin,8,-0.06,0.01,0.14,-0.4
+LOC410109,ubiquitin carboxyl-terminal hydrolase 34,8,0.36,-0.19,0.18,-0.66
+LOC551890,probable serine incorporator,8,0.06,-0.04,0.08,0.21
+LOC551660,"NADH dehydrogenase [ubiquinone] 1 beta subcomplex subunit 8, mitochondrial",8,-0.04,0.11,-0.08,0.31
+LOC409221,uncharacterized LOC409221,8,0.18,-0.04,0.16,-0.6
+LOC409909,small glutamine-rich tetratricopeptide repeat-containing protein alpha,8,0.03,-0.09,-0.06,-0.18
+LOC550692,TATA-box-binding protein,8,0.03,0.04,-0.09,-0.28
+LOC552030,uncharacterized LOC552030,8,0.37,-0.06,0.1,-0.7
+LOC100577553,protein ARV1,8,-0.19,0.06,0.02,0.41
+LOC409433,protein RCC2 homolog,8,0.1,-0.08,-0.04,-0.27
+LOC410301,ATP-dependent DNA helicase Q4,8,0.14,-0.18,0.05,-0.29
+LOC409010,uncharacterized LOC409010,8,-0.07,0.04,0.11,-0.37
+LOC552341,N-alpha-acetyltransferase 30,8,0.12,-0.13,0,-0.28
+LOC411542,signal recognition particle receptor subunit alpha homolog,8,-0.02,0.01,0.07,-0.35
+LOC409312,collagen type IV alpha-3-binding protein,8,0.04,-0.04,-0.09,-0.19
+LOC725101,uncharacterized LOC725101,8,0,0.07,-0.02,0.23
+LOC100578529,zinc finger protein 701,8,0.13,0.04,0.25,-0.7
+LOC726273,ralBP1-associated Eps domain-containing protein 1,8,0.17,-0.19,0.08,-0.34
+LOC411536,E3 ubiquitin-protein ligase HERC2,8,0.05,-0.02,-0.08,-0.23
+LOC552493,estradiol 17-beta-dehydrogenase 8,8,-0.04,0.04,0.04,0.23
+LOC412889,"branched-chain-amino-acid aminotransferase, cytosolic",8,-0.1,-0.06,0.16,0.28
+LOC413943,eukaryotic peptide chain release factor GTP-binding subunit ERF3A,8,0.06,-0.03,0.01,-0.32
+LOC409584,UBX domain-containing protein 6,8,0.09,-0.06,0.12,-0.42
+LOC409340,UV excision repair protein RAD23 homolog B,8,0.16,-0.17,-0.04,-0.22
+LOC551031,uncharacterized LOC551031,8,0.14,-0.06,0.09,-0.43
+LOC410961,mitoguardin,8,0.29,-0.19,0.03,-0.4
+STT3B,"STT3, subunit of the oligosaccharyltransferase complex, homolog B",8,0.14,-0.1,0,-0.31
+LOC724357,uncharacterized LOC724357,8,0.29,-0.11,-0.16,-0.3
+LOC107964022,ran-binding protein 9,8,0.18,-0.13,0,-0.32
+LOC724215,DNA topoisomerase 2,8,0.06,0.11,0.1,-0.55
+LOC724205,protein AF-9,8,0.07,-0.09,0.11,-0.35
+LOC102655411,nucleoside diphosphate-linked moiety X motif 8,8,-0.16,0.09,0,0.34
+LOC552227,translocon-associated protein subunit delta,8,-0.09,0.06,-0.02,0.32
+LOC409332,ubiquitin carboxyl-terminal hydrolase 7,8,0.22,-0.15,0.09,-0.43
+LOC410565,cullin-1,8,0.04,-0.05,-0.02,-0.23
+LOC412268,transcription initiation factor IIA subunit 1,8,-0,-0.05,0.05,-0.25
+LOC727294,protein chibby homolog 1,8,-0.22,0.08,-0.08,0.48
+LOC409922,"ferrochelatase, mitochondrial",8,-0.05,0.09,-0.01,0.23
+LOC100576519,TLD domain-containing protein 1,8,0.08,0,-0.15,-0.18
+LOC100576534,zinc finger protein 580,8,-0.11,0.04,-0.18,0.5
+LOC551620,pre-mRNA-processing-splicing factor 8,8,0.01,0,0.04,-0.31
+LOC100576972,uncharacterized LOC100576972,8,0.08,0.01,-0.06,-0.27
+LOC102653600,uncharacterized LOC102653600,8,-0.44,0.15,-0.65,0.7
+LOC408892,3-ketodihydrosphingosine reductase,8,-0.01,0.03,-0.04,0.26
+LOC409005,protein FAM8A1,8,0.04,-0.01,-0.02,0.23
+LOC551683,palmitoyltransferase ZDHHC5,8,0.12,-0.07,-0.04,-0.25
+LOC411683,macrophage erythroblast attacher,8,-0.1,0.09,0.01,0.24
+LOC411797,protein cereblon,8,0.19,-0.14,0.04,-0.33
+LOC552794,mediator of RNA polymerase II transcription subunit 14,8,0.31,-0.02,-0.03,-0.5
+LOC100576667,E3 ubiquitin-protein ligase synoviolin A,8,0.04,-0.02,0.07,-0.33
+LOC107964042,uncharacterized LOC107964042,8,-0.19,-0.11,-0.02,0.54
+LOC408528,colorectal mutant cancer protein,8,-0.06,0.01,-0.01,0.28
+LOC412630,scavenger receptor class B member 1,8,0.31,0.17,0.39,-0.65
+LOC100577140,UDP-glucuronosyltransferase 2B19,8,0.1,-0.08,0.14,-0.39
+LOC410234,UDP-glucuronic acid decarboxylase 1,8,0.07,-0.05,0.14,-0.38
+LOC725330,DNA polymerase delta small subunit,8,-0.04,0.03,0.01,0.2
+LOC552492,dual specificity protein phosphatase 3,8,-0.34,0.19,-0.03,0.39
+LOC725977,protein SYS1 homolog,8,-0.18,0,-0.07,0.46
+LOC409946,V-type proton ATPase subunit d,8,-0.04,-0.03,0.06,0.23
+LOC408976,protein kinase shaggy,8,-0.07,0.15,0.1,-0.39
+LOC411655,serine/arginine repetitive matrix protein 1,8,0.02,-0.1,0.03,0.25
+LOC411349,sphingosine kinase 2,8,0.32,0.09,-0.06,-0.56
+LOC411234,aryl hydrocarbon receptor nuclear translocator homolog,8,0.11,-0.04,0.01,-0.29
+LOC411889,putative serine protease K12H4.7,8,-0.05,0.02,0.05,0.19
+LOC726280,histone acetyltransferase p300-like,8,0.08,-0.06,0.12,-0.34
+LOC551512,uncharacterized LOC551512,8,0.18,-0.06,-0.05,-0.28
+LOC410739,teneurin-m,8,0.2,0.07,0.14,-0.62
+LOC107965891,electron transfer flavoprotein regulatory factor 1,8,-0.41,-0.2,-0.08,0.5
+LOC408826,dystroglycan,8,0.27,0.03,-0.01,-0.49
+LOC411457,galactosylgalactosylxylosylprotein 3-beta-glucuronosyltransferase P,8,0.13,-0.01,-0.03,-0.28
+LOC408820,DDB1- and CUL4-associated factor 8,8,-0.08,-0.03,0.09,0.21
+LOC413152,LIM domain kinase 1,8,0.33,0.09,0.34,-0.57
+LOC408501,serine/threonine-protein kinase/endoribonuclease IRE1,8,0.05,-0.01,-0.01,-0.21
+LOC409264,ATPase ASNA1 homolog,8,-0.04,0.03,-0.04,0.22
+LOC551651,ferritin subunit,8,-0.06,-0.11,-0.08,0.41
+LOC409130,"iron-sulfur cluster assembly enzyme ISCU, mitochondrial",8,-0.13,0.03,-0.04,0.31
+LOC100578188,phosphatidylinositol-glycan biosynthesis class F protein,8,-0.13,0,-0.13,0.42
+LOC410825,leucine-rich repeat and immunoglobulin-like domain-containing nogo receptor-interacting protein 3,8,0.39,0.01,-0.01,-0.56
+LOC551840,YTH domain-containing family protein 1,8,0.04,-0.04,0.06,-0.22
+LOC409150,"enoyl Coenzyme A hydratase, short chain, 1, mitochondrial",8,-0.17,0.05,-0.03,0.29
+LOC410319,HEAT repeat-containing protein 1,8,0.13,0.03,-0.05,-0.24
+LOC100577351,uncharacterized LOC100577351,8,-0.2,-0.09,-0.11,0.27
+LOC552155,U6 snRNA-associated Sm-like protein LSm8,"6, 8",-0.03,-0.14,-0.57,0.6
+LOC102654626,E3 ubiquitin-protein ligase TRIM33,8,0.19,0.04,0.2,-0.56
+LOC409753,RING finger protein unkempt homolog,8,0.18,0.4,0.22,-0.68
+LOC409127,tyrosine-protein kinase Abl,8,0.3,0.14,0.1,-0.42
+LOC100576234,uncharacterized LOC100576234,8,-0.22,0.05,-0.11,0.4
+LOC411474,nucleoporin NUP188 homolog,8,0.19,0,0.03,-0.33
+LOC410837,microsomal glutathione S-transferase 1,8,-0.13,-0.15,-0.06,0.45
+LOC107964769,uncharacterized LOC107964769,8,0.21,0.21,0.89,-1.42
+LOC411012,NF-kappa-B inhibitor cactus,8,0.16,0.08,0.04,-0.39
+LOC100578191,uncharacterized LOC100578191,8,-0.21,0.11,-0.17,0.36
+LOC413738,uncharacterized LOC413738,8,0.18,0.12,0.25,-0.65
+LOC100577587,cytospin-A,8,0.31,-0.02,0.2,-0.59
+LOC100577681,protein asteroid,8,0.41,-0.02,0.1,-0.57
+LOC724311,AT-rich interactive domain-containing protein 2,8,-0.03,0.11,0.07,-0.23
+LOC726427,metallo-beta-lactamase domain-containing protein 1,8,-0.11,-0.02,-0.17,0.22
+LOC409420,"cytochrome c oxidase assembly protein COX11, mitochondrial",8,-0.11,0,-0.07,0.24
+LOC551530,putative U5 small nuclear ribonucleoprotein 200 kDa helicase,8,0.24,-0.09,0.14,-0.36
+LOC410120,"thioredoxin, mitochondrial",8,-0.16,0.06,-0.18,0.36
+LOC413228,"5-aminolevulinate synthase, erythroid-specific, mitochondrial",8,-0.06,-0.3,-0.01,0.43
+LOC100577667,WAS/WASL-interacting protein family member 3,8,-0.27,-0.27,0.13,0.46
+NFRKB,nuclear factor related to kappaB binding protein,8,0.11,0.09,0.13,-0.38
+LOC725743,signal recognition particle 9 kDa protein,8,-0.35,0.08,-0.07,0.39
+LOC408417,CTD nuclear envelope phosphatase 1 homolog,8,0.32,-0.12,0.05,-0.22
+LOC551684,ferritin heavy polypeptide-like 17,8,-0.13,-0.12,-0.1,0.31
+LOC100576098,F-box protein SKIP22,8,-0.16,0.04,-0.2,0.29
+LOC409422,uncharacterized LOC409422,8,0.46,-0.07,0.32,-0.69
+LOC100578020,uncharacterized LOC100578020,8,0.36,0.25,0.12,-0.75
+LOC726894,membrane magnesium transporter 1,8,-0.1,-0.12,-0.16,0.37

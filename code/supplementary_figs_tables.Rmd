@@ -1,0 +1,423 @@
+---
+output: pdf_document
+header-includes: 
+  \usepackage{booktabs}
+  \usepackage{hyperref}
+  \usepackage{microtype}
+  \usepackage{longtable}
+  \usepackage[margin=1in]{geometry}
+  \renewcommand*{\thefigure}{S\arabic{figure}}
+  \renewcommand*{\thetable}{S\arabic{table}}
+---
+
+## Supplementary figures
+
+```{r setup, include=FALSE, results='hide', warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(kableExtra)
+library(stringr)
+library(dplyr)
+library(purrr)
+library(readr)
+make_table <- function(data_frame, LT = TRUE, digits = getOption("digits"), BT = TRUE, caption = NULL){
+  tabl <- data_frame
+  
+  if(" " %in% names(tabl)) tabl$` ` <- gsub('\\\\', "", tabl$` `)
+  if("Q2.5" %in% names(tabl)) tabl <- rename(tabl, `Lower 95% CI` = "Q2.5")
+  if("Q97.5" %in% names(tabl)) tabl <- rename(tabl, `Upper 95% CI` = "Q97.5")
+
+  kable(tabl, "latex", longtable = LT, booktabs = BT, digits = digits, caption = caption) %>%
+    kable_styling(latex_options = c("repeat_header", "scale_down"), font_size = 7)
+}
+
+# set up nice font for figure
+library(showtext)
+nice_font <- "Lora"
+font_add_google(name = nice_font, family = nice_font, regular.wt = 400, bold.wt = 700)
+showtext_auto()
+
+# Load some results for the tables
+GO_KEGG_results_meth <- readRDS(file = "../output/meth_gsea_results.rds") 
+GO_KEGG_results_expr <- readRDS(file = "../output/expr_gsea_results.rds")
+```
+
+\begin{figure}[h]
+\caption{Difference in mean \% methylated CpG sites (mCpGs) between time points in QDL (panel A) and WDL (panel B), $\pm95\%$ confidence intervals (estimated using a linear model); positive values mean higher \% mCpGs at the later time point.
+}
+\end{figure}
+
+```{r fig.height = 7, fig.width = 6, fig.align='center'}
+cowplot::plot_grid(
+  plotlist = list(readRDS("../figures/genomic_context_plot_timeQ.rds"), 
+                  readRDS("../figures/genomic_context_plot_timeW.rds")), 
+  labels = c("A", "B"),
+  nrow = 2, align = 'v', axis = 'l', 
+  rel_heights = c(1, 1))
+```
+\newpage
+
+
+\begin{figure}[h]
+\caption{Similar heatmap to Figure 1C, except showing all CpG sites with at least 2.7\% methylated sequencing reads (n = 110,626 sites). 
+}
+\end{figure}
+
+```{r fig.height = 7, fig.width = 7, fig.align='center'}
+gridExtra::grid.arrange(readRDS("../figures/heatmap_all.rds"))
+```
+\newpage
+
+
+
+<!-- Methylation GO figures -->
+
+\begin{figure}[h]
+\caption{GO and KEGG terms that are enriched among genes showing QDL- or WDL-biased methylation (as measured by the difference in mean \% CpG methylation for all sites in the introns, exons, and promoters of the gene; red: QDL-biased, blue: QDL-biased). Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction.
+}
+\end{figure}
+
+```{r fig.width=6, fig.height = 7, fig.align='center'}
+readRDS("../figures/meth_GO_others.rds")
+```
+\newpage
+
+
+<!-- \begin{figure}[h] -->
+<!-- \caption{GO and KEGG terms that are enriched among genes showing QDL- or WDL-biased methylation (as measured by the difference in mean \% CpG methylation for all sites in the introns, exons, and promoters of the gene; red: QDL-biased, blue: QDL-biased). Results are from Kolmogorov-Smirnov enrichment tests using the standard \textit{A. mellifera} GO and KEGG annotations. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction. -->
+<!-- } -->
+<!-- \end{figure} -->
+
+<!-- ```{r fig.width=6, fig.height = 7, fig.align='center'} -->
+<!-- readRDS("../figures/meth_all_enrichments_Amel.rds") -->
+<!-- ``` -->
+<!-- \newpage -->
+
+
+
+\begin{figure}[h]
+\caption{GO and KEGG terms that are enriched among genes showing temporally variable methylation within each treatment group (as measured by the difference in mean \% CpG methylation between the 2h and 8h QDL or WDL samples for all sites in the introns, exons, and promoters of the gene). Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations. Orange indicates functional categories for which the relevant genes show increasing methylation over time, purple indicates decreasing methylation over time. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction.
+}
+\end{figure}
+
+```{r fig.width=5.5, fig.height = 6.5, fig.align='center'}
+readRDS("../figures/meth_GO_temporal_Dmel.rds")
+```
+\newpage
+
+
+<!-- \begin{figure}[h] -->
+<!-- \caption{GO and KEGG terms that are enriched among genes showing temporally variable methylation within each treatment group (as measured by the difference in mean \% CpG methylation between the 2h and 8h QDL or WDL samples for all sites in the introns, exons, and promoters of the gene). Results are from Kolmogorov-Smirnov enrichment tests using the standard \textit{A. mellifera} GO and KEGG annotations. Orange indicates functional categories for which the relevant genes show increasing methylation over time, purple indicates decreasing methylation over time. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction. -->
+<!-- } -->
+<!-- \end{figure} -->
+
+<!-- ```{r fig.width=4.6, fig.height = 3.6, fig.align='center'} -->
+<!-- readRDS("../figures/meth_GO_temporal_Amel.rds") -->
+<!-- ``` -->
+<!-- \newpage -->
+
+<!-- Expression NMDS figure -->
+\begin{figure}[h]
+\caption{Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (variance explained: 96.6\%). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
+}
+\end{figure}
+
+```{r fig.align='center', fig.height=5, fig.width=7}
+plot(readRDS("../figures/expression_NMDS_plot.rds"))
+```
+\newpage
+
+
+<!-- Expression GO figures -->
+
+\begin{figure}[h]
+\caption{GO (Biological Process) terms that were enriched among genes showing a caste difference in expression. Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations; red: QDL-biased, blue: QDL-biased. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction. This figure does not include the top 50 enriched GO:BP terms that are shown in Figure 3A. The figure is split into two columns to fit onto the page.
+}
+\end{figure}
+
+```{r fig.width=14, fig.height = 16, fig.align='center'}
+plot(readRDS("../figures/expr_GO_BPremainder_dmel.rds"))
+```
+\newpage
+
+\begin{figure}[h]
+\caption{GO (Molecular Function) terms that were enriched among genes showing a caste difference in expression. Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations; red: QDL-biased, blue: QDL-biased. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction. The figure is split into two columns to fit onto the page.
+}
+\end{figure}
+
+```{r fig.width=14, fig.height = 14, fig.align='center'}
+plot(readRDS("../figures/expr_GO_MF_dmel.rds"))
+```
+\newpage
+
+\begin{figure}[h]
+\caption{GO (Cellular Component) terms that were enriched among genes showing a caste difference in expression. Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations; red: QDL-biased, blue: QDL-biased. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction.
+}
+\end{figure}
+
+```{r fig.width=6.5, fig.height = 8, fig.align='center'}
+readRDS("../figures/expr_GO_CC_dmel.rds")
+```
+\newpage
+
+\begin{figure}[h]
+\caption{KEGG terms that were enriched among genes showing a caste difference in expression. Results are from Kolmogorov-Smirnov enrichment tests using our custom GO and KEGG annotations; red: QDL-biased, blue: QDL-biased. All terms passed the cutoff p < 0.05, and asterisks indicate results that remained significant after FDR correction.
+}
+\end{figure}
+
+```{r fig.width=5.3, fig.height = 6, fig.align='center'}
+readRDS("../figures/expr_KEGG_dmel.rds")
+```
+\newpage
+
+
+## Supplementary tables
+
+<!-- - All BWASP methylation tables -->
+**Table S1**: The table shows the 46 sites for which BWASP reported a significant difference in methylation between queens and workers at one or more time points. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their p and q values were $<0.05$. See the website documenting the code for this paper for a version of this table with additional columns showing the names of genes overlapped by these sites.
+
+```{r}
+readRDS("../figures/supp_tables/tableS1.rds") %>%
+  select(1:6) %>%
+  make_table()
+```
+\newpage
+
+**Table S2**: The table shows the 112 sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.05$. See the website documenting the code for this paper for a version of this table with additional columns showing the names of genes overlapped by these sites.
+
+```{r}
+readRDS("../figures/supp_tables/tableS2.rds") %>%
+  select(1:6) %>%
+  make_table()
+```
+\newpage
+
+**Table S3**: The table shows the 138 sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.01$ (note: this is lower than for Tables S1-S2; there would be 25,223 sites if we used the same $<0.05$ cutoff for significance). See the website documenting the code for this paper for a version of this table with additional columns showing the names of genes overlapped by these sites.
+
+```{r}
+readRDS("../figures/supp_tables/tableS3.rds") %>%
+  select(1:6) %>%
+  make_table()
+```
+\newpage
+
+<!-- - Differential methylation GO tables -->
+**Table S4**: The table shows the results of GO and KEGG gene set enrichment analyses on the gene-level caste difference in DNA methylation between QDL and WDL, using the GO/KEGG annotations for _Apis mellifera_, as calculated by BWASP (separately at each of the 4 time points). Only results with $p < 0.05$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to be more methylated in QDL relative to WDL (negative values mean WDL > QDL).
+```{r}
+parse_GO_KEGG_table <- function(GO_KEGG_table){
+  GO_KEGG_table %>%
+    dplyr::select(c(1,2,3,7,10,12)) %>%
+    mutate(Test_type = replace(Test_type, str_detect(Test_type, "Bio"), "GO:BP"),
+           Test_type = replace(Test_type, str_detect(Test_type, "Mol"), "GO:MF"),
+           Test_type = replace(Test_type, str_detect(Test_type, "Cell"), "GO:CC"),
+           Test_type = factor(Test_type, c("GO:BP", "GO:MF", "GO:CC", "KEGG")),
+           NES = round(NES, 2),
+           pval = round(pval, 5)) %>%
+    arrange(pval) %>%
+    split(paste(.$pathway)) %>%
+    map_df(~ .x[1, ]) %>%
+    mutate(term = replace(term, 
+                          term == "oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen",
+                          "oxidoreductase activity, acting on paired donors, [...]")) %>%
+    dplyr::select(`Test type` = Test_type, `GO or KEGG term` = term, Code = pathway, Time, NES, pval) %>%
+    arrange(`Test type`, pval)
+}
+
+GO_KEGG_results_meth$GO_Amel_annotations_caste %>%
+  parse_GO_KEGG_table() %>%
+  make_table()
+```
+\newpage
+
+**Table S5**: The table shows the results of GO and KEGG gene set enrichment analyses on the gene-level caste difference in DNA methylation between QDL and WDL, using our custom GO/KEGG annotations using information from _Drosophila melanogaster_, as calculated by BWASP (separately at each of the 4 time points). Only results with $p < 0.05$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to be more methylated in QDL relative to WDL (negative values mean WDL > QDL).
+
+```{r}
+GO_KEGG_results_meth$GO_Dmel_annotations_caste %>%
+  parse_GO_KEGG_table() %>%
+  make_table()
+```
+\newpage
+
+**Table S6**: The table shows the results of GO and KEGG gene set enrichment analyses on the gene-level temporal change in DNA methylation, using the GO/KEGG annotations for _Apis mellifera_, as calculated by BWASP (separately for QDL and WDL). Only results with $p < 0.05$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to become more methylated with time in the focal caste (negative values denote demethylation over time).
+
+```{r}
+bind_rows(
+  GO_KEGG_results_meth$GO_Amel_annotations_temporalQ %>%
+    parse_GO_KEGG_table(),
+  GO_KEGG_results_meth$GO_Amel_annotations_temporalW %>%
+    parse_GO_KEGG_table()) %>% dplyr::rename(Caste = Time) %>%
+  make_table()
+```
+\newpage
+
+**Table S7**: The table shows the results of GO and KEGG gene set enrichment analyses on the gene-level temporal change in DNA methylation, using our custom GO/KEGG annotations using information from _Drosophila melanogaster_, as calculated by BWASP (separately for QDL and WDL). Only results with $p < 0.05$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to become more methylated with time in the focal caste (negative values denote demethylation over time).
+
+```{r}
+bind_rows(
+  GO_KEGG_results_meth$GO_Dmel_annotations_temporalQ %>%
+    parse_GO_KEGG_table(),
+  GO_KEGG_results_meth$GO_Dmel_annotations_temporalW %>%
+    parse_GO_KEGG_table()) %>% dplyr::rename(Caste = Time) %>%
+  make_table()
+```
+\newpage
+
+<!-- - methylation module eigengenes statistical results -->
+**Table S8**: The table shows a summary of the posterior estimate of the difference in mean module eigengenes between QDL and WDL at each of the four time points, for the co-methylation network shown in Figure 4B. There was a difference between castes in module eigengenes for modules 1 and 5 (both p < 0.0001), suggesting that close to 2,000 co-methylated genes acquired caste-specific methylation profiles in the first 8h post-grafting. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-9 vector of eigengenes for the 9 modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure 4B), and adjusted for Replicate. The eigengenes were mean-centred and scaled to unit variance, so the units in the 'Caste difference' column can be interpreted as the standardised effect size (Cohen's $d$). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed $p$-value).
+
+```{r}
+readr::read_csv("../output/eigengene_stats_table_meth.csv") %>% 
+  mutate(X8 = replace(X8, is.na(X8), " ")) %>%
+  dplyr::rename(`Caste difference` = Estimate, ` ` = X8) %>%
+  make_table()
+```
+\newpage
+
+<!-- - methylation module GO enrichment -->
+**Table S9**: The table lists the GO and KEGG terms that were significantly enriched among the genes that were assigned to modules 1 and 5 in the co-methylation network analysis plotted in Figure 4B (calculated using hypergeometric tests to identify GO/KEGG terms that were enriched among the genes in the module, relative to the set of genes with annotations that were used in the co-methylation analysis). The tests presented here use the standard _A. mellifera_ annotations, and no terms were significantly enriched for module 5.
+```{r}
+readr::read_csv("../output/module_GO_table_meth.csv") %>%
+  filter(Module %in% c("Module1", "Module5") &
+           Annotation == "A. mellifera") %>%
+  mutate(Module = str_remove_all(Module, "Module")) %>%
+  dplyr::select(-Annotation) %>%
+  make_table()
+```
+\newpage
+
+**Table S10**: The table lists the GO and KEGG terms that were significantly enriched among the genes that were assigned to modules 1 and 5 in the co-methylation network analysis plotted in Figure 4B (calculated using hypergeometric tests to identify GO/KEGG terms that were enriched among the genes in the module, relative to the set of genes with annotations that were used in the co-methylation analysis). The tests presented here use our custom GO/KEGG annotations, that use information from _Drosophila melanogaster_.
+```{r}
+read_csv("../output/module_GO_table_meth.csv") %>%
+  filter(Module %in% c("Module1", "Module5") &
+           Annotation == "D. melanogaster") %>%
+  mutate(Module = str_remove_all(Module, "Module")) %>%
+  dplyr::select(-Annotation) %>%
+  make_table()
+```
+\newpage
+
+
+<!-- - Results of limma:voom on gene expression (present as Excel tables) -->
+**Table S10**: This table is large, and is therefore presented as a separate .csv file. Each row lists one of the `r nrow(read_csv("../figures/supp_tables/tableS10.csv"))` genes that was significantly differentially expressed between QDL and WDL at one or more time points (defined as FDR-corrected $p < 0.05$, calculated using empirical Bayes via `limma::eBayes`), in the analysis using `limma`. The third column lists the pairs of time points for which the gene showed significant differential expression, and the remaining columns give the log fold difference in expression at each pair of time points (positive log fold difference indicates higher expression in QDL relateive to WDL).
+\newpage
+
+**Table S11**: This table is large, and is therefore presented as a separate .csv file. Each row lists one of the `r nrow(read_csv("../figures/supp_tables/tableS11.csv"))` genes that was significantly differentially expressed between on or more pairs of time points in QDL (defined as FDR-corrected $p < 0.05$, calculated using empirical Bayes via `limma::eBayes`), in the analysis using `limma`. The third column lists the pairs of time points for which the focal gene showed a significant difference in expression, and the remaining columns give the log fold difference in expression at each pair of time points (positive log fold difference indicates higher expression at the later time point).
+\newpage
+
+**Table S12**: This table is large, and is therefore presented as a separate .csv file. Each row lists one of the `r nrow(read_csv("../figures/supp_tables/tableS12.csv"))` genes that was significantly differentially expressed between on or more pairs of time points in WDL (defined as FDR-corrected $p < 0.05$, calculated using empirical Bayes via `limma::eBayes`), in the analysis using `limma`. The third column lists the pairs of time points for which the focal gene showed a significant difference in expression, and the remaining columns give the log fold difference in expression at each pair of time points (positive log fold difference indicates higher expression at the later time point).
+\newpage
+
+
+<!-- - Expression GO tables -->
+
+**Table S13**: The table shows the results of GO (Biological Process) gene set enrichment analyses on results of differential expression analysis using limma, comparing QDL and WDL. The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression in QDL relative to WDL (negative values mean WDL > QDL).
+
+```{r}
+GO_KEGG_results_expr$GO_Dmel_annotations_caste %>%
+  parse_GO_KEGG_table() %>% 
+  filter(`Test type` == "GO:BP") %>% dplyr::select(-`Test type`) %>% rename(`GO term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S14**: The table shows the results of GO (Molecular Function) gene set enrichment analyses on results of differential expression analysis using limma, comparing QDL and WDL. The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression in QDL relative to WDL (negative values mean WDL > QDL).
+
+```{r}
+GO_KEGG_results_expr$GO_Dmel_annotations_caste %>%
+  parse_GO_KEGG_table() %>% 
+  filter(`Test type` == "GO:MF") %>% dplyr::select(-`Test type`) %>% rename(`GO term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S15**: The table shows the results of GO (Cellular Component) gene set enrichment analyses on results of differential expression analysis using limma, comparing QDL and WDL. The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression in QDL relative to WDL (negative values mean WDL > QDL).
+
+```{r}
+GO_KEGG_results_expr$GO_Dmel_annotations_caste %>%
+  parse_GO_KEGG_table() %>% 
+  filter(`Test type` == "GO:CC") %>% dplyr::select(-`Test type`) %>% rename(`GO term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S16**: The table shows the results of KEGG gene set enrichment analyses on results of differential expression analysis using limma, comparing QDL and WDL. The enrichment tests use our custom KEGG annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression in QDL relative to WDL (negative values mean WDL > QDL).
+
+```{r}
+GO_KEGG_results_expr$GO_Dmel_annotations_caste %>%
+  parse_GO_KEGG_table() %>% 
+  filter(`Test type` == "KEGG") %>% dplyr::select(-`Test type`) %>% rename(`KEGG term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S17**: The table shows the results of GO (Biological Process) gene set enrichment analyses on results of differential expression analysis using limma, comparing expression between time points within either QDL or WDL (shown in the Caste column). The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression at the later time point (negative values mean WDL > QDL).
+```{r}
+bind_rows(
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalQ %>%
+    parse_GO_KEGG_table(),
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalW %>%
+    parse_GO_KEGG_table()) %>% dplyr::rename(Caste = Time) %>%
+  filter(`Test type` == "GO:BP") %>% dplyr::select(-`Test type`) %>% rename(`GO term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S18**: The table shows the results of GO (Molecular Function) gene set enrichment analyses on results of differential expression analysis using limma, comparing expression between time points within either QDL or WDL (shown in the Caste column). The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression at the later time point (negative values mean WDL > QDL).
+```{r}
+bind_rows(
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalQ %>%
+    parse_GO_KEGG_table(),
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalW %>%
+    parse_GO_KEGG_table()) %>% dplyr::rename(Caste = Time) %>%
+  filter(`Test type` == "GO:MF") %>% dplyr::select(-`Test type`) %>% rename(`GO term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S19**:  The table shows the results of GO (Cellular Component) gene set enrichment analyses on results of differential expression analysis using limma, comparing expression between time points within either QDL or WDL (shown in the Caste column). The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression at the later time point (negative values mean WDL > QDL).
+```{r}
+bind_rows(
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalQ %>%
+    parse_GO_KEGG_table(),
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalW %>%
+    parse_GO_KEGG_table()) %>% dplyr::rename(Caste = Time) %>%
+  filter(`Test type` == "GO:CC") %>% dplyr::select(-`Test type`) %>% rename(`GO term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+**Table S20**: The table shows the results of KEGG gene set enrichment analyses on results of differential expression analysis using limma, comparing expression between time points within either QDL or WDL (shown in the Caste column). The enrichment tests use our custom GO annotations. Only results with $p < 0.01$ are shown, and in cases where the term was significant at multiple time points, only the most significant time point is shown. NES is the 'normalised enrichment score', and positive values mean that genes annotated with the focal pathway tend to show higher expression at the later time point (negative values mean WDL > QDL).
+```{r}
+bind_rows(
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalQ %>%
+    parse_GO_KEGG_table(),
+  GO_KEGG_results_expr$GO_Dmel_annotations_temporalW %>%
+    parse_GO_KEGG_table()) %>% dplyr::rename(Caste = Time) %>%
+  filter(`Test type` == "KEGG") %>% dplyr::select(-`Test type`) %>% rename(`KEGG term` = `GO or KEGG term`) %>%
+  make_table()
+```
+\newpage
+
+<!-- - expression module eigengenes statistical results -->
+**Table S21**: The table shows a summary of the posterior estimate of the difference in mean module eigengenes between QDL and WDL at each of the four time points, for the co-expression network shown in Figure 4A. There was a difference between castes in module eigengenes for 9/19 modules ($p < 0.05$ or better), suggesting large, coordinated changes in muhc of the transcriptome following experimental grafting. The estimates are derived from the posterior estimates for a Bayesian multivariate generalised additive mixed model where the response variable for each sample was a length-19 vector of eigengenes for the 19 modules. The model allowed for caste-specific, non-linear changes in module eigengenes over time (see Figure 4A), and adjusted for Replicate. The eigengenes were mean-centred and scaled to unit variance, so the units in the 'Caste difference' column can be interpreted as the standardised effect size (Cohen's $d$). Other columns show the mean deviation of data points from the estimated mean, the 95% credible interval for the mean, and the posterior probability that the true effect size has the opposite sign to the first column (similar to a one-tailed $p$-value).
+
+```{r}
+readr::read_csv("../output/eigengene_stats_table_expr.csv") %>% 
+  mutate(X8 = replace(X8, is.na(X8), " ")) %>%
+  dplyr::rename(`Caste difference` = Estimate, ` ` = X8) %>%
+  
+  make_table()
+```
+\newpage
+
+
+<!-- - expression module GO enrichment -->
+# ```{r}
+# read_csv("output/module_GO_table_expr.csv") # finish this...
+# ```
+
+
+<!-- - table(s) showing genes sig for both meth and expr -->
+<!-- - correlations between eigenegenes for meth and expr -->
+<!-- - correlations among the gene-level variables -->
+
+

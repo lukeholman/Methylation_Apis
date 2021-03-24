@@ -1,0 +1,1365 @@
+Gene symbol,Gene name,Significant temporal comparisons:,logFC: 0 vs 2h,logFC: 0 vs 4h,logFC: 0 vs 6h,logFC: 0 vs 8h,logFC: 2 vs 4h,logFC: 2 vs 6h,logFC: 2 vs 8h,logFC: 4 vs 6h,logFC: 4 vs 8h,logFC: 6 vs 8h
+LOC552326,uncharacterized LOC552326,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.93,-1.18,-2.65,-2.76,-0.25,-1.72,-1.83,-1.47,-1.58,1.74
+LOC100577833,histone H1.2,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-2.06,-0.97,-1.18,-1.02,1.09,0.88,1.04,-0.21,-0.05,-0.79
+LOC411093,testis-specific serine/threonine-protein kinase 1,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,2.04,1.62,1.89,2.02,-0.42,-0.15,-0.01,0.27,0.41,-0.22
+LOC102656258,nuclear RNA export factor 2-like,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,1.16,0.72,0.87,1,-0.44,-0.28,-0.16,0.16,0.28,0.18
+LOC107965626,uncharacterized LOC107965626,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,1.35,0.99,1.1,1.02,-0.36,-0.25,-0.34,0.11,0.02,0.23
+LOC100578546,uncharacterized LOC100578546,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.07,-0.01,0.02,0.43,-0.08,-0.04,0.36,0.03,0.43,1.31
+LOC102655047,zinc finger protein 676,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.99,0.61,0.79,0.75,-0.38,-0.2,-0.24,0.18,0.14,0.29
+LOC412296,deformed epidermal autoregulatory factor 1,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.46,0.34,0.15,0.26,-0.12,-0.31,-0.21,-0.19,-0.08,0.39
+LOC100576916,cuticle protein 18.7,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.93,-1.48,-2.42,-2.74,-0.54,-1.49,-1.81,-0.95,-1.27,1.64
+LOC408969,aminoacylase-1,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.14,0.41,0.78,0.92,0.27,0.64,0.78,0.37,0.51,-0.62
+LOC412215,chitin synthase chs-2,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.71,0.75,1.48,1.86,0.04,0.77,1.14,0.73,1.1,-0.86
+LOC411706,"phospholipase B1, membrane-associated",0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-1.45,-1.86,-4.03,-4.74,-0.41,-2.57,-3.29,-2.17,-2.88,2.87
+LOC411071,dnaJ protein homolog 1,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,2,0.7,0.99,1.09,-1.3,-1.01,-0.91,0.29,0.39,0.55
+LOC411262,leucine-zipper-like transcriptional regulator 1,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.18,0.9,0.91,0.99,-0.29,-0.27,-0.2,0.02,0.09,0.29
+LOC409107,homeobox protein 5,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.94,-0.58,-0.69,-0.88,0.36,0.26,0.06,-0.1,-0.3,-0.27
+LOC411250,DEAD-box ATP-dependent RNA helicase 20,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-1.06,-0.78,-0.68,-0.72,0.29,0.38,0.34,0.09,0.05,-0.4
+LOC724756,uncharacterized LOC724756,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.12,0.86,1.02,1.04,-0.26,-0.1,-0.08,0.16,0.18,0.1
+LOC107966102,uncharacterized LOC107966102,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,2.43,0.88,0.84,0.93,-1.55,-1.59,-1.5,-0.04,0.04,0.93
+LOC102654858,zinc finger and BTB domain-containing protein 41,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.16,0.64,0.73,1.03,-0.52,-0.43,-0.13,0.09,0.39,0.32
+LOC551308,probable serine/threonine-protein kinase ndrD,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.71,-0.55,-0.61,-0.67,0.17,0.11,0.04,-0.06,-0.12,-0.13
+LOC412540,carcinine transporter,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.6,-0.58,-1.03,-1.21,0.02,-0.43,-0.61,-0.45,-0.63,0.17
+LOC725965,insulinoma-associated protein 1-like,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-1.19,-1.43,-1.66,-1.92,-0.24,-0.47,-0.73,-0.23,-0.49,0.02
+LOC726550,CCAAT/enhancer-binding protein gamma,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.71,0.42,0.59,0.41,-0.29,-0.12,-0.3,0.16,-0.01,0.06
+LOC408847,uroporphyrinogen-III synthase,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.55,0.55,0.76,0.9,-0,0.21,0.35,0.21,0.35,-0.07
+LOC408728,mediator of RNA polymerase II transcription subunit 18,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.6,0.54,0.19,0.37,-0.06,-0.41,-0.23,-0.35,-0.17,0.45
+LOC410885,T-box protein 2,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.11,0.5,0.68,0.85,-0.6,-0.43,-0.26,0.18,0.34,0.12
+LOC409664,erythroid differentiation-related factor 1,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.05,0.37,0.53,0.47,-0.68,-0.51,-0.58,0.16,0.1,0.11
+LOC726706,F-box/LRR-repeat protein 7,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.52,0.35,0.45,0.57,-0.17,-0.07,0.06,0.1,0.23,0.09
+LOC107964618,uncharacterized LOC107964618,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-2.03,-2.14,-2.47,-3,-0.12,-0.44,-0.97,-0.33,-0.86,0.66
+LOC725393,protein TIS11,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.64,-0.55,-0.74,-0.9,0.09,-0.1,-0.26,-0.19,-0.35,-0.11
+LOC413817,inositol-trisphosphate 3-kinase homolog,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.97,-1.22,-0.89,-0.98,-0.25,0.07,-0.01,0.32,0.24,-0.26
+LOC725101,uncharacterized LOC725101,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.46,0.49,0.39,0.55,0.03,-0.07,0.09,-0.09,0.06,0.06
+LOC726447,histone H2B,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.62,-0.37,-0.34,-0.39,0.25,0.28,0.23,0.03,-0.02,-0.24
+LOC113218987,uncharacterized LOC113218987,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.21,0.75,0.95,0.77,-0.47,-0.26,-0.44,0.2,0.03,0.11
+LOC411646,protein Gawky,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.39,-0.2,-0.41,-0.45,0.19,-0.03,-0.07,-0.22,-0.26,-0.16
+LOC726916,zinc finger protein 91,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.6,-0.52,-0.77,-0.98,0.07,-0.17,-0.38,-0.24,-0.45,0.19
+LOC113219267,uncharacterized LOC113219267,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.33,1.56,1.18,1.53,0.23,-0.15,0.2,-0.38,-0.03,0.05
+LOC551133,methyltransferase-like protein 6,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.64,0.57,0.73,0.6,-0.07,0.09,-0.05,0.15,0.02,-0.22
+LOC411700,heat shock protein 83,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.26,0.13,0.36,0.52,-1.13,-0.89,-0.74,0.23,0.39,0.8
+LOC414009,microprocessor complex subunit DGCR8,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.06,0.85,0.59,0.44,-0.21,-0.46,-0.62,-0.25,-0.41,0.16
+LOC100577003,uncharacterized LOC100577003,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.79,0.73,0.62,0.73,-0.06,-0.17,-0.06,-0.11,0,0.18
+LOC727091,forkhead box protein O,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.76,-0.64,-0.87,-0.86,0.12,-0.11,-0.1,-0.23,-0.22,0.27
+LOC102656537,uncharacterized LOC102656537,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.18,1.27,1.61,1.79,0.09,0.42,0.6,0.33,0.52,-0.72
+LOC107965486,uncharacterized LOC107965486,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.68,-1.21,-1.17,-1.45,-0.53,-0.49,-0.78,0.04,-0.25,0.14
+LOC550870,uncharacterized LOC550870,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.98,-0.59,-0.68,-0.88,0.39,0.3,0.1,-0.09,-0.29,-0.39
+LOC411893,"cytochrome P450 315a1, mitochondrial",0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.3,0.23,0.11,0.02,-0.07,-0.19,-0.28,-0.12,-0.22,0.41
+Mir281,microRNA mir-281,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,2.35,1.81,1.94,2.04,-0.54,-0.41,-0.31,0.13,0.23,-0.11
+LOC409361,dopamine N-acetyltransferase,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.3,1.32,1.93,1.97,0.02,0.63,0.67,0.6,0.65,-1.08
+LOC100579007,tetratricopeptide repeat protein 25,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,1.03,0.96,1.32,0.99,-0.07,0.29,-0.04,0.37,0.03,-0.37
+LOC409402,uncharacterized LOC409402,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.46,0.85,1.1,0.98,0.4,0.64,0.53,0.24,0.13,-0.45
+LOC100576369,ets DNA-binding protein pokkuri,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,-0.33,-0.34,-0.5,-0.54,-0.01,-0.17,-0.21,-0.16,-0.2,0.09
+LOC411090,tubulin--tyrosine ligase-like protein 12,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.36,0.33,0.29,0.33,-0.04,-0.08,-0.03,-0.04,0.01,0.02
+LOC551712,"lipoyltransferase 1, mitochondrial",0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.35,0.35,0.48,0.54,-0,0.13,0.18,0.13,0.19,-0.23
+LOC725372,uncharacterized LOC725372,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.56,0.34,0.23,0.26,-0.22,-0.33,-0.3,-0.11,-0.08,0.18
+LOC725925,prolyl 3-hydroxylase OGFOD1,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.37,0.29,0.23,0.35,-0.08,-0.14,-0.02,-0.05,0.06,0.27
+LOC413006,leucine-rich repeat flightless-interacting protein 2,0 vs 2; 0 vs 4; 0 vs 6; 0 vs 8,0.46,0.25,0.29,0.35,-0.21,-0.16,-0.11,0.05,0.1,-0.01
+LOC102654865,uncharacterized LOC102654865,0 vs 2; 0 vs 4; 0 vs 6; 2 vs 8,0.87,0.46,0.63,0.58,-0.4,-0.24,-0.29,0.16,0.12,0.59
+LOC107964652,uncharacterized LOC107964652,0 vs 2; 0 vs 4; 0 vs 6; 2 vs 8,0.88,0.88,0.88,0.85,-0,0,-0.02,0.01,-0.02,0.19
+LOC102655090,uncharacterized LOC102655090,0 vs 2; 0 vs 4; 0 vs 6; 2 vs 8,0.33,0.35,0.44,0.09,0.02,0.1,-0.24,0.09,-0.26,0.32
+LOC102654184,plectin,0 vs 2; 0 vs 4; 0 vs 8; 2 vs 8,1.25,1.12,1.27,1.62,-0.14,0.02,0.37,0.16,0.5,0.02
+LOC725596,leukocyte receptor cluster member 8 homolog,0 vs 2; 0 vs 6; 0 vs 8; 2 vs 8,0.81,0.5,0.6,0.58,-0.31,-0.21,-0.22,0.1,0.09,0.1
+LOC410791,mitochondrial uncoupling protein 2,0 vs 2; 0 vs 6; 0 vs 8; 2 vs 8,-0.68,-0.2,-0.66,-0.37,0.47,0.02,0.3,-0.45,-0.17,-0.46
+LOC411227,tyrosine-protein phosphatase non-receptor type 9,0 vs 2; 0 vs 6; 0 vs 8; 4 vs 8,-0.31,-0.3,-0.56,-0.54,0.01,-0.25,-0.23,-0.26,-0.24,0.22
+LOC410169,twinfilin,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.1,0.08,0.18,0.27,-0.01,0.08,0.17,0.09,0.19,0.02
+LOC102655073,histone H4,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.23,-0.12,-0.26,-0.21,0.1,-0.03,0.02,-0.14,-0.08,0.02
+E75,ecdysone-induced protein 75,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.43,-0.03,-0.39,-0.7,0.4,0.04,-0.27,-0.36,-0.67,0.02
+LOC100577670,uncharacterized LOC100577670,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.66,-0.71,-1.01,-0.85,-0.05,-0.35,-0.19,-0.3,-0.14,0.56
+LOC411406,zinc metalloproteinase nas-13,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-1.45,-1.72,-2.59,-2.27,-0.28,-1.15,-0.83,-0.87,-0.55,1.74
+LOC550798,protein ERGIC-53,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.07,0.21,0.23,0.31,0.15,0.16,0.24,0.02,0.1,-0.08
+LOC551463,decaprenyl-diphosphate synthase subunit 2,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.23,0.43,0.86,0.87,0.19,0.62,0.64,0.43,0.45,-0.5
+LOC113218768,uncharacterized LOC113218768,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.08,-0.23,-0.49,-0.44,-0.15,-0.41,-0.36,-0.26,-0.21,0.34
+LOC725838,uncharacterized LOC725838,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.97,-1.26,-2.15,-2.29,-0.3,-1.18,-1.33,-0.89,-1.03,1.52
+LOC410172,translocating chain-associated membrane protein 1-like 1,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.23,0.41,0.67,0.79,0.18,0.45,0.57,0.27,0.39,-0.36
+LOC412968,putative epidermal cell surface receptor,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.41,0.7,0.94,1.09,0.29,0.53,0.69,0.24,0.39,-0.38
+Antp,homeotic protein antennapedia,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.14,-0.16,-0.42,-0.66,-0.02,-0.27,-0.52,-0.25,-0.5,0.15
+LOC100577939,probable serine/threonine-protein kinase kinX,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.32,-0.75,-0.28,-0.6,-0.42,0.04,-0.28,0.46,0.15,0.01
+LOC551353,translocon-associated protein subunit alpha,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,0.16,0.3,0.39,0.53,0.15,0.23,0.37,0.09,0.22,-0.18
+LOC551496,H/ACA ribonucleoprotein complex subunit GAR1,0 vs 4; 0 vs 6; 0 vs 8; 2 vs 8,-0.39,-0.58,-0.74,-0.58,-0.2,-0.35,-0.19,-0.16,0.01,0.59
+LOC100577331,cell wall integrity and stress response component 1,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.29,0.51,0.9,0.75,0.22,0.61,0.47,0.39,0.25,-0.48
+LOC552708,major facilitator superfamily domain-containing protein 10,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.02,0.12,0.47,0.83,0.1,0.45,0.81,0.35,0.71,-0.27
+LOC409307,uncharacterized LOC409307,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.49,0.81,1.3,1.64,0.32,0.81,1.15,0.49,0.83,-0.66
+LOC725239,RNA-binding protein 33,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,1.17,0.99,2.58,3.38,-0.18,1.41,2.21,1.59,2.39,-1.8
+LOC411983,putative fatty acyl-CoA reductase,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.33,0.6,1.45,1.87,0.27,1.13,1.54,0.86,1.28,-1.28
+LOC725710,"D-beta-hydroxybutyrate dehydrogenase, mitochondrial",0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,1.2,1.14,2.94,3.89,-0.06,1.74,2.69,1.8,2.76,-2.01
+LOC726750,fibroin heavy chain,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.21,-0.41,-0.9,-1.06,-0.2,-0.69,-0.86,-0.49,-0.66,0.44
+LOC411622,uncharacterized LOC411622,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,1.02,1.28,3.23,4.2,0.26,2.21,3.18,1.95,2.92,-2.32
+LOC408902,F-box/LRR-repeat protein 16,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0,0.02,-0.38,-0.45,0.02,-0.38,-0.45,-0.4,-0.47,0.23
+LOC412220,vesicular glutamate transporter 2.2,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.04,0.4,1.25,1.77,0.44,1.29,1.81,0.85,1.36,-1.12
+LOC551089,translation initiation factor IF-2,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,1.56,2.1,3.82,5.17,0.54,2.25,3.6,1.72,3.07,-2.96
+LOC107965368,TOX high mobility group box family member 3-like,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,1.78,1.4,3.54,4.64,-0.38,1.76,2.85,2.14,3.24,-2.65
+LOC726981,circadian clock-controlled protein,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.32,-0.19,-0.81,-1.35,0.13,-0.49,-1.03,-0.62,-1.16,0.73
+LOC409759,serine-rich adhesin for platelets,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.85,0.49,1.95,2.94,-0.36,1.1,2.09,1.46,2.45,-1.53
+LOC726457,flocculation protein FLO11,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.14,-0.04,-1.22,-1.03,0.1,-1.08,-0.9,-1.18,-1,1.11
+LOC724664,A-agglutinin anchorage subunit,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,-0.49,-0.4,-1.85,-2.29,0.09,-1.36,-1.8,-1.45,-1.89,1.43
+LOC102655185,serine-rich adhesin for platelets-like,0 vs 6; 0 vs 8; 2 vs 8; 4 vs 8,0.32,0.43,0.85,0.46,0.11,0.53,0.15,0.42,0.03,-0.65
+LOC408923,transcription initiation factor TFIID subunit 4,0 vs 2; 0 vs 4; 0 vs 6,0.86,0.08,0.07,0.09,-0.77,-0.78,-0.76,-0.01,0.01,0.45
+LOC100577180,uncharacterized LOC100577180,0 vs 2; 0 vs 4; 0 vs 6,0.38,0.31,0.2,0.31,-0.07,-0.18,-0.07,-0.11,-0.01,0.21
+LOC550881,mediator of RNA polymerase II transcription subunit 8,0 vs 2; 0 vs 4; 0 vs 6,0.4,0.46,0.3,0.23,0.06,-0.1,-0.17,-0.16,-0.23,0.11
+LOC411812,serine/threonine-protein kinase Doa,0 vs 2; 0 vs 4; 0 vs 6,0.55,0.57,0.43,0.47,0.01,-0.12,-0.09,-0.13,-0.1,-0.1
+LOC724951,1-acyl-sn-glycerol-3-phosphate acyltransferase beta,0 vs 2; 0 vs 4; 0 vs 8,1.13,0.7,0.88,0.42,-0.43,-0.24,-0.71,0.19,-0.28,-0.04
+LOC411739,stromal interaction molecule homolog,0 vs 2; 0 vs 4; 0 vs 8,-0.31,-0.13,-0.17,-0.35,0.19,0.14,-0.04,-0.05,-0.22,-0.21
+LOC412813,zwei Ig domain protein zig-8,0 vs 2; 0 vs 4; 0 vs 8,0.81,0.36,0.65,0.44,-0.46,-0.16,-0.37,0.3,0.09,0.21
+LOC410328,zinc finger protein 341,0 vs 2; 0 vs 4; 0 vs 8,0.22,0.09,0.12,0.19,-0.13,-0.1,-0.03,0.03,0.1,0.18
+LOC409429,meiosis regulator and mRNA stability factor 1,0 vs 2; 0 vs 6; 0 vs 8,-0.46,-0.36,-0.49,-0.46,0.1,-0.04,-0,-0.13,-0.1,0.03
+LOC100577771,uncharacterized LOC100577771,0 vs 2; 0 vs 6; 0 vs 8,0.91,0.83,1.09,1.06,-0.08,0.17,0.15,0.25,0.23,-0.18
+LOC411902,transmembrane protein 205,0 vs 2; 0 vs 6; 0 vs 8,-0.51,-0.51,-0.56,-0.23,0,-0.05,0.28,-0.05,0.27,0.03
+LOC409596,uncharacterized protein KIAA0825 homolog,0 vs 2; 0 vs 6; 0 vs 8,1.19,1.07,1.12,1.36,-0.12,-0.07,0.17,0.05,0.29,0.16
+LOC102656261,uncharacterized LOC102656261,0 vs 2; 0 vs 6; 0 vs 8,1.17,1.21,1.18,1.41,0.04,0,0.24,-0.04,0.2,0.07
+LOC413768,"2-oxoglutarate dehydrogenase, mitochondrial",0 vs 2; 0 vs 6; 0 vs 8,0.48,-0,-0.01,0.04,-0.48,-0.48,-0.44,-0,0.04,0.62
+LOC102655337,uncharacterized LOC102655337,0 vs 2; 0 vs 6; 0 vs 8,1.38,0.96,1.61,1.77,-0.42,0.24,0.4,0.66,0.82,-0.36
+LOC724859,myosin 9,0 vs 2; 0 vs 6; 0 vs 8,-0.4,-0.14,-0.24,-0.29,0.26,0.15,0.11,-0.11,-0.15,-0.32
+LOC107964601,uncharacterized LOC107964601,0 vs 2; 0 vs 6; 0 vs 8,2.2,2.46,2.92,2.86,0.26,0.73,0.66,0.47,0.41,-0.54
+LOC725914,uncharacterized LOC725914,0 vs 2; 0 vs 6; 0 vs 8,0.79,0.72,0.88,0.89,-0.07,0.09,0.09,0.16,0.16,-0.16
+LOC724700,"putative transferase CAF17 homolog, mitochondrial",0 vs 2; 0 vs 6; 0 vs 8,0.17,0.33,0.55,0.78,0.17,0.38,0.62,0.21,0.45,-0.11
+LOC100578156,uncharacterized LOC100578156,0 vs 2; 0 vs 6; 0 vs 8,-0.76,-0.41,-0.22,-0.12,0.35,0.54,0.64,0.19,0.29,-0.36
+LOC100577543,fez family zinc finger protein 1,0 vs 2; 0 vs 6; 0 vs 8,-0.8,-0.34,-0.6,-0.7,0.45,0.2,0.1,-0.26,-0.35,-0.07
+LOC100577544,uncharacterized LOC100577544,0 vs 2; 0 vs 6; 0 vs 8,1,0.66,0.99,0.97,-0.34,-0.01,-0.03,0.33,0.31,0.16
+LOC107964937,putative uncharacterized protein DDB_G0271982,0 vs 2; 0 vs 6; 0 vs 8,0.81,0.83,1.1,1.24,0.02,0.28,0.43,0.26,0.41,-0.15
+LOC409595,uncharacterized LOC409595,0 vs 2; 0 vs 6; 0 vs 8,-0.5,-0.46,-0.64,-0.53,0.03,-0.14,-0.03,-0.17,-0.07,0.2
+Kr-h1,kruppel homolog 1,0 vs 2; 0 vs 6; 0 vs 8,-0.35,-0.29,-0.39,-0.49,0.06,-0.04,-0.15,-0.1,-0.2,-0.2
+LOC408859,pyrroline-5-carboxylate reductase 2,0 vs 2; 0 vs 6; 0 vs 8,1.99,2.53,2.58,2.23,0.54,0.59,0.24,0.05,-0.3,-1.45
+LOC113218590,low molecular weight phosphotyrosine protein phosphatase-like,0 vs 2; 0 vs 6; 0 vs 8,0.3,0.13,0.12,0.29,-0.17,-0.19,-0.01,-0.01,0.16,0.34
+LOC724752,E3 ubiquitin-protein ligase TRIM71,0 vs 2; 0 vs 6; 0 vs 8,-0.67,-0.57,-0.73,-1.22,0.1,-0.06,-0.55,-0.16,-0.65,-0.02
+LOC107964629,uncharacterized LOC107964629,0 vs 2; 0 vs 6; 0 vs 8,0.45,0.51,0.85,0.77,0.06,0.4,0.32,0.34,0.26,-0.11
+LOC409573,zinc finger protein 2 homolog,0 vs 2; 0 vs 6; 0 vs 8,-0.35,-0.21,-0.45,-0.59,0.14,-0.1,-0.25,-0.24,-0.38,0.08
+LOC409594,dnaJ homolog dnj-5,0 vs 2; 0 vs 6; 0 vs 8,-0.79,-0.59,-0.75,-1.18,0.2,0.04,-0.39,-0.15,-0.59,0.11
+LOC107964138,uncharacterized LOC107964138,0 vs 2; 0 vs 6; 0 vs 8,0.21,0.05,0.19,0.4,-0.16,-0.02,0.18,0.14,0.35,0.51
+LOC408944,probable JmjC domain-containing histone demethylation protein 2C,0 vs 2; 0 vs 6; 0 vs 8,-0.49,-0.3,-0.56,-0.51,0.18,-0.07,-0.03,-0.25,-0.21,-0.09
+LOC100576697,uncharacterized LOC100576697,0 vs 2; 0 vs 6; 0 vs 8,1.98,3.04,3.06,3.4,1.06,1.08,1.42,0.02,0.36,-0.34
+LOC724399,lethal(2)neighbour of Tid protein,0 vs 2; 0 vs 6; 0 vs 8,0.64,0.51,0.6,0.8,-0.14,-0.05,0.15,0.09,0.29,-0.07
+LOC113218852,uncharacterized LOC113218852,0 vs 2; 0 vs 6; 0 vs 8,2,1.52,1.9,2.23,-0.48,-0.1,0.23,0.38,0.71,0.18
+LOC726544,serine/threonine-protein phosphatase 4 regulatory subunit 1,0 vs 2; 0 vs 6; 0 vs 8,-0.29,0.04,-0.2,-0.34,0.33,0.09,-0.04,-0.24,-0.38,-0.18
+LOC113218581,uncharacterized LOC113218581,0 vs 2; 0 vs 6; 2 vs 8,0.78,0.85,0.89,1.01,0.07,0.11,0.23,0.04,0.16,-0.08
+LOC107965509,uncharacterized LOC107965509,0 vs 2; 0 vs 6; 2 vs 8,1.36,1.27,1.38,1.18,-0.09,0.02,-0.18,0.1,-0.09,-0.16
+LOC100578631,uncharacterized LOC100578631,0 vs 2; 0 vs 6; 2 vs 8,0.64,0.13,0.14,0.15,-0.51,-0.5,-0.49,0.02,0.02,0.47
+LOC725238,histone H1,0 vs 4; 0 vs 6; 0 vs 8,-0.47,-0.19,-0.43,-0.17,0.28,0.04,0.3,-0.24,0.01,-0.09
+LOC413171,myosin-I heavy chain,0 vs 4; 0 vs 6; 0 vs 8,-0.22,-0.07,-0.36,-0.53,0.15,-0.14,-0.31,-0.29,-0.46,0.04
+LOC411269,solute carrier family 35 member E1 homolog,0 vs 4; 0 vs 6; 0 vs 8,0.39,0.18,0.35,0.49,-0.21,-0.04,0.09,0.17,0.3,-0.03
+LOC410533,ceramide-1-phosphate transfer protein,0 vs 4; 0 vs 6; 0 vs 8,0.37,0.52,0.71,0.71,0.14,0.34,0.34,0.19,0.19,-0.46
+LOC413430,RAC serine/threonine-protein kinase,0 vs 4; 0 vs 6; 0 vs 8,0.37,0.45,0.37,0.48,0.08,0.01,0.12,-0.07,0.03,-0.15
+LOC408391,AP-1 complex subunit mu-1,0 vs 4; 0 vs 6; 0 vs 8,0.29,0.15,0.14,0.15,-0.14,-0.16,-0.14,-0.02,-0,0.04
+LOC100577122,cellular tumor antigen p53,0 vs 4; 0 vs 6; 0 vs 8,0.19,0.19,-0.01,0.16,0,-0.2,-0.03,-0.2,-0.03,0.25
+LOC413730,"probable cytochrome P450 301a1, mitochondrial",0 vs 4; 0 vs 6; 0 vs 8,0.51,1.12,1.39,1.4,0.61,0.89,0.9,0.27,0.29,-0.7
+LOC551499,FIT family protein CG10671,0 vs 4; 0 vs 6; 0 vs 8,0.41,0.55,0.52,0.45,0.14,0.11,0.04,-0.03,-0.09,-0.33
+LOC102655030,glucose-induced degradation protein 4 homolog,0 vs 4; 0 vs 6; 0 vs 8,0.4,0.17,0.15,0.09,-0.23,-0.25,-0.31,-0.02,-0.08,0.14
+LOC410428,uncharacterized LOC410428,0 vs 4; 0 vs 6; 0 vs 8,-0.34,-0.62,-0.91,-0.96,-0.28,-0.57,-0.62,-0.29,-0.34,0.63
+LOC102653673,putative uncharacterized protein DDB_G0271606,0 vs 4; 0 vs 6; 0 vs 8,-0.8,-1.4,-0.96,-0.99,-0.59,-0.15,-0.19,0.44,0.4,0.61
+LOC411387,O-acyltransferase like protein,0 vs 4; 0 vs 6; 0 vs 8,-1.45,-1.09,-1.52,-1.48,0.36,-0.07,-0.03,-0.43,-0.39,0.64
+LOC552799,uncharacterized LOC552799,0 vs 4; 0 vs 6; 0 vs 8,2.12,3.43,4.65,4.69,1.32,2.53,2.57,1.22,1.26,-2.37
+LOC100578121,uncharacterized LOC100578121,0 vs 4; 0 vs 6; 0 vs 8,0.37,0.61,0.86,0.83,0.24,0.49,0.46,0.25,0.22,-0.47
+LOC100578253,Golgi integral membrane protein 4,0 vs 4; 0 vs 6; 0 vs 8,0.09,0.08,0.12,0.14,-0.01,0.03,0.05,0.04,0.06,0.06
+LOC409976,transmembrane emp24 domain-containing protein 5,0 vs 4; 0 vs 6; 0 vs 8,0.19,0.35,0.52,0.71,0.16,0.34,0.52,0.18,0.36,-0.33
+LOC551517,beta-TrCP,0 vs 4; 0 vs 6; 0 vs 8,0.3,0.24,0.2,0.18,-0.06,-0.1,-0.12,-0.03,-0.06,0.05
+LOC100578829,elongation of very long chain fatty acids protein 1,0 vs 6; 0 vs 8; 2 vs 8,0.45,0.78,2.03,2.06,0.33,1.58,1.61,1.25,1.27,-1.36
+LOC413543,"sushi, von Willebrand factor type A, EGF and pentraxin domain-containing protein 1",0 vs 6; 0 vs 8; 2 vs 8,0.66,0.79,1.47,1.81,0.13,0.8,1.14,0.67,1.01,-0.84
+LOC410748,"glucose dehydrogenase [FAD, quinone]",0 vs 6; 0 vs 8; 2 vs 8,0.9,1.41,2.37,3,0.52,1.47,2.1,0.95,1.58,-1.29
+LOC102655319,inner centromere protein A,0 vs 6; 0 vs 8; 2 vs 8,1.03,1.48,2.94,3.62,0.45,1.91,2.59,1.46,2.14,-2.03
+CTL5,C-type lectin 5,0 vs 6; 0 vs 8; 2 vs 8,1.05,1.69,3.42,4.06,0.64,2.37,3.01,1.73,2.37,-2.44
+LOC726495,protein D2,0 vs 6; 0 vs 8; 2 vs 8,0.54,1.11,1.75,2.08,0.57,1.21,1.54,0.64,0.97,-1.28
+LOC725258,very-long-chain 3-oxoacyl-CoA reductase,0 vs 6; 0 vs 8; 2 vs 8,-0.37,-0.72,-0.34,-0.02,-0.36,0.03,0.34,0.38,0.7,-0.25
+LOC413481,probable chitinase 10,0 vs 6; 0 vs 8; 2 vs 8,0.34,0.93,1.62,1.96,0.59,1.28,1.62,0.69,1.02,-1.18
+LOC551924,mucin-1,0 vs 6; 0 vs 8; 2 vs 8,-0.31,-0.48,-0.7,-0.78,-0.17,-0.39,-0.47,-0.22,-0.3,0.42
+LOC725622,uncharacterized LOC725622,0 vs 6; 0 vs 8; 2 vs 8,1.13,1.54,2.88,3.33,0.41,1.74,2.2,1.34,1.79,-1.58
+LOC102654212,uncharacterized LOC102654212,0 vs 6; 0 vs 8; 2 vs 8,-0.39,-1.65,-3.12,-3.21,-1.26,-2.73,-2.82,-1.48,-1.56,2.89
+LOC551905,uncharacterized LOC551905,0 vs 6; 0 vs 8; 2 vs 8,1.53,2.43,4.92,5.84,0.91,3.39,4.31,2.49,3.4,-3.63
+LOC408315,ceramide kinase,0 vs 6; 0 vs 8; 2 vs 8,-0.23,-0.06,-0.46,-0.67,0.16,-0.23,-0.44,-0.4,-0.61,0.18
+LOC552395,"glucose dehydrogenase [FAD, quinone]",0 vs 6; 0 vs 8; 2 vs 8,1.11,0.77,2.43,3.19,-0.34,1.32,2.08,1.66,2.42,-1.52
+LOC413386,uncharacterized LOC413386,0 vs 6; 0 vs 8; 2 vs 8,0.96,1.37,2.56,3.15,0.4,1.6,2.19,1.19,1.78,-1.86
+LOC408361,alpha-tocopherol transfer protein-like,0 vs 6; 0 vs 8; 2 vs 8,-0.23,-0.72,-0.84,-1.16,-0.49,-0.61,-0.94,-0.12,-0.45,0.52
+LOC725813,uncharacterized LOC725813,0 vs 6; 0 vs 8; 2 vs 8,0.19,0.4,0.78,1.07,0.21,0.59,0.87,0.39,0.67,-0.56
+LOC725729,uncharacterized LOC725729,0 vs 6; 0 vs 8; 2 vs 8,2.03,3.44,6.14,6.48,1.42,4.11,4.45,2.69,3.03,-4.01
+Hex110,hexamerin 110,0 vs 6; 0 vs 8; 2 vs 8,1.79,3.73,5.07,5.38,1.94,3.28,3.58,1.34,1.65,-3.93
+LOC412526,protein disulfide-isomerase A6 homolog,0 vs 6; 0 vs 8; 2 vs 8,-0.03,0.19,0.06,0.07,0.22,0.09,0.09,-0.13,-0.12,-0.02
+LOC100578498,tricalbin-3,0 vs 6; 0 vs 8; 2 vs 8,0.11,0.74,0.82,0.67,0.63,0.72,0.57,0.08,-0.07,-0.73
+LOC102655243,uncharacterized LOC102655243,0 vs 6; 0 vs 8; 2 vs 8,0.45,0.53,2.58,3.2,0.08,2.14,2.75,2.05,2.67,-2.35
+LOC550671,venom serine protease Bi-VSP,0 vs 6; 0 vs 8; 2 vs 8,-0.15,-0.57,-1.4,-1.67,-0.42,-1.25,-1.52,-0.82,-1.1,1.2
+LOC411556,cytosolic carboxypeptidase 2,0 vs 6; 0 vs 8; 2 vs 8,-0.26,-0.01,-0.63,-0.81,0.24,-0.37,-0.55,-0.61,-0.79,0.28
+LOC409182,protein GDAP2 homolog,0 vs 6; 0 vs 8; 2 vs 8,0.02,-0.22,-0.3,-0.41,-0.24,-0.32,-0.42,-0.07,-0.18,0.26
+LOC412569,"probable 2-oxoglutarate dehydrogenase E1 component DHKTD1 homolog, mitochondrial",0 vs 6; 0 vs 8; 2 vs 8,0.66,1.02,1.23,1.32,0.36,0.57,0.66,0.21,0.3,-0.87
+LOC102654211,acyl-CoA Delta(11) desaturase,0 vs 6; 0 vs 8; 2 vs 8,0.45,1.07,2.8,3.55,0.62,2.34,3.1,1.72,2.48,-2.02
+LOC102655512,uncharacterized LOC102655512,0 vs 6; 0 vs 8; 2 vs 8,1.3,1.63,3.23,4.38,0.33,1.92,3.08,1.59,2.75,-2.51
+LOC725571,protein transport protein Sec61 subunit alpha,0 vs 6; 0 vs 8; 2 vs 8,0.13,-0.02,0.17,0.37,-0.14,0.04,0.25,0.18,0.39,-0.14
+LOC102653832,uncharacterized LOC102653832,0 vs 6; 0 vs 8; 2 vs 8,-0.69,-0.56,-1.56,-1.84,0.13,-0.87,-1.15,-1,-1.28,1.23
+LOC726758,uncharacterized LOC726758,0 vs 6; 0 vs 8; 2 vs 8,2.59,2,4.64,6.34,-0.59,2.05,3.75,2.63,4.33,-3.26
+LOC726322,uncharacterized LOC726322,0 vs 6; 0 vs 8; 2 vs 8,0.47,1,1.97,2.38,0.53,1.5,1.91,0.96,1.37,-1.24
+LOC726206,uncharacterized LOC726206,0 vs 6; 0 vs 8; 2 vs 8,1.93,2.68,5.99,7.07,0.75,4.05,5.14,3.31,4.39,-4.26
+LOC410639,alpha-methyldopa hypersensitive protein,0 vs 6; 0 vs 8; 2 vs 8,1.03,0.58,2.95,4.29,-0.45,1.92,3.26,2.37,3.71,-2.44
+LOC100578467,protein Star,0 vs 6; 0 vs 8; 2 vs 8,-0.17,-0.23,-0.81,-0.92,-0.06,-0.64,-0.75,-0.58,-0.69,0.54
+LOC726185,uncharacterized LOC726185,0 vs 6; 0 vs 8; 2 vs 8,2.78,3.19,6.59,8.12,0.41,3.81,5.34,3.4,4.93,-4.54
+LOC551582,maternal protein exuperantia,0 vs 6; 0 vs 8; 2 vs 8,0.09,0.02,0.03,0.24,-0.07,-0.06,0.15,0.01,0.22,-0.05
+LOC102654965,uncharacterized LOC102654965,0 vs 6; 0 vs 8; 2 vs 8,-0.25,-0.35,0.31,0.01,-0.1,0.55,0.26,0.66,0.37,-0.65
+LOC410038,collagen alpha-1(I) chain,0 vs 6; 0 vs 8; 2 vs 8,0.02,-0.68,-0.8,-0.8,-0.69,-0.82,-0.81,-0.12,-0.12,0.66
+LOC100577656,uncharacterized LOC100577656,0 vs 6; 0 vs 8; 2 vs 8,1.56,2.25,3.7,4.21,0.69,2.14,2.65,1.45,1.97,-2.41
+LOC408277,uncharacterized LOC408277,0 vs 6; 0 vs 8; 2 vs 8,1.34,2.22,4.27,4.61,0.88,2.93,3.27,2.05,2.39,-3.03
+LOC725353,neurotrophin 1,0 vs 6; 0 vs 8; 2 vs 8,1.19,1.75,3.46,3.9,0.56,2.27,2.71,1.71,2.15,-2.23
+LOC725963,dynein regulatory complex protein 9,0 vs 6; 0 vs 8; 2 vs 8,-0.51,-0.36,-0.53,-0.94,0.15,-0.02,-0.43,-0.17,-0.58,0.44
+LOC727146,sphingomyelin phosphodiesterase,0 vs 6; 0 vs 8; 2 vs 8,0.26,0.58,0.76,0.86,0.32,0.5,0.61,0.18,0.29,-0.64
+LOC552234,surfeit locus protein 4 homolog,0 vs 6; 0 vs 8; 2 vs 8,0.03,0.06,0.07,0.05,0.03,0.04,0.02,0.01,-0.01,-0.1
+LOC552417,acyl-CoA Delta(11) desaturase,0 vs 6; 0 vs 8; 2 vs 8,1.31,2.18,3.83,4.28,0.87,2.51,2.96,1.64,2.09,-2.58
+LOC107964997,uncharacterized LOC107964997,0 vs 6; 0 vs 8; 2 vs 8,-0.34,-0.54,-1.53,-1.51,-0.21,-1.2,-1.18,-0.99,-0.97,1.35
+LOC724145,transmembrane protease serine 9,0 vs 6; 0 vs 8; 2 vs 8,-1.25,-2.13,-4.66,-5.51,-0.88,-3.42,-4.27,-2.53,-3.39,3.85
+LOC113219288,uncharacterized LOC113219288,0 vs 6; 0 vs 8; 2 vs 8,1.67,1.44,3.3,3.84,-0.23,1.63,2.17,1.86,2.4,-2.28
+LOC100577198,uncharacterized LOC100577198,0 vs 6; 0 vs 8; 2 vs 8,-0.24,-0.1,-0.55,-1.08,0.14,-0.3,-0.83,-0.45,-0.98,0.39
+LOC409911,protein disulfide-isomerase A3,0 vs 6; 0 vs 8; 2 vs 8,-0.07,-0.01,0.05,0.03,0.06,0.12,0.1,0.06,0.03,-0.03
+LOC410365,laccase 2,0 vs 6; 0 vs 8; 2 vs 8,1,1.14,3.36,4.42,0.13,2.35,3.41,2.22,3.28,-3.16
+LOC100576192,uncharacterized LOC100576192,0 vs 6; 0 vs 8; 2 vs 8,1.84,2.27,4.7,6.05,0.43,2.86,4.21,2.43,3.78,-3.82
+LOC726094,uncharacterized LOC726094,0 vs 6; 0 vs 8; 2 vs 8,3.29,4.21,7.31,8.68,0.92,4.02,5.4,3.1,4.48,-5.13
+LOC410725,uncharacterized LOC410725,0 vs 6; 0 vs 8; 2 vs 8,0.46,0.67,1.01,1.06,0.22,0.56,0.61,0.34,0.39,-0.72
+LOC409790,multiple coagulation factor deficiency protein 2 homolog,0 vs 6; 0 vs 8; 2 vs 8,0.07,0.1,0.17,0.26,0.03,0.1,0.19,0.07,0.15,-0.13
+LOC408959,protein unc-13 homolog 4B,0 vs 8; 2 vs 8; 4 vs 8,0.06,-0.01,0.4,0.43,-0.07,0.34,0.37,0.41,0.44,-0.24
+LOC107965005,keratin-associated protein 19-2,0 vs 8; 2 vs 8; 4 vs 8,-0.66,-0.51,-1.92,-1.49,0.15,-1.26,-0.84,-1.41,-0.98,1.45
+LOC551703,clavesin-2,0 vs 8; 2 vs 8; 4 vs 8,0.18,0.28,1.05,1.38,0.1,0.88,1.21,0.77,1.1,-1.02
+LOC408480,PTB domain-containing engulfment adapter protein 1,0 vs 8; 2 vs 8; 4 vs 8,0.33,0.65,0.8,0.97,0.32,0.47,0.64,0.15,0.33,-0.52
+LOC100576956,metalloproteinase inhibitor 3,0 vs 8; 2 vs 8; 4 vs 8,0.64,0.39,1.08,1.26,-0.26,0.44,0.62,0.69,0.87,-0.66
+LOC100577237,ankyrin repeat and ELMO domain-containing protein D,0 vs 8; 2 vs 8; 4 vs 8,0.08,-0.05,0.75,0.87,-0.14,0.67,0.79,0.81,0.93,-0.85
+LOC550964,guanylate cyclase 32E,0 vs 8; 2 vs 8; 4 vs 8,0.82,0.62,1.55,2,-0.19,0.73,1.18,0.92,1.38,-0.98
+LOC409852,transcription factor SPT20 homolog,0 vs 8; 2 vs 8; 4 vs 8,0.21,0.46,1.08,1.18,0.24,0.86,0.97,0.62,0.73,-0.93
+LOC552489,SEC14-like protein 2,0 vs 8; 2 vs 8; 4 vs 8,0.01,-0.03,0.29,0.71,-0.04,0.27,0.7,0.31,0.74,-0.12
+LOC410638,aromatic-L-amino-acid decarboxylase,0 vs 8; 2 vs 8; 4 vs 8,0.31,0.24,1.17,1.42,-0.07,0.85,1.11,0.93,1.18,-1.32
+LOC411376,estrogen sulfotransferase,0 vs 8; 2 vs 8; 4 vs 8,0.37,0.26,1.86,2.68,-0.11,1.49,2.31,1.6,2.42,-1.7
+LOC726260,uncharacterized LOC726260,0 vs 8; 2 vs 8; 4 vs 8,0.56,0.57,1.52,2.59,0.01,0.96,2.03,0.95,2.03,-1.27
+Obp1,odorant binding protein 1,0 vs 8; 2 vs 8; 4 vs 8,-0.31,0.03,-0.65,-1.11,0.34,-0.34,-0.8,-0.68,-1.14,0.55
+LOC725164,serine-rich adhesin for platelets,0 vs 8; 2 vs 8; 4 vs 8,0.95,0.03,1.84,2.77,-0.91,0.9,1.82,1.81,2.73,-1.57
+LOC550828,elongation of very long chain fatty acids protein AAEL008004,0 vs 8; 2 vs 8; 4 vs 8,-0.45,-1.23,-2.46,-2.04,-0.78,-2.01,-1.58,-1.24,-0.81,2.13
+LOC409962,loricrin,0 vs 8; 2 vs 8; 4 vs 8,0.46,0.7,3,4.34,0.24,2.54,3.88,2.3,3.64,-3.04
+LOC725882,uncharacterized LOC725882,0 vs 8; 2 vs 8; 4 vs 8,0.68,0.12,2.44,3.99,-0.57,1.76,3.31,2.33,3.88,-2.31
+Grp,glycine-rich cuticle protein,0 vs 8; 2 vs 8; 4 vs 8,1.06,0.96,3.42,4.74,-0.1,2.36,3.68,2.46,3.79,-3.1
+LOC411248,contactin-associated protein-like 3,0 vs 8; 2 vs 8; 4 vs 8,0.02,0.09,-0.34,-0.58,0.07,-0.36,-0.6,-0.43,-0.67,0.33
+LOC724382,cuticular protein analogous to peritrophins 3-A,0 vs 8; 2 vs 8; 4 vs 8,1.5,0.73,3.35,4.99,-0.77,1.85,3.49,2.63,4.26,-2.78
+LOC409163,uncharacterized LOC409163,0 vs 8; 2 vs 8; 4 vs 8,1.68,1.18,3.65,5.8,-0.5,1.97,4.12,2.46,4.61,-3.33
+LOC724398,tweedle motif cuticular protein 2,0 vs 8; 2 vs 8; 4 vs 8,1.8,0.68,3.36,5.38,-1.11,1.57,3.58,2.68,4.7,-3.07
+LOC726987,uncharacterized LOC726987,0 vs 8; 2 vs 8; 4 vs 8,1.28,0.7,2.38,3.09,-0.58,1.1,1.81,1.68,2.39,-1.56
+LOC725041,leucine-rich repeat-containing protein 15,0 vs 8; 2 vs 8; 4 vs 8,-0.14,0.31,-0.39,-0.52,0.45,-0.25,-0.37,-0.7,-0.82,0.2
+LOC410405,cytochrome P450 18a1,0 vs 8; 2 vs 8; 4 vs 8,0.11,0.12,1.29,1.77,0.01,1.18,1.66,1.17,1.65,-1.27
+LOC552446,collagen alpha-1(I) chain,0 vs 8; 2 vs 8; 4 vs 8,0.15,0.19,-0.42,-0.51,0.04,-0.57,-0.66,-0.61,-0.7,0.37
+LOC113218571,hydrocephalus-inducing protein-like,0 vs 8; 2 vs 8; 4 vs 8,0.31,0.35,-0.23,-0.08,0.04,-0.55,-0.4,-0.59,-0.44,0.28
+LOC102656479,uncharacterized LOC102656479,0 vs 8; 2 vs 8; 4 vs 8,-0.24,0.22,-0.4,-0.74,0.46,-0.16,-0.5,-0.62,-0.96,0.46
+LOC412222,uncharacterized LOC412222,0 vs 8; 2 vs 8; 4 vs 8,2.17,0.4,4.08,5.02,-1.76,1.91,2.85,3.68,4.62,-3.07
+LOC408494,uncharacterized LOC408494,0 vs 8; 2 vs 8; 4 vs 8,1.02,-0.24,2.54,4.52,-1.25,1.53,3.5,2.78,4.75,-2.64
+LOC107964902,uncharacterized LOC107964902,0 vs 8; 2 vs 8; 4 vs 8,2.41,1.09,3.58,5.12,-1.32,1.17,2.71,2.49,4.03,-3.05
+LOC552457,"glucose dehydrogenase [FAD, quinone]",0 vs 8; 2 vs 8; 4 vs 8,0.66,-0.2,1.59,2.5,-0.85,0.93,1.84,1.78,2.7,-1.73
+LOC724483,dynein regulatory complex subunit 2,0 vs 8; 2 vs 8; 4 vs 8,-0.56,-0.17,-0.71,-1.01,0.39,-0.16,-0.46,-0.54,-0.84,0.52
+LOC410976,nose resistant to fluoxetine protein 6,0 vs 8; 2 vs 8; 4 vs 8,0.98,1.21,2.3,2.86,0.24,1.32,1.89,1.08,1.65,-1.85
+LOC413076,ecdysone-induced protein 78C,0 vs 8; 2 vs 8; 4 vs 8,0.19,0,-1.14,-1.29,-0.18,-1.33,-1.47,-1.15,-1.29,1.36
+LOC552058,uncharacterized LOC552058,0 vs 8; 2 vs 8; 4 vs 8,1.27,0.42,1.86,2.9,-0.85,0.59,1.63,1.44,2.49,-1.6
+CPR17,cuticular protein 17,0 vs 8; 2 vs 8; 4 vs 8,0.96,0.2,1.64,3.11,-0.76,0.68,2.15,1.44,2.91,-1.42
+LOC726920,uncharacterized LOC726920,0 vs 8; 2 vs 8; 4 vs 8,3.77,-1.01,4.83,7.94,-4.78,1.06,4.17,5.84,8.95,-4.18
+LOC412763,cardiomyopathy-associated protein 5,0 vs 8; 2 vs 8; 4 vs 8,0.14,0.03,0.29,0.43,-0.11,0.14,0.28,0.25,0.39,-0.23
+LOC724418,venom acid phosphatase Acph-1-like,0 vs 8; 2 vs 8; 4 vs 8,0.29,-0.83,1.02,1.77,-1.12,0.73,1.48,1.85,2.6,-0.71
+LOC411298,UDP-glucuronosyltransferase 2C1,0 vs 8; 2 vs 8; 4 vs 8,0.82,0.64,2.89,4.45,-0.18,2.07,3.63,2.25,3.81,-2.7
+C1q-VP,C1q-like venom protein,0 vs 8; 2 vs 8; 4 vs 8,0.59,-0.04,1.29,2.43,-0.63,0.7,1.84,1.33,2.47,-1.27
+LOC726864,uncharacterized LOC726864,0 vs 8; 2 vs 8; 4 vs 8,0.64,0.02,1.87,2.71,-0.62,1.23,2.07,1.85,2.69,-2.07
+LOC725683,uncharacterized LOC725683,0 vs 8; 2 vs 8; 4 vs 8,0.81,-0.23,1.93,3.42,-1.04,1.12,2.62,2.16,3.66,-1.9
+LOC727290,methyl farnesoate epoxidase,0 vs 8; 2 vs 8; 4 vs 8,2.22,-0.54,3.56,5.7,-2.76,1.34,3.48,4.1,6.25,-3.13
+LOC552784,uncharacterized LOC552784,0 vs 8; 2 vs 8; 4 vs 8,-0.04,-0.11,0.04,0.15,-0.07,0.07,0.19,0.14,0.26,-0.08
+LOC408970,flocculation protein FLO11,0 vs 8; 2 vs 8; 4 vs 8,1.48,-0.06,2.58,4.34,-1.54,1.11,2.87,2.65,4.41,-2.33
+LOC551670,argininosuccinate lyase,0 vs 8; 2 vs 8; 4 vs 8,0.1,-0.2,0.48,0.56,-0.3,0.37,0.45,0.67,0.75,-0.57
+Reck,reversion-inducing-cysteine-rich protein with kazal motifs,0 vs 8; 2 vs 8; 4 vs 8,0.37,0.3,-0.03,-0.16,-0.07,-0.4,-0.53,-0.33,-0.46,0.27
+LOC726450,nuclear hormone receptor FTZ-F1,0 vs 8; 2 vs 8; 4 vs 8,0.6,0.03,0.87,1.02,-0.56,0.28,0.43,0.84,0.99,-0.8
+LOC100577229,cuticular protein 8,0 vs 8; 2 vs 8; 4 vs 8,-0.09,-0.1,0.65,2.01,-0.02,0.73,2.1,0.75,2.12,-0.58
+LOC107965706,uncharacterized LOC107965706,0 vs 8; 2 vs 8; 4 vs 8,0.15,-0.03,0.75,1.57,-0.18,0.6,1.42,0.78,1.59,-1.17
+LOC726513,ATP-binding cassette sub-family G member 5,0 vs 8; 2 vs 8; 4 vs 8,-0.06,0.03,-0.38,-0.32,0.08,-0.32,-0.26,-0.41,-0.34,0.45
+LOC409176,pro-resilin,0 vs 8; 2 vs 8; 4 vs 8,1.25,-0.49,4.36,6.28,-1.74,3.1,5.03,4.84,6.76,-3.8
+LOC727164,eukaryotic translation initiation factor 3 subunit F-like,0 vs 8; 2 vs 8; 4 vs 8,1.4,0,2.56,4.14,-1.4,1.16,2.74,2.56,4.14,-2.19
+LOC551360,transcription factor Ken,0 vs 8; 2 vs 8; 4 vs 8,0.18,0.12,0.69,1.15,-0.06,0.52,0.98,0.58,1.04,-1.05
+Hbg3,alpha-glucosidase,0 vs 8; 2 vs 8; 4 vs 8,0.29,0.34,0.03,0.24,0.05,-0.26,-0.06,-0.31,-0.1,0.21
+LOC412013,chorion peroxidase,0 vs 8; 2 vs 8; 4 vs 8,-0.14,-0.59,0.65,1.4,-0.45,0.79,1.54,1.24,1.99,-1.15
+LOC410559,tubulin beta chain,0 vs 8; 2 vs 8; 4 vs 8,0.64,0.42,2.13,3.3,-0.21,1.49,2.66,1.71,2.88,-2.17
+LOC726481,inositol monophosphatase 2,0 vs 8; 2 vs 8; 4 vs 8,-0.2,-0.33,0.05,-0.44,-0.13,0.25,-0.24,0.38,-0.11,-0.23
+CPR2,cuticular protein 2,0 vs 8; 2 vs 8; 4 vs 8,0.82,-1.56,2.28,4.92,-2.39,1.46,4.1,3.84,6.49,-2.66
+LOC413676,patched domain-containing protein 3,0 vs 8; 2 vs 8; 4 vs 8,0.02,-0.3,0.07,0.31,-0.32,0.05,0.29,0.37,0.62,-0.24
+LOC724917,inactive serine protease scarface,0 vs 8; 2 vs 8; 4 vs 8,0.15,-0.24,0.81,1.26,-0.39,0.66,1.11,1.05,1.5,-0.91
+LOC100577680,uncharacterized LOC100577680,0 vs 8; 2 vs 8; 4 vs 8,0.1,-1.05,1.3,3.28,-1.15,1.2,3.19,2.35,4.34,-1.61
+LOC412917,probable serine/threonine-protein kinase dyrk2,0 vs 2; 0 vs 4,0.44,0.44,0.42,0.4,-0,-0.02,-0.04,-0.02,-0.04,-0.08
+LOC551599,ADAM 17-like protease,0 vs 2; 0 vs 6,0.47,0.16,0.15,0.16,-0.31,-0.31,-0.3,-0.01,0,0.3
+LOC725941,zinc finger protein 800,0 vs 2; 0 vs 6,-0.82,-0.91,-0.88,-1.08,-0.09,-0.06,-0.26,0.03,-0.17,-0
+LOC411052,sialin,0 vs 2; 0 vs 6,-0.36,-0.39,-0.33,-0.26,-0.03,0.03,0.1,0.06,0.13,-0.11
+LOC727447,nuclear pore complex protein Nup153,0 vs 2; 0 vs 6,-0.49,-0.68,-0.75,-0.91,-0.19,-0.26,-0.42,-0.07,-0.23,0.08
+LOC724207,phospholipid scramblase 2,0 vs 2; 0 vs 6,0.34,0.52,0.44,0.54,0.18,0.1,0.2,-0.08,0.03,-0.04
+LOC408504,protein FAM160B1,0 vs 2; 0 vs 6,0.7,0.61,0.6,0.59,-0.09,-0.09,-0.11,-0.01,-0.02,-0.02
+LOC102656189,uncharacterized LOC102656189,0 vs 2; 0 vs 6,1.26,1.74,1.81,1.86,0.48,0.56,0.6,0.08,0.12,-0.73
+LOC412646,uncharacterized LOC412646,0 vs 2; 0 vs 6,-0.35,-0.54,-0.41,-0.49,-0.19,-0.06,-0.14,0.13,0.06,-0.04
+LOC413688,DNA-directed RNA polymerase III subunit RPC5,0 vs 2; 0 vs 6,-0.55,-0.55,-0.5,-0.67,-0,0.05,-0.12,0.05,-0.11,0.01
+LOC107964089,aquaporin-11,0 vs 2; 0 vs 6,0.75,0.42,0.92,0.74,-0.33,0.17,-0.01,0.51,0.32,-0.14
+LOC724622,DNA-binding protein RFX7,0 vs 2; 0 vs 6,0.6,0.35,0.36,0.28,-0.25,-0.24,-0.32,0.01,-0.06,0.24
+LOC413000,proton-coupled amino acid transporter-like protein pathetic,0 vs 2; 0 vs 6,-0.26,-0.63,-0.99,-1.07,-0.37,-0.73,-0.81,-0.36,-0.44,0.35
+LOC413328,phospholipid-transporting ATPase ID,0 vs 2; 0 vs 6,-0.45,-0.44,-0.63,-0.67,0,-0.18,-0.22,-0.18,-0.23,-0.03
+LOC551419,alkaline ceramidase,0 vs 2; 0 vs 6,0.18,0.32,0.2,0.37,0.13,0.01,0.19,-0.12,0.06,0.15
+LOC411158,leucine-rich repeat-containing protein 24,0 vs 2; 0 vs 6,-0.22,-0.25,-0.41,-0.44,-0.03,-0.19,-0.22,-0.16,-0.19,-0.16
+LOC100577028,insulin-like growth factor I,0 vs 2; 0 vs 6,1.82,1.68,1.75,2.39,-0.14,-0.07,0.57,0.08,0.71,-0.15
+LOC102654498,uncharacterized LOC102654498,0 vs 2; 0 vs 6,0.61,0.57,0.34,0.27,-0.04,-0.26,-0.34,-0.22,-0.3,0.3
+LOC107964413,uncharacterized LOC107964413,0 vs 2; 0 vs 8,0.69,0.81,1.19,1.15,0.12,0.5,0.46,0.38,0.33,-0.19
+LOC724907,1-acyl-sn-glycerol-3-phosphate acyltransferase alpha,0 vs 2; 0 vs 8,-0.4,-0.22,-0.36,-0.43,0.19,0.04,-0.03,-0.14,-0.22,-0.21
+LOC411525,choline/ethanolamine kinase,0 vs 2; 0 vs 8,0.76,0.68,0.94,0.75,-0.08,0.18,-0.01,0.26,0.07,-0.37
+LOC411306,inositol hexakisphosphate kinase 2,0 vs 2; 0 vs 8,0.28,0.21,0.33,0.3,-0.07,0.05,0.01,0.12,0.09,0.01
+LOC409966,dexamethasone-induced Ras-related protein 1,0 vs 2; 0 vs 8,0.78,0.95,1.2,1.16,0.17,0.41,0.37,0.24,0.21,-0.46
+LOC725775,uncharacterized LOC725775,0 vs 2; 0 vs 8,-0.41,-0.21,-0.19,-0.17,0.19,0.21,0.24,0.02,0.05,-0.2
+LOC107964225,uncharacterized LOC107964225,0 vs 2; 0 vs 8,0.79,0.98,1.11,1.74,0.19,0.32,0.95,0.13,0.76,-0.04
+LOC413448,raf homolog serine/threonine-protein kinase Raf,0 vs 2; 0 vs 8,0.41,0.43,0.3,0.16,0.02,-0.11,-0.25,-0.13,-0.27,0.09
+LOC413354,integrin-linked protein kinase homolog pat-4,0 vs 2; 0 vs 8,0.52,0.51,0.49,0.54,-0.02,-0.03,0.02,-0.01,0.04,-0.01
+LOC725586,exonuclease 3'-5' domain-containing protein 2,0 vs 2; 0 vs 8,0.22,0.14,0.09,0.13,-0.08,-0.13,-0.09,-0.06,-0.01,0.16
+LOC100577280,uncharacterized LOC100577280,0 vs 2; 0 vs 8,-0.32,0.01,-0.07,-0.56,0.34,0.25,-0.24,-0.08,-0.57,-0.37
+LOC410620,heat shock protein Hsp70Ab-like,0 vs 2; 2 vs 8,2.46,0.79,0.64,1,-1.67,-1.81,-1.45,-0.14,0.22,1.02
+LOC113219065,uncharacterized LOC113219065,0 vs 2; 2 vs 8,0.87,1.02,0.89,1.22,0.14,0.02,0.34,-0.13,0.2,0.17
+LOC413103,cysteine and histidine-rich protein 1 homolog,0 vs 2; 2 vs 8,0.56,-0.03,-0.24,0.01,-0.59,-0.79,-0.55,-0.2,0.04,0.8
+LOC100578739,RYamide receptor,0 vs 2; 2 vs 8,1.26,1,0.62,0.56,-0.25,-0.63,-0.7,-0.38,-0.44,0.38
+LOC551687,uncharacterized LOC551687,0 vs 2; 2 vs 8,-0.96,0.03,-0.16,0.39,1,0.81,1.35,-0.19,0.35,-1.26
+LOC102654265,uncharacterized LOC102654265,0 vs 2; 2 vs 8,1.24,0.49,0.92,0.76,-0.75,-0.32,-0.48,0.43,0.27,0.47
+LOC100578696,uncharacterized LOC100578696,0 vs 2; 2 vs 8,-0.4,-0.38,-0.3,-0.36,0.02,0.09,0.04,0.08,0.02,-0.35
+LOC107964103,uncharacterized LOC107964103,0 vs 2; 2 vs 8,0.85,0.66,0.84,0.69,-0.19,-0.01,-0.15,0.18,0.04,0.42
+LOC725023,mediator of RNA polymerase II transcription subunit 26,0 vs 2; 2 vs 8,0.48,0.25,0.12,0.17,-0.24,-0.36,-0.31,-0.12,-0.08,0.24
+LOC107964221,uncharacterized LOC107964221,0 vs 2; 2 vs 8,1.02,0.93,0.91,0.94,-0.08,-0.11,-0.08,-0.03,0.01,0.08
+LOC107964278,uncharacterized LOC107964278,0 vs 2; 2 vs 8,1.85,2,2.58,2.85,0.15,0.73,1,0.58,0.85,-1.19
+LOC726871,synaptic vesicle glycoprotein 2B,0 vs 2; 2 vs 8,1.74,1.46,1.52,1.05,-0.28,-0.22,-0.7,0.05,-0.42,-0.52
+LOC107964909,uncharacterized LOC107964909,0 vs 2; 2 vs 8,0.64,0.93,0.9,0.8,0.29,0.26,0.16,-0.03,-0.13,0.01
+LOC100576799,uncharacterized LOC100576799,0 vs 2; 2 vs 8,-0.25,-0.38,-0.59,-0.52,-0.13,-0.35,-0.28,-0.22,-0.14,0.25
+LOC409707,zwei Ig domain protein zig-8,0 vs 2; 2 vs 8,0.77,0.6,0.7,0.9,-0.17,-0.07,0.13,0.1,0.3,0.04
+LOC102655174,uncharacterized LOC102655174,0 vs 2; 2 vs 8,0.85,0.62,0.64,0.6,-0.23,-0.22,-0.25,0.02,-0.02,0.39
+LOC113219271,uncharacterized LOC113219271,0 vs 2; 2 vs 8,0.61,0.31,0.31,0.29,-0.3,-0.3,-0.32,0,-0.02,0.42
+LOC413309,uncharacterized LOC413309,0 vs 2; 2 vs 8,-0.37,-0.05,-0.15,-0.45,0.32,0.22,-0.08,-0.1,-0.4,-0.62
+LOC412476,BTB/POZ domain-containing protein 9,0 vs 2; 2 vs 8,0.39,0.24,0.1,0.03,-0.15,-0.29,-0.36,-0.14,-0.22,0.33
+LOC102655034,calcium and integrin-binding family member 3,0 vs 2; 2 vs 8,0.51,0.46,0.45,0.54,-0.05,-0.06,0.03,-0,0.08,0.13
+LOC100578017,uncharacterized LOC100578017,0 vs 2; 2 vs 8,1.1,0.83,0.96,0.92,-0.27,-0.13,-0.18,0.14,0.09,0.07
+LOC102655188,zinc finger protein 2 homolog,0 vs 2; 2 vs 8,0.55,0.51,0.31,0.27,-0.03,-0.24,-0.28,-0.21,-0.24,0.33
+LOC409322,uncharacterized LOC409322,0 vs 2; 2 vs 8,0.2,0.06,0.07,0.05,-0.14,-0.13,-0.15,0.01,-0.01,0.16
+LOC413204,tropomyosin-2,0 vs 2; 2 vs 8,0.54,0.45,0.5,0.77,-0.09,-0.04,0.23,0.05,0.32,0.2
+LOC725127,uncharacterized LOC725127,0 vs 2; 2 vs 8,0.37,0.15,0.35,0.37,-0.22,-0.01,0.01,0.21,0.23,0.17
+LOC413239,vacuolar protein sorting-associated protein 26B-like,0 vs 2; 2 vs 8,-0.05,-0.09,-0.01,-0.05,-0.04,0.05,0,0.09,0.04,-0.27
+LOC552373,dolichyldiphosphatase 1,0 vs 2; 2 vs 8,-0.42,-0.4,-0.62,-0.49,0.02,-0.2,-0.07,-0.22,-0.09,0.26
+LOC552183,phosphatidylinositol transfer protein alpha isoform,0 vs 2; 2 vs 8,-0.16,-0.28,-0.2,-0.21,-0.11,-0.04,-0.05,0.08,0.07,-0.07
+LOC411858,ATPase family AAA domain-containing protein 1-B,0 vs 2; 2 vs 8,-0.24,-0.26,-0.2,-0.22,-0.03,0.03,0.02,0.06,0.05,-0.13
+LOC412960,receptor-type tyrosine-protein phosphatase kappa,0 vs 4; 0 vs 6,-0.6,-0.34,-0.9,-0.59,0.26,-0.3,0.01,-0.56,-0.25,0.16
+LOC410352,chromatin-remodeling ATPase INO80,0 vs 4; 0 vs 6,-0.1,-0.01,0.01,-0.2,0.09,0.12,-0.09,0.02,-0.19,-0.24
+LOC100577548,tubulin beta chain,0 vs 4; 0 vs 6,0.72,0.79,0.65,0.82,0.07,-0.06,0.1,-0.13,0.03,0.05
+LOC413179,mediator of RNA polymerase II transcription subunit 7,0 vs 4; 0 vs 6,0.31,0.34,0.22,0.3,0.03,-0.08,-0.01,-0.12,-0.04,0.07
+LOC725093,phosphofurin acidic cluster sorting protein 2,0 vs 4; 0 vs 8,-0.6,-0.66,-0.96,-1.05,-0.06,-0.35,-0.45,-0.29,-0.38,0.6
+LOC102653763,adenylate cyclase type 10-like,0 vs 4; 0 vs 8,-0.46,-0.55,-0.56,-0.68,-0.09,-0.1,-0.22,-0.01,-0.13,0.2
+LOC411095,zinc transporter 7,0 vs 4; 0 vs 8,0.16,-0.03,-0,-0.07,-0.2,-0.16,-0.23,0.03,-0.04,0.16
+LOC411585,E3 ubiquitin-protein ligase NRDP1,0 vs 4; 0 vs 8,0.28,-0.05,-0.13,-0.07,-0.32,-0.4,-0.34,-0.08,-0.02,0.26
+LOC102655339,uncharacterized LOC102655339,0 vs 4; 0 vs 8,0.52,0.82,0.59,0.39,0.31,0.07,-0.13,-0.23,-0.44,-0.11
+LOC726235,lymphoid-specific helicase,0 vs 4; 0 vs 8,0.3,0.2,0.02,0.01,-0.1,-0.28,-0.29,-0.18,-0.2,0.37
+LOC411297,insulin-like peptide receptor,0 vs 4; 0 vs 8,-0.19,0.24,-0.18,-0.07,0.44,0.01,0.12,-0.43,-0.31,-0.01
+LOC102656747,uncharacterized LOC102656747,0 vs 4; 0 vs 8,-0.01,0.24,-0.14,0.6,0.25,-0.12,0.61,-0.38,0.36,-0.74
+LOC409222,cyclin G,0 vs 4; 0 vs 8,0.47,0.48,0.42,0.46,0.01,-0.05,-0.01,-0.06,-0.02,-0.17
+LOC410747,"glucose dehydrogenase [FAD, quinone]",0 vs 6; 0 vs 8,-0.1,0.19,0.49,0.82,0.28,0.59,0.92,0.3,0.64,-0.39
+LOC409277,acidic phospholipase A2 PA4,0 vs 6; 0 vs 8,-0.64,-1.17,-2.01,-2.42,-0.53,-1.38,-1.79,-0.84,-1.25,1.28
+LOC113219006,transmembrane protease serine 9-like,0 vs 6; 0 vs 8,0.82,1.2,2.01,2.03,0.38,1.2,1.21,0.82,0.83,-0.98
+LOC726231,GRB2-associated-binding protein 2,0 vs 6; 0 vs 8,0.46,0.68,0.91,0.91,0.22,0.45,0.45,0.23,0.23,-0.61
+LOC412863,histone demethylase UTY,0 vs 6; 0 vs 8,-0.47,-0.3,-0.82,-0.87,0.17,-0.35,-0.4,-0.52,-0.57,0.38
+LOC410368,cadherin-23,0 vs 6; 0 vs 8,0.43,0.7,0.92,0.94,0.27,0.49,0.51,0.22,0.24,-0.24
+LOC726438,centrosomal protein of 97 kDa,0 vs 6; 0 vs 8,-0.52,-0.63,-0.64,-1.07,-0.11,-0.12,-0.55,-0.01,-0.44,0.14
+LOC408710,"KH domain-containing, RNA-binding, signal transduction-associated protein 2",0 vs 6; 0 vs 8,-0.05,0.11,-0.16,-0.37,0.16,-0.12,-0.33,-0.28,-0.48,-0.01
+LOC412430,major facilitator superfamily domain-containing protein 6,0 vs 6; 0 vs 8,0.02,0.11,0.28,0.39,0.09,0.26,0.36,0.17,0.27,-0.08
+LOC552558,uncharacterized LOC552558,0 vs 6; 0 vs 8,3,4.97,7.37,7.33,1.97,4.37,4.33,2.4,2.36,-4.65
+LOC725125,coiled-coil domain-containing protein 85C,0 vs 6; 0 vs 8,0.8,1.17,1.51,1.35,0.36,0.7,0.54,0.34,0.18,-0.71
+LOC408405,uncharacterized LOC408405,0 vs 6; 0 vs 8,0.29,0.62,0.91,1.01,0.32,0.62,0.72,0.29,0.4,-0.4
+LOC412443,regulator of microtubule dynamics protein 1,0 vs 6; 0 vs 8,-0.1,0.12,0.06,0.26,0.23,0.16,0.36,-0.07,0.13,0.21
+LOC410452,carboxypeptidase B,0 vs 6; 0 vs 8,0.99,1.93,2.97,3.18,0.94,1.98,2.19,1.04,1.25,-1.46
+LOC724477,vitamin K-dependent protein C,0 vs 6; 0 vs 8,0.7,1.16,1.64,1.75,0.46,0.94,1.05,0.48,0.59,-0.77
+LOC411317,CG1567-like,0 vs 6; 0 vs 8,0.92,2.04,3,3.06,1.12,2.08,2.14,0.96,1.02,-1.49
+LOC410606,"protein Skeletor, isoforms B/C",0 vs 6; 0 vs 8,0.33,0.46,0.97,1.18,0.13,0.63,0.84,0.51,0.72,-0.57
+LOC726365,uncharacterized LOC726365,0 vs 6; 0 vs 8,-0.34,-0.38,-0.36,-0.51,-0.04,-0.03,-0.17,0.02,-0.13,0.03
+LOC410515,uncharacterized LOC410515,0 vs 6; 0 vs 8,0.9,1.69,2.54,2.36,0.8,1.65,1.46,0.85,0.67,-1.42
+LOC408317,uncharacterized LOC408317,0 vs 6; 0 vs 8,0.9,1.5,1.94,1.98,0.6,1.04,1.08,0.44,0.48,-0.71
+LOC725754,zinc finger protein castor homolog 1,0 vs 6; 0 vs 8,-0.43,-0.47,-0.85,-0.8,-0.04,-0.42,-0.37,-0.38,-0.33,0.35
+LOC100578744,uncharacterized LOC100578744,0 vs 6; 0 vs 8,0.9,1.94,2.66,2.78,1.04,1.76,1.88,0.72,0.84,-1.38
+LOC412767,protein takeout,0 vs 6; 0 vs 8,1.27,2.23,3.48,3.55,0.96,2.22,2.28,1.25,1.32,-1.82
+LOC724569,uncharacterized LOC724569,0 vs 6; 0 vs 8,0.99,1.35,2.35,2.66,0.36,1.36,1.67,1,1.31,-1.4
+LOC408955,"4-aminobutyrate aminotransferase, mitochondrial",0 vs 6; 0 vs 8,0.45,0.69,1.19,1.37,0.24,0.73,0.92,0.49,0.68,-0.84
+LOC100577151,uncharacterized LOC100577151,0 vs 6; 0 vs 8,-0.14,-0.64,-0.31,-0.69,-0.51,-0.17,-0.55,0.34,-0.05,-0.1
+LOC100577363,uncharacterized LOC100577363,0 vs 6; 0 vs 8,0.41,0.51,0.81,0.77,0.1,0.4,0.36,0.3,0.25,-0.28
+LOC724178,uncharacterized LOC724178,0 vs 6; 0 vs 8,1.43,1.57,1.65,1.35,0.14,0.22,-0.08,0.09,-0.22,-0.9
+LOC412791,flocculation protein FLO11,0 vs 6; 0 vs 8,0.87,1.37,2,1.88,0.5,1.13,1.01,0.63,0.51,-0.89
+LOC409143,venom serine protease 34,0 vs 6; 0 vs 8,1.29,1.67,1.86,2.07,0.38,0.57,0.78,0.19,0.4,-0.17
+LOC413366,homeobox protein SIX1,0 vs 6; 0 vs 8,-0.26,-0.18,-0.26,-0.29,0.09,0,-0.02,-0.09,-0.11,-0
+LOC411986,uncharacterized LOC411986,0 vs 6; 0 vs 8,-0.32,-0.29,-0.64,-0.82,0.03,-0.32,-0.49,-0.35,-0.52,0.25
+LOC100578347,uncharacterized LOC100578347,0 vs 6; 0 vs 8,0.73,1.07,1.24,1.42,0.34,0.52,0.69,0.18,0.35,-0.39
+LOC551552,xaa-Pro dipeptidase,0 vs 6; 0 vs 8,0.08,0.14,0.28,0.31,0.06,0.2,0.23,0.14,0.17,-0.07
+LOC412384,BTB/POZ domain-containing protein 9,0 vs 6; 0 vs 8,0.2,0.25,0.25,0.31,0.05,0.05,0.11,0.01,0.07,-0.05
+LOC410154,uncharacterized LOC410154,0 vs 6; 0 vs 8,-0.5,-0.52,-0.33,-0.07,-0.03,0.17,0.43,0.19,0.45,-0.17
+LOC107965608,uncharacterized LOC107965608,0 vs 6; 0 vs 8,3,4.66,7.22,7.37,1.66,4.22,4.36,2.56,2.71,-4.38
+LOC410304,zinc finger homeobox protein 4,0 vs 6; 0 vs 8,-0.13,-0.26,-0.55,-0.9,-0.13,-0.42,-0.77,-0.29,-0.64,0.14
+LOC725082,uncharacterized LOC725082,0 vs 6; 0 vs 8,0.83,1.46,2.09,2.08,0.63,1.26,1.25,0.63,0.62,-1.1
+LOC726377,eclosion hormone,0 vs 6; 0 vs 8,-0.75,-0.55,-0.74,-0.95,0.2,0.01,-0.2,-0.19,-0.41,-0.13
+LOC727266,uncharacterized LOC727266,0 vs 6; 0 vs 8,-0.03,0.09,0.09,0.17,0.12,0.12,0.2,-0,0.08,0.04
+LOC725823,uncharacterized LOC725823,0 vs 6; 0 vs 8,1.42,2.77,4.59,4.88,1.35,3.16,3.46,1.81,2.11,-2.92
+LOC551502,atrial natriuretic peptide-converting enzyme,0 vs 6; 0 vs 8,0.68,1.39,2.26,2.3,0.71,1.58,1.63,0.87,0.92,-1.41
+LOC551913,protein CREG1,0 vs 6; 0 vs 8,0.05,0.34,0.46,0.51,0.29,0.41,0.46,0.12,0.17,-0.35
+LOC100578703,uncharacterized LOC100578703,0 vs 6; 0 vs 8,0.53,1.06,1.65,1.79,0.54,1.12,1.27,0.59,0.73,-1.13
+LOC100576738,uncharacterized LOC100576738,0 vs 6; 0 vs 8,0.53,1.24,1.29,1.47,0.72,0.76,0.94,0.04,0.22,-0.44
+LOC726229,uncharacterized LOC726229,0 vs 6; 0 vs 8,4.46,5.5,9.24,10.69,1.04,4.78,6.23,3.73,5.19,-5.27
+LOC100578102,ankyrin repeat domain 50,0 vs 6; 0 vs 8,-0.12,-0.26,-0.3,-0.46,-0.13,-0.18,-0.33,-0.05,-0.2,0.16
+LOC552075,saccharopine dehydrogenase-like oxidoreductase,0 vs 6; 0 vs 8,0.12,0.27,0.26,0.4,0.15,0.13,0.27,-0.01,0.12,-0.14
+LOC410865,uncharacterized LOC410865,0 vs 6; 0 vs 8,-0.22,-0.39,-0.43,-0.44,-0.17,-0.22,-0.22,-0.05,-0.05,0.07
+LOC551973,cleavage and polyadenylation specificity factor subunit CG7185,0 vs 6; 0 vs 8,-0.38,-0.43,-0.72,-0.85,-0.05,-0.34,-0.47,-0.29,-0.42,0.46
+LOC551130,protein tincar,0 vs 6; 0 vs 8,-0.24,-0.32,-0.5,-0.57,-0.08,-0.26,-0.33,-0.18,-0.25,0.17
+LOC726268,uncharacterized LOC726268,0 vs 6; 0 vs 8,-0.18,-0.12,-0.27,-0.14,0.06,-0.09,0.04,-0.15,-0.02,0.03
+LOC724446,ragulator complex protein LAMTOR2,0 vs 6; 0 vs 8,0.05,0.22,0.19,0.12,0.17,0.14,0.07,-0.03,-0.1,-0
+LOC726585,dihydroceramide fatty acyl 2-hydroxylase FAH2,0 vs 6; 0 vs 8,0.24,0.38,0.76,0.71,0.14,0.52,0.47,0.38,0.33,-0.58
+LOC102656798,uncharacterized LOC102656798,0 vs 6; 0 vs 8,0.61,0.8,1.52,1.64,0.19,0.91,1.03,0.72,0.84,-0.77
+LOC550687,"aldehyde dehydrogenase, mitochondrial",0 vs 6; 0 vs 8,0.21,0.3,0.41,0.39,0.09,0.2,0.18,0.11,0.09,-0.23
+LOC102656464,uncharacterized LOC102656464,0 vs 6; 0 vs 8,0.63,0.5,1.05,1.15,-0.13,0.42,0.52,0.55,0.65,-0.53
+LOC100577408,leukocyte elastase inhibitor,0 vs 6; 0 vs 8,-0.18,-0.46,-0.35,-0.4,-0.28,-0.17,-0.22,0.11,0.06,-0.17
+LOC726044,unconventional myosin-XVIIIa,0 vs 6; 0 vs 8,0.44,0.77,1.37,1.43,0.33,0.93,0.99,0.6,0.66,-0.83
+LOC102656070,uncharacterized LOC102656070,0 vs 6; 0 vs 8,0.59,0.8,1.03,1.18,0.22,0.45,0.6,0.23,0.38,-0.41
+LOC726724,transient receptor potential channel pyrexia,0 vs 6; 0 vs 8,0.42,0.63,0.93,0.98,0.21,0.51,0.56,0.3,0.35,-0.42
+LOC102656088,uncharacterized LOC102656088,0 vs 6; 0 vs 8,0.42,0.34,0.54,0.89,-0.08,0.12,0.48,0.2,0.56,-0.15
+LOC724760,G-protein coupled receptor Mth2,0 vs 6; 0 vs 8,-0.32,-0.17,-0.2,-0.51,0.15,0.12,-0.19,-0.04,-0.35,-0.09
+LOC408559,retinal dehydrogenase 1,0 vs 6; 0 vs 8,0.17,0.28,0.4,0.67,0.11,0.24,0.5,0.12,0.39,-0.24
+LOC410581,uncharacterized LOC410581,0 vs 6; 0 vs 8,1.78,3.23,4.11,3.94,1.45,2.33,2.16,0.88,0.71,-2.1
+LOC102655045,uncharacterized LOC102655045,0 vs 6; 0 vs 8,1.04,0.6,0.77,0.49,-0.44,-0.28,-0.55,0.16,-0.11,0.28
+LOC552418,cytochrome P450 6k1,0 vs 6; 0 vs 8,-0.35,-0.77,-0.71,-0.29,-0.42,-0.36,0.06,0.06,0.49,0.22
+LOC409827,serine proteinase stubble,0 vs 6; 0 vs 8,0.57,1.35,2.06,2.17,0.78,1.48,1.59,0.71,0.81,-1.34
+LOC724407,uncharacterized LOC724407,0 vs 6; 0 vs 8,0.02,0,0.14,0.39,-0.01,0.12,0.38,0.14,0.39,0.01
+LOC726165,fork head domain transcription factor slp1,0 vs 6; 0 vs 8,0.71,1.16,1,0.84,0.45,0.28,0.13,-0.17,-0.32,-0.3
+LOC408510,uncharacterized LOC408510,0 vs 6; 0 vs 8,1.4,2.62,3.89,4.1,1.22,2.49,2.7,1.27,1.48,-2.17
+LOC410896,arrestin domain-containing protein 4,0 vs 6; 0 vs 8,0.37,0.48,0.93,1.17,0.1,0.56,0.8,0.45,0.69,-0.57
+LOC724188,protein transport protein Sec61 subunit beta,0 vs 6; 0 vs 8,0.11,0.02,0.09,0.34,-0.09,-0.02,0.23,0.07,0.32,0.07
+LOC409826,proteoglycan 4,0 vs 6; 0 vs 8,2.32,3.78,5.89,6.25,1.46,3.57,3.94,2.11,2.47,-3.67
+Dnmt1a,DNA methyltransferase 1a,0 vs 6; 0 vs 8,-0.72,-0.71,-0.98,-1.29,0.01,-0.26,-0.57,-0.27,-0.57,0.46
+LOC552177,uncharacterized LOC552177,0 vs 6; 0 vs 8,-0.18,-0.25,-0.24,-0.59,-0.07,-0.06,-0.41,0.01,-0.34,-0.13
+LOC551263,monocarboxylate transporter 13,0 vs 6; 0 vs 8,-1.09,-1.02,-1.46,-2.19,0.07,-0.38,-1.1,-0.44,-1.17,0.5
+LOC413382,SAM and SH3 domain-containing protein 1,0 vs 6; 0 vs 8,-0.14,-0.28,-0.52,-0.66,-0.14,-0.37,-0.52,-0.23,-0.38,0.22
+LOC100578276,uncharacterized LOC100578276,0 vs 6; 0 vs 8,-0.36,-0.61,-1.11,-1.01,-0.25,-0.74,-0.65,-0.5,-0.41,0.48
+CPR19,cuticular protein 19,0 vs 6; 0 vs 8,-0.32,-0.62,-1.13,-1.67,-0.3,-0.82,-1.35,-0.51,-1.05,0.74
+LOC725462,vesicular glutamate transporter 2.1,0 vs 6; 0 vs 8,0.89,1.1,2.06,2.22,0.21,1.17,1.33,0.96,1.12,-1.09
+LOC409624,acetyl-coenzyme A synthetase,0 vs 6; 0 vs 8,0.03,-0.3,-0.18,-0.21,-0.33,-0.21,-0.24,0.11,0.09,-0
+LOC724311,AT-rich interactive domain-containing protein 2,0 vs 6; 0 vs 8,-0.12,-0.13,-0.23,-0.48,-0.01,-0.11,-0.35,-0.09,-0.34,0.13
+LOC107965199,UDP-glucuronosyltransferase 1-1,0 vs 6; 0 vs 8,-0.09,-0.03,-0.06,-0.1,0.05,0.02,-0.01,-0.03,-0.07,-0.52
+LOC412670,probable phosphoserine aminotransferase,0 vs 6; 0 vs 8,0.04,0.19,0.42,0.59,0.16,0.39,0.55,0.23,0.39,-0.37
+LOC100578106,uncharacterized LOC100578106,0 vs 6; 0 vs 8,-0.65,-1.19,-1.12,-1.62,-0.55,-0.47,-0.97,0.07,-0.42,0.56
+LOC413560,uncharacterized LOC413560,0 vs 6; 0 vs 8,0.94,1.66,2.8,3.08,0.73,1.86,2.14,1.13,1.42,-1.7
+LOC100576994,uncharacterized LOC100576994,0 vs 6; 0 vs 8,-0.4,-0.92,-1.02,-0.6,-0.51,-0.61,-0.19,-0.1,0.32,0.55
+LOC113219110,uncharacterized LOC113219110,0 vs 6; 0 vs 8,2.09,4.22,5.65,5.02,2.13,3.56,2.94,1.43,0.81,-2.92
+LOC411665,heparan sulfate 2-O-sulfotransferase pipe,0 vs 6; 0 vs 8,0.24,0.8,1.32,1.35,0.57,1.09,1.11,0.52,0.55,-0.92
+LOC726761,paired box protein Pax-5,0 vs 6; 0 vs 8,-0.36,-0.52,-1.12,-0.6,-0.16,-0.76,-0.25,-0.6,-0.09,0.38
+LOC724645,uncharacterized LOC724645,0 vs 6; 0 vs 8,1.25,2.31,2.79,2.73,1.06,1.54,1.48,0.48,0.42,-1.42
+LOC552005,uncharacterized LOC552005,0 vs 6; 0 vs 8,0.64,1.11,1.92,2.2,0.48,1.28,1.56,0.81,1.09,-1.04
+LOC100576614,probable ATP-dependent RNA helicase ddx42,0 vs 6; 0 vs 8,0.33,0.43,0.51,0.33,0.1,0.18,0,0.08,-0.1,-0.08
+LOC726648,fas apoptotic inhibitory molecule 1,0 vs 6; 0 vs 8,1.01,1.58,1.77,1.31,0.57,0.76,0.31,0.19,-0.26,-0.64
+LOC724563,uncharacterized LOC724563,0 vs 6; 0 vs 8,0.95,1.74,2.86,2.9,0.79,1.91,1.94,1.12,1.16,-1.91
+LOC724838,uncharacterized LOC724838,0 vs 6; 0 vs 8,0.45,0.99,1.42,1.67,0.53,0.97,1.22,0.44,0.68,-0.81
+LOC408650,inositol oxygenase,0 vs 6; 0 vs 8,0.72,2.3,3.26,3.62,1.58,2.54,2.9,0.96,1.32,-2.55
+LOC409293,uncharacterized LOC409293,0 vs 6; 0 vs 8,1.44,1.5,1.48,1.54,0.06,0.04,0.1,-0.02,0.03,-0.35
+LOC726391,carboxypeptidase B,0 vs 6; 0 vs 8,0.76,1.57,2.09,2.09,0.81,1.33,1.34,0.52,0.53,-1.04
+LOC551149,myosin-2 essential light chain,0 vs 6; 0 vs 8,0.11,0.2,0.4,0.67,0.1,0.3,0.57,0.2,0.47,-0.28
+LOC412979,dual specificity protein phosphatase MPK-4,0 vs 6; 0 vs 8,0.17,0.26,0.23,0.29,0.09,0.06,0.12,-0.03,0.04,0.03
+LOC725225,ninjurin-2,0 vs 6; 0 vs 8,0.48,0.65,0.75,1,0.17,0.26,0.51,0.1,0.35,-0.23
+LOC412829,arylsulfatase B,0 vs 6; 0 vs 8,0.77,2.08,3.02,2.79,1.32,2.25,2.02,0.94,0.71,-1.69
+LOC551372,uncharacterized LOC551372,0 vs 6; 0 vs 8,0.2,0.38,0.46,0.58,0.18,0.25,0.38,0.07,0.2,-0.04
+LOC551344,probable chitinase 2,0 vs 6; 0 vs 8,0.05,0.18,0.3,0.37,0.13,0.25,0.32,0.13,0.19,-0.16
+LOC411613,buffy,0 vs 6; 0 vs 8,0.53,0.66,1.22,1.24,0.14,0.69,0.72,0.56,0.58,-0.8
+LOC724835,uncharacterized LOC724835,0 vs 6; 0 vs 8,-0.57,-0.19,-0.66,-0.68,0.38,-0.09,-0.11,-0.47,-0.49,0.22
+LOC410838,ubiquitin-conjugating enzyme E2 R2,0 vs 6; 0 vs 8,0.21,0.47,0.58,0.72,0.26,0.37,0.51,0.11,0.25,-0.34
+LOC726823,pyrimidodiazepine synthase,0 vs 6; 0 vs 8,-0.09,-0.03,0.11,0.29,0.06,0.2,0.37,0.14,0.31,-0.02
+LOC102654161,uncharacterized LOC102654161,0 vs 6; 0 vs 8,0.83,1.05,1.88,1.8,0.22,1.05,0.96,0.83,0.74,-0.92
+LOC551650,syntenin-1,0 vs 6; 0 vs 8,0.26,0.3,0.49,0.57,0.04,0.23,0.31,0.19,0.27,-0.25
+LOC100576740,uncharacterized LOC100576740,0 vs 6; 0 vs 8,1.1,1.87,3.55,4.07,0.77,2.45,2.98,1.68,2.2,-2.4
+LOC100578957,uncharacterized LOC100578957,0 vs 6; 0 vs 8,-0.06,-0.31,-0.42,-0.78,-0.25,-0.36,-0.72,-0.1,-0.47,-0.23
+LOC412020,peroxisomal acyl-coenzyme A oxidase 3,0 vs 6; 0 vs 8,0.08,0.01,0.24,0.34,-0.07,0.16,0.26,0.23,0.33,-0.12
+LOC100576919,uncharacterized LOC100576919,0 vs 6; 0 vs 8,0.72,1.1,1.71,1.33,0.38,1,0.62,0.62,0.24,-0.92
+LOC413532,phospholipase A1,0 vs 6; 0 vs 8,0.24,1.17,1.05,1.45,0.93,0.81,1.21,-0.12,0.27,-0.5
+LOC726250,cilia- and flagella-associated protein 43-like,0 vs 6; 0 vs 8,0.42,0.91,1.58,2.16,0.49,1.16,1.73,0.67,1.25,-1.01
+LOC100577810,uncharacterized LOC100577810,0 vs 6; 0 vs 8,0.96,1.27,1.62,1.61,0.31,0.66,0.65,0.35,0.34,-0.76
+LOC102656563,uncharacterized LOC102656563,0 vs 6; 0 vs 8,0.91,1.81,2.44,2.1,0.89,1.53,1.19,0.63,0.29,-1.29
+LOC410733,"glucose dehydrogenase [FAD, quinone]",0 vs 6; 0 vs 8,0.17,0.47,0.85,1.16,0.3,0.68,0.98,0.38,0.69,-0.53
+LOC411188,L-lactate dehydrogenase,0 vs 6; 0 vs 8,-0.06,-0.04,0.29,0.81,0.02,0.36,0.87,0.34,0.85,-0.68
+LOC413489,deoxyribonuclease-2-alpha,0 vs 6; 0 vs 8,0.09,0.49,0.7,0.61,0.39,0.6,0.51,0.21,0.12,-0.23
+LOC410975,uncharacterized LOC410975,0 vs 6; 0 vs 8,0.49,1.16,1.51,1.45,0.67,1.01,0.95,0.35,0.29,-0.72
+LOC724408,ras-related GTP-binding protein A,0 vs 6; 0 vs 8,-0.09,-0.05,0.06,0.2,0.04,0.14,0.29,0.1,0.25,0.05
+LOC413427,uncharacterized LOC413427,0 vs 6; 0 vs 8,-0.37,-0.28,-0.62,-0.63,0.1,-0.25,-0.26,-0.34,-0.35,0.31
+LOC100576253,DNA ligase 1,0 vs 6; 0 vs 8,0.14,0.55,0.86,0.9,0.41,0.71,0.75,0.3,0.34,-0.57
+LOC726786,proton-coupled amino acid transporter 1,0 vs 8; 2 vs 8,-0.24,-0.33,-0.61,-0.42,-0.1,-0.37,-0.19,-0.27,-0.09,0.18
+Gfat2,glucosamine-fructose-6-phosphate aminotransferase 2,0 vs 8; 2 vs 8,0.15,0.33,0.71,0.87,0.18,0.56,0.72,0.38,0.54,-0.57
+LOC551197,probable cytochrome P450 6a13,0 vs 8; 2 vs 8,0.4,0.76,1.08,1.44,0.36,0.68,1.04,0.32,0.68,-0.72
+LOC413369,uncharacterized LOC413369,0 vs 8; 2 vs 8,0.24,0.44,1.09,1.23,0.2,0.86,0.99,0.65,0.79,-0.82
+LOC551964,UDP-N-acetylhexosamine pyrophosphorylase,0 vs 8; 2 vs 8,-0.09,0.01,0.26,0.38,0.09,0.35,0.47,0.26,0.38,-0.25
+LOC724568,calpain-C,0 vs 8; 2 vs 8,0.4,0.74,1.25,1.57,0.34,0.85,1.17,0.51,0.82,-0.97
+LOC552113,long-chain fatty acid transport protein 4,0 vs 8; 2 vs 8,0.15,0.4,0.71,0.76,0.25,0.56,0.61,0.31,0.36,-0.67
+LOC413024,carboxyl-terminal PDZ ligand of neuronal nitric oxide synthase protein-like,0 vs 8; 2 vs 8,-0.15,-0.05,-0.57,-0.58,0.1,-0.42,-0.44,-0.52,-0.54,0.48
+LOC410526,serine protease 42,0 vs 8; 2 vs 8,2.56,1.73,5.08,6.95,-0.82,2.52,4.39,3.34,5.21,-4.28
+LOC551435,protein disulfide-isomerase,0 vs 8; 2 vs 8,-0.03,-0.02,0.07,0.08,0.01,0.1,0.11,0.09,0.1,-0.08
+LOC113218725,uncharacterized LOC113218725,0 vs 8; 2 vs 8,-0.44,-0.85,-1.34,-1.66,-0.41,-0.9,-1.23,-0.5,-0.82,0.84
+LOC100577362,uncharacterized LOC100577362,0 vs 8; 2 vs 8,-0.95,-1,-1.5,-1.49,-0.05,-0.55,-0.54,-0.5,-0.49,1.15
+LOC100579005,uncharacterized LOC100579005,0 vs 8; 2 vs 8,-0.45,0.16,-0.59,-0.41,0.6,-0.14,0.04,-0.74,-0.57,0.31
+CPR11,cuticular protein 11,0 vs 8; 2 vs 8,0.68,0.94,2.7,3.27,0.26,2.02,2.59,1.76,2.33,-1.88
+TpnCIIIa,troponin C type IIIa,0 vs 8; 2 vs 8,-0.15,0.02,-0.24,-0.19,0.17,-0.09,-0.04,-0.26,-0.21,0.09
+LOC100576132,uncharacterized LOC100576132,0 vs 8; 2 vs 8,-0.16,-0.26,-0.4,-0.6,-0.11,-0.25,-0.44,-0.14,-0.33,0.52
+LOC724583,uncharacterized LOC724583,0 vs 8; 2 vs 8,0.06,0.29,0.66,1.04,0.24,0.6,0.98,0.37,0.74,-0.49
+LOC551938,elongation of very long chain fatty acids protein AAEL008004,0 vs 8; 2 vs 8,0.45,0.29,0.66,0.93,-0.16,0.22,0.48,0.38,0.64,-0.5
+LOC408696,uncharacterized LOC408696,0 vs 8; 2 vs 8,0.08,0.04,-0.22,-0.08,-0.04,-0.3,-0.16,-0.25,-0.11,0.18
+LOC410227,inactive hydroxysteroid dehydrogenase-like protein 1,0 vs 8; 2 vs 8,0.07,0.25,0.82,0.77,0.18,0.75,0.71,0.57,0.52,-0.67
+LOC550724,3-hydroxy-3-methylglutaryl-coenzyme A reductase,0 vs 8; 2 vs 8,0.15,0.05,0.36,0.4,-0.1,0.21,0.25,0.31,0.35,-0.34
+LOC413583,uncharacterized LOC413583,0 vs 8; 2 vs 8,0.21,0.31,0.62,0.52,0.11,0.41,0.31,0.31,0.2,-0.47
+LOC725204,tyrosine aminotransferase,0 vs 8; 2 vs 8,-0.19,0.01,-0.55,-0.5,0.19,-0.37,-0.32,-0.56,-0.51,0.51
+LOC724121,uncharacterized LOC724121,0 vs 8; 2 vs 8,0.17,0.01,-0.26,-0.4,-0.16,-0.43,-0.57,-0.27,-0.41,0.28
+LOC409204,phenoloxidase-activating factor 2,0 vs 8; 2 vs 8,-0.39,-1.05,-0.6,-1.3,-0.66,-0.2,-0.9,0.46,-0.24,0.49
+LOC552277,class E basic helix-loop-helix protein 22,0 vs 8; 2 vs 8,-0.26,-0.2,-0.72,-0.67,0.05,-0.46,-0.42,-0.52,-0.47,0.56
+LOC409816,MORN repeat-containing protein 4 homolog,0 vs 8; 2 vs 8,-0.04,-0.37,-0.12,-0.08,-0.33,-0.08,-0.05,0.25,0.29,0.22
+LOC409065,TAR DNA-binding protein 43,0 vs 8; 2 vs 8,0.09,-0.01,-0.15,-0.33,-0.1,-0.25,-0.42,-0.14,-0.32,0.17
+LOC725541,protein spaetzle 5,0 vs 8; 2 vs 8,0.67,0.75,2.91,4.04,0.08,2.24,3.37,2.16,3.29,-2.86
+LOC552578,uncharacterized LOC552578,0 vs 8; 2 vs 8,-0.16,-0.37,-0.79,-0.91,-0.2,-0.63,-0.74,-0.43,-0.54,0.8
+LOC102654355,uncharacterized LOC102654355,0 vs 8; 2 vs 8,0.64,1.11,3.14,4.56,0.47,2.5,3.92,2.03,3.45,-2.73
+LOC100577847,uncharacterized LOC100577847,0 vs 8; 2 vs 8,0.78,0.91,1.96,2.44,0.13,1.18,1.65,1.05,1.53,-1.7
+LOC551970,dual oxidase,0 vs 8; 2 vs 8,0.65,0.92,1.93,2.12,0.27,1.28,1.47,1.01,1.2,-1.35
+LOC551458,leucine-rich repeat-containing protein 20,0 vs 8; 2 vs 8,0.06,0.12,0.52,0.65,0.05,0.46,0.58,0.4,0.53,-0.38
+LOC410744,"glucose dehydrogenase [FAD, quinone]",0 vs 8; 2 vs 8,2.09,0.99,3.39,4.92,-1.11,1.29,2.82,2.4,3.93,-2.42
+LOC113219221,esterase E4-like,0 vs 8; 2 vs 8,0.62,1.53,1.61,1.93,0.91,0.99,1.31,0.08,0.39,-1.83
+LOC552459,glycine-rich cell wall structural protein,0 vs 8; 2 vs 8,0.05,0.79,0.41,0.31,0.74,0.36,0.27,-0.38,-0.48,-0.5
+LOC412748,ATP-binding cassette sub-family G member 1,0 vs 8; 2 vs 8,0.2,0.3,0.89,1.26,0.1,0.7,1.06,0.59,0.95,-0.85
+LOC408470,NAD kinase,0 vs 8; 2 vs 8,0.47,0.1,0.42,0.64,-0.37,-0.05,0.16,0.32,0.54,-0.28
+LOC100578699,uncharacterized LOC100578699,0 vs 8; 2 vs 8,0.47,0.38,1.83,2.42,-0.09,1.36,1.95,1.45,2.03,-1.85
+LOC410006,uncharacterized LOC410006,0 vs 8; 2 vs 8,-0.09,-0.17,-0.4,-0.38,-0.09,-0.31,-0.3,-0.22,-0.21,0.46
+LOC100578664,organic solute transporter alpha-like protein,0 vs 8; 2 vs 8,0.85,0.33,1.27,2.2,-0.51,0.43,1.35,0.94,1.87,-0.77
+LOC413054,myeloperoxidase,0 vs 8; 2 vs 8,0.48,0.16,1.26,2.03,-0.32,0.79,1.55,1.11,1.87,-1.21
+Cat,catalase,0 vs 8; 2 vs 8,-0.12,-0.28,-0.66,-0.62,-0.16,-0.54,-0.5,-0.37,-0.34,0.5
+LOC102656919,uncharacterized LOC102656919,0 vs 8; 2 vs 8,-0.36,-0.32,-1.41,-0.95,0.04,-1.05,-0.59,-1.09,-0.63,1.49
+LOC412316,sodium/potassium/calcium exchanger 3,0 vs 8; 2 vs 8,0.14,0.15,0.51,0.55,0,0.36,0.41,0.36,0.4,-0.49
+LOC408525,neuronal acetylcholine receptor subunit alpha-10,0 vs 8; 2 vs 8,-0.08,-0.11,0.02,0.31,-0.03,0.1,0.39,0.13,0.42,-0.07
+LOC551232,probable nuclear hormone receptor HR38,0 vs 8; 2 vs 8,0.75,0.76,1.22,1.57,0.02,0.48,0.82,0.46,0.81,-0.83
+LOC413190,calcium-dependent protein kinase 4,0 vs 8; 2 vs 8,-0.18,0.03,-0.37,-0.53,0.21,-0.19,-0.35,-0.4,-0.56,0.25
+LOC409598,uncharacterized LOC409598,0 vs 8; 2 vs 8,0.94,1.66,2.76,2.5,0.72,1.81,1.56,1.09,0.84,-2.13
+LOC724585,uncharacterized LOC724585,0 vs 8; 2 vs 8,-0.02,-0.05,0.03,0.15,-0.04,0.05,0.16,0.09,0.2,-0.02
+LOC102653939,uncharacterized LOC102653939,0 vs 8; 2 vs 8,2.23,1.88,2.88,3.46,-0.35,0.65,1.23,1,1.58,-1.86
+LOC725361,A disintegrin and metalloproteinase with thrombospondin motifs adt-1,0 vs 8; 2 vs 8,0.16,0.12,0.33,0.31,-0.04,0.18,0.15,0.22,0.19,-0.32
+LOC100577307,uncharacterized LOC100577307,0 vs 8; 2 vs 8,0.27,0.96,2.4,2.51,0.69,2.13,2.25,1.44,1.55,-2.29
+LOC102656611,glycine-rich cell wall structural protein-like,0 vs 8; 2 vs 8,1.26,2.41,4.5,5.37,1.15,3.25,4.11,2.09,2.96,-3.62
+LOC409740,alpha-tocopherol transfer protein-like,0 vs 8; 2 vs 8,1.21,0.02,3.64,5.71,-1.19,2.43,4.5,3.62,5.69,-3.77
+LOC726458,ETS-like protein pointed,0 vs 8; 2 vs 8,-0.05,-0.19,-0.23,-0.31,-0.14,-0.18,-0.26,-0.04,-0.12,0.3
+LOC727578,uncharacterized LOC727578,0 vs 8; 2 vs 8,0.13,-0.02,1,1.29,-0.15,0.87,1.17,1.02,1.31,-0.95
+LOC411692,elongation of very long chain fatty acids protein 4,0 vs 8; 2 vs 8,1.1,1.85,3.32,3.55,0.74,2.22,2.44,1.47,1.7,-2.43
+LOC107965043,uncharacterized LOC107965043,0 vs 8; 2 vs 8,-0.11,-0.14,0.25,0.17,-0.03,0.36,0.28,0.39,0.31,-0.18
+LOC100577772,uncharacterized LOC100577772,0 vs 8; 2 vs 8,0.3,-0.32,-0.48,-0.62,-0.62,-0.78,-0.91,-0.16,-0.3,0.42
+LOC412088,mucin-12,0 vs 8; 2 vs 8,0.08,0.42,0.04,0.07,0.35,-0.04,-0.01,-0.38,-0.36,-0.19
+LOC725899,alpha-N-acetylgalactosaminidase,0 vs 8; 2 vs 8,0.1,0.12,0.45,0.84,0.02,0.34,0.74,0.32,0.72,-0.38
+LOC100576284,uncharacterized LOC100576284,0 vs 8; 2 vs 8,3.44,2.48,5.96,7.59,-0.95,2.53,4.15,3.48,5.11,-4.82
+LOC726658,uncharacterized LOC726658,0 vs 8; 2 vs 8,0.11,0.71,1.24,1.48,0.6,1.13,1.38,0.53,0.77,-1.43
+LOC100576488,uncharacterized LOC100576488,0 vs 8; 2 vs 8,0.53,0.28,1.97,2.74,-0.25,1.44,2.2,1.69,2.45,-1.89
+Jhe,juvenile hormone esterase,0 vs 8; 2 vs 8,0.19,0.16,0.32,0.33,-0.03,0.13,0.15,0.16,0.18,-0.36
+LOC725289,low-density lipoprotein receptor-related protein 2,0 vs 8; 2 vs 8,-0.16,-0.1,-0.38,-0.32,0.05,-0.22,-0.17,-0.28,-0.22,0.31
+LOC725366,anosmin-1,0 vs 8; 2 vs 8,0.17,0.25,0.51,0.53,0.08,0.33,0.35,0.26,0.28,-0.37
+LOC552261,EF-hand domain-containing protein D2 homolog,0 vs 8; 2 vs 8,0.03,0.13,0.3,-0.1,0.1,0.27,-0.13,0.17,-0.23,-0.24
+LOC551363,vesicle transport through interaction with t-SNAREs homolog 1A,0 vs 8; 2 vs 8,0.18,0.13,0.22,0.24,-0.05,0.04,0.06,0.08,0.1,-0.21
+Pkc,protein kinase C,0 vs 8; 2 vs 8,-0.05,0.03,-0.15,-0.11,0.08,-0.1,-0.06,-0.18,-0.14,0.07
+LOC552672,proclotting enzyme,0 vs 8; 2 vs 8,0.23,0.73,0.27,0.13,0.5,0.04,-0.1,-0.47,-0.6,-0.15
+LOC552303,RNA-binding protein cabeza,0 vs 8; 2 vs 8,-0.11,-0.51,-0.68,-0.96,-0.39,-0.57,-0.84,-0.18,-0.45,0.7
+LOC410402,serine proteinase stubble,0 vs 8; 2 vs 8,0.73,1.42,2.82,3.12,0.69,2.1,2.39,1.41,1.7,-2.02
+LOC725539,phosphoacetylglucosamine mutase,0 vs 8; 2 vs 8,-0.09,0.06,0.31,0.22,0.15,0.4,0.31,0.25,0.16,-0.33
+LOC409822,enhancer of split m7 protein,0 vs 8; 2 vs 8,-0.17,-0,-0.24,0.15,0.16,-0.08,0.31,-0.24,0.15,0.26
+LOC551761,alpha-tocopherol transfer protein-like,0 vs 8; 2 vs 8,0.28,0.01,0.65,1.31,-0.27,0.36,1.03,0.64,1.3,-0.58
+LOC725791,uncharacterized LOC725791,0 vs 8; 2 vs 8,-0.07,-0.14,-0.4,-0.71,-0.07,-0.33,-0.64,-0.26,-0.57,0.5
+LOC100578665,uncharacterized LOC100578665,0 vs 8; 2 vs 8,-0.11,-0.28,-0.18,-0.32,-0.17,-0.06,-0.2,0.11,-0.03,0.14
+LOC552276,uncharacterized LOC552276,0 vs 8; 2 vs 8,0.49,0.17,1.13,1.92,-0.32,0.64,1.43,0.96,1.75,-0.9
+sGCbeta-3,soluble guanylyl cyclase beta-3,0 vs 8; 2 vs 8,0.08,-0.11,-0.19,-0.31,-0.18,-0.27,-0.38,-0.09,-0.2,0.08
+LOC410894,chymotrypsin-1,0 vs 8; 2 vs 8,0.05,-0.59,-1.17,-1.34,-0.65,-1.22,-1.39,-0.58,-0.75,1.04
+LOC100578770,uncharacterized LOC100578770,0 vs 8; 2 vs 8,0.68,0.93,2.46,3.28,0.24,1.77,2.6,1.53,2.36,-1.99
+LOC413048,bifunctional 3'-phosphoadenosine 5'-phosphosulfate synthase 2,0 vs 8; 2 vs 8,0.06,-0.11,0.79,1.38,-0.17,0.73,1.32,0.9,1.49,-0.84
+LOC410293,collectin-11,0 vs 8; 2 vs 8,0.44,0.18,0.9,1.5,-0.26,0.46,1.06,0.72,1.31,-0.96
+LOC408896,semaphorin-2A,0 vs 8; 2 vs 8,-0.24,-0.22,-0.74,-0.8,0.02,-0.5,-0.56,-0.52,-0.58,0.65
+LOC411187,L-lactate dehydrogenase,0 vs 8; 2 vs 8,0.01,-0.47,-0.04,0.21,-0.48,-0.05,0.2,0.43,0.68,-0.05
+LOC107964315,uncharacterized LOC107964315,0 vs 8; 2 vs 8,0.3,0.2,0.23,0.08,-0.1,-0.07,-0.22,0.03,-0.11,-0.15
+LOC410177,phosphatidylglycerophosphatase and protein-tyrosine phosphatase 1,0 vs 8; 2 vs 8,-0.25,-0.02,0.12,0.42,0.23,0.37,0.67,0.14,0.44,-0.1
+LOC726733,cysteine-rich protein 1,0 vs 8; 2 vs 8,0.02,0.2,-0.09,-0.08,0.18,-0.11,-0.1,-0.28,-0.28,0.1
+LOC408864,waprin-Phi1,0 vs 8; 2 vs 8,0.12,0.13,0.05,0.03,0.01,-0.06,-0.09,-0.07,-0.1,-0.13
+Burs,bursicon subunit alpha,0 vs 8; 2 vs 8,-0.14,0.21,0,0.1,0.34,0.14,0.23,-0.21,-0.11,-0.09
+LOC102655429,proline-rich protein 36-like,0 vs 8; 2 vs 8,4.55,1.9,8.82,11.7,-2.64,4.27,7.16,6.91,9.8,-7.42
+LOC725627,clotting factor B,0 vs 8; 2 vs 8,0.47,0.18,1.32,2.19,-0.29,0.85,1.72,1.15,2.02,-1.21
+LOC551553,facilitated trehalose transporter Tret1,0 vs 8; 2 vs 8,0.35,0.43,0.91,1.3,0.08,0.56,0.95,0.47,0.87,-0.82
+LOC552689,estradiol 17-beta-dehydrogenase 11,0 vs 8; 2 vs 8,0.13,0.36,0.99,1,0.23,0.86,0.86,0.63,0.63,-0.82
+LOC113218599,uncharacterized LOC113218599,0 vs 8; 2 vs 8,0.97,-0.03,2.12,3,-0.99,1.15,2.04,2.14,3.03,-1.51
+LOC413305,lysophospholipid acyltransferase 7,0 vs 8; 2 vs 8,-0.08,0.05,0.21,0.41,0.13,0.29,0.49,0.16,0.36,-0.27
+HEX70b,hexamerin 70b,0 vs 8; 2 vs 8,0.9,3.78,5.13,6.52,2.88,4.23,5.62,1.35,2.73,-4.6
+LOC102653784,uncharacterized LOC102653784,0 vs 8; 2 vs 8,1.75,0.53,4.18,6.53,-1.22,2.43,4.78,3.65,6,-3.67
+LOC552832,glycine N-methyltransferase,0 vs 8; 2 vs 8,0.15,0.07,0.21,0.53,-0.07,0.07,0.38,0.14,0.46,-0.21
+LOC408695,uncharacterized LOC408695,0 vs 8; 2 vs 8,0.09,0.09,-0.29,-0.29,0,-0.38,-0.38,-0.38,-0.38,0.37
+LOC100578515,uncharacterized LOC100578515,0 vs 8; 2 vs 8,0.14,0.09,0.14,0.37,-0.05,0.01,0.24,0.05,0.28,-0.07
+LOC100578824,zinc finger protein ZIC 4,0 vs 8; 2 vs 8,-0.25,-0.17,-0.53,-0.51,0.09,-0.27,-0.26,-0.36,-0.35,0.55
+LOC102654656,uncharacterized LOC102654656,0 vs 8; 2 vs 8,1.41,1.33,4.01,4.87,-0.09,2.6,3.46,2.69,3.55,-3.47
+LOC551515,protein real-time,0 vs 8; 2 vs 8,0.11,0.11,0.17,0.15,0,0.06,0.04,0.06,0.04,-0.14
+LOC100576225,uncharacterized LOC100576225,0 vs 8; 2 vs 8,1.43,-0.06,2.57,4.14,-1.5,1.14,2.71,2.64,4.2,-2.17
+LOC102656294,uncharacterized LOC102656294,0 vs 8; 2 vs 8,0.88,-0.12,1.32,2.7,-1,0.44,1.82,1.44,2.83,-1.27
+LOC113219054,uncharacterized LOC113219054,0 vs 8; 2 vs 8,1.42,1.08,3.24,3.72,-0.34,1.82,2.3,2.15,2.64,-2.82
+LOC724464,cuticular protein,0 vs 8; 2 vs 8,1.17,1.08,3.71,4.79,-0.09,2.54,3.62,2.63,3.71,-3.83
+LOC552667,protein charybde,0 vs 8; 2 vs 8,0.11,0.13,0.16,0.31,0.02,0.05,0.2,0.03,0.18,-0.11
+LOC411358,trypsin-1,0 vs 8; 2 vs 8,3.35,3.14,6.4,7.19,-0.21,3.05,3.84,3.26,4.05,-4.39
+LOC102655476,hornerin,0 vs 8; 2 vs 8,5.08,5.66,9.11,10.32,0.58,4.04,5.25,3.46,4.67,-6.6
+LOC408972,muscle-specific protein 20,0 vs 8; 2 vs 8,-0.04,-0.04,-0.45,-0.5,0.01,-0.41,-0.46,-0.42,-0.46,0.41
+LOC100578514,keratinocyte proline-rich protein,0 vs 8; 2 vs 8,1.28,0.4,2.7,4.46,-0.88,1.41,3.18,2.3,4.07,-2.69
+LOC726997,uncharacterized LOC726997,0 vs 8; 2 vs 8,0.19,0.21,-0.08,-0.29,0.01,-0.28,-0.49,-0.29,-0.5,0.37
+LOC100576748,uncharacterized LOC100576748,0 vs 8; 2 vs 8,4.02,-1.27,4.89,8.39,-5.29,0.87,4.37,6.16,9.66,-3.41
+LOC102656029,homeobox protein Hmx,0 vs 8; 2 vs 8,-0.02,-0.04,-0.02,-0.09,-0.02,0,-0.07,0.02,-0.05,-0.04
+Y-h,yellow-h,0 vs 8; 2 vs 8,1.02,0.11,2.22,3.58,-0.91,1.2,2.56,2.11,3.47,-2.1
+LOC413098,"glucose dehydrogenase [FAD, quinone]",0 vs 8; 2 vs 8,0.05,0.01,-0.45,-0.61,-0.04,-0.5,-0.66,-0.46,-0.62,0.54
+LOC100578334,transcription factor 21,0 vs 8; 2 vs 8,-0.08,-0.26,-0.31,-0.29,-0.18,-0.22,-0.21,-0.04,-0.03,0.25
+LOC725089,cuticular protein,0 vs 8; 2 vs 8,1.96,-0.08,3.78,6.09,-2.03,1.82,4.13,3.85,6.17,-3.64
+LOC100578730,uncharacterized LOC100578730,0 vs 8; 2 vs 8,1.88,-0.98,2.91,5.31,-2.86,1.03,3.43,3.89,6.28,-2.53
+LOC107965449,ras-related protein RabJ,0 vs 8; 2 vs 8,0.02,0.2,0.23,0.25,0.18,0.2,0.23,0.03,0.05,-0.25
+LOC410464,protein escargot,0 vs 8; 2 vs 8,0.1,0.17,0.22,0.15,0.07,0.12,0.05,0.05,-0.02,-0.16
+LOC102656548,nucleoside diphosphate kinase homolog 5,0 vs 8; 2 vs 8,-0.08,-0.03,-0.54,-0.45,0.05,-0.46,-0.37,-0.51,-0.42,0.6
+LOC409663,lysozyme,0 vs 8; 2 vs 8,-0.12,-0.05,-0.32,-0.31,0.07,-0.19,-0.19,-0.26,-0.26,0.36
+LOC102655707,uncharacterized LOC102655707,0 vs 8; 2 vs 8,-0.17,0.08,-0.52,-0.44,0.25,-0.35,-0.27,-0.6,-0.52,0.61
+LOC551890,probable serine incorporator,0 vs 8; 2 vs 8,0.09,0.16,0.26,0.48,0.07,0.17,0.39,0.1,0.32,-0.23
+LOC725770,phosphatidylinositol 3-kinase catalytic subunit type 3,0 vs 8; 2 vs 8,-0.07,0.15,0.27,0.37,0.22,0.34,0.44,0.12,0.22,-0.24
+LOC408280,cell surface glycoprotein 1,0 vs 8; 2 vs 8,0.08,0.58,0.06,0.16,0.49,-0.02,0.08,-0.51,-0.42,0.15
+Cpap3-c,cuticular protein analogous to peritrophins 3-C,0 vs 8; 2 vs 8,0.32,0.04,0.94,1.51,-0.29,0.62,1.19,0.9,1.47,-0.86
+LOC410189,5'-nucleotidase domain-containing protein 3,0 vs 8; 2 vs 8,0.01,-0.1,-0.05,-0.28,-0.11,-0.06,-0.29,0.05,-0.19,0.05
+LOC102656198,serine/arginine repetitive matrix protein 1-like,0 vs 8; 2 vs 8,1.16,1.27,3.99,4.82,0.11,2.84,3.66,2.72,3.55,-3.56
+LOC100577291,uncharacterized LOC100577291,0 vs 8; 2 vs 8,0.02,0.04,-0.36,-0.37,0.02,-0.38,-0.39,-0.4,-0.41,0.62
+LOC726639,oxidized low-density lipoprotein receptor 1,0 vs 8; 2 vs 8,-0.09,-0.13,0.52,1.05,-0.04,0.61,1.14,0.65,1.18,-0.59
+LOC100578587,putative uncharacterized protein DDB_G0282133,0 vs 8; 2 vs 8,2.48,0.53,5.02,6.33,-1.95,2.54,3.86,4.49,5.81,-4.6
+LOC552191,endoplasmic reticulum resident protein 44,0 vs 8; 2 vs 8,0.01,0.08,0.19,0.18,0.06,0.17,0.16,0.11,0.1,-0.22
+LOC409870,minor histocompatibility antigen H13,0 vs 8; 2 vs 8,-0.03,-0.08,0.02,0.13,-0.05,0.05,0.16,0.1,0.22,-0.14
+LOC100577783,"protein Skeletor, isoforms B/C",0 vs 8; 2 vs 8,0.35,-0.17,1.04,2.26,-0.52,0.69,1.91,1.21,2.43,-1.1
+Fibroin3,silk fibroin 3,0 vs 8; 2 vs 8,0.2,0.54,0.66,0.22,0.34,0.46,0.02,0.12,-0.32,-0.33
+Usp,ultraspiracle,0 vs 8; 2 vs 8,0.24,0.12,0.2,0.14,-0.12,-0.04,-0.1,0.08,0.02,-0.22
+LOC102654783,uncharacterized LOC102654783,0 vs 8; 2 vs 8,-0.17,-0.03,0.58,0.65,0.14,0.74,0.82,0.6,0.68,-0.61
+LOC102655983,sodium-independent sulfate anion transporter,0 vs 8; 2 vs 8,0.01,0.08,0.07,-0.01,0.07,0.06,-0.02,-0,-0.08,-0.08
+LOC409485,cytoplasmic aconitate hydratase,0 vs 8; 2 vs 8,0.03,0.06,0.34,0.37,0.03,0.31,0.34,0.28,0.31,-0.43
+LOC413502,protein Wnt-1,0 vs 8; 2 vs 8,0.03,0.07,-0.19,-0.36,0.03,-0.23,-0.39,-0.26,-0.42,0.31
+LOC724822,glucose-fructose oxidoreductase domain-containing protein 2,0 vs 8; 2 vs 8,0,0.06,0.06,0.04,0.06,0.06,0.04,-0,-0.03,-0.1
+LOC552217,uncharacterized LOC552217,0 vs 8; 2 vs 8,0.62,-0.1,1.86,3.61,-0.71,1.24,2.99,1.96,3.7,-1.86
+LOC725396,THO complex subunit 4,0 vs 8; 2 vs 8,-0.02,-0.16,-0.37,-0.51,-0.15,-0.35,-0.49,-0.21,-0.34,0.35
+LOC410801,cathepsin L1,0 vs 8; 2 vs 8,-0.35,-0.18,-0.59,-0.35,0.16,-0.25,-0,-0.41,-0.16,0.63
+LOC725903,zinc finger protein 512B,0 vs 8; 2 vs 8,1.26,2.56,5.2,6.12,1.3,3.94,4.85,2.64,3.56,-4.44
+LOC726162,homeobox protein goosecoid,0 vs 8; 2 vs 8,0.1,0.14,-0.05,-0.15,0.04,-0.15,-0.25,-0.19,-0.29,0.37
+LOC100578001,uncharacterized LOC100578001,0 vs 8; 2 vs 8,0.2,0.08,-0.43,-0.29,-0.12,-0.63,-0.48,-0.51,-0.37,0.72
+LOC102653932,uncharacterized LOC102653932,0 vs 8; 2 vs 8,0.1,0.51,0.75,1.55,0.41,0.65,1.45,0.24,1.04,-0.82
+LOC551872,porphobilinogen deaminase,0 vs 8; 2 vs 8,0.15,0.1,0.18,0.27,-0.04,0.03,0.13,0.07,0.17,-0.17
+LOC100577222,uncharacterized LOC100577222,0 vs 8; 2 vs 8,-0.06,-0.09,-0.03,0.3,-0.03,0.03,0.36,0.05,0.39,0.28
+CPR4,cuticular protein 4,0 vs 8; 2 vs 8,0.55,-0.09,1.56,3.41,-0.64,1.01,2.86,1.65,3.5,-1.62
+LOC408622,protein henna,0 vs 8; 2 vs 8,-0.18,0.08,-0.49,-0.49,0.26,-0.31,-0.31,-0.57,-0.57,0.56
+LOC102656621,uncharacterized LOC102656621,0 vs 8; 2 vs 8,0.12,-0.08,-0.29,-0.16,-0.2,-0.41,-0.28,-0.21,-0.08,0.59
+LOC551802,radial spoke head protein 6 homolog A,0 vs 8; 2 vs 8,0.31,-0.03,0.77,0.79,-0.35,0.46,0.47,0.81,0.82,-0.78
+LOC727081,uncharacterized LOC727081,0 vs 8; 2 vs 8,-0.08,-0.21,-0.57,-0.51,-0.13,-0.5,-0.43,-0.37,-0.3,0.68
+LOC725936,titin homolog,0 vs 8; 2 vs 8,0.11,0.27,-0,0,0.17,-0.11,-0.1,-0.27,-0.27,0.1
+LOC552736,phosphoglycerate mutase 2,0 vs 8; 2 vs 8,0.01,0.02,0.21,0.32,0,0.2,0.3,0.19,0.3,-0.22
+LOC550659,adiponectin receptor protein,0 vs 8; 2 vs 8,0.06,0.07,0.05,0.01,0.01,-0,-0.04,-0.02,-0.06,-0.09
+LOC412630,scavenger receptor class B member 1,0 vs 8; 2 vs 8,0.13,0.25,0.52,0.1,0.12,0.39,-0.03,0.27,-0.15,-0.7
+LOC102655676,uncharacterized LOC102655676,0 vs 8; 2 vs 8,-0.16,-0.43,-0.39,-0.31,-0.27,-0.23,-0.15,0.04,0.12,0.58
+nAChRb1,nicotinic acetylcholine receptor beta1 subunit,0 vs 8; 2 vs 8,0.27,0.41,-0.23,-0.05,0.14,-0.5,-0.32,-0.64,-0.46,0.31
+LOC100577574,leucine-rich repeat-containing protein 4C,0 vs 8; 2 vs 8,-0.06,-0.05,0.02,0.05,0.01,0.08,0.11,0.07,0.1,-0.05
+LOC727010,circadian clock-controlled protein,0 vs 8; 2 vs 8,0.26,-0.12,0.9,1.86,-0.39,0.64,1.6,1.03,1.98,-0.99
+LOC551711,kinesin A,0 vs 8; 2 vs 8,-0.23,-0.18,-0.5,-0.69,0.05,-0.26,-0.45,-0.31,-0.5,0.54
+LOC100576271,dentin sialophosphoprotein,0 vs 8; 2 vs 8,-0.15,-0.12,-0.28,-0.12,0.03,-0.13,0.03,-0.16,0,0.29
+TyHyd,tyrosine hydroxylase,0 vs 8; 2 vs 8,1.11,-0.31,1.87,3.57,-1.42,0.77,2.46,2.18,3.88,-1.94
+LOC552651,stress response protein NST1,0 vs 8; 2 vs 8,0.28,0.12,-0.22,-0.09,-0.16,-0.5,-0.37,-0.34,-0.2,0.4
+LOC724747,otoferlin,0 vs 8; 2 vs 8,0.35,0.14,0.23,0.23,-0.21,-0.12,-0.12,0.09,0.09,-0.36
+LOC724740,fork head domain transcription factor slp2,0 vs 8; 2 vs 8,-0.03,0.09,-0.19,-0.08,0.11,-0.16,-0.06,-0.27,-0.17,0.24
+LOC550806,coatomer subunit alpha,0 vs 8; 2 vs 8,0.15,0.13,0.14,0.09,-0.01,-0.01,-0.06,0,-0.04,-0.14
+LOC726180,transcription factor Sox-19b-like,0 vs 8; 2 vs 8,-0.02,-0.04,-0.2,-0.29,-0.02,-0.18,-0.28,-0.16,-0.25,0.33
+LOC410282,uncharacterized LOC410282,0 vs 8; 2 vs 8,0.34,0.24,-0.44,-0.62,-0.09,-0.77,-0.96,-0.68,-0.86,0.88
+Apime-ASTA,allatostatin A,0 vs 8; 2 vs 8,-0.07,-0.03,-0.46,-0.46,0.04,-0.39,-0.39,-0.43,-0.43,0.5
+LOC413550,neuropeptide CCHamide-2 receptor,0 vs 8; 2 vs 8,0.12,0.18,-0.01,-0.16,0.06,-0.12,-0.28,-0.18,-0.34,0.13
+LOC411677,mitochondrial pyruvate carrier 1,0 vs 8; 2 vs 8,-0.16,-0.23,-0.3,-0.12,-0.07,-0.13,0.04,-0.07,0.11,0.31
+LOC410743,"glucose dehydrogenase [FAD, quinone]",0 vs 8; 2 vs 8,0.14,0.35,-0.29,-0.9,0.21,-0.44,-1.05,-0.64,-1.26,0.39
+LOC100576795,uncharacterized protein YJR142W,0 vs 8; 2 vs 8,0.42,0.33,0.49,0.21,-0.09,0.07,-0.21,0.16,-0.12,-0.5
+LOC414021,uncharacterized LOC414021,0 vs 8; 2 vs 8,0.09,0.39,0.67,0.51,0.29,0.58,0.42,0.28,0.12,-0.8
+LOC411330,uncharacterized LOC411330,0 vs 8; 2 vs 8,-0.01,0.34,-0.36,-0.46,0.35,-0.35,-0.46,-0.7,-0.8,0.65
+LOC102656505,uncharacterized LOC102656505,0 vs 8; 2 vs 8,0.05,0.26,-0.03,0.22,0.21,-0.08,0.17,-0.29,-0.04,0.24
+LOC552144,major facilitator superfamily domain-containing protein 8,0 vs 8; 2 vs 8,0.03,0.13,0.19,0.24,0.1,0.15,0.2,0.05,0.1,-0.2
+LOC100578733,nose resistant to fluoxetine protein 6,0 vs 8; 2 vs 8,-0.63,-0.79,-0.76,-0.45,-0.16,-0.13,0.18,0.03,0.34,0.37
+LOC412341,alpha-methylacyl-CoA racemase,0 vs 8; 2 vs 8,-0.09,-0.07,-0.12,0.02,0.02,-0.03,0.11,-0.05,0.09,0.11
+LOC725305,uncharacterized LOC725305,0 vs 8; 4 vs 8,0.82,1.8,2.42,2.68,0.98,1.6,1.86,0.62,0.88,-1.74
+LOC409646,cationic amino acid transporter 3,0 vs 8; 4 vs 8,0.75,0.29,0.72,0.77,-0.46,-0.03,0.02,0.43,0.48,-0.12
+LOC409109,mycosubtilin synthase subunit C,2 vs 8; 4 vs 8,-0.02,-0.42,0,0.25,-0.4,0.02,0.27,0.43,0.68,-0.43
+LOC725007,spermine oxidase,2 vs 8; 4 vs 8,-0.19,-1.18,0.95,1.05,-0.99,1.14,1.24,2.13,2.23,-1.9
+LOC409553,pancreatic triacylglycerol lipase,2 vs 8; 4 vs 8,0.16,0.32,0.57,1.45,0.17,0.41,1.29,0.24,1.12,-0.89
+LOC413056,uncharacterized LOC413056,2 vs 8; 4 vs 8,-0.28,-1.53,0.47,2,-1.25,0.75,2.28,2,3.53,-0.95
+LOC552028,sodium-coupled neutral amino acid transporter 9 homolog,2 vs 8; 4 vs 8,-0.15,-0.39,-0.43,-0.28,-0.24,-0.28,-0.13,-0.04,0.11,0.23
+LOC411670,LON peptidase N-terminal domain and RING finger protein 1,2 vs 8; 4 vs 8,-0.03,0.37,0.21,0.29,0.4,0.24,0.32,-0.17,-0.08,-0.51
+CPR1,cuticular protein 1,2 vs 8; 4 vs 8,0.39,-1.68,1.5,3.96,-2.08,1.11,3.57,3.18,5.64,-2.07
+LOC408409,UPF0430 protein CG31712,0 vs 2,0.59,0.27,0.4,0.15,-0.32,-0.18,-0.43,0.14,-0.11,0.23
+LOC412601,mothers against decapentaplegic homolog 3,0 vs 2,0.54,0.49,0.51,0.57,-0.05,-0.03,0.04,0.02,0.08,-0.07
+LOC100578464,uncharacterized LOC100578464,0 vs 2,0.57,0.46,0.29,0.57,-0.11,-0.28,-0,-0.17,0.1,0.49
+LOC113218943,uncharacterized LOC113218943,0 vs 2,1.19,0.67,1.11,0.96,-0.51,-0.07,-0.23,0.44,0.28,-0.09
+LOC724570,mpv17-like protein 2,0 vs 2,0.89,0.05,0.5,0.41,-0.84,-0.4,-0.48,0.44,0.36,0.19
+LOC107964339,short transient receptor potential channel 6-like,0 vs 2,0.79,0.2,0.42,0.48,-0.58,-0.36,-0.31,0.22,0.28,0.45
+LOC724350,"4-hydroxybenzoate polyprenyltransferase, mitochondrial",0 vs 2,-0.22,-0.17,-0.1,-0.12,0.05,0.12,0.1,0.07,0.06,-0.36
+LOC552745,O-phosphoseryl-tRNA(Sec) selenium transferase,0 vs 2,0.73,0.25,0.45,0.46,-0.49,-0.28,-0.27,0.21,0.21,0.14
+LOC409502,uncharacterized LOC409502,0 vs 2,0.5,0.32,0.44,0.29,-0.17,-0.06,-0.21,0.12,-0.03,0
+LOC113219187,uncharacterized LOC113219187,0 vs 2,0.97,0.71,0.62,1,-0.25,-0.35,0.03,-0.1,0.29,0.36
+LOC100576843,inner centromere protein,0 vs 2,1.04,0.5,0.81,0.57,-0.54,-0.23,-0.48,0.31,0.07,0.1
+LOC113218668,uncharacterized LOC113218668,0 vs 2,1.42,1.24,1.28,1.52,-0.18,-0.14,0.1,0.04,0.28,0.33
+LOC551118,UPF0472 protein C16orf72 homolog,0 vs 2,-0.31,-0.09,-0.03,0.02,0.22,0.28,0.33,0.06,0.11,-0.28
+Mir1175,microRNA mir-1175,0 vs 2,0.93,0.44,-0.06,0.23,-0.48,-0.99,-0.7,-0.5,-0.22,1.16
+LOC107964868,uncharacterized LOC107964868,0 vs 2,1.64,1.92,2.38,2.78,0.27,0.73,1.13,0.46,0.86,-1.01
+LOC102653659,uncharacterized LOC102653659,0 vs 2,0.41,0.41,0.31,0.36,-0,-0.11,-0.05,-0.1,-0.05,0.48
+LOC107965261,uncharacterized LOC107965261,0 vs 2,1.19,0.65,0.77,0.46,-0.54,-0.42,-0.73,0.12,-0.19,0.08
+LOC408886,transmembrane 7 superfamily member 3,0 vs 2,0.47,0,0.11,0.11,-0.47,-0.36,-0.36,0.11,0.11,0.32
+LOC411069,bifunctional arginine demethylase and lysyl-hydroxylase PSR,0 vs 2,0.49,0.29,0.35,0.37,-0.19,-0.13,-0.12,0.06,0.08,0.04
+LOC409735,transcription initiation factor TFIID subunit 6,0 vs 2,0.28,0.18,0.23,0.11,-0.1,-0.05,-0.17,0.05,-0.07,0.06
+LOC408834,beclin-1-like protein,0 vs 2,0.11,0.37,0.45,0.58,0.26,0.34,0.47,0.07,0.2,-0.04
+LOC102655779,uncharacterized LOC102655779,0 vs 2,0.59,0.7,0.69,0.57,0.12,0.1,-0.02,-0.02,-0.14,-0.08
+LOC550918,ATP-binding cassette sub-family G member 4,0 vs 2,0.11,-0.04,-0.39,-0.58,-0.15,-0.5,-0.69,-0.36,-0.55,-0.28
+LOC724274,protein lethal(2)essential for life,0 vs 2,2.03,0.75,0.25,0.28,-1.27,-1.78,-1.75,-0.5,-0.47,0.66
+LOC552473,USP6 N-terminal-like protein,0 vs 2,-0.68,-0.9,-1.01,-1.29,-0.22,-0.33,-0.61,-0.1,-0.39,0.2
+LOC102654792,uncharacterized LOC102654792,0 vs 2,0.84,0.7,0.49,0.51,-0.14,-0.34,-0.33,-0.21,-0.19,0.43
+LOC102655794,uncharacterized LOC102655794,0 vs 2,0.56,0.62,0.98,0.37,0.06,0.42,-0.19,0.35,-0.25,0.22
+LOC726819,ATP-dependent RNA helicase DDX51,0 vs 2,-0.44,-0.48,-0.4,-0.74,-0.04,0.04,-0.3,0.08,-0.26,-0.18
+LOC100576435,shootin-1,0 vs 2,0.59,0.57,0.7,0.61,-0.01,0.12,0.03,0.13,0.04,-0.18
+LOC107965599,uncharacterized LOC107965599,0 vs 2,0.65,0.82,0.64,0.68,0.17,-0.01,0.03,-0.18,-0.14,0.01
+LOC408275,uncharacterized LOC408275,0 vs 2,0.62,0.64,0.98,0.88,0.01,0.35,0.26,0.34,0.25,-0.41
+LOC107964086,uncharacterized LOC107964086,0 vs 2,0.73,0.29,0.47,0.2,-0.44,-0.26,-0.53,0.18,-0.09,0.51
+LOC724913,YY1-associated factor 2,0 vs 2,-0.13,-0.14,-0.04,-0.2,-0.01,0.09,-0.07,0.1,-0.06,-0.34
+Grd,GABA-gated ion channel,0 vs 2,1.91,2.58,2.55,2.71,0.66,0.64,0.79,-0.02,0.13,-1.26
+LOC552017,alpha-catulin,0 vs 2,-0.09,0.04,-0.22,-0.19,0.14,-0.12,-0.1,-0.26,-0.24,-0.11
+LOC410390,protein suppressor of forked,0 vs 2,0.33,0.14,0.26,0.42,-0.19,-0.07,0.08,0.12,0.28,0.1
+LOC413299,proteasomal ubiquitin receptor ADRM1,0 vs 2,0.34,0.33,0.22,0.21,-0.01,-0.12,-0.12,-0.11,-0.11,0.13
+LOC107964289,uncharacterized LOC107964289,0 vs 2,0.84,0.6,0.72,0.71,-0.24,-0.12,-0.13,0.12,0.11,0.09
+LOC551976,calcium-binding mitochondrial carrier protein SCaMC-2,0 vs 2,-0.25,-0.21,-0.35,-0.4,0.04,-0.11,-0.15,-0.14,-0.19,-0.03
+LOC409515,long-chain-fatty-acid--CoA ligase 4,0 vs 2,-0.32,-0.76,-0.85,-0.74,-0.45,-0.53,-0.42,-0.08,0.03,0.47
+LOC411148,palmitoyltransferase Hip14,0 vs 2,-0.5,-0.68,-0.68,-0.75,-0.18,-0.17,-0.24,0.01,-0.06,-0.08
+LOC411694,E3 ubiquitin-protein ligase KCMF1,0 vs 2,-0.28,-0.3,-0.57,-0.45,-0.02,-0.29,-0.17,-0.27,-0.15,-0.05
+LOC551408,uncharacterized LOC551408,0 vs 2,0.24,0.26,0.22,0.32,0.02,-0.02,0.08,-0.04,0.06,0.01
+LOC412209,probable cytochrome P450 6a17,0 vs 2,0.35,0.21,-0.23,-0.38,-0.15,-0.58,-0.74,-0.43,-0.59,0.76
+LOC551909,arf-GAP domain and FG repeat-containing protein 1,0 vs 4,0.28,0.14,0.25,0.25,-0.14,-0.04,-0.03,0.1,0.11,-0.04
+LOC102653944,uncharacterized LOC102653944,0 vs 4,-0.25,-0.48,0.16,0.27,-0.23,0.41,0.52,0.64,0.75,-0.21
+LOC102656571,uncharacterized LOC102656571,0 vs 4,1.07,1.1,1.13,1.26,0.03,0.06,0.18,0.03,0.15,-0.47
+LOC113219058,uncharacterized LOC113219058,0 vs 4,0.89,1.15,0.8,0.66,0.26,-0.09,-0.22,-0.35,-0.49,0.14
+LOC552371,ATP-binding cassette sub-family G member 4,0 vs 4,0.55,0.44,0.48,0.44,-0.11,-0.08,-0.12,0.04,-0.01,-0.17
+LOC100577998,origin recognition complex subunit 3,0 vs 4,0.09,0.28,0.18,0.15,0.2,0.1,0.07,-0.1,-0.13,-0.02
+LOC724735,endocuticle structural glycoprotein SgAbd-8-like,0 vs 4,-1.33,-3.22,-3.5,-3.14,-1.89,-2.17,-1.81,-0.28,0.08,2.35
+LOC408701,protein phosphatase 1H,0 vs 4,0.39,0.39,0.32,0.41,0,-0.06,0.02,-0.07,0.02,-0.09
+LOC412080,coronin-1C,0 vs 4,0.19,0.21,0.23,0.32,0.03,0.04,0.14,0.02,0.11,-0.08
+LOC102654379,"essential MCU regulator, mitochondrial",0 vs 6,0.1,0.57,0.65,0.68,0.47,0.55,0.59,0.08,0.11,-0.16
+LOC102656465,guanine nucleotide-binding protein G(o) subunit alpha,0 vs 6,-0.17,-0.36,-0.81,-1.04,-0.2,-0.64,-0.88,-0.44,-0.68,0.51
+LOC727116,uncharacterized LOC727116,0 vs 6,0.22,0.45,0.33,0.26,0.22,0.11,0.04,-0.11,-0.18,-0.13
+LOC410739,teneurin-m,0 vs 6,-0.2,-0.39,-0.53,-0.99,-0.19,-0.33,-0.79,-0.14,-0.6,0.13
+LOC100577441,uncharacterized LOC100577441,0 vs 6,0.65,0.95,1.02,1.02,0.3,0.38,0.37,0.08,0.07,-0.04
+LOC411647,calumenin,0 vs 6,-0.02,0.16,0.13,0.13,0.18,0.15,0.15,-0.03,-0.03,0.02
+LOC409084,arginine-glutamic acid dipeptide repeats protein,0 vs 6,-0.07,-0.02,-0.03,-0.08,0.05,0.04,-0.01,-0.01,-0.05,-0.27
+LOC102656337,mitotic spindle assembly checkpoint protein MAD2A,0 vs 6,0.22,0.19,0.15,0.25,-0.03,-0.07,0.03,-0.04,0.06,0.24
+LOC412274,plexin-B,0 vs 6,-0.23,-0.28,-0.53,-0.58,-0.04,-0.3,-0.35,-0.26,-0.31,0.19
+LOC551607,DNA-directed RNA polymerase II subunit RPB11,0 vs 6,0.31,0.27,0.25,0.38,-0.04,-0.06,0.07,-0.02,0.11,0.07
+LOC410821,tetraspanin-9,0 vs 6,0.6,0.95,1.12,1.28,0.34,0.52,0.68,0.17,0.34,-0.34
+LOC552295,translocon-associated protein subunit gamma,0 vs 6,-0.02,0.06,0.14,0.34,0.08,0.16,0.36,0.08,0.28,-0.06
+LOC100578885,putative transcription factor capicua,0 vs 6,-0.29,-0.32,-0.55,-0.66,-0.03,-0.26,-0.36,-0.23,-0.33,-0.05
+LOC100578220,uncharacterized LOC100578220,0 vs 6,0.05,-0.15,-0.67,-0.72,-0.2,-0.72,-0.77,-0.52,-0.57,0.46
+LOC409505,cysteine-rich hydrophobic domain-containing protein 2,0 vs 6,-0.21,-0.67,-0.67,-0.89,-0.46,-0.46,-0.68,-0,-0.22,0.27
+LOC413736,serine/threonine-protein kinase SIK2,0 vs 6,-0.28,-0.17,-0.38,-0.33,0.11,-0.1,-0.05,-0.21,-0.16,0.06
+LOC552257,bromodomain-containing protein DDB_G0270170,0 vs 6,0.84,1.19,1.33,1.5,0.35,0.49,0.66,0.14,0.31,-0.45
+LOC725169,contactin,0 vs 6,-0,0.15,0.18,0.36,0.15,0.19,0.36,0.04,0.21,-0.06
+LOC726149,sodium channel protein Nach,0 vs 6,0.9,1.14,1.75,1.6,0.24,0.85,0.69,0.61,0.46,-1.03
+LOC411157,fat-like cadherin-related tumor suppressor homolog,0 vs 6,-0.3,-0.08,-0.4,-0.46,0.22,-0.1,-0.16,-0.32,-0.38,0.13
+LOC100577385,facilitated trehalose transporter Tret1,0 vs 6,0.53,0.57,0.71,0.9,0.04,0.18,0.37,0.14,0.33,0.11
+LOC724205,protein AF-9,0 vs 6,-0.18,-0.28,-0.27,-0.55,-0.1,-0.09,-0.38,0.01,-0.27,0.02
+LOC107965723,uncharacterized LOC107965723,0 vs 6,-0.66,-0.65,-0.91,-0.98,0.01,-0.25,-0.32,-0.26,-0.33,0.67
+LOC726840,BET1 homolog,0 vs 6,-0.07,0.15,0.19,0.47,0.22,0.25,0.54,0.04,0.32,0.07
+Dscam,Down syndrome cell adhesion molecule,0 vs 6,0.01,-0.21,-0.35,-0.57,-0.22,-0.36,-0.58,-0.13,-0.36,0.07
+LOC724537,ubiquitin carboxyl-terminal hydrolase 36,0 vs 6,-0.32,-0.49,-0.59,-0.63,-0.17,-0.27,-0.31,-0.1,-0.14,0.21
+LOC102655490,uncharacterized LOC102655490,0 vs 6,0.97,0.67,0.98,1.2,-0.3,0.01,0.23,0.31,0.53,-0.21
+LOC406152,juvenile hormone epoxide hydrolase 1,0 vs 6,-0.03,0.05,0.06,0.12,0.09,0.09,0.15,0,0.06,0.02
+LOC410306,ADP-ribosylation factor 2,0 vs 6,0.02,0.1,0.05,0.09,0.08,0.03,0.07,-0.05,-0,0.07
+LOC113218730,myb-like protein D,0 vs 6,-0.7,-0.73,-1.1,-0.98,-0.03,-0.4,-0.28,-0.37,-0.25,0.32
+LOC102655865,uncharacterized LOC102655865,0 vs 6,0.89,1.17,1.01,1.14,0.27,0.12,0.25,-0.15,-0.02,-0.15
+LOC551272,talin-1,0 vs 6,-0.12,-0.45,-0.48,-0.61,-0.33,-0.36,-0.5,-0.03,-0.17,0.12
+LOC409337,zinc finger MIZ domain-containing protein 1,0 vs 6,-0.36,-0.76,-0.92,-1.38,-0.4,-0.56,-1.02,-0.16,-0.62,0.22
+LOC551516,uncharacterized LOC551516,0 vs 6,0.24,0.34,0.41,0.56,0.11,0.17,0.32,0.07,0.22,-0.26
+LOC412541,long-chain-fatty-acid--CoA ligase 6,0 vs 6,0.7,0.38,0.67,0.75,-0.32,-0.03,0.06,0.28,0.37,-0.1
+LOC409089,vesicular inhibitory amino acid transporter,0 vs 6,0.21,-0.14,-0.17,-0.55,-0.34,-0.38,-0.76,-0.03,-0.42,-0.02
+LOC409057,uncharacterized LOC409057,0 vs 6,0.2,0.42,0.29,0.15,0.22,0.09,-0.05,-0.12,-0.27,0.03
+LOC552449,mediator of RNA polymerase II transcription subunit 6,0 vs 6,-0.04,0.13,0.24,0.33,0.17,0.27,0.36,0.11,0.19,-0.11
+LOC409283,"splicing factor, arginine/serine-rich 15",0 vs 6,-0.27,-0.35,-0.3,-0.64,-0.08,-0.03,-0.37,0.05,-0.29,0.05
+LOC551768,B-cell receptor-associated protein 31,0 vs 6,0.08,0.27,0.33,0.43,0.19,0.24,0.34,0.06,0.16,-0.03
+LOC107965749,acyl-CoA Delta(11) desaturase-like,0 vs 6,0.56,0.81,0.87,0.82,0.26,0.31,0.26,0.05,0,-0.42
+LOC113218824,uncharacterized LOC113218824,0 vs 6,0.91,1.55,1.85,1.59,0.65,0.95,0.69,0.3,0.04,-0.39
+LOC726303,N-acetyltransferase family 8 member 3,0 vs 6,0.32,0.25,0.03,0.35,-0.07,-0.29,0.03,-0.22,0.09,0.39
+LOC411820,dual specificity protein phosphatase Mpk3,0 vs 6,-0.43,-0.57,-0.74,-1,-0.14,-0.3,-0.57,-0.17,-0.43,0.13
+LOC552030,uncharacterized LOC552030,0 vs 6,-0.19,-0.38,-0.61,-1.04,-0.19,-0.42,-0.85,-0.23,-0.66,0.05
+LOC100578438,uncharacterized LOC100578438,0 vs 6,0.27,0.68,0.71,0.67,0.41,0.44,0.4,0.03,-0.01,-0.17
+LOC552692,D-aspartate oxidase,0 vs 6,0.01,-0.02,0.04,0.17,-0.03,0.02,0.15,0.05,0.18,0.11
+LOC725283,uncharacterized LOC725283,0 vs 6,0.55,1.23,1.41,1.44,0.69,0.87,0.89,0.18,0.2,-0.62
+ROCK2,"Rho-associated, coiled-coil containing protein kinase 2",0 vs 6,-0.23,-0.27,-0.27,-0.39,-0.04,-0.04,-0.15,-0,-0.12,-0.02
+LOC413377,PHD finger protein rhinoceros,0 vs 6,-0.37,-0.4,-0.51,-0.9,-0.03,-0.14,-0.54,-0.11,-0.51,-0.02
+LOC102653663,uncharacterized LOC102653663,0 vs 6,0.79,1.33,1.19,1.28,0.55,0.4,0.49,-0.14,-0.06,-0.22
+LOC107964360,uncharacterized LOC107964360,0 vs 6,-0.88,-0.72,-0.19,-0.69,0.16,0.69,0.19,0.54,0.03,-0.68
+LOC551489,phospholipid phosphatase 5,0 vs 6,0.11,0.19,0.26,0.48,0.08,0.16,0.37,0.07,0.29,-0.01
+LOC726288,uncharacterized LOC726288,0 vs 6,0.64,1.08,1.61,1.68,0.44,0.97,1.04,0.53,0.6,-0.81
+LOC552051,dolichyl-diphosphooligosaccharide--protein glycosyltransferase 48 kDa subunit,0 vs 6,0.03,0.02,-0.06,-0.01,-0.01,-0.09,-0.04,-0.08,-0.03,0.13
+LOC107964042,uncharacterized LOC107964042,0 vs 6,0.31,0.28,0.5,0.75,-0.03,0.19,0.44,0.22,0.47,-0.01
+LOC412795,cadherin-99C,0 vs 6,0.37,0.77,0.88,0.94,0.4,0.5,0.57,0.1,0.16,-0.39
+LOC411316,kinesin 9,0 vs 6,0.09,1.02,1.05,0.96,0.93,0.96,0.87,0.03,-0.06,-0.49
+LOC552209,neo-calmodulin,0 vs 6,-0.08,-0.25,-0.08,-0.15,-0.17,-0,-0.07,0.17,0.1,-0.18
+LOC408415,biogenesis of lysosome-related organelles complex 1 subunit 1,0 vs 6,0.17,0.19,0.22,0.32,0.02,0.05,0.15,0.03,0.13,0.21
+LOC409457,eIF-2-alpha kinase activator GCN1,0 vs 6,-0.15,-0.31,-0.51,-0.59,-0.16,-0.36,-0.45,-0.2,-0.28,0.23
+LOC410730,dnaJ homolog subfamily C member 22,0 vs 6,0.37,0.59,0.53,0.61,0.22,0.16,0.24,-0.06,0.02,-0.02
+LOC551510,uncharacterized LOC551510,0 vs 6,0.36,0.57,0.69,0.8,0.21,0.32,0.43,0.11,0.22,-0.28
+LOC552227,translocon-associated protein subunit delta,0 vs 6,0.08,0.26,0.38,0.54,0.18,0.3,0.46,0.12,0.28,-0.21
+LOC724554,protein THEM6,0 vs 6,-0.53,-0.96,-0.99,-0.34,-0.43,-0.46,0.19,-0.03,0.61,0.44
+LOC409891,cell division cycle and apoptosis regulator protein 1,0 vs 6,-0.23,-0.33,-0.29,-0.59,-0.1,-0.06,-0.36,0.04,-0.26,-0.05
+LOC552756,cathepsin L1,0 vs 6,0.08,0.32,0.43,0.44,0.24,0.35,0.35,0.11,0.12,-0.18
+LOC724402,uncharacterized LOC724402,0 vs 6,-0.09,-0.1,-0.05,-0.5,-0.01,0.03,-0.41,0.04,-0.4,-0.28
+LOC726354,serine-rich adhesin for platelets,0 vs 6,-0.19,-0.31,-0.31,-0.43,-0.12,-0.12,-0.24,-0.01,-0.12,0.04
+LOC411907,cytoplasmic polyadenylation element-binding protein 1,0 vs 8,-0.2,-0.51,-0.38,-0.37,-0.32,-0.19,-0.18,0.13,0.14,-0.17
+LOC724616,neprilysin-1,0 vs 8,-0.44,-0.27,-0.42,-0.48,0.17,0.02,-0.04,-0.15,-0.21,0.08
+LOC100576742,integrin beta-nu,0 vs 8,0.39,0.57,0.73,0.74,0.18,0.34,0.35,0.16,0.17,-0.29
+LOC100578776,uncharacterized LOC100578776,0 vs 8,0.37,0.52,1.04,1.31,0.14,0.67,0.94,0.53,0.79,-0.64
+LOC724654,cytochrome b5,0 vs 8,-0.7,0.29,0.01,-0.16,0.99,0.71,0.54,-0.28,-0.46,-0.54
+LOC724281,probable serine/threonine-protein kinase mps1,0 vs 8,-0.48,-0.32,-0.61,-0.8,0.16,-0.13,-0.32,-0.29,-0.48,0.09
+LOC724412,muscle segmentation homeobox,0 vs 8,-0.18,-0.21,-0.29,-0.57,-0.03,-0.11,-0.38,-0.09,-0.36,0.03
+LOC725157,uncharacterized LOC725157,0 vs 8,-0.32,-0.12,-0.6,-0.4,0.2,-0.29,-0.09,-0.48,-0.29,0.27
+LOC411201,discoidin domain-containing receptor 2,0 vs 8,-0.13,-0.01,-0.24,-0.32,0.12,-0.11,-0.19,-0.23,-0.31,-0.17
+LOC726601,transferrin,0 vs 8,0.19,0.35,0.66,0.66,0.16,0.47,0.47,0.31,0.3,-0.32
+LOC724587,nucleotide exchange factor SIL1,0 vs 8,0.35,0.13,0.17,0.18,-0.22,-0.18,-0.17,0.04,0.05,0.16
+LOC100576421,uncharacterized LOC100576421,0 vs 8,0.48,0.51,0.82,0.87,0.02,0.34,0.39,0.31,0.37,-0.61
+CSP2,chemosensory protein 2,0 vs 8,0.76,1.16,2.05,2.68,0.4,1.3,1.92,0.9,1.52,-1.38
+LOC100576547,"glucose dehydrogenase [FAD, quinone]",0 vs 8,0.41,0.69,0.77,0.99,0.27,0.36,0.58,0.09,0.3,-0.46
+LOC100577598,leucine-rich repeat extensin-like protein 3,0 vs 8,0.31,0.31,0.45,0.49,0,0.15,0.18,0.14,0.18,-0.2
+Calpb,calpain-B,0 vs 8,0.17,0.33,0.39,0.33,0.16,0.21,0.16,0.05,-0,-0.14
+LOC551914,actin-like protein 6B,0 vs 8,-0.05,-0.35,-0.25,-0.28,-0.3,-0.2,-0.23,0.09,0.07,-0.04
+LOC551591,carboxy-terminal domain RNA polymerase II polypeptide A small phosphatase 1,0 vs 8,0.37,0.64,0.74,0.87,0.26,0.37,0.5,0.11,0.23,-0.47
+LOC100578314,monocarboxylate transporter 10,0 vs 8,-0.16,-0.53,-0.6,-0.73,-0.37,-0.45,-0.57,-0.08,-0.2,0.27
+LOC725974,"calcium uniporter protein, mitochondrial",0 vs 8,-0.18,0,-0.53,-0.57,0.18,-0.35,-0.39,-0.54,-0.57,0.34
+LOC408827,carbonic anhydrase 1,0 vs 8,-0.24,0.13,-0.14,-0.45,0.37,0.11,-0.21,-0.27,-0.59,-0.56
+LOC726782,PEST proteolytic signal-containing nuclear protein,0 vs 8,-0.25,-0.35,-0.52,-0.54,-0.1,-0.27,-0.29,-0.17,-0.19,0.39
+LOC725064,vesicular acetylcholine transporter,0 vs 8,-0.35,-0.44,-0.73,-0.58,-0.09,-0.38,-0.23,-0.29,-0.14,0.31
+LOC100578875,"beta-1,4-mannosyl-glycoprotein 4-beta-N-acetylglucosaminyltransferase",0 vs 8,0.21,0.46,0.7,0.82,0.26,0.49,0.61,0.23,0.35,-0.33
+LOC413785,FK506-binding protein 2,0 vs 8,0.33,0.47,0.94,1.14,0.14,0.61,0.81,0.47,0.67,-0.67
+LOC726278,synaptic vesicular amine transporter-like,0 vs 8,0.1,0.09,-0.17,-0.21,-0.02,-0.28,-0.32,-0.26,-0.3,-0.06
+LOC724296,DNA mismatch repair protein Mlh1,0 vs 8,-0.4,-0.6,-0.52,-0.78,-0.2,-0.12,-0.38,0.08,-0.18,0.22
+LOC102656249,protein HEXIM1,0 vs 8,0.55,0.32,0.43,0.44,-0.23,-0.11,-0.11,0.11,0.12,-0.02
+LOC409786,jazigo,0 vs 8,-0.11,-0.02,-0.45,-0.53,0.09,-0.33,-0.42,-0.43,-0.51,0.2
+LOC551632,methyl farnesoate epoxidase,0 vs 8,0.42,0.74,1.6,2.02,0.32,1.18,1.59,0.86,1.28,-1.29
+LOC725576,protein GPR107,0 vs 8,0.14,0.11,0.23,0.35,-0.04,0.09,0.21,0.12,0.25,-0.12
+LOC552231,probable RNA-binding protein 19,0 vs 8,-0.2,-0.28,-0.38,-0.62,-0.09,-0.18,-0.43,-0.1,-0.34,0.21
+LOC408373,phosphatidylinositol 4-kinase beta,0 vs 8,0.39,0.24,0.15,0.22,-0.14,-0.24,-0.17,-0.09,-0.03,-0.02
+LOC725439,uncharacterized LOC725439,0 vs 8,0.47,-0.23,-0.28,-0.48,-0.7,-0.75,-0.95,-0.05,-0.25,0.95
+LOC409179,4-hydroxybutyrate coenzyme A transferase,0 vs 8,-0.23,-0.38,-0.23,-0.38,-0.15,0,-0.16,0.15,-0,-0.02
+Pgrp-s2,peptidoglycan recognition protein S2,0 vs 8,-0.35,-0.6,-0.56,-0.58,-0.26,-0.21,-0.23,0.04,0.02,0.16
+LOC724275,uncharacterized LOC724275,0 vs 8,-0.42,-0.42,-0.25,0.1,0,0.17,0.52,0.17,0.52,-0.46
+LOC552092,uncharacterized LOC552092,0 vs 8,-0.08,-0.09,-0.15,-0.19,-0.01,-0.07,-0.1,-0.06,-0.09,0.07
+LOC412515,"phospholipase B1, membrane-associated",0 vs 8,-0.63,-0.3,-0.97,-1.02,0.34,-0.34,-0.38,-0.67,-0.72,0.77
+LOC725599,protein zer-1 homolog,0 vs 8,0.44,0.41,0.46,0.43,-0.02,0.02,-0.01,0.05,0.02,-0.19
+LOC107964744,uncharacterized LOC107964744,0 vs 8,0.36,1.34,0.88,0.82,0.98,0.52,0.46,-0.46,-0.52,-0.4
+LOC100577047,uncharacterized LOC100577047,0 vs 8,-0.47,-0,-0.49,-0.37,0.47,-0.02,0.1,-0.49,-0.36,0.25
+LOC410018,protein I'm not dead yet,0 vs 8,0.01,-0.05,0.01,0.05,-0.06,0,0.04,0.06,0.1,-0.3
+LOC409498,kinase suppressor of Ras 2,0 vs 8,-0.09,-0.06,-0.06,-0.03,0.03,0.03,0.06,0,0.03,-0.13
+LOC408568,peptidyl-alpha-hydroxyglycine alpha-amidating lyase 1,0 vs 8,0.21,0.09,0.2,0.25,-0.12,-0.01,0.04,0.11,0.16,-0.06
+LOC726158,glutathione hydrolase 1 proenzyme,0 vs 8,0.12,-0.29,-0.29,-0.32,-0.41,-0.4,-0.43,0,-0.03,0.41
+LOC724557,plant intracellular Ras-group-related LRR protein 7,0 vs 8,0.48,0.32,0.57,0.83,-0.16,0.09,0.34,0.26,0.51,-0.13
+LOC726683,myosin-VIIa,0 vs 8,0.31,0.37,0.52,0.43,0.06,0.2,0.12,0.14,0.06,-0.32
+Msx,homeobox protein Msx,0 vs 8,-0.4,-0.26,-0.31,-0.54,0.13,0.08,-0.14,-0.05,-0.27,-0.14
+LOC552311,T-box transcription factor TBX10,0 vs 8,0.07,-0.01,-0.27,-0.69,-0.08,-0.34,-0.76,-0.26,-0.68,0.15
+LOC100578213,probable serine/threonine-protein kinase dyrk2,0 vs 8,-0.13,-0.14,0.02,0.43,-0.01,0.16,0.56,0.17,0.57,-0.37
+LOC113218532,protein bowel-like,0 vs 8,-0.34,-0.35,-0.74,-0.67,-0.01,-0.4,-0.33,-0.39,-0.32,0.61
+LOC551848,protocadherin-like wing polarity protein stan,0 vs 8,-0.09,-0.22,-0.66,-0.64,-0.13,-0.57,-0.55,-0.44,-0.42,0.46
+LOC410393,alkaline phosphatase,0 vs 8,0.43,0.57,0.65,0.63,0.14,0.21,0.19,0.07,0.05,-0.06
+Ubx,ultrabithorax,0 vs 8,-0.25,-0.31,-0.42,-0.49,-0.06,-0.17,-0.24,-0.11,-0.18,0.19
+LOC107966045,uncharacterized LOC107966045,0 vs 8,-0.14,-0.82,-0.89,-1.14,-0.68,-0.75,-1,-0.07,-0.32,0.66
+LOC409439,protein transport protein Sec24C,0 vs 8,0.19,0.2,0.42,0.25,0.01,0.23,0.06,0.22,0.06,-0.32
+LOC725387,uncharacterized protein DDB_G0283357,0 vs 8,0.33,0.57,1.16,1,0.24,0.82,0.66,0.59,0.43,-0.54
+LOC100578913,uncharacterized LOC100578913,0 vs 8,0.64,1.39,2.43,2.56,0.75,1.79,1.92,1.03,1.16,-1.62
+LOC100577455,golgin subfamily A member 6-like protein 22,0 vs 8,0.55,1.01,1.24,1.06,0.47,0.7,0.51,0.23,0.04,-1.06
+LOC725306,TATA-binding protein-associated factor 172,0 vs 8,0.32,0.24,0.4,0.33,-0.07,0.08,0.01,0.15,0.08,-0.15
+LOC726815,uncharacterized protein At4g17910,0 vs 8,0.1,0.12,0.08,0.31,0.02,-0.02,0.21,-0.04,0.2,0.08
+LOC408538,uncharacterized LOC408538,0 vs 8,3.35,4.52,6.75,7.52,1.18,3.4,4.18,2.23,3,-4.2
+LOC412608,serine/threonine-protein kinase D3,0 vs 8,0.34,0.49,0.71,0.28,0.15,0.37,-0.07,0.22,-0.22,-0.44
+LOC102656448,"glycerol-3-phosphate dehydrogenase [NAD(+)], cytoplasmic",0 vs 8,0.24,0.5,0.56,0.7,0.26,0.31,0.46,0.06,0.21,-0.35
+LOC100577879,carbonic anhydrase-related protein 10,0 vs 8,0.31,0.36,0.74,0.62,0.06,0.44,0.31,0.38,0.25,-0.37
+LOC411564,nose resistant to fluoxetine protein 6,0 vs 8,-0.05,-0.38,-1.03,-1.12,-0.34,-0.99,-1.08,-0.65,-0.74,0.86
+LOC100576504,uncharacterized LOC100576504,0 vs 8,0.81,0.12,1.68,2.18,-0.69,0.87,1.38,1.56,2.06,-1.28
+LOC724867,elongation of very long chain fatty acids protein AAEL008004,0 vs 8,0.41,0.56,0.98,0.72,0.15,0.57,0.31,0.42,0.16,-0.53
+LOC727153,"fructose-1,6-bisphosphatase 1",0 vs 8,-0.48,-0.39,-0.46,-0.36,0.09,0.02,0.13,-0.07,0.03,0.33
+LOC411018,kinesin 11,0 vs 8,-0.08,-0.1,-0.23,-0.31,-0.02,-0.15,-0.23,-0.13,-0.21,0.01
+LOC552130,"alpha-aminoadipic semialdehyde synthase, mitochondrial",0 vs 8,0.28,0.11,0.45,0.52,-0.17,0.16,0.24,0.34,0.41,-0.31
+LOC100577986,probable sodium/potassium/calcium exchanger CG1090,0 vs 8,-0.03,-0.11,-0.21,-0.28,-0.08,-0.18,-0.25,-0.1,-0.17,0.07
+LOC724737,trichohyalin,0 vs 8,-0.04,0.11,-0.11,-0.22,0.15,-0.07,-0.18,-0.22,-0.33,0.05
+LOC413705,acidic mammalian chitinase,0 vs 8,-0.01,-0.28,-0.24,0,-0.27,-0.23,0.01,0.05,0.29,0.04
+LOC726304,BLOC-1-related complex subunit 6,0 vs 8,0.09,0.03,-0.23,-0.21,-0.07,-0.32,-0.3,-0.26,-0.24,0.18
+LOC409329,mannose-1-phosphate guanyltransferase beta,0 vs 8,0.05,0.13,0.24,0.13,0.08,0.18,0.08,0.1,-0,-0.12
+LOC102654127,neurochondrin homolog,0 vs 8,0.33,0.09,0.18,0.25,-0.24,-0.14,-0.08,0.09,0.16,0
+LOC726990,uncharacterized LOC726990,0 vs 8,1.68,3.27,4.36,4.6,1.59,2.68,2.92,1.09,1.33,-2.2
+LOC113218752,uncharacterized LOC113218752,0 vs 8,-0.45,0.45,0.15,0.19,0.9,0.6,0.64,-0.3,-0.26,-0.51
+LOC551364,homeobox protein SIX3,0 vs 8,-0.13,-0.22,-0.41,-0.47,-0.09,-0.27,-0.34,-0.19,-0.25,0.16
+LOC409835,E3 ubiquitin-protein ligase MARCH2,0 vs 8,-0.22,-0.1,-0.54,-0.5,0.12,-0.32,-0.28,-0.44,-0.4,0.46
+LOC100578072,uncharacterized LOC100578072,0 vs 8,2.22,3.67,5.28,5.6,1.45,3.06,3.38,1.62,1.93,-3.42
+LOC100577303,uncharacterized LOC100577303,0 vs 8,0.93,1.04,0.78,1.31,0.11,-0.15,0.38,-0.26,0.27,-0.12
+LOC725708,uncharacterized LOC725708,0 vs 8,0.72,1.94,2.37,2.99,1.22,1.66,2.28,0.44,1.05,-1.93
+LOC102656862,uncharacterized LOC102656862,0 vs 8,-0.15,-0.06,-0.49,-0.16,0.09,-0.34,-0.01,-0.43,-0.1,0.31
+LOC107964518,uncharacterized LOC107964518,0 vs 8,0.41,0.57,1.12,0.61,0.16,0.71,0.2,0.54,0.04,-0.79
+LOC552242,uncharacterized LOC552242,0 vs 8,1.13,1.94,2.59,2.55,0.81,1.45,1.42,0.64,0.61,-1.44
+LOC725660,uncharacterized LOC725660,0 vs 8,4.1,5.73,8.72,9.03,1.63,4.62,4.93,2.99,3.3,-4.96
+LOC724680,uncharacterized LOC724680,0 vs 8,0.06,-0.04,-0.11,0.04,-0.1,-0.17,-0.02,-0.07,0.08,0.25
+LOC100579031,vascular endothelial growth factor A-A,0 vs 8,0.1,0.38,0.24,0.87,0.28,0.13,0.77,-0.14,0.49,-0.02
+LOC726478,inhibin beta C chain,0 vs 8,-0.14,-0.61,-0.37,-0.03,-0.47,-0.23,0.11,0.25,0.59,0.12
+LOC102653782,uncharacterized LOC102653782,0 vs 8,-0.91,-0.07,-0.04,0.33,0.84,0.86,1.24,0.02,0.4,-0.22
+LOC409512,neural/ectodermal development factor IMP-L2,0 vs 8,0.02,-0.2,-0.45,-0.27,-0.22,-0.47,-0.28,-0.25,-0.06,0.23
+LOC551269,HBS1-like protein,0 vs 8,0.1,0.11,0.32,0.35,0.01,0.22,0.25,0.22,0.24,-0.26
+LOC100578368,uncharacterized LOC100578368,0 vs 8,0.67,0.74,2.03,2.51,0.07,1.36,1.84,1.29,1.77,-1.49
+LOC102655032,uncharacterized LOC102655032,0 vs 8,0.76,0.75,1.27,1.9,-0.01,0.52,1.14,0.53,1.15,-0.54
+LOC412661,solute carrier family 35 member G1,0 vs 8,0,0.09,-0.01,0.2,0.09,-0.01,0.2,-0.09,0.11,0.16
+LOC410171,filamin-A,0 vs 8,0.26,0.4,0.65,0.71,0.14,0.39,0.45,0.25,0.31,-0.46
+LOC100577781,uncharacterized LOC100577781,0 vs 8,0.03,0.79,0.91,0.66,0.75,0.88,0.63,0.12,-0.13,-0.77
+LOC411433,ell-associated factor Eaf,0 vs 8,0.28,0.09,0.2,0.2,-0.19,-0.08,-0.08,0.11,0.12,-0.15
+LOC551154,glucose-6-phosphate isomerase,0 vs 8,-0.04,0.05,0.31,0.37,0.09,0.35,0.41,0.26,0.32,-0.27
+LOC107964219,uncharacterized LOC107964219,0 vs 8,-0.74,-0.91,-0.67,-0.93,-0.17,0.08,-0.19,0.25,-0.02,0.03
+LOC726770,caskin-1-like,0 vs 8,-0.27,-0.34,-0.54,-0.4,-0.06,-0.27,-0.13,-0.21,-0.07,0.22
+LOC727170,eisosome protein SEG2,0 vs 8,1.44,2.91,4.38,4.28,1.46,2.94,2.84,1.48,1.38,-2.6
+LOC552205,elongation of very long chain fatty acids protein AAEL008004,0 vs 8,0.72,1.89,2.97,2.78,1.17,2.24,2.06,1.08,0.89,-1.77
+LOC412354,uncharacterized LOC412354,0 vs 8,0.41,0.48,0.78,0.94,0.07,0.36,0.53,0.3,0.46,-0.51
+LOC550884,N-sulphoglucosamine sulphohydrolase,0 vs 8,-0.11,0.06,0.3,0.18,0.17,0.41,0.29,0.24,0.12,-0.17
+LOC409291,protein fem-1 homolog CG6966,0 vs 8,0.27,0.47,0.7,0.4,0.2,0.43,0.13,0.23,-0.07,-0.48
+LOC102655519,uncharacterized LOC102655519,0 vs 8,0.18,0.65,0.43,0.17,0.47,0.26,-0.01,-0.22,-0.48,-0.85
+LOC725766,NF-kappa-B inhibitor cactus,0 vs 8,0.59,1.21,2.33,2.22,0.62,1.74,1.64,1.12,1.01,-1.47
+LOC411998,amyloid protein-binding protein 2,0 vs 8,0.15,0.14,0.19,0.27,-0.01,0.05,0.12,0.05,0.13,-0.09
+LOC550899,UPF0769 protein C21orf59 homolog,0 vs 8,-0.33,-0.21,-0.35,-0.84,0.12,-0.02,-0.51,-0.14,-0.63,-0.05
+LOC412279,uncharacterized LOC412279,0 vs 8,0.41,-0.65,0.61,0.78,-1.06,0.19,0.37,1.26,1.43,-0.35
+LOC100576895,putative fatty acyl-CoA reductase CG5065,0 vs 8,0.76,1.25,1.59,2.28,0.49,0.84,1.52,0.34,1.03,-0.82
+LOC412149,uncharacterized LOC412149,0 vs 8,0.04,0.09,0.11,0.26,0.06,0.07,0.22,0.01,0.16,-0.04
+LOC409440,armadillo-like helical domain-containing protein 3,0 vs 8,0.17,0.31,0.23,0.29,0.14,0.07,0.13,-0.08,-0.02,-0.1
+LOC410317,small conductance calcium-activated potassium channel protein,0 vs 8,-0.25,-0.12,-0.54,-0.47,0.13,-0.29,-0.22,-0.42,-0.35,0.14
+LOC726435,signal recognition particle subunit SRP72,0 vs 8,0.03,0.09,0.13,0.02,0.06,0.1,-0,0.04,-0.06,-0.08
+LOC107964189,uncharacterized LOC107964189,0 vs 8,0.05,-0.13,-0.05,-0.16,-0.17,-0.09,-0.21,0.08,-0.03,-0
+LOC411888,uncharacterized LOC411888,0 vs 8,0.6,1.19,1.61,1.66,0.59,1.01,1.06,0.42,0.47,-0.74
+LOC412548,"2-oxoisovalerate dehydrogenase subunit alpha, mitochondrial",0 vs 8,0.05,0.28,0.54,0.67,0.23,0.49,0.62,0.26,0.39,-0.38
+LOC411186,synaptic vesicle glycoprotein 2C,0 vs 8,1.09,2.26,2.13,1.9,1.16,1.04,0.81,-0.12,-0.35,-1.29
+LOC410509,mucin-2,0 vs 8,1.29,3.01,3.72,3.17,1.71,2.42,1.87,0.71,0.16,-2.01
+LOC412844,dual specificity protein phosphatase CDC14A,0 vs 8,0.71,0.7,1.29,1.09,-0.01,0.57,0.38,0.59,0.39,-0.89
+LOC100578828,uncharacterized LOC100578828,0 vs 8,0.26,0.42,0.73,1.09,0.16,0.48,0.84,0.32,0.67,-0.44
+LOC100577393,epidermal growth factor receptor-like,0 vs 8,0.06,0.05,-0.04,0.15,-0.01,-0.09,0.09,-0.08,0.1,-0.06
+LOC551170,dumpy,0 vs 8,0.07,-0.07,-0.31,-0.32,-0.14,-0.39,-0.39,-0.24,-0.25,0.18
+LOC102656534,uncharacterized LOC102656534,0 vs 8,0.56,0.22,0.65,0.37,-0.34,0.09,-0.19,0.43,0.15,-0.08
+LOC102656199,uncharacterized LOC102656199,0 vs 8,0.7,0.44,0.84,0.76,-0.26,0.14,0.06,0.4,0.32,0.19
+LOC100576152,uncharacterized LOC100576152,0 vs 8,2.2,4.09,6.14,6.56,1.9,3.95,4.36,2.05,2.46,-3.53
+LOC107965416,uncharacterized LOC107965416,0 vs 8,-0.1,-0.16,-0.35,-0.19,-0.06,-0.25,-0.1,-0.19,-0.04,0.28
+LOC100578719,protein spaetzle 4,0 vs 8,0.99,1.56,2.57,2.56,0.57,1.58,1.57,1.01,1,-1.38
+LOC409949,agrin,0 vs 8,0.8,1.5,2.42,2.47,0.7,1.63,1.67,0.93,0.97,-1.65
+LOC102654387,uncharacterized LOC102654387,0 vs 8,-1.4,-1.11,0.32,-0.64,0.29,1.72,0.77,1.43,0.48,-0.5
+LOC100577168,uncharacterized LOC100577168,0 vs 8,-0.05,-0.11,0.14,0.18,-0.06,0.19,0.23,0.26,0.29,-0.33
+LOC551320,schwannomin-interacting protein 1 homolog,0 vs 8,0.18,0.49,0.46,0.46,0.32,0.29,0.28,-0.03,-0.03,-0.2
+LOC727520,uncharacterized LOC727520,0 vs 8,0,-0.01,-0.05,-0.05,-0.01,-0.05,-0.05,-0.04,-0.04,0.19
+LOC409001,disheveled-associated activator of morphogenesis 1,0 vs 8,0.41,0.97,1.32,1.24,0.57,0.91,0.83,0.34,0.27,-0.77
+LOC102656786,uncharacterized LOC102656786,0 vs 8,1.73,1.45,1.38,1.14,-0.28,-0.35,-0.59,-0.08,-0.32,-0.38
+LOC551443,uncharacterized LOC551443,0 vs 8,-0.51,-0.53,-0.6,-0.77,-0.01,-0.09,-0.26,-0.07,-0.25,0.41
+LOC551589,"beta-1,3-galactosyltransferase brn",0 vs 8,0.19,0.45,0.77,0.47,0.27,0.58,0.29,0.32,0.02,-0.37
+LOC409764,uncharacterized LOC409764,0 vs 8,-0.13,-0.17,-0.39,-0.3,-0.04,-0.26,-0.17,-0.22,-0.13,0.27
+LOC551840,YTH domain-containing family protein 1,0 vs 8,0.18,0.17,0.13,0.04,-0,-0.05,-0.14,-0.05,-0.14,0.01
+LOC726690,probable cytochrome P450 6a14,0 vs 8,0.25,0.55,0.5,0.36,0.3,0.26,0.11,-0.05,-0.19,-0.12
+LOC551916,SH3 domain-binding glutamic acid-rich protein homolog,0 vs 8,-0.02,0.1,0.07,0.04,0.12,0.09,0.06,-0.02,-0.06,-0.03
+LOC411291,leucine-rich repeat-containing protein 58,0 vs 8,0.21,-0.06,-0.47,-0.37,-0.27,-0.68,-0.59,-0.41,-0.31,0.4
+LOC727168,"1,4-alpha-glucan-branching enzyme",0 vs 8,-0.01,-0.01,0.22,0.38,0.01,0.24,0.39,0.23,0.38,-0.18
+LOC725682,uncharacterized LOC725682,0 vs 8,0.32,0.5,1.09,1.26,0.17,0.76,0.93,0.59,0.76,-0.74
+LOC411609,pancreatic triacylglycerol lipase,0 vs 8,0.36,0.39,0.4,0.88,0.03,0.03,0.51,0,0.48,-0.03
+LOC100577472,insulin gene enhancer protein ISL-1,0 vs 8,-0.15,-0.46,-0.79,-0.89,-0.32,-0.64,-0.74,-0.33,-0.43,0.59
+LOC102655824,uncharacterized LOC102655824,0 vs 8,-0.12,0.13,-0.36,-0.6,0.25,-0.24,-0.48,-0.49,-0.73,0.27
+LOC550920,cell division cycle protein 16 homolog,0 vs 8,-0.23,-0.38,-0.39,-0.46,-0.15,-0.16,-0.23,-0.01,-0.08,0.22
+LOC725558,uncharacterized LOC725558,0 vs 8,-0.32,-0.16,0.27,-0.11,0.17,0.6,0.21,0.43,0.04,-0.42
+LOC100578170,uncharacterized LOC100578170,0 vs 8,0.94,0.44,0.46,0.74,-0.5,-0.49,-0.2,0.01,0.3,0.17
+LOC107964901,protein NATD1-like,0 vs 8,-0.54,-0.31,-0.63,-0.43,0.23,-0.09,0.1,-0.32,-0.12,-0.13
+Tsf1,transferrin 1,0 vs 8,0.26,0.84,1.11,1.33,0.58,0.85,1.07,0.27,0.49,-0.52
+LOC725765,uncharacterized LOC725765,0 vs 8,0.06,0.18,0.24,0.23,0.12,0.18,0.17,0.06,0.05,-0.31
+LOC727598,probable cytochrome P450 6a13,0 vs 8,0.49,0.49,0.39,0.21,0.01,-0.1,-0.27,-0.11,-0.28,0.11
+LOC411412,monocarboxylate transporter 12,0 vs 8,0.57,0.3,0.58,0.31,-0.27,0,-0.26,0.27,0.01,-0.31
+LOC100578841,uncharacterized LOC100578841,0 vs 8,-0.01,-0.68,-0.6,-0.97,-0.67,-0.59,-0.95,0.08,-0.28,0.28
+LOC107963990,mucin-5AC,0 vs 8,-0.01,0.04,0.02,-0.13,0.05,0.03,-0.12,-0.02,-0.17,-0.2
+LOC113218831,"FAST kinase domain-containing protein 3, mitochondrial-like",0 vs 8,0.48,0.86,0.72,0.55,0.38,0.24,0.07,-0.14,-0.31,-0.57
+LOC724611,tubulin glycylase 3A,0 vs 8,-0.18,-0.82,-0.2,-0.38,-0.64,-0.01,-0.19,0.62,0.45,-0.37
+LOC727420,transmembrane protein 192,0 vs 8,0.12,0.19,0.19,0.19,0.08,0.08,0.08,0,0,0.06
+LOC100576193,keratinocyte proline-rich protein,0 vs 8,0.46,0.22,1.04,1.81,-0.24,0.59,1.35,0.82,1.59,-0.75
+LOC100579047,cuticular protein 10,0 vs 8,0.68,1.03,1.81,2.88,0.35,1.13,2.2,0.78,1.86,-1.25
+LOC102654683,farnesyl pyrophosphate synthase,0 vs 8,0.05,0.74,1.34,0.91,0.69,1.28,0.85,0.6,0.17,-1.2
+LOC551437,alpha-N-acetylglucosaminidase,0 vs 8,-0.19,-0.17,-0.32,-0.36,0.03,-0.12,-0.16,-0.15,-0.19,-0.06
+LOC725625,uncharacterized LOC725625,0 vs 8,0.14,0.22,0.41,0.57,0.08,0.27,0.43,0.2,0.35,-0.07
+LOC100578248,uncharacterized serine-rich protein C215.13,0 vs 8,0.23,0.35,0.25,0.69,0.12,0.02,0.46,-0.09,0.34,-0
+LOC100578046,probable G-protein coupled receptor Mth-like 1,0 vs 8,0.73,0.93,0.98,0.86,0.21,0.26,0.13,0.05,-0.08,-0.27
+LOC102654321,uncharacterized LOC102654321,0 vs 8,-1.22,-0.62,0.7,-0.68,0.6,1.92,0.54,1.32,-0.06,-0.67
+LOC410624,serine proteinase stubble,0 vs 8,0.52,0.59,0.93,0.92,0.07,0.41,0.4,0.34,0.33,-0.62
+LOC107965825,uncharacterized LOC107965825,0 vs 8,0.65,-0.13,0.3,0.36,-0.77,-0.35,-0.28,0.42,0.49,0.13
+LOC552251,homeobox protein aristaless,0 vs 8,0.03,-0.04,-0.27,-0.27,-0.08,-0.3,-0.3,-0.23,-0.23,0.21
+LOC726275,uncharacterized LOC726275,0 vs 8,0.73,2.18,3.22,3.24,1.45,2.5,2.51,1.05,1.07,-1.87
+LOC411338,WD repeat-containing protein 35,0 vs 8,0.76,0.69,0.64,0.36,-0.07,-0.12,-0.4,-0.05,-0.33,-0.2
+LOC552685,pupal cuticle protein,0 vs 8,-0.43,-0.3,-0.34,-0.38,0.13,0.09,0.05,-0.04,-0.08,-0.09
+LOC725645,uncharacterized LOC725645,0 vs 8,0.25,0.33,0.27,0.31,0.07,0.02,0.06,-0.05,-0.01,0.01
+LOC552210,fumarylacetoacetase,0 vs 8,-0.16,-0.01,-0.12,-0.04,0.15,0.04,0.13,-0.11,-0.02,0.06
+LOC411294,dopamine N-acetyltransferase,0 vs 8,-0.09,-0.12,-0.2,-0.21,-0.03,-0.1,-0.11,-0.08,-0.08,0
+LOC100578144,mitotic apparatus protein p62,0 vs 8,1.44,2.96,4.53,4.83,1.53,3.1,3.4,1.57,1.87,-2.91
+LOC412091,A disintegrin and metalloproteinase with thrombospondin motifs 9,0 vs 8,-0.17,-0.24,-0.45,-0.58,-0.07,-0.27,-0.41,-0.21,-0.34,0.2
+LOC102654286,trichohyalin-like,0 vs 8,-0.25,0.57,0.91,0.82,0.82,1.16,1.08,0.34,0.26,0.05
+LOC724608,transient receptor potential,0 vs 8,-0.36,0.85,0.27,-0.17,1.21,0.63,0.19,-0.58,-1.02,-1.09
+LOC113219003,elongation of very long chain fatty acids protein 6-like,0 vs 8,-0.8,-0.52,-0.91,-0.81,0.28,-0.11,-0.01,-0.39,-0.29,0.7
+LOC113218568,protein yellow-like,0 vs 8,0.27,0.06,0.59,1.04,-0.21,0.32,0.77,0.53,0.99,-0.36
+LOC725922,mitochondrial basic amino acids transporter,0 vs 8,0.05,0.82,1,1.32,0.77,0.94,1.26,0.17,0.49,-0.79
+LOC724195,B-cell receptor CD22,0 vs 8,0.05,0.08,0.03,-0.12,0.04,-0.02,-0.17,-0.06,-0.21,-0.14
+LOC410684,orthodenticle 1,0 vs 8,-0.22,-0.32,-0.61,-0.38,-0.1,-0.39,-0.15,-0.29,-0.05,0.27
+Dat,dopamine transporter,0 vs 8,-0.02,-0.12,-1.03,-0.45,-0.09,-1,-0.42,-0.91,-0.33,0.91
+LOC410944,ATP-binding cassette sub-family C member Sur,0 vs 8,-0.01,-0.1,-0.03,-0.26,-0.09,-0.03,-0.25,0.07,-0.16,-0.17
+LOC102654166,trichohyalin,0 vs 8,0.34,0.38,0.38,0.58,0.04,0.04,0.24,-0,0.2,-0.24
+LOC113218734,uncharacterized LOC113218734,0 vs 8,0.3,0.18,0.97,0.97,-0.12,0.68,0.67,0.79,0.79,-0.3
+LOC102653897,uncharacterized LOC102653897,0 vs 8,0.38,0.27,0.8,0.51,-0.12,0.42,0.12,0.53,0.24,-0.39
+LOC411794,CCR4-NOT transcription complex subunit 3,0 vs 8,0.33,0.22,0.24,0.15,-0.11,-0.09,-0.18,0.02,-0.07,0.01
+LOC102655388,small VCP/p97-interacting protein,0 vs 8,-0.07,0.13,0.04,0.26,0.2,0.11,0.34,-0.09,0.14,-0.01
+LOC102654533,"protein pangolin, isoforms A/H/I/S",0 vs 8,-0.15,-0.17,-0.6,-0.59,-0.03,-0.45,-0.44,-0.43,-0.42,0.02
+LOC411307,mitochondrial enolase superfamily member 1,0 vs 8,0.07,-0.1,0.13,0.1,-0.17,0.07,0.03,0.24,0.2,0.06
+LOC412196,uncharacterized LOC412196,0 vs 8,0.14,0.37,0.49,0.45,0.23,0.35,0.31,0.12,0.08,-0.33
+LOC724156,transcription factor Sp8-like,0 vs 8,0.05,0.14,-0.11,-0.24,0.09,-0.16,-0.29,-0.25,-0.39,0.09
+LOC100576961,uncharacterized LOC100576961,0 vs 8,0.8,1.34,2.02,2.11,0.54,1.22,1.31,0.68,0.78,-0.93
+LOC113219395,uncharacterized LOC113219395,0 vs 8,-0.67,-0.85,-0.5,-1.3,-0.18,0.17,-0.63,0.36,-0.45,-0.3
+LOC113218669,uncharacterized LOC113218669,0 vs 8,-0.21,0.08,-0.2,-0.1,0.29,0.01,0.1,-0.28,-0.19,-0.1
+LOC100578187,uncharacterized LOC100578187,0 vs 8,0.11,0.34,0.61,0.63,0.24,0.51,0.52,0.27,0.29,-0.35
+LOC409836,rho GTPase-activating protein 100F,0 vs 8,-0.24,-0.53,-0.64,-0.89,-0.29,-0.4,-0.65,-0.11,-0.36,0.32
+LOC100576841,uncharacterized LOC100576841,0 vs 8,0.55,0.73,1.22,1.51,0.18,0.67,0.96,0.49,0.78,-1.08
+LOC100577387,uncharacterized LOC100577387,0 vs 8,0.77,1.5,2.41,2.53,0.73,1.65,1.76,0.91,1.03,-1.27
+LOC410913,sodium/potassium-transporting ATPase subunit alpha,0 vs 8,-0.51,0.05,-0.46,-0.56,0.56,0.05,-0.05,-0.5,-0.6,-0.05
+LOC550735,protein masquerade,0 vs 8,0.53,0.79,1.24,1.03,0.26,0.71,0.5,0.45,0.24,-0.69
+LOC726424,metabotropic glutamate receptor,0 vs 8,0.5,-0.21,-0.18,-0.12,-0.7,-0.68,-0.62,0.02,0.08,0.78
+LOC726468,histone H2A,0 vs 8,-0.22,0.22,0.05,0.07,0.43,0.26,0.29,-0.17,-0.15,-0.13
+LOC412273,probable chitinase 10,0 vs 8,-0.18,-0.09,-0.83,-1.01,0.09,-0.65,-0.83,-0.74,-0.92,0.77
+LOC726554,carboxypeptidase M,0 vs 8,0.49,1.08,1.74,1.76,0.59,1.26,1.27,0.66,0.68,-1.21
+LOC412163,aldose reductase,0 vs 8,-0.03,-0.03,0.02,-0.03,0,0.05,-0,0.04,-0.01,-0.11
+LOC724536,uncharacterized LOC724536,0 vs 8,0.34,0.03,0.09,-0.23,-0.31,-0.25,-0.57,0.06,-0.26,-0.05
+LOC408770,protein turtle,0 vs 8,0,0.16,-0.16,-0.21,0.16,-0.16,-0.21,-0.32,-0.38,0.08
+LOC409444,AMP deaminase 2,0 vs 8,0.26,0.07,0.31,0.15,-0.18,0.06,-0.11,0.24,0.08,-0.21
+LOC411159,uncharacterized LOC411159,0 vs 8,0.54,1.06,1.78,2.03,0.52,1.24,1.49,0.71,0.96,-1.03
+LOC552066,FAD-dependent oxidoreductase domain-containing protein 1,0 vs 8,0.07,0.06,0.18,0.26,-0.01,0.11,0.19,0.12,0.2,-0.14
+LOC409905,2-acylglycerol O-acyltransferase 1,0 vs 8,-0.05,-0.17,-0.39,-0.41,-0.12,-0.35,-0.36,-0.23,-0.24,0.26
+LOC726671,uncharacterized LOC726671,0 vs 8,-0.28,0.12,-0.19,-0.4,0.4,0.1,-0.12,-0.3,-0.52,0.03
+LOC552340,glypican-4,0 vs 8,-0.28,-0.21,-0.71,-0.82,0.07,-0.44,-0.55,-0.5,-0.61,0.42
+LOC410380,neprilysin-2,0 vs 8,0.54,0.96,1.35,1.02,0.42,0.81,0.48,0.4,0.06,-1.12
+LOC726879,uncharacterized LOC726879,0 vs 8,0.46,0.9,1.67,1.76,0.44,1.21,1.29,0.77,0.86,-1.2
+LOC724704,cytoplasmic polyadenylation element-binding protein 2,0 vs 8,-0.19,-0.22,-0.43,-0.69,-0.03,-0.24,-0.5,-0.21,-0.48,0.28
+LOC726155,uncharacterized LOC726155,0 vs 8,1.42,2.93,4.3,4.48,1.51,2.88,3.06,1.37,1.55,-2.15
+Hsc70-3,heat shock 70 kDa protein cognate 3,0 vs 8,0.33,0.04,-0.06,0.04,-0.29,-0.39,-0.3,-0.1,-0,0.21
+LOC726722,uncharacterized LOC726722,0 vs 8,0.04,0.19,0.46,0.57,0.15,0.42,0.53,0.27,0.38,-0.45
+LOC550926,phosphomannomutase,0 vs 8,0.03,0.01,0.14,0.25,-0.01,0.11,0.22,0.12,0.24,-0.06
+LOC102655819,extensin,0 vs 8,0.92,1.48,3.09,3.47,0.56,2.16,2.55,1.6,1.99,-2.94
+LOC550970,lysophosphatidylcholine acyltransferase,0 vs 8,0.72,1.13,2.06,2.01,0.41,1.34,1.29,0.93,0.87,-1.44
+LOC726914,probable serine/threonine-protein kinase DDB_G0272282,0 vs 8,0.01,0.37,0.28,0.13,0.36,0.27,0.12,-0.08,-0.23,-0.33
+LOC726291,rabankyrin-5,0 vs 8,0.16,0.23,0.26,0.31,0.07,0.1,0.15,0.03,0.08,-0.1
+LOC102655520,uncharacterized LOC102655520,0 vs 8,1.21,2.49,3.69,3.84,1.28,2.47,2.62,1.19,1.35,-2.26
+LOC100578123,uncharacterized LOC100578123,0 vs 8,-0.09,0.14,-0.32,-0.28,0.23,-0.23,-0.19,-0.46,-0.42,0.25
+LOC726423,transient receptor potential cation channel protein painless,0 vs 8,-0.31,-0.28,-0.43,-0.29,0.03,-0.12,0.02,-0.15,-0.01,0.21
+LOC724946,cytochrome P450 6a14-like,0 vs 8,0.07,0.46,0.96,0.98,0.39,0.89,0.91,0.5,0.52,-0.77
+LOC409160,dihydropteridine reductase,0 vs 8,-0.04,0.02,-0.17,-0.12,0.06,-0.13,-0.08,-0.19,-0.14,0.14
+LOC725308,histone H2A,0 vs 8,-0.04,0.22,0.27,0.21,0.25,0.3,0.25,0.05,-0,-0.43
+LOC413520,mediator of RNA polymerase II transcription subunit 4,0 vs 8,-0.21,-0.3,-0.48,-0.44,-0.09,-0.27,-0.23,-0.18,-0.14,0.35
+LOC551044,"glucose dehydrogenase [FAD, quinone]",0 vs 8,0.73,2.05,2.62,2.9,1.32,1.89,2.18,0.57,0.85,-1.87
+LOC411124,phosphoinositide 3-kinase adapter protein 1,0 vs 8,0,-0.23,-0.46,-0.52,-0.23,-0.47,-0.53,-0.23,-0.29,0.22
+LOC551327,carboxypeptidase B,0 vs 8,-0.13,-0.19,-0.07,-0.23,-0.06,0.06,-0.1,0.12,-0.04,-0.11
+LOC725529,"kynurenine/alpha-aminoadipate aminotransferase, mitochondrial",0 vs 8,0.23,0.28,0.34,0.67,0.05,0.1,0.44,0.05,0.38,-0.13
+LOC551430,PDZ domain-containing protein 8,0 vs 8,0.22,0.29,0.51,0.29,0.06,0.29,0.07,0.22,0,-0.46
+LOC409863,ras-related protein Rab-21,0 vs 8,0.11,0.33,0.36,0.38,0.22,0.25,0.28,0.03,0.06,-0.3
+LOC725415,BTB/POZ domain-containing protein KCTD16,0 vs 8,0.02,-0.05,-0.22,-0.28,-0.06,-0.24,-0.3,-0.17,-0.24,-0
+LOC412085,post-GPI attachment to proteins factor 3,0 vs 8,0.01,0.07,-0.14,0.07,0.06,-0.16,0.05,-0.21,-0.01,0.17
+LOC411177,integrator complex subunit 3,0 vs 8,0.17,-0.03,0.07,0,-0.19,-0.1,-0.16,0.1,0.03,0.09
+LOC412353,polyubiquitin-A,0 vs 8,-0.22,-0.14,-0.19,-0.09,0.08,0.03,0.13,-0.05,0.05,-0.06
+LOC412247,"rRNA methyltransferase 2, mitochondrial",0 vs 8,-0.04,0.11,-0.04,0.03,0.15,0,0.07,-0.14,-0.08,0.27
+LOC551624,TOX high mobility group box family member 3,0 vs 8,0.42,0.36,0.38,0.3,-0.06,-0.05,-0.13,0.01,-0.07,-0.13
+LOC411685,ATP-binding cassette sub-family D member 1,0 vs 8,-0.11,-0.11,-0.51,-0.29,-0,-0.39,-0.18,-0.39,-0.18,0.41
+LOC552379,TBC1 domain family member 15,0 vs 8,0.19,0.22,0.24,0.29,0.03,0.05,0.1,0.02,0.07,-0.14
+LOC408520,upstream activation factor subunit spp27,0 vs 8,-0.17,-0.29,-0.36,-0.39,-0.11,-0.19,-0.21,-0.08,-0.1,0.25
+LOC100576662,uncharacterized LOC100576662,0 vs 8,0.45,0.83,1.36,1.36,0.39,0.91,0.91,0.53,0.52,-0.96
+LOC552008,protein ABHD18,0 vs 8,0.14,0.1,0.16,0.18,-0.04,0.01,0.04,0.05,0.08,0.06
+LOC113218521,zinc finger protein Noc-like,0 vs 8,-0.07,-0,-0.08,-0.09,0.06,-0.02,-0.03,-0.08,-0.09,0.06
+LOC409006,arrestin red cell,0 vs 8,-0,0.23,-0.03,-0.24,0.23,-0.02,-0.24,-0.25,-0.47,-0.17
+LOC410951,RNA binding protein fox-1 homolog 2,0 vs 8,-0.24,-0.21,-0.75,-0.86,0.03,-0.5,-0.62,-0.53,-0.65,0.67
+nAChRa3,nicotinic acetylcholine receptor alpha3 subunit,0 vs 8,-0.23,-0.31,-0.31,-0.5,-0.08,-0.08,-0.27,0,-0.19,0.06
+LOC724776,uncharacterized LOC724776,0 vs 8,0.47,0.14,0.92,2.11,-0.33,0.46,1.64,0.79,1.97,-0.86
+LOC724860,"probable cytochrome P450 301a1, mitochondrial",0 vs 8,0.06,-0.03,0.22,0.33,-0.09,0.16,0.27,0.25,0.36,-0.06
+LOC412865,collagen alpha-2(IX) chain,0 vs 8,0.07,0.03,-0.17,-0.2,-0.03,-0.23,-0.27,-0.2,-0.23,0.07
+LOC411837,putative deoxyribonuclease TATDN1,0 vs 8,0.04,-0.06,-0.08,0.01,-0.09,-0.11,-0.03,-0.02,0.07,0.2
+LOC409818,sodium/calcium exchanger 3,0 vs 8,-0.11,0.01,-0.24,-0.42,0.12,-0.14,-0.32,-0.26,-0.44,0.01
+LOC551465,"homogentisate 1,2-dioxygenase",0 vs 8,0.01,0.36,0.28,0.47,0.35,0.27,0.47,-0.08,0.11,-0.28
+LOC100576736,uncharacterized LOC100576736,0 vs 8,0.23,-0.06,-0.11,0.12,-0.3,-0.34,-0.11,-0.05,0.18,-0.09
+LOC410705,synaptic vesicle glycoprotein 2C,0 vs 8,0.73,0.92,0.94,1.35,0.19,0.21,0.62,0.02,0.43,-0.48
+LOC551803,homeotic protein spalt-major,0 vs 8,-0.27,-0.15,-0.35,-0.55,0.12,-0.08,-0.28,-0.21,-0.41,0.06
+LOC412837,ribonuclease H2 subunit A,0 vs 8,-0.04,-0.14,-0.25,-0.36,-0.09,-0.21,-0.32,-0.11,-0.22,0.19
+LOC726175,nuclear protein 1,0 vs 8,0.12,0.32,0.45,0.56,0.2,0.32,0.44,0.13,0.24,-0.33
+LOC725500,laccase,0 vs 8,0.45,0.63,1.37,1.79,0.18,0.92,1.34,0.74,1.16,-1.07
+LOC412878,DNA N6-methyl adenine demethylase,0 vs 8,-0.05,0.25,-0.22,-0.5,0.3,-0.17,-0.45,-0.47,-0.75,0.05
+LOC411295,V-type proton ATPase subunit D 1,0 vs 8,-0.05,-0.06,0.06,0.17,-0.02,0.11,0.22,0.12,0.24,-0
+LOC102653708,uncharacterized LOC102653708,2 vs 8,0.14,-0.31,-0.4,-0.28,-0.45,-0.54,-0.42,-0.1,0.03,0.75
+LOC411732,trimeric intracellular cation channel type 1B.1,2 vs 8,-0.17,-0.02,0.23,0.2,0.15,0.4,0.37,0.25,0.22,-0.56
+LOC408417,CTD nuclear envelope phosphatase 1 homolog,2 vs 8,0.1,0.01,-0.04,-0.06,-0.09,-0.15,-0.16,-0.05,-0.07,-0.18
+LOC726121,golgin subfamily A member 6-like protein 22,2 vs 8,0.3,0.41,0.31,0.38,0.11,0,0.07,-0.11,-0.04,0.22
+LOC412735,decaprenyl-diphosphate synthase subunit 1,2 vs 8,-0.5,-0.51,0.04,-0.12,-0.01,0.54,0.39,0.55,0.39,-0.65
+LOC100577140,UDP-glucuronosyltransferase 2B19,2 vs 8,-0.08,-0.05,0.18,-0.06,0.03,0.26,0.02,0.23,-0.01,-0.36
+LOC727642,dnaJ homolog subfamily B member 13-like,2 vs 8,0.36,0.31,0.02,-0.08,-0.05,-0.34,-0.44,-0.29,-0.39,0.35
+Cry2,cryptochrome 2,2 vs 8,-0.05,0.36,0.73,0.46,0.41,0.78,0.51,0.36,0.09,-1
+LOC413285,zinc finger CCHC domain-containing protein 24,2 vs 8,-0,-0.01,-0.06,0.17,-0.01,-0.06,0.18,-0.05,0.19,-0.32
+LOC724252,homeotic protein deformed,2 vs 8,0.37,0.2,-0.11,-0.83,-0.16,-0.48,-1.2,-0.31,-1.03,0.39
+LOC100577978,uncharacterized LOC100577978,2 vs 8,0.52,0.26,0.06,-0.11,-0.26,-0.46,-0.63,-0.2,-0.37,0.59
+LOC725159,probable cytochrome P450 6a14,2 vs 8,-0.36,-0.91,-0.18,-0.59,-0.55,0.18,-0.22,0.73,0.33,-0.62
+LOC411633,UDP-glucose 4-epimerase,2 vs 8,-0.24,-0.26,0.08,0.3,-0.02,0.33,0.54,0.34,0.56,-0.32
+LOC107965854,uncharacterized LOC107965854,2 vs 8,0.07,0.06,-0.19,-0.07,-0.01,-0.27,-0.15,-0.26,-0.14,0.65
+LOC102653600,uncharacterized LOC102653600,2 vs 8,0.02,-0.03,-0.41,0.06,-0.05,-0.44,0.04,-0.39,0.08,0.88
+LOC100576333,nucleoredoxin,2 vs 8,0.47,0.4,0.13,0.12,-0.07,-0.34,-0.35,-0.28,-0.29,0.15
+LOC411452,band 4.1-like protein 4A,2 vs 8,0.4,0.61,0.22,0.21,0.21,-0.19,-0.19,-0.4,-0.4,0.16
+LOC100577069,hairy/enhancer-of-split related with YRPW motif protein,2 vs 8,0.34,0.19,-0.2,-0.19,-0.15,-0.54,-0.54,-0.39,-0.38,0.53
+LOC100578547,uncharacterized LOC100578547,2 vs 8,0.09,-0.6,-0.3,-0.55,-0.69,-0.39,-0.63,0.3,0.05,0.51
+Gat-1B,GABA neurotransmitter transporter-1B,2 vs 8,0.04,-0.02,-0.23,-0.03,-0.06,-0.26,-0.07,-0.21,-0.01,0.35
+LOC413441,dnaJ homolog subfamily C member 3,2 vs 8,-0.13,-0.26,-0.36,-0.41,-0.14,-0.23,-0.28,-0.1,-0.14,0.14
+LOC100577819,uncharacterized LOC100577819,2 vs 8,0.2,0.09,-1.15,-1.43,-0.11,-1.35,-1.63,-1.24,-1.51,1.82
+LOC100577681,protein asteroid,2 vs 8,-0.13,-0.24,-0.23,-0.33,-0.11,-0.1,-0.2,0.01,-0.09,-0.3
+LOC410662,lachesin,2 vs 8,0.2,0.29,0,0.16,0.09,-0.19,-0.04,-0.28,-0.13,0.26
+LOC102655685,uncharacterized LOC102655685,2 vs 8,0.61,0.49,0.09,0.21,-0.12,-0.52,-0.4,-0.4,-0.28,0.5
+LOC412034,DNA helicase MCM8,2 vs 8,0.04,0.05,0.05,0.03,0.01,0,-0.01,-0.01,-0.02,0.21
+LOC100576326,phenoloxidase-activating factor 2,2 vs 8,0.14,0.35,0.14,0.16,0.21,0,0.02,-0.21,-0.19,0.08
+LOC725149,GPI ethanolamine phosphate transferase 2,2 vs 8,-0.33,-0.15,-0.08,0.03,0.18,0.24,0.36,0.07,0.18,-0.31
+LOC411955,uncharacterized LOC411955,2 vs 8,-0.35,-0.27,-0.07,-0.16,0.07,0.27,0.18,0.2,0.11,-0.4
+LOC113218927,uncharacterized LOC113218927,2 vs 8,0.26,0.36,0.37,0.51,0.1,0.11,0.25,0.02,0.16,-0.08
+LOC102656896,uncharacterized LOC102656896,2 vs 8,0.17,-0,-0.49,0.03,-0.17,-0.66,-0.14,-0.49,0.03,1.22
+LOC100577073,pigment-dispersing hormone peptides,2 vs 8,0.02,0.07,-0.04,-0.11,0.05,-0.06,-0.13,-0.11,-0.18,0.38
+LOC100577841,carbonic anhydrase 7,2 vs 8,0.86,0.46,0.5,0.38,-0.4,-0.36,-0.47,0.04,-0.07,0.37
+LOC107965415,uncharacterized LOC107965415,2 vs 8,0.38,0.23,0.02,0.24,-0.15,-0.36,-0.14,-0.21,0.01,0.21
+LOC102654200,uncharacterized LOC102654200,2 vs 8,0.55,0.46,0.12,0.36,-0.09,-0.43,-0.19,-0.35,-0.1,0.42
+LOC100577348,uncharacterized LOC100577348,2 vs 8,0.47,0.42,0.14,0.12,-0.05,-0.32,-0.34,-0.28,-0.3,0.33
+LOC408945,sorting nexin-27,2 vs 8,0.07,0.33,0.11,-0.01,0.26,0.03,-0.08,-0.22,-0.34,0.04
+LOC551619,transmembrane protein 8B,2 vs 8,-0.08,-0.12,0.06,0.06,-0.04,0.14,0.14,0.18,0.18,-0.3
+LOC410609,disintegrin and metalloproteinase domain-containing protein 10-like,2 vs 8,0.38,0.18,-0.04,-0.01,-0.21,-0.42,-0.4,-0.22,-0.19,0.25
+LOC409923,leishmanolysin-like peptidase,2 vs 8,-0.02,-0.14,0.2,0.17,-0.13,0.22,0.19,0.35,0.31,-0.41
+LOC100577542,uncharacterized LOC100577542,2 vs 8,0.28,0.19,0.43,0.41,-0.09,0.14,0.13,0.24,0.22,0.13
+LOC724361,GPI inositol-deacylase,2 vs 8,-0.28,-0.31,-0.21,-0.02,-0.03,0.07,0.26,0.09,0.29,-0.04
+LOC551891,molybdenum cofactor biosynthesis protein 1,2 vs 8,-0.09,-0.17,0.09,0.16,-0.08,0.18,0.25,0.26,0.33,-0.21
+LOC102655072,microtubule-associated protein futsch-like,2 vs 8,-0.2,-0.24,0.05,0.05,-0.03,0.25,0.25,0.29,0.29,-0.53
+LOC107964093,uncharacterized LOC107964093,2 vs 8,0.61,0.95,0.61,0.42,0.34,-0,-0.2,-0.34,-0.54,0.01
+LOC411189,L-lactate dehydrogenase A-like 6A,2 vs 8,0.59,0.93,0.67,0.78,0.34,0.07,0.19,-0.26,-0.15,0.18
+LOC408788,UDP-glucuronosyltransferase 1-3,2 vs 8,0.41,0.26,0.32,0.38,-0.15,-0.09,-0.03,0.06,0.12,-0.07
+LOC100576986,uncharacterized LOC100576986,2 vs 8,0.31,0.27,0.06,0.33,-0.05,-0.26,0.01,-0.21,0.06,0.22
+LOC551721,V-type proton ATPase subunit B,2 vs 8,-0.11,-0.31,-0.17,-0.1,-0.2,-0.06,0.01,0.14,0.21,0.08
+LOC726793,uncharacterized LOC726793,2 vs 8,-0.12,0.06,-0.41,-0.29,0.18,-0.29,-0.17,-0.46,-0.34,0.62
+LOC551549,transmembrane 9 superfamily member 3,2 vs 8,-0.01,-0,-0.04,-0.01,0,-0.04,-0,-0.04,-0.01,-0.1
+LOC408620,RNA-binding protein 42,2 vs 8,0.27,0.15,0,-0.08,-0.12,-0.27,-0.35,-0.15,-0.23,0.25
+LOC727308,ephrin-B2,2 vs 8,0.18,0.13,0.19,0.1,-0.06,0,-0.08,0.06,-0.03,-0.01
+LOC552016,mitochondrial 2-oxoglutarate/malate carrier protein,2 vs 8,-0.17,-0.24,-0.02,0.19,-0.07,0.15,0.36,0.23,0.44,-0.23
+LOC102653655,mucin-19,2 vs 8,0.27,-0.38,0.46,0.87,-0.65,0.19,0.6,0.84,1.26,-0.89
+LOC410347,protein big brother,2 vs 8,0.4,0.43,0.21,0.27,0.03,-0.19,-0.14,-0.22,-0.17,0.15
+LOC408874,uncharacterized LOC408874,2 vs 8,0.19,0.3,0.13,0.03,0.12,-0.05,-0.16,-0.17,-0.28,0.08
+LOC100577409,solute carrier organic anion transporter family member 3A1,2 vs 8,-0.04,0.24,0.4,0.46,0.28,0.44,0.5,0.16,0.22,-0.58
+LOC408754,TNF receptor-associated factor 4,2 vs 8,0.11,-0.04,-0.46,-0.37,-0.16,-0.57,-0.48,-0.42,-0.33,0.66
+LOC724440,calcium-transporting ATPase type 2C member 1,2 vs 8,0.01,-0.07,-0.11,-0.11,-0.08,-0.13,-0.13,-0.04,-0.04,-0.09
+LOC725365,probable phosphatase phospho2,2 vs 8,-0.22,-0.28,-0.04,0.22,-0.06,0.18,0.44,0.24,0.5,-0.04
+LOC724927,importin-5,2 vs 8,-0.36,-0.47,-0.49,-0.49,-0.12,-0.13,-0.13,-0.02,-0.02,0.12
+LOC412687,beclin 1-associated autophagy-related key regulator,2 vs 8,-0.18,-0.1,-0.05,0.05,0.09,0.14,0.23,0.05,0.15,-0.22
+LOC100577912,uncharacterized protein C15orf61 homolog,2 vs 8,0.28,0.52,0.42,0.27,0.24,0.14,-0.01,-0.1,-0.25,0.07
+LOC726282,uncharacterized LOC726282,2 vs 8,0.41,0.3,0.18,0.2,-0.11,-0.23,-0.21,-0.12,-0.09,0.1
+LOC410406,zinc metalloproteinase nas-13,2 vs 8,0.12,0.34,0.14,0.21,0.22,0.03,0.1,-0.19,-0.12,0.4
+LOC726790,uncharacterized LOC726790,2 vs 8,0.48,0.4,0.18,0.1,-0.08,-0.29,-0.38,-0.21,-0.29,0.2
+LOC100576116,protein inscuteable homolog,2 vs 8,0.13,0.26,-0.09,-0.25,0.14,-0.22,-0.38,-0.36,-0.51,0.21
+LOC102655009,elongation of very long chain fatty acids protein AAEL008004,2 vs 8,0.05,-0.2,0.09,-0.06,-0.24,0.04,-0.11,0.28,0.13,-0.27
+LOC412079,uncharacterized LOC412079,2 vs 8,-0.19,-0.07,-0.1,-0.16,0.12,0.09,0.03,-0.03,-0.09,-0.15
+LOC102653894,uncharacterized LOC102653894,2 vs 8,0.29,0.64,0.49,0.51,0.35,0.2,0.22,-0.14,-0.13,-0.23
+LOC725616,allatostatin C,2 vs 8,0.23,0.16,0.05,0.17,-0.07,-0.19,-0.06,-0.12,0.01,0.24
+LOC102656552,hypertrehalosaemic prohormone,2 vs 8,-0.1,-0.3,-0.51,-0.33,-0.2,-0.41,-0.23,-0.21,-0.03,0.7
+LOC113218559,"solute carrier family 52, riboflavin transporter, member 3-A-like",2 vs 8,-0.27,-0.38,-0.29,-0.22,-0.11,-0.02,0.06,0.09,0.17,-0.25
+LOC410754,post-GPI attachment to proteins factor 2-like,2 vs 8,-0.34,-0.67,-0.65,-0.7,-0.33,-0.31,-0.36,0.02,-0.03,0.03
+LOC411903,dyslexia-associated protein KIAA0319,2 vs 8,-0.08,0.02,0.1,0.12,0.1,0.18,0.2,0.08,0.1,-0.19
+LOC551993,uncharacterized LOC551993,2 vs 8,-0.07,0.09,0.35,0.27,0.16,0.42,0.33,0.26,0.17,-0.48
+LOC100578669,uncharacterized LOC100578669,2 vs 8,0.42,0.41,0.11,0.09,-0.01,-0.31,-0.33,-0.3,-0.32,0.15
+LOC725397,probable E3 ubiquitin-protein ligase makorin-1,2 vs 8,-0.15,-0.21,-0.23,-0.25,-0.06,-0.08,-0.1,-0.02,-0.04,-0.13
+LOC107965409,uncharacterized LOC107965409,2 vs 8,0.34,-0.03,-0.15,-0.15,-0.38,-0.5,-0.5,-0.12,-0.12,0.67
+LOC100576531,RNA pseudouridylate synthase domain-containing protein 1-like,2 vs 8,-0.17,-0.01,-0.35,-0.02,0.16,-0.19,0.15,-0.34,-0.01,0.63
+LOC100578928,calcium and integrin-binding protein 1,2 vs 8,0.92,0.84,0.93,0.73,-0.08,0.01,-0.2,0.09,-0.12,-0.46
+LOC113219401,uncharacterized LOC113219401,2 vs 8,0.15,-0.18,-0.19,-0.14,-0.33,-0.34,-0.29,-0.01,0.04,0.69
+LOC551535,ero1-like protein,2 vs 8,0.04,-0.11,-0.14,-0.1,-0.15,-0.18,-0.15,-0.03,0.01,-0.04
+LOC724336,tRNA dimethylallyltransferase,2 vs 8,0.12,0.3,0.24,0.3,0.18,0.12,0.17,-0.06,-0.01,0.02
+LOC552267,zinc finger CCCH domain-containing protein 10,2 vs 8,-0.12,-0.12,-0.25,-0.26,-0,-0.13,-0.14,-0.13,-0.14,-0.02
+LOC102656439,adenosine deaminase 2,2 vs 8,-0.11,-0.26,0.22,0.06,-0.15,0.33,0.17,0.48,0.32,-0.41
+LOC726124,segmentation protein Runt,2 vs 8,0.25,0.25,0.01,0.09,0,-0.24,-0.16,-0.24,-0.16,0.22
+Ac3,adenylate cyclase 3,2 vs 8,0.42,0.3,0.31,0.18,-0.12,-0.11,-0.23,0.01,-0.12,0.09
+LOC408531,PRADC1-like protein,2 vs 8,-0.09,-0.11,-0.15,-0.16,-0.02,-0.07,-0.08,-0.05,-0.06,0.01
+LOC408729,uncharacterized LOC408729,2 vs 8,-0.09,0.09,-0.6,-0.45,0.18,-0.52,-0.37,-0.7,-0.55,0.91
+LOC724890,laccase-1,2 vs 8,0.15,-0.02,0.32,0.19,-0.17,0.17,0.04,0.34,0.21,-0.79
+LOC408769,excitatory amino acid transporter,2 vs 8,0.34,0.32,0.15,0.05,-0.02,-0.19,-0.29,-0.17,-0.27,0.11
+LOC727085,zinc finger protein 558,2 vs 8,0.06,-0.15,0,0.04,-0.21,-0.05,-0.02,0.15,0.19,0.2
+LOC408971,ras-related protein Rab-3,2 vs 8,0.19,0.15,0,-0.07,-0.04,-0.19,-0.26,-0.15,-0.22,0.2
+LOC410792,TBC1 domain family member 22B,2 vs 8,0.07,0.06,0.08,0.13,-0.01,0.01,0.06,0.02,0.07,-0.22
+LOC413643,N-acetylglucosaminyl-phosphatidylinositol biosynthetic protein,2 vs 8,-0.1,0.01,-0.1,-0.11,0.11,-0,-0.01,-0.11,-0.12,-0.12
+LOC411223,esterase FE4,2 vs 8,0.11,0.22,-0.27,-0.28,0.1,-0.39,-0.39,-0.49,-0.5,0.54
+LOC413892,ankyrin repeat domain-containing protein 65,2 vs 8,0.49,0.5,0.02,0.26,0.01,-0.47,-0.24,-0.48,-0.25,0.29
+LOC413672,hexosaminidase D,2 vs 8,-0.04,-0.2,-0.03,-0.16,-0.17,0.01,-0.12,0.18,0.05,-0.15
+LOC408453,cytochrome P450 9e2,2 vs 8,0.93,1.52,1.13,1.55,0.58,0.19,0.62,-0.39,0.04,-0.45
+LOC410575,dual specificity mitogen-activated protein kinase kinase 4,2 vs 8,0.01,0.05,-0.04,0.01,0.04,-0.05,-0,-0.09,-0.04,-0.08
+LOC551972,"alpha-1,3/1,6-mannosyltransferase ALG2",2 vs 8,-0.14,-0.06,-0.11,-0.06,0.09,0.03,0.08,-0.06,-0.01,-0.03
+LOC551958,uncharacterized LOC551958,2 vs 8,-0.02,-0.11,-0.08,-0.06,-0.09,-0.05,-0.04,0.04,0.05,-0.05
+LOC409499,UDP-glucose 4-epimerase,2 vs 8,-0.02,-0.04,-0.44,-0.36,-0.02,-0.42,-0.34,-0.4,-0.32,0.57
+LOC408903,uncharacterized LOC408903,2 vs 8,0.24,0.25,0.18,0.21,0.02,-0.05,-0.03,-0.07,-0.04,-0.03
+LOC552645,mesencephalic astrocyte-derived neurotrophic factor homolog,2 vs 8,-0.22,-0.21,-0.24,-0.23,0,-0.03,-0.02,-0.03,-0.02,0.13
+LOC100577163,insulin-like growth factor-binding protein complex acid labile subunit,2 vs 8,0.84,0.28,-0.15,-0.18,-0.55,-0.98,-1.02,-0.43,-0.47,0.8
+LOC412972,WD repeat domain phosphoinositide-interacting protein 3,2 vs 8,-0.06,-0.05,-0.04,-0.07,0.02,0.02,-0.01,0.01,-0.03,-0.11
+LOC725555,eukaryotic peptide chain release factor subunit 1,2 vs 8,-0.16,-0.07,-0.07,0.03,0.09,0.09,0.19,-0,0.11,-0.14
+LOC412929,androgen-induced gene 1 protein,2 vs 8,-0.25,-0.35,-0.35,-0.26,-0.1,-0.1,-0.01,0,0.09,0.1
+LOC412503,mitochondrial dicarboxylate carrier,2 vs 8,-0.33,-0.84,-0.57,-0.46,-0.51,-0.23,-0.13,0.27,0.38,-0.03
+LOC551941,uncharacterized LOC551941,2 vs 8,-0.22,0.1,0.23,0.32,0.32,0.45,0.55,0.13,0.22,-0.5
+LOC551119,pyridoxal phosphate homeostasis protein,2 vs 8,-0.11,-0.03,0.1,0.18,0.09,0.22,0.29,0.13,0.2,-0.23
+Blop,blue-sensitive opsin,2 vs 8,0.4,0.11,0.25,0.27,-0.29,-0.16,-0.13,0.14,0.16,0.28
+LOC413113,probable serine/threonine-protein kinase samkC,2 vs 8,0.75,-1.47,1.12,3.22,-2.22,0.37,2.47,2.59,4.69,-1.54
+LOC113218662,uncharacterized LOC113218662,2 vs 8,0.64,-0.68,1.04,2.82,-1.33,0.4,2.18,1.72,3.51,-1.49
+LOC107964222,uncharacterized LOC107964222,2 vs 8,0.35,-0.05,-0.13,-0.04,-0.4,-0.48,-0.39,-0.08,0.01,0.64
+LOC725281,"probable malate dehydrogenase, mitochondrial",2 vs 8,0.71,0.64,0.91,0.8,-0.07,0.2,0.09,0.27,0.16,-0.35
+LOC410933,serine/threonine-protein kinase S6KL,2 vs 8,0.29,0.19,0,0.03,-0.1,-0.29,-0.26,-0.19,-0.16,0.3
+LOC410514,uncharacterized LOC410514,2 vs 8,0.09,0.12,-0.08,-0.25,0.03,-0.16,-0.33,-0.19,-0.36,0.15
+LOC100578437,ataxin-7-like protein 1,2 vs 8,0.53,0.68,0.53,0.65,0.15,0,0.12,-0.15,-0.03,0.01
+LOC552421,glycogenin-1,2 vs 8,-0.18,-0.28,-0.08,-0.1,-0.1,0.1,0.08,0.2,0.18,-0.14
+LOC726407,uncharacterized LOC726407,2 vs 8,0.33,0.35,0.32,0.5,0.01,-0.02,0.17,-0.03,0.16,0.04
+LOC107964757,uncharacterized LOC107964757,2 vs 8,-0.06,0.3,0.3,0.23,0.37,0.36,0.29,-0.01,-0.08,0.33
+LOC102654520,putative uncharacterized protein DDB_G0282133,2 vs 8,0.13,0.35,0.17,0.14,0.22,0.04,0.01,-0.18,-0.21,0.07
+LOC552662,non-canonical poly(A) RNA polymerase PAPD5-like,2 vs 8,-0.06,-0.33,-0.3,-0.36,-0.28,-0.25,-0.3,0.03,-0.02,-0
+Qbp-1,Queen brain-selective protein-1,2 vs 8,-0.03,0.19,0.78,0.46,0.22,0.81,0.49,0.59,0.27,-0.39
+LOC100576555,cytochrome b561 domain-containing protein 2,2 vs 8,-1.33,0.6,1.59,1.99,1.94,2.93,3.33,0.99,1.39,-2.68
+LOC100577974,uncharacterized LOC100577974,2 vs 8,0.23,0.41,0.18,0.26,0.18,-0.04,0.04,-0.23,-0.15,0.35
+LOC724358,neuroligin 1,2 vs 8,0.16,0.08,-0.16,-0.11,-0.07,-0.31,-0.26,-0.24,-0.19,0.31
+LOC107964975,uncharacterized LOC107964975,2 vs 8,0.38,-0.42,1.51,3.16,-0.8,1.12,2.77,1.92,3.57,-1.87
+LOC552435,ER degradation-enhancing alpha-mannosidase-like protein 3,2 vs 8,-0.25,-0.1,-0.23,-0.4,0.15,0.02,-0.15,-0.13,-0.3,-0.2
+LOC409695,uncharacterized LOC409695,2 vs 8,-0.22,-0.24,0.03,-0.2,-0.02,0.25,0.02,0.27,0.04,-0.41
+LOC412114,ubiquitin carboxyl-terminal hydrolase 35,2 vs 8,-0.22,-0.28,-0.27,-0.26,-0.06,-0.05,-0.04,0.02,0.03,-0.13
+LOC411738,lutropin-choriogonadotropic hormone receptor,2 vs 8,0.26,0.21,0.7,1.1,-0.05,0.44,0.84,0.49,0.89,-0.88
+LOC411182,ubiquitin-protein ligase E3A,2 vs 8,0.08,0,0.02,-0.15,-0.08,-0.06,-0.23,0.02,-0.16,-0.09
+LOC100577667,WAS/WASL-interacting protein family member 3,2 vs 8,0.16,-0.23,0.16,0.32,-0.39,0,0.16,0.39,0.55,0.27
+LOC410492,cytochrome P450 9e2,2 vs 8,0.36,0.78,0.08,0.19,0.42,-0.28,-0.16,-0.7,-0.59,0.31
+PRF,profilin,2 vs 8,0.06,-0.01,-0.27,-0.45,-0.07,-0.33,-0.51,-0.26,-0.44,0.33
+LOC724909,uncharacterized LOC724909,2 vs 8,0.26,0.11,0.14,0.18,-0.16,-0.12,-0.09,0.03,0.07,0.02
+LOC725930,retinol dehydrogenase 12,2 vs 8,-0.39,-0.15,-0.01,0.13,0.24,0.38,0.52,0.14,0.28,-0.18
+LOC551699,transmembrane protein 145,2 vs 8,-0.09,-0.08,-0.09,0.12,0.01,0,0.21,-0.01,0.2,0.01
+LOC726961,testis-expressed protein 10 homolog,2 vs 8,-0.51,-0.75,-0.78,-0.66,-0.24,-0.27,-0.15,-0.02,0.1,0.2
+CSP3,chemosensory protein 3,2 vs 8,0.13,0.43,0.32,0.23,0.3,0.19,0.1,-0.11,-0.2,-0.2
+LOC725020,uncharacterized LOC725020,2 vs 8,0.28,0.23,0.04,-0.04,-0.05,-0.24,-0.31,-0.19,-0.26,0.11
+LOC413709,F-box only protein 9,2 vs 8,0,-0,-0.11,0.01,-0,-0.11,0.01,-0.11,0.01,-0.1
+LOC413086,DNA ligase 3,2 vs 8,0.45,0.66,0.69,0.7,0.21,0.24,0.25,0.03,0.04,-0.22
+LOC102654335,uncharacterized LOC102654335,2 vs 8,0.16,0.01,-0.26,-0.3,-0.15,-0.43,-0.46,-0.28,-0.31,0.39
+LOC551595,WD repeat-containing protein CG11141,2 vs 8,-0.18,-0.22,-0.35,-0.35,-0.05,-0.17,-0.17,-0.12,-0.12,0.23
+LOC413614,ras-related protein Rab-14,2 vs 8,-0.03,0.07,0.15,0.21,0.1,0.18,0.24,0.07,0.13,-0.33
+Mir9883,microRNA mir-9883,2 vs 8,0.14,-0.1,-0.23,-0.09,-0.24,-0.36,-0.23,-0.13,0.01,0.45
+LOC725651,uncharacterized LOC725651,2 vs 8,-0.02,0.11,-0.17,-0.24,0.13,-0.15,-0.22,-0.28,-0.35,0.34
+LOC102655995,uncharacterized LOC102655995,2 vs 8,0.43,0.54,-0.27,0.32,0.11,-0.7,-0.1,-0.81,-0.22,0.96
+LOC552592,facilitated trehalose transporter Tret1,2 vs 8,0.41,1.17,0.78,-0.02,0.75,0.36,-0.43,-0.39,-1.18,-2.02
+LOC724619,multiple inositol polyphosphate phosphatase 1,2 vs 8,0.38,0.14,-0.19,0.16,-0.24,-0.57,-0.22,-0.33,0.02,0.64
+LOC107965007,uncharacterized LOC107965007,2 vs 8,0.86,1.05,0.87,0.63,0.19,0.01,-0.23,-0.17,-0.42,0.13
+LOC725552,DNA-directed RNA polymerase III subunit RPC1,2 vs 8,-0.04,-0.08,0.11,0.03,-0.04,0.15,0.08,0.19,0.11,-0.18
+LOC410601,cilia- and flagella-associated protein 206,2 vs 8,-0.12,-0.67,0.09,-0.47,-0.55,0.21,-0.35,0.76,0.21,0.27
+LOC408790,protein croquemort,2 vs 8,-0.21,-0.16,-0.11,0.1,0.05,0.11,0.32,0.05,0.26,-0.12
+LOC411923,"alanine--tRNA ligase, cytoplasmic",2 vs 8,-0.32,-0.44,-0.22,-0.33,-0.12,0.1,-0.01,0.22,0.11,-0.12
+LOC100578245,uncharacterized LOC100578245,2 vs 8,0.33,-0.07,-0.26,0.14,-0.4,-0.59,-0.19,-0.19,0.21,0.63
+LOC113219226,protein AF-9-like,2 vs 8,0.91,0.6,1.32,1.29,-0.31,0.41,0.38,0.72,0.69,-0.14
+LOC409043,high-affinity choline transporter 1,2 vs 8,0.25,0.32,0.15,0.29,0.08,-0.09,0.04,-0.17,-0.04,0.06
+LOC551447,mannose-6-phosphate isomerase,2 vs 8,-0.16,-0.26,-0.12,-0.15,-0.11,0.04,0,0.14,0.11,-0.18
+LOC100577064,uncharacterized LOC100577064,2 vs 8,0.24,-0.89,0.89,2,-1.13,0.65,1.76,1.78,2.89,-1.16
+LOC725197,protein penguin,2 vs 8,-0.49,-0.76,-0.62,-0.82,-0.27,-0.13,-0.33,0.14,-0.06,-0.07
+LOC100577159,protein PFC0760c,2 vs 8,0.36,0.3,0.15,0.09,-0.06,-0.22,-0.27,-0.16,-0.21,0.24
+LOC107964882,uncharacterized LOC107964882,2 vs 8,0.52,0.79,0.6,0.79,0.27,0.08,0.27,-0.19,0,0.14
+LOC113218965,45 kDa calcium-binding protein,2 vs 8,0.11,-0.01,0.31,0.75,-0.12,0.2,0.64,0.32,0.76,-0.56
+LOC406146,hyaluronoglucosaminidase,2 vs 8,0.14,0.28,-0.05,0.09,0.15,-0.19,-0.04,-0.33,-0.19,0.24
+LOC409228,scavenger receptor class B member 1,2 vs 8,0.02,-0.01,-0.18,-0.29,-0.03,-0.2,-0.31,-0.17,-0.28,0.25
+LOC410334,uncharacterized LOC410334,2 vs 8,0.05,0.24,-0.14,-0.2,0.19,-0.19,-0.25,-0.38,-0.44,0.37
+LOC100576930,uncharacterized LOC100576930,2 vs 8,-0.36,-0.42,-0.23,-0.09,-0.06,0.13,0.27,0.19,0.33,-0.26
+LOC102656720,uncharacterized LOC102656720,2 vs 8,0.09,0.23,0.11,-0.18,0.14,0.02,-0.28,-0.12,-0.41,0.25
+LOC725999,uncharacterized LOC725999,2 vs 8,0.3,0.15,0.17,0.04,-0.14,-0.13,-0.25,0.01,-0.11,0.06
+LOC725026,retinol dehydrogenase 10-A,2 vs 8,0.01,0.63,0.07,-0.08,0.63,0.06,-0.08,-0.56,-0.71,0.19
+LOC102653901,uncharacterized LOC102653901,2 vs 8,0.05,-0.28,-0.01,-0.21,-0.34,-0.06,-0.26,0.28,0.08,0.42
+LOC100578984,protein charlatan,2 vs 8,0.12,0.16,-0.03,-0.14,0.05,-0.14,-0.26,-0.19,-0.31,0.07
+LOC409061,tyrosine kinase receptor Cad96Ca,2 vs 8,-0.05,0.02,0.38,0.94,0.07,0.43,0.99,0.36,0.92,-0.61
+LOC100577407,uncharacterized LOC100577407,2 vs 8,0.45,0.19,0.14,0.25,-0.27,-0.32,-0.2,-0.05,0.06,0.38
+LOC113218632,uncharacterized LOC113218632,2 vs 8,0.39,0.34,0.32,0.07,-0.05,-0.07,-0.32,-0.02,-0.27,-0.12
+LOC552140,cleavage and polyadenylation specificity factor subunit 5,2 vs 8,0.26,-0.21,-0.48,-0.37,-0.47,-0.74,-0.63,-0.28,-0.17,0.7
+LOC102655976,uncharacterized LOC102655976,2 vs 8,0.63,0.15,-0.56,-0.58,-0.48,-1.18,-1.21,-0.7,-0.73,0.9
+LOC551205,neutral alpha-glucosidase AB,2 vs 8,-0.09,-0.19,-0.19,-0.36,-0.1,-0.1,-0.26,-0,-0.17,-0.02
+LOC113219118,uncharacterized LOC113219118,2 vs 8,-0.26,0.4,0.27,0.13,0.65,0.53,0.39,-0.13,-0.27,0.06
+LOC102655530,uncharacterized LOC102655530,2 vs 8,0.35,0.11,0.81,0.77,-0.25,0.45,0.42,0.7,0.67,-0.45
+LOC550677,protein mab-21,2 vs 8,0.37,0.48,0.25,0.28,0.11,-0.12,-0.09,-0.23,-0.2,0.28
+LOC113218924,uncharacterized LOC113218924,2 vs 8,0.55,0.42,0.16,0.51,-0.13,-0.39,-0.04,-0.26,0.09,0.97
+LOC410340,prolactin regulatory element-binding protein,2 vs 8,0,0.08,0.07,0.02,0.08,0.07,0.02,-0,-0.05,-0.14
+LOC726958,tumor necrosis factor receptor superfamily member wengen,2 vs 8,0.06,0.19,-0.07,-0.03,0.13,-0.13,-0.09,-0.26,-0.22,0.32
+Cyp6as5,cytochrome P450 6AS5,2 vs 8,0.45,0.53,0.03,0.45,0.08,-0.42,-0,-0.5,-0.08,0.82
+LOC412200,"threonine--tRNA ligase, cytoplasmic",2 vs 8,-0.24,-0.19,-0.26,-0.22,0.05,-0.02,0.03,-0.07,-0.02,0.03
+LOC107965021,"phosphatidate cytidylyltransferase, mitochondrial",2 vs 8,-0.19,-0.01,0.23,0.35,0.18,0.42,0.54,0.25,0.36,-0.37
+LOC409701,zwei Ig domain protein zig-8,2 vs 8,0.62,0.92,0.89,0.82,0.3,0.27,0.2,-0.03,-0.1,-0.25
+LOC413379,yellow-g,2 vs 8,-0.33,-0.43,-1.27,-0.2,-0.09,-0.94,0.13,-0.84,0.22,1.37
+LOC410246,netrin receptor UNC5B,2 vs 8,0.29,0.34,0.14,0.19,0.05,-0.15,-0.1,-0.21,-0.15,0.08
+LOC410190,tyrosine-protein kinase Dnt,2 vs 8,0.15,0.39,-0.19,-0.2,0.23,-0.34,-0.36,-0.58,-0.59,0.36
+LOC724571,atrial natriuretic peptide receptor 1,2 vs 8,0.06,-0.59,-0.12,0.04,-0.65,-0.17,-0.02,0.48,0.63,0.4
+LOC413594,abhydrolase domain-containing protein 2,2 vs 8,-0.04,-0.16,-0.01,-0.25,-0.12,0.03,-0.21,0.15,-0.09,-0.32
+LOC552771,hydroxyacid oxidase 1,2 vs 8,0.44,1.13,1.36,1.48,0.69,0.92,1.04,0.23,0.35,-1.08
+LOC113218745,ankyrin-3-like,2 vs 8,0.29,0.03,0.06,0.05,-0.26,-0.23,-0.24,0.03,0.02,0.11
+LOC408732,uncharacterized LOC408732,2 vs 8,0.19,0.21,0.21,0.18,0.01,0.02,-0.01,0.01,-0.03,0.12
+Dop1,"dopamine receptor, D1",2 vs 8,0.09,-0.1,-0.07,-0.18,-0.19,-0.15,-0.27,0.04,-0.08,0.15
+LOC408821,uncharacterized LOC408821,2 vs 8,0.12,0.24,0.03,-0.01,0.12,-0.09,-0.13,-0.21,-0.25,0.15
+LOC552455,transmembrane 9 superfamily member 2,2 vs 8,-0.04,0.08,0.08,0.09,0.12,0.12,0.13,-0,0.01,-0.25
+LOC100576537,uncharacterized LOC100576537,2 vs 8,0.17,-0.34,-0.06,-0.2,-0.51,-0.22,-0.37,0.29,0.14,0.51
+LOC551762,S-adenosylhomocysteine hydrolase-like protein 1,2 vs 8,-0.17,-0.38,-0.39,-0.44,-0.21,-0.22,-0.27,-0.02,-0.07,0.16
+LOC412111,vigilin,2 vs 8,-0.2,-0.41,-0.21,-0.24,-0.21,-0.01,-0.05,0.2,0.17,-0.19
+LOC100578263,uncharacterized LOC100578263,2 vs 8,0.52,0.56,0.3,0.08,0.04,-0.22,-0.44,-0.26,-0.49,0.25
+LOC107963964,uncharacterized LOC107963964,2 vs 8,0.25,0.39,0.3,0.3,0.14,0.05,0.05,-0.09,-0.09,0.16
+LOC413394,vesicle-trafficking protein SEC22b-B,2 vs 8,-0.13,-0.19,-0.16,-0.02,-0.06,-0.03,0.11,0.03,0.17,0.09
+LOC725661,uncharacterized LOC725661,2 vs 8,-0.24,-0.45,-0.24,-0.19,-0.21,0.01,0.05,0.21,0.26,-0.05
+LOC411381,caspase-3,2 vs 8,-0.02,-0.16,0.25,-0.06,-0.14,0.27,-0.04,0.4,0.1,-0.66
+LOC725273,uncharacterized LOC725273,2 vs 8,-0.09,-0.04,-0.63,-0.43,0.05,-0.54,-0.34,-0.58,-0.39,0.81
+LOC727249,calcium/calmodulin-dependent protein kinase type 1,2 vs 8,0.06,-0.09,-0.13,-0.2,-0.16,-0.19,-0.26,-0.03,-0.11,-0.06
+LOC725224,uncharacterized LOC725224,2 vs 8,-0.14,-0.2,-0.04,0.03,-0.05,0.1,0.17,0.16,0.22,-0.16
+LOC408780,signal-induced proliferation-associated 1-like protein 2,2 vs 8,0.01,0.17,-0.09,-0.11,0.16,-0.1,-0.12,-0.26,-0.28,0.22
+Nrx-1,neurexin 1,2 vs 8,0.61,0.44,0.29,-0.25,-0.17,-0.32,-0.86,-0.16,-0.7,-0.06
+LOC410805,open rectifier potassium channel protein 1,2 vs 8,0.02,0.37,0.63,0.69,0.35,0.61,0.67,0.26,0.32,-0.86
+LOC552561,inactive ubiquitin carboxyl-terminal hydrolase MINDY-4B,2 vs 8,0.42,0.29,0.12,-0.18,-0.12,-0.29,-0.6,-0.17,-0.47,0.32
+LOC724955,KH domain-containing protein akap-1,2 vs 8,0.01,-0.16,-0.1,0.01,-0.16,-0.11,0,0.05,0.17,0.02
+LOC410618,transmembrane protein 161B,2 vs 8,-0.13,-0.15,-0.08,-0.03,-0.02,0.06,0.1,0.07,0.12,-0.07
+LOC725144,uncharacterized LOC725144,2 vs 8,0.36,0.47,0.5,0.16,0.11,0.14,-0.21,0.03,-0.32,-0.17
+LOC409165,calreticulin,2 vs 8,-0.11,-0.15,-0.23,-0.35,-0.05,-0.12,-0.25,-0.07,-0.2,0.15
+LOC100578561,early growth response protein 1,2 vs 8,0.82,0.68,0.42,0.59,-0.14,-0.4,-0.23,-0.26,-0.09,0.28
+LOC412094,protein catecholamines up,2 vs 8,-0.09,-0.09,0.03,0,0,0.12,0.09,0.11,0.09,-0.17
+LOC413336,ADP-dependent glucokinase,2 vs 8,-0.24,-0.27,-0.3,-0.23,-0.03,-0.06,0.01,-0.03,0.04,0.02
+LOC552223,dnaJ homolog shv,2 vs 8,-0.02,-0.09,-0.27,-0.2,-0.07,-0.25,-0.19,-0.18,-0.12,0.23
+LOC552479,protein draper,2 vs 8,-0,-0.13,0.03,-0.1,-0.13,0.03,-0.1,0.16,0.02,-0.14
+LOC410685,inactive tyrosine-protein kinase 7,2 vs 8,0.1,0.11,-0.06,-0.05,0.01,-0.16,-0.15,-0.18,-0.16,0.16
+LOC726629,uncharacterized LOC726629,2 vs 8,0.17,0.44,0.44,0.61,0.26,0.26,0.44,-0,0.17,-0.17
+LOC408660,uncharacterized LOC408660,2 vs 8,0.46,0.56,0.51,0.55,0.1,0.05,0.09,-0.05,-0.01,0.1
+LOC113219265,trypsin-1-like,2 vs 8,0.82,-0.96,-1.85,-1.63,-1.78,-2.67,-2.45,-0.9,-0.68,2.74
+LOC410133,PDZ domain-containing RING finger protein 4,2 vs 8,0.3,0.29,0.05,0.07,-0,-0.25,-0.22,-0.24,-0.22,0.17
+LOC113218761,uncharacterized LOC113218761,2 vs 8,0.23,0.37,0.24,0.21,0.14,0.01,-0.02,-0.13,-0.17,0.33
+LOC552843,uncharacterized LOC552843,2 vs 8,0.01,-0.09,0.07,0.07,-0.1,0.06,0.06,0.16,0.16,-0.13
+LOC409900,N6-adenosine-methyltransferase non-catalytic subunit,2 vs 8,0.25,0.14,-0,-0.01,-0.11,-0.25,-0.26,-0.14,-0.15,0.21
+LOC725350,GATA-binding factor A,2 vs 8,0.23,0.44,0.28,0.36,0.21,0.05,0.13,-0.16,-0.08,0.01
+LOC726535,secretin receptor,2 vs 8,0.38,0.53,0.67,0.69,0.15,0.29,0.31,0.14,0.16,-0.29
+LOC413447,ufm1-specific protease 2,2 vs 8,-0.26,-0.17,-0.2,-0.22,0.09,0.06,0.04,-0.02,-0.05,-0.15
+LOC411133,T-box transcription factor TBX20,2 vs 8,0.45,0.51,0.27,0.17,0.05,-0.19,-0.28,-0.24,-0.33,0.21
+LOC726947,TGF-beta-activated kinase 1 and MAP3K7-binding protein 3,2 vs 8,0.53,0.67,0.4,0.34,0.13,-0.14,-0.19,-0.27,-0.32,0.03
+LOC412799,moesin/ezrin/radixin homolog 1,2 vs 8,-0.04,-0.02,0.19,0,0.02,0.23,0.04,0.21,0.02,-0.32
+LOC551249,uncharacterized LOC551249,2 vs 8,0.02,-0.03,-0.18,-0.47,-0.05,-0.2,-0.49,-0.15,-0.44,0.24
+LOC408734,"succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial",2 vs 8,0.19,0.44,0.13,0.18,0.25,-0.06,-0.02,-0.31,-0.27,0.1
+LOC409762,sarcoplasmic calcium-binding protein 1,2 vs 8,-0.06,-0.05,-0.03,0.04,0.01,0.03,0.1,0.02,0.09,0.11
+LOC409819,JNK1/MAPK8-associated membrane protein,2 vs 8,0.07,-0.02,-0.05,0.1,-0.09,-0.11,0.04,-0.03,0.12,0.23
+LOC551894,transient receptor potential mucolipin,2 vs 8,-0.28,-0.26,-0.4,-0.53,0.02,-0.12,-0.25,-0.14,-0.27,-0.15
+LOC724851,LIM domain only protein 3,2 vs 8,0.33,0.37,0.11,0.18,0.04,-0.22,-0.16,-0.27,-0.2,0.25
+LOC100576532,uncharacterized LOC100576532,2 vs 8,-0.13,0.02,0.12,0.12,0.15,0.25,0.25,0.1,0.1,0.12
+LOC411012,NF-kappa-B inhibitor cactus,2 vs 8,0.01,-0.05,0.06,-0.24,-0.06,0.05,-0.25,0.11,-0.19,-0.21
+LOC550698,cyclin-Y,2 vs 8,0.03,-0.02,0.02,-0.22,-0.05,-0,-0.25,0.04,-0.2,-0.32
+LOC724465,enhancer of split mbeta protein,2 vs 8,0.15,0.44,0.28,0.43,0.29,0.13,0.27,-0.16,-0.01,-0.02
+LOC411266,nicalin,2 vs 8,-0.15,-0.23,-0.2,-0.08,-0.08,-0.06,0.07,0.02,0.15,-0.03
+LOC100576543,steroid receptor RNA activator 1,2 vs 8,-0.26,-0.04,0.05,0.06,0.22,0.31,0.32,0.09,0.1,-0.19
+Ing3,"inhibitor of growth family, member 3",2 vs 8,0.06,-0.23,-0.2,-0.25,-0.3,-0.26,-0.32,0.03,-0.02,0.27
+LOC411349,sphingosine kinase 2,2 vs 8,0,0.05,-0.2,-0.32,0.05,-0.21,-0.32,-0.25,-0.37,-0.12
+LOC411959,fatty acid synthase,2 vs 8,0.23,0.15,0.43,0.22,-0.08,0.2,-0.01,0.28,0.07,-0.47
+LOC409557,protein maelstrom,2 vs 8,-0.1,-0.28,-0.39,-0.48,-0.18,-0.3,-0.38,-0.12,-0.2,0.5
+LOC100576733,inositol-pentakisphosphate 2-kinase,2 vs 8,0.31,-0.01,0.11,0.12,-0.32,-0.2,-0.19,0.12,0.13,0.21
+LOC409688,cleavage stimulation factor subunit 1,2 vs 8,-0.02,0.02,0.02,-0.01,0.04,0.04,0.02,-0,-0.02,-0.09
+LOC725038,NPC intracellular cholesterol transporter 2 homolog a,2 vs 8,-0.04,0.2,0.03,0.12,0.23,0.07,0.16,-0.17,-0.08,0.11
+LOC408528,colorectal mutant cancer protein,2 vs 8,0.06,0.18,0.04,0.12,0.11,-0.02,0.06,-0.14,-0.05,0.08
+LOC100578600,uncharacterized LOC100578600,2 vs 8,0.32,0.38,0.17,0.21,0.07,-0.15,-0.11,-0.21,-0.17,0.15
+LOC552346,coatomer subunit delta,2 vs 8,-0.06,-0.18,-0.11,-0.21,-0.13,-0.05,-0.15,0.08,-0.03,-0.01
+LOC102654777,organic cation transporter protein,2 vs 8,0.48,0.72,0.66,0.18,0.24,0.19,-0.29,-0.05,-0.53,-0.36
+LOC551241,peroxisomal membrane protein PMP34,2 vs 8,0.08,0.03,0.03,0.08,-0.06,-0.05,-0,0.01,0.06,-0.11
+LOC102655639,uncharacterized LOC102655639,2 vs 8,0.47,0.49,1.67,1.95,0.02,1.2,1.48,1.18,1.46,-1.65
+Ip3k,"inositol 1,4,5-triphosphate kinase",2 vs 8,0.22,0.25,0.44,0.54,0.03,0.22,0.32,0.19,0.29,-0.46
+LOC727027,cleft lip and palate transmembrane protein 1 homolog,2 vs 8,-0.22,-0.29,-0.26,-0.18,-0.08,-0.04,0.03,0.03,0.11,0.08
+LOC552678,enolase,2 vs 8,0,-0.06,0.03,0.07,-0.07,0.02,0.07,0.09,0.14,-0.11
+LOC552513,neural cell adhesion molecule 2,2 vs 8,0.41,0.36,0.19,0.19,-0.05,-0.22,-0.22,-0.16,-0.16,0.25
+LOC409727,kinesin 13,2 vs 8,0.18,0.19,0.06,0.04,0.01,-0.12,-0.14,-0.13,-0.15,0.17
+LOC408294,protein FAM76A,2 vs 8,0.33,0.52,0.5,0.5,0.2,0.18,0.17,-0.02,-0.03,-0.16
+LOC551438,actin-related protein 1,2 vs 8,-0.06,-0.15,-0.18,-0.14,-0.1,-0.12,-0.08,-0.02,0.01,0.02
+LOC726310,GPI ethanolamine phosphate transferase 1,2 vs 8,-0.23,-0.36,-0.37,-0.27,-0.13,-0.14,-0.04,-0.01,0.09,0.16
+Obp10,odorant binding protein 10,2 vs 8,0.11,0.25,0.16,0.19,0.14,0.05,0.08,-0.08,-0.06,0.05
+LOC410216,reticulocalbin-2,2 vs 8,-0.13,-0.08,-0.1,0.05,0.05,0.03,0.18,-0.02,0.13,0.01
+LOC102654448,protein tiptop,2 vs 8,0.2,0.15,-0.06,-0.01,-0.06,-0.26,-0.21,-0.21,-0.15,0.2
+LOC724724,ATP-dependent 6-phosphofructokinase,2 vs 8,0.08,0.14,0.43,0.45,0.06,0.35,0.37,0.29,0.3,-0.53
+LOC409986,peroxisomal multifunctional enzyme type 2,2 vs 8,-0.16,-0.2,-0.17,-0.3,-0.03,-0.01,-0.14,0.03,-0.1,-0.06
+LOC551987,putative RNA-binding protein Luc7-like 2,2 vs 8,0.17,0.09,-0.12,-0.18,-0.08,-0.29,-0.34,-0.21,-0.26,0.28
+LOC413664,GPI transamidase component PIG-S,2 vs 8,0.23,0.32,0.29,0.36,0.09,0.06,0.13,-0.03,0.04,-0.23
+LOC100576667,E3 ubiquitin-protein ligase synoviolin A,2 vs 8,-0.03,0.07,0.13,-0.02,0.1,0.16,0.02,0.06,-0.08,-0.2
+LOC100578718,protein distal antenna,2 vs 8,0.22,0.39,0.33,0.34,0.17,0.12,0.12,-0.06,-0.05,0.06
+LOC726725,pro-resilin,4 vs 8,0.41,-0.93,0.65,0.76,-1.34,0.24,0.35,1.58,1.69,-0.4
+LOC100578478,uncharacterized LOC100578478,4 vs 8,-0.03,-1.15,0.29,0.73,-1.11,0.33,0.76,1.44,1.88,-0.25
+LOC411273,probable serine/threonine-protein kinase clkA,4 vs 8,-0.07,-1.92,-0.12,1.1,-1.85,-0.05,1.16,1.8,3.02,-0.4
+LOC409538,lysoplasmalogenase-like protein TMEM86A,4 vs 8,-0.12,0.07,-0.18,-0.05,0.2,-0.06,0.07,-0.25,-0.13,0.12
+LOC113218828,uncharacterized LOC113218828,4 vs 8,0.63,-0.22,0.42,0.46,-0.85,-0.2,-0.16,0.64,0.68,0.09
+LOC725060,"coenzyme Q-binding protein COQ10 homolog B, mitochondrial",4 vs 8,-0.26,-0.03,0.18,0.46,0.23,0.44,0.72,0.21,0.49,-0.13
+LOC551910,farnesyl pyrophosphate synthase,4 vs 8,-0.06,-0.12,0.6,0.62,-0.06,0.66,0.68,0.72,0.74,-0.8
+LOC100577562,probable LIM domain-containing serine/threonine-protein kinase DDB_G0286997,4 vs 8,0.38,-0.65,1.59,3,-1.02,1.21,2.62,2.23,3.64,-1.42

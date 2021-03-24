@@ -31,6 +31,24 @@ make_table <- function(file, LT = TRUE, digits = getOption("digits"), BT = TRUE)
 \includegraphics[width=1\textwidth]{../figures/composite_figure.pdf}
 \end{figure}
 
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Results of GO: Biological Process enrichment tests. \newline A.} Results of Kolmogorov-Smirnov enrichment tests, searching for terms enriched among genes that show QDL- or WDL-biased expression (as measured by log fold difference; red: QDL-biased, blue: QDL-biased). The asterisks indicate that the term was statistically significant at this time point, while double asterisks indicate results that remained significant after Benjamini-Hochberg correction (which is overly-conservative here because the tests are not independent). For brevity, only the top 50 most significant GO terms are shown; see XXX for the remainder, as well as corresponding enrichment results for KEGG and the other two types of GO. \textbf{B.} Similar plot searching for terms enriched among genes that show QDL- or WDL-biased CpG methylation (as measured by the difference in mean % mCpGs).
+}}
+\centering
+\includegraphics[width=1\textwidth]{../figures/composite_GO.pdf}
+\end{figure}
+
+<!-- Expression pheatmap -->
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Heatmap showing the transcriptome of each sample. \newline}Each column indicates one of the 9,731 transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.}}
+\centering
+\includegraphics[width=1\textwidth]{../figures/expression_heatmap.pdf}
+\end{figure}
+\newpage
+
+
 \begin{figure}[h]
 \caption{\footnotesize{\textbf{Grafting larvae into a queen or worker cell produced correlated changes in the methylome and transcriptome. \newline A.} Module eigengenes from the gene co-expression network analysis (mean-centered and scaled), which represent the relative expression levels of sets of co-expressed genes (number of genes per module shown in parentheses). The points show the estimates for each sample, and the lines are predictions from a Bayesian multivariate GAM (details as in Figure 1). Some modules show increasingly caste-specific expression with time (e.g. 6, 12, 15, 17), while others either show constant expression, or temporal change that is the same in both castes. \textbf{B.} Similar plot showing the module eigengenes from the co-methylation network analysis. Note that there are fewer modules, and most genes clustered into Module 1, indicating that large numbers of genes are (de)methylated in unison. \textbf{C.} Correlations between the module eigengenes shown in panels A-B, where orange indicates positive correlation and purple indicates negative. Many of the expression modules are negatively correlated with methylation modules, indicating that methylation causes reduced expression (in the same and/or different sets of genes). The red/white/blue colour indicates modules that showed a statistically significant caste bias (red: higher in QDL, blue: higher in WDL, white: unbiased). \textbf{D.} Correlations in expression and \% CpG methylation across individual genes. The correlation is noisy but highly significant, especially at later time points, and we note that both variables are measured with error, obscuring the underlying correlation.
 }}
@@ -39,12 +57,7 @@ make_table <- function(file, LT = TRUE, digits = getOption("digits"), BT = TRUE)
 \end{figure}
 
 
-\begin{figure}[h]
-\caption{\footnotesize{\textbf{Results of GO: Biological Process enrichment tests. \newline A.} Results of Kolmogorov-Smirnov enrichment tests, searching for terms enriched among genes that show QDL- or WDL-biased expression (as measured by log fold difference; red: QDL-biased, blue: QDL-biased). The asterisks indicate that the term was statistically significant at this time point, while double asterisks indicate results that remained significant after Benjamini-Hochberg correction (which is overly-conservative here because the tests are not independent). For brevity, only the top 50 most significant GO terms are shown; see XXX for the remainder, as well as corresponding enrichment results for KEGG and the other two types of GO. \textbf{B.} Similar plot searching for terms enriched among genes that show QDL- or WDL-biased CpG methylation (as measured by the difference in mean % mCpGs).
-}}
-\centering
-\includegraphics[width=1\textwidth]{../figures/composite_GO.pdf}
-\end{figure}
+
 
 \begin{figure}[h]
 \caption{\footnotesize{\textbf{Correlations across genes for variables from the present study (as marked) or other studies (all others).} \newline The source and meaning of each variable is documented in Table SX. For variables including `vs', a positive value means higher expression/methylation in the first-listed group (e.g. a positive number for `\% mCpGs: QDL vs WDL' means higher methylation in QDL). See Table SX for the associated correlation test results. }}
