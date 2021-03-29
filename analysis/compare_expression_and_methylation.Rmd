@@ -137,7 +137,7 @@ dev.off()
 
 ## Comparing significant gene lists from expression and methylation analyses
 
-```{r echo = FALSE}
+```{r echo = FALSE, message=FALSE, warning=FALSE}
 genes_tested_meth <- tbl(db, "site_annotations") %>%
   dplyr::select(promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
   distinct() %>% collect(n = Inf) %>% 

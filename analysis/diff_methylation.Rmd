@@ -34,7 +34,6 @@ library(glue)
 library(future)
 library(future.apply)
 library(kableExtra)
-library(UpSetR)
 library(pander)
 library(DT)
 library(ggridges)
@@ -74,6 +73,28 @@ by_site <- tbl(db, "methylation_counts") %>%
 methylated_sites <- tbl(db, "site_info") %>%
   filter(mean_prop_meth >= 0.027 & n_samples >= 32) %>%
   distinct() %>% pull(site) 
+
+
+my_data_table <- function(df){
+  datatable(
+    df, rownames=FALSE,
+    autoHideNavigation = TRUE,
+    extensions = c("Scroller",  "Buttons"),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender=TRUE,
+      scrollX=TRUE, scrollY=400,
+      scrollCollapse=TRUE,
+      buttons = 
+        list('pageLength', 'colvis', 'csv', list(
+          extend = 'pdf',
+          pageSize = 'A4',
+          orientation = 'landscape',
+          filename = 'Apis_methylation')),
+      pageLength = 50
+    )
+  )
+}
 ```
 
 
@@ -708,250 +729,6 @@ grid.arrange(my_gtable)
 ```
 
 
-
-
-## Results of the BWASP differential methylation pipeline
-
-The following sections show the results of statistical tests using the BWASP pipeline. The table shows a list of sites or 500bp genomic windows that were statistically significantly differentially methylated (using Fisher Exact tests implemented via `methylKit::calculateDiffMeth`). Using BWASP, we specified a series of pre-planned comparions (contrasts) to compare the methylation levels at each site A) between castes witin each time point (e.g. queen vs worker samples at 8h), and B) between time points within each caste (e.g. 2h vs 8h within the queen samples). The three tables in each section show sites/windows that were significantly differenetially methylated between castes (at a given time point), or between time points (within each caste).
-
-We caution that the Fisher Exact test approach is under-powered because it ignores the rest of the data when estimating each effect size. For example, to test for differential methylation in the '2h vs 6h queen' comparison, the test ignores all data from worker samples, or from the other time points in queens, which does not fully utilise the information in the dataset. The Fisher Exact test appraoch is also problematic because we have to run 24 separate hypothesis tests for each site (to calculate each of the 24 pairwise comparisons we examined), instead of running one model per site as in the generalised additive models presented below. The p-values below are corrected using the qvalue method (`?qvalue::qvalue`) within each comparison, and we identified candidate differentially methylated sites as those for which the q-value was <0.05 (or <0.01, in one case where tens of thousands of sites had qvalues just under 0.05).
-
-Despite the issues with the Fisher Exact test approach, we include it to facilitate comparison with earlier work. 
-
-
-### List of significantly differentially methylated **sites** (DMSs) from BWASP 
-
-#### Caste-specific methylation
-
-```{r bwasp_results, message=FALSE, warning=FALSE}
-# Note that in the output of BWASP, a positive meth.diff value in comparison "A.vs.B" means that 
-# the B methylation percentage is higher than the A methylation percentage. In one case we flip the sign for clarity.
-
-if(!file.exists("output/bwasp_sig_genes.rds")){
-  # Get significant sites. 'Significant' means both p and q < 0.05
-  bwasp_sites <- get_bwasp_sites(0.05, 0.05)
-  
-  between_castes <- bwasp_sites %>%
-    filter(str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
-    dplyr::select(site, seqnames, start, comparison, meth.diff, pvalue, qvalue, 
-                  exon_gene_name, intron_gene_name, promoter_gene_name) %>%
-    arrange(pvalue) %>%
-    mutate(meth.diff = -1 * meth.diff, # flip the sign for caste comparison so that positive means Q>W
-           pvalue = round(-1 * log10(pvalue), 1)) %>%
-    dplyr::rename(`Diff. in % methylation (postive means Q>W)` = meth.diff,
-                  `log10 pvalue` = pvalue)
-  
-  temporal_change_queens <- bwasp_sites %>%
-    filter(str_detect(comparison, "queen") & !str_detect(comparison, "worker")) %>%
-    dplyr::select(site, seqnames, start, comparison, meth.diff, pvalue, 
-                  qvalue, exon_gene_name, intron_gene_name, promoter_gene_name) %>%
-    arrange(pvalue)  %>%
-    mutate(pvalue = round(-1 * log10(pvalue), 1)) %>%
-    dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff,
-                  `log10 pvalue` = pvalue)
-  
-  temporal_change_workers <- bwasp_sites %>%
-    filter(!str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
-    dplyr::select(site, seqnames, start, comparison, meth.diff, pvalue, 
-                  qvalue, exon_gene_name, intron_gene_name, promoter_gene_name) %>%
-    arrange(pvalue) %>%
-    mutate(pvalue = round(-1 * log10(pvalue), 1)) %>%
-    dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff,
-                  `log10 pvalue` = pvalue)
-  
-  saveRDS(between_castes, "output/bwasp_between_castes.rds")
-  saveRDS(temporal_change_queens, "output/bwasp_temporal_changeQ.rds")
-  saveRDS(temporal_change_workers, "output/bwasp_temporal_changeW.rds")
-  
-  # Save list of BWASP sig genes for "Compare expr + meth.Rmd"
-  list(
-    caste_sig_genes = bwasp_sites %>%
-      filter(str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
-      dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
-      unlist() %>% unname() %>% na.omit() %>% unique(),
-    timeQ_sig_genes = bwasp_sites %>%
-      filter(str_detect(comparison, "queen") & !str_detect(comparison, "worker")) %>%
-      dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
-      unlist() %>% unname() %>% na.omit() %>% unique(),
-    timeW_sig_genes = bwasp_sites %>%
-      filter(qvalue <= 0.01) %>%
-      filter(!str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
-      dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
-      unlist() %>% unname() %>% na.omit() %>% unique()
-  ) %>% saveRDS("output/bwasp_sig_genes.rds")
-}
-
-
-
-my_data_table <- function(df){
-  datatable(
-    df, rownames=FALSE,
-    autoHideNavigation = TRUE,
-    extensions = c("Scroller",  "Buttons"),
-    options = list(
-      dom = 'Bfrtip',
-      deferRender=TRUE,
-      scrollX=TRUE, scrollY=400,
-      scrollCollapse=TRUE,
-      buttons = 
-        list('pageLength', 'colvis', 'csv', list(
-          extend = 'pdf',
-          pageSize = 'A4',
-          orientation = 'landscape',
-          filename = 'Apis_methylation')),
-      pageLength = 50
-    )
-  )
-}
-
-bwasp_between_castes <- readRDS("output/bwasp_between_castes.rds")
-bwasp_temporal_changeQ <- readRDS("output/bwasp_temporal_changeQ.rds") 
-bwasp_temporal_changeW <- readRDS("output/bwasp_temporal_changeW.rds") 
-
-focal_table <- bwasp_between_castes %>% dplyr::select(-site) %>% 
-  mutate(comparison = str_replace(comparison, "queen", "Q"),
-         comparison = str_replace(comparison, "worker", "W"),
-         comparison = str_replace_all(comparison, "[.]", " ")) 
-
-saveRDS(focal_table, "figures/supp_tables/tableS1.rds")
-
-focal_table %>%
-  my_data_table()
-```
-**Table S1:** The table shows the `r length(na.omit(unique(bwasp_between_castes$site)))` sites for which BWASP reported a significant difference in methylation between queens and workers at one or more time points. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.05$.
-
-#### Temporally varying methylation (queens)
-
-```{r message=FALSE, warning=FALSE}
-focal_table <- bwasp_temporal_changeQ %>% dplyr::select(-site) %>% 
-  mutate(comparison = str_replace_all(comparison, "queen", "Q"),
-         comparison = str_replace_all(comparison, "[.]", " ")) 
-
-saveRDS(focal_table, "figures/supp_tables/tableS2.rds")
-
-focal_table %>% 
-  my_data_table()
-```
-**Table S2:** The table shows the `r length(na.omit(unique(bwasp_temporal_changeQ$site)))` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.05$.
-
-#### Temporally varying methylation (workers)
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-n_somewhat_sig <- bwasp_temporal_changeW %>% 
-  filter(qvalue < 0.05) %>% pull(site) %>%
-  na.omit() %>% length()
-
-n_extra_sig <- bwasp_temporal_changeW %>% 
-  filter(qvalue < 0.01) %>% pull(site) %>%
-  na.omit() %>% length()
-```
-
-
-Note: if we use the same cutoff as before, i.e. $p<0.05$ and $q <0.05$, there would be `r n_somewhat_sig` significant sites in this table. We therefore switched to $q < 0.01$ for this table, yielding a more manageable number of sites to display.
-```{r message=FALSE, warning=FALSE}
-focal_table <- bwasp_temporal_changeW %>% dplyr::select(-site) %>% 
-  mutate(comparison = str_replace_all(comparison, "worker", "W"),
-         comparison = str_replace_all(comparison, "[.]", " ")) %>%
-  filter(qvalue < 0.01) 
-
-saveRDS(focal_table, "figures/supp_tables/tableS3.rds")
-
-focal_table %>% 
-  my_data_table()
-```
-**Table XX:** The table shows the `r n_extra_sig` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.01$ (note: this is lower than for the previous two tables; there would be `r n_somewhat_sig` sites if we used the same $<0.05$ cutoff for significance).
-
-
-### List of significantly differentially methylated **500bp windows** (DMWs) from BWASP
-
-#### Caste-specific methylation
-
-```{r BWASP_Venn, message=FALSE, warning=FALSE}
-source("code/add_gene_exon_columns.R")
-q_threshold <- 0.01
-
-window_500bp_caste <- 
-  list.files("data/BWASP_results/500bp_windows/Caste specific results", full.names = TRUE) %>%
-  map_df(read_tsv) %>% 
-  filter(pvalue < 0.05 & qvalue < q_threshold) %>% 
-  mutate(pvalue = round(pvalue, 4), qvalue = round(qvalue, 4)) 
-window_500bp_caste <- window_500bp_caste %>%
-  full_join(window_500bp_caste %>% 
-              dplyr::select(seqnames, start, end) %>% distinct() %>%
-              add_gene_exon_columns() %>% distinct(), 
-            by = c("seqnames", "start", "end")) %>%
-  left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
-            by = c("exon_in" = "gene_symbol")) %>%
-  dplyr::select(-width, -strand) %>% distinct() %>%
-  mutate(meth.diff = -1 * meth.diff) %>%
-  dplyr::rename(`Diff. in % methylation (postive means Q>W)` = meth.diff) 
-
-
-window_500bp_timeQ <- 
-  list.files("data/BWASP_results/500bp_windows/Temporal_Q", full.names = TRUE) %>%
-  map_df(read_tsv) %>% 
-  filter(pvalue < 0.05 & qvalue < q_threshold) %>% 
-  mutate(pvalue = round(pvalue, 4), qvalue = round(qvalue, 4)) 
-window_500bp_timeQ <- window_500bp_timeQ %>%
-  full_join(window_500bp_caste %>% 
-              dplyr::select(seqnames, start, end) %>% distinct() %>%
-              add_gene_exon_columns() %>% distinct(), by = c("seqnames", "start", "end")) %>%
-  left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
-            by = c("exon_in" = "gene_symbol")) %>%
-  dplyr::select(-width, -strand) %>% distinct() %>%
-  dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff)
-
-window_500bp_timeW <- 
-  list.files("data/BWASP_results/500bp_windows/Temporal_W", full.names = TRUE) %>%
-  map_df(read_tsv) %>% 
-  filter(pvalue < 0.05 & qvalue < q_threshold) %>% 
-  mutate(pvalue = round(pvalue, 4), qvalue = round(qvalue, 4)) 
-window_500bp_timeW <- window_500bp_timeW %>%
-  full_join(window_500bp_caste %>% 
-              dplyr::select(seqnames, start, end) %>% distinct() %>%
-              add_gene_exon_columns() %>% distinct(), by = c("seqnames", "start", "end")) %>%
-  left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
-            by = c("exon_in" = "gene_symbol")) %>%
-  dplyr::select(-width, -strand) %>% distinct() %>%
-  dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff)
-
-window_500bp_caste %>%
-  mutate(comparison = str_replace(comparison, "queen", "Q"),
-         comparison = str_replace(comparison, "worker", "W"),
-         comparison = str_replace_all(comparison, "[.]", " ")) %>%
-  my_data_table()
-```
-
-```{r echo=FALSE}
-n_caste_windows <- window_500bp_caste %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
-n_queen_windows <- window_500bp_timeQ %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
-n_worker_windows <- window_500bp_timeW %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
-```
-
-
-**Table XX:** The table shows the `r prettyNum(n_caste_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant difference in methylation between queens and workers at one or more time points. There is one row per annotation.
-
-
-#### Temporally varying methylation (queens)
-```{r message=FALSE, warning=FALSE}
-window_500bp_timeQ %>%
-  mutate(comparison = str_replace_all(comparison, "queen", "Q"),
-         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
-  my_data_table()
-```
-**Table XX:** The table shows the `r prettyNum(n_queen_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae. There is one row per annotation.
-
-#### Temporally varying methylation (workers)
-```{r message=FALSE, warning=FALSE}
-window_500bp_timeW %>%
-  mutate(comparison = str_replace_all(comparison, "worker", "W"),
-         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
-  my_data_table()
-```
-**Table XX:** The table shows the `r prettyNum(n_worker_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in worker-destined larvae. There is one row per annotation.
-
-
-
 ## GLM analysis of the methylome data
 
 ### Count the number of sites before and after QC
@@ -960,30 +737,58 @@ We first remove sites with methylation levels too low for analysis, or which wer
 
 The bisulphite conversion rate was about 99.73 (as measured by the apparent % methylation of sites in the phage lambda DNA), so we expect unmethylated sites to appear methylated about 0.27% of the time. To ensure we focus on sites where these 'false positive' signals of methylation provide only a modest portion of the observed % of Cs vs Ts (i.e. the estimate of % methylation), we chose to focus on sites that have 10$\times$ higher methylation rates than expected based on the low-level background 'noise'. That is, we excluded all sites where fewer than 2.7% of the reads were Cs (i.e. putatively methylated). This rules out the great majority of sites for which at least one C was observed. We also discarded sites that had been measured in fewer than 32 of our 36 samples.
 
-#### Total number of sites with sufficient data for the GLMs:
-
 ```{r}
-methylated_sites %>% length()
+gave_warning <- function(code) {
+  x <- tryCatch(code,
+                warning = function(c) "warning"
+  )
+  if(length(x)==1) {if(x == "warning") return(TRUE)}
+  FALSE
+}
+
+check_site <- function(focal_site){
+  
+  raw_data <- by_site %>%  
+    filter(site == focal_site) %>% 
+    dplyr::select(sample, site, numC, numT, caste, time, rep) %>%
+    distinct() %>%
+    collect() %>%
+    mutate(caste = replace(caste, caste == "t", "Worker")) %>%
+    mutate(percent_meth = 100 * numC / (numC+numT))
+  
+  gave_warning(glm(cbind(numC, numT) ~ 
+                     rep + caste:time + I(time^2) + I(time^2):caste, 
+                   data = raw_data, family = "binomial"))
+}
+
+if(!file.exists("output/sites_to_ignore.rds")){
+  methylated_sites_checked <- sapply(methylated_sites, check_site)
+  sites_to_ignore <- methylated_sites[methylated_sites_checked]
+  saveRDS(sites_to_ignore, "output/sites_to_ignore.rds")
+}
+
+methylated_sites_model <- methylated_sites[!(methylated_sites %in% readRDS("output/sites_to_ignore.rds"))]
 ```
 
-
+Furthermore, a few of these sites (`r length(readRDS("output/sites_to_ignore.rds"))` sites in total) that passed this criterion nevertheless gave warnings when fitting models, usually because they were unmethylated the majority of samples. We removed these too.
 
 ### Run one GLM per site using `base::glm()`
 
-There are too many CpG sites to use the Bayesian approaches used elsewhere in this study in a reasonable amount of time. We therefore applied the equivalent frequentist generalised linear model, implemented using `base::glm()`.
+Here, we analyse the `r length(methylated_sites_model)` methylated sites for which we have sufficient data using one generalised linear model per site, via the function `base::glm()`.
 
 To summarise the following code:
 
-- These GLMs include all the samples except the four time zero samples. These samples were ommited because they do not neatly belong to either the queen- or worker-destined treatments, making it complicated to include in the model.
+- These GLMs include all 36 samples where possible. Samples were omitted when the focal site was covered by <4 reads in the focal sample.
 - Non-linear effects of `Time` were modeled using a quadratic term, allowing accelerating or deccelerating changes in % methylation with time
-- For each site, we fit 6 different GLMs that we considered to be biologically plausible, and then performed model averaging based on their Akaike weights using `MuMIn::model.avg()`. All 6 models contained experimental block as a fixed effect, and optionally also contained the fixed effects time, time^2, the caste:time interaction, and the I(time^2):caste. Note that we did not fit the main effect of caste, which forces queens and workers to have the same % methylation estimate at time zero (which we know must be the case due to the experimental design)
+- For each site, we fit 6 different GLMs that we considered to be biologically plausible, and then performed model averaging based on their Akaike weights using `MuMIn::model.avg()`. All 6 models contained experimental block (`rep` in the models below) as a fixed effect, and optionally also contained the fixed effects `time`, `time^2`, the `caste:time` interaction, and the `I(time^2):caste` interaction. Note that we did not fit caste as predictor except in interactions with `time`, which forces queens and workers to have the same estimated % methylation at time zero (which we know must be the case due to our experimental design)
 - The response variable was the number of cytosines observed at the site, given the total coverage at the sites (i.e. number of reads containing Cs plus Ts). We used Binomial errors and a logit link.
 - After fitting the models and averaging them, we predicted the % methylation of the site in queens and workers at each time point, and calculated the caste difference, its 95% CIs, and the p-value for the null hypothesis that the caste difference was zero using bootstrapping.
-- Sites were re-analysed using the Bayesian models if A) the p-value for the caste difference was p < 0.00001 at one or more time points in this GLM analysis, and/or B) the site was statistically significant in the BWASP results mentioned above (FDR-corrected p-value of <0.05).
+- We also saved the p-value for `caste:time` or `I(time^2):caste` (whichever was greater) from the top-ranked model, using the `car::Anova()` function to run a likelihood ratio test. We use this to score the 'significance' of caste for each site, and this value is presented in the table of results below (-log10 transformed)
 
 ```{r message=FALSE}
 # Set up split list of methylated CpG sites, and count the number of chunks of sites
-split_methylated_sites <- split(methylated_sites, ceiling(seq_along(methylated_sites)/1000))
+split_methylated_sites <- split(methylated_sites_model,
+                                ceiling(seq_along(methylated_sites_model)/1000))
 n_chunks <- length(split_methylated_sites)
 
 ############## Create helper functions
@@ -1204,9 +1009,12 @@ if(!file.exists("output/frequentist_GLM_meth_diff.txt")){
   rm(glm_results)
   process_GLM_output("output/meth_sites_frequentist_GLMs")
 } else {
-  glm_results <- read_tsv("output/frequentist_GLM_meth_diff.txt")
-  importance <- read_tsv("output/frequentist_GLM_importance.txt")
-  p_values <- read_tsv("output/frequentist_GLM_p_values.txt")
+  glm_results <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
+    filter(Site %in% methylated_sites_model)
+  importance <- read_tsv("output/frequentist_GLM_importance.txt") %>%
+    filter(Site %in% methylated_sites_model)
+  p_values <- read_tsv("output/frequentist_GLM_p_values.txt") %>%
+    filter(Site %in% methylated_sites_model)
 }
 
 # # Find the sites that were significant in the BWASP pipeline
@@ -1218,23 +1026,27 @@ if(!file.exists("output/frequentist_GLM_meth_diff.txt")){
 # sites_for_bayes_GLM <- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_caste_bwasp))
 ```
 
+### Differentially methylated sites  {.tabset}
 
-### Identifying "significant" sites {.tabset}
+#### Sites showing significant differential methylation 
 
-We label a site as significantly differentially methylated between castes/timepoints if...
+We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was $p$ < 0.0001. Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites). The table shows the location of each significant site, and mentioned if it is found in parts of one or more genes. 
 
 ```{r}
 # Find the sites that were p<0.0001 in these GLMs
 sig_sites_caste_frequentist_GLM <- p_values %>% 
   filter(p < 0.0001) %>% pull(Site) %>% unique()
 
-
 gene_meth_results_table <- p_values %>%
   mutate(FDR_sig = ifelse(p.adjust(p) < 0.05, "*", "")) %>%
-  filter(site %in% sig_sites_caste_frequentist_GLM) %>%
+  filter(Site %in% sig_sites_caste_frequentist_GLM) %>%
   dplyr::rename(site = Site) %>%
   left_join(glm_results %>% group_by(Site) %>% 
-              summarise(direction = ifelse(Caste_difference[which.max(abs(Caste_difference))] > 0, "Q>W", "W>Q")), by = c("site" = "Site")) %>%
+              summarise(direction = ifelse(Caste_difference[which.max(abs(Caste_difference))] > 0, 
+                                           "Q>W", "W>Q"), 
+                        difference = round(100*abs(Caste_difference)[which.max(abs(Caste_difference))], 1),
+                        .groups = "drop"), 
+            by = c("site" = "Site")) %>%
   arrange(p) %>%
   left_join(tbl(db, "site_info") %>% 
               filter(site %in% sig_sites_caste_frequentist_GLM) %>%
@@ -1277,7 +1089,7 @@ gene_meth_results_table <- p_values %>%
 
 # Get the list of FDR-significant sites that will be plotted below:
 plot_sites <- gene_meth_results_table %>% 
-  filter(`FDR sig` == "*") %>% pull(site)
+  filter(`FDR sig` == "*") %>% pull(site) %>% unique()
 
 gene_meth_results_table %>%
   my_data_table()
@@ -1286,13 +1098,15 @@ saveRDS(gene_meth_results_table, "output/gene_meth_results_table.rds")
 ```
 
 
-#### List of all genes overlapped by the significant sites
+#### Genes overlapped by these significant sites
 
 ```{r}
 gene_list <- gene_meth_results_table %>%
   dplyr::select(direction, contains(" in"), contains(" of"), -contains("gene name")) %>%
   unlist() %>% unname() %>% na.omit() %>%
   as.character() %>% unique() 
+
+gene_list <- gene_list[!(gene_list %in% c("Q>W", "W>Q"))]
 
 levs <- c(sort(gene_list[!str_detect(gene_list, "LOC")]), 
           sort(gene_list[str_detect(gene_list, "LOC")]))
@@ -1311,12 +1125,7 @@ tibble(gene = gene_list) %>%
 
 ## Plots of estimated % methylation per site {.tabset}
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
-site_count <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>% 
-  pull(Site) %>% unique() %>% length() %>% prettyNum(big.mark = ",")
-```
-
-The following plots show the `r length(plot_sites)` CpG sites that showed a statistically significant difference in % methylation between castes, after applying false discovery rate correct (n = `r site_count` sites tested in total). The plot below shows 16 of the `r length(plot_sites)` significant sites; click the tabs to see results for other sites. The red colour refers to queens, blue to workers.
+The following plots show the `r length(plot_sites)` CpG sites that showed a statistically significant difference in % methylation between castes, after applying false discovery rate correction. The plot below shows 16 of the `r length(plot_sites)` significant sites; click the tabs to see results for other sites. The red colour refers to queens, blue to workers.
 
 ```{r plot_one_site, warning=FALSE, message=FALSE}
 plot_one_site <- function(focal_site, title=NULL, subtitle=NULL){
@@ -1329,7 +1138,7 @@ plot_one_site <- function(focal_site, title=NULL, subtitle=NULL){
     mutate(percent_meth = 100 * numC / (numC+numT))
   
   model <- glm(cbind(numC, numT) ~ rep + caste:time + I(time^2) + I(time^2):caste, data = raw_data, family = "binomial")
-  
+
   raw_data <- raw_data %>%
     mutate(caste = replace(caste, time == 0, "t0"))
   
@@ -1389,7 +1198,7 @@ arrangeGrob(rbind(ggplotGrob(plot_one_site(1956531, title = "Intron in Csd") +
                                labs(x = "Hours post-grafting", y = "% mCpGs")))) %>%
   saveRDS("figures/two_sites_for_big_meth_fig.rds")
 
-redo <- FALSE  # Make all the plots and save to disk for later display
+redo <- F  # Make all the plots and save to disk for later display
 plot_sites_split <- split(plot_sites, ceiling(seq_along(plot_sites) / 16))
 done_already <- as.numeric(str_extract(list.files("figures/meth_sites/"), "[:digit:]+"))
 if(length(list.files("figures/meth_sites/")) < length(plot_sites_split)){
@@ -1407,117 +1216,106 @@ if(length(list.files("figures/meth_sites/")) < length(plot_sites_split)){
 
 ### Group 1
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot1.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot1.png)
 
 ### Group 2
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot2.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot2.png)
 
 ### Group 3
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot3.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot3.png)
 
 ### Group 4
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot4.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot4.png)
 
 ### Group 5
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot5.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot5.png)
 
 
 ### Group 6
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot6.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot6.png)
 
 
 ### Group 7
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot7.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot7.png)
 
 
 ### Group 8
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot8.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot8.png)
 
 
 ### Group 9
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot9.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot9.png)
 
 
 ### Group 10
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot10.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot10.png)
 
 
 ### Group 11
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot11.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot11.png)
 
 
 ### Group 12
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot12.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot12.png)
 
 
 ### Group 13
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot13.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot13.png)
 
 
 ### Group 14
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot14.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot14.png)
 
 
 ### Group 15
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot15.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot15.png)
 
 ### Group 16
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot16.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot16.png)
 
 ### Group 17
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot17.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot17.png)
 
 ### Group 18
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot18.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot18.png)
 
 ### Group 19
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot19.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot19.png)
 
 ### Group 20
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot20.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot20.png)
 
 ### Group 21
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot21.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot21.png)
 
 ### Group 22
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot22.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot22.png)
 
 ### Group 23
 
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot23.png)
+![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/meth_sites/plot23.png)
 
-### Group 24
-
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot24.png)
-
-### Group 25
-
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot25.png)
-
-### Group 26
-
-![](https://raw.githubusercontent.com/lukeholman/Methylation_Apis/master/figures/bayes_sites/plot26.png)
 
 
 ```{r make_multipanel_fig, echo=FALSE}
@@ -1548,7 +1346,6 @@ ggsave("figures/composite_figure.pdf", grid.arrange(
               nrow = 1, widths = c(0.03, 0.6, 0.05, 0.32)), 
   nrow = 2, heights = c(0.4, 0.6)),
   height = 8, width = 8.6)
-  
 ```
 
 
@@ -1583,6 +1380,48 @@ read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
 ```
 
 
+## Plot genomic locations of (caste-specific) methylation
+
+__Figure__: The following plot shows that DNA methylation is found all 16 of the largest contigs (putative chromosomes), and that sites showing caste-specific methylation are widely distributed across the methylome. The solid black line shows the density of sites with >50% DNA methylation, which closely correlates with the density of genes (shown by the dashed black line). The purple line shows the density of sites that we identified as having significant caste-specific methylation (FDR-corrected $p$ < 0.05), which also follows the overall distribution of genes with few exceptions. The coloured rug plot at the bottom marks methylated sites (grey) and differentially methylated sites (red: QDL-biased, and blue: WDL-biased). 
+
+```{r warning=F, message=F}
+source("code/add_gene_exon_columns.R")
+
+heavily_methylated_sites <- tbl(db, "site_info") %>%
+  filter(mean_prop_meth >= 0.5 & n_samples >= 32) %>%
+  distinct() %>% pull(site) 
+
+hits <- gene_meth_results_table %>% 
+  filter(substr(seqnames,1,2) == "NC") %>%
+  filter(`FDR sig`=="*") 
+
+methylome <- tbl(db, "site_info") %>%
+  filter(site %in% heavily_methylated_sites) %>%
+  dplyr::select(seqnames, start) %>%
+  collect() %>% dplyr::rename(pos = start)  %>%
+  filter(seqnames %in% gene_meth_results_table$seqnames)  %>% 
+  filter(substr(seqnames,1,2) == "NC") 
+
+as.data.frame(all_transcribed_regions) %>% 
+  mutate(gene_id = 1:n()) %>%
+  filter(seqnames %in% gene_meth_results_table$seqnames)  %>% 
+  filter(substr(seqnames,1,2) == "NC") %>%
+  group_by(gene_id) %>%
+  summarise(seqnames = seqnames[1], pos = mean(start[1], end[1]))  %>%
+  ggplot(aes(x = pos/10^6)) + 
+  geom_density(linetype = 3) +
+  facet_wrap(~ seqnames, scales= "free") +
+  geom_rug(data = methylome, alpha = 0.01) + 
+  geom_density(data = methylome, colour = "black") +
+  geom_density(data = hits, colour = "purple") +
+  geom_rug(data = hits, aes(colour = direction)) + 
+  scale_colour_manual(values = c(queen_colour, worker_colour)) + 
+  xlab("Position (megabases)") + ylab("Density") + 
+  theme_bw() + 
+  theme(strip.background = element_blank(),
+        text = element_text(family = nice_font))
+```
+
 
 
 
@@ -1590,7 +1429,7 @@ read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
 
 ## GO and KEGG enrichment of genes showing variable methylation
 
-The results in the following plots were calculated using GSEA tests for enrichment, implemented in the `fgsea` package. This test involves ranking genes by some statistic and then searching for GO and KEGG terms that are over-represented among genes at the top or bottom of the list. Here, we ranked the genes by the average of the difference in % methylation between 'classes' that was estimated for all the sites in the gene (defined as sites inside the exons, introns, or promoter regions of the gene). 'Classes' either means queens and workers (measured at the same time point), or different time points (measured in the same caste). We derive these estimates by model averaging across the five frequentist GLMs that were run on each of the `r site_count` sites for which sufficiant data were available. 
+The results in the following plots were calculated using GSEA tests for enrichment, implemented in the `fgsea` package. This test involves ranking genes by some statistic and then searching for GO and KEGG terms that are over-represented among genes at the top or bottom of the list. Here, we ranked the genes by the average of the difference in % methylation between 'classes' that was estimated for all the sites in the gene (defined as sites inside the exons, introns, or promoter regions of the gene). 'Classes' either means queens and workers (measured at the same time point), or different time points (measured in the same caste). We derive these estimates by model averaging GLMs that were run on each of the `r length(methylated_sites)` sites for which sufficient data were available. 
 
 The output of `fgsea` includes the "normalised enrichment score" (NES) which describes how much the pathway is over-represented at the top of this list (for positive NES), or over-represented at the bottom (negative NES), and there is an associated $p$-value for each NES (calculated by resampling).
 

@@ -243,7 +243,9 @@ annotation_row <- annotation_row %>%
 
 annotation_colors <- 
   list(` ` = c(Queen = queen_colour, t0 = "white", Worker = worker_colour))
+```
 
+```{r eval=FALSE}
 t(scaled_expression_data) %>%
   pheatmap(col = myColor, breaks = myBreaks,
            clustering_distance_rows = "euclidean",
@@ -253,9 +255,8 @@ t(scaled_expression_data) %>%
            show_colnames = FALSE)
 ```
 
-**Figure XX:** Heatmap showing the transcriptome of each sample, where each column indicates one of the `r nrow(scaled_expression_data)` transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.
-
 ```{r echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+# Invisible code chunk, needed because pheatmap plots even if you don't want it to!
 save_pheatmap_pdf <- function(x, filename, width=7, height=7) {
    stopifnot(!missing(x))
    stopifnot(!missing(filename))
@@ -270,15 +271,17 @@ save_pheatmap_pdf <- function(x, filename, width=7, height=7) {
    dev.off()
 }
 
-t(scaled_expression_data) %>%
+invisible(t(scaled_expression_data) %>%
   pheatmap(col = myColor, breaks = myBreaks,
            clustering_distance_rows = "euclidean",
            clustering_distance_cols = "euclidean",
            cutree_cols = 18, cutree_rows = 5, 
            annotation_row = annotation_row, annotation_colors = annotation_colors,
            show_colnames = FALSE) %>%
-  save_pheatmap_pdf("figures/expression_heatmap.pdf", width = 12, height = 7)
+  save_pheatmap_pdf("figures/expression_heatmap.pdf", width = 12, height = 7))
 ```
+
+**Figure XX:** Heatmap showing the transcriptome of each sample, where each column indicates one of the `r nrow(scaled_expression_data)` transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.
 
 
 

@@ -28,5 +28,11 @@ Click [here](diff_methylation.html)
 ### Comparing the expression and methylation analysis
 Click [here](compare_expression_and_methylation.html) 
 
+### Figures showing methylation within each gene
+Click [here](gene_browser.html)
+
+### Alternative analysis using BWASPR
+Click [here](BWASP_results.html)
+
 
 

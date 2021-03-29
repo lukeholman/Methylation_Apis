@@ -1,0 +1,352 @@
+---
+title: "Alternative differential methylation analysis using BWASPR"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide 
+---
+
+```{r pkgs, results='hide', message=FALSE, warning=FALSE}
+library(tidyverse)
+library(DBI)
+library(dbplyr)
+library(RSQLite)
+library(glue)
+library(glue)
+library(kableExtra)
+library(DT)
+library(GenomicFeatures)
+
+options(stringsAsFactors = FALSE)
+
+setwd("~/Rprojects/Methylation_Apis/")
+source("code/get_bwasp_sites.R")
+
+# Database with useful gene name conversion table, GO terms etc.
+db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
+```
+
+
+
+The following sections show the results of statistical tests using [BWASP](https://github.com/BrendelGroup/BWASP) and [BWASPR](https://github.com/BrendelGroup/BWASPR). The tables below shows a list of A) CpG sites, or B) 500bp genomic windows, which were statistically significantly differentially methylated (using Fisher Exact tests implemented via `methylKit::calculateDiffMeth`). Using BWASPR, we specified a series of pre-planned comparions (contrasts) to compare the methylation levels at each site A) between castes within each time point (e.g. queen vs worker samples at 8h), and B) between time points within each caste (e.g. 2h vs 8h within the queen samples). The three tables in each section show sites/windows that were significantly differenetially methylated between castes (at a given time point), or between time points (within each caste).
+
+We caution that this approach of splitting the data into pairwise comparisons is under-powered, because it ignores the rest of the data when estimating each effect size. For example, to test for differential methylation in the '2h vs 6h queen' comparison, the test ignores all data from worker samples, or from the other time points in queens, which does not fully utilise the information in the dataset. The Fisher Exact test approach is also problematic because we have to run 24 separate hypothesis tests for each site (to calculate each of the 24 pairwise comparisons we examined), instead of running one model per site as in the generalised additive models presented below. The $p$-values below are corrected using the qvalue method (`?qvalue::qvalue`) within each comparison, and we identified candidate differentially methylated sites as those for which the $q$-value was <0.05 (or <0.01, in one case where tens of thousands of sites had qvalues just under 0.05).
+
+Despite the issues with the Fisher Exact test approach, we include it for completeness and to facilitate comparison with earlier work.
+
+
+## List of significantly differentially methylated **sites** (DMSs) from BWASP 
+
+### Caste-specific methylation {.tabset}
+
+#### Significant sites
+
+```{r bwasp_results, message=FALSE, warning=FALSE}
+# Note that in the output of BWASP, a positive meth.diff value in comparison "A.vs.B" means that 
+# the B methylation percentage is higher than the A methylation percentage. In one case we flip the sign for clarity.
+
+if(!file.exists("output/bwasp_sig_genes.rds")){
+  # Get significant sites. 'Significant' means both p and q < 0.05
+  bwasp_sites <- get_bwasp_sites(0.05, 0.05)
+  
+  between_castes <- bwasp_sites %>%
+    filter(str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
+    dplyr::select(site, seqnames, start, comparison, meth.diff, pvalue, qvalue, 
+                  exon_gene_name, intron_gene_name, promoter_gene_name) %>%
+    arrange(pvalue) %>%
+    mutate(meth.diff = -1 * meth.diff, # flip the sign for caste comparison so that positive means Q>W
+           pvalue = round(-1 * log10(pvalue), 1)) %>%
+    dplyr::rename(`Diff. in % methylation (postive means Q>W)` = meth.diff,
+                  `log10 pvalue` = pvalue)
+  
+  temporal_change_queens <- bwasp_sites %>%
+    filter(str_detect(comparison, "queen") & !str_detect(comparison, "worker")) %>%
+    dplyr::select(site, seqnames, start, comparison, meth.diff, pvalue, 
+                  qvalue, exon_gene_name, intron_gene_name, promoter_gene_name) %>%
+    arrange(pvalue)  %>%
+    mutate(pvalue = round(-1 * log10(pvalue), 1)) %>%
+    dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff,
+                  `log10 pvalue` = pvalue)
+  
+  temporal_change_workers <- bwasp_sites %>%
+    filter(!str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
+    dplyr::select(site, seqnames, start, comparison, meth.diff, pvalue, 
+                  qvalue, exon_gene_name, intron_gene_name, promoter_gene_name) %>%
+    arrange(pvalue) %>%
+    mutate(pvalue = round(-1 * log10(pvalue), 1)) %>%
+    dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff,
+                  `log10 pvalue` = pvalue)
+  
+  saveRDS(between_castes, "output/bwasp_between_castes.rds")
+  saveRDS(temporal_change_queens, "output/bwasp_temporal_changeQ.rds")
+  saveRDS(temporal_change_workers, "output/bwasp_temporal_changeW.rds")
+  
+  # Save list of BWASP sig genes for "Compare expr + meth.Rmd"
+  list(
+    caste_sig_genes = bwasp_sites %>%
+      filter(str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
+      dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+      unlist() %>% unname() %>% na.omit() %>% unique(),
+    timeQ_sig_genes = bwasp_sites %>%
+      filter(str_detect(comparison, "queen") & !str_detect(comparison, "worker")) %>%
+      dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+      unlist() %>% unname() %>% na.omit() %>% unique(),
+    timeW_sig_genes = bwasp_sites %>%
+      filter(qvalue <= 0.01) %>%
+      filter(!str_detect(comparison, "queen") & str_detect(comparison, "worker")) %>%
+      dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+      unlist() %>% unname() %>% na.omit() %>% unique()
+  ) %>% saveRDS("output/bwasp_sig_genes.rds")
+}
+
+my_data_table <- function(df){
+  datatable(
+    df, rownames=FALSE,
+    autoHideNavigation = TRUE,
+    extensions = c("Scroller",  "Buttons"),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender=TRUE,
+      scrollX=TRUE, scrollY=400,
+      scrollCollapse=TRUE,
+      buttons = 
+        list('pageLength', 'colvis', 'csv', list(
+          extend = 'pdf',
+          pageSize = 'A4',
+          orientation = 'landscape',
+          filename = 'Apis_methylation')),
+      pageLength = 50
+    )
+  )
+}
+
+bwasp_between_castes <- readRDS("output/bwasp_between_castes.rds")
+bwasp_temporal_changeQ <- readRDS("output/bwasp_temporal_changeQ.rds") 
+bwasp_temporal_changeW <- readRDS("output/bwasp_temporal_changeW.rds") 
+
+focal_table <- bwasp_between_castes %>% dplyr::select(-site) %>% 
+  mutate(comparison = str_replace(comparison, "queen", "Q"),
+         comparison = str_replace(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) 
+
+saveRDS(focal_table, "figures/supp_tables/tableS1.rds")
+```
+
+This table shows the `r length(na.omit(unique(bwasp_between_castes$site)))` sites for which BWASP reported a significant difference in methylation between queens and workers at one or more time points. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.05$.
+
+```{r}
+focal_table %>% my_data_table()
+```
+
+#### Genes overlapped by these significant sites
+
+The convenience, the following table lists all the genes overlapped by these significant sites.
+
+```{r}
+make_gene_table <- function(focal_table){
+  gene_list <- focal_table %>%
+    dplyr::select(contains("gene_name")) %>%
+    unlist() %>% unname() %>% na.omit() %>%
+    as.character() %>% unique() 
+  
+  levs <- c(sort(gene_list[!str_detect(gene_list, "unchar")]), 
+            sort(gene_list[str_detect(gene_list, "unchar")]))
+  
+  tibble(gene = gene_list) %>%
+    mutate(gene = factor(gene, levs)) %>%
+    arrange(gene) %>%
+    my_data_table()
+}
+focal_table %>% make_gene_table()
+```
+
+
+### Temporally varying methylation (queens) {.tabset}
+
+#### Significant sites
+
+```{r message=FALSE, warning=FALSE}
+focal_table <- bwasp_temporal_changeQ %>% dplyr::select(-site) %>% 
+  mutate(comparison = str_replace_all(comparison, "queen", "Q"),
+         comparison = str_replace_all(comparison, "[.]", " ")) 
+
+saveRDS(focal_table, "figures/supp_tables/tableS2.rds")
+```
+
+**Table S2:** The table shows the `r length(na.omit(unique(bwasp_temporal_changeQ$site)))` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.05$.
+
+```{r}
+focal_table %>% my_data_table()
+```
+
+#### Genes overlapped by these significant sites
+
+The convenience, the following table lists all the genes overlapped by these significant sites.
+
+```{r}
+focal_table %>% make_gene_table()
+```
+
+
+### Temporally varying methylation (workers) {.tabset}
+
+#### Significant sites
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+n_somewhat_sig <- bwasp_temporal_changeW %>% 
+  filter(qvalue < 0.05) %>% pull(site) %>%
+  na.omit() %>% length()
+
+n_extra_sig <- bwasp_temporal_changeW %>% 
+  filter(qvalue < 0.01) %>% pull(site) %>%
+  na.omit() %>% length()
+```
+
+```{r message=FALSE, warning=FALSE}
+focal_table <- bwasp_temporal_changeW %>% dplyr::select(-site) %>% 
+  mutate(comparison = str_replace_all(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>%
+  filter(qvalue < 0.01) 
+
+saveRDS(focal_table, "figures/supp_tables/tableS3.rds")
+```
+
+```{r}
+focal_table %>% 
+  my_data_table()
+```
+The table shows the `r n_extra_sig` sites for which BWASP reported a significant difference in methylation between time points in queen-destined larvae. Other columns give statistical results and annotations for the focal site. Sites were recorded as statistically significant if both their $p$ and $q$ values were $<0.01$ (note: this is lower than for the previous two tables; there would be `r n_somewhat_sig` sites if we used the same $<0.05$ cutoff for significance). Note: if we use the same cutoff as before, i.e. $p<0.05$ and $q<0.05$, there would be `r n_somewhat_sig` significant sites in this table. We therefore switched to $q < 0.01$ for this table, yielding a more manageable number of sites to display.
+
+#### Genes overlapped by these significant sites
+
+```{r}
+focal_table %>% make_gene_table()
+```
+
+## List of significantly differentially methylated **500bp windows** (DMWs) from BWASP 
+
+### Caste-specific methylation {.tabset}
+
+#### Significant 500bp windows
+
+```{r BWASP_Venn, message=FALSE, warning=FALSE}
+source("code/add_gene_exon_columns.R")
+q_threshold <- 0.0001
+
+window_500bp_caste <- 
+  list.files("data/BWASP_results/500bp_windows/Caste specific results", full.names = TRUE) %>%
+  map_df(read_tsv) %>% 
+  filter(pvalue < 0.05 & qvalue < q_threshold) %>% 
+  mutate(pvalue = round(pvalue, 4), qvalue = round(qvalue, 4)) 
+window_500bp_caste <- window_500bp_caste %>%
+  full_join(window_500bp_caste %>% 
+              dplyr::select(seqnames, start, end) %>% distinct() %>%
+              add_gene_exon_columns() %>% distinct(), 
+            by = c("seqnames", "start", "end")) %>%
+  left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
+            by = c("exon_in" = "gene_symbol")) %>%
+  dplyr::select(-width, -strand) %>% distinct() %>%
+  mutate(meth.diff = -1 * meth.diff) %>%
+  dplyr::rename(`Diff. in % methylation (postive means Q>W)` = meth.diff) 
+
+window_500bp_timeQ <- 
+  list.files("data/BWASP_results/500bp_windows/Temporal_Q", full.names = TRUE) %>%
+  map_df(read_tsv) %>% 
+  filter(pvalue < 0.05 & qvalue < q_threshold) %>% 
+  mutate(pvalue = round(pvalue, 4), qvalue = round(qvalue, 4)) 
+window_500bp_timeQ <- window_500bp_timeQ %>%
+  full_join(window_500bp_caste %>% 
+              dplyr::select(seqnames, start, end) %>% distinct() %>%
+              add_gene_exon_columns() %>% distinct(), by = c("seqnames", "start", "end")) %>%
+  left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
+            by = c("exon_in" = "gene_symbol")) %>%
+  dplyr::select(-width, -strand) %>% distinct() %>%
+  dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff)
+
+window_500bp_timeW <- 
+  list.files("data/BWASP_results/500bp_windows/Temporal_W", full.names = TRUE) %>%
+  map_df(read_tsv) %>% 
+  filter(pvalue < 0.05 & qvalue < q_threshold) %>% 
+  mutate(pvalue = round(pvalue, 4), qvalue = round(qvalue, 4)) 
+window_500bp_timeW <- window_500bp_timeW %>%
+  full_join(window_500bp_caste %>% 
+              dplyr::select(seqnames, start, end) %>% distinct() %>%
+              add_gene_exon_columns() %>% distinct(), by = c("seqnames", "start", "end")) %>%
+  left_join(tbl(db, "gene_names") %>% dplyr::select(gene_symbol, gene_name) %>% collect(), 
+            by = c("exon_in" = "gene_symbol")) %>%
+  dplyr::select(-width, -strand) %>% distinct() %>%
+  dplyr::rename(`Diff. in % methylation (postive means increase over time)` = meth.diff)
+```
+
+```{r echo=FALSE}
+n_caste_windows <- window_500bp_caste %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
+n_queen_windows <- window_500bp_timeQ %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
+n_worker_windows <- window_500bp_timeW %>% dplyr::select(seqnames, start, end) %>% distinct() %>% nrow()
+```
+
+The table shows the `r prettyNum(n_caste_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant difference in methylation between queens and workers at one or more time points. There is one row per annotation.
+
+```{r}
+window_500bp_caste %>%
+  mutate(comparison = str_replace(comparison, "queen", "Q"),
+         comparison = str_replace(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>%
+  my_data_table()
+```
+
+#### Genes overlapped by these significant 500bp windows 
+```{r}
+make_gene_table2 <- function(focal_table){
+  gene_list <- focal_table %>%
+    dplyr::select(contains("_in"), contains("_of")) %>%
+    unlist() %>% unname() %>% na.omit() %>%
+    as.character() %>% unique() 
+  
+  levs <- c(sort(gene_list[!str_detect(gene_list, "LOC")]), 
+            sort(gene_list[str_detect(gene_list, "LOC")]))
+  
+  tibble(gene = gene_list) %>%
+    mutate(gene = factor(gene, levs)) %>%
+    arrange(gene) %>%
+    left_join(tbl(db, "gene_names") %>% 
+                dplyr::select(gene_symbol, gene_name) %>% 
+                collect(), by = c("gene" = "gene_symbol")) %>%
+    dplyr::select(gene, gene_name) %>%
+    my_data_table()
+}
+window_500bp_caste %>% make_gene_table2()
+```
+
+
+### Temporally varying methylation (queens) {.tabset}
+
+#### Significant 500bp windows
+The table shows the `r prettyNum(n_queen_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in queen-destined larvae. There is one row per annotation.
+```{r message=FALSE, warning=FALSE}
+window_500bp_timeQ %>%
+  mutate(comparison = str_replace_all(comparison, "queen", "Q"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
+  my_data_table()
+```
+
+#### Genes overlapped by these significant 500bp windows 
+```{r}
+window_500bp_timeQ %>% make_gene_table2()
+```
+
+### Temporally varying methylation (workers) {.tabset}
+
+#### Significant 500bp windows
+The table shows the `r prettyNum(n_worker_windows, big.mark = ",")` 500bp windows in which BWASP detected a significant change in methylation with time, in worker-destined larvae. There is one row per annotation.
+
+```{r message=FALSE, warning=FALSE}
+window_500bp_timeW %>%
+  mutate(comparison = str_replace_all(comparison, "worker", "W"),
+         comparison = str_replace_all(comparison, "[.]", " ")) %>% 
+  my_data_table()
+```
+
+#### Genes overlapped by these significant 500bp windows 
+```{r}
+window_500bp_timeW %>% make_gene_table2()
+```
+

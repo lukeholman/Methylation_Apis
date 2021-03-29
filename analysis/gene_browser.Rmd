@@ -1,0 +1,237 @@
+---
+title: "Plots showing methylated genes"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide 
+---
+
+## Code for these plots
+The code below loads libraries and the data we need, i.e. the methylation calls for each site from BWASP, each gene's exon boundaries from the file `Amel.pcg.gff3`, and the list of genes containing at least once significantly differentially methylated site in their exons, UTRs, introns, or promoter region (i.e. all the genes mentioned in `gene_meth_results_table`). Each plot is created from two ggplots, one showing the gene model and one showing the methylated sites using the same x-axis. All methylated CpG sites identified by BWASP are shown.
+
+```{r message=F, warning=F}
+library(tidyverse)
+library(GenomicFeatures)
+library(dbplyr)
+library(RSQLite)
+library(gridExtra)
+library(glue)
+library(DT)
+
+# This script creates "all_transcribed_regions" GRranges object used below
+source("code/add_gene_exon_columns.R")
+
+# Load necessary data
+glm_results <- read_tsv("output/frequentist_GLM_meth_diff.txt")
+p_values <- read_tsv("output/frequentist_GLM_p_values.txt")
+gene_meth_results_table <- readRDS("output/gene_meth_results_table.rds")
+db <- dbConnect(SQLite(), "data/apis_db.sqlite3") 
+by_site <- tbl(db, "methylation_counts") %>%
+  mutate(prop = numC / (numC + numT)) %>% 
+  left_join(tbl(db, "sample_ids"), by = "sample") %>% 
+  left_join(tbl(db, "site_annotations"), by = "site")
+
+# define colours
+queen_colour <- "#d13b40"
+worker_colour <- RColorBrewer::brewer.pal(7, "Blues")[4]
+
+sig_sites_triangles <- p_values %>% 
+  filter(p < 0.0001) %>% pull(Site) %>% unique()
+
+plot_gene <- function(gene, 
+                      buffer_start = 2000, 
+                      buffer_end = 2000, 
+                      times = c(4,6,8), # Timepoints to combine
+                      in_markdown = TRUE,
+                      plot = FALSE){ # set to false if combining several with grid.arrange()
+  csd_exons <- as.data.frame(all_transcribed_regions) %>% 
+    filter(GENEID == gene) 
+  csd_chr <- csd_exons$seqnames[1]
+  
+  csd_exons <- csd_exons %>%
+    dplyr::select(start, end, EXONRANK) %>%
+    gather(key, value, -EXONRANK) %>%
+    mutate(y=30, EXONRANK = unlist(EXONRANK))
+  
+  exon_labels <- csd_exons %>%
+    group_by(EXONRANK) %>%
+    summarise(value = mean(value), y = 80, .groups = "drop") %>%
+    arrange(EXONRANK)
+  
+  csd_range <- c(min(csd_exons$value) - buffer_start, 
+                 max(csd_exons$value) + buffer_end)
+  
+  p1 <- csd_exons %>% 
+    ggplot(aes(value, y=y)) + 
+    geom_line() + 
+    geom_line(size = 6, aes(group = EXONRANK, colour = factor(EXONRANK))) + 
+    scale_y_continuous(limits = c(0, 100), 
+                       labels = c(0, 25, 5, 75, 100),
+                       breaks = c(0, 25, 5, 75, 100)) + 
+    # scale_colour_brewer(palette = "Spectral") +
+    xlab(NULL) + ylab(" ") + 
+    theme(legend.position = "none",
+          axis.text.x = element_blank(),
+          axis.text.y = element_text(colour = "white"),
+          axis.ticks.y = element_line(colour = "white"),
+          panel.background = element_blank(),
+          panel.grid.major.y = element_blank(), 
+          panel.grid.minor.y = element_blank(),
+          axis.ticks.x = element_blank())
+  
+  csd_sites <- tbl(db, "site_info") %>% 
+    filter(seqnames == csd_chr) %>% 
+    collect() %>%
+    filter(start >= csd_range[1] & start <= csd_range[2]) %>%
+    pull(site)
+
+  p_vals <- glm_results %>%
+    filter(Site %in% csd_sites  & time %in% times) %>%
+    group_by(Site) %>%
+    summarise(p = min(p), .groups = "drop") 
+  
+  csd_meth_data <- by_site %>%
+    filter(site %in% csd_sites & time %in% times) %>%
+    group_by(site, caste) %>%
+    summarise(numC = sum(numC), numT = sum(numT), .groups = "drop") %>%
+    mutate(prop = numC / (numC+numT)) %>% collect() %>%
+    mutate(sig = ifelse(site %in% sig_sites_triangles, "yes", "no"))
+
+  xx <- csd_meth_data %>% 
+    left_join(tbl(db, "site_info") %>% 
+                filter(site %in% csd_sites) %>% collect(), by = "site")
+  
+  bigger <- xx %>%
+    group_by(site) %>%
+    summarise(bigger = ifelse(prop[1] > prop[2], "Queen", "Worker"), .groups = "drop")
+  
+  dots <- xx %>% left_join(bigger, by = "site")
+
+  triangles <- xx %>% filter(sig == "yes")
+  # print(triangles %>% pull(site))
+  
+  p2 <- dots %>%
+    ggplot(aes(start, 100*prop)) + 
+    geom_line(aes(group = site, colour = bigger)) + 
+ #   geom_point(data = triangles, pch = 25, fill = NA, aes(y=100), size = 5) +
+    geom_point(aes(fill = caste), pch = 21, colour="black") + 
+    scale_color_manual(values = c(queen_colour, worker_colour)) +
+    scale_fill_manual(values = c(queen_colour, worker_colour)) + 
+    scale_y_continuous(limits = c(0,100)) +
+    theme(legend.position = "none",
+          text = element_text(family = nice_font)) + ylab(" ") + xlab(NULL)
+  
+  if(nrow(exon_labels) > 1){
+    if(exon_labels$value[1] > exon_labels$value[2]) {
+      p1 <- p1 + scale_x_reverse(limits = c(csd_range[2], csd_range[1]))
+      p2 <- p2 + scale_x_reverse(limits = c(csd_range[2], csd_range[1]))  
+    } else {
+      p1 <- p1 + scale_x_continuous(limits = c(csd_range[1], csd_range[2])) 
+      p2 <- p2 + scale_x_continuous(limits = c(csd_range[1], csd_range[2])) 
+    }
+  }
+  
+  title <- tbl(db, "gene_names") %>% 
+    filter(gene_symbol == gene) %>% pull(gene_name)
+  title <- paste(title, " (", gene, ")", sep = "")
+  
+  if(plot & !in_markdown) return(grid.arrange(
+    p1, 
+    p2 + ylab("% methylated reads") + xlab(" \n "), 
+    heights = c(0.09, 0.91), top = title))
+  if(!plot & !in_markdown) return(arrangeGrob(
+    p1, 
+    p2 + ylab(" ") + xlab(NULL), 
+    heights = c(0.09, 0.91), top = title))
+  if(!plot & in_markdown){
+    list(arrangeGrob(p1, 
+                p2 + ylab("% methylated reads") + xlab("Genomic position"), 
+                heights = c(0.09, 0.91)),
+         title)
+  }
+}
+
+genes_to_plot <- gene_meth_results_table %>% 
+  filter(`FDR sig`=="*") %>%
+  dplyr::select(contains(" in"), contains(" of"), -contains("gene name")) %>%
+  unlist() %>% unname() %>% unique() %>% na.omit() %>% as.character()
+
+# lapply(1:length(genes_to_plot), function(i){
+#   plot_gene(genes_to_plot[i]) %>% saveRDS(glue("figures/gene_browser_plots/gene{i}.rds"))
+# })
+
+plots <- list.files("figures/gene_browser_plots", full.names = TRUE) %>%
+  lapply(readRDS)
+
+genes_plotted <- map_chr(plots, ~ .x[[2]])
+```
+
+## Table of genes plotted below
+
+The table can be used to see which genes are plotted here. You can then browse to the gene you're interested in using ctrl+F to search for its name on this webpage.
+
+```{r}
+my_data_table <- function(df){
+  datatable(
+    df, rownames=FALSE,
+    autoHideNavigation = TRUE,
+    extensions = c("Scroller",  "Buttons"),
+    options = list(
+      dom = 'Bfrtip',
+      deferRender=TRUE,
+      scrollX=TRUE, scrollY=400,
+      scrollCollapse=TRUE,
+      buttons = 
+        list('pageLength', 'colvis', 'csv', list(
+          extend = 'pdf',
+          pageSize = 'A4',
+          orientation = 'landscape',
+          filename = 'Apis_methylation')),
+      pageLength = 50
+    )
+  )
+}
+
+tibble(x = genes_plotted) %>%
+  mutate(`Gene name` = map_chr(str_split(x, " [(]"), ~ .x[[1]]),
+         `Gene symbol` = str_remove_all(map_chr(str_split(x, " [(]"), ~ .x[[2]]), "[)]")) %>%
+  dplyr::select(`Gene symbol`, `Gene name`) %>%
+  my_data_table()
+```
+
+```{r make_pdf, echo=FALSE}
+library(showtext)
+nice_font <- "Lora"
+font_add_google(name = nice_font, family = nice_font, regular.wt = 400, bold.wt = 700)
+showtext_auto()
+
+
+# Make the figure for the paper
+grid.arrange(
+  plot_gene("Csd", plot = F, in_markdown = F),
+  plot_gene("LOC725679", plot=F, in_markdown = F), # sxl
+  plot_gene("LOC100576747", plot = F, in_markdown = F), # tud
+  plot_gene("ecd", plot = F, in_markdown = F),
+  plot_gene("LOC412046", plot=F, in_markdown = F),
+  plot_gene("LOC412162", plot=F, in_markdown = F),
+  left = "% methylated sites", bottom = "Genomic position"
+) %>% ggsave(filename = "figures/gene_browser_fig.pdf", height = 13, width = 9)
+```
+
+
+
+## Plots of each gene
+
+In the plots below, each pair of blue and red points shows one methylated CpG site, with the red dot showing the % methylated reads in QDL (summing across all the QDL samples at the 4h, 6h, and 8h time points), while the blue dot shows the same for QDL. Dots relating to the same site are connected with a blue or red line to highlight large differences. In the gene model plot, Exon 1 of the gene is always shown on the left (red colour), and the x-axis scale showing the genomic position is reversed if necessary (depending on which strand the gene is on).
+
+For every gene, the x-axis extends 2000 base pairs upstream and downstream of the first and last exons; note that it is common for a cluster of highly methylated sites to be found upstream of a gene, and these are clusters are quite commonly differentially methylated (similar to to the CpG islands found in mammalian genomes).
+
+```{r, results='asis'}
+for (i in 1:length(plots)){
+  cat("####", plots[[i]][[2]], "\n")
+  
+  grid.arrange(plots[[i]][[1]])
+  
+  cat("\n")
+  cat("\n")
+}
+```
