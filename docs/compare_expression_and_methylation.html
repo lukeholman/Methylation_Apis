@@ -554,16 +554,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree476b02fe32c9a183e51f58e8088454faefc18f5ctargetblank476b02fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/476b02fe32c9a183e51f58e8088454faefc18f5c" target="_blank">476b02f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree7f984dcbe5e5111f3d4a9d494d3059e5279be531targetblank7f984dca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/7f984dcbe5e5111f3d4a9d494d3059e5279be531" target="_blank">7f984dc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree476b02fe32c9a183e51f58e8088454faefc18f5ctargetblank476b02fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree7f984dcbe5e5111f3d4a9d494d3059e5279be531targetblank7f984dca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/476b02fe32c9a183e51f58e8088454faefc18f5c" target="_blank">476b02f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/7f984dcbe5e5111f3d4a9d494d3059e5279be531" target="_blank">7f984dc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -574,7 +574,6 @@ Ignored files:
     Ignored:    .Rapp.history
     Ignored:    .Rproj.user/
     Ignored:    Expression/
-    Ignored:    analysis/figure/
     Ignored:    data/
     Ignored:    figures/.DS_Store
     Ignored:    figures/meth_sites/.DS_Store
@@ -582,18 +581,21 @@ Ignored files:
     Ignored:    output/
 
 Untracked files:
-    Untracked:  analysis/BWASP_results.Rmd
-    Untracked:  analysis/gene_browser.Rmd
+    Untracked:  figures/gene_browser_fig.pdf
     Untracked:  figures/gene_browser_plots/
 
 Unstaged changes:
-    Modified:   analysis/diff_methylation.Rmd
-    Modified:   analysis/index.Rmd
     Modified:   figures/big_correlation_heatmap.pdf
     Modified:   figures/composite_GO.pdf
     Modified:   figures/composite_eigengenes.pdf
     Modified:   figures/composite_figure.pdf
+    Modified:   figures/eigengenes_expression_network.rds
     Modified:   figures/eigengenes_meth_network_fig.rds
+    Modified:   figures/expr_GO_for_composite_figure.rds
+    Modified:   figures/expression_NMDS_plot.rds
+    Modified:   figures/expression_heatmap.pdf
+    Modified:   figures/heatmap75.rds
+    Modified:   figures/heatmap_all.rds
     Modified:   figures/meth_GO_for_composite_figure.rds
     Modified:   figures/meth_GO_others.rds
     Modified:   figures/meth_GO_temporal_Amel.rds
@@ -638,6 +640,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/7f984dcbe5e5111f3d4a9d494d3059e5279be531/analysis/compare_expression_and_methylation.Rmd" target="_blank">7f984dc</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+Big commit
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/e78cabac1dba82ae8bb30df4498220ed2caa1871/docs/compare_expression_and_methylation.html" target="_blank">e78caba</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1140,32 +1176,6 @@ queen_colour &lt;- &quot;#d13b40&quot;
 worker_colour &lt;- RColorBrewer::brewer.pal(7, &quot;Blues&quot;)[4]</code></pre>
 <div id="comparing-significant-gene-lists-from-expression-and-methylation-analyses" class="section level2">
 <h2>Comparing significant gene lists from expression and methylation analyses</h2>
-<pre><code>Parsed with column specification:
-cols(
-  Time = col_double(),
-  `Gene symbol` = col_character(),
-  `Gene name` = col_character(),
-  logFC = col_double(),
-  AveExpr = col_double(),
-  t = col_double(),
-  P.Value = col_double(),
-  adj.P.Val = col_double(),
-  B = col_double(),
-  module = col_character()
-)
-Parsed with column specification:
-cols(
-  Time = col_double(),
-  `Gene symbol` = col_character(),
-  `Gene name` = col_character(),
-  logFC = col_double(),
-  AveExpr = col_double(),
-  t = col_double(),
-  P.Value = col_double(),
-  adj.P.Val = col_double(),
-  B = col_double(),
-  module = col_character()
-)</code></pre>
 <p>Here, we list the 410 genes that showed a statistically significant caste difference for both expression and methylation; this list includes many interesting genes, including <em>complementary sex determiner</em>, <em>maternal protein tudor</em>, and <em>superoxide dismutase 2</em>. A total of 8926 genes were tested in both the expression and the methylation analyses.</p>
 <pre class="r"><code># Get the &#39;gene universe&#39;, the set of genes tested in the expr and meth analyses
 genes_tested_meth &lt;- tbl(db, &quot;site_annotations&quot;) %&gt;%
@@ -1514,6 +1524,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/e78cabac1dba82ae8bb30df4498220ed2caa1871/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-5-1.png" target="_blank">e78caba</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-29
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/d1cfd521e7182ee6297efd5d594b5432f09cb2a8/docs/figure/compare_expression_and_methylation.Rmd/unnamed-chunk-5-1.png" target="_blank">d1cfd52</a>
 </td>
 <td>
@@ -1717,7 +1738,7 @@ m1: Queen-biased
 </tr>
 <tr>
 <td style="text-align:left;">
-m3: Worker-biased
+m3: Unbiased
 </td>
 <td style="text-align:left;">
 m5: Queen-biased
@@ -1811,6 +1832,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/e78cabac1dba82ae8bb30df4498220ed2caa1871/docs/figure/compare_expression_and_methylation.Rmd/make_composite_plot-1.png" target="_blank">e78caba</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-29
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/d1cfd521e7182ee6297efd5d594b5432f09cb2a8/docs/figure/compare_expression_and_methylation.Rmd/make_composite_plot-1.png" target="_blank">d1cfd52</a>
