@@ -27,11 +27,11 @@ showtext_auto()
 # Load annotations and database
 db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
 
-# Load BWASP results
-bwasp_sig_genes <- readRDS("output/bwasp_sig_genes.rds")
+# # Load BWASP results
+# bwasp_sig_genes <- readRDS("output/bwasp_sig_genes.rds")
 
-# Load Bayesian results
-bayes_sig_genes <- readRDS("output/gene_meth_results_table.rds")
+# Load methylation GLM results
+GLM_sig_genes <- readRDS("output/gene_meth_results_table.rds")
 
 
 # Make html tables:
@@ -135,67 +135,67 @@ dev.off()
 ```
 
 
-## Comparing significant gene lists from expression and methylation analyses {.tabset}
+## Comparing significant gene lists from expression and methylation analyses
 
-Here, we give tables showing genes that showed a statistically significant caste difference for both expression and methylation. 
-
-We also use a hypergeometric test to test how many genes were significant (and how many were tested in total) in both the differential expression and differential methylation assays, and test whether the number of overlaps is greater or lower than expected under the null model that the two gene lists are independent (using a hypergeometric test via the `phyper` function). 
-
-Using the BWASP results, the overlap of gene lists was not significant. However for the Bayesian GLM, the overlap was _lower_ than expected under the null ($p < 0.0001$), indicating that the genes that show differential methylation are less likely than average to show differential expression (and _vice versa_).
-
-Notably, _Complementary sex determiner_ is significant in all three analyses (expression, and both versions of the methylation analyses). _maternal protein tudor_ shows differential expression, and significant differential methylation (in the Bayesian GLM).
-
-### Using the BWASP methylation results
-
-```{r warning=FALSE, message=FALSE}
+```{r echo = FALSE}
 genes_tested_meth <- tbl(db, "site_annotations") %>%
   dplyr::select(promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
   distinct() %>% collect(n = Inf) %>% 
   unlist() %>% unname() %>% unique()
 genes_tested_expr <- read_csv("output/caste_results.csv")$`Gene symbol` %>% unique()
 universe <- intersect(genes_tested_expr, genes_tested_meth)
+
 sig_diff_expr <- read_csv("output/caste_results.csv") %>% 
   filter(adj.P.Val < 0.05 & `Gene symbol` %in% universe) %>% pull(`Gene symbol`) %>% unique()
-sig_diff_meth <- bwasp_sig_genes$caste_sig_genes
 
-inters <- intersect(sig_diff_expr, bwasp_sig_genes$caste_sig_genes)
+sig_diff_meth <- GLM_sig_genes %>% 
+  dplyr::select(`exon in`, `promoter of`, `intron in`, `5UTR in`, `3UTR in`) %>%
+  unlist() %>% unname() %>% na.omit() %>% unique()
+
+inters <- intersect(sig_diff_expr, sig_diff_meth)
 n_overlaps <- length(inters)
-
-bwasp_table <- tibble(`Genes showing both differential expression and methylation (BWASP pipeline)` = tbl(db, "gene_names") %>% filter(gene_symbol %in% inters) %>% pull(gene_name)) 
-
-# bwasp_hypergeometric <- overlap_hypergeometric_test(
-#   n_overlaps, 
-#   length(sig_diff_expr),
-#   length(sig_diff_meth),
-#   length(universe))
-
-
-bwasp_table %>%
-  my_data_table()
-
-# bwasp_hypergeometric %>%
-#   kable() %>% kable_styling(full_width = FALSE)
+size_universe <- length(universe)
 ```
 
 
-### Using the Bayesian GLM methylation results
+Here, we list the `r n_overlaps` genes that showed a statistically significant caste difference for both expression and methylation; this list includes many interesting genes, including _complementary sex determiner_, _maternal protein tudor_, and _superoxide dismutase 2_. A total of `r size_universe` genes were tested in both the expression and the methylation analyses.
+
 ```{r message=FALSE, warning=FALSE}
-sig_diff_meth <- bayes_sig_genes %>% dplyr::select(exon_in, promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>%
+# Get the 'gene universe', the set of genes tested in the expr and meth analyses
+genes_tested_meth <- tbl(db, "site_annotations") %>%
+  dplyr::select(promoter_of, intron_in, fiveUTR_in, threeUTR_in) %>% 
+  distinct() %>% collect(n = Inf) %>% 
+  unlist() %>% unname() %>% unique()
+genes_tested_expr <- read_csv("output/caste_results.csv")$`Gene symbol` %>% unique()
+universe <- intersect(genes_tested_expr, genes_tested_meth)
+
+sig_diff_expr <- read_csv("output/caste_results.csv") %>% 
+  filter(adj.P.Val < 0.05 & `Gene symbol` %in% universe) %>% 
+  pull(`Gene symbol`) %>% unique()
+
+sig_diff_meth <- GLM_sig_genes %>% 
+  dplyr::select(`exon in`, `promoter of`, `intron in`, `5UTR in`, `3UTR in`) %>%
   unlist() %>% unname() %>% na.omit() %>% unique()
+
 inters <- intersect(sig_diff_expr, sig_diff_meth)
-n_overlaps <- length(inters)
 
-bayes_table <- tibble(`Genes showing both differential expression and methylation (Bayesian GLM)` =
-tbl(db, "gene_names") %>% filter(gene_symbol %in% inters) %>% pull(gene_name))
+overlap_table <- tibble(
+  gene_name = tbl(db, "gene_names") %>% 
+  filter(gene_symbol %in% inters) %>% pull(gene_name))
 
-# bayes_hypergeometric <- overlap_hypergeometric_test(
-#   n_overlaps, 
+overlap_table %>%
+  left_join(tbl(db, "gene_names") %>% 
+              dplyr::select(gene_name, gene_symbol) %>%
+              collect()) %>%
+  dplyr::rename(`Genes showing both differential expression and methylation` = gene_name,
+                `Gene symbol` = gene_symbol) %>%
+  my_data_table()
+
+# expr_meth_overlap_hypergeometric <- overlap_hypergeometric_test(
+#   n_overlaps,
 #   length(sig_diff_expr),
 #   length(sig_diff_meth),
 #   length(universe))
-
-bayes_table %>%
-  my_data_table()
 
 # bayes_hypergeometric %>%
 #   kable() %>% kable_styling(full_width = FALSE)
