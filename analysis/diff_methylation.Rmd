@@ -504,13 +504,13 @@ genomic_context_plot_caste <-
   plot_lm_estimates("Mean caste difference in\n% mCpGs (\u00B195% CIs)", "#b19cd9") 
 
 genomic_context_plot_timeQ <-
-  map2_df(combn(c(2,4,6,8), 2)[1,], 
-          combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates("timeQ", .x, .y)) %>% 
+  map2_df(combn(c(0,2,4,6,8), 2)[1,], 
+          combn(c(0,2,4,6,8), 2)[2,], ~ make_lm_estimates("timeQ", .x, .y)) %>% 
   plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)", queen_colour)
 
 genomic_context_plot_timeW <- 
-  map2_df(combn(c(2,4,6,8), 2)[1,], 
-          combn(c(2,4,6,8), 2)[2,], ~ make_lm_estimates("timeW", .x, .y)) %>% 
+  map2_df(combn(c(0,2,4,6,8), 2)[1,], 
+          combn(c(0,2,4,6,8), 2)[2,], ~ make_lm_estimates("timeW", .x, .y)) %>% 
   plot_lm_estimates("Difference in % mCpGs (mean \u00B195% CIs)", worker_colour)
 
 saveRDS(genomic_context_plot_caste, "figures/genomic_context_plot_caste.rds")
@@ -521,12 +521,12 @@ readRDS("figures/genomic_context_plot_caste.rds")
 ```
 
 ### Comparing queen-destined larvae across timepoints
-```{r fig.width=6.3, fig.showtext=TRUE}
+```{r fig.width=7, fig.showtext=TRUE}
 readRDS("figures/genomic_context_plot_timeQ.rds")
 ```
 
 ### Comparing worker-destined larvae across timepoints
-```{r fig.width=6.3, fig.showtext=TRUE}
+```{r fig.width=7, fig.showtext=TRUE}
 readRDS("figures/genomic_context_plot_timeW.rds")
 ```
 
@@ -1413,7 +1413,7 @@ as.data.frame(all_transcribed_regions) %>%
   facet_wrap(~ seqnames, scales= "free") +
   geom_rug(data = methylome, alpha = 0.01) + 
   geom_density(data = methylome, colour = "black") +
-  geom_density(data = hits, colour = "purple") +
+  geom_density(data = hits, colour = "#b19cd9") +
   geom_rug(data = hits, aes(colour = direction)) + 
   scale_colour_manual(values = c(queen_colour, worker_colour)) + 
   xlab("Position (megabases)") + ylab("Density") + 
