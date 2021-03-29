@@ -179,14 +179,10 @@ sig_diff_meth <- GLM_sig_genes %>%
 
 inters <- intersect(sig_diff_expr, sig_diff_meth)
 
-overlap_table <- tibble(
-  gene_name = tbl(db, "gene_names") %>% 
-  filter(gene_symbol %in% inters) %>% pull(gene_name))
-
-overlap_table %>%
-  left_join(tbl(db, "gene_names") %>% 
-              dplyr::select(gene_name, gene_symbol) %>%
-              collect()) %>%
+tbl(db, "gene_names") %>% 
+  filter(gene_symbol %in% inters) %>% 
+  dplyr::select(gene_name, gene_symbol) %>%
+  collect() %>%
   dplyr::rename(`Genes showing both differential expression and methylation` = gene_name,
                 `Gene symbol` = gene_symbol) %>%
   my_data_table()
@@ -196,9 +192,6 @@ overlap_table %>%
 #   length(sig_diff_expr),
 #   length(sig_diff_meth),
 #   length(universe))
-
-# bayes_hypergeometric %>%
-#   kable() %>% kable_styling(full_width = FALSE)
 ```
 
 
