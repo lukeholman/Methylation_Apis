@@ -6,7 +6,7 @@ output:
 ---
 
 ## Code for these plots
-The code below loads libraries and the data we need, i.e. the methylation calls for each site from BWASP, each gene's exon boundaries from the file `Amel.pcg.gff3`, and the list of genes containing at least once significantly differentially methylated site in their exons, UTRs, introns, or promoter region (i.e. all the genes mentioned in `gene_meth_results_table`). Each plot is created from two ggplots, one showing the gene model and one showing the methylated sites using the same x-axis. All methylated CpG sites identified by BWASP are shown.
+The code below loads libraries and the data we need, i.e. the methylation calls for each site from BWASP, each gene's exon boundaries from the file `Amel.pcg.gff3`, and the list of genes containing at least one significantly differentially methylated site in their exons, UTRs, introns, or promoter region (i.e. all the genes mentioned in `gene_meth_results_table` with an FDR-corrected p-value less than 0.05). Each plot is created from two ggplots, one showing the gene model and one showing the methylated sites using the same x-axis. All methylated CpG sites identified by BWASP are shown.
 
 ```{r message=F, warning=F}
 library(tidyverse)
@@ -16,6 +16,11 @@ library(RSQLite)
 library(gridExtra)
 library(glue)
 library(DT)
+
+library(showtext)
+nice_font <- "Lora"
+font_add_google(name = nice_font, family = nice_font, regular.wt = 400, bold.wt = 700)
+showtext_auto()
 
 # This script creates "all_transcribed_regions" GRranges object used below
 source("code/add_gene_exon_columns.R")
@@ -76,6 +81,7 @@ plot_gene <- function(gene,
           panel.background = element_blank(),
           panel.grid.major.y = element_blank(), 
           panel.grid.minor.y = element_blank(),
+          text = element_text(family = nice_font),
           axis.ticks.x = element_blank())
   
   csd_sites <- tbl(db, "site_info") %>% 
@@ -199,11 +205,7 @@ tibble(x = genes_plotted) %>%
 ```
 
 ```{r make_pdf, echo=FALSE}
-library(showtext)
-nice_font <- "Lora"
-font_add_google(name = nice_font, family = nice_font, regular.wt = 400, bold.wt = 700)
-showtext_auto()
-
+# plot_gene("LOC411723", plot = T, in_markdown = F)
 
 # Make the figure for the paper
 grid.arrange(
@@ -211,10 +213,10 @@ grid.arrange(
   plot_gene("LOC725679", plot=F, in_markdown = F), # sxl
   plot_gene("LOC100576747", plot = F, in_markdown = F), # tud
   plot_gene("ecd", plot = F, in_markdown = F),
-  plot_gene("LOC412046", plot=F, in_markdown = F),
+  plot_gene("Dcr-1", plot=F, in_markdown = F),
   plot_gene("LOC412162", plot=F, in_markdown = F),
   left = "% methylated sites", bottom = "Genomic position"
-) %>% ggsave(filename = "figures/gene_browser_fig.pdf", height = 13, width = 9)
+) %>% ggsave(filename = "figures/gene_browser_fig.pdf", height = 9, width = 9)
 ```
 
 
