@@ -737,7 +737,7 @@ We first remove sites with methylation levels too low for analysis, or which wer
 
 The bisulphite conversion rate was about 99.73 (as measured by the apparent % methylation of sites in the phage lambda DNA), so we expect unmethylated sites to appear methylated about 0.27% of the time. To ensure we focus on sites where these 'false positive' signals of methylation provide only a modest portion of the observed % of Cs vs Ts (i.e. the estimate of % methylation), we chose to focus on sites that have 10$\times$ higher methylation rates than expected based on the low-level background 'noise'. That is, we excluded all sites where fewer than 2.7% of the reads were Cs (i.e. putatively methylated). This rules out the great majority of sites for which at least one C was observed. We also discarded sites that had been measured in fewer than 32 of our 36 samples.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 gave_warning <- function(code) {
   x <- tryCatch(code,
                 warning = function(c) "warning"
@@ -768,9 +768,31 @@ if(!file.exists("output/sites_to_ignore.rds")){
 }
 
 methylated_sites_model <- methylated_sites[!(methylated_sites %in% readRDS("output/sites_to_ignore.rds"))]
+
+coverage_per_site <- by_site %>%
+  filter(site %in% methylated_sites_model) %>%
+  mutate(coverage = numC + numT) %>%
+  dplyr::select(site, sample, coverage) %>%
+  group_by(site) %>%
+  summarise(mean_coverage = mean(coverage),
+            total_coverage = sum(coverage)) %>%
+  collect()
 ```
 
 Furthermore, a few of these sites (`r length(readRDS("output/sites_to_ignore.rds"))` sites in total) that passed this criterion nevertheless gave warnings when fitting models, usually because they were unmethylated the majority of samples. We removed these too.
+
+The following graph and summary statistics shows the distribution of mean coverage per sample (averaging across the 32-36 samples) for each of the `length(methylated_sites_model)` sites analysed with the GLMs below. The average per-site coverage (combining reads across all 32-36 samples) was `r round(mean(coverage_per_site$total_coverage))`.
+
+```{r}
+coverage_per_site %>%
+  pull(mean_coverage) %>% summary()
+
+coverage_per_site %>%
+  ggplot(aes(mean_coverage)) + 
+  geom_histogram(bins = 200, fill = "white", colour = "black") +
+  ylab("Number of sites") + xlab("Mean coverage per sample")
+```
+
 
 ### Run one GLM per site using `base::glm()`
 
