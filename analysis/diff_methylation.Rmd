@@ -643,7 +643,7 @@ In the figures, the orange colour indicates that the focal sample has a methylat
 ```{r meth_sample_distance_heatmap, width = 10, height = 14, message=FALSE, warning=FALSE, fig.showtext=TRUE}
 meth_sample_heatmap <- function(mean_cutoff, colour_limits, myColour){
   
-  # include all sites measured to 5x coverage in all 36 samples
+  # include all sites measured to 4x coverage in all 36 samples
   foc <- readRDS("output/meth_matrix.rds") 
   foc <- foc[,apply(foc, 2, function(x) sum(!is.na(x))) == 36]
   foc <- foc[,apply(foc, 2, function(x) mean(x)) >= mean_cutoff]
@@ -1039,29 +1039,33 @@ if(!file.exists("output/frequentist_GLM_meth_diff.txt")){
     filter(Site %in% methylated_sites_model)
 }
 
+# Find the sites that were p<0.0001 in these GLMs
+sig_sites_caste_GLM <- p_values %>% 
+  filter(p < 0.0001) %>% pull(Site) %>% unique()
+
+n_FDR_sig <- p_values %>%
+  mutate(FDR_sig = ifelse(p.adjust(p) < 0.05, "*", "")) %>%
+  filter(FDR_sig == "*") %>% nrow()
+
 # # Find the sites that were significant in the BWASP pipeline
 # sig_sites_caste_bwasp <- bwasp_between_castes %>%
 #   filter(qvalue < 0.05) %>%
 #   pull(site) %>% unique() %>% na.omit() %>% as.numeric()
 # 
 # # Make the list of sites to analyse in the Bayesian GLMs below
-# sites_for_bayes_GLM <- unique(c(sig_sites_caste_frequentist_GLM, sig_sites_caste_bwasp))
+# sites_for_bayes_GLM <- unique(c(sig_sites_caste_GLM, sig_sites_caste_bwasp))
 ```
 
 ### Differentially methylated sites  {.tabset}
 
 #### Sites showing significant differential methylation 
 
-We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was $p$ < 0.0001. Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites). The table shows the location of each significant site, and mentioned if it is found in parts of one or more genes. 
+We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was $p$ < 0.0001 (n = `r length(sig_sites_caste_GLM)` sites). Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites) (n = `r n_FDR_sig` sites were signficant after FDR correction). The table shows the location of each significant site, and mentioned if it is found in parts of one or more genes. 
 
 ```{r}
-# Find the sites that were p<0.0001 in these GLMs
-sig_sites_caste_frequentist_GLM <- p_values %>% 
-  filter(p < 0.0001) %>% pull(Site) %>% unique()
-
 gene_meth_results_table <- p_values %>%
   mutate(FDR_sig = ifelse(p.adjust(p) < 0.05, "*", "")) %>%
-  filter(Site %in% sig_sites_caste_frequentist_GLM) %>%
+  filter(Site %in% sig_sites_caste_GLM) %>%
   dplyr::rename(site = Site) %>%
   left_join(glm_results %>% group_by(Site) %>% 
               summarise(direction = ifelse(Caste_difference[which.max(abs(Caste_difference))] > 0, 
@@ -1071,11 +1075,11 @@ gene_meth_results_table <- p_values %>%
             by = c("site" = "Site")) %>%
   arrange(p) %>%
   left_join(tbl(db, "site_info") %>% 
-              filter(site %in% sig_sites_caste_frequentist_GLM) %>%
+              filter(site %in% sig_sites_caste_GLM) %>%
               dplyr::select(site, seqnames, start) %>%
               collect(n=Inf), by = "site") %>%
   left_join(tbl(db, "site_annotations") %>% 
-              filter(site %in% sig_sites_caste_frequentist_GLM) %>% 
+              filter(site %in% sig_sites_caste_GLM) %>% 
               collect(n=Inf), by = "site") %>%
   left_join(tbl(db, "gene_names") %>% 
               dplyr::select(gene_symbol, gene_name) %>% 
@@ -1379,9 +1383,9 @@ ggsave("figures/composite_figure.pdf", grid.arrange(
 
 ## Correlations in difference in % methylation for each comparison
 
-To test whether the caste-specific sites differed because of changes in the queen methylome, the worker methylome, or both, we estimated the Spearman correlations between the 3 effect sizes per site (estimated using GLMs), namely the effect sizes measuring the change in % methylation between 8h QDL and 8h WDL, between 8h QDL and 2h QDL, and between 8h WDL and 2h WDL. 
+To test whether the caste-specific sites differed because of changes in the queen methylome, the worker methylome, or both, we estimated the Spearman correlations between the 3 effect sizes per site (estimated using GLMs), namely the effect sizes measuring the change in % methylation between 8h QDL and 8h WDL, between 8h QDL and 0h QDL, and between 8h WDL and 0h WDL. 
 
-We found that the difference between 8h QDL and 8h WDL was positively correlated with the change from 2-8h in QDL, indicating that part of the 8h caste difference reflected changes in QDL. Moreover, we found that the difference between 8h WDL and 2h WDL was negatively correlated with the change from 2-8h in QDL, suggesting that the 8h caste difference was also due to changes in WDL.
+We found that the difference between 8h QDL and 8h WDL was positively correlated with the change from 0-8h in QDL, indicating that part of the 8h caste difference reflected changes in QDL. Moreover, we found that the difference between 8h WDL and 0h WDL was negatively correlated with the change from 0-8h in QDL, suggesting that the 8h caste difference was also due to changes in WDL.
 
 ```{r message=FALSE, warning=FALSE}
 read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
@@ -1390,11 +1394,11 @@ read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
   left_join(
     read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
       group_by(Site) %>%
-      summarise(`Queen 8h - Queen 2h` = Queen[time == 8] - Queen[time == 2]), by = "Site") %>%
+      summarise(`Queen 8h - Queen 0h` = Queen[time == 8] - Queen[time == 0]), by = "Site") %>%
   left_join(
     read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
       group_by(Site) %>%
-      summarise(`Worker 8h - Worker 2h` = Worker[time == 8] - Worker[time == 2]), by = "Site") %>%
+      summarise(`Worker 8h - Worker 0h` = Worker[time == 8] - Worker[time == 0]), by = "Site") %>%
   dplyr::select(contains("8h")) %>%
   cor(method = "spearman") %>%
   round(2) %>%
@@ -1404,7 +1408,7 @@ read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
 
 ## Plot genomic locations of (caste-specific) methylation
 
-__Figure__: The following plot shows that DNA methylation is found all 16 of the largest contigs (putative chromosomes), and that sites showing caste-specific methylation are widely distributed across the methylome. The solid black line shows the density of sites with >50% DNA methylation, which closely correlates with the density of genes (shown by the dashed black line). The purple line shows the density of sites that we identified as having significant caste-specific methylation (FDR-corrected $p$ < 0.05), which also follows the overall distribution of genes with few exceptions. The coloured rug plot at the bottom marks methylated sites (grey) and differentially methylated sites (red: QDL-biased, and blue: WDL-biased). 
+__Figure__: The following plot shows that DNA methylation is found all 16 of the largest contigs (putative chromosomes), and that sites showing caste-specific methylation are widely distributed across the methylome. The solid black line shows the density of sites with >50% DNA methylation, which closely correlates with the density of genes (shown by the dashed black line). The purple line shows the density of sites that we identified as having significant caste-specific methylation ($p$ < 0.0001), which also follows the overall distribution of genes with few exceptions. The coloured rug plot at the bottom marks methylated sites (grey) and differentially methylated sites (red: QDL-biased, and blue: WDL-biased). 
 
 ```{r warning=F, message=F}
 source("code/add_gene_exon_columns.R")
@@ -1414,8 +1418,7 @@ heavily_methylated_sites <- tbl(db, "site_info") %>%
   distinct() %>% pull(site) 
 
 hits <- gene_meth_results_table %>% 
-  filter(substr(seqnames,1,2) == "NC") %>%
-  filter(`FDR sig`=="*") 
+  filter(substr(seqnames,1,2) == "NC")
 
 methylome <- tbl(db, "site_info") %>%
   filter(site %in% heavily_methylated_sites) %>%
@@ -1424,7 +1427,7 @@ methylome <- tbl(db, "site_info") %>%
   filter(seqnames %in% gene_meth_results_table$seqnames)  %>% 
   filter(substr(seqnames,1,2) == "NC") 
 
-as.data.frame(all_transcribed_regions) %>% 
+p <- as.data.frame(all_transcribed_regions) %>% 
   mutate(gene_id = 1:n()) %>%
   filter(seqnames %in% gene_meth_results_table$seqnames)  %>% 
   filter(substr(seqnames,1,2) == "NC") %>%
@@ -1441,7 +1444,11 @@ as.data.frame(all_transcribed_regions) %>%
   xlab("Position (megabases)") + ylab("Density") + 
   theme_bw() + 
   theme(strip.background = element_blank(),
-        text = element_text(family = nice_font))
+        text = element_text(family = nice_font),
+        legend.position = "none")
+
+saveRDS(p, "figures/genomic_methyl_distribution.rds")
+p
 ```
 
 
@@ -1451,7 +1458,7 @@ as.data.frame(all_transcribed_regions) %>%
 
 ## GO and KEGG enrichment of genes showing variable methylation
 
-The results in the following plots were calculated using GSEA tests for enrichment, implemented in the `fgsea` package. This test involves ranking genes by some statistic and then searching for GO and KEGG terms that are over-represented among genes at the top or bottom of the list. Here, we ranked the genes by the average of the difference in % methylation between 'classes' that was estimated for all the sites in the gene (defined as sites inside the exons, introns, or promoter regions of the gene). 'Classes' either means queens and workers (measured at the same time point), or different time points (measured in the same caste). We derive these estimates by model averaging GLMs that were run on each of the `r length(methylated_sites)` sites for which sufficient data were available. 
+The results in the following plots were calculated using GSEA tests for enrichment, implemented in the `fgsea` package. This test involves ranking genes by some statistic and then searching for GO and KEGG terms that are over-represented among genes at the top or bottom of the list. Here, we ranked the genes by the average of the difference in % methylation between 'classes' that was estimated for all the sites in the gene (defined as sites inside the exons, introns, or promoter regions of the gene). 'Classes' either means queens and workers (measured at the 8h time point), or the 0h and 8h time points (measured in either queens or workers). We derive these estimates by model averaging GLMs that were run on each of the `r length(methylated_sites)` sites for which sufficient data were available. 
 
 The output of `fgsea` includes the "normalised enrichment score" (NES) which describes how much the pathway is over-represented at the top of this list (for positive NES), or over-represented at the bottom (negative NES), and there is an associated $p$-value for each NES (calculated by resampling).
 
@@ -1476,7 +1483,7 @@ if(!file.exists("output/meth_gsea_results.rds")){
     mutate(gene = map(gene, ~ unlist(.x) %>% unname() %>% na.omit() %>% as.character())) %>%
     unnest(gene) %>% distinct() %>%
     group_by(gene, time) %>%
-    summarise(statistic = median(Caste_difference), .groups = "drop") %>%
+    summarise(statistic = max(Caste_difference), .groups = "drop") %>%
     arrange(-statistic) %>%
     left_join(tbl(db, "gene_names") %>% 
                 dplyr::select(gene_symbol, gene_name) %>% collect(), 
@@ -1485,7 +1492,7 @@ if(!file.exists("output/meth_gsea_results.rds")){
   
   gene_timeQ <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
     group_by(Site) %>%
-    summarise(statistic = Queen[time == 8] - Queen[time == 2], .groups = "drop") %>%
+    summarise(statistic = Queen[time == 8] - Queen[time == 0], .groups = "drop") %>%
     left_join(tbl(db, "site_annotations") %>% 
                 dplyr::select(-exon_rank, -translated) %>%
                 collect() %>% 
@@ -1504,7 +1511,7 @@ if(!file.exists("output/meth_gsea_results.rds")){
   
   gene_timeW <- read_tsv("output/frequentist_GLM_meth_diff.txt") %>%
     group_by(Site) %>%
-    summarise(statistic = Worker[time == 8] - Worker[time == 2], .groups = "drop") %>%
+    summarise(statistic = Worker[time == 8] - Worker[time == 0], .groups = "drop") %>%
     left_join(tbl(db, "site_annotations") %>% 
                 dplyr::select(-exon_rank, -translated) %>%
                 collect() %>% 
@@ -1565,6 +1572,7 @@ if(!file.exists("output/meth_gsea_results.rds")){
       GO_and_KEGG_gsea(keep.all = TRUE, GO_list = "dros_ortho_GO") %>% 
       mutate(Time = 8, Comparison = "Caste")
   ) 
+  
   significant <- GO_Dmel_annotations_caste %>% 
     filter(pval < sig_thres) %>% 
     pull(pathway) %>% unique()
