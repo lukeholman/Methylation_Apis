@@ -444,7 +444,7 @@ div.tocify {
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -453,7 +453,7 @@ div.tocify {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -462,10 +462,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-30
+<strong>Last updated:</strong> 2021-05-10
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -481,12 +481,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has staged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
 </div>
 </div>
 </div>
@@ -553,16 +553,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreec514844b7003f2b288bdb3c676657fb8b5c8e36btargetblankc514844a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/c514844b7003f2b288bdb3c676657fb8b5c8e36b" target="_blank">c514844</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree24b46c32e67b7c4ede93e8ac52ac2938e5ac306dtargetblank24b46c3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/24b46c32e67b7c4ede93e8ac52ac2938e5ac306d" target="_blank">24b46c3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreec514844b7003f2b288bdb3c676657fb8b5c8e36btargetblankc514844a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree24b46c32e67b7c4ede93e8ac52ac2938e5ac306dtargetblank24b46c3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/c514844b7003f2b288bdb3c676657fb8b5c8e36b" target="_blank">c514844</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/24b46c32e67b7c4ede93e8ac52ac2938e5ac306d" target="_blank">24b46c3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -575,22 +575,48 @@ Ignored files:
     Ignored:    Expression/
     Ignored:    data/
     Ignored:    figures/.DS_Store
+    Ignored:    figures/.Rapp.history
     Ignored:    figures/meth_sites/.DS_Store
     Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
 
+Untracked files:
+    Untracked:  figures/expr_temporal_GOBP_dmel.rds
+    Untracked:  figures/expr_temporal_GOCC_dmel.rds
+    Untracked:  figures/expr_temporal_GOMF_dmel.rds
+    Untracked:  figures/expr_temporal_KEGG_dmel.rds
+    Untracked:  figures/genomic_methyl_distribution.rds
+
 Unstaged changes:
+    Modified:   analysis/compare_expression_and_methylation.Rmd
+    Modified:   analysis/diff_expression.Rmd
+    Modified:   analysis/diff_methylation.Rmd
+    Modified:   code/GO_and_KEGG_gsea.R
+    Modified:   code/create_merged_data.R
+    Modified:   code/download_annotations.R
+    Modified:   code/main_paper_figures.Rmd
+    Modified:   code/main_paper_figures.log
+    Modified:   code/main_paper_figures.pdf
+    Modified:   code/make_database.R
+    Modified:   code/make_pathway_figure.R
+    Modified:   code/supplementary_figs_tables.Rmd
+    Modified:   code/supplementary_figs_tables.pdf
     Modified:   figures/big_correlation_heatmap.pdf
     Modified:   figures/composite_GO.pdf
     Modified:   figures/composite_eigengenes.pdf
-    Deleted:    figures/eigengenes_meth_network_fig.pdf
+    Modified:   figures/composite_figure.pdf
+    Modified:   figures/expr_GO_BPremainder_dmel.rds
+    Modified:   figures/expr_GO_CC_dmel.rds
+    Modified:   figures/expr_GO_for_composite_figure.rds
+    Modified:   figures/expr_KEGG_dmel.rds
+    Modified:   figures/expression_heatmap.pdf
     Modified:   figures/gene_browser_fig.pdf
-    Modified:   figures/meth_nmds_plot.rds
-    Deleted:    figures/meth_nmds_plot_imputed.rds
-    Deleted:    figures/meth_nmds_plot_unimputed.rds
-
-Staged changes:
-    Modified:   analysis/gene_browser.Rmd
+    Modified:   figures/meth_GO_for_composite_figure.rds
+    Modified:   figures/meth_GO_others.rds
+    Modified:   figures/meth_GO_temporal_Amel.rds
+    Modified:   figures/meth_GO_temporal_Dmel.rds
+    Modified:   figures/meth_all_enrichments_Amel.rds
+    Modified:   figures/two_sites_for_big_meth_fig.rds
 
 </code></pre>
 <p>
@@ -629,6 +655,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/24b46c32e67b7c4ede93e8ac52ac2938e5ac306d/analysis/gene_browser.Rmd" target="_blank">24b46c3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-10
+</td>
+<td>
+wflow_publish(“analysis/gene_browser.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/e448a5d9a695d2f16760bfdd139c517c8cd43c90/analysis/gene_browser.Rmd" target="_blank">e448a5d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-30
+</td>
+<td>
+Commit figs
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/e448a5d9a695d2f16760bfdd139c517c8cd43c90/docs/gene_browser.html" target="_blank">e448a5d</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-30
+</td>
+<td>
+Commit figs
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -677,6 +754,7 @@ Big commit
 library(GenomicFeatures)
 library(dbplyr)
 library(RSQLite)
+library(grid)
 library(gridExtra)
 library(glue)
 library(DT)
@@ -712,25 +790,25 @@ plot_gene &lt;- function(gene,
                       times = c(4,6,8), # Timepoints to combine
                       in_markdown = TRUE,
                       plot = FALSE){ # set to false if combining several with grid.arrange()
-  csd_exons &lt;- as.data.frame(all_transcribed_regions) %&gt;% 
+  focal_gene_exons &lt;- as.data.frame(all_transcribed_regions) %&gt;% 
     filter(GENEID == gene) 
-  csd_chr &lt;- csd_exons$seqnames[1]
+  focal_gene_chr &lt;- focal_gene_exons$seqnames[1]
   
-  csd_exons &lt;- csd_exons %&gt;%
+  focal_gene_exons &lt;- focal_gene_exons %&gt;%
     dplyr::select(start, end, EXONRANK) %&gt;%
     gather(key, value, -EXONRANK) %&gt;%
     mutate(y=30, EXONRANK = unlist(EXONRANK))
   
-  exon_labels &lt;- csd_exons %&gt;%
+  exon_labels &lt;- focal_gene_exons %&gt;%
     group_by(EXONRANK) %&gt;%
     summarise(value = mean(value), y = 80, .groups = &quot;drop&quot;) %&gt;%
     arrange(EXONRANK)
   
-  csd_range &lt;- c(min(csd_exons$value) - buffer_start, 
-                 max(csd_exons$value) + buffer_end)
+  focal_gene_range &lt;- c(min(focal_gene_exons$value) - buffer_start, 
+                 max(focal_gene_exons$value) + buffer_end)
   
-  p1 &lt;- csd_exons %&gt;% 
-    ggplot(aes(value, y=y)) + 
+  p1 &lt;- focal_gene_exons %&gt;% 
+    ggplot(aes(value / 1000, y=y)) + 
     geom_line() + 
     geom_line(size = 6, aes(group = EXONRANK, colour = factor(EXONRANK))) + 
     scale_y_continuous(limits = c(0, 100), 
@@ -748,31 +826,32 @@ plot_gene &lt;- function(gene,
           text = element_text(family = nice_font),
           axis.ticks.x = element_blank())
   
-  csd_sites &lt;- tbl(db, &quot;site_info&quot;) %&gt;% 
-    filter(seqnames == csd_chr) %&gt;% 
+  focal_gene_sites &lt;- tbl(db, &quot;site_info&quot;) %&gt;% 
+    filter(seqnames == focal_gene_chr) %&gt;% 
     collect() %&gt;%
-    filter(start &gt;= csd_range[1] &amp; start &lt;= csd_range[2]) %&gt;%
+    filter(start &gt;= focal_gene_range[1] &amp; start &lt;= focal_gene_range[2]) %&gt;%
     pull(site)
 
   p_vals &lt;- glm_results %&gt;%
-    filter(Site %in% csd_sites  &amp; time %in% times) %&gt;%
+    filter(Site %in% focal_gene_sites  &amp; time %in% times) %&gt;%
     group_by(Site) %&gt;%
     summarise(p = min(p), .groups = &quot;drop&quot;) 
   
-  csd_meth_data &lt;- by_site %&gt;%
-    filter(site %in% csd_sites &amp; time %in% times) %&gt;%
+  focal_gene_meth_data &lt;- by_site %&gt;%
+    filter(site %in% focal_gene_sites &amp; time %in% times) %&gt;%
     group_by(site, caste) %&gt;%
     summarise(numC = sum(numC), numT = sum(numT), .groups = &quot;drop&quot;) %&gt;%
     mutate(prop = numC / (numC+numT)) %&gt;% collect() %&gt;%
     mutate(sig = ifelse(site %in% sig_sites_triangles, &quot;yes&quot;, &quot;no&quot;))
 
-  xx &lt;- csd_meth_data %&gt;% 
+  xx &lt;- focal_gene_meth_data %&gt;% 
     left_join(tbl(db, &quot;site_info&quot;) %&gt;% 
-                filter(site %in% csd_sites) %&gt;% collect(), by = &quot;site&quot;)
+                filter(site %in% focal_gene_sites) %&gt;% collect(), by = &quot;site&quot;)
   
   bigger &lt;- xx %&gt;%
     group_by(site) %&gt;%
-    summarise(bigger = ifelse(prop[1] &gt; prop[2], &quot;Queen&quot;, &quot;Worker&quot;), .groups = &quot;drop&quot;)
+    summarise(bigger = ifelse(prop[1] &gt; prop[2], &quot;Queen&quot;, &quot;Worker&quot;),
+              .groups = &quot;drop&quot;)
   
   dots &lt;- xx %&gt;% left_join(bigger, by = &quot;site&quot;)
 
@@ -780,41 +859,45 @@ plot_gene &lt;- function(gene,
   # print(triangles %&gt;% pull(site))
   
   p2 &lt;- dots %&gt;%
-    ggplot(aes(start, 100*prop)) + 
+    ggplot(aes(start / 1000, 100*prop)) + 
     geom_line(aes(group = site, colour = bigger)) + 
  #   geom_point(data = triangles, pch = 25, fill = NA, aes(y=100), size = 5) +
     geom_point(aes(fill = caste), pch = 21, colour=&quot;black&quot;) + 
     scale_color_manual(values = c(queen_colour, worker_colour)) +
     scale_fill_manual(values = c(queen_colour, worker_colour)) + 
     scale_y_continuous(limits = c(0,100)) +
+    theme_bw() + 
     theme(legend.position = &quot;none&quot;,
           text = element_text(family = nice_font)) + ylab(&quot; &quot;) + xlab(NULL)
   
   if(nrow(exon_labels) &gt; 1){
     if(exon_labels$value[1] &gt; exon_labels$value[2]) {
-      p1 &lt;- p1 + scale_x_reverse(limits = c(csd_range[2], csd_range[1]))
-      p2 &lt;- p2 + scale_x_reverse(limits = c(csd_range[2], csd_range[1]))  
+      p1 &lt;- p1 + scale_x_reverse(limits = c(focal_gene_range[2]/1000, focal_gene_range[1]/1000))
+      p2 &lt;- p2 + scale_x_reverse(limits = c(focal_gene_range[2]/1000, focal_gene_range[1]/1000))  
     } else {
-      p1 &lt;- p1 + scale_x_continuous(limits = c(csd_range[1], csd_range[2])) 
-      p2 &lt;- p2 + scale_x_continuous(limits = c(csd_range[1], csd_range[2])) 
+      p1 &lt;- p1 + scale_x_continuous(limits = c(focal_gene_range[1]/1000, focal_gene_range[2]/1000)) 
+      p2 &lt;- p2 + scale_x_continuous(limits = c(focal_gene_range[1]/1000, focal_gene_range[2]/1000)) 
     }
   }
   
   title &lt;- tbl(db, &quot;gene_names&quot;) %&gt;% 
     filter(gene_symbol == gene) %&gt;% pull(gene_name)
-  title &lt;- paste(title, &quot; (&quot;, gene, &quot;)&quot;, sep = &quot;&quot;)
+  
+  if(!str_detect(title, &quot;uncharacterized LOC&quot;)) {
+    title &lt;- paste(title, &quot; (&quot;, gene, &quot;)&quot;, sep = &quot;&quot;)
+  }
   
   if(plot &amp; !in_markdown) return(grid.arrange(
     p1, 
     p2 + ylab(&quot;% methylated reads&quot;) + xlab(&quot; \n &quot;), 
-    heights = c(0.09, 0.91), top = title))
+    heights = c(0.09, 0.91), top = textGrob(title, gp=gpar(fontfamily=nice_font))))
   if(!plot &amp; !in_markdown) return(arrangeGrob(
     p1, 
     p2 + ylab(&quot; &quot;) + xlab(NULL), 
-    heights = c(0.09, 0.91), top = title))
+    heights = c(0.09, 0.91), top = textGrob(title, gp=gpar(fontfamily=nice_font))))
   if(!plot &amp; in_markdown){
     list(arrangeGrob(p1, 
-                p2 + ylab(&quot;% methylated reads&quot;) + xlab(&quot;Genomic position&quot;), 
+                p2 + ylab(&quot;% methylated reads&quot;) + xlab(&quot;Genomic position (kB)&quot;), 
                 heights = c(0.09, 0.91)),
          title)
   }
@@ -860,14 +943,13 @@ genes_plotted &lt;- map_chr(plots, ~ .x[[2]])</code></pre>
 
 tibble(x = genes_plotted) %&gt;%
   mutate(`Gene name` = map_chr(str_split(x, &quot; [(]&quot;), ~ .x[[1]]),
-         `Gene symbol` = str_remove_all(map_chr(str_split(x, &quot; [(]&quot;), ~ .x[[2]]), &quot;[)]&quot;)) %&gt;%
+         `Gene symbol` = str_remove_all(
+           map_chr(str_split(x, &quot; [(]&quot;), ~ .x[[2]]), &quot;[)]&quot;)) %&gt;%
   dplyr::select(`Gene symbol`, `Gene name`) %&gt;%
   my_data_table()</code></pre>
 <div id="htmlwidget-a6a90552489c1ce0c217" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-a6a90552489c1ce0c217">{"x":{"filter":"none","extensions":["Scroller","Buttons"],"autoHideNavigation":true,"data":[["LOC725207","LOC100577451","LOC409983","LOC412035","EF1a-F2","LOC100576717","ROCK2","LOC113218559","LOC411794","LOC409221","LOC413012","LOC725076","LOC413795","LOC411589","LOC411918","LOC551188","LOC411723","LOC413025","LOC100578262","LOC409184","Dcr-1","LOC551198","LOC725550","LOC552527","LOC724545","LOC411907","LOC551308","LOC412464","LOC552850","LOC412346","LOC100576918","LOC552031","LOC550667","LOC408733","LOC412455","LOC725156","LOC550726","LOC410172","LOC552833","LOC113218544","LOC552024","LOC409927","LOC409899","LOC551817","LOC725634","LOC411505","UBC7 homolog, yeast","LOC551566","LOC408570","LOC409891","LOC411458","LOC726566","LOC725681","LOC411602","LOC100578433","LOC551474","LOC408883","LOC409303","LOC552170","LOC411095","LOC413344","LOC102653601","LOC413263","LOC725135","LOC551677","LOC411766","LOC410189","LOC727630","LOC100577401","LOC724311","LOC724924","LOC552008","LOC412045","LOC552468","LOC100576829","LOC100577102","LOC727599","LOC726273","LOC409273","LOC410804","LOC409249","LOC412256","LOC551931","LOC413699","LOC410239","LOC102656093","LOC550689","LOC725662","LOC413438","Ing3","LOC413802","LOC724959","LOC408497","LOC726956","LOC551170","LOC551408","LOC412176","LOC727079","LOC552718","LOC410159","LOC412289","LOC552519","LOC100576606","LOC409085","LOC724659","LOC409212","LOC725068","LOC725480","LOC413425","LOC409322","LOC725130","LOC726159","LOC726666","LOC726723","LOC411881","LOC412046","LOC727185","LOC409838","LOC412950","LOC411410","LOC408911","LOC725298","LOC725118","LOC412741","LOC725061","LOC412382","LOC550940","LOC725529","LOC725704","LOC409062","LOC412055","LOC100578404","LOC411260","LOC107965473","LOC414033","LOC552614","LOC412080","LOC552839","LOC551109","LOC409378","LOC413089","LOC410390","LOC409242","LOC552582","LOC725469","LOC410108","LOC413460","LOC412701","LOC100577846","LOC725436","LOC100578434","LOC413935","LOC413331","LOC551904","LOC726579","LOC411597","LOC724799","LOC411829","LOC552318","LOC725057","LOC411865","LOC412130","LOC412198","LOC413123","LOC551658","LOC552128","LOC410910","LOC409906","LOC551755","LOC727354","LOC408616","LOC408730","LOC410099","LOC551219","LOC410958","LOC551629","LOC727552","LOC551083","LOC552524","LOC410968","LOC552055","LOC409113","LOC100578356","LOC726488","LOC724402","LOC725812","LOC552428","LOC550865","LOC725486","LOC408716","LOC413669","LOC552432","LOC100577213","LOC410157","LOC411006","LOC409433","LOC411814","LOC411126","LOC410117","LOC413091","LOC725899","LOC552303","LOC409965","LOC411759","LOC411858","LOC551090","LOC100578388","LOC409086","LOC411980","LOC409207","LOC410144","LOC724480","LOC413821","LOC727027","LOC413739","LOC410923","LOC100578602","LOC727140","LOC551973","LOC411599","LOC411852","LOC409898","LOC726100","LOC552669","LOC409232","LOC726223","LOC725684","LOC552740","LOC413185","LOC551555","LOC408966","LOC412432","LOC725647","LOC551818","LOC412281","LOC410325","LOC413447","LOC408311","LOC551073","LOC411466","LOC551712","LOC551235","LOC409217","LOC409486","LOC552108","LOC100577367","LOC410796","LOC408991","LOC409886","LOC552114","LOC100576547","LOC413377","LOC409538","LOC409593","LOC552731","LOC551720","LOC408373","LOC551039","LOC102654465","LOC409491","LOC726277","LOC409204","LOC409365","LOC100578212","LOC414032","LOC102656021","LOC726643","LOC726875","LOC725527","LOC412308","LOC409756","LOC724407","LOC100578417","LOC552802","LOC409348","LOC113218639","LOC726617","LOC411837","LOC725299","LOC726077","LOC412180","LOC725618","LOC726509","LOC408843","LOC552583","LOC552372","LOC100577673","Sod2","LOC412193","LOC551854","LOC551949","Ripk5","LOC100576096","LOC551580","LOC409208","LOC412326","LOC413336","LOC724517","LOC408657","LOC102655778","LOC724877","LOC412834","LOC409757","LOC409908","LOC724792","LOC551371","LOC725513","LOC410085","LOC552426","LOC551156","LOC413829","LOC412027","LOC107964531","LOC408556","LOC725088","LOC552153","LOC408752","LOC100576467","LOC411572","LOC551928","LOC410493","LOC100578237","LOC411496","LOC410109","LOC408382","LOC412293","LOC413631","LOC410101","LOC412468","LOC726572","LOC726537","LOC726608","LOC550829","LOC413081","LOC410766","LOC100576402","LOC724123","LOC552156","LOC551801","LOC724695","LOC412162","LOC551549","LOC412111","LOC726254","LOC724516","LOC411630","LOC100578885","LOC410072","LOC726832","LOC408815","LOC412332","LOC412943","LOC411943","LOC552236","LOC551807","LOC408983","LOC726241","LOC412687","LOC409206","LOC100578071","LOC411502","LOC411969","Rpn1","LOC412016","LOC413328","LOC724878","LOC409379","LOC412544","LOC411477","LOC411450","LOC411753","LOC726339","LOC725928","LOC411488","LOC551631","LOC409186","LOC726381","LOC410217","LOC413650","LOC412128","LOC411177","LOC551726","LOC408655","LOC409722","LOC726494","LOC100576879"],["dynactin subunit 4","glycolipid transfer protein","ankyrin repeat domain-containing protein 17","condensin complex subunit 1","elongation factor 1-alpha F2","restin homolog","Rho-associated, coiled-coil containing protein kinase 2","solute carrier family 52, riboflavin transporter, member 3-A-like","CCR4-NOT transcription complex subunit 3","uncharacterized LOC409221","EH domain-containing protein 3","CCHC-type zinc finger protein CG3800","WD repeat-containing protein 34","structural maintenance of chromosomes protein 1A","nuclear pore complex protein Nup205","ankyrin repeat and BTB/POZ domain-containing protein BTBD11","E3 ubiquitin-protein ligase Nedd-4","peroxidasin","uncharacterized LOC100578262","DENN domain-containing protein 1B","endoribonuclease Dicer-1","serine/threonine-protein kinase STK11","proteasome activator complex subunit 4A","cell division cycle 5-like protein","uncharacterized LOC724545","cytoplasmic polyadenylation element-binding protein 1","probable serine/threonine-protein kinase ndrD","nuclear pore complex protein Nup214","catenin alpha","vacuolar protein sorting-associated protein 52 homolog","uncharacterized LOC100576918","chromodomain-helicase-DNA-binding protein Mi-2 homolog","succinate dehydrogenase [ubiquinone] flavoprotein subunit, mitochondrial","protein pinocchio","protein shuttle craft","proteasome adapter and scaffold protein ECM29","DCN1-like protein 1","translocating chain-associated membrane protein 1-like 1","pre-mRNA-splicing regulator female-lethal(2)D","protein PFC0760c-like","myo-inositol 2-dehydrogenase","putative pyridoxal-dependent decarboxylase domain-containing protein 2","putative sodium-dependent multivitamin transporter","putative peptidyl-prolyl cis-trans isomerase dodo","uncharacterized LOC725634","putative tRNA pseudouridine synthase Pus10","ubiquitin-conjugating enzyme E2G 1","uncharacterized LOC551566","uncharacterized LOC408570","cell division cycle and apoptosis regulator protein 1","histone-arginine methyltransferase CARMER","WD repeat-containing protein 60","uncharacterized LOC725681","dynein heavy chain 6, axonemal","transmembrane protein 131","tudor and KH domain-containing protein homolog","deoxycytidylate deaminase","E3 ubiquitin-protein ligase MIB2","ubiquitin-like protein 7","zinc transporter 7","exportin-5","zinc finger protein 85","putative inorganic phosphate cotransporter","phosphatidylinositol-glycan biosynthesis class X protein","wee1-like protein kinase","beta-alanine-activating enzyme","5'-nucleotidase domain-containing protein 3","V-type proton ATPase 116 kDa subunit a","putative uncharacterized protein DDB_G0282133","AT-rich interactive domain-containing protein 2","protein FAM117B","protein ABHD18","dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit 2","MATH and LRR domain-containing protein PFE0570w-like","serine/arginine repetitive matrix protein 2","putative uncharacterized protein DDB_G0287457","NADH dehydrogenase [ubiquinone] iron-sulfur protein 4, mitochondrial","ralBP1-associated Eps domain-containing protein 1","midnolin-A","FYVE, RhoGEF and PH domain-containing protein 4","uncharacterized LOC409249","nucleosome-remodeling factor subunit NURF301","ethanolamine-phosphate cytidylyltransferase","ubiquitin thioesterase trabid","trimethylguanosine synthase","probable ATP-dependent RNA helicase DDX55 homolog","E3 ubiquitin-protein ligase RNF126","uncharacterized LOC725662","dynamin-like 120 kDa protein, mitochondrial","inhibitor of growth family, member 3","pleckstrin homology domain-containing family M member 2","WASH complex subunit 2","heterogeneous nuclear ribonucleoprotein U-like protein 1","Golgi membrane protein 1","dumpy","uncharacterized LOC551408","transcription initiation factor TFIID subunit 1","fibroblast growth factor receptor substrate 2","protein son of sevenless","mediator of RNA polymerase II transcription subunit 13","cytosolic Fe-S cluster assembly factor NUBP1 homolog","clustered mitochondria protein homolog","MATH and LRR domain-containing protein PFE0570w","guanine nucleotide exchange factor for Rab-3A","ribonuclease P protein subunit rpr2","cadherin-87A","dynein heavy chain, cytoplasmic","innexin inx1","phosphatidylinositol 4-phosphate 3-kinase C2 domain-containing subunit beta","uncharacterized LOC409322","uncharacterized LOC725130","transportin-3","mediator of RNA polymerase II transcription subunit 28","neogenin","peregrin","trithorax group protein osa","serine/threonine-protein kinase SMG1","poly(A) RNA polymerase gld-2 homolog A","nucleoporin GLE1","protein transport protein Sec24B","ubiquitin carboxyl-terminal hydrolase 47","MATH and LRR domain-containing protein PFE0570w-like","tyrosine-protein phosphatase 69D","manganese-transporting ATPase 13A1","uncharacterized LOC725061","excitatory amino acid transporter 3","ATP-dependent RNA helicase DHX8","kynurenine/alpha-aminoadipate aminotransferase, mitochondrial","uncharacterized LOC725704","COP9 signalosome complex subunit 2","exostosin-3","uncharacterized LOC100578404","ras-related protein Rab-27A","uncharacterized LOC107965473","molybdopterin synthase catalytic subunit","E3 ubiquitin-protein ligase ZNRF2","coronin-1C","TATA box-binding protein-associated factor RNA polymerase I subunit B","kinesin 5A","uncharacterized LOC409378","protein spinster","protein suppressor of forked","protein PRRC2C","brahma-associated protein of 60 kDa","kinesin 7A","zinc finger protein 91","sorting nexin-13","vacuolar protein sorting-associated protein 13D","uncharacterized protein PFB0765w","dmX-like protein 2","sushi, von Willebrand factor type A, EGF and pentraxin domain-containing protein 1","nucleolar protein 58","DENN domain-containing protein 4C","glycerol-3-phosphate dehydrogenase, mitochondrial","cleft lip and palate transmembrane protein 1-like protein","hemocytin","(E3-independent) E2 ubiquitin-conjugating enzyme UBE2O","neuroglian","60S ribosomal protein L27a","coatomer subunit beta","exportin-2","ral GTPase-activating protein subunit beta","UDP-glucose:glycoprotein glucosyltransferase","uncharacterized LOC413123","anillin","isocitrate dehydrogenase [NAD] subunit beta, mitochondrial","serine/threonine-protein kinase GA29083","transcription initiation factor TFIID subunit 2","transmembrane protein 35A","vacuolar protein sorting-associated protein VTA1 homolog","transcriptional enhancer factor TEF-1","inositol polyphosphate 5-phosphatase K","THO complex subunit 2","DNA polymerase iota","ubiquitin-like modifier-activating enzyme 1","isoleucine--tRNA ligase, cytoplasmic","Y+L amino acid transporter 2","mitochondrial mRNA pseudouridine synthase Trub2","nicotinamidase","ribonuclease 3","nardilysin","guanine nucleotide-binding protein subunit beta-5","apoptotic protease-activating factor 1-like","ubiquitin carboxyl-terminal hydrolase 10","uncharacterized LOC724402","uncharacterized LOC725812","uncharacterized LOC552428","protogenin-like","2',5'-phosphodiesterase 12","histone-lysine N-methyltransferase trithorax","protein lap4","transmembrane protein 184C","tumor necrosis factor receptor superfamily member 4-like","ras-related protein Rab-23","endoplasmic reticulum lectin 1","protein RCC2 homolog","kinesin 2C","broad-complex core protein isoforms 1/2/3/4/5","glycerophosphocholine phosphodiesterase GPCPD1","serrate RNA effector molecule homolog","alpha-N-acetylgalactosaminidase","RNA-binding protein cabeza","cyclin-dependent kinase 12","biotin--protein ligase","ATPase family AAA domain-containing protein 1-B","conserved oligomeric Golgi complex subunit 8","uncharacterized LOC100578388","caprin homolog","death-associated protein kinase 1","synaptic vesicle membrane protein VAT-1 homolog-like","rac GTPase-activating protein 1","asparagine synthetase [glutamine-hydrolyzing]","histone deacetylase complex subunit SAP130-A","cleft lip and palate transmembrane protein 1 homolog","synaptic vesicle glycoprotein 2C","dynamin","Hermansky-Pudlak syndrome 5 protein homolog","zinc finger protein 830","cleavage and polyadenylation specificity factor subunit CG7185","uridine phosphorylase 1","peroxiredoxin-6","protein expanded-like","uncharacterized LOC726100","protein will die slowly","uncharacterized LOC409232","calpain-7","COMM domain-containing protein 10","S-methyl-5'-thioadenosine phosphorylase","spondin-1","MATH and LRR domain-containing protein PFE0570w","dnaJ homolog subfamily B member 6","uncharacterized LOC412432","40S ribosomal protein S6","uncharacterized LOC551818","protein purity of essence","trifunctional enzyme subunit alpha, mitochondrial","ufm1-specific protease 2","catenin delta-2","single-stranded DNA-binding protein 3","histone-lysine N-methyltransferase 2C","lipoyltransferase 1, mitochondrial","ATP-binding cassette sub-family E member 1","guanine nucleotide exchange factor DBS","RNA-binding protein 4.1","adhesion G protein-coupled receptor A3","uncharacterized LOC100577367","histone lysine demethylase PHF8","glutaminase kidney isoform, mitochondrial","protein Mo25","signal recognition particle 54 kDa protein","glucose dehydrogenase [FAD, quinone]","PHD finger protein rhinoceros","lysoplasmalogenase-like protein TMEM86A","zinc finger MYND domain-containing protein 11","uncharacterized protein DDB_G0290301","activator of 90 kDa heat shock protein ATPase homolog 1","phosphatidylinositol 4-kinase beta","dihydrolipoyl dehydrogenase, mitochondrial","acyl-CoA dehydrogenase family member 9, mitochondrial-like","transmembrane protein 183B","anaphase-promoting complex subunit CDC26","phenoloxidase-activating factor 2","lysosomal alpha-glucosidase","tektin-3","tubulin polyglutamylase TTLL5","DDB1- and CUL4-associated factor 5","formin-like protein 14","C2 domain-containing protein 5","cytochrome b-c1 complex subunit Rieske, mitochondrial","flap endonuclease 1","vacuolar protein sorting-associated protein 4B","uncharacterized LOC724407","uncharacterized LOC100578417","COX assembly mitochondrial protein homolog","lethal(2) giant larvae protein homolog 1","uncharacterized LOC113218639","39S ribosomal protein L48, mitochondrial","putative deoxyribonuclease TATDN1","nucleoside-triphosphatase THEP1","putative ATP-dependent RNA helicase DHX30","septin-1","myb-binding protein 1A","protein FRA10AC1","F-box/WD repeat-containing protein 9","guanosine-3',5'-bis(diphosphate) 3'-pyrophosphohydrolase MESH1","ER membrane protein complex subunit 8/9 homolog","mitochondrial ribonuclease P protein 1 homolog","superoxide dismutase 2, mitochondrial","S-formylglutathione hydrolase","serine/threonine-protein phosphatase 5","ovarian-specific serine/threonine-protein kinase Lok","receptor interacting protein kinase 5","myosin heavy chain, non-muscle","ubiquitin-related modifier 1","bumetanide-sensitive sodium-(potassium)-chloride cotransporter","uncharacterized LOC412326","ADP-dependent glucokinase","la-related protein 1B","zinc finger protein 76","translation factor GUF1 homolog, mitochondrial","integral membrane protein GPR155","importin-11","ecto-NOX disulfide-thiol exchanger 2","tyrosine-protein kinase CSK","testin","DET1 homolog","innexin shaking-B","AN1-type zinc finger protein 5","palmitoyltransferase ZDHHC7","Golgi pH regulator","diuretic hormone receptor","histone-lysine N-methyltransferase PR-Set7","uncharacterized LOC107964531","eukaryotic translation initiation factor 5B","eIF-2-alpha kinase GCN2","vesicle transport protein SEC20","DNA ligase 1","14 kDa phosphohistidine phosphatase","ubiquitin carboxyl-terminal hydrolase 14","transcription factor Sp4","vacuolar protein sorting-associated protein 11 homolog","uncharacterized protein PF11_0213","ATPase family AAA domain-containing protein 2-like","ubiquitin carboxyl-terminal hydrolase 34","clusterin-associated protein 1-like","membrane-bound transcription factor site-1 protease","vanin-like protein 1","trafficking kinesin-binding protein milt","protein flightless-1","leucine-rich repeat-containing protein 15","probable ATP-dependent RNA helicase DDX27","PHD finger protein 14","DNA-directed RNA polymerase II subunit RPB1","F-box/WD repeat-containing protein 7","RNA exonuclease 5","serine/threonine-protein kinase atr-like","translation initiation factor eIF-2B subunit delta","DNA-directed RNA polymerase II subunit RPB2","host cell factor 1","DNA excision repair protein ERCC-6","armadillo repeat-containing protein gudu","transmembrane 9 superfamily member 3","vigilin","E3 ubiquitin-protein ligase HECTD1","39S ribosomal protein L50, mitochondrial","ribosomal protein S6 kinase alpha-5","putative transcription factor capicua","26S proteasome non-ATPase regulatory subunit 14","uncharacterized LOC726832","probable DNA mismatch repair protein Msh6","mediator of RNA polymerase II transcription subunit 23","uncharacterized LOC412943","glutaminyl-peptide cyclotransferase","threonine aspartase 1","neurexin-4","protein transport protein Sec23A","tudor domain-containing protein 7","beclin 1-associated autophagy-related key regulator","tripartite motif-containing protein 2","DNA polymerase zeta catalytic subunit","SPARC-related modular calcium-binding protein 1","heterogeneous nuclear ribonucleoprotein M","ribophorin I","transforming growth factor beta regulator 1","phospholipid-transporting ATPase ID","carbohydrate sulfotransferase 9","eukaryotic translation initiation factor 4H","protein dopey-1 homolog","ADP-ribosylation factor GTPase-activating protein 1","probable ATP-dependent RNA helicase DDX43","TBC1 domain family member 25","protein ELYS","dedicator of cytokinesis protein 3","glycogen debranching enzyme","dihydrolipoyllysine-residue acetyltransferase component of pyruvate dehydrogenase complex, mitochondrial","vam6/Vps39-like protein","neuralized-like protein 4","structural maintenance of chromosomes protein 3","nuclear RNA export factor 1","DENN domain-containing protein 5B","integrator complex subunit 3","inositol-tetrakisphosphate 1-kinase","acidic fibroblast growth factor intracellular-binding protein","basement membrane-specific heparan sulfate proteoglycan core protein","hydroxymethylglutaryl-CoA lyase, mitochondrial","GATOR complex protein DEPDC5"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Gene symbol<\/th>\n      <th>Gene name<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","deferRender":true,"scrollX":true,"scrollY":400,"scrollCollapse":true,"buttons":["pageLength","colvis","csv",{"extend":"pdf","pageSize":"A4","orientation":"landscape","filename":"Apis_methylation"}],"pageLength":50,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
-<pre><code>Warning: Missing values are always removed in SQL.
-Use `SUM(x, na.rm = TRUE)` to silence this warning
-This warning is displayed only once per session.</code></pre>
+<p><img src="figure/gene_browser.Rmd/make_pdf-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="plots-of-each-gene" class="section level2">
 <h2>Plots of each gene</h2>
@@ -16726,8 +16808,8 @@ locale:
 [1] en_GB.UTF-8/en_GB.UTF-8/en_GB.UTF-8/C/en_GB.UTF-8/en_GB.UTF-8
 
 attached base packages:
-[1] stats4    parallel  stats     graphics  grDevices utils     datasets 
-[8] methods   base     
+ [1] grid      stats4    parallel  stats     graphics  grDevices utils    
+ [8] datasets  methods   base     
 
 other attached packages:
  [1] showtext_0.9-1         showtextdb_3.0         sysfonts_0.8.2        
@@ -16738,53 +16820,53 @@ other attached packages:
 [16] BiocGenerics_0.34.0    forcats_0.5.0          stringr_1.4.0         
 [19] dplyr_1.0.0            purrr_0.3.4            readr_1.3.1           
 [22] tidyr_1.1.0            tibble_3.0.1           ggplot2_3.3.2         
-[25] tidyverse_1.3.0       
+[25] tidyverse_1.3.0        workflowr_1.6.2       
 
 loaded via a namespace (and not attached):
- [1] nlme_3.1-149                matrixStats_0.56.0         
- [3] bitops_1.0-6                fs_1.4.1                   
- [5] lubridate_1.7.8             bit64_0.9-7                
- [7] RColorBrewer_1.1-2          progress_1.2.2             
- [9] httr_1.4.1                  rprojroot_1.3-2            
-[11] tools_4.0.3                 backports_1.1.7            
-[13] R6_2.4.1                    DBI_1.1.0                  
-[15] colorspace_1.4-1            withr_2.2.0                
-[17] tidyselect_1.1.0            prettyunits_1.1.1          
-[19] curl_4.3                    bit_1.1-15.2               
-[21] compiler_4.0.3              git2r_0.27.1               
-[23] cli_2.0.2                   rvest_0.3.5                
-[25] xml2_1.3.2                  DelayedArray_0.14.0        
-[27] labeling_0.3                rtracklayer_1.48.0         
-[29] scales_1.1.1                askpass_1.1                
-[31] rappdirs_0.3.1              Rsamtools_2.4.0            
-[33] digest_0.6.25               rmarkdown_2.5              
-[35] XVector_0.28.0              pkgconfig_2.0.3            
-[37] htmltools_0.5.0             htmlwidgets_1.5.1          
-[39] rlang_0.4.6                 readxl_1.3.1               
-[41] rstudioapi_0.11             farver_2.0.3               
-[43] generics_0.0.2              jsonlite_1.7.0             
-[45] crosstalk_1.1.0.1           BiocParallel_1.22.0        
-[47] RCurl_1.98-1.2              magrittr_2.0.1             
-[49] GenomeInfoDbData_1.2.3      Matrix_1.2-18              
-[51] Rcpp_1.0.4.6                munsell_0.5.0              
-[53] fansi_0.4.1                 lifecycle_0.2.0            
-[55] stringi_1.5.3               whisker_0.4                
-[57] yaml_2.2.1                  SummarizedExperiment_1.18.1
-[59] zlibbioc_1.34.0             BiocFileCache_1.12.0       
-[61] grid_4.0.3                  blob_1.2.1                 
-[63] promises_1.1.0              crayon_1.3.4               
-[65] lattice_0.20-41             Biostrings_2.56.0          
-[67] haven_2.3.1                 hms_0.5.3                  
-[69] knitr_1.30                  pillar_1.4.4               
-[71] biomaRt_2.44.1              reprex_0.3.0               
-[73] XML_3.99-0.3                evaluate_0.14              
-[75] modelr_0.1.8                vctrs_0.3.0                
-[77] httpuv_1.5.3.1              cellranger_1.1.0           
-[79] openssl_1.4.1               gtable_0.3.0               
-[81] assertthat_0.2.1            xfun_0.19                  
-[83] broom_0.5.6                 later_1.0.0                
-[85] GenomicAlignments_1.24.0    memoise_1.1.0              
-[87] workflowr_1.6.2             ellipsis_0.3.1             </code></pre>
+ [1] colorspace_1.4-1            ellipsis_0.3.1             
+ [3] rprojroot_1.3-2             XVector_0.28.0             
+ [5] fs_1.4.1                    rstudioapi_0.11            
+ [7] farver_2.0.3                bit64_0.9-7                
+ [9] fansi_0.4.1                 lubridate_1.7.8            
+[11] xml2_1.3.2                  knitr_1.32                 
+[13] jsonlite_1.7.0              Rsamtools_2.4.0            
+[15] broom_0.5.6                 compiler_4.0.3             
+[17] httr_1.4.1                  backports_1.1.7            
+[19] assertthat_0.2.1            Matrix_1.2-18              
+[21] cli_2.0.2                   later_1.0.0                
+[23] htmltools_0.5.0             prettyunits_1.1.1          
+[25] tools_4.0.3                 gtable_0.3.0               
+[27] GenomeInfoDbData_1.2.3      rappdirs_0.3.1             
+[29] Rcpp_1.0.4.6                cellranger_1.1.0           
+[31] vctrs_0.3.0                 Biostrings_2.56.0          
+[33] nlme_3.1-149                rtracklayer_1.48.0         
+[35] crosstalk_1.1.0.1           xfun_0.22                  
+[37] rvest_0.3.5                 lifecycle_0.2.0            
+[39] XML_3.99-0.3                zlibbioc_1.34.0            
+[41] scales_1.1.1                hms_0.5.3                  
+[43] promises_1.1.0              SummarizedExperiment_1.18.1
+[45] RColorBrewer_1.1-2          yaml_2.2.1                 
+[47] curl_4.3                    memoise_1.1.0              
+[49] biomaRt_2.44.1              stringi_1.5.3              
+[51] highr_0.8                   BiocParallel_1.22.0        
+[53] rlang_0.4.6                 pkgconfig_2.0.3            
+[55] bitops_1.0-6                matrixStats_0.56.0         
+[57] evaluate_0.14               lattice_0.20-41            
+[59] GenomicAlignments_1.24.0    htmlwidgets_1.5.1          
+[61] labeling_0.3                bit_1.1-15.2               
+[63] tidyselect_1.1.0            magrittr_2.0.1             
+[65] R6_2.4.1                    generics_0.0.2             
+[67] DelayedArray_0.14.0         DBI_1.1.0                  
+[69] pillar_1.4.4                haven_2.3.1                
+[71] whisker_0.4                 withr_2.2.0                
+[73] RCurl_1.98-1.2              modelr_0.1.8               
+[75] crayon_1.3.4                BiocFileCache_1.12.0       
+[77] rmarkdown_2.5               progress_1.2.2             
+[79] readxl_1.3.1                blob_1.2.1                 
+[81] git2r_0.27.1                reprex_0.3.0               
+[83] digest_0.6.25               httpuv_1.5.3.1             
+[85] openssl_1.4.1               munsell_0.5.0              
+[87] askpass_1.1                </code></pre>
 </div>
 </div>
 </div>
