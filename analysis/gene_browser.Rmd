@@ -13,6 +13,7 @@ library(tidyverse)
 library(GenomicFeatures)
 library(dbplyr)
 library(RSQLite)
+library(grid)
 library(gridExtra)
 library(glue)
 library(DT)
@@ -48,25 +49,25 @@ plot_gene <- function(gene,
                       times = c(4,6,8), # Timepoints to combine
                       in_markdown = TRUE,
                       plot = FALSE){ # set to false if combining several with grid.arrange()
-  csd_exons <- as.data.frame(all_transcribed_regions) %>% 
+  focal_gene_exons <- as.data.frame(all_transcribed_regions) %>% 
     filter(GENEID == gene) 
-  csd_chr <- csd_exons$seqnames[1]
+  focal_gene_chr <- focal_gene_exons$seqnames[1]
   
-  csd_exons <- csd_exons %>%
+  focal_gene_exons <- focal_gene_exons %>%
     dplyr::select(start, end, EXONRANK) %>%
     gather(key, value, -EXONRANK) %>%
     mutate(y=30, EXONRANK = unlist(EXONRANK))
   
-  exon_labels <- csd_exons %>%
+  exon_labels <- focal_gene_exons %>%
     group_by(EXONRANK) %>%
     summarise(value = mean(value), y = 80, .groups = "drop") %>%
     arrange(EXONRANK)
   
-  csd_range <- c(min(csd_exons$value) - buffer_start, 
-                 max(csd_exons$value) + buffer_end)
+  focal_gene_range <- c(min(focal_gene_exons$value) - buffer_start, 
+                 max(focal_gene_exons$value) + buffer_end)
   
-  p1 <- csd_exons %>% 
-    ggplot(aes(value, y=y)) + 
+  p1 <- focal_gene_exons %>% 
+    ggplot(aes(value / 1000, y=y)) + 
     geom_line() + 
     geom_line(size = 6, aes(group = EXONRANK, colour = factor(EXONRANK))) + 
     scale_y_continuous(limits = c(0, 100), 
@@ -84,31 +85,32 @@ plot_gene <- function(gene,
           text = element_text(family = nice_font),
           axis.ticks.x = element_blank())
   
-  csd_sites <- tbl(db, "site_info") %>% 
-    filter(seqnames == csd_chr) %>% 
+  focal_gene_sites <- tbl(db, "site_info") %>% 
+    filter(seqnames == focal_gene_chr) %>% 
     collect() %>%
-    filter(start >= csd_range[1] & start <= csd_range[2]) %>%
+    filter(start >= focal_gene_range[1] & start <= focal_gene_range[2]) %>%
     pull(site)
 
   p_vals <- glm_results %>%
-    filter(Site %in% csd_sites  & time %in% times) %>%
+    filter(Site %in% focal_gene_sites  & time %in% times) %>%
     group_by(Site) %>%
     summarise(p = min(p), .groups = "drop") 
   
-  csd_meth_data <- by_site %>%
-    filter(site %in% csd_sites & time %in% times) %>%
+  focal_gene_meth_data <- by_site %>%
+    filter(site %in% focal_gene_sites & time %in% times) %>%
     group_by(site, caste) %>%
     summarise(numC = sum(numC), numT = sum(numT), .groups = "drop") %>%
     mutate(prop = numC / (numC+numT)) %>% collect() %>%
     mutate(sig = ifelse(site %in% sig_sites_triangles, "yes", "no"))
 
-  xx <- csd_meth_data %>% 
+  xx <- focal_gene_meth_data %>% 
     left_join(tbl(db, "site_info") %>% 
-                filter(site %in% csd_sites) %>% collect(), by = "site")
+                filter(site %in% focal_gene_sites) %>% collect(), by = "site")
   
   bigger <- xx %>%
     group_by(site) %>%
-    summarise(bigger = ifelse(prop[1] > prop[2], "Queen", "Worker"), .groups = "drop")
+    summarise(bigger = ifelse(prop[1] > prop[2], "Queen", "Worker"),
+              .groups = "drop")
   
   dots <- xx %>% left_join(bigger, by = "site")
 
@@ -116,41 +118,45 @@ plot_gene <- function(gene,
   # print(triangles %>% pull(site))
   
   p2 <- dots %>%
-    ggplot(aes(start, 100*prop)) + 
+    ggplot(aes(start / 1000, 100*prop)) + 
     geom_line(aes(group = site, colour = bigger)) + 
  #   geom_point(data = triangles, pch = 25, fill = NA, aes(y=100), size = 5) +
     geom_point(aes(fill = caste), pch = 21, colour="black") + 
     scale_color_manual(values = c(queen_colour, worker_colour)) +
     scale_fill_manual(values = c(queen_colour, worker_colour)) + 
     scale_y_continuous(limits = c(0,100)) +
+    theme_bw() + 
     theme(legend.position = "none",
           text = element_text(family = nice_font)) + ylab(" ") + xlab(NULL)
   
   if(nrow(exon_labels) > 1){
     if(exon_labels$value[1] > exon_labels$value[2]) {
-      p1 <- p1 + scale_x_reverse(limits = c(csd_range[2], csd_range[1]))
-      p2 <- p2 + scale_x_reverse(limits = c(csd_range[2], csd_range[1]))  
+      p1 <- p1 + scale_x_reverse(limits = c(focal_gene_range[2]/1000, focal_gene_range[1]/1000))
+      p2 <- p2 + scale_x_reverse(limits = c(focal_gene_range[2]/1000, focal_gene_range[1]/1000))  
     } else {
-      p1 <- p1 + scale_x_continuous(limits = c(csd_range[1], csd_range[2])) 
-      p2 <- p2 + scale_x_continuous(limits = c(csd_range[1], csd_range[2])) 
+      p1 <- p1 + scale_x_continuous(limits = c(focal_gene_range[1]/1000, focal_gene_range[2]/1000)) 
+      p2 <- p2 + scale_x_continuous(limits = c(focal_gene_range[1]/1000, focal_gene_range[2]/1000)) 
     }
   }
   
   title <- tbl(db, "gene_names") %>% 
     filter(gene_symbol == gene) %>% pull(gene_name)
-  title <- paste(title, " (", gene, ")", sep = "")
+  
+  if(!str_detect(title, "uncharacterized LOC")) {
+    title <- paste(title, " (", gene, ")", sep = "")
+  }
   
   if(plot & !in_markdown) return(grid.arrange(
     p1, 
     p2 + ylab("% methylated reads") + xlab(" \n "), 
-    heights = c(0.09, 0.91), top = title))
+    heights = c(0.09, 0.91), top = textGrob(title, gp=gpar(fontfamily=nice_font))))
   if(!plot & !in_markdown) return(arrangeGrob(
     p1, 
     p2 + ylab(" ") + xlab(NULL), 
-    heights = c(0.09, 0.91), top = title))
+    heights = c(0.09, 0.91), top = textGrob(title, gp=gpar(fontfamily=nice_font))))
   if(!plot & in_markdown){
     list(arrangeGrob(p1, 
-                p2 + ylab("% methylated reads") + xlab("Genomic position"), 
+                p2 + ylab("% methylated reads") + xlab("Genomic position (kB)"), 
                 heights = c(0.09, 0.91)),
          title)
   }
@@ -199,13 +205,14 @@ my_data_table <- function(df){
 
 tibble(x = genes_plotted) %>%
   mutate(`Gene name` = map_chr(str_split(x, " [(]"), ~ .x[[1]]),
-         `Gene symbol` = str_remove_all(map_chr(str_split(x, " [(]"), ~ .x[[2]]), "[)]")) %>%
+         `Gene symbol` = str_remove_all(
+           map_chr(str_split(x, " [(]"), ~ .x[[2]]), "[)]")) %>%
   dplyr::select(`Gene symbol`, `Gene name`) %>%
   my_data_table()
 ```
 
-```{r make_pdf, echo=FALSE}
-# plot_gene("LOC411723", plot = T, in_markdown = F)
+```{r make_pdf, echo=FALSE, warning=FALSE, message=FALSE}
+plot_gene("LOC411972", plot = T, in_markdown = F)   # LOC411972
 
 # Make the figure for the paper
 grid.arrange(
@@ -215,7 +222,8 @@ grid.arrange(
   plot_gene("ecd", plot = F, in_markdown = F),
   plot_gene("Dcr-1", plot=F, in_markdown = F),
   plot_gene("LOC412162", plot=F, in_markdown = F),
-  left = "% methylated sites", bottom = "Genomic position"
+  left = textGrob("% methylated sites", rot = 90, gp=gpar(fontfamily=nice_font)), 
+  bottom = textGrob("Genomic position (kB)", gp=gpar(fontfamily=nice_font))
 ) %>% ggsave(filename = "figures/gene_browser_fig.pdf", height = 9, width = 9)
 ```
 
