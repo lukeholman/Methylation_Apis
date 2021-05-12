@@ -356,7 +356,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-03-29
+<strong>Last updated:</strong> 2021-05-12
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -387,16 +387,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree7f984dcbe5e5111f3d4a9d494d3059e5279be531targetblank7f984dca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/7f984dcbe5e5111f3d4a9d494d3059e5279be531" target="_blank">7f984dc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea67f269258becd6f8cdaeff6a9fa2e37d5b21185targetblanka67f269a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/a67f269258becd6f8cdaeff6a9fa2e37d5b21185" target="_blank">a67f269</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistree7f984dcbe5e5111f3d4a9d494d3059e5279be531targetblank7f984dca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea67f269258becd6f8cdaeff6a9fa2e37d5b21185targetblanka67f269a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/7f984dcbe5e5111f3d4a9d494d3059e5279be531" target="_blank">7f984dc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/a67f269258becd6f8cdaeff6a9fa2e37d5b21185" target="_blank">a67f269</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -409,30 +409,437 @@ Ignored files:
     Ignored:    Expression/
     Ignored:    data/
     Ignored:    figures/.DS_Store
+    Ignored:    figures/.Rapp.history
+    Ignored:    figures/gene_browser_plots/.DS_Store
     Ignored:    figures/meth_sites/.DS_Store
     Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
 
 Untracked files:
-    Untracked:  figures/gene_browser_fig.pdf
-    Untracked:  figures/gene_browser_plots/
+    Untracked:  figures/expr_temporal_GOBP_dmel.rds
+    Untracked:  figures/expr_temporal_GOCC_dmel.rds
+    Untracked:  figures/expr_temporal_GOMF_dmel.rds
+    Untracked:  figures/expr_temporal_KEGG_dmel.rds
+    Untracked:  figures/genomic_methyl_distribution.rds
 
 Unstaged changes:
-    Modified:   analysis/diff_methylation.Rmd
+    Modified:   code/GO_and_KEGG_gsea.R
+    Modified:   code/create_merged_data.R
+    Modified:   code/download_annotations.R
+    Modified:   code/main_paper_figures.Rmd
+    Modified:   code/main_paper_figures.log
+    Modified:   code/main_paper_figures.pdf
+    Modified:   code/make_database.R
+    Modified:   code/make_pathway_figure.R
+    Modified:   code/supplementary_figs_tables.Rmd
+    Modified:   code/supplementary_figs_tables.pdf
     Modified:   figures/big_correlation_heatmap.pdf
     Modified:   figures/composite_GO.pdf
     Modified:   figures/composite_eigengenes.pdf
     Modified:   figures/composite_figure.pdf
-    Modified:   figures/eigengenes_expression_network.rds
-    Modified:   figures/eigengenes_meth_network_fig.rds
+    Modified:   figures/expr_GO_BPremainder_dmel.rds
+    Modified:   figures/expr_GO_CC_dmel.rds
     Modified:   figures/expr_GO_for_composite_figure.rds
-    Modified:   figures/expression_NMDS_plot.rds
+    Modified:   figures/expr_KEGG_dmel.rds
     Modified:   figures/expression_heatmap.pdf
+    Modified:   figures/gene_browser_fig.pdf
+    Modified:   figures/gene_browser_plots/gene1.rds
+    Modified:   figures/gene_browser_plots/gene10.rds
+    Modified:   figures/gene_browser_plots/gene100.rds
+    Modified:   figures/gene_browser_plots/gene101.rds
+    Modified:   figures/gene_browser_plots/gene102.rds
+    Modified:   figures/gene_browser_plots/gene103.rds
+    Modified:   figures/gene_browser_plots/gene104.rds
+    Modified:   figures/gene_browser_plots/gene105.rds
+    Modified:   figures/gene_browser_plots/gene106.rds
+    Modified:   figures/gene_browser_plots/gene107.rds
+    Modified:   figures/gene_browser_plots/gene108.rds
+    Modified:   figures/gene_browser_plots/gene109.rds
+    Modified:   figures/gene_browser_plots/gene11.rds
+    Modified:   figures/gene_browser_plots/gene110.rds
+    Modified:   figures/gene_browser_plots/gene111.rds
+    Modified:   figures/gene_browser_plots/gene112.rds
+    Modified:   figures/gene_browser_plots/gene113.rds
+    Modified:   figures/gene_browser_plots/gene114.rds
+    Modified:   figures/gene_browser_plots/gene115.rds
+    Modified:   figures/gene_browser_plots/gene116.rds
+    Modified:   figures/gene_browser_plots/gene117.rds
+    Modified:   figures/gene_browser_plots/gene118.rds
+    Modified:   figures/gene_browser_plots/gene119.rds
+    Modified:   figures/gene_browser_plots/gene12.rds
+    Modified:   figures/gene_browser_plots/gene120.rds
+    Modified:   figures/gene_browser_plots/gene121.rds
+    Modified:   figures/gene_browser_plots/gene122.rds
+    Modified:   figures/gene_browser_plots/gene123.rds
+    Modified:   figures/gene_browser_plots/gene124.rds
+    Modified:   figures/gene_browser_plots/gene125.rds
+    Modified:   figures/gene_browser_plots/gene126.rds
+    Modified:   figures/gene_browser_plots/gene127.rds
+    Modified:   figures/gene_browser_plots/gene128.rds
+    Modified:   figures/gene_browser_plots/gene129.rds
+    Modified:   figures/gene_browser_plots/gene13.rds
+    Modified:   figures/gene_browser_plots/gene130.rds
+    Modified:   figures/gene_browser_plots/gene131.rds
+    Modified:   figures/gene_browser_plots/gene132.rds
+    Modified:   figures/gene_browser_plots/gene133.rds
+    Modified:   figures/gene_browser_plots/gene134.rds
+    Modified:   figures/gene_browser_plots/gene135.rds
+    Modified:   figures/gene_browser_plots/gene136.rds
+    Modified:   figures/gene_browser_plots/gene137.rds
+    Modified:   figures/gene_browser_plots/gene138.rds
+    Modified:   figures/gene_browser_plots/gene139.rds
+    Modified:   figures/gene_browser_plots/gene14.rds
+    Modified:   figures/gene_browser_plots/gene140.rds
+    Modified:   figures/gene_browser_plots/gene141.rds
+    Modified:   figures/gene_browser_plots/gene142.rds
+    Modified:   figures/gene_browser_plots/gene143.rds
+    Modified:   figures/gene_browser_plots/gene144.rds
+    Modified:   figures/gene_browser_plots/gene145.rds
+    Modified:   figures/gene_browser_plots/gene146.rds
+    Modified:   figures/gene_browser_plots/gene147.rds
+    Modified:   figures/gene_browser_plots/gene148.rds
+    Modified:   figures/gene_browser_plots/gene149.rds
+    Modified:   figures/gene_browser_plots/gene15.rds
+    Modified:   figures/gene_browser_plots/gene150.rds
+    Modified:   figures/gene_browser_plots/gene151.rds
+    Modified:   figures/gene_browser_plots/gene152.rds
+    Modified:   figures/gene_browser_plots/gene153.rds
+    Modified:   figures/gene_browser_plots/gene154.rds
+    Modified:   figures/gene_browser_plots/gene155.rds
+    Modified:   figures/gene_browser_plots/gene156.rds
+    Modified:   figures/gene_browser_plots/gene157.rds
+    Modified:   figures/gene_browser_plots/gene158.rds
+    Modified:   figures/gene_browser_plots/gene159.rds
+    Modified:   figures/gene_browser_plots/gene16.rds
+    Modified:   figures/gene_browser_plots/gene160.rds
+    Modified:   figures/gene_browser_plots/gene161.rds
+    Modified:   figures/gene_browser_plots/gene162.rds
+    Modified:   figures/gene_browser_plots/gene163.rds
+    Modified:   figures/gene_browser_plots/gene164.rds
+    Modified:   figures/gene_browser_plots/gene165.rds
+    Modified:   figures/gene_browser_plots/gene166.rds
+    Modified:   figures/gene_browser_plots/gene167.rds
+    Modified:   figures/gene_browser_plots/gene168.rds
+    Modified:   figures/gene_browser_plots/gene169.rds
+    Modified:   figures/gene_browser_plots/gene17.rds
+    Modified:   figures/gene_browser_plots/gene170.rds
+    Modified:   figures/gene_browser_plots/gene171.rds
+    Modified:   figures/gene_browser_plots/gene172.rds
+    Modified:   figures/gene_browser_plots/gene173.rds
+    Modified:   figures/gene_browser_plots/gene174.rds
+    Modified:   figures/gene_browser_plots/gene175.rds
+    Modified:   figures/gene_browser_plots/gene176.rds
+    Modified:   figures/gene_browser_plots/gene177.rds
+    Modified:   figures/gene_browser_plots/gene178.rds
+    Modified:   figures/gene_browser_plots/gene179.rds
+    Modified:   figures/gene_browser_plots/gene18.rds
+    Modified:   figures/gene_browser_plots/gene180.rds
+    Modified:   figures/gene_browser_plots/gene181.rds
+    Modified:   figures/gene_browser_plots/gene182.rds
+    Modified:   figures/gene_browser_plots/gene183.rds
+    Modified:   figures/gene_browser_plots/gene184.rds
+    Modified:   figures/gene_browser_plots/gene185.rds
+    Modified:   figures/gene_browser_plots/gene186.rds
+    Modified:   figures/gene_browser_plots/gene187.rds
+    Modified:   figures/gene_browser_plots/gene188.rds
+    Modified:   figures/gene_browser_plots/gene189.rds
+    Modified:   figures/gene_browser_plots/gene19.rds
+    Modified:   figures/gene_browser_plots/gene190.rds
+    Modified:   figures/gene_browser_plots/gene191.rds
+    Modified:   figures/gene_browser_plots/gene192.rds
+    Modified:   figures/gene_browser_plots/gene193.rds
+    Modified:   figures/gene_browser_plots/gene194.rds
+    Modified:   figures/gene_browser_plots/gene195.rds
+    Modified:   figures/gene_browser_plots/gene196.rds
+    Modified:   figures/gene_browser_plots/gene197.rds
+    Modified:   figures/gene_browser_plots/gene198.rds
+    Modified:   figures/gene_browser_plots/gene199.rds
+    Modified:   figures/gene_browser_plots/gene2.rds
+    Modified:   figures/gene_browser_plots/gene20.rds
+    Modified:   figures/gene_browser_plots/gene200.rds
+    Modified:   figures/gene_browser_plots/gene201.rds
+    Modified:   figures/gene_browser_plots/gene202.rds
+    Modified:   figures/gene_browser_plots/gene203.rds
+    Modified:   figures/gene_browser_plots/gene204.rds
+    Modified:   figures/gene_browser_plots/gene205.rds
+    Modified:   figures/gene_browser_plots/gene206.rds
+    Modified:   figures/gene_browser_plots/gene207.rds
+    Modified:   figures/gene_browser_plots/gene208.rds
+    Modified:   figures/gene_browser_plots/gene209.rds
+    Modified:   figures/gene_browser_plots/gene21.rds
+    Modified:   figures/gene_browser_plots/gene210.rds
+    Modified:   figures/gene_browser_plots/gene211.rds
+    Modified:   figures/gene_browser_plots/gene212.rds
+    Modified:   figures/gene_browser_plots/gene213.rds
+    Modified:   figures/gene_browser_plots/gene214.rds
+    Modified:   figures/gene_browser_plots/gene215.rds
+    Modified:   figures/gene_browser_plots/gene216.rds
+    Modified:   figures/gene_browser_plots/gene217.rds
+    Modified:   figures/gene_browser_plots/gene218.rds
+    Modified:   figures/gene_browser_plots/gene219.rds
+    Modified:   figures/gene_browser_plots/gene22.rds
+    Modified:   figures/gene_browser_plots/gene220.rds
+    Modified:   figures/gene_browser_plots/gene221.rds
+    Modified:   figures/gene_browser_plots/gene222.rds
+    Modified:   figures/gene_browser_plots/gene223.rds
+    Modified:   figures/gene_browser_plots/gene224.rds
+    Modified:   figures/gene_browser_plots/gene225.rds
+    Modified:   figures/gene_browser_plots/gene226.rds
+    Modified:   figures/gene_browser_plots/gene227.rds
+    Modified:   figures/gene_browser_plots/gene228.rds
+    Modified:   figures/gene_browser_plots/gene229.rds
+    Modified:   figures/gene_browser_plots/gene23.rds
+    Modified:   figures/gene_browser_plots/gene230.rds
+    Modified:   figures/gene_browser_plots/gene231.rds
+    Modified:   figures/gene_browser_plots/gene232.rds
+    Modified:   figures/gene_browser_plots/gene233.rds
+    Modified:   figures/gene_browser_plots/gene234.rds
+    Modified:   figures/gene_browser_plots/gene235.rds
+    Modified:   figures/gene_browser_plots/gene236.rds
+    Modified:   figures/gene_browser_plots/gene237.rds
+    Modified:   figures/gene_browser_plots/gene238.rds
+    Modified:   figures/gene_browser_plots/gene239.rds
+    Modified:   figures/gene_browser_plots/gene24.rds
+    Modified:   figures/gene_browser_plots/gene240.rds
+    Modified:   figures/gene_browser_plots/gene241.rds
+    Modified:   figures/gene_browser_plots/gene242.rds
+    Modified:   figures/gene_browser_plots/gene243.rds
+    Modified:   figures/gene_browser_plots/gene244.rds
+    Modified:   figures/gene_browser_plots/gene245.rds
+    Modified:   figures/gene_browser_plots/gene246.rds
+    Modified:   figures/gene_browser_plots/gene247.rds
+    Modified:   figures/gene_browser_plots/gene248.rds
+    Modified:   figures/gene_browser_plots/gene249.rds
+    Modified:   figures/gene_browser_plots/gene25.rds
+    Modified:   figures/gene_browser_plots/gene250.rds
+    Modified:   figures/gene_browser_plots/gene251.rds
+    Modified:   figures/gene_browser_plots/gene252.rds
+    Modified:   figures/gene_browser_plots/gene253.rds
+    Modified:   figures/gene_browser_plots/gene254.rds
+    Modified:   figures/gene_browser_plots/gene255.rds
+    Modified:   figures/gene_browser_plots/gene256.rds
+    Modified:   figures/gene_browser_plots/gene257.rds
+    Modified:   figures/gene_browser_plots/gene258.rds
+    Modified:   figures/gene_browser_plots/gene259.rds
+    Modified:   figures/gene_browser_plots/gene26.rds
+    Modified:   figures/gene_browser_plots/gene260.rds
+    Modified:   figures/gene_browser_plots/gene261.rds
+    Modified:   figures/gene_browser_plots/gene262.rds
+    Modified:   figures/gene_browser_plots/gene263.rds
+    Modified:   figures/gene_browser_plots/gene264.rds
+    Modified:   figures/gene_browser_plots/gene265.rds
+    Modified:   figures/gene_browser_plots/gene266.rds
+    Modified:   figures/gene_browser_plots/gene267.rds
+    Modified:   figures/gene_browser_plots/gene268.rds
+    Modified:   figures/gene_browser_plots/gene269.rds
+    Modified:   figures/gene_browser_plots/gene27.rds
+    Modified:   figures/gene_browser_plots/gene270.rds
+    Modified:   figures/gene_browser_plots/gene271.rds
+    Modified:   figures/gene_browser_plots/gene272.rds
+    Modified:   figures/gene_browser_plots/gene273.rds
+    Modified:   figures/gene_browser_plots/gene274.rds
+    Modified:   figures/gene_browser_plots/gene275.rds
+    Modified:   figures/gene_browser_plots/gene276.rds
+    Modified:   figures/gene_browser_plots/gene277.rds
+    Modified:   figures/gene_browser_plots/gene278.rds
+    Modified:   figures/gene_browser_plots/gene279.rds
+    Modified:   figures/gene_browser_plots/gene28.rds
+    Modified:   figures/gene_browser_plots/gene280.rds
+    Modified:   figures/gene_browser_plots/gene281.rds
+    Modified:   figures/gene_browser_plots/gene282.rds
+    Modified:   figures/gene_browser_plots/gene283.rds
+    Modified:   figures/gene_browser_plots/gene284.rds
+    Modified:   figures/gene_browser_plots/gene285.rds
+    Modified:   figures/gene_browser_plots/gene286.rds
+    Modified:   figures/gene_browser_plots/gene287.rds
+    Modified:   figures/gene_browser_plots/gene288.rds
+    Modified:   figures/gene_browser_plots/gene289.rds
+    Modified:   figures/gene_browser_plots/gene29.rds
+    Modified:   figures/gene_browser_plots/gene290.rds
+    Modified:   figures/gene_browser_plots/gene291.rds
+    Modified:   figures/gene_browser_plots/gene292.rds
+    Modified:   figures/gene_browser_plots/gene293.rds
+    Modified:   figures/gene_browser_plots/gene294.rds
+    Modified:   figures/gene_browser_plots/gene295.rds
+    Modified:   figures/gene_browser_plots/gene296.rds
+    Modified:   figures/gene_browser_plots/gene297.rds
+    Modified:   figures/gene_browser_plots/gene298.rds
+    Modified:   figures/gene_browser_plots/gene299.rds
+    Modified:   figures/gene_browser_plots/gene3.rds
+    Modified:   figures/gene_browser_plots/gene30.rds
+    Modified:   figures/gene_browser_plots/gene300.rds
+    Modified:   figures/gene_browser_plots/gene301.rds
+    Modified:   figures/gene_browser_plots/gene302.rds
+    Modified:   figures/gene_browser_plots/gene303.rds
+    Modified:   figures/gene_browser_plots/gene304.rds
+    Modified:   figures/gene_browser_plots/gene305.rds
+    Modified:   figures/gene_browser_plots/gene306.rds
+    Modified:   figures/gene_browser_plots/gene307.rds
+    Modified:   figures/gene_browser_plots/gene308.rds
+    Modified:   figures/gene_browser_plots/gene309.rds
+    Modified:   figures/gene_browser_plots/gene31.rds
+    Modified:   figures/gene_browser_plots/gene310.rds
+    Modified:   figures/gene_browser_plots/gene311.rds
+    Modified:   figures/gene_browser_plots/gene312.rds
+    Modified:   figures/gene_browser_plots/gene313.rds
+    Modified:   figures/gene_browser_plots/gene314.rds
+    Modified:   figures/gene_browser_plots/gene315.rds
+    Modified:   figures/gene_browser_plots/gene316.rds
+    Modified:   figures/gene_browser_plots/gene317.rds
+    Modified:   figures/gene_browser_plots/gene318.rds
+    Modified:   figures/gene_browser_plots/gene319.rds
+    Modified:   figures/gene_browser_plots/gene32.rds
+    Modified:   figures/gene_browser_plots/gene320.rds
+    Modified:   figures/gene_browser_plots/gene321.rds
+    Modified:   figures/gene_browser_plots/gene322.rds
+    Modified:   figures/gene_browser_plots/gene323.rds
+    Modified:   figures/gene_browser_plots/gene324.rds
+    Modified:   figures/gene_browser_plots/gene325.rds
+    Modified:   figures/gene_browser_plots/gene326.rds
+    Modified:   figures/gene_browser_plots/gene327.rds
+    Modified:   figures/gene_browser_plots/gene328.rds
+    Modified:   figures/gene_browser_plots/gene329.rds
+    Modified:   figures/gene_browser_plots/gene33.rds
+    Modified:   figures/gene_browser_plots/gene330.rds
+    Modified:   figures/gene_browser_plots/gene331.rds
+    Modified:   figures/gene_browser_plots/gene332.rds
+    Modified:   figures/gene_browser_plots/gene333.rds
+    Modified:   figures/gene_browser_plots/gene334.rds
+    Modified:   figures/gene_browser_plots/gene335.rds
+    Modified:   figures/gene_browser_plots/gene336.rds
+    Modified:   figures/gene_browser_plots/gene337.rds
+    Modified:   figures/gene_browser_plots/gene338.rds
+    Modified:   figures/gene_browser_plots/gene339.rds
+    Modified:   figures/gene_browser_plots/gene34.rds
+    Modified:   figures/gene_browser_plots/gene340.rds
+    Modified:   figures/gene_browser_plots/gene341.rds
+    Modified:   figures/gene_browser_plots/gene342.rds
+    Modified:   figures/gene_browser_plots/gene343.rds
+    Modified:   figures/gene_browser_plots/gene344.rds
+    Modified:   figures/gene_browser_plots/gene345.rds
+    Modified:   figures/gene_browser_plots/gene346.rds
+    Modified:   figures/gene_browser_plots/gene347.rds
+    Modified:   figures/gene_browser_plots/gene348.rds
+    Modified:   figures/gene_browser_plots/gene349.rds
+    Modified:   figures/gene_browser_plots/gene35.rds
+    Modified:   figures/gene_browser_plots/gene350.rds
+    Modified:   figures/gene_browser_plots/gene351.rds
+    Modified:   figures/gene_browser_plots/gene352.rds
+    Modified:   figures/gene_browser_plots/gene353.rds
+    Modified:   figures/gene_browser_plots/gene354.rds
+    Modified:   figures/gene_browser_plots/gene355.rds
+    Modified:   figures/gene_browser_plots/gene356.rds
+    Modified:   figures/gene_browser_plots/gene357.rds
+    Modified:   figures/gene_browser_plots/gene358.rds
+    Modified:   figures/gene_browser_plots/gene359.rds
+    Modified:   figures/gene_browser_plots/gene36.rds
+    Modified:   figures/gene_browser_plots/gene360.rds
+    Modified:   figures/gene_browser_plots/gene361.rds
+    Modified:   figures/gene_browser_plots/gene362.rds
+    Modified:   figures/gene_browser_plots/gene363.rds
+    Modified:   figures/gene_browser_plots/gene364.rds
+    Modified:   figures/gene_browser_plots/gene365.rds
+    Modified:   figures/gene_browser_plots/gene366.rds
+    Modified:   figures/gene_browser_plots/gene367.rds
+    Modified:   figures/gene_browser_plots/gene368.rds
+    Modified:   figures/gene_browser_plots/gene369.rds
+    Modified:   figures/gene_browser_plots/gene37.rds
+    Modified:   figures/gene_browser_plots/gene370.rds
+    Modified:   figures/gene_browser_plots/gene371.rds
+    Modified:   figures/gene_browser_plots/gene372.rds
+    Modified:   figures/gene_browser_plots/gene373.rds
+    Modified:   figures/gene_browser_plots/gene374.rds
+    Modified:   figures/gene_browser_plots/gene375.rds
+    Modified:   figures/gene_browser_plots/gene376.rds
+    Modified:   figures/gene_browser_plots/gene377.rds
+    Modified:   figures/gene_browser_plots/gene378.rds
+    Modified:   figures/gene_browser_plots/gene379.rds
+    Modified:   figures/gene_browser_plots/gene38.rds
+    Modified:   figures/gene_browser_plots/gene380.rds
+    Modified:   figures/gene_browser_plots/gene381.rds
+    Modified:   figures/gene_browser_plots/gene382.rds
+    Deleted:    figures/gene_browser_plots/gene383.rds
+    Deleted:    figures/gene_browser_plots/gene384.rds
+    Deleted:    figures/gene_browser_plots/gene385.rds
+    Deleted:    figures/gene_browser_plots/gene386.rds
+    Modified:   figures/gene_browser_plots/gene39.rds
+    Modified:   figures/gene_browser_plots/gene4.rds
+    Modified:   figures/gene_browser_plots/gene40.rds
+    Modified:   figures/gene_browser_plots/gene41.rds
+    Modified:   figures/gene_browser_plots/gene42.rds
+    Modified:   figures/gene_browser_plots/gene43.rds
+    Modified:   figures/gene_browser_plots/gene44.rds
+    Modified:   figures/gene_browser_plots/gene45.rds
+    Modified:   figures/gene_browser_plots/gene46.rds
+    Modified:   figures/gene_browser_plots/gene47.rds
+    Modified:   figures/gene_browser_plots/gene48.rds
+    Modified:   figures/gene_browser_plots/gene49.rds
+    Modified:   figures/gene_browser_plots/gene5.rds
+    Modified:   figures/gene_browser_plots/gene50.rds
+    Modified:   figures/gene_browser_plots/gene51.rds
+    Modified:   figures/gene_browser_plots/gene52.rds
+    Modified:   figures/gene_browser_plots/gene53.rds
+    Modified:   figures/gene_browser_plots/gene54.rds
+    Modified:   figures/gene_browser_plots/gene55.rds
+    Modified:   figures/gene_browser_plots/gene56.rds
+    Modified:   figures/gene_browser_plots/gene57.rds
+    Modified:   figures/gene_browser_plots/gene58.rds
+    Modified:   figures/gene_browser_plots/gene59.rds
+    Modified:   figures/gene_browser_plots/gene6.rds
+    Modified:   figures/gene_browser_plots/gene60.rds
+    Modified:   figures/gene_browser_plots/gene61.rds
+    Modified:   figures/gene_browser_plots/gene62.rds
+    Modified:   figures/gene_browser_plots/gene63.rds
+    Modified:   figures/gene_browser_plots/gene64.rds
+    Modified:   figures/gene_browser_plots/gene65.rds
+    Modified:   figures/gene_browser_plots/gene66.rds
+    Modified:   figures/gene_browser_plots/gene67.rds
+    Modified:   figures/gene_browser_plots/gene68.rds
+    Modified:   figures/gene_browser_plots/gene69.rds
+    Modified:   figures/gene_browser_plots/gene7.rds
+    Modified:   figures/gene_browser_plots/gene70.rds
+    Modified:   figures/gene_browser_plots/gene71.rds
+    Modified:   figures/gene_browser_plots/gene72.rds
+    Modified:   figures/gene_browser_plots/gene73.rds
+    Modified:   figures/gene_browser_plots/gene74.rds
+    Modified:   figures/gene_browser_plots/gene75.rds
+    Modified:   figures/gene_browser_plots/gene76.rds
+    Modified:   figures/gene_browser_plots/gene77.rds
+    Modified:   figures/gene_browser_plots/gene78.rds
+    Modified:   figures/gene_browser_plots/gene79.rds
+    Modified:   figures/gene_browser_plots/gene8.rds
+    Modified:   figures/gene_browser_plots/gene80.rds
+    Modified:   figures/gene_browser_plots/gene81.rds
+    Modified:   figures/gene_browser_plots/gene82.rds
+    Modified:   figures/gene_browser_plots/gene83.rds
+    Modified:   figures/gene_browser_plots/gene84.rds
+    Modified:   figures/gene_browser_plots/gene85.rds
+    Modified:   figures/gene_browser_plots/gene86.rds
+    Modified:   figures/gene_browser_plots/gene87.rds
+    Modified:   figures/gene_browser_plots/gene88.rds
+    Modified:   figures/gene_browser_plots/gene89.rds
+    Modified:   figures/gene_browser_plots/gene9.rds
+    Modified:   figures/gene_browser_plots/gene90.rds
+    Modified:   figures/gene_browser_plots/gene91.rds
+    Modified:   figures/gene_browser_plots/gene92.rds
+    Modified:   figures/gene_browser_plots/gene93.rds
+    Modified:   figures/gene_browser_plots/gene94.rds
+    Modified:   figures/gene_browser_plots/gene95.rds
+    Modified:   figures/gene_browser_plots/gene96.rds
+    Modified:   figures/gene_browser_plots/gene97.rds
+    Modified:   figures/gene_browser_plots/gene98.rds
+    Modified:   figures/gene_browser_plots/gene99.rds
+    Modified:   figures/genomic_context_plot_caste.rds
+    Modified:   figures/genomic_context_plot_timeQ.rds
+    Modified:   figures/genomic_context_plot_timeW.rds
+    Modified:   figures/heatmap_all.rds
+    Modified:   figures/histo_fig1.rds
     Modified:   figures/meth_GO_for_composite_figure.rds
     Modified:   figures/meth_GO_others.rds
     Modified:   figures/meth_GO_temporal_Amel.rds
     Modified:   figures/meth_GO_temporal_Dmel.rds
     Modified:   figures/meth_all_enrichments_Amel.rds
+    Modified:   figures/meth_nmds_plot.rds
     Modified:   figures/two_sites_for_big_meth_fig.rds
 
 </code></pre>
@@ -472,6 +879,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/8394e8aaf71f9a2dd742240a53665bab1708bf3e/docs/license.html" target="_blank">8394e8a</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-03-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
