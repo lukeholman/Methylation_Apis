@@ -90,11 +90,6 @@ plot_gene <- function(gene,
     collect() %>%
     filter(start >= focal_gene_range[1] & start <= focal_gene_range[2]) %>%
     pull(site)
-
-  p_vals <- glm_results %>%
-    filter(Site %in% focal_gene_sites  & time %in% times) %>%
-    group_by(Site) %>%
-    summarise(p = min(p), .groups = "drop") 
   
   focal_gene_meth_data <- by_site %>%
     filter(site %in% focal_gene_sites & time %in% times) %>%
@@ -113,14 +108,10 @@ plot_gene <- function(gene,
               .groups = "drop")
   
   dots <- xx %>% left_join(bigger, by = "site")
-
-  triangles <- xx %>% filter(sig == "yes")
-  # print(triangles %>% pull(site))
   
   p2 <- dots %>%
     ggplot(aes(start / 1000, 100*prop)) + 
     geom_line(aes(group = site, colour = bigger)) + 
- #   geom_point(data = triangles, pch = 25, fill = NA, aes(y=100), size = 5) +
     geom_point(aes(fill = caste), pch = 21, colour="black") + 
     scale_color_manual(values = c(queen_colour, worker_colour)) +
     scale_fill_manual(values = c(queen_colour, worker_colour)) + 
@@ -167,6 +158,7 @@ genes_to_plot <- gene_meth_results_table %>%
   dplyr::select(contains(" in"), contains(" of"), -contains("gene name")) %>%
   unlist() %>% unname() %>% unique() %>% na.omit() %>% as.character()
 
+# run to re-make plots
 # lapply(1:length(genes_to_plot), function(i){
 #   plot_gene(genes_to_plot[i]) %>% saveRDS(glue("figures/gene_browser_plots/gene{i}.rds"))
 # })
@@ -203,11 +195,19 @@ my_data_table <- function(df){
   )
 }
 
-tibble(x = genes_plotted) %>%
+top <- tibble(x = genes_plotted) %>%
+  filter(!str_detect(x, "uncharacterized LOC")) %>% 
   mutate(`Gene name` = map_chr(str_split(x, " [(]"), ~ .x[[1]]),
          `Gene symbol` = str_remove_all(
            map_chr(str_split(x, " [(]"), ~ .x[[2]]), "[)]")) %>%
-  dplyr::select(`Gene symbol`, `Gene name`) %>%
+  dplyr::select(`Gene symbol`, `Gene name`) 
+bottom <- tibble(`Gene symbol` = genes_plotted) %>%
+  filter(str_detect(`Gene symbol`, "uncharacterized LOC")) %>% 
+  mutate(`Gene name` = `Gene symbol`,
+         `Gene symbol` = str_remove_all(`Gene symbol`, "uncharacterized "))
+
+bind_rows(top, bottom) %>%
+  arrange(nchar(`Gene symbol`)) %>% 
   my_data_table()
 ```
 

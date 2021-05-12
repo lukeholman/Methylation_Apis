@@ -89,7 +89,7 @@ kable_table <- function(df) {
 db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
 
 # Load the RSEM expression_data for each sample-gene combination
-expression_data <- as.matrix(read.table("data/Expression_data/Genes_2020_version.txt", row.names = 1, header = T))
+expression_data <- as.matrix(read.table("data/Expression_data/Genes.txt", row.names = 1, header = T))
 n_genes_before_filtering <- nrow(expression_data)
 gsg <- goodSamplesGenes(t(expression_data), verbose = 3) # exclude 217 genes due to too many missing samples or zero variance
 expression_data <- expression_data[gsg$goodGenes, gsg$goodSamples]
@@ -120,6 +120,7 @@ sample_ids <- data.frame(
 
 ### Filter out low-expression genes
 ```{r filter_genes}
+# Calculate normalisaiton factors for each library based on the the read count expression data
 # filter genes for which maximum expression level is less than 1 Count Per Million 
 voom_gene_data <- calcNormFactors(DGEList(expression_data))
 voom_gene_data <- voom_gene_data[-which(apply(cpm(voom_gene_data), 1, max) < 1),] 
@@ -180,8 +181,7 @@ saveRDS(nmds_plot, "figures/expression_NMDS_plot.rds")
 nmds_plot
 ```
 
-**Figure**: Results of non-metric multidimensional scaling analysis, which reduces the distance matrix between samples to three dimensions (% variance explained: `r round(100*nmds_r2, 1)`). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
-
+**Figure**: Analysis of the transcriptome data using non-metric multidimensional scaling, which reduces the distance matrix between each sample's transcriptome to three dimensions (variance explained: `r round(100*nmds_r2, 1)`%). The plot suggests that queen- and worker-destined larvae have different gene expression profiles and that the transcriptome changes over time, and there is some indication that the caste difference is larger at later times post-grafting into a queen or worker cell. 
 
 ### Heatmap showing similarities between samples and genes
 
@@ -635,7 +635,7 @@ timeW_table %>%
 
 ### Code to run GO and KEGG enrichment
 
-```{r GO_and_KEGG_gsea, warning = FALSE, fig.height=10.1, fig.width = 5.3}
+```{r GO_and_KEGG_gsea, warning = FALSE, fig.height = 10.1, fig.width = 5.3}
 source("code/GO_and_KEGG_gsea.R")
 
 # Run all the enrichment tests:
@@ -757,6 +757,29 @@ if(!file.exists("output/expr_gsea_results.rds")){
 source("code/make_pathway_figure.R")
 
 do_GO_table <- function(GO_results){
+  
+  my_data_table <- function(df){
+    datatable(
+      df, rownames=FALSE,
+      autoHideNavigation = TRUE,
+      extensions = c("Scroller",  "Buttons"),
+      options = list(
+        dom = 'Bfrtip',
+        deferRender=TRUE,
+        scrollX=TRUE, scrollY=400,
+        scrollCollapse=TRUE,
+        buttons = 
+          list('pageLength', 'colvis', 'csv', list(
+            extend = 'pdf',
+            pageSize = 'A4',
+            orientation = 'landscape',
+            filename = 'Apis_expression_GO')),
+        columnDefs = list(list(targets = c(8,9), visible = FALSE)),
+        pageLength = 50
+      )
+    )
+  }
+  
   GO_results %>%
     mutate(leadingEdge = map_chr(leadingEdge, ~ paste0(.x, collapse = ", ")),
            gene_names = map_chr(gene_names, ~ paste0(.x, collapse = ", "))) %>%
@@ -800,7 +823,6 @@ GO_KEGG_results$GO_Dmel_annotations_caste %>%
 ```
 
 ```{r echo = FALSE, eval = FALSE}
-
 # FINISH THIS
 # Save supplementary figures
 remaining_terms <- fig_dat$term[!(fig_dat$term %in% top50)] %>% unique()
@@ -1006,10 +1028,21 @@ Orange means that the temporal change in expression was comparatively large and 
 ##### GO: Biological process {.tabset}
 
 ###### Figure
+
+
 ```{r fig.height=11, fig.width = 5.3}
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Biological process") %>%
+  filter(term != "biological_process") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE) %>%
+  saveRDS("figures/expr_temporal_GOBP_dmel.rds")
+
+
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Biological process") %>%
+  filter(term != "biological_process") %>%
   make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
 ```
 
@@ -1028,6 +1061,14 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Molecular function") %>%
+  filter(term != "molecular_function") %>%
+  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE) %>%
+  saveRDS("figures/expr_temporal_GOMF_dmel.rds")
+
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Molecular function") %>%
+  filter(term != "molecular_function") %>%
   make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
 ```
 
@@ -1043,6 +1084,12 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 
 ###### Figure
 ```{r fig.height=11, fig.width = 5.3}
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "GO: Cellular component") %>%
+  make_pathway_figure("", "Hours post-grafting", alt_colours = TRUE) %>%
+  saveRDS("figures/expr_temporal_GOCC_dmel.rds")
+
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "GO: Cellular component") %>%
@@ -1064,7 +1111,13 @@ bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
 bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
           GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
   filter(Test_type == "KEGG") %>%
-  make_pathway_figure("", "Hours post-grafting",  alt_colours = TRUE)
+  make_pathway_figure("", "Hours post-grafting", alt_colours = TRUE) %>%
+  saveRDS("figures/expr_temporal_KEGG_dmel.rds")
+
+bind_rows(GO_KEGG_results$GO_Dmel_annotations_temporalQ,
+          GO_KEGG_results$GO_Dmel_annotations_temporalW) %>% 
+  filter(Test_type == "KEGG") %>%
+  make_pathway_figure("", "Hours post-grafting", alt_colours = TRUE)
 ```
 
 ###### Table
@@ -1633,7 +1686,7 @@ manual_GO_enrich <- function(
   prop_in_set  <- number_genes_in_set_with_focal_GO / number_genes_in_set
   prop_in_univ <- number_genes_in_universe_with_focal_GO / number_genes_in_universe
   
-  # Log odds ratio: odds that the focal GO is in the set / odds it's in the universe
+  # odds ratio: odds that the focal GO is in the set / odds it's in the universe
   enrichment_LOR <- (prop_in_set / (1 - prop_in_set)) /
     (prop_in_univ / (1 - prop_in_univ))
   
@@ -1853,29 +1906,28 @@ make_module_GO_table <- function(
 
 
 
-
-module_enrichment_plot <- function(df, is.KEGG = FALSE){
-  label <- "Name of GO term"
-  if(is.KEGG) label <- "Name of KEGG term"
-  df %>% 
-    arrange(Module, enrichment_LOR) %>% 
-    mutate(Meaning = factor(Meaning, unique(Meaning)),
-           Ontology = factor(
-             Ontology, c("GO: Biological process", 
-                          "GO: Molecular function", 
-                          "GO: Cellular component", "KEGG"))) %>%
-    ggplot(aes(Meaning, enrichment_LOR)) + 
-    geom_bar(stat = "identity", colour = "grey10", fill = "#0CE3AC") + # aes(fill = sig), 
-    facet_wrap(~Module) + 
-    scale_fill_brewer(palette = "Accent", direction = -1) + 
-    scale_x_discrete(labels = function(x) str_wrap(x, width = 60)) +
-    theme_bw() +
-    theme(legend.position = "none", 
-          strip.background = element_blank(), 
-          strip.text = element_text(size = 10)) + 
-    ylab("Enrichment (log odds ratio)") + xlab(label) + 
-    coord_flip() 
-}  
+# module_enrichment_plot <- function(df, is.KEGG = FALSE){
+#   label <- "Name of GO term"
+#   if(is.KEGG) label <- "Name of KEGG term"
+#   df %>% 
+#     arrange(Module, enrichment_LOR) %>% 
+#     mutate(Meaning = factor(Meaning, unique(Meaning)),
+#            Ontology = factor(
+#              Ontology, c("GO: Biological process", 
+#                           "GO: Molecular function", 
+#                           "GO: Cellular component", "KEGG"))) %>%
+#     ggplot(aes(Meaning, enrichment_LOR)) + 
+#     geom_bar(stat = "identity", colour = "grey10", fill = "#0CE3AC") + # aes(fill = sig), 
+#     facet_wrap(~Module) + 
+#     scale_fill_brewer(palette = "Accent", direction = -1) + 
+#     scale_x_discrete(labels = function(x) str_wrap(x, width = 60)) +
+#     theme_bw() +
+#     theme(legend.position = "none", 
+#           strip.background = element_blank(), 
+#           strip.text = element_text(size = 10)) + 
+#     ylab("Enrichment (log odds ratio)") + xlab(label) + 
+#     coord_flip() 
+# }  
 
 module_GO_table_amel <- make_module_GO_table(expr_eigengenes, GO_list = "bee_GO") 
 module_GO_table_dmel <- make_module_GO_table(expr_eigengenes, GO_list = "dros_ortho_GO")  

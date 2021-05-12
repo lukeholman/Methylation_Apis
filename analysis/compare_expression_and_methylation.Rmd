@@ -95,20 +95,20 @@ worker_colour <- RColorBrewer::brewer.pal(7, "Blues")[4]
 
 
 ```{r echo=FALSE, fig.showtext=TRUE, warning=FALSE, message=FALSE, results='hide'}
-GO1 <- readRDS("figures/expr_GO_for_composite_figure.rds") + 
+GO1 <- readRDS("figures/meth_GO_for_composite_figure.rds") + 
   theme(strip.text = element_blank(), 
         text = element_text(family = nice_font),
         strip.background = element_blank(),
         legend.position = "none") + 
-  labs(subtitle = "A. Caste-specific gene expression")
+  labs(subtitle = "A. Caste-specific DNA methylation")
 
-GO2 <- readRDS("figures/meth_GO_for_composite_figure.rds") + 
+GO2 <- readRDS("figures/expr_GO_for_composite_figure.rds") + 
   scale_y_discrete(position = "right", expand = c(0,0)) + 
   theme(strip.text = element_blank(), 
         strip.background = element_blank(),
         text = element_text(family = nice_font),
         legend.position = "none") + 
-  labs(subtitle = "B. Caste-specific DNA methylation")
+  labs(subtitle = "B. Caste-specific gene expression")
 
 blankPlot <- ggplot() + geom_blank(aes(1, 1)) +
   theme(plot.background = element_blank(), 
@@ -124,11 +124,11 @@ blankPlot <- ggplot() + geom_blank(aes(1, 1)) +
         axis.line = element_blank())
 
 pdf("figures/composite_GO.pdf", width = 11.2, height =  10.4, onefile = FALSE)
-arrangeGrob(ggplotGrob(GO1), 
-            blankPlot,
-            arrangeGrob(ggplotGrob(GO2), 
+arrangeGrob(arrangeGrob(ggplotGrob(GO1), 
                         blankPlot, 
-                        heights = c(0.61,0.39), ncol = 1), 
+                        heights = c(0.7,0.3), ncol = 1), 
+            blankPlot,
+            ggplotGrob(GO2), 
             ncol = 3, widths = c(0.51, 0.04, 0.45)) %>%
   grid.arrange() 
 dev.off()
@@ -155,10 +155,12 @@ sig_diff_meth <- GLM_sig_genes %>%
 inters <- intersect(sig_diff_expr, sig_diff_meth)
 n_overlaps <- length(inters)
 size_universe <- length(universe)
+sig_meth_in_universe <- sig_diff_meth[sig_diff_meth %in% universe]
+percent <- round(100 * n_overlaps / length(sig_meth_in_universe), 1)
 ```
 
 
-Here, we list the `r n_overlaps` genes that showed a statistically significant caste difference for both expression and methylation; this list includes many interesting genes, including _complementary sex determiner_, _maternal protein tudor_, and _superoxide dismutase 2_. A total of `r size_universe` genes were tested in both the expression and the methylation analyses.
+Of the `r length(sig_meth_in_universe)` genes that were significantly differentially methylated and were also tested in the transcriptomic analyses, `r n_overlaps` (i.e. `r percent`%) were also significantly differentially expressed. We here list the `r n_overlaps` genes that showed a statistically significant caste difference for both expression and methylation; this list includes many interesting genes, including _complementary sex determiner_, _maternal protein tudor_, and _superoxide dismutase 2_. 
 
 ```{r message=FALSE, warning=FALSE}
 # Get the 'gene universe', the set of genes tested in the expr and meth analyses
@@ -264,9 +266,9 @@ run_corr <- function(time, dat){
     filter(dat, Time == time)$logFC, 
     method = "spearman")
   tibble(time = time, rho = results$estimate, p = results$p.value)
-}
+} 
 map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_caste)) %>%
-  mutate(p = p.adjust(p)) %>% 
+  mutate(p = formatC(p.adjust(p), format = "e", digits = 2)) %>% 
   dplyr::rename(`Adjusted p` = p, Time = time, `Spearman's rho` = rho) %>%
   kable() %>% kable_styling(full_width = FALSE)
 ```
@@ -303,7 +305,7 @@ map_df(c(2,4,6,8), ~ run_corr(time = .x, dat = meth_geneExpr_relationship_data_c
 
 ### Plot correlation matrix
 
-**Figure XX**: Clustered correlation matrix showing relationships between pairs of modules from the network analyses of co-expression and co-methylation. The colour shows the sign and magnitude of the Pearson correlations between the module eigengenes from the expression and methylation networks. A positive correlation between expression module $i$ and methylation module $j$ indicates that samples which had comparatively high expression of the genes in $i$ tended to have comparatively high rates of methylation in $j$. The negative relationship between expression and methylation (where workers have higher methylation, and queens higher expression, across large numbers of genes) is apparent. 
+**Figure 5C**: Correlations between the module eigengenes shown in panels A-B, where orange indicates positive correlation and purple indicates negative. Many of the expression modules are negatively correlated with methylation modules, indicating that methylation causes reduced expression (in the same and/or different sets of genes). The red/white/blue colour indicates modules that showed a statistically significant caste bias (red: higher in QDL, blue: higher in WDL, white: unbiased).
 
 ```{r warning=F, message=F, fig.height=9, fig.width=9}
 mod_data <- left_join(
@@ -428,7 +430,7 @@ sig_corr %>%
 ```
 
 
-```{r make_composite_plot, echo=FALSE, fig.showtext=TRUE, results='hide', message=FALSE, warning=FALSE}
+```{r make_composite_plot, echo=FALSE, fig.showtext=TRUE, results='hide', message=FALSE, warning=FALSE, fig.width=1, fig.height=1}
 hm <- cor_mods %>%
   pheatmap(col = myColor, breaks = myBreaks,
            annotation_row = annotation_row, annotation_col = annotation_row, annotation_colors = annotation_colors,
@@ -480,8 +482,8 @@ dev.off()
 source("code/create_merged_data.R")
  
 merged_data <- merged_data %>% 
-  dplyr::select(-beebase, -gene_name, -entrez_id) %>%
-  dplyr::select(gene, everything())
+  dplyr::select( -beebase, -gene_name, -entrez_id) %>%
+  mutate_at(vars(-gene, -`Positive selection\n(Gamma)`), ~ abs(.x))
 
 do_corrs <- function(variable){
   corr.test_results <- psych::corr.test(
@@ -509,10 +511,12 @@ do_corrs <- function(variable){
     distinct() %>%
     distinct(r, .keep_all = TRUE) %>% 
     arrange(p) %>% filter(r != 1) %>%
-    mutate(r = round(r, 3), p = format(round(-1 * log10(p), 1), nsmall = 1)) %>%
-    mutate(p = replace(p, is.na(p), "Inf")) %>%
-    dplyr::rename(Correlate = Var1, `-log10 adjusted p` = p) %>%
-    dplyr::select(Correlate, r, `-log10 adjusted p`) 
+    mutate(r = round(r, 3), p) %>%
+    dplyr::rename(Correlate = Var1) %>%
+    dplyr::select(Correlate, r, p) %>% 
+    mutate(p_adjusted = p.adjust(p),
+           p = formatC(p, format = "e", digits = 2),
+           p_adjusted = formatC(p_adjusted, format = "e", digits = 2)) 
 }
 
 corrs <- merged_data %>%
@@ -532,7 +536,7 @@ pheatmap(corrs, color = myColor, breaks = myBreaks,
          clustering_distance_rows = "correlation",
          clustering_distance_cols = "correlation",
          border_color = "grey30",
-         cutree_rows = 6, cutree_cols = 6, show_colnames = F)
+         cutree_rows = 3, cutree_cols = 3, show_colnames = F)
 ```
 
 ```{r big_cor_plot_save, echo = FALSE, warning=FALSE, warning=FALSE, results='hide', fig.height = 9, fig.width = 12}
@@ -561,12 +565,13 @@ pheatmap(corrs, color = myColor, breaks = myBreaks,
 
 ### Meanings and sources of these variables
 
-**Table SX**: Citation information for the variables in Figure XX, and a summary of their meanings. 
+**Table S2**: Citation information for the variables in Figure 6, and a summary of their meanings. 
 ```{r message=FALSE, warning=FALSE}
 read_csv("data/apis_gene_comparisons/variable_meanings.csv") %>%
-  kable() %>%
-  kable_styling(full_width = FALSE) %>%
-  scroll_box(height = "300px")  
+  my_data_table()
+  # kable() %>%
+  # kable_styling(full_width = FALSE) %>%
+  # scroll_box(height = "300px")  
 ```
 
 
@@ -600,7 +605,7 @@ make_a_plot <- function(yvar, xvar){
   }
   
   p + stat_bin_hex(bins = 200) + 
-    stat_smooth(method = "loess", colour = "tomato", formula = "y ~ x") + 
+    stat_smooth(method = "lm", colour = "tomato", formula = "y ~ x") + 
     scale_fill_viridis_c(option = "D") +
     coord_cartesian(ylim = ylim) + 
     ylab(NULL) + xlab(NULL) + 
@@ -695,7 +700,7 @@ velasque_gene_universe <-
 
 
 # Load our RSEM expression_data for each sample-gene combination
-expression_data <- as.matrix(read.table("data/Expression_data/Genes_2020_version.txt", row.names = 1, header = T))
+expression_data <- as.matrix(read.table("data/Expression_data/Genes.txt", row.names = 1, header = T))
 n_genes_before_filtering <- nrow(expression_data)
 gsg <- goodSamplesGenes(t(expression_data), verbose = 0) # exclude 217 genes due to too many missing samples or zero variance
 expression_data <- expression_data[gsg$goodGenes, gsg$goodSamples]
