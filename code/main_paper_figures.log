@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 MAY 2021 12:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  13 MAY 2021 09:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1189,11 +1189,11 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 129.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 129.
  ) 
 Here is how much of TeX's memory you used:
- 14334 strings out of 492995
- 206328 string characters out of 6132704
- 333025 words of memory out of 5000000
+ 14332 strings out of 492995
+ 206310 string characters out of 6132704
+ 333099 words of memory out of 5000000
  17583 multiletter control sequences out of 15000+600000
- 32474 words of font info for 64 fonts, out of 8000000 for 9000
+ 32440 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,6n,38p,2183b,357s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
@@ -1205,7 +1205,7 @@ fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2017/texmf-dist/fonts/type
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/
 texlive/2017/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/local/texlive/201
 7/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main_paper_figures.pdf (6 pages, 12702647 bytes).
+Output written on main_paper_figures.pdf (6 pages, 12762988 bytes).
 PDF statistics:
  106 PDF objects out of 1000 (max. 8388607)
  79 compressed objects within 1 object stream

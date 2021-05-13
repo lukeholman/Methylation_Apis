@@ -6,7 +6,7 @@ hub <- AnnotationHub()
 # query(hub, c("mellifera","sqlite")) # Get the number for mellifera
 
 # Get gene annotations for Apis mellifera - NB, the code for Apis often changes over time: 
-# run "query" again to find the new one. I guess AnnotationHub don't like keeping things consistent...
+# run: "query(hub, c("mellifera","sqlite"))" again to find the new one if AH81619 no longer works
 zz <- hub[["AH81619"]] 
 DB_connection <- dbconn(zz) # DBI::dbListTables(DB_connection)
 

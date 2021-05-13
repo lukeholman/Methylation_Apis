@@ -464,10 +464,10 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-05-12
+<strong>Last updated:</strong> 2021-05-13
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 2
 </p>
 <p>
 <strong>Knit directory:</strong> <code>Methylation_Apis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -483,12 +483,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -579,16 +579,16 @@ relative
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea67f269258becd6f8cdaeff6a9fa2e37d5b21185targetblanka67f269a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/a67f269258becd6f8cdaeff6a9fa2e37d5b21185" target="_blank">a67f269</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreed1f72c1ffa349ec2491c9944962b6dd4b74aad2dtargetblankd1f72c1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/lukeholman/Methylation_Apis/tree/d1f72c1ffa349ec2491c9944962b6dd4b74aad2d" target="_blank">d1f72c1</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreea67f269258becd6f8cdaeff6a9fa2e37d5b21185targetblanka67f269a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomlukeholmanMethylationApistreed1f72c1ffa349ec2491c9944962b6dd4b74aad2dtargetblankd1f72c1a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/a67f269258becd6f8cdaeff6a9fa2e37d5b21185" target="_blank">a67f269</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/lukeholman/Methylation_Apis/tree/d1f72c1ffa349ec2491c9944962b6dd4b74aad2d" target="_blank">d1f72c1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -607,432 +607,18 @@ Ignored files:
     Ignored:    figures/site_meth_hist/.DS_Store
     Ignored:    output/
 
-Untracked files:
-    Untracked:  figures/expr_temporal_GOBP_dmel.rds
-    Untracked:  figures/expr_temporal_GOCC_dmel.rds
-    Untracked:  figures/expr_temporal_GOMF_dmel.rds
-    Untracked:  figures/expr_temporal_KEGG_dmel.rds
-    Untracked:  figures/genomic_methyl_distribution.rds
-
 Unstaged changes:
-    Modified:   code/GO_and_KEGG_gsea.R
-    Modified:   code/create_merged_data.R
-    Modified:   code/download_annotations.R
+    Modified:   analysis/diff_methylation.Rmd
     Modified:   code/main_paper_figures.Rmd
     Modified:   code/main_paper_figures.log
     Modified:   code/main_paper_figures.pdf
-    Modified:   code/make_database.R
-    Modified:   code/make_pathway_figure.R
-    Modified:   code/supplementary_figs_tables.Rmd
-    Modified:   code/supplementary_figs_tables.pdf
-    Modified:   figures/big_correlation_heatmap.pdf
-    Modified:   figures/composite_GO.pdf
-    Modified:   figures/composite_eigengenes.pdf
-    Modified:   figures/composite_figure.pdf
-    Modified:   figures/expr_GO_BPremainder_dmel.rds
-    Modified:   figures/expr_GO_CC_dmel.rds
-    Modified:   figures/expr_GO_for_composite_figure.rds
-    Modified:   figures/expr_KEGG_dmel.rds
-    Modified:   figures/expression_heatmap.pdf
-    Modified:   figures/gene_browser_fig.pdf
-    Modified:   figures/gene_browser_plots/gene1.rds
-    Modified:   figures/gene_browser_plots/gene10.rds
-    Modified:   figures/gene_browser_plots/gene100.rds
-    Modified:   figures/gene_browser_plots/gene101.rds
-    Modified:   figures/gene_browser_plots/gene102.rds
-    Modified:   figures/gene_browser_plots/gene103.rds
-    Modified:   figures/gene_browser_plots/gene104.rds
-    Modified:   figures/gene_browser_plots/gene105.rds
-    Modified:   figures/gene_browser_plots/gene106.rds
-    Modified:   figures/gene_browser_plots/gene107.rds
-    Modified:   figures/gene_browser_plots/gene108.rds
-    Modified:   figures/gene_browser_plots/gene109.rds
-    Modified:   figures/gene_browser_plots/gene11.rds
-    Modified:   figures/gene_browser_plots/gene110.rds
-    Modified:   figures/gene_browser_plots/gene111.rds
-    Modified:   figures/gene_browser_plots/gene112.rds
-    Modified:   figures/gene_browser_plots/gene113.rds
-    Modified:   figures/gene_browser_plots/gene114.rds
-    Modified:   figures/gene_browser_plots/gene115.rds
-    Modified:   figures/gene_browser_plots/gene116.rds
-    Modified:   figures/gene_browser_plots/gene117.rds
-    Modified:   figures/gene_browser_plots/gene118.rds
-    Modified:   figures/gene_browser_plots/gene119.rds
-    Modified:   figures/gene_browser_plots/gene12.rds
-    Modified:   figures/gene_browser_plots/gene120.rds
-    Modified:   figures/gene_browser_plots/gene121.rds
-    Modified:   figures/gene_browser_plots/gene122.rds
-    Modified:   figures/gene_browser_plots/gene123.rds
-    Modified:   figures/gene_browser_plots/gene124.rds
-    Modified:   figures/gene_browser_plots/gene125.rds
-    Modified:   figures/gene_browser_plots/gene126.rds
-    Modified:   figures/gene_browser_plots/gene127.rds
-    Modified:   figures/gene_browser_plots/gene128.rds
-    Modified:   figures/gene_browser_plots/gene129.rds
-    Modified:   figures/gene_browser_plots/gene13.rds
-    Modified:   figures/gene_browser_plots/gene130.rds
-    Modified:   figures/gene_browser_plots/gene131.rds
-    Modified:   figures/gene_browser_plots/gene132.rds
-    Modified:   figures/gene_browser_plots/gene133.rds
-    Modified:   figures/gene_browser_plots/gene134.rds
-    Modified:   figures/gene_browser_plots/gene135.rds
-    Modified:   figures/gene_browser_plots/gene136.rds
-    Modified:   figures/gene_browser_plots/gene137.rds
-    Modified:   figures/gene_browser_plots/gene138.rds
-    Modified:   figures/gene_browser_plots/gene139.rds
-    Modified:   figures/gene_browser_plots/gene14.rds
-    Modified:   figures/gene_browser_plots/gene140.rds
-    Modified:   figures/gene_browser_plots/gene141.rds
-    Modified:   figures/gene_browser_plots/gene142.rds
-    Modified:   figures/gene_browser_plots/gene143.rds
-    Modified:   figures/gene_browser_plots/gene144.rds
-    Modified:   figures/gene_browser_plots/gene145.rds
-    Modified:   figures/gene_browser_plots/gene146.rds
-    Modified:   figures/gene_browser_plots/gene147.rds
-    Modified:   figures/gene_browser_plots/gene148.rds
-    Modified:   figures/gene_browser_plots/gene149.rds
-    Modified:   figures/gene_browser_plots/gene15.rds
-    Modified:   figures/gene_browser_plots/gene150.rds
-    Modified:   figures/gene_browser_plots/gene151.rds
-    Modified:   figures/gene_browser_plots/gene152.rds
-    Modified:   figures/gene_browser_plots/gene153.rds
-    Modified:   figures/gene_browser_plots/gene154.rds
-    Modified:   figures/gene_browser_plots/gene155.rds
-    Modified:   figures/gene_browser_plots/gene156.rds
-    Modified:   figures/gene_browser_plots/gene157.rds
-    Modified:   figures/gene_browser_plots/gene158.rds
-    Modified:   figures/gene_browser_plots/gene159.rds
-    Modified:   figures/gene_browser_plots/gene16.rds
-    Modified:   figures/gene_browser_plots/gene160.rds
-    Modified:   figures/gene_browser_plots/gene161.rds
-    Modified:   figures/gene_browser_plots/gene162.rds
-    Modified:   figures/gene_browser_plots/gene163.rds
-    Modified:   figures/gene_browser_plots/gene164.rds
-    Modified:   figures/gene_browser_plots/gene165.rds
-    Modified:   figures/gene_browser_plots/gene166.rds
-    Modified:   figures/gene_browser_plots/gene167.rds
-    Modified:   figures/gene_browser_plots/gene168.rds
-    Modified:   figures/gene_browser_plots/gene169.rds
-    Modified:   figures/gene_browser_plots/gene17.rds
-    Modified:   figures/gene_browser_plots/gene170.rds
-    Modified:   figures/gene_browser_plots/gene171.rds
-    Modified:   figures/gene_browser_plots/gene172.rds
-    Modified:   figures/gene_browser_plots/gene173.rds
-    Modified:   figures/gene_browser_plots/gene174.rds
-    Modified:   figures/gene_browser_plots/gene175.rds
-    Modified:   figures/gene_browser_plots/gene176.rds
-    Modified:   figures/gene_browser_plots/gene177.rds
-    Modified:   figures/gene_browser_plots/gene178.rds
-    Modified:   figures/gene_browser_plots/gene179.rds
-    Modified:   figures/gene_browser_plots/gene18.rds
-    Modified:   figures/gene_browser_plots/gene180.rds
-    Modified:   figures/gene_browser_plots/gene181.rds
-    Modified:   figures/gene_browser_plots/gene182.rds
-    Modified:   figures/gene_browser_plots/gene183.rds
-    Modified:   figures/gene_browser_plots/gene184.rds
-    Modified:   figures/gene_browser_plots/gene185.rds
-    Modified:   figures/gene_browser_plots/gene186.rds
-    Modified:   figures/gene_browser_plots/gene187.rds
-    Modified:   figures/gene_browser_plots/gene188.rds
-    Modified:   figures/gene_browser_plots/gene189.rds
-    Modified:   figures/gene_browser_plots/gene19.rds
-    Modified:   figures/gene_browser_plots/gene190.rds
-    Modified:   figures/gene_browser_plots/gene191.rds
-    Modified:   figures/gene_browser_plots/gene192.rds
-    Modified:   figures/gene_browser_plots/gene193.rds
-    Modified:   figures/gene_browser_plots/gene194.rds
-    Modified:   figures/gene_browser_plots/gene195.rds
-    Modified:   figures/gene_browser_plots/gene196.rds
-    Modified:   figures/gene_browser_plots/gene197.rds
-    Modified:   figures/gene_browser_plots/gene198.rds
-    Modified:   figures/gene_browser_plots/gene199.rds
-    Modified:   figures/gene_browser_plots/gene2.rds
-    Modified:   figures/gene_browser_plots/gene20.rds
-    Modified:   figures/gene_browser_plots/gene200.rds
-    Modified:   figures/gene_browser_plots/gene201.rds
-    Modified:   figures/gene_browser_plots/gene202.rds
-    Modified:   figures/gene_browser_plots/gene203.rds
-    Modified:   figures/gene_browser_plots/gene204.rds
-    Modified:   figures/gene_browser_plots/gene205.rds
-    Modified:   figures/gene_browser_plots/gene206.rds
-    Modified:   figures/gene_browser_plots/gene207.rds
-    Modified:   figures/gene_browser_plots/gene208.rds
-    Modified:   figures/gene_browser_plots/gene209.rds
-    Modified:   figures/gene_browser_plots/gene21.rds
-    Modified:   figures/gene_browser_plots/gene210.rds
-    Modified:   figures/gene_browser_plots/gene211.rds
-    Modified:   figures/gene_browser_plots/gene212.rds
-    Modified:   figures/gene_browser_plots/gene213.rds
-    Modified:   figures/gene_browser_plots/gene214.rds
-    Modified:   figures/gene_browser_plots/gene215.rds
-    Modified:   figures/gene_browser_plots/gene216.rds
-    Modified:   figures/gene_browser_plots/gene217.rds
-    Modified:   figures/gene_browser_plots/gene218.rds
-    Modified:   figures/gene_browser_plots/gene219.rds
-    Modified:   figures/gene_browser_plots/gene22.rds
-    Modified:   figures/gene_browser_plots/gene220.rds
-    Modified:   figures/gene_browser_plots/gene221.rds
-    Modified:   figures/gene_browser_plots/gene222.rds
-    Modified:   figures/gene_browser_plots/gene223.rds
-    Modified:   figures/gene_browser_plots/gene224.rds
-    Modified:   figures/gene_browser_plots/gene225.rds
-    Modified:   figures/gene_browser_plots/gene226.rds
-    Modified:   figures/gene_browser_plots/gene227.rds
-    Modified:   figures/gene_browser_plots/gene228.rds
-    Modified:   figures/gene_browser_plots/gene229.rds
-    Modified:   figures/gene_browser_plots/gene23.rds
-    Modified:   figures/gene_browser_plots/gene230.rds
-    Modified:   figures/gene_browser_plots/gene231.rds
-    Modified:   figures/gene_browser_plots/gene232.rds
-    Modified:   figures/gene_browser_plots/gene233.rds
-    Modified:   figures/gene_browser_plots/gene234.rds
-    Modified:   figures/gene_browser_plots/gene235.rds
-    Modified:   figures/gene_browser_plots/gene236.rds
-    Modified:   figures/gene_browser_plots/gene237.rds
-    Modified:   figures/gene_browser_plots/gene238.rds
-    Modified:   figures/gene_browser_plots/gene239.rds
-    Modified:   figures/gene_browser_plots/gene24.rds
-    Modified:   figures/gene_browser_plots/gene240.rds
-    Modified:   figures/gene_browser_plots/gene241.rds
-    Modified:   figures/gene_browser_plots/gene242.rds
-    Modified:   figures/gene_browser_plots/gene243.rds
-    Modified:   figures/gene_browser_plots/gene244.rds
-    Modified:   figures/gene_browser_plots/gene245.rds
-    Modified:   figures/gene_browser_plots/gene246.rds
-    Modified:   figures/gene_browser_plots/gene247.rds
-    Modified:   figures/gene_browser_plots/gene248.rds
-    Modified:   figures/gene_browser_plots/gene249.rds
-    Modified:   figures/gene_browser_plots/gene25.rds
-    Modified:   figures/gene_browser_plots/gene250.rds
-    Modified:   figures/gene_browser_plots/gene251.rds
-    Modified:   figures/gene_browser_plots/gene252.rds
-    Modified:   figures/gene_browser_plots/gene253.rds
-    Modified:   figures/gene_browser_plots/gene254.rds
-    Modified:   figures/gene_browser_plots/gene255.rds
-    Modified:   figures/gene_browser_plots/gene256.rds
-    Modified:   figures/gene_browser_plots/gene257.rds
-    Modified:   figures/gene_browser_plots/gene258.rds
-    Modified:   figures/gene_browser_plots/gene259.rds
-    Modified:   figures/gene_browser_plots/gene26.rds
-    Modified:   figures/gene_browser_plots/gene260.rds
-    Modified:   figures/gene_browser_plots/gene261.rds
-    Modified:   figures/gene_browser_plots/gene262.rds
-    Modified:   figures/gene_browser_plots/gene263.rds
-    Modified:   figures/gene_browser_plots/gene264.rds
-    Modified:   figures/gene_browser_plots/gene265.rds
-    Modified:   figures/gene_browser_plots/gene266.rds
-    Modified:   figures/gene_browser_plots/gene267.rds
-    Modified:   figures/gene_browser_plots/gene268.rds
-    Modified:   figures/gene_browser_plots/gene269.rds
-    Modified:   figures/gene_browser_plots/gene27.rds
-    Modified:   figures/gene_browser_plots/gene270.rds
-    Modified:   figures/gene_browser_plots/gene271.rds
-    Modified:   figures/gene_browser_plots/gene272.rds
-    Modified:   figures/gene_browser_plots/gene273.rds
-    Modified:   figures/gene_browser_plots/gene274.rds
-    Modified:   figures/gene_browser_plots/gene275.rds
-    Modified:   figures/gene_browser_plots/gene276.rds
-    Modified:   figures/gene_browser_plots/gene277.rds
-    Modified:   figures/gene_browser_plots/gene278.rds
-    Modified:   figures/gene_browser_plots/gene279.rds
-    Modified:   figures/gene_browser_plots/gene28.rds
-    Modified:   figures/gene_browser_plots/gene280.rds
-    Modified:   figures/gene_browser_plots/gene281.rds
-    Modified:   figures/gene_browser_plots/gene282.rds
-    Modified:   figures/gene_browser_plots/gene283.rds
-    Modified:   figures/gene_browser_plots/gene284.rds
-    Modified:   figures/gene_browser_plots/gene285.rds
-    Modified:   figures/gene_browser_plots/gene286.rds
-    Modified:   figures/gene_browser_plots/gene287.rds
-    Modified:   figures/gene_browser_plots/gene288.rds
-    Modified:   figures/gene_browser_plots/gene289.rds
-    Modified:   figures/gene_browser_plots/gene29.rds
-    Modified:   figures/gene_browser_plots/gene290.rds
-    Modified:   figures/gene_browser_plots/gene291.rds
-    Modified:   figures/gene_browser_plots/gene292.rds
-    Modified:   figures/gene_browser_plots/gene293.rds
-    Modified:   figures/gene_browser_plots/gene294.rds
-    Modified:   figures/gene_browser_plots/gene295.rds
-    Modified:   figures/gene_browser_plots/gene296.rds
-    Modified:   figures/gene_browser_plots/gene297.rds
-    Modified:   figures/gene_browser_plots/gene298.rds
-    Modified:   figures/gene_browser_plots/gene299.rds
-    Modified:   figures/gene_browser_plots/gene3.rds
-    Modified:   figures/gene_browser_plots/gene30.rds
-    Modified:   figures/gene_browser_plots/gene300.rds
-    Modified:   figures/gene_browser_plots/gene301.rds
-    Modified:   figures/gene_browser_plots/gene302.rds
-    Modified:   figures/gene_browser_plots/gene303.rds
-    Modified:   figures/gene_browser_plots/gene304.rds
-    Modified:   figures/gene_browser_plots/gene305.rds
-    Modified:   figures/gene_browser_plots/gene306.rds
-    Modified:   figures/gene_browser_plots/gene307.rds
-    Modified:   figures/gene_browser_plots/gene308.rds
-    Modified:   figures/gene_browser_plots/gene309.rds
-    Modified:   figures/gene_browser_plots/gene31.rds
-    Modified:   figures/gene_browser_plots/gene310.rds
-    Modified:   figures/gene_browser_plots/gene311.rds
-    Modified:   figures/gene_browser_plots/gene312.rds
-    Modified:   figures/gene_browser_plots/gene313.rds
-    Modified:   figures/gene_browser_plots/gene314.rds
-    Modified:   figures/gene_browser_plots/gene315.rds
-    Modified:   figures/gene_browser_plots/gene316.rds
-    Modified:   figures/gene_browser_plots/gene317.rds
-    Modified:   figures/gene_browser_plots/gene318.rds
-    Modified:   figures/gene_browser_plots/gene319.rds
-    Modified:   figures/gene_browser_plots/gene32.rds
-    Modified:   figures/gene_browser_plots/gene320.rds
-    Modified:   figures/gene_browser_plots/gene321.rds
-    Modified:   figures/gene_browser_plots/gene322.rds
-    Modified:   figures/gene_browser_plots/gene323.rds
-    Modified:   figures/gene_browser_plots/gene324.rds
-    Modified:   figures/gene_browser_plots/gene325.rds
-    Modified:   figures/gene_browser_plots/gene326.rds
-    Modified:   figures/gene_browser_plots/gene327.rds
-    Modified:   figures/gene_browser_plots/gene328.rds
-    Modified:   figures/gene_browser_plots/gene329.rds
-    Modified:   figures/gene_browser_plots/gene33.rds
-    Modified:   figures/gene_browser_plots/gene330.rds
-    Modified:   figures/gene_browser_plots/gene331.rds
-    Modified:   figures/gene_browser_plots/gene332.rds
-    Modified:   figures/gene_browser_plots/gene333.rds
-    Modified:   figures/gene_browser_plots/gene334.rds
-    Modified:   figures/gene_browser_plots/gene335.rds
-    Modified:   figures/gene_browser_plots/gene336.rds
-    Modified:   figures/gene_browser_plots/gene337.rds
-    Modified:   figures/gene_browser_plots/gene338.rds
-    Modified:   figures/gene_browser_plots/gene339.rds
-    Modified:   figures/gene_browser_plots/gene34.rds
-    Modified:   figures/gene_browser_plots/gene340.rds
-    Modified:   figures/gene_browser_plots/gene341.rds
-    Modified:   figures/gene_browser_plots/gene342.rds
-    Modified:   figures/gene_browser_plots/gene343.rds
-    Modified:   figures/gene_browser_plots/gene344.rds
-    Modified:   figures/gene_browser_plots/gene345.rds
-    Modified:   figures/gene_browser_plots/gene346.rds
-    Modified:   figures/gene_browser_plots/gene347.rds
-    Modified:   figures/gene_browser_plots/gene348.rds
-    Modified:   figures/gene_browser_plots/gene349.rds
-    Modified:   figures/gene_browser_plots/gene35.rds
-    Modified:   figures/gene_browser_plots/gene350.rds
-    Modified:   figures/gene_browser_plots/gene351.rds
-    Modified:   figures/gene_browser_plots/gene352.rds
-    Modified:   figures/gene_browser_plots/gene353.rds
-    Modified:   figures/gene_browser_plots/gene354.rds
-    Modified:   figures/gene_browser_plots/gene355.rds
-    Modified:   figures/gene_browser_plots/gene356.rds
-    Modified:   figures/gene_browser_plots/gene357.rds
-    Modified:   figures/gene_browser_plots/gene358.rds
-    Modified:   figures/gene_browser_plots/gene359.rds
-    Modified:   figures/gene_browser_plots/gene36.rds
-    Modified:   figures/gene_browser_plots/gene360.rds
-    Modified:   figures/gene_browser_plots/gene361.rds
-    Modified:   figures/gene_browser_plots/gene362.rds
-    Modified:   figures/gene_browser_plots/gene363.rds
-    Modified:   figures/gene_browser_plots/gene364.rds
-    Modified:   figures/gene_browser_plots/gene365.rds
-    Modified:   figures/gene_browser_plots/gene366.rds
-    Modified:   figures/gene_browser_plots/gene367.rds
-    Modified:   figures/gene_browser_plots/gene368.rds
-    Modified:   figures/gene_browser_plots/gene369.rds
-    Modified:   figures/gene_browser_plots/gene37.rds
-    Modified:   figures/gene_browser_plots/gene370.rds
-    Modified:   figures/gene_browser_plots/gene371.rds
-    Modified:   figures/gene_browser_plots/gene372.rds
-    Modified:   figures/gene_browser_plots/gene373.rds
-    Modified:   figures/gene_browser_plots/gene374.rds
-    Modified:   figures/gene_browser_plots/gene375.rds
-    Modified:   figures/gene_browser_plots/gene376.rds
-    Modified:   figures/gene_browser_plots/gene377.rds
-    Modified:   figures/gene_browser_plots/gene378.rds
-    Modified:   figures/gene_browser_plots/gene379.rds
-    Modified:   figures/gene_browser_plots/gene38.rds
-    Modified:   figures/gene_browser_plots/gene380.rds
-    Modified:   figures/gene_browser_plots/gene381.rds
-    Modified:   figures/gene_browser_plots/gene382.rds
-    Deleted:    figures/gene_browser_plots/gene383.rds
-    Deleted:    figures/gene_browser_plots/gene384.rds
-    Deleted:    figures/gene_browser_plots/gene385.rds
-    Deleted:    figures/gene_browser_plots/gene386.rds
-    Modified:   figures/gene_browser_plots/gene39.rds
-    Modified:   figures/gene_browser_plots/gene4.rds
-    Modified:   figures/gene_browser_plots/gene40.rds
-    Modified:   figures/gene_browser_plots/gene41.rds
-    Modified:   figures/gene_browser_plots/gene42.rds
-    Modified:   figures/gene_browser_plots/gene43.rds
-    Modified:   figures/gene_browser_plots/gene44.rds
-    Modified:   figures/gene_browser_plots/gene45.rds
-    Modified:   figures/gene_browser_plots/gene46.rds
-    Modified:   figures/gene_browser_plots/gene47.rds
-    Modified:   figures/gene_browser_plots/gene48.rds
-    Modified:   figures/gene_browser_plots/gene49.rds
-    Modified:   figures/gene_browser_plots/gene5.rds
-    Modified:   figures/gene_browser_plots/gene50.rds
-    Modified:   figures/gene_browser_plots/gene51.rds
-    Modified:   figures/gene_browser_plots/gene52.rds
-    Modified:   figures/gene_browser_plots/gene53.rds
-    Modified:   figures/gene_browser_plots/gene54.rds
-    Modified:   figures/gene_browser_plots/gene55.rds
-    Modified:   figures/gene_browser_plots/gene56.rds
-    Modified:   figures/gene_browser_plots/gene57.rds
-    Modified:   figures/gene_browser_plots/gene58.rds
-    Modified:   figures/gene_browser_plots/gene59.rds
-    Modified:   figures/gene_browser_plots/gene6.rds
-    Modified:   figures/gene_browser_plots/gene60.rds
-    Modified:   figures/gene_browser_plots/gene61.rds
-    Modified:   figures/gene_browser_plots/gene62.rds
-    Modified:   figures/gene_browser_plots/gene63.rds
-    Modified:   figures/gene_browser_plots/gene64.rds
-    Modified:   figures/gene_browser_plots/gene65.rds
-    Modified:   figures/gene_browser_plots/gene66.rds
-    Modified:   figures/gene_browser_plots/gene67.rds
-    Modified:   figures/gene_browser_plots/gene68.rds
-    Modified:   figures/gene_browser_plots/gene69.rds
-    Modified:   figures/gene_browser_plots/gene7.rds
-    Modified:   figures/gene_browser_plots/gene70.rds
-    Modified:   figures/gene_browser_plots/gene71.rds
-    Modified:   figures/gene_browser_plots/gene72.rds
-    Modified:   figures/gene_browser_plots/gene73.rds
-    Modified:   figures/gene_browser_plots/gene74.rds
-    Modified:   figures/gene_browser_plots/gene75.rds
-    Modified:   figures/gene_browser_plots/gene76.rds
-    Modified:   figures/gene_browser_plots/gene77.rds
-    Modified:   figures/gene_browser_plots/gene78.rds
-    Modified:   figures/gene_browser_plots/gene79.rds
-    Modified:   figures/gene_browser_plots/gene8.rds
-    Modified:   figures/gene_browser_plots/gene80.rds
-    Modified:   figures/gene_browser_plots/gene81.rds
-    Modified:   figures/gene_browser_plots/gene82.rds
-    Modified:   figures/gene_browser_plots/gene83.rds
-    Modified:   figures/gene_browser_plots/gene84.rds
-    Modified:   figures/gene_browser_plots/gene85.rds
-    Modified:   figures/gene_browser_plots/gene86.rds
-    Modified:   figures/gene_browser_plots/gene87.rds
-    Modified:   figures/gene_browser_plots/gene88.rds
-    Modified:   figures/gene_browser_plots/gene89.rds
-    Modified:   figures/gene_browser_plots/gene9.rds
-    Modified:   figures/gene_browser_plots/gene90.rds
-    Modified:   figures/gene_browser_plots/gene91.rds
-    Modified:   figures/gene_browser_plots/gene92.rds
-    Modified:   figures/gene_browser_plots/gene93.rds
-    Modified:   figures/gene_browser_plots/gene94.rds
-    Modified:   figures/gene_browser_plots/gene95.rds
-    Modified:   figures/gene_browser_plots/gene96.rds
-    Modified:   figures/gene_browser_plots/gene97.rds
-    Modified:   figures/gene_browser_plots/gene98.rds
-    Modified:   figures/gene_browser_plots/gene99.rds
-    Modified:   figures/genomic_context_plot_caste.rds
-    Modified:   figures/genomic_context_plot_timeQ.rds
-    Modified:   figures/genomic_context_plot_timeW.rds
-    Modified:   figures/heatmap_all.rds
-    Modified:   figures/histo_fig1.rds
-    Modified:   figures/meth_GO_for_composite_figure.rds
-    Modified:   figures/meth_GO_others.rds
-    Modified:   figures/meth_GO_temporal_Amel.rds
-    Modified:   figures/meth_GO_temporal_Dmel.rds
-    Modified:   figures/meth_all_enrichments_Amel.rds
-    Modified:   figures/meth_nmds_plot.rds
-    Modified:   figures/two_sites_for_big_meth_fig.rds
+    Modified:   figures/site_meth_hist/3UTR_plot.pdf
+    Modified:   figures/site_meth_hist/5UTR_plot.pdf
+    Modified:   figures/site_meth_hist/combined_animation.gif
+    Modified:   figures/site_meth_hist/intergenic_plot.pdf
+    Modified:   figures/site_meth_hist/intron_plot.pdf
+    Modified:   figures/site_meth_hist/promoter_plot.pdf
+    Modified:   figures/site_meth_hist/translated_plot.pdf
 
 </code></pre>
 <p>
@@ -1071,6 +657,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/lukeholman/Methylation_Apis/70efeb38d1731b64144e20bf20e84534840121a8/docs/diff_methylation.html" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -2058,15 +1661,15 @@ my_data_table &lt;- function(df){
 <!-- xx <- by_site %>% -->
 <!--   dplyr::select(site, caste, numC, numT) %>% -->
 <!--   distinct() %>% -->
-<!--   filter(site %in% methylated_sites) %>%  -->
+<!--   filter(site %in% methylated_sites) %>% -->
 <!--   group_by(site) %>% -->
-<!--   summarise(n_meth = sum(numC > 0), n_samples = n()) %>%  -->
+<!--   summarise(n_meth = sum(numC > 0), n_samples = n()) %>% -->
 <!--   mutate(all_meth = n_meth == n_samples) %>% -->
 <!--   collect() -->
 <!-- xx %>% -->
-<!--   filter(n_samples == 36) %>% -->
+<!--  # filter(n_samples == 36) %>% -->
 <!--   pull(all_meth) %>% table() -->
-<!-- 16356 / (5383 + 16356) -->
+<!-- 75463 / (36564 + 75463) -->
 <!-- ``` -->
 <div id="queen--and-worker-destined-larvae-show-diverging-methylation-frequencies" class="section level2">
 <h2>Queen- and worker-destined larvae show diverging methylation frequencies</h2>
@@ -2483,6 +2086,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/site_type_plots-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8394e8aaf71f9a2dd742240a53665bab1708bf3e/docs/figure/diff_methylation.Rmd/site_type_plots-1.png" target="_blank">8394e8a</a>
 </td>
 <td>
@@ -2578,6 +2192,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-1-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/bb8795176d5eb093e2e222355b61a73ddca1ee08/docs/figure/diff_methylation.Rmd/unnamed-chunk-1-1.png" target="_blank">bb87951</a>
@@ -2697,6 +2322,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-2-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/bb8795176d5eb093e2e222355b61a73ddca1ee08/docs/figure/diff_methylation.Rmd/unnamed-chunk-2-1.png" target="_blank">bb87951</a>
@@ -2898,6 +2534,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/run_nmds-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/13e8137315a460d0ffa7552705d49f5362d4f103/docs/figure/diff_methylation.Rmd/run_nmds-1.png" target="_blank">13e8137</a>
@@ -3163,6 +2810,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/ab88ee2d7118c08761aba451a549115a37d6d0ab/docs/figure/diff_methylation.Rmd/unnamed-chunk-4-1.png" target="_blank">ab88ee2</a>
 </td>
 <td>
@@ -3249,6 +2907,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-4-2.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/ab88ee2d7118c08761aba451a549115a37d6d0ab/docs/figure/diff_methylation.Rmd/unnamed-chunk-4-2.png" target="_blank">ab88ee2</a>
@@ -3346,6 +3015,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-6-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-6-1.png" target="_blank">8e958e1</a>
@@ -3577,7 +3257,7 @@ n_FDR_sig &lt;- p_values %&gt;%
 <h3 class="tabset">Differentially methylated sites</h3>
 <div id="sites-showing-significant-differential-methylation" class="section level4">
 <h4>Sites showing significant differential methylation</h4>
-<p>We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was <span class="math inline">\(p\)</span> &lt; 0.0001 (n = 1641 sites). Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites) (n = 363 sites were signficant after FDR correction). The table shows the location of each significant site, and mentioned if it is found in parts of one or more genes.</p>
+<p>We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was <span class="math inline">\(p\)</span> &lt; 0.0001 (n = 1641 sites). Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites) (n = 363 sites were signficant after FDR correction). The table shows the location of each significant site, and mentions if this site is found in parts of one or more genes. See the two other tabs for an easier-to-read list of genes that contained significant sites (either p &lt; 0.0001 or FDR-significant).</p>
 <pre class="r"><code>gene_meth_results_table &lt;- p_values %&gt;%
   mutate(FDR_sig = ifelse(p.adjust(p) &lt; 0.05, &quot;*&quot;, &quot;&quot;)) %&gt;%
   filter(Site %in% sig_sites_caste_GLM) %&gt;%
@@ -3982,6 +3662,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-12-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-12-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -4250,6 +3941,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-14-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-14-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -4396,6 +4098,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-16-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-16-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -4438,6 +4151,43 @@ lukeholman
   filter(Test_type == &quot;GO: Cellular component&quot;) %&gt;%
   make_pathway_figure(&quot;&quot;, &quot;Hours post-grafting&quot;)</code></pre>
 <p><img src="figure/diff_methylation.Rmd/unnamed-chunk-18-1.png" width="662.4" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
+Past versions of unnamed-chunk-18-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-18-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-18-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="table-2" class="section level6">
 <h6>Table</h6>
@@ -4478,6 +4228,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-20-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-20-1.png" target="_blank">8e958e1</a>
@@ -4585,6 +4346,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-22-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-22-1.png" target="_blank">8e958e1</a>
@@ -4708,6 +4480,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-24-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-24-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -4805,6 +4588,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-26-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-26-1.png" target="_blank">8e958e1</a>
@@ -4906,6 +4700,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-28-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8394e8aaf71f9a2dd742240a53665bab1708bf3e/docs/figure/diff_methylation.Rmd/unnamed-chunk-28-1.png" target="_blank">8394e8a</a>
 </td>
 <td>
@@ -5000,6 +4805,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-31-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-31-1.png" target="_blank">8e958e1</a>
@@ -5138,6 +4954,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-33-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-33-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -5253,6 +5080,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-35-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-35-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -5352,6 +5190,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-37-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-37-1.png" target="_blank">8e958e1</a>
@@ -5456,6 +5305,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-39-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-39-1.png" target="_blank">8e958e1</a>
@@ -5584,6 +5444,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-43-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8e958e1351fcf773c28814154621f2d8e87cfd23/docs/figure/diff_methylation.Rmd/unnamed-chunk-43-1.png" target="_blank">8e958e1</a>
 </td>
 <td>
@@ -5683,6 +5554,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/lukeholman/Methylation_Apis/blob/70efeb38d1731b64144e20bf20e84534840121a8/docs/figure/diff_methylation.Rmd/unnamed-chunk-45-1.png" target="_blank">70efeb3</a>
+</td>
+<td>
+lukeholman
+</td>
+<td>
+2021-05-12
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/lukeholman/Methylation_Apis/blob/8394e8aaf71f9a2dd742240a53665bab1708bf3e/docs/figure/diff_methylation.Rmd/unnamed-chunk-45-1.png" target="_blank">8394e8a</a>
@@ -7797,7 +7679,7 @@ other attached packages:
 [46] dplyr_1.0.0            purrr_0.3.4            readr_1.3.1           
 [49] tidyr_1.1.0            tibble_3.0.1           ggplot2_3.3.2         
 [52] tidyverse_1.3.0        showtext_0.9-1         showtextdb_3.0        
-[55] sysfonts_0.8.2         workflowr_1.6.2       
+[55] sysfonts_0.8.2        
 
 loaded via a namespace (and not attached):
   [1] Hmisc_4.4-0                   svglite_1.2.3                
@@ -7847,57 +7729,57 @@ loaded via a namespace (and not attached):
  [89] fastmap_1.0.1                 compiler_4.0.3               
  [91] abind_1.4-5                   httpuv_1.5.3.1               
  [93] rtracklayer_1.48.0            GenomeInfoDbData_1.2.3       
- [95] edgeR_3.30.1                  lattice_0.20-41              
- [97] later_1.0.0                   BiocFileCache_1.12.0         
- [99] jsonlite_1.7.0                scales_1.1.1                 
-[101] estimability_1.3              promises_1.1.0               
-[103] doParallel_1.0.15             latticeExtra_0.6-29          
-[105] checkmate_2.0.0               cowplot_1.0.0                
-[107] rmarkdown_2.5                 sandwich_2.5-1               
-[109] statmod_1.4.34                webshot_0.5.2                
-[111] downloader_0.4                igraph_1.2.5                 
-[113] survival_3.2-7                rsconnect_0.8.16             
-[115] yaml_2.2.1                    systemfonts_0.2.2            
-[117] bayesplot_1.7.2               htmltools_0.5.0              
-[119] rstantools_2.1.1              memoise_1.1.0                
-[121] locfit_1.5-9.4                graphlayouts_0.7.0           
-[123] viridisLite_0.3.0             digest_0.6.25                
-[125] assertthat_0.2.1              mime_0.9                     
-[127] rappdirs_0.3.1                data.table_1.12.8            
-[129] blob_1.2.1                    preprocessCore_1.50.0        
-[131] shinythemes_1.1.2             splines_4.0.3                
-[133] Formula_1.2-3                 labeling_0.3                 
-[135] AnnotationHub_2.20.0          RCurl_1.98-1.2               
-[137] broom_0.5.6                   hms_0.5.3                    
-[139] modelr_0.1.8                  colorspace_1.4-1             
-[141] base64enc_0.1-3               BiocManager_1.30.10          
-[143] nnet_7.3-14                   mvtnorm_1.1-0                
-[145] enrichplot_1.8.1              fansi_0.4.1                  
-[147] R6_2.4.1                      lifecycle_0.2.0              
-[149] acepack_1.4.1                 StanHeaders_2.21.0-3         
-[151] curl_4.3                      minqa_1.2.4                  
-[153] DO.db_2.9                     qvalue_2.20.0                
-[155] TH.data_1.0-10                iterators_1.0.12             
-[157] htmlwidgets_1.5.1             triebeard_0.3.0              
-[159] polyclip_1.10-0               biomaRt_2.44.1               
-[161] markdown_1.1                  crosstalk_1.1.0.1            
-[163] gridGraphics_0.5-0            rvest_0.3.5                  
-[165] globals_0.12.5                openssl_1.4.1                
-[167] insight_0.8.4                 htmlTable_1.13.3             
-[169] codetools_0.2-16              matrixStats_0.56.0           
-[171] lubridate_1.7.8               GO.db_3.11.4                 
-[173] gtools_3.8.2                  prettyunits_1.1.1            
-[175] git2r_0.27.1                  httr_1.4.1                   
-[177] highr_0.8                     stringi_1.5.3                
-[179] progress_1.2.2                reshape2_1.4.4               
-[181] farver_2.0.3                  viridis_0.5.1                
-[183] annotate_1.66.0               xml2_1.3.2                   
-[185] rvcheck_0.1.8                 boot_1.3-25                  
-[187] shinyjs_1.1                   ggplotify_0.0.5              
-[189] BiocVersion_3.11.1            bit_1.1-15.2                 
-[191] scatterpie_0.1.4              jpeg_0.1-8.1                 
-[193] ggraph_2.0.3                  pkgconfig_2.0.3              
-[195] knitr_1.32                   </code></pre>
+ [95] workflowr_1.6.2               edgeR_3.30.1                 
+ [97] lattice_0.20-41               later_1.0.0                  
+ [99] BiocFileCache_1.12.0          jsonlite_1.7.0               
+[101] scales_1.1.1                  estimability_1.3             
+[103] promises_1.1.0                doParallel_1.0.15            
+[105] latticeExtra_0.6-29           checkmate_2.0.0              
+[107] cowplot_1.0.0                 rmarkdown_2.5                
+[109] sandwich_2.5-1                statmod_1.4.34               
+[111] webshot_0.5.2                 downloader_0.4               
+[113] igraph_1.2.5                  survival_3.2-7               
+[115] rsconnect_0.8.16              yaml_2.2.1                   
+[117] systemfonts_0.2.2             bayesplot_1.7.2              
+[119] htmltools_0.5.0               rstantools_2.1.1             
+[121] memoise_1.1.0                 locfit_1.5-9.4               
+[123] graphlayouts_0.7.0            viridisLite_0.3.0            
+[125] digest_0.6.25                 assertthat_0.2.1             
+[127] mime_0.9                      rappdirs_0.3.1               
+[129] data.table_1.12.8             blob_1.2.1                   
+[131] preprocessCore_1.50.0         shinythemes_1.1.2            
+[133] splines_4.0.3                 Formula_1.2-3                
+[135] labeling_0.3                  AnnotationHub_2.20.0         
+[137] RCurl_1.98-1.2                broom_0.5.6                  
+[139] hms_0.5.3                     modelr_0.1.8                 
+[141] colorspace_1.4-1              base64enc_0.1-3              
+[143] BiocManager_1.30.10           nnet_7.3-14                  
+[145] mvtnorm_1.1-0                 enrichplot_1.8.1             
+[147] fansi_0.4.1                   R6_2.4.1                     
+[149] lifecycle_0.2.0               acepack_1.4.1                
+[151] StanHeaders_2.21.0-3          curl_4.3                     
+[153] minqa_1.2.4                   DO.db_2.9                    
+[155] qvalue_2.20.0                 TH.data_1.0-10               
+[157] iterators_1.0.12              htmlwidgets_1.5.1            
+[159] triebeard_0.3.0               polyclip_1.10-0              
+[161] biomaRt_2.44.1                markdown_1.1                 
+[163] crosstalk_1.1.0.1             gridGraphics_0.5-0           
+[165] rvest_0.3.5                   globals_0.12.5               
+[167] openssl_1.4.1                 insight_0.8.4                
+[169] htmlTable_1.13.3              codetools_0.2-16             
+[171] matrixStats_0.56.0            lubridate_1.7.8              
+[173] GO.db_3.11.4                  gtools_3.8.2                 
+[175] prettyunits_1.1.1             git2r_0.27.1                 
+[177] httr_1.4.1                    highr_0.8                    
+[179] stringi_1.5.3                 progress_1.2.2               
+[181] reshape2_1.4.4                farver_2.0.3                 
+[183] viridis_0.5.1                 annotate_1.66.0              
+[185] xml2_1.3.2                    rvcheck_0.1.8                
+[187] boot_1.3-25                   shinyjs_1.1                  
+[189] ggplotify_0.0.5               BiocVersion_3.11.1           
+[191] bit_1.1-15.2                  scatterpie_0.1.4             
+[193] jpeg_0.1-8.1                  ggraph_2.0.3                 
+[195] pkgconfig_2.0.3               knitr_1.32                   </code></pre>
 </div>
 </div>
 </div>
