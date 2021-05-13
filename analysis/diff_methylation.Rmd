@@ -106,16 +106,16 @@ my_data_table <- function(df){
 <!-- xx <- by_site %>% -->
 <!--   dplyr::select(site, caste, numC, numT) %>% -->
 <!--   distinct() %>% -->
-<!--   filter(site %in% methylated_sites) %>%  -->
+<!--   filter(site %in% methylated_sites) %>% -->
 <!--   group_by(site) %>% -->
-<!--   summarise(n_meth = sum(numC > 0), n_samples = n()) %>%  -->
+<!--   summarise(n_meth = sum(numC > 0), n_samples = n()) %>% -->
 <!--   mutate(all_meth = n_meth == n_samples) %>% -->
 <!--   collect() -->
 
 <!-- xx %>% -->
-<!--   filter(n_samples == 36) %>% -->
+<!--  # filter(n_samples == 36) %>% -->
 <!--   pull(all_meth) %>% table() -->
-<!-- 16356 / (5383 + 16356) -->
+<!-- 75463 / (36564 + 75463) -->
 <!-- ``` -->
 
 
@@ -159,7 +159,7 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
     site_meth_counts <- by_site %>%
       filter_by_site(site_type) %>%
       mutate(coverage = numC + numT) %>%
-      dplyr::select(site, sample, numC, coverage, caste, time) %>%
+      dplyr::select(site, numC, coverage, caste, time) %>%
       group_by(caste, time, site) %>% # combine the reads over the 4 replicate samples...
       summarise(prop_meth = sum(numC) / sum(coverage), .groups = "drop") %>% 
       dplyr::select(caste, time, prop_meth) %>%
@@ -168,7 +168,7 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
              caste = factor(caste, c("Time 0", "Queen", "Worker"))) 
     
     n_bins <- 101
-    ylim_max <- 1.4 * max(hist(site_meth_counts$prop_meth[site_meth_counts$time==8] * 100, 
+    ylim_max <- 1.4 * max(hist(site_meth_counts$prop_meth[site_meth_counts$time == 8] * 100, 
                                plot = FALSE, breaks = n_bins)$counts[80:99])
     
     animated_plot <- site_meth_counts %>%
@@ -190,7 +190,7 @@ if(!file.exists("figures/site_meth_hist/combined_animation.gif")){
            y = "Number of CpG sites") +
       theme_bw() + 
       theme(legend.position = "none", 
-            text = element_text(family = nice_font),
+           # text = element_text(family = nice_font),
             strip.background = element_blank(),
             panel.grid.major.x = element_blank()) + 
       transition_states(time, transition_length = 0.1, state_length = 0.1) +
@@ -1017,7 +1017,7 @@ n_FDR_sig <- p_values %>%
 
 #### Sites showing significant differential methylation 
 
-We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was $p$ < 0.0001 (n = `r length(sig_sites_caste_GLM)` sites). Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites) (n = `r n_FDR_sig` sites were signficant after FDR correction). The table shows the location of each significant site, and mentioned if it is found in parts of one or more genes. 
+We label a CpG site as significantly differentially methylated between castes/timepoints if the effect of caste (as measured by the best-fitting model) was $p$ < 0.0001 (n = `r length(sig_sites_caste_GLM)` sites). Not all sites survived false discovery rate correction; those that did are labelled with an asterisk the table below (we include both since the false discovery rate correction is overly conservative here, since these tests are not independent due to correlations in methylation between sites) (n = `r n_FDR_sig` sites were signficant after FDR correction). The table shows the location of each significant site, and mentions if this site is found in parts of one or more genes. See the two other tabs for an easier-to-read list of genes that contained significant sites (either p < 0.0001 or FDR-significant).
 
 ```{r}
 gene_meth_results_table <- p_values %>%
