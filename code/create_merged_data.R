@@ -53,7 +53,7 @@ present_study_data <- present_study_data %>%
   left_join(bwasp_gene_meth,
             by = c("Gene symbol" = "Genes"))
 
-# Merge with the present study's mean % methylation of sites within each gene (from BWASP)
+# Merge with the present study's mean % methylation across all CpG sites within each gene (from BWASP)
 present_study_data <- present_study_data %>%
   left_join(read_tsv("data/meth_network_input/Network_persite.txt") %>%
               gather(key, value, -Genes) %>%
@@ -191,16 +191,17 @@ merged_data <- merged_data %>%
 
 # Merge in the data from Flyatlas2, showing the enrichment of each gene in each tissue type, for female Drosophila
 # (converted to bee orthologs using the ortholog relationships from Warner et al)
-# Enrichment is expressed as FPKM_i / max(FPKM), where i is tissue i and max is the maximum FPKM recorded for all the tissues.
+# Enrichment is expressed as FPKM_i / mean(FPKM), where i is tissue i and max(FPKM) is the max across all the tissues for the focal gene
 flyatlas <- read_csv("data/database_tables/flyatlas2_fpkm.csv") %>%
   left_join(read_csv("data/database_tables/dros_ortho_GO.csv") %>% 
               dplyr::select(FLYBASE, SYMBOL) %>% distinct(), by = c("gene" = "FLYBASE")) %>%
   arrange(SYMBOL) %>% dplyr::select(-gene) %>%
   filter(type == "Female" & !(Tissue %in% c("Whole body", "Carcass"))) %>%
-  group_by(SYMBOL) %>%
-  mutate(FPKM = as.numeric(scale(as.numeric(FPKM)))) %>%
-  # split(.$SYMBOL) %>%
-  # map_df(~ .x %>% mutate(FPKM = FPKM / max(FPKM, na.rm = TRUE))) %>%
+  mutate(FPKM = as.numeric(FPKM)) %>% 
+  # group_by(SYMBOL) %>%
+  # mutate(FPKM = as.numeric(scale(FPKM))) %>%
+  split(.$SYMBOL) %>%
+  map_df(~ .x %>% mutate(FPKM = FPKM / max(FPKM, na.rm = TRUE))) %>%
   dplyr::select(SYMBOL, Tissue, FPKM) %>%
   spread(Tissue, FPKM) %>%
   select_if(~ sum(!is.na(.x)) > 0) %>%

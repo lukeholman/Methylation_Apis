@@ -4,7 +4,6 @@ header-includes:
   \usepackage{booktabs}
   \usepackage{microtype}
   \usepackage{longtable}
-  \usepackage[margin=1in]{geometry}
 ---
 
 ```{r setup, include=FALSE, results='hide', warning=FALSE, message=FALSE}
@@ -25,24 +24,34 @@ make_table <- function(file, LT = TRUE, digits = getOption("digits"), BT = TRUE)
 ```
 
 \begin{figure}[h]
-\caption{\footnotesize{\textbf{Differences in CpG methylation between queen- and worker-destined larvae. \newline A)} Histogram showing the distribution of mean \% methylation for all CpG sites of the specified type, for QDL (red) and WDL (blue) sampled at 8h post-grafting (see supplementary material for an animated version showing the change over time; note truncated y-axes). \textbf{B.} Caste difference in mean \% methylated CpG sites (mCpGs) $\pm95\%$ confidence intervals (estimated using a linear model); positive values mean higher \% mCpGs in QDL. \textbf{C.} Heatmap showing average \% CpG methylation in 50 clusters of CpG sites (rows) for each of the 36 samples (columns). We filtered out sites with $<75\%$ CpG methylation (leaving n = 39,993 sites), removed batch effects, centered and scaled the data within sites, and finally grouped the sites into 50 clusters using $k$-means clustering. Orange indicates above-average methylation for that group of sites, and purple indicates below average. Note that WDL are characterised by hypomethylation and QDL by hypermethylation, and that samples from later time points show clearer clustering by caste (see Figure SX for a similar heatmap that was not restricted to highly methylated sites). \textbf{D.} \% methylation for two individual CpG sites, one from an intron inside \textit{Csd} and another in the promoter of \textit{sex-lethal homolog}. The points show the estimated \% methylation for the 36 individual samples (corrected for experimental block), while the lines are predictions from a Bayesian GAM (thick lines: posterior median, thin lines: 100 random draws from the posterior).
+\caption{\footnotesize{\textbf{Differences in CpG methylation between queen- and worker-destined larvae. \newline A)} Histogram showing the distribution of mean \% methylation for all CpG sites of the specified type, for QDL (red) and WDL (blue) sampled at 8h post-grafting (see supplementary material for an animated version showing the change over time; note truncated y-axes). \textbf{B.} Caste difference in mean \% methylated CpG sites (mCpGs) $\pm95\%$ confidence intervals (estimated using a linear model); positive values mean higher \% mCpGs in QDL. \textbf{C.} Heatmap showing average \% CpG methylation in 50 clusters of CpG sites (rows) for each of the 36 samples (columns). We filtered out sites with $<75\%$ CpG methylation and mandated at least 4x coverage in all 36 samples ($n$ = 39,993 sites), removed batch effects, centered and scaled the data within sites, and finally grouped the sites into 50 clusters using $k$-means clustering. The colour shows the cluster centre methylation rate, with orange indicating above-average methylation for that group of sites, and purple indicating below average methylation. \textbf{D.} \% methylation for two individual CpG sites, one from an intron inside \textit{csd} and another in the promoter of \textit{sex-lethal homolog}. The points show the estimated \% methylation for the 36 individual samples, while the lines are predictions from a GLM.
 }}
 \centering
 \includegraphics[width=1\textwidth]{../figures/composite_figure.pdf}
 \end{figure}
+\newpage
+
+\begin{figure}[h]
+\caption{\footnotesize{\textbf{Methylation profiles for six genes. \newline } Each pair of blue and red points shows the \% methylated reads for one CpG site (red: QDL, blue: WDL), with reads summed across all samples at the 4h, 6h, and 8h time points. Points from the same CpG site are connected to highlight caste differences. In the gene model plot at the top, Exon 1 of the gene is always shown on the left (red colour), and the $x$-axis scale showing the genomic position is reversed if necessary. Each plot shows the exons of each gene plus 2000 base pairs upstream and downstream, and all HSMS identified by BWASP are shown. Similar plots for many other genes can be found in the code repository. \vspace{0.12in}
+}}
+\centering
+\includegraphics[width=1\textwidth]{../figures/gene_browser_fig.pdf}
+\end{figure}
+\newpage
 
 
 \begin{figure}[h]
-\caption{\footnotesize{\textbf{Results of GO: Biological Process enrichment tests. \newline A.} Results of Kolmogorov-Smirnov enrichment tests, searching for terms enriched among genes that show QDL- or WDL-biased expression (as measured by log fold difference; red: QDL-biased, blue: QDL-biased). The asterisks indicate that the term was statistically significant at this time point, while double asterisks indicate results that remained significant after Benjamini-Hochberg correction (which is overly-conservative here because the tests are not independent). For brevity, only the top 50 most significant GO terms are shown; see XXX for the remainder, as well as corresponding enrichment results for KEGG and the other two types of GO. \textbf{B.} Similar plot searching for terms enriched among genes that show QDL- or WDL-biased CpG methylation (as measured by the difference in mean % mCpGs).
+\caption{\footnotesize{\textbf{Results of GO: Biological Process Kolmogorov-Smirnov enrichment tests. \newline A.} Significantly enriched GO terms among genes showing QDL- or WDL-biased methylation (as measured by the GLM-estimated difference in mean \% mCpGs between 8h QDL and 8h WDL; red: QDL-biased, blue: WDL-biased). The asterisks indicate that the term was statistically significant at this time point, while double asterisks indicate results that remained significant after false discovery rate correction (which is overly-conservative because each GO test is not independent). \textbf{B.} Similar plot searching for terms enriched among genes that show QDL- or WDL-biased CpG methylation (as measured by log fold difference). For brevity, only the top 50 most significant GO terms are shown; see the code repository for the remainder, as well as corresponding enrichment results for KEGG and the other two types of GO.
 }}
 \centering
 \includegraphics[width=1\textwidth]{../figures/composite_GO.pdf}
 \end{figure}
+\newpage
 
 <!-- Expression pheatmap -->
 
 \begin{figure}[h]
-\caption{\footnotesize{\textbf{Heatmap showing the transcriptome of each sample. \newline}Each column indicates one of the 9,731 transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then batch effects were removed using `sva::ComBat`, and finally the data for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.}}
+\caption{\footnotesize{\textbf{Heatmap showing the transcriptome of each sample. \newline}Each column indicates one of the 9,731 transcripts, and orange and purple indicate above- and below-average expression respectively. The expression level of gene $j$ in sample $i$ was first converted to a proportion of the total, then the values for each transcript were mean-centered and scaled to unit standard deviation. The QDL and WDL samples mostly cluster together, and extensive co-expression among transcripts is apparent.}}
 \centering
 \includegraphics[width=1\textwidth]{../figures/expression_heatmap.pdf}
 \end{figure}
@@ -55,7 +64,7 @@ make_table <- function(file, LT = TRUE, digits = getOption("digits"), BT = TRUE)
 \centering
 \includegraphics[width=1\textwidth]{../figures/composite_eigengenes.pdf}
 \end{figure}
-
+\newpage
 
 
 

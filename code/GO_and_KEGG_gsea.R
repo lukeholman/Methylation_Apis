@@ -30,32 +30,36 @@ GO_and_KEGG_gsea <- function(df, GO_list, min.size = 5, keep.all = FALSE){
     
     # Run the GO enrichment K-S GSEA test
     result <- fgsea::fgsea(pathways, geneList,
-                           minSize = min.size, maxSize = 500) %>% 
-      filter(pval <= p) 
+                           minSize = min.size, maxSize = 500)
     
     # Collapse redundant pathways
     collapse_pathways <- fgsea::collapsePathways(result, pathways, geneList, nperm = 1000)
     pathways_to_keep <- c(collapse_pathways[[1]], names(collapse_pathways[[2]]))
-    result <- result %>% filter(pathway %in% pathways_to_keep)
+    
+    result <- result %>% 
+      filter(pathway %in% pathways_to_keep) %>% 
+      mutate(padj = p.adjust(pval)) %>% 
+      filter(pval <= p) 
     
     result <- result %>% 
       left_join(tbl(db, "go_meanings") %>% 
-                  dplyr::select(-ontology) %>% collect(n=Inf), by = c("pathway" = "GO")) 
+                  dplyr::select(-ontology) %>% collect(n=Inf), 
+                by = c("pathway" = "GO")) 
     
     if(nrow(result) == 0) return(NULL)
     if(ontol == "BP") Test_type <- "GO: Biological process"
     if(ontol == "MF") Test_type <- "GO: Molecular function"
     if(ontol == "CC") Test_type <- "GO: Cellular component"
     data.frame(Test_type = Test_type, 
-               result %>% arrange(padj), 
+               result %>% arrange(pval), 
                stringsAsFactors = FALSE)
   } # end GO_enrichment
   
   # Internal function to run KEGG enrichment      
   kegg_enrichment <- function(geneList, GO_list){
     
+    org_code <- "dme"
     if(GO_list == "bee_GO") org_code <- "ame"
-    else if(GO_list == "dros_ortho_GO") org_code <- "dme"
     
     apis_kegg <- clusterProfiler::download_KEGG(org_code) 
     apis_kegg_names <- apis_kegg[[2]]
@@ -70,7 +74,7 @@ GO_and_KEGG_gsea <- function(df, GO_list, min.size = 5, keep.all = FALSE){
         filter(gene_symbol %in% gene_universe)
       pathways <- with(apis_kegg_focal, split(gene_symbol, from))
     }
-    else if(GO_list == "dros_ortho_GO"){
+    else if(GO_list %in% c("dros_ortho_GO", "dros_ortho_GO_SLIM")){
       apis_kegg_focal <- apis_kegg[[1]] %>% 
         mutate(to = str_remove_all(to, "Dmel_")) %>%
         left_join(tbl(db, "dros_ortho_GO") %>%
@@ -85,18 +89,23 @@ GO_and_KEGG_gsea <- function(df, GO_list, min.size = 5, keep.all = FALSE){
     
     # Run the KEGG enrichment K-S GSEA test
     result <- fgsea::fgsea(pathways, geneList,
-                           minSize = min.size, maxSize = 500) %>% 
-      filter(pval <= p) 
+                           minSize = min.size, maxSize = 500) 
+    
     collapse_pathways <- fgsea::collapsePathways(result, pathways, geneList, nperm = 1000)
+    pathways_to_keep <- c(collapse_pathways[[1]], names(collapse_pathways[[2]]))
     
     result <- result %>% 
-      filter(pathway %in% c(collapse_pathways[[1]], names(collapse_pathways[[2]]))) %>% 
+      filter(pathway %in% pathways_to_keep) %>% 
+      mutate(padj = p.adjust(pval)) %>% 
+      filter(pval <= p) 
+    
+    result <- result %>% 
       left_join(apis_kegg_names %>% dplyr::rename(term = to), by = c("pathway" = "from")) %>%
       mutate(pathway = str_replace_all(pathway, "ame", "KEGG:"))
     
     if(nrow(result) == 0) return(NULL)
     data.frame(Test_type = "KEGG", 
-               result %>% arrange(padj), 
+               result %>% arrange(pval), 
                stringsAsFactors = FALSE) 
   }
   

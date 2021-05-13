@@ -66,6 +66,8 @@ copy_to(apis_db,
 # Make table of annotations for each of the sites and add to the DB
 # There is >1 row per site, since some sites have multiple annotated features
 
+source("code/add_gene_exon_columns.R")
+
 site_annotations <- read_tsv("data/database_tables/site_info.tsv") %>% 
   dplyr::select(site, seqnames, start) %>%
   add_gene_exon_columns() %>%
@@ -79,29 +81,29 @@ copy_to(apis_db,
 ######################################################################
 # Add the significant differentially methylated 500bp windows from Claire's BWASP pipeline:
 
-bwasp_caste_500bp <- list.files("data/BWASP_results/Caste specific results", full.names = TRUE) %>%
-  map_df(~ read_tsv(.x)) %>% dplyr::select(-width, -strand)
-
-bwasp_timeQ_500bp <- list.files("data/BWASP_results/Temporal_Variation_Q_results", full.names = TRUE) %>%
-  map_df(~ read_tsv(.x)) %>% dplyr::select(-width, -strand)
-
-bwasp_timeW_500bp <- list.files("data/BWASP_results/Temporal_Variation_W_results", full.names = TRUE) %>%
-  map_df(~ read_tsv(.x)) %>% dplyr::select(-width, -strand)
-
-copy_to(apis_db, 
-        bwasp_caste_500bp,
-        "bwasp_caste_500bp", 
-        temporary = FALSE)
-
-copy_to(apis_db, 
-        bwasp_timeQ_500bp,
-        "bwasp_timeQ_500bp", 
-        temporary = FALSE)
-
-copy_to(apis_db, 
-        bwasp_timeW_500bp,
-        "bwasp_timeW_500bp", 
-        temporary = FALSE)
+# bwasp_caste_500bp <- list.files("data/BWASP_results/500bp_windows/Caste specific results", full.names = TRUE) %>%
+#   map_df(~ read_tsv(.x)) %>% dplyr::select(-width, -strand)
+# 
+# bwasp_timeQ_500bp <- list.files("data/BWASP_results/500bp_windows/Temporal_Variation_Q_results", full.names = TRUE) %>%
+#   map_df(~ read_tsv(.x)) %>% dplyr::select(-width, -strand)
+# 
+# bwasp_timeW_500bp <- list.files("data/BWASP_results/500bp_windows/Temporal_Variation_W_results", full.names = TRUE) %>%
+#   map_df(~ read_tsv(.x)) %>% dplyr::select(-width, -strand)
+# 
+# copy_to(apis_db, 
+#         bwasp_caste_500bp,
+#         "bwasp_caste_500bp", 
+#         temporary = FALSE)
+# 
+# copy_to(apis_db, 
+#         bwasp_timeQ_500bp,
+#         "bwasp_timeQ_500bp", 
+#         temporary = FALSE)
+# 
+# copy_to(apis_db, 
+#         bwasp_timeW_500bp,
+#         "bwasp_timeW_500bp", 
+#         temporary = FALSE)
 
 
 
@@ -109,72 +111,74 @@ copy_to(apis_db,
 # Concatenate the numC and numT counts by gene
 
 # Connect to the database we have been creating in this file (note, uses a different name)
-db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
-
-# Get the by-site counts, with gene info added
-by_site <- tbl(db, "methylation_counts") %>%
-  mutate(prop = numC / (numC + numT)) %>% 
-  left_join(tbl(db, "sample_ids"), by = "sample") %>% 
-  left_join(tbl(db, "site_annotations"), by = "site")
+# db <- dbConnect(SQLite(), "data/apis_db.sqlite3") # DBI::dbListTables(db)
+# 
+# # Get the by-site counts, with gene info added
+# by_site <- tbl(db, "methylation_counts") %>%
+#   mutate(prop = numC / (numC + numT)) %>% 
+#   left_join(tbl(db, "sample_ids"), by = "sample") %>% 
+#   left_join(tbl(db, "site_annotations"), by = "site")
 
 # Count up the Cs and Ts by gene. This includes all the sites that are between the
 # stop and start codons of all the exons of the gene (i.e. CDS, introns, and UTRs, but not promoters)
+# It only includes sites that are covered in all 36 samples, to prevent between-sample differences in 
+# the gene level measure being caused by between-sample differences in which sites are covered
 
-fully_covered_sites <- tbl(db, "site_info") %>% # about 5 million sites
-  filter(n_samples==36) %>%
-  pull(site)
-
-by_gene <- by_site %>%
-  filter(!is.na(exon_in) & 
-           site %in% fully_covered_sites) %>% 
-  group_by(exon_in, sample, caste, time, rep) %>%
-  summarise(numC = sum(numC),
-            numT = sum(numT),
-            prop = NA,
-            num_sites = n()) %>% 
-  mutate(prop = numC / (numC + numT)) %>%
-  collect(n = Inf) %>% ungroup() %>%
-  dplyr::rename(gene = exon_in) %>%
-  dplyr::select(gene, sample, numC, numT, num_sites)
-
-
-
-copy_to(apis_db, 
-        by_gene,
-        "by_gene", 
-        temporary = FALSE)
+# fully_covered_sites <- tbl(db, "site_info") %>% # about 5 million sites
+#   filter(n_samples==36) %>%
+#   pull(site)
+# 
+# by_gene <- by_site %>%
+#   filter(!is.na(exon_in) & 
+#            site %in% fully_covered_sites) %>% 
+#   group_by(exon_in, sample, caste, time, rep) %>%
+#   summarise(numC = sum(numC),
+#             numT = sum(numT),
+#             prop = NA,
+#             num_sites = n()) %>% 
+#   mutate(prop = numC / (numC + numT)) %>%
+#   collect(n = Inf) %>% ungroup() %>%
+#   dplyr::rename(gene = exon_in) %>%
+#   dplyr::select(gene, sample, numC, numT, num_sites)
+# 
+# 
+# 
+# copy_to(apis_db, 
+#         by_gene,
+#         "by_gene", 
+#         temporary = FALSE)
 
 ######################################################################
 # Do the same again, but this time only use sites that are methylated at 10x greater than the background rate
 # that is dictated by bisulphite conversion failure. Use this for analysis of methylation levels of genes (e.g. for network analysis)
-
-methylated_sites <- tbl(db, "site_info") %>%
-  filter(mean_prop_meth > 0.027) %>%
-  distinct() %>% pull(site)
-
-by_site <- by_site %>%
-  filter(site %in% methylated_sites)
-
-
-by_gene_trimmed <- by_site %>%
-  filter(!is.na(exon_in) & 
-           site %in% fully_covered_sites) %>% 
-  group_by(exon_in, sample, caste, time, rep) %>%
-  summarise(numC = sum(numC),
-            numT = sum(numT),
-            prop = NA,
-            num_sites = n()) %>% 
-  mutate(prop = numC / (numC + numT)) %>%
-  collect(n = Inf) %>% ungroup() %>%
-  dplyr::rename(gene = exon_in) %>%
-  dplyr::select(gene, sample, numC, numT, num_sites)
-
-
-
-copy_to(apis_db, 
-        by_gene_trimmed,
-        "by_gene_trimmed", 
-        temporary = FALSE)
+# 
+# methylated_sites <- tbl(db, "site_info") %>%
+#   filter(mean_prop_meth > 0.027) %>%
+#   distinct() %>% pull(site)
+# 
+# by_site <- by_site %>%
+#   filter(site %in% methylated_sites)
+# 
+# 
+# by_gene_trimmed <- by_site %>%
+#   filter(!is.na(exon_in) & 
+#            site %in% fully_covered_sites) %>% 
+#   group_by(exon_in, sample, caste, time, rep) %>%
+#   summarise(numC = sum(numC),
+#             numT = sum(numT),
+#             prop = NA,
+#             num_sites = n()) %>% 
+#   mutate(prop = numC / (numC + numT)) %>%
+#   collect(n = Inf) %>% ungroup() %>%
+#   dplyr::rename(gene = exon_in) %>%
+#   dplyr::select(gene, sample, numC, numT, num_sites)
+# 
+# 
+# 
+# copy_to(apis_db, 
+#         by_gene_trimmed,
+#         "by_gene_trimmed", 
+#         temporary = FALSE)
 
 
 

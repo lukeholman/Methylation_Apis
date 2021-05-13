@@ -27,7 +27,7 @@ make_pathway_figure <- function(GO_output, ylab, xlab, alt_colours = FALSE){
            Test_type = replace(Test_type, Test_type == "GO: Cellular component", "GO: CC")) %>%
     ggplot(aes(Time, term, fill = NES)) + 
     geom_tile(colour = "black", size = 0.4)  + 
-    geom_text(aes(label = sig)) +
+    geom_text(aes(label = sig), vjust = 0.77) +
     theme_bw() + ylab(ylab) + xlab(xlab) +
     scale_x_discrete(expand = c(0,0)) + 
     scale_y_discrete(expand = c(0,0)) +

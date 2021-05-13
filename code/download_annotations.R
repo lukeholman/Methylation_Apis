@@ -68,7 +68,8 @@ Amel_Dmel_orthologs <- read_csv("data/Amel_Dmel_orthologs.csv") %>% dplyr::selec
 # Get the Dmel GO annotations from the org.db
 # BiocManager::install("org.Dm.eg.db") 
 library(org.Dm.eg.db)
-dros_info <- select(org.Dm.eg.db, keys= keys(org.Dm.eg.db), columns = c("SYMBOL", "FLYBASE", "FLYBASECG", "GO", "ONTOLOGY", "ENTREZID"))
+dros_info <- select(org.Dm.eg.db, keys= keys(org.Dm.eg.db), 
+                    columns = c("SYMBOL", "FLYBASE", "FLYBASECG", "GO", "ONTOLOGY", "ENTREZID"))
 
 # Merge the Dmel and Amel GO annotations, and save
 # This dataframe lists all unique GO terms for the Apis gene *and* its ortholog(s) in Drosophila
@@ -111,8 +112,13 @@ bee_GO <- bee_GO %>%
   full_join(custom_ones, by = c("SYMBOL", "GO", "ONTOLOGY")) %>%
   arrange(SYMBOL, ONTOLOGY) 
 
+# Get the PANTHER 'GO slim' (a custom sub-set of 3336 terms from the full GO ontology; increases power by not running too many tests):
+panther_slim <- readLines("http://data.pantherdb.org/PANTHER16.0/ontology/PANTHERGOslim.obo")
+panther_slim <- panther_slim[substr(panther_slim, 1,6) == "id: GO"] %>% 
+  str_remove_all("id[:] ") %>% unique()
 
-
+dros_ortho_GO_SLIM <- dros_ortho_GO %>%
+  filter(GO %in% panther_slim)
 
 ############################################################
 #Get the meanings for each GO term ID from the GO.db database
@@ -124,22 +130,17 @@ names(go_meanings) <- c("GO", "ontology", "term")
 go_meanings <- distinct(go_meanings)
 
 ############################################################
-# Trim the GO annotations to just include the genes in Expression_data/Genes_2020_version.txt
-gene_to_keep <- rownames(as.matrix(read.table("data/Expression_data/Genes_2020_version.txt", row.names = 1, header = T)))
+# Trim the GO annotations to just include the genes in Expression_data/Genes.txt
+gene_to_keep <- rownames(as.matrix(read.table("data/Expression_data/Genes.txt", row.names = 1, header = T)))
 bee_GO <- bee_GO %>% filter(SYMBOL %in% gene_to_keep)
 dros_ortho_GO <- dros_ortho_GO %>% filter(SYMBOL %in% gene_to_keep)
-
+dros_ortho_GO_SLIM <- dros_ortho_GO_SLIM %>% filter(SYMBOL %in% gene_to_keep)
 
 
 ############################################################
 # Save the spreadsheets, which will become tables in the database 
 gene_names <- gene_names %>% dplyr::select(-`_id`)
-invisible(lapply(c("bee_GO",  "gene_names", "go_meanings", "dros_ortho_GO"), # , "kegg_meanings" "bee_kegg",
+invisible(lapply(c("bee_GO",  "gene_names", "go_meanings", "dros_ortho_GO", "dros_ortho_GO_SLIM"), # , "kegg_meanings" "bee_kegg",
        function(x){
          write_csv(get(x), path = paste("data/database_tables/", x, ".csv", sep = ""))
        }))
-
-
-
-
-
